@@ -400,7 +400,7 @@ body {
 
   /* Rozmiar strony */
   @page {
-    size:A4 portrait;
+    size:A4 landscape;
     margin:12mm 10mm;
   }
 }
@@ -492,11 +492,11 @@ if(sessionStorage.getItem('bw-auth')==='1'){
       <a class="nav-item" href="#" onclick="show('s06',this)">
         <span class="nd nd-green"></span> Matryca komunikacji
       </a>
-      <a class="nav-item" href="#" onclick="show('s07',this)">
-        <span class="nd nd-green"></span> Mapa ścieżek
+      <a class="nav-item" href="#" onclick="show('s07',this)" style="opacity:0.35; pointer-events:none;">
+        <span class="nd nd-green"></span> Mapa ścieżek <span style="font-size:8px; color:var(--text-dim); margin-left:auto; letter-spacing:1px;">WiP</span>
       </a>
-      <a class="nav-item" href="#" onclick="show('s08',this)">
-        <span class="nd nd-green"></span> Plan wdrożenia
+      <a class="nav-item" href="#" onclick="show('s08',this)" style="opacity:0.35; pointer-events:none;">
+        <span class="nd nd-green"></span> Plan wdrożenia <span style="font-size:8px; color:var(--text-dim); margin-left:auto; letter-spacing:1px;">WiP</span>
       </a>
     </div>
 
@@ -541,7 +541,7 @@ if(sessionStorage.getItem('bw-auth')==='1'){
   <div class="grid-2" style="margin-bottom:16px;">
     <div class="card">
       <h3>Gdzie jestesmy teraz</h3>
-      <p>5 bytów markowych, 3 domeny, brak spójnej narracji. Klient kupuje owoce od DailyFruits, kawę od (ex) Malej Palarni i nie wie że to jeden partner. Cross-sell rate poniżej potencjalu, decyzje trafiają do OM zamiast do HR.</p>
+      <p>5 bytów markowych, 3 domeny, brak spójnej narracji. Klient kupuje owoce od DailyFruits, kawę od (ex) Małej Palarni i nie wie że to jeden partner. Cross-sell rate poniżej potencjału, decyzje trafiają do OM zamiast do HR.</p>
     </div>
     <div class="card">
       <h3>Gdzie chcemy być po Fazie 1</h3>
@@ -586,7 +586,7 @@ if(sessionStorage.getItem('bw-auth')==='1'){
         <ul class="dlv-bullets">
           <li>Core narrative i hierarchia przekazów</li>
           <li>Key message territories</li>
-          <li>Tone / style principles, do’s & don’ts</li>
+          <li>Tone / style principles, do's & don'ts</li>
         </ul>
       </div>
     </div>
@@ -698,21 +698,21 @@ if(sessionStorage.getItem('bw-auth')==='1'){
       <div style="font-size:22px; font-weight:800; color:var(--lime); min-width:30px;">S</div>
       <div>
         <div style="font-size:15px; font-weight:700;">Sytuacja</div>
-        <div style="font-size:11px; color:var(--text-dim);">Situation – co się dzieje i co nie działa</div>
+        <div style="font-size:11px; color:var(--text-dim);">Situation - co sie dzieje i co nie dziala</div>
       </div>
     </div>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
       <div style="background:var(--card); border:1px solid var(--border); padding:14px;">
-        <div style="font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;">Co odkryliśmy</div>
-        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">5 marek, 3 domeny, zero spójnej narracji. Klient kupuje od DailyFruits i nie wie, że może mieć kawę, paczki i zarządzanie benefitami od tego samego partnera.</div>
+        <div style="font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;">Co odkrylismy</div>
+        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">5 marek, 3 domeny, zero spojnej narracji. Klient kupuje od DailyFruits i nie wie, ze moze miec kawe, paczki i zarzadzanie benefitami od tego samego partnera.</div>
       </div>
       <div style="background:var(--card); border:1px solid var(--border); padding:14px;">
-        <div style="font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;">Główny problem</div>
-        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">DailyFruits komunikuje jak hurtownia, nie jak marka bliska ludziom. BetterWorkplace jest niewidoczny jako ekosystem. Klient optymalizuje każdy zakup osobno – u 4 dostawców zamiast u 1.</div>
+        <div style="font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;">Glowny problem</div>
+        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">DailyFruits komunikuje jak hurtownia, nie jak marka bliska ludziom. BetterWorkplace jest niewidoczny jako ekosystem. Klient optymalizuje kazdy zakup osobno - u 4 dostawcow zamiast u 1.</div>
       </div>
     </div>
     <div style="border-left:3px solid var(--lime); padding:8px 14px; background:var(--lime-dim); margin-top:10px;">
-      <div style="font-size:13px; color:var(--text-muted);"><strong style="color:var(--text);">Wniosek:</strong> Problem nie jest produktowy ani cenowy. Jest <strong style="color:var(--text);">percepcyjny i kategorialny</strong> – rynek nie widzi BW jako partnera benefitowego.</div>
+      <div style="font-size:13px; color:var(--text-muted);"><strong style="color:var(--text);">Wniosek:</strong> Problem nie jest produktowy ani cenowy. Jest <strong style="color:var(--text);">percepcyjny i kategorialny</strong> - rynek nie widzi BW jako partnera benefitowego.</div>
     </div>
   </div>
 
@@ -722,21 +722,21 @@ if(sessionStorage.getItem('bw-auth')==='1'){
       <div style="font-size:22px; font-weight:800; color:var(--blue); min-width:30px;">A</div>
       <div>
         <div style="font-size:15px; font-weight:700;">Odbiorcy</div>
-        <div style="font-size:11px; color:var(--text-dim);">Audience – do kogo mówimy i co ich motywuje</div>
+        <div style="font-size:11px; color:var(--text-dim);">Audience - do kogo mówimy i co ich motywuje</div>
       </div>
     </div>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
       <div style="background:var(--card); border:1px solid var(--border); padding:14px;">
-        <div style="font-size:10px; font-weight:700; color:var(--red); margin-bottom:6px;">Dziś: Office Manager</div>
-        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">Widzi owoce jako koszt kuchni. Budżet operacyjny, negocjuje cenę, zmienia dostawcę co kwartał. Wartość kontraktu: x1.</div>
+        <div style="font-size:10px; font-weight:700; color:var(--red); margin-bottom:6px;">Dzis: Office Manager</div>
+        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">Widzi owoce jako koszt kuchni. Budżet operacyjny, negocjuje cene, zmienia dostawce co kwartał. Wartosc kontraktu: x1.</div>
       </div>
       <div style="background:var(--card); border:1px solid var(--border); padding:14px;">
         <div style="font-size:10px; font-weight:700; color:var(--green); margin-bottom:6px;">Cel: HR Director</div>
-        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">Widzi to samo jako inwestycję w wellbeing. Budżet benefitowy, szuka partnera, a nie dostawcy. Wartość kontraktu: x10.</div>
+        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">Widzi to samo jako inwestycje w wellbeing. Budżet benefitowy, szuka partnera, a nie dostawcy. Wartosc kontraktu: x10.</div>
       </div>
     </div>
     <div style="border-left:3px solid var(--blue); padding:8px 14px; background:var(--blue-dim); margin-top:10px;">
-      <div style="font-size:13px; color:var(--text-muted);"><strong style="color:var(--text);">Wniosek:</strong> Cała komunikacja musi być napisana pod tę różnicę. DF i BO mówią do Office Managera (produkt). BW mówi do HR Directora (strategia). Dwa strumienie, jeden ekosystem.</div>
+      <div style="font-size:13px; color:var(--text-muted);"><strong style="color:var(--text);">Wniosek:</strong> Cała komunikacja musi byc napisana pod te róznice. DF i BO mówią do Office Managera (produkt). BW mówi do HR Directora (strategia). Dwa strumienie, jeden ekosystem.</div>
     </div>
   </div>
 
@@ -746,21 +746,21 @@ if(sessionStorage.getItem('bw-auth')==='1'){
       <div style="font-size:22px; font-weight:800; color:var(--green); min-width:30px;">L</div>
       <div>
         <div style="font-size:15px; font-weight:700;">Przewaga</div>
-        <div style="font-size:11px; color:var(--text-dim);">Leverage – czego konkurencja nie ma</div>
+        <div style="font-size:11px; color:var(--text-dim);">Leverage - czego konkurencja nie ma</div>
       </div>
     </div>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
       <div style="background:var(--card); border:1px solid var(--border); padding:14px;">
         <div style="font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;">Unikalna pozycja</div>
-        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">Jedyny gracz w Polsce łączący żywieniowy wellbeing, zaopatrzenie biurowe i platformę do zarządzania benefitami w jednym ekosystemie. Żaden konkurent nie ma tej szerokości.</div>
+        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">Jedyny gracz w Polsce laczacy zywieniowy wellbeing, zaopatrzenie biurowe i platforme do zarzadzania benefitami w jednym ekosystemie. Zaden konkurent nie ma tej szerokosci.</div>
       </div>
       <div style="background:var(--card); border:1px solid var(--border); padding:14px;">
         <div style="font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;">Kulturowy asset</div>
-        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">Owocowe Czwartki – rozpoznawalny mem polskiego rynku pracy. DailyFruits jest firmą, która fizycznie dostarcza te owoce od 2009 roku. Skojarzenie istnieje – wystarczy je przejąć.</div>
+        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">Owocowe Czwartki - rozpoznawalny mem polskiego rynku pracy. DailyFruits jest firma, która fizycznie dostarcza te owoce od 2009 roku. Skojarzenie istnieje - wystarczy je przejac.</div>
       </div>
     </div>
     <div style="border-left:3px solid var(--green); padding:8px 14px; background:var(--green-dim); margin-top:10px;">
-      <div style="font-size:13px; color:var(--text-muted);"><strong style="color:var(--text);">Wniosek:</strong> BW nie musi wymyślać przewagi – ma ją. Musi ją tylko zakomunikować: jeden ekosystem, jedna marka nadrzędna, kulturowy rytuał jako gateway.</div>
+      <div style="font-size:13px; color:var(--text-muted);"><strong style="color:var(--text);">Wniosek:</strong> BW nie musi wymyslac przewagi - ma ja. Musi ja tylko zakomunikowac: jeden ekosystem, jedna marka nadrzedna, kulturowy rytual jako gateway.</div>
     </div>
   </div>
 
@@ -770,26 +770,26 @@ if(sessionStorage.getItem('bw-auth')==='1'){
       <div style="font-size:22px; font-weight:800; color:var(--purple); min-width:30px;">T</div>
       <div>
         <div style="font-size:15px; font-weight:700;">Zmiana</div>
-        <div style="font-size:11px; color:var(--text-dim);">Transform – co chcemy zmienić w głowie klienta</div>
+        <div style="font-size:11px; color:var(--text-dim);">Transform - co chcemy zmienic w głowie klienta</div>
       </div>
     </div>
     <div style="background:var(--card); border:1px solid var(--border); padding:16px; margin-bottom:10px;">
       <div style="display:flex; align-items:center; gap:16px;">
         <div style="flex:1;">
-          <div style="font-size:10px; font-weight:700; color:var(--red); margin-bottom:4px;">Dziś</div>
-          <div style="font-size:14px; font-weight:600;">„Dostawca owoców i kawy”</div>
-          <div style="font-size:12px; color:var(--text-dim); margin-top:2px;">Negocjacja ceny · Budżet kuchni · Office Manager decyduje</div>
+          <div style="font-size:10px; font-weight:700; color:var(--red); margin-bottom:4px;">Dzis</div>
+          <div style="font-size:14px; font-weight:600;">Dostawca owocow i kawy</div>
+          <div style="font-size:12px; color:var(--text-dim); margin-top:2px;">Negocjacja ceny - Budżet kuchni - Office Manager decyduje</div>
         </div>
-        <div style="font-size:22px; color:var(--lime);">→</div>
+        <div style="font-size:22px; color:var(--lime);">Cel</div>
         <div style="flex:1;">
           <div style="font-size:10px; font-weight:700; color:var(--green); margin-bottom:4px;">Cel</div>
-          <div style="font-size:14px; font-weight:600;">Trzeci filar benefitów pracowniczych</div>
-          <div style="font-size:12px; color:var(--text-dim); margin-top:2px;">Wybór partnera · Budżet benefitowy · HR Director decyduje</div>
+          <div style="font-size:14px; font-weight:600;">Trzeci filar benefitow pracowniczych</div>
+          <div style="font-size:12px; color:var(--text-dim); margin-top:2px;">Wybor partnera - Budżet benefitowy - HR Director decyduje</div>
         </div>
       </div>
     </div>
     <div style="border-left:3px solid var(--purple); padding:8px 14px; background:var(--purple-dim); margin-top:10px;">
-      <div style="font-size:13px; color:var(--text-muted);"><strong style="color:var(--text);">Wniosek:</strong> To nie jest zmiana logo ani strony. To jest zmiana kategorii – z „dostawcy” na „partnera”. Wszystko w Fazie 1 (architektura, narracja, matryca, mapa ścieżek, plan wdrożenia) służy tej jednej zmianie.</div>
+      <div style="font-size:13px; color:var(--text-muted);"><strong style="color:var(--text);">Wniosek:</strong> To nie jest zmiana logo ani strony. To jest zmiana kategorii - z dostawcy na partnera. Wszystko w Fazie 1 (architektura, narracja, matryca, mapa sciezek, plan wdrozenia) sluzy tej jednej zmianie.</div>
     </div>
   </div>
 </div>
@@ -799,7 +799,7 @@ if(sessionStorage.getItem('bw-auth')==='1'){
   <div class="sec-eyebrow" style="color:var(--warn);">Wyniki diagnozy</div>
   <h1 class="sec-title">Kluczowe <span>odkrycia</span></h1>
   <div style="font-size:12px; color:var(--text-dim); margin-top:-6px; margin-bottom:8px;">Key Findings</div>
-  <p class="sec-sub">Trzy odkrycia które determinują każdą decyzję w tym dokumencie. Każde przekłada się na konkretne deliverables, działania i mierzalne cele.</p>
+  <p class="sec-sub">Trzy odkrycia ktorych determinuja kazda decyzje w tym dokumencie. Kazde przeklada sie na konkretne deliverables, dzialania i mierzalne cele.</p>
 
   <!-- Odkrycie 01 -->
   <div style="background:var(--card2); border:1px solid var(--border2); padding:22px; margin-bottom:10px; border-left:3px solid var(--warn);">
@@ -807,20 +807,20 @@ if(sessionStorage.getItem('bw-auth')==='1'){
       <div style="font-size:22px; font-weight:800; color:var(--text-dim); min-width:30px;">01</div>
       <div>
         <div style="font-size:15px; font-weight:700;">Problem jest kategorialny, nie produktowy</div>
-        <div style="font-size:11px; color:var(--text-dim);">BW ma ofertę partnera benefitowego – ale komunikuje jak dostawca</div>
+        <div style="font-size:11px; color:var(--text-dim);">BW ma oferte partnera benefitowego - ale komunikuje jak dostawca</div>
       </div>
     </div>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px;">
       <div style="background:var(--card); border:1px solid var(--border); padding:14px;">
         <div style="font-size:10px; font-weight:700; color:var(--red); margin-bottom:6px;">Problem</div>
-        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">Dostawcom się negocjuje cenę, partnerów się wybiera. Dopóki BW jest postrzegany jako „dostawca owoców”, każda rozmowa zaczyna się od ceny, nie od wartości.</div>
+        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">Dostawcom sie negocjuje cene, partnerom sie wybiera. Dopoki BW jest postrzegany jako dostawca owocow, kazda rozmowa zaczyna sie od ceny, nie od wartosci.</div>
       </div>
       <div style="background:var(--card); border:1px solid var(--border); padding:14px;">
-        <div style="font-size:10px; font-weight:700; color:var(--green); margin-bottom:6px;">Gdzie to rozwiązujemy</div>
+        <div style="font-size:10px; font-weight:700; color:var(--green); margin-bottom:6px;">Gdzie to rozwiazujemy</div>
         <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">
-          <strong style="color:var(--text);">Architektura marek</strong> – struktura ekosystemu z marką nadrzędną<br>
-          <strong style="color:var(--text);">Narracja i przekaz</strong> – „Trzeci filar benefitow” jako zmiana kategorii<br>
-          <strong style="color:var(--text);">SALT: Transform</strong> – z „dostawcy” na „partnera”
+          <strong style="color:var(--text);">Architektura marek</strong> - struktura ekosystemu z marca nadrzedna<br>
+          <strong style="color:var(--text);">Narracja i przekaz</strong> - Trzeci filar benefitow jako zmiana kategorii<br>
+          <strong style="color:var(--text);">SALT: Transform</strong> - z dostawcy na partnera
         </div>
       </div>
     </div>
@@ -832,20 +832,20 @@ if(sessionStorage.getItem('bw-auth')==='1'){
       <div style="font-size:22px; font-weight:800; color:var(--text-dim); min-width:30px;">02</div>
       <div>
         <div style="font-size:15px; font-weight:700;">Ekosystem jest niewidoczny dla klienta</div>
-        <div style="font-size:11px; color:var(--text-dim);">Klient kupuje od jednej marki i nie wie, że reszta istnieje</div>
+        <div style="font-size:11px; color:var(--text-dim);">Klient kupuje od jednej marki i nie wie, ze reszta istnieje</div>
       </div>
     </div>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px;">
       <div style="background:var(--card); border:1px solid var(--border); padding:14px;">
         <div style="font-size:10px; font-weight:700; color:var(--red); margin-bottom:6px;">Problem</div>
-        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">3 domeny, 3 osobne narracje, zero połączeń. Klient kupujący owoce od DailyFruits nie wie, że może mieć kawę, paczki i zarządzanie benefitami od tego samego partnera. Stracone przychody.</div>
+        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">3 domeny, 3 osobne narracje, zero polaczen. Klient kupujacy owoce od DailyFruits nie wie, ze moze miec kawe, paczki i zarzadzanie benefitami od tego samego partnera. Stracone przychody.</div>
       </div>
       <div style="background:var(--card); border:1px solid var(--border); padding:14px;">
-        <div style="font-size:10px; font-weight:700; color:var(--green); margin-bottom:6px;">Gdzie to rozwiązujemy</div>
+        <div style="font-size:10px; font-weight:700; color:var(--green); margin-bottom:6px;">Gdzie to rozwiazujemy</div>
         <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">
-          <strong style="color:var(--text);">Karty ról</strong> – każda marka wie co mówi i do kogo<br>
-          <strong style="color:var(--text);">Mapa ścieżek</strong> – logika przejść między markami (Etap 1→2)<br>
-          <strong style="color:var(--text);">Plan wdrożenia</strong> – email cross-sell DF→BO jako Quick Win #3
+          <strong style="color:var(--text);">Karty rol</strong> - kazda marka wie co mówi i do kogo<br>
+          <strong style="color:var(--text);">Mapa sciezek</strong> - logika przejsc miedzy markami (Etap 1=2)<br>
+          <strong style="color:var(--text);">Plan wdrozenia</strong> - email cross-sell DFBO jako Quick Win 3
         </div>
       </div>
     </div>
@@ -856,21 +856,21 @@ if(sessionStorage.getItem('bw-auth')==='1'){
     <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
       <div style="font-size:22px; font-weight:800; color:var(--text-dim); min-width:30px;">03</div>
       <div>
-        <div style="font-size:15px; font-weight:700;">Decyzja trafia do złej osoby</div>
+        <div style="font-size:15px; font-weight:700;">Decyzja trafia do zlosnej osoby</div>
         <div style="font-size:11px; color:var(--text-dim);">Rozmowa z Office Managerem (x1) zamiast z HR Directorem (x10)</div>
       </div>
     </div>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px;">
       <div style="background:var(--card); border:1px solid var(--border); padding:14px;">
         <div style="font-size:10px; font-weight:700; color:var(--red); margin-bottom:6px;">Problem</div>
-        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">Obecny messaging kieruje rozmowę do Office Managera – budżet operacyjny, negocjacja ceny, łatwa rezygnacja. HR Director ma budżet benefitowy 5–10x większy i szuka partnera, nie dostawcy.</div>
+        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">Obecny messaging kieruje rozmowe do Office Managera - budżet operacyjny, negocjacja ceny, latwa rezygnacja. HR Director ma budżet benefitowy 5-10x wiekszy i szuka partnera, nie dostawcy.</div>
       </div>
       <div style="background:var(--card); border:1px solid var(--border); padding:14px;">
-        <div style="font-size:10px; font-weight:700; color:var(--green); margin-bottom:6px;">Gdzie to rozwiązujemy</div>
+        <div style="font-size:10px; font-weight:700; color:var(--green); margin-bottom:6px;">Gdzie to rozwiazujemy</div>
         <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">
-          <strong style="color:var(--text);">Matryca komunikacji</strong> – dwa strumienie: OM (produkt) + HR (strategia)<br>
-          <strong style="color:var(--text);">Mapa ścieżek</strong> – moment zmiany decydenta (Etap 2→3)<br>
-          <strong style="color:var(--text);">Plan wdrożenia</strong> – LinkedIn BW do HR jako Quick Win #1
+          <strong style="color:var(--text);">Matryca komunikacji</strong> - dwa strumienie: OM (produkt) + HR (strategia)<br>
+          <strong style="color:var(--text);">Mapa sciezek</strong> - moment zmiany decydenta (Etap 2=3)<br>
+          <strong style="color:var(--text);">Plan wdrozenia</strong> - LinkedIn BW do HR jako Quick Win 1
         </div>
       </div>
     </div>
@@ -878,7 +878,7 @@ if(sessionStorage.getItem('bw-auth')==='1'){
 
   <!-- Callout -->
   <div style="background:var(--lime-dim); border:1px solid rgba(200,241,53,0.15); border-left:3px solid var(--lime); padding:16px 18px; margin-top:6px;">
-    <div style="font-size:13px; color:var(--text-muted); line-height:1.7;"><strong style="color:var(--text);">Wspólny mianownik:</strong> Wszystkie trzy odkrycia mają jedno źródło – brak spójnego, zarządzanego narrativu dla ekosystemu. Każda sekcja tego dokumentu (od architektury po plan wdrożenia) istnieje, żeby to zmienić.</div>
+    <div style="font-size:13px; color:var(--text-muted); line-height:1.7;"><strong style="color:var(--text);">Wspolny mianownik:</strong> Wszystkie trzy odkrycia maja jedno zrodlo - brak spojnego, zarzadzanego narrativu dla ekosystemu. Kazda sekcja tego dokumentu (od architektury po plan wdrozenia) istnieje, zeby to zmienic.</div>
   </div>
 </div>
 
@@ -887,11 +887,11 @@ if(sessionStorage.getItem('bw-auth')==='1'){
   <div class="sec-eyebrow" style="color:var(--green);">Deliverable 01</div>
   <h1 class="sec-title">Mapa architektury <span>marek</span></h1>
   <div style="font-size:12px; color:var(--text-dim); margin-top:-6px; margin-bottom:8px;">Brand Architecture Map</div>
-  <p class="sec-sub">Wizualna hierarchia całego ekosystemu – kto jest marka, na jakim poziomie, z jakimi relacjami. Punkt wyjscia do wszystkich pozostałych deliverables.</p>
+  <p class="sec-sub">Wizualna hierarchia calego ekosystemu - kto jest marca, na jakim poziomie, z jakimi relacjami. Punkt wyjscia do wszystkich pozostalych deliverables.</p>
 
   <div class="hero-band" style="margin-bottom:24px;">
-    <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--lime); margin-bottom:14px;">Model: Branded House ze Sponsored Sub-brands</div>
-    <div style="font-size:15px; color:var(--text-muted); line-height:1.7; max-width:560px;">BetterWorkplace jako parasol narracyjny. Sub-brandy działają autonomicznie, ale każdy jest wspierany przez BW – co buduje postrzeganą wartość i umożliwia cross-sell.</div>
+    <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--lime); margin-bottom:14px;">Model: Branded House ze Endorsed Sub-brands</div>
+    <div style="font-size:15px; color:var(--text-muted); line-height:1.7; max-width:560px;">BetterWorkplace jako parasol narracyjny. Sub-brandy dzialaja autonomicznie, ale kazdy jest endorsowany przez BW - co buduje postrzegana wartosc i umozliwia cross-sell.</div>
   </div>
 
   <!-- Architecture visual -->
@@ -899,21 +899,21 @@ if(sessionStorage.getItem('bw-auth')==='1'){
     <div style="font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--text-dim); font-weight:600; margin-bottom:20px; text-align:center;">Hierarchia ekosystemu</div>
     
     <div style="text-align:center; padding:18px; background:var(--lime-dim); border:2px solid rgba(200,241,53,0.25); border-radius:0; margin-bottom:14px;">
-      <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--lime); margin-bottom:6px;">Marka nadrzędna<br><span style="font-size:8px; opacity:0.5; letter-spacing:1.5px;">TIER 1 · MASTER BRAND</span></div>
+      <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--lime); margin-bottom:6px;">Marka nadrzedna<br><span style="font-size:8px; opacity:0.5; letter-spacing:1.5px;">TIER 1 - MASTER BRAND</span></div>
       <div style="font-size:18px; font-weight:700;">BetterWorkplace</div>
-      <div style="font-size:12px; color:var(--text-muted); margin-top:4px;">Parasol narracyjny · Decydenci HR · „Trzeci filar benefitów”</div>
+      <div style="font-size:12px; color:var(--text-muted); margin-top:4px;">Parasol narracyjny - Decydenci HR - Trzeci filar benefitow</div>
     </div>
 
     <div class="grid-2" style="margin-bottom:14px;">
       <div style="text-align:center; padding:16px; background:var(--green-dim); border:1px solid rgba(34,197,94,0.2); border-radius:0;">
-        <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green); margin-bottom:6px;">Marka wspierana<br><span style="font-size:8px; opacity:0.5; letter-spacing:1.5px;">TIER 2 · ENDORSED BRAND</span></div>
+        <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green); margin-bottom:6px;">Marka wspierana<br><span style="font-size:8px; opacity:0.5; letter-spacing:1.5px;">TIER 2 - ENDORSED BRAND</span></div>
         <div style="font-size:15px; font-weight:700;">DailyFruits</div>
-        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Główne źródło przychodu · „by BetterWorkplace”</div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Glowne zrodlo przychodu - by BetterWorkplace</div>
       </div>
       <div style="text-align:center; padding:16px; background:var(--purple-dim); border:1px solid rgba(168,85,247,0.2); border-radius:0;">
-        <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--purple); margin-bottom:6px;">Marka wspierana<br><span style="font-size:8px; opacity:0.5; letter-spacing:1.5px;">TIER 2 · ENDORSED BRAND</span></div>
+        <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--purple); margin-bottom:6px;">Marka wspierana<br><span style="font-size:8px; opacity:0.5; letter-spacing:1.5px;">TIER 2 - ENDORSED BRAND</span></div>
         <div style="font-size:15px; font-weight:700;">BetterOffice</div>
-        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Dawniej Mała Palarnia · „by BetterWorkplace”</div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Dawniej Mala Palarnia - by BetterWorkplace</div>
       </div>
     </div>
 
@@ -921,45 +921,45 @@ if(sessionStorage.getItem('bw-auth')==='1'){
 
     <div class="grid-2">
       <div style="text-align:center; padding:14px; background:var(--blue-dim); border:1px solid rgba(59,130,246,0.15); border-radius:0;">
-        <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--blue); margin-bottom:4px;">Marka produktowa<br><span style="font-size:8px; opacity:0.5; letter-spacing:1.5px;">TIER 3 · PRODUCT BRAND</span></div>
+        <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--blue); margin-bottom:4px;">Marka produktowa<br><span style="font-size:8px; opacity:0.5; letter-spacing:1.5px;">TIER 3 - PRODUCT BRAND</span></div>
         <div style="font-size:14px; font-weight:700;">TeamBudget</div>
-        <div style="font-size:11px; color:var(--text-muted); margin-top:3px;">Platforma do zarządzania · warstwa wiążąca ekosystem</div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:3px;">Platforma do zarzadzania - warstwa wiezaca ekosystem</div>
       </div>
       <div style="text-align:center; padding:14px; background:var(--warn-dim); border:1px solid rgba(245,158,11,0.15); border-radius:0;">
-        <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--warn); margin-bottom:4px;">Marka sezonowa<br><span style="font-size:8px; opacity:0.5; letter-spacing:1.5px;">TIER 3 · SEASONAL</span></div>
+        <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--warn); margin-bottom:4px;">Marka sezonowa<br><span style="font-size:8px; opacity:0.5; letter-spacing:1.5px;">TIER 3 - SEASONAL</span></div>
         <div style="font-size:14px; font-weight:700;">Sendgift</div>
-        <div style="font-size:11px; color:var(--text-muted); margin-top:3px;">Paczki okolicznościowe · punkt wejścia sezonowego</div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:3px;">Paczki okoliczosciowe - punkt wejscia sezonowego</div>
       </div>
     </div>
   </div>
 
   <div class="finding" style="margin-bottom:10px;">
     <div class="finding-num">Logika wsparcia marki<br><span style="font-size:8px; color:var(--text-dim); font-weight:400; letter-spacing:1px;">ENDORSEMENT LOGIC</span></div>
-    <h3>Dlaczego „by BetterWorkplace”, a nie marki całkowicie niezależne?</h3>
-    <p>Model wspieranych marek pozwala każdemu bytowi zachować własną tożsamość (DailyFruits mówi o owocach, BetterOffice o kuchni biurowej), jednocześnie budując postrzeganą wartość przez połączenie z marką nadrzędną. Klient widzi: „to nie jest losowy dostawca – to część większego ekosystemu”. To jest dźwignia do sprzedaży krzyżowej.</p>
-    <div class="finding-arrow">→ Rezultat: wizualna mapa hierarchii + wytyczne stosowania „by BetterWorkplace” (kiedy, gdzie i w jakiej formie)</div>
+    <h3>Dlaczego by BetterWorkplace, a nie marki calkowicie niezalezne</h3>
+    <p>Model wspieranych marek pozwala kazdemu bytowi zachowac wlasna tozsamosc (DailyFruits mowi o owocach, BetterOffice o kuchni biurowej), jednoczesnie budujac postrzeganą wartosc przez polaczenie z marca nadrzedna. Klient widzi: to nie jest losowy dostawca - to czesc wiekszego ekosystemu. To jest dzawignia do sprzedazy krzyżowej.</p>
+    <div class="finding-arrow">Rezultat: wizualna mapa hierarchii + wytyczne stosowania by BetterWorkplace (kiedy, gdzie i w jakiej formie)</div>
   </div>
 
   <div class="dlv-scope" style="margin-top:10px;">
     <span class="scope-item">Wizualna mapa hierarchii</span>
     <span class="scope-item">Wytyczne wsparcia marki</span>
-    <span class="scope-item">Logika poziomów + decyzja per marka</span>
-    <span class="scope-item">Relacje między bytami ekosystemu</span>
+    <span class="scope-item">Logika poziomow + decyzja per marka</span>
+    <span class="scope-item">Relacje miedzy bytami ekosystemu</span>
   </div>
 </div>
 
 <!-- s04: D02 Ecosystem Role Cards -->
 <div class="section" id="s04">
   <div class="sec-eyebrow" style="color:var(--green);">Deliverable 02</div>
-  <h1 class="sec-title">Karty ról <span>ekosystemu</span></h1>
+  <h1 class="sec-title">Karty rol <span>ekosystemu</span></h1>
   <div style="font-size:12px; color:var(--text-dim); margin-top:-6px; margin-bottom:8px;">Ecosystem Role Cards</div>
-  <p class="sec-sub">Jeden dokument per marka: rola, obietnica, audience, terytorium komunikacyjne. Źródło prawdy dla każdego kto tworzy komunikacje pod konkretny byt.</p>
+  <p class="sec-sub">Jeden dokument per marka: rola, obietnica, audience, terytorium komunikacyjne. Zrodlo prawdy dla kazdego kto tworzy komunikacje pod konkretny byt.</p>
 
   <div class="card" style="border-left:3px solid var(--lime); margin-bottom:10px;">
     <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
-      <div style="width:42px; height:42px; border-radius:0; background:var(--lime-mid); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; font-family:'DM Sans',system-ui,sans-serif; font-size:18px;">BW</div>
+      <div style="width:42px; height:42px; border-radius:0; background:var(--lime-mid); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; font-family:\'DM Sans\',system-ui,sans-serif; font-size:18px;">BW</div>
       <div>
-        <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--lime);">Marka nadrzędna<br><span style="font-size:8px; opacity:0.5; letter-spacing:1px;">MASTER BRAND</span></div>
+        <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--lime);">Marka nadrzedna<br><span style="font-size:8px; opacity:0.5; letter-spacing:1px;">MASTER BRAND</span></div>
         <div style="font-size:17px; font-weight:700;">BetterWorkplace</div>
       </div>
     </div>
@@ -970,39 +970,39 @@ if(sessionStorage.getItem('bw-auth')==='1'){
       </div>
       <div style="background:var(--card2); border-radius:0; padding:10px 14px;">
         <div style="font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:4px;">Audience</div>
-        <div style="font-size:13px; color:var(--text-muted);">HR Directors, C-level – decydenci strategiczni</div>
+        <div style="font-size:13px; color:var(--text-muted);">HR Directors, C-level - decydenci strategiczni</div>
       </div>
       <div style="background:var(--card2); border-radius:0; padding:10px 14px;">
         <div style="font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:4px;">Obietnica</div>
-        <div style="font-size:13px; color:var(--text);">"Jeden partner do całego wellbeingu żywieniowego w firmie"</div>
+        <div style="font-size:13px; color:var(--text);">Jeden partner do calego wellbeingu zywieniowego w firmie</div>
       </div>
       <div style="background:var(--card2); border-radius:0; padding:10px 14px;">
         <div style="font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:4px;">Ton</div>
-        <div style="font-size:13px; color:var(--text-muted);">Strategiczny, partnerski – mówi "dlaczego", nie "co"</div>
+        <div style="font-size:13px; color:var(--text-muted);">Strategiczny, partnerski - mowi dlaczego, nie co</div>
       </div>
     </div>
     <div style="background:var(--card2); border-radius:0; padding:10px 14px; margin-top:8px;">
       <div style="font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:4px;">Terytorium</div>
-      <div style="font-size:13px; color:var(--text-muted);">Trzeci filar benefitów pracowniczych (obok Multisport i Medicover), retencja, employer branding, ROI wellbeingu</div>
+      <div style="font-size:13px; color:var(--text-muted);">Trzeci filar benefitow pracowniczych (obok Multisport i Medicover), retencja, employer branding, ROI wellbeingu</div>
     </div>
 
     <!-- BW: Centrum decyzyjne -->
     <div style="background:var(--lime-dim); border:1px solid rgba(200,241,53,0.15); border-left:3px solid var(--lime); padding:16px 18px; margin-top:10px;">
       <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--lime); margin-bottom:8px;">Kluczowa rola w ekosystemie</div>
-      <div style="font-size:15px; font-weight:700; margin-bottom:8px;">Centrum decyzyjne – jedno miejsce, pełen obraz</div>
-      <div style="font-size:13px; color:var(--text-muted); line-height:1.7; margin-bottom:14px;">BW to nie kolejna marka w portfolio. To warstwa, która <strong style="color:var(--text);">wie co się dzieje w całym ekosystemie</strong> – który klient kupuje owoce, który dodał kawę, który jest gotowy na rozmowę o programie. Control room, nie front-end.</div>
+      <div style="font-size:15px; font-weight:700; margin-bottom:8px;">Centrum decyzyjne - jedno miejsce, pelny obraz</div>
+      <div style="font-size:13px; color:var(--text-muted); line-height:1.7; margin-bottom:14px;">BW to nie kolejna marka w portfolio. To warstwa, ktora wie co sie dzieje w calym ekosystemie - ktory klient kupuje owoce, ktory dodal kawe, ktory jest gotowy na rozmowe o programie. Control room, nie front-end.</div>
       <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-bottom:14px;">
         <div style="background:var(--card); border:1px solid var(--border); padding:16px 18px;">
           <div style="font-size:10px; font-weight:700; color:var(--lime); margin-bottom:4px;">Widzi</div>
-          <div style="font-size:12px; color:var(--text-muted);">Który klient jest w którym bycie, co kupuje, czego brakuje w koszyku</div>
+          <div style="font-size:12px; color:var(--text-muted);">Ktory klient jest w ktorym bycie, co kupuje, czego brakuje w koszyku</div>
         </div>
         <div style="background:var(--card); border:1px solid var(--border); padding:16px 18px;">
           <div style="font-size:10px; font-weight:700; color:var(--lime); margin-bottom:4px;">Decyduje</div>
-          <div style="font-size:12px; color:var(--text-muted);">Kiedy klient jest gotowy na cross-sell, upsell, zmianę decydenta z OM na HR</div>
+          <div style="font-size:12px; color:var(--text-muted);">Kiedy klient jest gotowy na cross-sell, upsell, zmiane decydenta z OM na HR</div>
         </div>
         <div style="background:var(--card); border:1px solid var(--border); padding:16px 18px;">
           <div style="font-size:10px; font-weight:700; color:var(--lime); margin-bottom:4px;">Komunikuje</div>
-          <div style="font-size:12px; color:var(--text-muted);">Narracja "dlaczego" – strategiczny język do HR i C-level</div>
+          <div style="font-size:12px; color:var(--text-muted);">Narracja dlaczego - strategiczny jezyk do HR i C-level</div>
         </div>
       </div>
     </div>
@@ -1010,25 +1010,25 @@ if(sessionStorage.getItem('bw-auth')==='1'){
     <!-- BW: Obszar okazji -->
     <div style="background:var(--lime-dim); border:1px solid rgba(200,241,53,0.15); border-left:3px solid var(--lime); padding:16px 18px; margin-top:10px;">
       <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--lime); margin-bottom:8px;">Obszar okazji</div>
-      <div style="font-size:15px; font-weight:700; margin-bottom:8px;">Trzeci filar – nowa kategoria benefitowa</div>
-      <div style="font-size:13px; color:var(--text-muted); line-height:1.7; margin-bottom:14px;">Rynek benefitowy w Polsce ma dwa filary: sport (Multisport) i zdrowie (Medicover/Luxmed). <strong style="color:var(--text);">Nie istnieje trzeci filar – żywienie i codzienny wellbeing w pracy.</strong> BW ma szansę zdefiniować tę kategorię zanim ktokolwiek inny ją zajmie. To nie jest rebranding – to jest category creation.</div>
-      <div style="font-size:13px; color:var(--text-muted); line-height:1.7; margin-bottom:14px;"><strong style="color:var(--text);">Dlaczego teraz:</strong> Firmy po pandemii inwestują w employee experience. Budżety HR rosną. "Wellbeing" jest jednym z top 3 słów kluczowych w ogłoszeniach o pracę. Ale nikt nie pakuje żywienia biurowego w kategorię benefitu – to wciąż "koszt kuchni". Kto pierwszy nazwie to benefitem i udowodni ROI, ten wygrywa.</div>
+      <div style="font-size:15px; font-weight:700; margin-bottom:8px;">Trzeci filar - nowa kategoria benefitowa</div>
+      <div style="font-size:13px; color:var(--text-muted); line-height:1.7; margin-bottom:14px;">Rynek benefitowy w Polsce ma dwa filary: sport (Multisport) i zdrowie (Medicover/Luxmed). Nie istnieje trzeci filar - zywienie i codzienny wellbeing w pracy. BW ma szanse zdefiniowac te kategorie zanim ktokolwiek inny ja zajmie. To nie jest rebranding - to jest category creation.</div>
+      <div style="font-size:13px; color:var(--text-muted); line-height:1.7; margin-bottom:14px;">Dlaczego teraz: Firmy po pandemii inwestuja w employee experience. Budzety HR rosna. Wellbeing jest jednym z top 3 slow kluczowych w ogloszeniach o prace. Ale nikt nie pakuje zywienia biurowego w kategorie benefitu - to wciaz koszt kuchni. Kto pierwszy nazwie to benefitem i udowodni ROI, ten wygrywa.</div>
       <div style="display:flex; gap:8px; flex-wrap:wrap;">
         <div style="flex:1; min-width:140px; background:var(--card); border:1px solid var(--border); padding:10px 14px;">
           <div style="font-size:10px; font-weight:700; color:var(--green); margin-bottom:4px;">Category creation</div>
-          <div style="font-size:12px; color:var(--text-muted);">BW definiuje nową kategorię – nikt inny tego nie robi na polskim rynku</div>
+          <div style="font-size:12px; color:var(--text-muted);">BW definiuje nowa kategorie - nikt inny tego nie robi na polskim rynku</div>
         </div>
         <div style="flex:1; min-width:140px; background:var(--card); border:1px solid var(--border); padding:10px 14px;">
           <div style="font-size:10px; font-weight:700; color:var(--green); margin-bottom:4px;">Pricing power</div>
-          <div style="font-size:12px; color:var(--text-muted);">Benefit budget jest 5–10x większy niż budżet operacyjny kuchni – inna półka cenowa</div>
+          <div style="font-size:12px; color:var(--text-muted);">Benefit budget jest 5-10x wiekszy niz budzet operacyjny kuchni - inna polka cenowa</div>
         </div>
         <div style="flex:1; min-width:140px; background:var(--card); border:1px solid var(--border); padding:10px 14px;">
           <div style="font-size:10px; font-weight:700; color:var(--green); margin-bottom:4px;">Lock-in</div>
-          <div style="font-size:12px; color:var(--text-muted);">Benefit wpisany w politykę HR jest trudniejszy do usunięcia niż dostawca do odwołania</div>
+          <div style="font-size:12px; color:var(--text-muted);">Benefit wpisany w polityke HR jest trudniejszy do usuniecia niz dostawca do odwolania</div>
         </div>
         <div style="flex:1; min-width:140px; background:var(--card); border:1px solid var(--border); padding:10px 14px;">
           <div style="font-size:10px; font-weight:700; color:var(--green); margin-bottom:4px;">TB pre-positioning</div>
-          <div style="font-size:12px; color:var(--text-muted);">Narracja "trzeci filar" buduje grunt pod TeamBudget jako platformę zarządzania</div>
+          <div style="font-size:12px; color:var(--text-muted);">Narracja trzeci filar buduje grunt pod TeamBudget jako platforme zarzadzania</div>
         </div>
       </div>
     </div>
@@ -1036,57 +1036,57 @@ if(sessionStorage.getItem('bw-auth')==='1'){
 
   <div class="card" style="border-left:3px solid var(--green); margin-bottom:10px;">
     <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
-      <div style="width:42px; height:42px; border-radius:0; background:var(--green-dim); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; font-family:'DM Sans',system-ui,sans-serif; font-size:18px;">DF</div>
+      <div style="width:42px; height:42px; border-radius:0; background:var(--green-dim); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; font-family:\'DM Sans\',system-ui,sans-serif; font-size:18px;">DF</div>
       <div>
-        <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green);">Marka wspierana · Główny przychód · Playful<br><span style="font-size:8px; opacity:0.5; letter-spacing:1px;">ENDORSED BRAND</span></div>
+        <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green);">Marka wspierana - Glowny przychod - Playful<br><span style="font-size:8px; opacity:0.5; letter-spacing:1px;">ENDORSED BRAND</span></div>
         <div style="font-size:17px; font-weight:700;">DailyFruits</div>
       </div>
     </div>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
       <div style="background:var(--card2); border-radius:0; padding:10px 14px;">
         <div style="font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:4px;">Rola</div>
-        <div style="font-size:13px; color:var(--text-muted);">Revenue driver, gateway do ekosystemu, potencjał B2C</div>
+        <div style="font-size:13px; color:var(--text-muted);">Revenue driver, gateway do ekosystemu, potencjal B2C</div>
       </div>
       <div style="background:var(--card2); border-radius:0; padding:10px 14px;">
         <div style="font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:4px;">Audience</div>
-        <div style="font-size:13px; color:var(--text-muted);">OM + HR + pracownicy (końcowy odbiorca)</div>
+        <div style="font-size:13px; color:var(--text-muted);">OM + HR + pracownicy (koncowy odbiorca)</div>
       </div>
       <div style="background:var(--card2); border-radius:0; padding:10px 14px;">
         <div style="font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:4px;">Obietnica</div>
-        <div style="font-size:13px; color:var(--text);">"Robimy Twoje biuro lepszym miejscem – zaczynając od kuchni"</div>
+        <div style="font-size:13px; color:var(--text);">Robimy Twoje biuro lepszym miejscem - zacinajac od kuchni</div>
       </div>
       <div style="background:var(--card2); border-radius:0; padding:10px 14px;">
         <div style="font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:4px;">Ton</div>
-        <div style="font-size:13px; color:var(--text-muted);">Playful, ludzki, ciepły – mówi do ludzi, nie do firm</div>
+        <div style="font-size:13px; color:var(--text-muted);">Playful, ludzki, ciepły - mowi do ludzi, nie do firm</div>
       </div>
     </div>
     <div style="background:var(--card2); border-radius:0; padding:10px 14px; margin-top:8px;">
       <div style="font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:4px;">Terytorium</div>
-      <div style="font-size:13px; color:var(--text-muted);">Rytuały biurowe (Owocowe Czwartki), radość z jedzenia w pracy, community, zdrowe nawyki jako kultura – nie jako "program"</div>
+      <div style="font-size:13px; color:var(--text-muted);">Ritualy biurowe (Owocowe Czwartki), radosc z jedzenia w pracy, community, zdrowe nawyki jako kultura - nie jako program</div>
     </div>
     <div style="background:var(--lime-dim); border:1px solid rgba(200,241,53,0.15); border-left:3px solid var(--lime); padding:16px 18px; margin-top:10px;">
       <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--lime); margin-bottom:8px;">Obszar okazji</div>
-      <div style="font-size:15px; font-weight:700; margin-bottom:8px;">Owocowe Czwartki – kulturowy asset do przejęcia</div>
-      <div style="font-size:13px; color:var(--text-muted); line-height:1.7; margin-bottom:10px;">„Owocowe Czwartki” to rozpoznawalny mem polskiego rynku pracy – każdy biurowy pracownik wie co to jest. Jednocześnie haslo jest wysmiewane jako symbol taniego benefitu („przestańcie dawać owoce, dajcie podwyżkę”). Ma własną stronę na Wikipedii, setki memów, TikToki z milionami wyświetleń.</div>
-      <div style="font-size:13px; color:var(--text-muted); line-height:1.7; margin-bottom:10px;"><strong style="color:var(--text);">Szansa dla DF:</strong> DailyFruits jest firmą, która fizycznie dostarcza te owoce od 2009 roku. Skojarzenie już istnieje – DF musi je tylko przejąć i nadać mu jakość. Nie „smutny banan na recepcji”, ale zaprojektowany, markowy rytuał z brandingiem, sezonowymi zestawami i social-ready prezentacją.</div>
-      <div style="font-size:13px; color:var(--text); line-height:1.7; margin-bottom:10px;"><strong>Podejście:</strong> DF redefiniuje Owocowe Czwartki – zamiast walczyć z memem, przejmuje go i odwraca narrację. Ton: self-aware, pewny siebie, playful. „Tak, robimy Owocowe Czwartki. I robimy je lepiej niż ktokolwiek inny.”</div>
-      <div style="font-size:13px; color:var(--text); line-height:1.7; margin-bottom:10px;"><strong>Format do skalowania:</strong> „Owocowe Czwartki” to gotowy szablon językowy, który można rozciągać na cały tydzień i cały ekosystem. Kanapkowe Wtorki, Smoothie Monday, Śniadaniowa Środa – każdy dzień to potencjalny content hook, clickbait i nowy produkt w ofercie DF. To jest wbudowany mechanizm viralowości: ludzie rozpoznają schemat "[jedzeniowy] + [dzień tygodnia]" i natychmiast łapią skojarzenie. DF może być marką, która "posiada kalendarz biurowej kuchni".</div>
+      <div style="font-size:15px; font-weight:700; margin-bottom:8px;">Owocowe Czwartki - kulturowy asset do przejecia</div>
+      <div style="font-size:13px; color:var(--text-muted); line-height:1.7; margin-bottom:10px;">Owocowe Czwartki to rozpoznawalny mem polskiego rynku pracy - kazdy biurowy pracownik wie co to jest. Jednoczesnie haslo jest wysmiawane jako symbol taniego benefitu (przestancie dawac owoce, dajcie podwyzke). Ma wlasna strone na Wikipedii, setki memow, TikToki z milionami wyswietlen.</div>
+      <div style="font-size:13px; color:var(--text-muted); line-height:1.7; margin-bottom:10px;">Szansa dla DF: DailyFruits jest firma, ktora fizycznie dostarcza te owoce od 2009 roku. Skojarzenie juz istnieje - DF musi je tylko przejac i nadac mu jakosc. Nie smutny banan na recepcji, ale zaprojektowany, markowy ritual z brandingiem, sezonowymi zestawami i social-ready prezentacja.</div>
+      <div style="font-size:13px; color:var(--text); line-height:1.7; margin-bottom:10px;">Podejscie: DF redefiniuje Owocowe Czwartki - zamiast walczyc z memem, przejmuje go i odwraca narracje. Ton: self-aware, pewny siebie, playful. Tak, robimy Owocowe Czwartki. I robimy je lepiej niz ktokolwiek inny.</div>
+      <div style="font-size:13px; color:var(--text); line-height:1.7; margin-bottom:10px;">Format do skalowania: Owocowe Czwartki to gotowy szablon jezykowy, ktory mozna rozciagac na cały tydzien i cały ekosystem. Kanapkowe Wtorki, Smoothie Monday, Sniadaniowa Sroda - kazdy dzien to potencjalny content hook, clickbait i nowy produkt w ofercie DF. To jest wbudowany mechanizm wiralowosci: ludzie rozpoznaja schemat [jedzeniowy] + [dzien tygodnia] i natychmiast łapią skojarzenie. DF moze byc marca, ktora posiadá kalendarz biurowej kuchni.</div>
       <div style="display:flex; gap:8px; flex-wrap:wrap;">
         <div style="flex:1; min-width:140px; background:var(--card); border:1px solid var(--border); padding:10px 14px;">
           <div style="font-size:10px; font-weight:700; color:var(--green); margin-bottom:4px;">Organic reach</div>
-          <div style="font-size:12px; color:var(--text-muted);">Pracownicy postują zdjęcia kuchni z brandingiem DF – zero CAC</div>
+          <div style="font-size:12px; color:var(--text-muted);">Pracownicy postuja zdjecia kuchni z brandingiem DF - zero CAC</div>
         </div>
         <div style="flex:1; min-width:140px; background:var(--card); border:1px solid var(--border); padding:10px 14px;">
           <div style="font-size:10px; font-weight:700; color:var(--green); margin-bottom:4px;">Churn protection</div>
-          <div style="font-size:12px; color:var(--text-muted);">Nikt nie mówi "zmieńmy dostawcę Owocowych Czwartków" – to jest rytuał, nie zamówienie</div>
+          <div style="font-size:12px; color:var(--text-muted);">Nikt nie mowi zmienmy dostawce Owocowych Czwartków - to jest ritual, nie zamowienie</div>
         </div>
         <div style="flex:1; min-width:140px; background:var(--card); border:1px solid var(--border); padding:10px 14px;">
           <div style="font-size:10px; font-weight:700; color:var(--green); margin-bottom:4px;">B2C bridge</div>
-          <div style="font-size:12px; color:var(--text-muted);">Pracownik mówi znajomemu "u nas są OC od DailyFruits" – referral do innych firm</div>
+          <div style="font-size:12px; color:var(--text-muted);">Pracownik mowi znajomemu u nas sa OC od DailyFruits - referral do innych firm</div>
         </div>
         <div style="flex:1; min-width:140px; background:var(--card); border:1px solid var(--border); padding:10px 14px;">
           <div style="font-size:10px; font-weight:700; color:var(--green); margin-bottom:4px;">Content machine</div>
-          <div style="font-size:12px; color:var(--text-muted);">Kanapkowe Wtorki, Smoothie Monday – szablon skaluje się na cały tydzień i nowe produkty</div>
+          <div style="font-size:12px; color:var(--text-muted);">Kanapkowe Wtorki, Smoothie Monday - szablon skaluje sie na cały tydzien i nowe produkty</div>
         </div>
       </div>
     </div>
@@ -1094,9 +1094,9 @@ if(sessionStorage.getItem('bw-auth')==='1'){
 
   <div class="card" style="border-left:3px solid var(--purple); margin-bottom:10px;">
     <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
-      <div style="width:42px; height:42px; border-radius:0; background:var(--purple-dim); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; font-family:'DM Sans',system-ui,sans-serif; font-size:18px;">BO</div>
+      <div style="width:42px; height:42px; border-radius:0; background:var(--purple-dim); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; font-family:\'DM Sans\',system-ui,sans-serif; font-size:18px;">BO</div>
       <div>
-        <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--purple);">Marka wspierana · Dawniej Mała Palarnia<br><span style="font-size:8px; opacity:0.5; letter-spacing:1px;">ENDORSED BRAND</span></div>
+        <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--purple);">Marka wspierana - Dawniej Mala Palarnia<br><span style="font-size:8px; opacity:0.5; letter-spacing:1px;">ENDORSED BRAND</span></div>
         <div style="font-size:17px; font-weight:700;">BetterOffice</div>
       </div>
     </div>
@@ -1111,30 +1111,30 @@ if(sessionStorage.getItem('bw-auth')==='1'){
       </div>
       <div style="background:var(--card2); border-radius:0; padding:10px 14px;">
         <div style="font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:4px;">Obietnica</div>
-        <div style="font-size:13px; color:var(--text);">"Jeden partner do całej kuchni biurowej"</div>
+        <div style="font-size:13px; color:var(--text);">Jeden partner do calej kuchni biurowej</div>
       </div>
       <div style="background:var(--card2); border-radius:0; padding:10px 14px;">
         <div style="font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:4px;">Terytorium</div>
-        <div style="font-size:13px; color:var(--text-muted);">Kuchnia biurowa, oszczędność czasu, full basket</div>
+        <div style="font-size:13px; color:var(--text-muted);">Kuchnia biurowa, oszczednosc czasu, full basket</div>
       </div>
     </div>
     <!-- BO: Obszar okazji -->
     <div style="background:var(--purple-dim); border:1px solid rgba(168,85,247,0.15); border-left:3px solid var(--purple); padding:16px 18px; margin-top:10px;">
       <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--purple); margin-bottom:8px;">Obszar okazji</div>
-      <div style="font-size:15px; font-weight:700; margin-bottom:8px;">Rebranding jako pełny reset pozycjonowania</div>
-      <div style="font-size:13px; color:var(--text-muted); line-height:1.7; margin-bottom:12px;">Mała Palarnia to rzemieślnicza kawa z Białegostoku – wąska nisza, entuzjaści kawy, mały koszyk. BetterOffice to zupełnie inna propozycja: <strong style="color:var(--text);">partner do zarządzania całą kuchnią biurową</strong>. Rebranding to nie zmiana loga – to szansa na otwarcie nowej kategorii, której stara marka nie mogła obsłużyć.</div>
+      <div style="font-size:15px; font-weight:700; margin-bottom:8px;">Rebranding jako pelny reset pozycjonowania</div>
+      <div style="font-size:13px; color:var(--text-muted); line-height:1.7; margin-bottom:12px;">Mała Palarnia to rzemieslnicza kawa z Bialymstoku - wąska nisza, entuzjasci kawy, mały koszyk. BetterOffice to zupelnie inna propozycja: partner do zarzadzania cała kuchnia biurowa. Rebranding to nie zmiana loga - to szansa na otwarcie nowej kategorii, ktorej stara marka nie mogła obsłuzyc.</div>
       <div style="display:flex; gap:8px; flex-wrap:wrap;">
         <div style="flex:1; min-width:140px; background:var(--card); border:1px solid var(--border); padding:10px 14px;">
           <div style="font-size:10px; font-weight:700; color:var(--green); margin-bottom:4px;">Powiększenie koszyka</div>
-          <div style="font-size:12px; color:var(--text-muted);">Klient kupuje nie tylko kawę, ale serwis ekspresów, akcesoria, zaopatrzenie kuchni – z jednego źródła</div>
+          <div style="font-size:12px; color:var(--text-muted);">Klient kupuje nie tylko kawe, ale serwis espresow, akcesoria, zaopatrzenie kuchni - z jednego zrodla</div>
         </div>
         <div style="flex:1; min-width:140px; background:var(--card); border:1px solid var(--border); padding:10px 14px;">
           <div style="font-size:10px; font-weight:700; color:var(--green); margin-bottom:4px;">Nowa grupa docelowa</div>
-          <div style="font-size:12px; color:var(--text-muted);">Nie entuzjaści kawy, ale Office Managerowie szukający wygody – większy rynek, mniejsza konkurencja</div>
+          <div style="font-size:12px; color:var(--text-muted);">Nie entuzjasci kawy, ale Office Managerowie szukajacy wygody - wiekszy rynek, mniejsza konkurencja</div>
         </div>
         <div style="flex:1; min-width:140px; background:var(--card); border:1px solid var(--border); padding:10px 14px;">
-          <div style="font-size:10px; font-weight:700; color:var(--green); margin-bottom:4px;">Naturalna ścieżka z DailyFruits</div>
-          <div style="font-size:12px; color:var(--text-muted);">„Masz owoce, dodaj kawę" – rebranding wzmacnia tę ścieżkę cross-sell</div>
+          <div style="font-size:10px; font-weight:700; color:var(--green); margin-bottom:4px;">Naturalna sciezka z DailyFruits</div>
+          <div style="font-size:12px; color:var(--text-muted);">Masz owoce, dodaj kawe - rebranding wzmacnia te sciezke cross-sell</div>
         </div>
       </div>
     </div>
@@ -1142,9 +1142,9 @@ if(sessionStorage.getItem('bw-auth')==='1'){
 
   <div class="card" style="border-left:3px solid var(--blue); margin-bottom:10px;">
     <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
-      <div style="width:42px; height:42px; border-radius:0; background:var(--blue-dim); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; font-family:'DM Sans',system-ui,sans-serif; font-size:18px;">TB</div>
+      <div style="width:42px; height:42px; border-radius:0; background:var(--blue-dim); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; font-family:\'DM Sans\',system-ui,sans-serif; font-size:18px;">TB</div>
       <div>
-        <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--blue);">Marka produktowa · Platforma<br><span style="font-size:8px; opacity:0.5; letter-spacing:1px;">PRODUCT BRAND</span></div>
+        <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--blue);">Marka produktowa - Platforma<br><span style="font-size:8px; opacity:0.5; letter-spacing:1px;">PRODUCT BRAND</span></div>
         <div style="font-size:17px; font-weight:700;">TeamBudget</div>
       </div>
     </div>
@@ -1159,39 +1159,40 @@ if(sessionStorage.getItem('bw-auth')==='1'){
       </div>
       <div style="background:var(--card2); border-radius:0; padding:10px 14px;">
         <div style="font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:4px;">Obietnica</div>
-        <div style="font-size:13px; color:var(--text);">"Jedna platforma do zarządzania benefitami"</div>
+        <div style="font-size:13px; color:var(--text);">Jedna platforma do zarzadzania benefitami</div>
       </div>
       <div style="background:var(--card2); border-radius:0; padding:10px 14px;">
         <div style="font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:4px;">Terytorium</div>
-        <div style="font-size:13px; color:var(--text-muted);">Kontrola budżetu, automatyzacja, 1 faktura</div>
+        <div style="font-size:13px; color:var(--text-muted);">Kontrola budzetu, automatyzacja, 1 faktura</div>
       </div>
     </div>
     <!-- TB: Obszar okazji -->
     <div style="background:var(--blue-dim); border:1px solid rgba(59,130,246,0.15); border-left:3px solid var(--blue); padding:16px 18px; margin-top:10px;">
       <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--blue); margin-bottom:8px;">Obszar okazji</div>
       <div style="font-size:15px; font-weight:700; margin-bottom:8px;">Budowanie popytu zanim produkt istnieje</div>
-      <div style="font-size:13px; color:var(--text-muted); line-height:1.7; margin-bottom:12px;">Każdy klient BW z 2+ produktami już dzisiaj zarządza nimi ręcznie – osobne faktury, osobne zamówienia, osobny kontakt z każdym bytem. <strong style="color:var(--text);">TeamBudget rozwiązuje problem, którego klient jeszcze nie nazwał.</strong> Narracja "jedna platforma do wszystkiego" buduje oczekiwanie zanim produkt wejdzie na rynek.</div>
+      <div style="font-size:13px; color:var(--text-muted); line-height:1.7; margin-bottom:12px;">Kazdy klient BW z 2+ produktami juz dzisiaj zarzadza nimi recznie - osobne faktury, osobne zamowienia, osobny kontakt z kazdym bytem. TeamBudget rozwi¬azuje problem, ktorego klient jeszcze nie nazwal. Narracja jedna platforma do wszystkiego buduje oczekiwanie zanim produkt wejdzie na rynek.</div>
       <div style="display:flex; gap:8px; flex-wrap:wrap;">
         <div style="flex:1; min-width:140px; background:var(--card); border:1px solid var(--border); padding:10px 14px;">
           <div style="font-size:10px; font-weight:700; color:var(--green); margin-bottom:4px;">Pre-positioning</div>
-          <div style="font-size:12px; color:var(--text-muted);">BW mówi o "jednym miejscu do zarządzania" już teraz – TB wchodzi na przygotowany grunt</div>
+          <div style="font-size:12px; color:var(--text-muted);">BW mowi o jednym miejscu do zarzadzania juz teraz - TB wchodzi na przygotowany grunt</div>
         </div>
         <div style="flex:1; min-width:140px; background:var(--card); border:1px solid var(--border); padding:10px 14px;">
           <div style="font-size:10px; font-weight:700; color:var(--green); margin-bottom:4px;">Warstwa utrzymania klienta</div>
-          <div style="font-size:12px; color:var(--text-muted);">Im więcej produktów klient ma w ekosystemie, tym trudniej odejść – TB jest klejem który to scala</div>
+          <div style="font-size:12px; color:var(--text-muted);">Im wiecej produktow klient ma w ekosystemie, tym trudniej odejsc - TB jest klejem ktory to scala</div>
         </div>
         <div style="flex:1; min-width:140px; background:var(--card); border:1px solid var(--border); padding:10px 14px;">
           <div style="font-size:10px; font-weight:700; color:var(--green); margin-bottom:4px;">Zmiana rozmowy</div>
-          <div style="font-size:12px; color:var(--text-muted);">Z "dostawca owoców i kawy" na "partner technologiczny do zarządzania benefitami" – inny poziom relacji</div>
+          <div style="font-size:12px; color:var(--text-muted);">Z dostawca owcow i kawy na partner technologiczny do zarzadzania benefitami - inny poziom relacji</div>
         </div>
       </div>
     </div>
+  </div>
 
   <div class="dlv-scope" style="margin-top:10px;">
     <span class="scope-item">Role Card per marka (4 karty)</span>
     <span class="scope-item">Audience mapping + personas</span>
     <span class="scope-item">Value proposition canvas</span>
-    <span class="scope-item">Differentiation matrix (kto czego NIE mówi)</span>
+    <span class="scope-item">Differentiation matrix (kto czego NIE mowi)</span>
   </div>
 </div>
 
@@ -1200,76 +1201,76 @@ if(sessionStorage.getItem('bw-auth')==='1'){
   <div class="sec-eyebrow" style="color:var(--green);">Deliverable 03</div>
   <h1 class="sec-title">Narracja i <span>przekaz</span></h1>
   <div style="font-size:12px; color:var(--text-dim); margin-top:-6px; margin-bottom:8px;">Narrative & Messaging Framework</div>
-  <p class="sec-sub">Master framework narracyjny: co BW mówi jako jeden organizm, jak sub-brandy budują wspólną opowieść. Hierarchia przekazów, tone of voice, do's i don'ts.</p>
+  <p class="sec-sub">Master framework narracyjny: co BW mowi jako jeden organizm, jak sub-brandy buduja wspolna opowiesc. Hierarchia przekazow, tone of voice, do's i don'ts.</p>
 
   <div class="hero-band" style="margin-bottom:24px;">
     <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--lime); margin-bottom:14px;">Big Idea</div>
-    <div style="font-size:22px; font-weight:700; letter-spacing:-0.3px; line-height:1.35; max-width:500px;">Trzeci filar benefitów pracowniczych</div>
-    <div style="font-size:14px; color:var(--text-muted); margin-top:10px; max-width:520px; line-height:1.7;">Multisport dba o cialo. Medicover dba o zdrowie. BetterWorkplace dba o codzienne samopoczucie w pracy – przez jedzenie, kawę, przestrzen i narzedzia.</div>
+    <div style="font-size:22px; font-weight:700; letter-spacing:-0.3px; line-height:1.35; max-width:500px;">Trzeci filar benefitow pracowniczych</div>
+    <div style="font-size:14px; color:var(--text-muted); margin-top:10px; max-width:520px; line-height:1.7;">Multisport dba o cialo. Medicover dba o zdrowie. BetterWorkplace dba o codzienne samopoczucie w pracy - przez jedzenie, kawe, przestrzen i narzedzia.</div>
   </div>
 
   <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;">Zasada messagingu: Hierarchia, nie chaos</div>
 
   <div class="finding" style="margin-bottom:10px;">
-    <div class="finding-num">Warstwa 1 – Master</div>
-    <h3>BW mówi "dlaczego"</h3>
-    <p>"Wellbeing żywieniowy to strategia retencji, nie gadżet." BW buduje kategorię, nie sprzedaje produktuów. Język: partnerstwo, strategia, ROI, employer branding. Do HR Directora.</p>
+    <div class="finding-num">Warstwa 1 - Master</div>
+    <h3>BW mowi dlaczego</h3>
+    <p>Wellbeing zywieniowy to strategia retencji, nie gadzet. BW buduje kategorie, nie sprzedaje produkty. Jezyk: partnerstwo, strategia, ROI, employer branding. Do HR Directora.</p>
   </div>
 
   <div class="finding" style="margin-bottom:10px;">
-    <div class="finding-num">Warstwa 2 – Endorsed</div>
-    <h3>Sub-brandy mówią "co" i "jak"</h3>
-    <p>DailyFruits: playful, ludzki, bliski pracownikowi. "Owocowe Czwartki", nie "program żywieniowy". BetterOffice: jeden partner, cała kuchnia. Konkretne, operacyjne, product-focused. Do Office Managera i Facility Managera.</p>
+    <div class="finding-num">Warstwa 2 - Endorsed</div>
+    <h3>Sub-brandy mowia co i jak</h3>
+    <p>DailyFruits: playful, ludzki, bliski pracownikowi. Owocowe Czwartki, nie program zywieniowy. BetterOffice: jeden partner, cala kuchnia. Konkretne, operacyjne, product-focused. Do Office Managera i Facility Managera.</p>
   </div>
 
   <div class="finding" style="margin-bottom:10px;">
-    <div class="finding-num">Warstwa 3 – Product</div>
-    <h3>TeamBudget mówi "kontrola"</h3>
-    <p>Platforma, automatyzacja, jedna faktura. Język tech/utility – do CFO i HR. Pre-launch: messaging idzie przez BW, żeby budowac świadomość zanim produkt wejdzie na rynek.</p>
+    <div class="finding-num">Warstwa 3 - Product</div>
+    <h3>TeamBudget mowi kontrola</h3>
+    <p>Platforma, automatyzacja, jedna faktura. Jezyk tech/utility - do CFO i HR. Pre-launch: messaging idzie przez BW, zeby budowac swiadomosc zanim produkt wejdzie na rynek.</p>
   </div>
 
-  <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin:24px 0 14px;">Zmiany percepcji (X → Y)</div>
+  <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin:24px 0 14px;">Zmiany percepcji (X -> Y)</div>
 
   <div class="grid-2" style="margin-bottom:10px;">
     <div style="background:var(--card2); border:1px solid var(--border2); border-radius:0; padding:16px;">
       <div style="font-size:11px; font-weight:700; color:var(--lime); margin-bottom:8px;">BetterWorkplace</div>
       <div style="font-size:12px; color:var(--text-dim); margin-bottom:4px;">DZIS:</div>
-      <div style="font-size:13px; color:var(--text-muted); margin-bottom:8px;">"Platforma z owocami, kawa i paczkami"</div>
+      <div style="font-size:13px; color:var(--text-muted); margin-bottom:8px;">Platforma z owocami, kawa i paczkami</div>
       <div style="font-size:12px; color:var(--green); margin-bottom:4px;">CEL:</div>
-      <div style="font-size:13px; font-weight:600;">"Trzeci filar benefitów pracowniczych"</div>
+      <div style="font-size:13px; font-weight:600;">Trzeci filar benefitow pracowniczych</div>
     </div>
     <div style="background:var(--card2); border:1px solid var(--border2); border-radius:0; padding:16px;">
       <div style="font-size:11px; font-weight:700; color:var(--green); margin-bottom:8px;">DailyFruits</div>
       <div style="font-size:12px; color:var(--text-dim); margin-bottom:4px;">DZIS:</div>
-      <div style="font-size:13px; color:var(--text-muted); margin-bottom:8px;">"Dostawca owoców do biura"</div>
+      <div style="font-size:13px; color:var(--text-muted); margin-bottom:8px;">Dostawca owcow do biura</div>
       <div style="font-size:12px; color:var(--green); margin-bottom:4px;">CEL:</div>
-      <div style="font-size:13px; font-weight:600;">"Robimy Twoje biuro lepszym miejscem – zaczynając od kuchni"</div>
-      <div style="font-size:11px; color:var(--lime); margin-top:6px; font-weight:500;">Dźwignia: Owocowe Czwartki jako markowy rytuał DF</div>
+      <div style="font-size:13px; font-weight:600;">Robimy Twoje biuro lepszym miejscem - zacinajac od kuchni</div>
+      <div style="font-size:11px; color:var(--lime); margin-top:6px; font-weight:500;">Dzawignia: Owocowe Czwartki jako markowy ritual DF</div>
     </div>
   </div>
   <div class="grid-2">
     <div style="background:var(--card2); border:1px solid var(--border2); border-radius:0; padding:16px;">
       <div style="font-size:11px; font-weight:700; color:var(--purple); margin-bottom:8px;">BetterOffice</div>
       <div style="font-size:12px; color:var(--text-dim); margin-bottom:4px;">DZIS:</div>
-      <div style="font-size:13px; color:var(--text-muted); margin-bottom:8px;">"Mala palarnia kawy z Bialymstoku"</div>
+      <div style="font-size:13px; color:var(--text-muted); margin-bottom:8px;">Mala palarnia kawy z Bialymstoku</div>
       <div style="font-size:12px; color:var(--green); margin-bottom:4px;">CEL:</div>
-      <div style="font-size:13px; font-weight:600;">"Jeden partner do całej kuchni biurowej"</div>
+      <div style="font-size:13px; font-weight:600;">Jeden partner do calej kuchni biurowej</div>
     </div>
     <div style="background:var(--card2); border:1px solid var(--border2); border-radius:0; padding:16px;">
       <div style="font-size:11px; font-weight:700; color:var(--blue); margin-bottom:8px;">TeamBudget</div>
       <div style="font-size:12px; color:var(--text-dim); margin-bottom:4px;">DZIS:</div>
-      <div style="font-size:13px; color:var(--text-muted); margin-bottom:8px;">"Nieznany produkt"</div>
+      <div style="font-size:13px; color:var(--text-muted); margin-bottom:8px;">Nieznany produkt</div>
       <div style="font-size:12px; color:var(--green); margin-bottom:4px;">CEL:</div>
-      <div style="font-size:13px; font-weight:600;">"Platforma zarządzania budżetem benefitów"</div>
+      <div style="font-size:13px; font-weight:600;">Platforma zarzadzania budzetem benefitow</div>
     </div>
   </div>
 
   <div class="dlv-scope" style="margin-top:16px;">
     <span class="scope-item">Core narrative ekosystemu</span>
-    <span class="scope-item">Hierarchia przekazów (3 warstwy)</span>
+    <span class="scope-item">Hierarchia przekazow (3 warstwy)</span>
     <span class="scope-item">Key messages per marka</span>
-    <span class="scope-item">Tone & style guide</span>
-    <span class="scope-item">Do's & don'ts</span>
+    <span class="scope-item">Tone style guide</span>
+    <span class="scope-item">Dos donts</span>
   </div>
 </div>
 
@@ -1278,15 +1279,15 @@ if(sessionStorage.getItem('bw-auth')==='1'){
   <div class="sec-eyebrow" style="color:var(--green);">Deliverable 04</div>
   <h1 class="sec-title">Matryca <span>komunikacji</span></h1>
   <div style="font-size:12px; color:var(--text-dim); margin-top:-6px; margin-bottom:8px;">Communication Matrix</div>
-  <p class="sec-sub">Nie lista kanałów. System decyzyjny – kto mówi co, do kogo, w którym momencie relacji z klientem, i po co. Każda komórka matrycy ma mierzalny cel.</p>
+  <p class="sec-sub">Nie lista kanalow. System decyzyjny - kto mowi co, do kogo, w ktorym momencie relacji z klientem, i po co. Kazda komorka matrycy ma mierzalny cel.</p>
 
   <!-- Logika matrycy -->
   <div style="background:var(--card2); border:1px solid var(--border2); padding:22px; margin-bottom:16px;">
     <div style="font-size:9px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;">Trzy wymiary matrycy</div>
     <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
       <div style="border:1px solid var(--border); padding:14px;">
-        <div style="font-size:11px; font-weight:700; color:var(--lime); margin-bottom:6px;">Kto mówi</div>
-        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">Która marka prowadzi komunikację. BW mówi strategicznie, sub-brandy mówią produktowo.</div>
+        <div style="font-size:11px; font-weight:700; color:var(--lime); margin-bottom:6px;">Kto mowi</div>
+        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">Ktora marka prowadzi komunikacje. BW mowi strategicznie, sub-brandy mowia produktowo.</div>
       </div>
       <div style="border:1px solid var(--border); padding:14px;">
         <div style="font-size:11px; font-weight:700; color:var(--blue); margin-bottom:6px;">Do kogo i kiedy</div>
@@ -1294,21 +1295,21 @@ if(sessionStorage.getItem('bw-auth')==='1'){
       </div>
       <div style="border:1px solid var(--border); padding:14px;">
         <div style="font-size:11px; font-weight:700; color:var(--green); margin-bottom:6px;">Po co (KPI)</div>
-        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">Każdy komunikat ma cel. Nie "budujemy świadomość" – ale "przesuwamy leada z OM do HR".</div>
+        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">Kazdy komunikat ma cel. Nie budujemy swiadomosc - ale przesuwamy leada z OM do HR.</div>
       </div>
     </div>
   </div>
 
   <!-- Master table: kto mowi co, do kogo, po co -->
-  <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:12px;">Kto mówi co, do kogo, po co</div>
+  <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:12px;">Kto mowi co, do kogo, po co</div>
   <div style="background:var(--card2); border:1px solid var(--border2); padding:4px; margin-bottom:24px; overflow-x:auto;">
     <table style="width:100%; border-collapse:collapse; font-size:13px;">
       <thead>
         <tr style="border-bottom:2px solid var(--border);">
           <th style="text-align:left; padding:14px 14px; color:var(--text-dim); font-weight:700; font-size:10px; letter-spacing:1px; text-transform:uppercase; width:12%;">Byt</th>
-          <th style="text-align:left; padding:14px 14px; color:var(--text-dim); font-weight:700; font-size:10px; letter-spacing:1px; text-transform:uppercase; width:20%;">Główny message</th>
+          <th style="text-align:left; padding:14px 14px; color:var(--text-dim); font-weight:700; font-size:10px; letter-spacing:1px; text-transform:uppercase; width:20%;">Glowny message</th>
           <th style="text-align:left; padding:14px 14px; color:var(--text-dim); font-weight:700; font-size:10px; letter-spacing:1px; text-transform:uppercase; width:14%;">Audience</th>
-          <th style="text-align:left; padding:14px 14px; color:var(--text-dim); font-weight:700; font-size:10px; letter-spacing:1px; text-transform:uppercase; width:16%;">Kanały primary</th>
+          <th style="text-align:left; padding:14px 14px; color:var(--text-dim); font-weight:700; font-size:10px; letter-spacing:1px; text-transform:uppercase; width:16%;">Kanaly primary</th>
           <th style="text-align:left; padding:14px 14px; color:var(--text-dim); font-weight:700; font-size:10px; letter-spacing:1px; text-transform:uppercase; width:16%;">Cel komunikacji</th>
           <th style="text-align:left; padding:14px 14px; color:var(--text-dim); font-weight:700; font-size:10px; letter-spacing:1px; text-transform:uppercase; width:16%;">KPI</th>
         </tr>
@@ -1316,43 +1317,43 @@ if(sessionStorage.getItem('bw-auth')==='1'){
       <tbody>
         <tr style="border-bottom:1px solid var(--border);">
           <td style="padding:16px 14px; font-weight:700;"><span class="bt bt-bw">BW</span></td>
-          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Ekosystem benefitów, który działa. Jedno partnerstwo = lepsze miejsce pracy.</td>
+          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Ekosystem benefitow, ktory dziala. Jedno partnerstwo = lepsze miejsce pracy.</td>
           <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">HR Directors, C-level, Office Management</td>
-          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">LinkedIn, blog firmowy, sprzedaż bezpośrednia, wydarzenia branżowe</td>
-          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Brand awareness, trust, wspieranie sprzedaży krzyżowej</td>
-          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Rozpoznawalność marki, jakość leadów, współczynnik sprzedaży krzyżowej</td>
+          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">LinkedIn, blog firmowy, sprzedaz bezposrednia, wydarzenia branzowe</td>
+          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Brand awareness, trust, wspieranie sprzedazy krzyżowej</td>
+          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Rozpoznawalnosc marki, jakosc leadow, wspólczynnik sprzedazy krzyżowej</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border);">
           <td style="padding:16px 14px; font-weight:700;"><span class="bt bt-df">DF</span></td>
-          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Świeże owoce do biura. Codziennie. W całej Polsce.</td>
+          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Swieże owoce do biura. Codziennie. W calej Polsce.</td>
           <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Office Managers, HR Specialists</td>
-          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Google Ads, pozycjonowanie, media społecznościowe, kontakt bezpośredni</td>
-          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Generowanie zapytań, liczba leadów, konwersja na próbne zamówienie</td>
-          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Liczba zapytań miesięcznie, współczynnik konwersji, koszt pozyskania klienta, wartość pierwszego zamówienia</td>
+          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Google Ads, pozycjonowanie, media spolecznosc, kontakt bezposredni</td>
+          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Generowanie zapytan, liczba leadow, konwersja na próbne zamowienie</td>
+          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Liczba zapytan miesiecznie, wspólczynnik konwersji, koszt pozyskania klienta, wartosc pierwszego zamowienia</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border);">
           <td style="padding:16px 14px; font-weight:700;"><span class="bt bt-bo">BO</span></td>
-          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Jeden partner do całej kuchni biurowej. Kawa, serwis, zaopatrzenie.</td>
-          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Obecni klienci BetterWorkplace i DailyFruits, Office Managerowie zainteresowani kawą</td>
-          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Kampanie sprzedaży krzyżowej, email, treści blogowe</td>
-          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Powiększenie koszyka, częstotliwość ponownych zamówień, postrzegana jakość</td>
-          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Konwersja sprzedaży krzyżowej, powtórzenia zamówień, wzrost przychodu na klienta</td>
+          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Jeden partner do calej kuchni biurowej. Kawa, serwis, zaopatrzenie.</td>
+          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Obecni klienci BetterWorkplace i DailyFruits, Office Managerowie zainteresowani kawa</td>
+          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Kampanie sprzedazy krzyżowej, email, tresci blogowe</td>
+          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Powiekszenie koszyka, czestotliwosc ponownych zamowien, postrzegana jakosc</td>
+          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Konwersja sprzedazy krzyżowej, powtorzenia zamowien, wzrost przychodu na klienta</td>
         </tr>
         <tr style="border-bottom:1px solid var(--border);">
           <td style="padding:16px 14px; font-weight:700;"><span class="bt bt-tb">TB</span></td>
-          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Przyszłość zarządzania benefitami (do zweryfikowania)</td>
-          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Osoby decyzyjne w obszarze HR Tech i finansów</td>
-          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Dostęp próbny do produktu, LinkedIn, marketing treści</td>
-          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Budowanie nowej kategorii, pierwsi użytkownicy, rozgłos</td>
-          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Rejestracje, aktywacja użytkowników, satysfakcja klientów, wzmianki w mediach</td>
+          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Przyszlosc zarzadzania benefitami (do zweryfikowania)</td>
+          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Osoby decyzyjne w obszarze HR Tech i finansow</td>
+          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Dostep próbny do produktu, LinkedIn, marketing tresci</td>
+          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Budowanie nowej kategorii, pierwsi użytkownicy, rozglos</td>
+          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Rejestracje, aktywacja użytkowników, satysfakcja klientow, wzmianki w mediach</td>
         </tr>
         <tr>
           <td style="padding:16px 14px; font-weight:700;"><span class="bt" style="background:var(--warn-dim);color:var(--warn);">SG</span></td>
-          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Paczki dla pracowników – bez plastiku, z personalizacją, do domu.</td>
-          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Działy HR, administracja, osoby organizujące eventy</td>
-          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Kampanie sezonowe, email do bazy, sprzedaż bezpośrednia</td>
-          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Sezonowe skoki przychodów, utrzymanie klientów</td>
-          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Przychód sezonowy, ponowne zamówienia, liczba paczek na zamówienie</td>
+          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Paczki dla pracownikow - bez plastiku, z personalizacja, do domu.</td>
+          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Dzialy HR, administracja, osoby organizujace eventy</td>
+          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Kampanie sezonowe, email do bazy, sprzedaz bezposrednia</td>
+          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Sezonowe skoki przychodow, utrzymanie klientow</td>
+          <td style="padding:16px 14px; color:var(--text-muted); line-height:1.6;">Przychod sezonowy, ponowne zamowienia, liczba paczek na zamowienie</td>
         </tr>
       </tbody>
     </table>
@@ -1361,23 +1362,23 @@ if(sessionStorage.getItem('bw-auth')==='1'){
   <div class="divider"></div>
 
   <!-- Matryca: etap relacji x marka -->
-  <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:12px;">Matryca według etapu relacji</div>
+  <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:12px;">Matryca wedlug etapu relacji</div>
 
   <div style="background:var(--card2); border:1px solid var(--border2); padding:20px; margin-bottom:10px;">
     <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
       <div style="font-size:11px; font-weight:700; color:var(--warn); background:var(--warn-dim); padding:4px 10px;">Etap 1</div>
-      <div style="font-size:14px; font-weight:700;">Nowy klient – pierwszy kontakt</div>
+      <div style="font-size:14px; font-weight:700;">Nowy klient - pierwszy kontakt</div>
     </div>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
       <div style="background:var(--card); border:1px solid var(--border); padding:16px 18px;">
-        <div style="display:flex; align-items:center; gap:6px; margin-bottom:8px;"><span class="bt bt-df" style="font-size:10px; padding:2px 6px;">DF</span><span style="font-size:11px; color:var(--text-dim);">→ Office Manager</span></div>
-        <div style="font-size:14px; color:var(--text-muted); line-height:1.6;">"Owocowe Czwartki – zacznij od jednego dnia, zobacz jak zmieni się energia w biurze"</div>
-        <div style="font-size:11px; color:var(--text-dim); margin-top:10px; padding-top:8px; border-top:1px solid var(--border);">Kanał: strona, Google Ads, social media · Cel: zapytanie → próbne zamówienie</div>
+        <div style="display:flex; align-items:center; gap:6px; margin-bottom:8px;"><span class="bt bt-df" style="font-size:10px; padding:2px 6px;">DF</span><span style="font-size:11px; color:var(--text-dim);"> Office Manager</span></div>
+        <div style="font-size:14px; color:var(--text-muted); line-height:1.6;">Owocowe Czwartki - zacznij od jednego dnia, zobacz jak zmieni sie energia w biurze</div>
+        <div style="font-size:11px; color:var(--text-dim); margin-top:10px; padding-top:8px; border-top:1px solid var(--border);">Kanal: strona, Google Ads, social media - Cel: zapytanie - próbne zamowienie</div>
       </div>
       <div style="background:var(--card); border:1px solid var(--border); padding:16px 18px;">
-        <div style="display:flex; align-items:center; gap:6px; margin-bottom:8px;"><span class="bt bt-bo" style="font-size:10px; padding:2px 6px;">BO</span><span style="font-size:11px; color:var(--text-dim);">→ Office Manager</span></div>
-        <div style="font-size:14px; color:var(--text-muted); line-height:1.6;">"Jeden partner do całej kuchni – kawa, serwis, zaopatrzenie z jednej faktury"</div>
-        <div style="font-size:11px; color:var(--text-dim); margin-top:10px; padding-top:8px; border-top:1px solid var(--border);">Kanał: email, strona internetowa · Cel: zapytanie → pierwsze zamówienie</div>
+        <div style="display:flex; align-items:center; gap:6px; margin-bottom:8px;"><span class="bt bt-bo" style="font-size:10px; padding:2px 6px;">BO</span><span style="font-size:11px; color:var(--text-dim);"> Office Manager</span></div>
+        <div style="font-size:14px; color:var(--text-muted); line-height:1.6;">Jeden partner do calej kuchni - kawa, serwis, zaopatrzenie z jednej faktury</div>
+        <div style="font-size:11px; color:var(--text-dim); margin-top:10px; padding-top:8px; border-top:1px solid var(--border);">Kanal: email, strona internetowa - Cel: zapytanie - pierwsze zamowienie</div>
       </div>
     </div>
   </div>
@@ -1385,18 +1386,18 @@ if(sessionStorage.getItem('bw-auth')==='1'){
   <div style="background:var(--card2); border:1px solid var(--border2); padding:20px; margin-bottom:10px;">
     <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
       <div style="font-size:11px; font-weight:700; color:var(--blue); background:var(--blue-dim); padding:4px 10px;">Etap 2</div>
-      <div style="font-size:14px; font-weight:700;">Klient aktywny – 1 produkt, 3–6 miesięcy</div>
+      <div style="font-size:14px; font-weight:700;">Klient aktywny - 1 produkt, 3-6 miesiecy</div>
     </div>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
       <div style="background:var(--card); border:1px solid var(--border); padding:16px 18px;">
-        <div style="display:flex; align-items:center; gap:6px; margin-bottom:8px;"><span class="bt bt-df" style="font-size:10px; padding:2px 6px;">DF</span><span style="font-size:11px; color:var(--text-dim);">→ ten sam OM</span></div>
-        <div style="font-size:14px; color:var(--text-muted); line-height:1.6;">"Twoje Owocowe Czwartki idą świetnie – a co gdyby kawa też była od nas?"</div>
-        <div style="font-size:11px; color:var(--text-dim); margin-top:10px; padding-top:8px; border-top:1px solid var(--border);">Kanał: automatyczny email po 30, 60 i 90 dniach · Cel: klient DF zaczyna kupować też z BO</div>
+        <div style="display:flex; align-items:center; gap:6px; margin-bottom:8px;"><span class="bt bt-df" style="font-size:10px; padding:2px 6px;">DF</span><span style="font-size:11px; color:var(--text-dim);"> ten sam OM</span></div>
+        <div style="font-size:14px; color:var(--text-muted); line-height:1.6;">Twoje Owocowe Czwartki ida swietnie - a co gdyby kawa tez byla od nas</div>
+        <div style="font-size:11px; color:var(--text-dim); margin-top:10px; padding-top:8px; border-top:1px solid var(--border);">Kanal: automatyczny email po 30, 60 i 90 dniach - Cel: klient DF zaczyna kupowac tez z BO</div>
       </div>
       <div style="background:var(--card); border:1px solid var(--border); padding:16px 18px;">
-        <div style="display:flex; align-items:center; gap:6px; margin-bottom:8px;"><span class="bt bt-bw" style="font-size:10px; padding:2px 6px;">BW</span><span style="font-size:11px; color:var(--text-dim);">→ HR Director (nowy kontakt)</span></div>
-        <div style="font-size:14px; color:var(--text-muted); line-height:1.6;">"Wasza firma już korzysta z DailyFruits – wiecie, że to może być pełny program wellbeingowy?"</div>
-        <div style="font-size:11px; color:var(--text-dim); margin-top:10px; padding-top:8px; border-top:1px solid var(--border);">Kanał: LinkedIn, kontakt sprzedażowy · Cel: rozmowa przechodzi z Office Managera na HR Directora</div>
+        <div style="display:flex; align-items:center; gap:6px; margin-bottom:8px;"><span class="bt bt-bw" style="font-size:10px; padding:2px 6px;">BW</span><span style="font-size:11px; color:var(--text-dim);"> HR Director (nowy kontakt)</span></div>
+        <div style="font-size:14px; color:var(--text-muted); line-height:1.6;">Wasza firma juz korzysta z DailyFruits - wiecie, ze to moze byc pelny program wellbeingowy</div>
+        <div style="font-size:11px; color:var(--text-dim); margin-top:10px; padding-top:8px; border-top:1px solid var(--border);">Kanal: LinkedIn, kontakt sprzedazowy - Cel: rozmowa przechodzi z Office Managera na HR Directora</div>
       </div>
     </div>
   </div>
@@ -1404,18 +1405,18 @@ if(sessionStorage.getItem('bw-auth')==='1'){
   <div style="background:var(--card2); border:1px solid var(--border2); padding:20px; margin-bottom:10px;">
     <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
       <div style="font-size:11px; font-weight:700; color:var(--green); background:var(--green-dim); padding:4px 10px;">Etap 3</div>
-      <div style="font-size:14px; font-weight:700;">Klient ekosystemowy – 2+ produkty</div>
+      <div style="font-size:14px; font-weight:700;">Klient ekosystemowy - 2+ produkty</div>
     </div>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
       <div style="background:var(--card); border:1px solid var(--border); padding:16px 18px;">
-        <div style="display:flex; align-items:center; gap:6px; margin-bottom:8px;"><span class="bt bt-bw" style="font-size:10px; padding:2px 6px;">BW</span><span style="font-size:11px; color:var(--text-dim);">→ HR Director</span></div>
-        <div style="font-size:14px; color:var(--text-muted); line-height:1.6;">"Case study: jak firma X zbudowała program wellbeingowy z BW – ROI, eNPS, retencja"</div>
-        <div style="font-size:11px; color:var(--text-dim); margin-top:10px; padding-top:8px; border-top:1px solid var(--border);">Kanał: historia sukcesu klienta + kalkulator zwrotu z inwestycji · Cel: 10-krotny wzrost wartości kontraktu</div>
+        <div style="display:flex; align-items:center; gap:6px; margin-bottom:8px;"><span class="bt bt-bw" style="font-size:10px; padding:2px 6px;">BW</span><span style="font-size:11px; color:var(--text-dim);"> HR Director</span></div>
+        <div style="font-size:14px; color:var(--text-muted); line-height:1.6;">Case study: jak firma X zbudowala program wellbeingowy z BW - ROI, eNPS, retencja</div>
+        <div style="font-size:11px; color:var(--text-dim); margin-top:10px; padding-top:8px; border-top:1px solid var(--border);">Kanal: historia sukcesu klienta + kalkulator zwrotu z inwestycji - Cel: 10-krotny wzrost wartosci kontraktu</div>
       </div>
       <div style="background:var(--card); border:1px solid var(--border); padding:16px 18px;">
-        <div style="display:flex; align-items:center; gap:6px; margin-bottom:8px;"><span class="bt bt-tb" style="font-size:10px; padding:2px 6px;">TB</span><span style="font-size:11px; color:var(--text-dim);">→ HR + CFO</span></div>
-        <div style="font-size:14px; color:var(--text-muted); line-height:1.6;">"Zarządzaj wszystkimi benefitami z jednego miejsca – TeamBudget"</div>
-        <div style="font-size:11px; color:var(--text-dim); margin-top:10px; padding-top:8px; border-top:1px solid var(--border);">Kanał: komunikacja wstępna przez BetterWorkplace · Cel: budowanie świadomości i lista oczekujących</div>
+        <div style="display:flex; align-items:center; gap:6px; margin-bottom:8px;"><span class="bt bt-tb" style="font-size:10px; padding:2px 6px;">TB</span><span style="font-size:11px; color:var(--text-dim);"> HR + CFO</span></div>
+        <div style="font-size:14px; color:var(--text-muted); line-height:1.6;">Zarzadzaj wszystkimi benefitami z jednego miejsca - TeamBudget</div>
+        <div style="font-size:11px; color:var(--text-dim); margin-top:10px; padding-top:8px; border-top:1px solid var(--border);">Kanal: komunikacja wstepna przez BetterWorkplace - Cel: budowanie swiadomosci i lista oczekujacych</div>
       </div>
     </div>
   </div>
@@ -1423,12 +1424,12 @@ if(sessionStorage.getItem('bw-auth')==='1'){
   <div style="background:var(--card2); border:1px solid var(--border2); padding:20px; margin-bottom:16px;">
     <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
       <div style="font-size:11px; font-weight:700; color:var(--purple); background:var(--purple-dim); padding:4px 10px;">Sezon</div>
-      <div style="font-size:14px; font-weight:700;">Sendgift – sezonowy gateway</div>
+      <div style="font-size:14px; font-weight:700;">Sendgift - sezonowy gateway</div>
     </div>
     <div style="background:var(--card); border:1px solid var(--border); padding:16px 18px;">
-      <div style="display:flex; align-items:center; gap:6px; margin-bottom:8px;"><span class="bt" style="background:var(--warn-dim); color:var(--warn); font-size:10px; padding:2px 6px;">SG</span><span style="font-size:11px; color:var(--text-dim);">→ OM/HR → post-purchase → DF</span></div>
-      <div style="font-size:14px; color:var(--text-muted); line-height:1.6;">"Skoro dbasz o pracowników raz w roku – a gdyby tak codziennie? Owocowe Czwartki to dopiero początek."</div>
-      <div style="font-size:11px; color:var(--text-dim); margin-top:10px; padding-top:8px; border-top:1px solid var(--border);">Kanał: seria emaili po zakupie · Cel: klient Sendgift staje się klientem DailyFruits</div>
+      <div style="display:flex; align-items:center; gap:6px; margin-bottom:8px;"><span class="bt" style="background:var(--warn-dim); color:var(--warn); font-size:10px; padding:2px 6px;">SG</span><span style="font-size:11px; color:var(--text-dim);"> OM/HR - post-purchase - DF</span></div>
+      <div style="font-size:14px; color:var(--text-muted); line-height:1.6;">Skoro dbasz o pracownikow raz w roku - a gdyby tak codziennie Owocowe Czwartki to dopiero poczatek.</div>
+      <div style="font-size:11px; color:var(--text-dim); margin-top:10px; padding-top:8px; border-top:1px solid var(--border);">Kanal: seria emaili po zakupie - Cel: klient Sendgift staje sie klientem DailyFruits</div>
     </div>
   </div>
 
@@ -1436,52 +1437,47 @@ if(sessionStorage.getItem('bw-auth')==='1'){
   <div style="background:var(--lime-dim); border:1px solid rgba(200,241,53,0.15); border-left:3px solid var(--lime); padding:16px 18px; margin-bottom:16px;">
     <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--lime); margin-bottom:8px;">Kluczowa decyzja</div>
     <div style="font-size:15px; font-weight:700; margin-bottom:8px;">Dual audience strategy: dwa strumienie, jeden ekosystem</div>
-    <div style="font-size:13px; color:var(--text-muted); line-height:1.7;">DF i BO mówią do Office Managera – językiem produktu, wygody, rytualu. BW mówi do HR Directora – językiem strategii, ROI, retencji. <strong style="color:var(--text);">To nie jest albo/albo. To dwa równoległe strumienie</strong> które spotykają się w momencie, gdy klient przechodzi z etapu 1 do etapu 3 – i BW przejmuje rozmowę.</div>
+    <div style="font-size:13px; color:var(--text-muted); line-height:1.7;">DF i BO mowia do Office Managera - jezykiem produktu, wygody, ritualu. BW mowi do HR Directora - jezykiem strategii, ROI, retencji. To nie jest albo/albo. To dwa równolegle strumienie ktorych spotykaja sie w momencie, gdy klient przechodzi z etapu 1 do etapu 3 - i BW przejmuje rozmowe.</div>
   </div>
 
   <!-- KPIs powiazane z etapami -->
   <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:12px;">KPIs per etap</div>
   <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
     <div style="background:var(--card); border:1px solid var(--border); padding:14px 18px; display:flex; align-items:center; justify-content:space-between;">
-      <div><div style="font-size:13px; color:var(--text);">Etap 1: Od zapytania do próbnego zamówienia</div><div style="font-size:11px; color:var(--text-dim);">DF + BO → Office Manager</div></div>
+      <div><div style="font-size:13px; color:var(--text);">Etap 1: Od zapytania do próbnego zamowienia</div><div style="font-size:11px; color:var(--text-dim);">DF + BO - Office Manager</div></div>
       <div style="font-size:15px; font-weight:800; color:var(--warn);">baseline</div>
     </div>
     <div style="background:var(--card); border:1px solid var(--border); padding:14px 18px; display:flex; align-items:center; justify-content:space-between;">
-      <div><div style="font-size:13px; color:var(--text);">Etap 2: Sprzedaż krzyżowa</div><div style="font-size:11px; color:var(--text-dim);">Automatyczny email DF → BetterOffice</div></div>
+      <div><div style="font-size:13px; color:var(--text);">Etap 2: Sprzedaz krzyżowa</div><div style="font-size:11px; color:var(--text-dim);">Automatyczny email DF - BetterOffice</div></div>
       <div style="font-size:15px; font-weight:800; color:var(--green);">+50% rok do roku</div>
     </div>
     <div style="background:var(--card); border:1px solid var(--border); padding:14px 18px; display:flex; align-items:center; justify-content:space-between;">
       <div><div style="font-size:13px; color:var(--text);">Etap 2: Zmiana osoby decyzyjnej</div><div style="font-size:11px; color:var(--text-dim);">Kontakt BetterWorkplace z HR</div></div>
-      <div style="font-size:15px; font-weight:800; color:var(--green);">35% zapytań od HR</div>
+      <div style="font-size:15px; font-weight:800; color:var(--green);">35% zapytan od HR</div>
     </div>
     <div style="background:var(--card); border:1px solid var(--border); padding:14px 18px; display:flex; align-items:center; justify-content:space-between;">
-      <div><div style="font-size:13px; color:var(--text);">Etap 3: Wartość kontraktu</div><div style="font-size:11px; color:var(--text-dim);">Program BetterWorkplace vs pojedynczy produkt</div></div>
+      <div><div style="font-size:13px; color:var(--text);">Etap 3: Wartosc kontraktu</div><div style="font-size:11px; color:var(--text-dim);">Program BetterWorkplace vs pojedynczy produkt</div></div>
       <div style="font-size:15px; font-weight:800; color:var(--green);">+80%</div>
     </div>
   </div>
 
   <div class="dlv-scope" style="margin-top:16px;">
-    <span class="scope-item">Pełna matryca per etap relacji</span>
+    <span class="scope-item">Pelna matryca per etap relacji</span>
     <span class="scope-item">Dual audience strategy</span>
-    <span class="scope-item">Komunikat + kanał + KPI per komórka</span>
-    <span class="scope-item">Priorytet kanałów per marka</span>
+    <span class="scope-item">Komunikat + kanal + KPI per komorka</span>
+    <span class="scope-item">Priorytet kanalow per marka</span>
   </div>
 </div>
 
-<!-- s07: D05 Ecosystem Journey Map -->
+<!-- s07: D05 Ecosystem Journey Map (UKRYTE) --><div style="display:none !important;">
 <div class="section" id="s07">
   <div class="sec-eyebrow" style="color:var(--green);">Deliverable 05</div>
-  <h1 class="sec-title">Mapa ścieżek <span>ekosystemu</span></h1>
+  <h1 class="sec-title">Mapa sciezek <span>ekosystemu</span></h1>
   <div style="font-size:12px; color:var(--text-dim); margin-top:-6px; margin-bottom:8px;">Ecosystem Journey Map</div>
-  <p class="sec-sub">Jak klient przechodzi przez ekosystem – od pierwszego kontaktu z jedną marką do pełnego programu BetterWorkplace. Nie z naszej perspektywy, ale z perspektywy klienta: co myśli, czego szuka, co go blokuje.</p>
+  <p class="sec-sub">Jak klient przechodzi przez ekosystem - od pierwszego kontaktu z jedna marca do pelnego programu BetterWorkplace. Nie z naszej perspektywy, ale z perspektywy klienta: co mysli, czego szuka, co go blokuje.</p>
 
   <!-- Journey: perspektywa klienta -->
-  <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:12px;">Ścieżka klienta przez ekosystem</div>
+  <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:12px;">Sciezka klienta przez ekosystem</div>
 
   <!-- Etap 1 -->
-  <div style="background:var(--card2); border:1px solid var(--border2); padding:22px; margin-bottom:10px; border-left:3px solid var(--warn);">
-    <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
-      <div style="font-size:11px; font-weight:700; color:var(--warn); background:var(--warn-dim); padding:4px 10px;">Etap 1</div>
-      <div style="font-size:15px; font-weight:700;">Szukam dostawcy</div>
-    </div>
-    <div style="display:grid;
+  <div style="background:var(--card2); border:1px solid var(--border2); padding:22px; margin-bottom:10px; border-left:3px solid var(- border:1px solid var(--border2); border-radius:0; padding:16px;\">\n      <div style=\"font-size:11px; font-weight:700; color:var(--blue); margin-bottom:8px;\">TeamBudget</div>\n      <div style=\"font-size:12px; color:var(--text-dim); margin-bottom:4px;\">DZIS:</div>\n      <div style=\"font-size:13px; color:var(--text-muted); margin-bottom:8px;\">\"Nieznany produkt\"</div>\n      <div style=\"font-size:12px; color:var(--green); margin-bottom:4px;\">CEL:</div>\n      <div style=\"font-size:13px; font-weight:600;\">\"Platforma zarzadzania budzetem benefitow\"</div>\n    </div>\n  </div>\n\n  <div class=\"dlv-scope\" style=\"margin-top:16px;\">\n    <span class=\"scope-item\">Core narrative ekosystemu</span>\n    <span class=\"scope-item\">Hierarchia przekazow (3 warstwy)</span>\n    <span class=\"scope-item\">Key messages per marka</span>\n    <span class=\"scope-item\">Tone & style guide</span>\n    <span class=\"scope-item\">Do's & don'ts</span>\n  </div>\n</div>\n\n<!-- s06: D04 Communication Matrix -->\n<div class=\"section\" id=\"s06\">\n  <div class=\"sec-eyebrow\" style=\"color:var(--green);\">Deliverable 04</div>\n  <h1 class=\"sec-title\">Matryca <span>komunikacji</span></h1>\n  <div style=\"font-size:12px; color:var(--text-dim); margin-top:-6px; margin-bottom:8px;\">Communication Matrix</div>\n  <p class=\"sec-sub\">Nie lista kanalow. System decyzyjny - kto mowi co, do kogo, w ktorym momencie relacji z klientem, i po co. Kazda komórka matrycy ma mierzalny cel.</p>\n\n  <!-- Logika matrycy -->\n  <div style=\"background:var(--card2); border:1px solid var(--border2); padding:22px; margin-bottom:16px;\">\n    <div style=\"font-size:9px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;\">Trzy wymiary matrycy</div>\n    <div style=\"display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;\">\n      <div style=\"border:1px solid var(--border); padding:14px;\">\n        <div style=\"font-size:11px; font-weight:700; color:var(--lime); margin-bottom:6px;\">Kto mowi</div>\n        <div style=\"font-size:13px; color:var(--text-muted); line-height:1.6;\">Ktora marka prowadzi komunikacje. BW mowi strategicznie, sub-brandy mowia produktowo.</div>\n      </div>\n      <div style=\"border:1px solid var(--border); padding:14px;\">\n        <div style=\"font-size:11px; font-weight:700; color:var(--blue); margin-bottom:6px;\">Do kogo i kiedy</div>\n        <div style=\"font-size:13px; color:var(--text-muted); line-height:1.6;\">Audience + etap relacji. Inny przekaz dla nowego leada, inny dla klienta 6m, inny przy 2+ produktach.</div>\n      </div>\n      <div style=\"border:1px solid var(--border); padding:14px;\">\n        <div style=\"font-size:11px; font-weight:700; color:var(--green); margin-bottom:6px;\">Po co (KPI)</div>\n        <div style=\"font-size:13px; color:var(--text-muted); line-height:1.6;\">Kazdy komunikat ma cel. Nie 'budujemy swiadomosc' - ale 'przesuwamy leada z OM do HR'.</div>\n      </div>\n    </div>\n  </div>\n\n  <!-- Master table: kto mowi co, do kogo, po co -->\n  <div style=\"font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:12px;\">Kto mowi co, do kogo, po co</div>\n  <div style=\"background:var(--card2); border:1px solid var(--border2); padding:4px; margin-bottom:24px; overflow-x:auto;\">\n    <table style=\"width:100%; border-collapse:collapse; font-size:13px;\">\n      <thead>\n        <tr style=\"border-bottom:2px solid var(--border);\">\n          <th style=\"text-align:left; padding:14px 14px; color:var(--text-dim); font-weight:700; font-size:10px; letter-spacing:1px; text-transform:uppercase; width:12%;\">Byt</th>\n          <th style=\"text-align:left; padding:14px 14px; color:var(--text-dim); font-weight:700; font-size:10px; letter-spacing:1px; text-transform:uppercase; width:20%;\">Glowny message</th>\n          <th style=\"text-align:left; padding:14px 14px; color:var(--text-dim); font-weight:700; font-size:10px; letter-spacing:1px; text-transform:uppercase; width:14%;\">Audience</th>\n          <th style=\"text-align:left; padding:14px 14px; color:var(--text-dim); font-weight:700; font-size:10px; letter-spacing:1px; text-transform:uppercase; width:16%;\">Kanaly primary</th>\n          <th style=\"text-align:left; padding:14px 14px; color:var(--text-dim); font-weight:700; font-size:10px; letter-spacing:1px; text-transform:uppercase; width:16%;\">Cel komunikacji</th>\n          <th style=\"text-align:left; padding:14px 14px; color:var(--text-dim); font-weight:700; font-size:10px; letter-spacing:1px; text-transform:uppercase; width:16%;\">KPI</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr style=\"border-bottom:1px solid var(--border);\">\n          <td style=\"padding:16px 14px; font-weight:700;\"><span class=\"bt bt-bw\">BW</span></td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Ekosystem benefitow, ktorzy dziala. Jedno partnerstwo = lepsze miejsce pracy.</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">HR Directors, C-level, Office Management</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">LinkedIn, blog firmowy, sprzedaz bezposrednia, wydarzenia branzowe</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Brand awareness, trust, wspieranie sprzedazy krzyzowej</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Rozpoznawalnosc marki, jakosc leadow, wspolczynnik sprzedazy krzyzowej</td>\n        </tr>\n        <tr style=\"border-bottom:1px solid var(--border);\">\n          <td style=\"padding:16px 14px; font-weight:700;\"><span class=\"bt bt-df\">DF</span></td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Swieze owoce do biura. Codziennie. W calej Polsce.</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Office Managers, HR Specialists</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Google Ads, pozycjonowanie, media spolecznosci, kontakt bezposredni</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Generowanie zapytan, liczba leadow, konwersja na próbne zamowienie</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Liczba zapytan miesiecznie, wspolczynnik konwersji, koszt pozyskania klienta, wartosc pierwszego zamowienia</td>\n        </tr>\n        <tr style=\"border-bottom:1px solid var(--border);\">\n          <td style=\"padding:16px 14px; font-weight:700;\"><span class=\"bt bt-bo\">BO</span></td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Jeden partner do calej kuchni biurowej. Kawa, serwis, zaopatrzenie.</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Obecni klienci BetterWorkplace i DailyFruits, Office Managerowie zainteresowani kawa</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Kampanie sprzeda\u017cy krzy\u017cowej, email, tre\u015bci blogowe</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Powi\u0119kszenie koszyka, cz\u0119stotliwo\u015b\u0107 ponownych zam\u00f3wie\u0144, postrzegana jako\u015b\u0107</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Konwersja sprzeda\u017cy krzy\u017cowej, powt\u00f3rzenia zam\u00f3wie\u0144, wzrost przychodu na klienta</td>\n        </tr>\n        <tr style=\"border-bottom:1px solid var(--border);\">\n          <td style=\"padding:16px 14px; font-weight:700;\"><span class=\"bt bt-tb\">TB</span></td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Przysz\u0142o\u015b\u0107 zarz\u0105dzania benefitami (do zweryfikowania)</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Osoby decyzyjne w obszarze HR Tech i finans\u00f3w</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Dost\u0119p pr\u00f3bny do produktu, LinkedIn, marketing tre\u015bci</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Budowanie nowej kategorii, pierwsi u\u017cytkownicy, rozg\u0142os</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Rejestracje, aktywacja u\u017cytkownik\u00f3w, satysfakcja klient\u00f3w, wzmianki w mediach</td>\n        </tr>\n        <tr>\n          <td style=\"padding:16px 14px; font-weight:700;\"><span class=\"bt\" style=\"background:var(--warn-dim);color:var(--warn);\">SG</span></td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Paczki dla pracownik\u00f3w - bez plastiku, z personalizacj\u0105, do domu.</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Dzia\u0142y HR, administracja, osoby organizuj\u0105ce eventy</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Kampanie sezonowe, email do bazy, sprzeda\u017c bezpo\u015brednia</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Sezonowe skoki przychod\u00f3w, utrzymanie klient\u00f3w</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Przych\u00f3d sezonowy, ponowne zam\u00f3wienia, liczba paczek na zam\u00f3wienie</td>\n        </tr>\n      </tbody>\n    </table>\n  </div>\n\n  <div class=\"divider\"></div>\n\n  <!-- Matryca: etap relacji x marka -->\n  <div style=\"font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:12px;\">Matryca wed\u0142ug etapu relacji</div>\n\n  <div style=\"background:var(--card2); border:1px solid var(--border2); padding:20px; margin-bottom:10px;\">\n    <div style=\"display:flex; align-items:center; gap:10px; margin-bottom:14px;\">\n      <div style=\"font-size:11px; font-weight:700; color:var(--warn); background:var(--warn-dim); padding:4px 10px;\">Etap 1</div>\n      <div style=\"font-size:14px; font-weight:700;\">Nowy klient - pierwszy kontakt</div>\n    </div>\n    <div style=\"display:grid; grid-template-columns:1fr 1fr; gap:8px;\">\n      <div style=\"background:var(--card); border:1px solid var(--border); padding:16px 18px;\">\n        <div style=\"display:flex; align-items:center; gap:6px; margin-bottom:8px;\"><span class=\"bt bt-df\" style=\"font-size:10px; padding:2px 6px;\">DF</span><span style=\"font-size:11px; color:var(--text-dim);\">- Office Manager</span></div>\n        <div style=\"font-size:14px; color:var(--text-muted); line-height:1.6;\">Owocowe Czwartki - zacznij od jednego dnia, zobacz jak zmieni sie energia w biurze</div>\n        <div style=\"font-size:11px; color:var(--text-dim); margin-top:10px; padding-top:8px; border-top:1px solid var(--border);\">Kanal: strona, Google Ads, social media · Cel: zapytanie - próbne zamowienie</div>\n      </div>\n      <div style=\"background:var(--card); border:1px solid var(--border); padding:16px 18px;\">\n        <div style=\"display:flex; align-items:center; gap:6px; margin-bottom:8px;\"><span class=\"bt bt-bo\" style=\"font-size:10px; padding:2px 6px;\">BO</span><span style=\"font-size:11px; color:var(--text-dim);\">- Office Manager</span></div>\n        <div style=\"font-size:14px; color:var(--text-muted); line-height:1.6;\">Jeden partner do calej kuchni - kawa, serwis, zaopatrzenie z jednej faktury</div>\n        <div style=\"font-size:11px; color:var(--text-dim); margin-top:10px; padding-top:8px; border-top:1px solid var(--border);\">Kanal: email, strona internetowa · Cel: zapytanie - pierwsze zamowienie</div>\n      </div>\n    </div>\n  </div>\n\n  <div style=\"background:var(--card2); border:1px solid var(--border2); padding:20px; margin-bottom:10px;\">\n    <div style=\"display:flex; align-items:center; gap:10px; margin-bottom:14px;\">\n      <div style=\"font-size:11px; font-weight:700; color:var(--blue); background:var(--blue-dim); padding:4px 10px;\">Etap 2</div>\n      <div style=\"font-size:14px; font-weight:700;\">Klient aktywny - 1 produkt, 3-6 miesiecy</div>\n    </div>\n    <div style=\"display:grid; grid-template-columns:1fr 1fr; gap:8px;\">\n      <div style=\"background:var(--card); border:1px solid var(--border); padding:16px 18px;\">\n        <div style=\"display:flex; align-items:center; gap:6px; margin-bottom:8px;\"><span class=\"bt bt-df\" style=\"font-size:10px; padding:2px 6px;\">DF</span><span style=\"font-size:11px; color:var(--text-dim);\">- ten sam OM</span></div>\n        <div style=\"font-size:14px; color:var(--text-muted); line-height:1.6;\">Twoje Owocowe Czwartki ida swietnie - a co gdyby kawa tez byla od nas?</div>\n        <div style=\"font-size:11px; color:var(--text-dim); margin-top:10px; padding-top:8px; border-top:1px solid var(--border);\">Kanal: automatyczny email po 30, 60 i 90 dniach · Cel: klient DF zaczyna kupowac tez z BO</div>\n      </div>\n      <div style=\"background:var(--card); border:1px solid var(--border); padding:16px 18px;\">\n        <div style=\"display:flex; align-items:center; gap:6px; margin-bottom:8px;\"><span class=\"bt bt-bw\" style=\"font-size:10px; padding:2px 6px;\">BW</span><span style=\"font-size:11px; color:var(--text-dim);\">- HR Director (nowy kontakt)</span></div>\n        <div style=\"font-size:14px; color:var(--text-muted); line-height:1.6;\">Wasza firma juz korzysta z DailyFruits - wiecie, ze to może byc pelny program wellbeingowy?</div>\n        <div style=\"font-size:11px; color:var(--text-dim); margin-top:10px; padding-top:8px; border-top:1px solid var(--border);\">Kanal: LinkedIn, kontakt sprzedazowy · Cel: rozmowa przechodzi z Office Managera na HR Directora</div>\n      </div>\n    </div>\n  </div>\n\n  <div style=\"background:var(--card2); border:1px solid var(--border2); padding:20px; margin-bottom:10px;\">\n    <div style=\"display:flex; align-items:center; gap:10px; margin-bottom:14px;\">\n      <div style=\"font-size:11px; font-weight:700; color:var(--green); background:var(--green-dim); padding:4px 10px;\">Etap 3</div>\n      <div style=\"font-size:14px; font-weight:700;\">Klient ekosystemowy - 2+ produkty</div>\n    </div>\n    <div style=\"display:grid; grid-template-columns:1fr 1fr; gap:8px;\">\n      <div style=\"background:var(--card); border:1px solid var(--border); padding:16px 18px;\">\n        <div style=\"display:flex; align-items:center; gap:6px; margin-bottom:8px;\"><span class=\"bt bt-bw\" style=\"font-size:10px; padding:2px 6px;\">BW</span><span style=\"font-size:11px; color:var(--text-dim);\">- HR Director</span></div>\n        <div style=\"font-size:14px; color:var(--text-muted); line-height:1.6;\">Case study: jak firma X zbudowala program wellbeingowy z BW - ROI, eNPS, retencja</div>\n        <div style=\"font-size:11px; color:var(--text-dim); margin-top:10px; padding-top:8px; border-top:1px solid var(--border);\">Kanal: historia sukcesu klienta + kalkulator zwrotu z inwestycji · Cel: 10-krotny wzrost wartosci kontraktu</div>\n      </div>\n      <div style=\"background:var(--card); border:1px solid var(--border); padding:16px 18px;\">\n        <div style=\"display:flex; align-items:center; gap:6px; margin-bottom:8px;\"><span class=\"bt bt-tb\" style=\"font-size:10px; padding:2px 6px;\">TB</span><span style=\"font-size:11px; color:var(--text-dim);\">- HR + CFO</span></div>\n        <div style=\"font-size:14px; color:var(--text-muted); line-height:1.6;\">Zarzadzaj wszystkimi benefitami z jednego miejsca - TeamBudget</div>\n        <div style=\"font-size:11px; color:var(--text-dim); margin-top:10px; padding-top:8px; border-top:1px solid var(--border);\">Kanal: komunikacja wstepna przez BetterWorkplace · Cel: budowanie swiadomosci i lista oczekujacych</div>\n      </div>\n    </div>\n  </div>\n\n  <div style=\"background:var(--card2); border:1px solid var(--border2); padding:20px; margin-bottom:16px;\">\n    <div style=\"display:flex; align-items:center; gap:10px; margin-bottom:14px;\">\n      <div style=\"font-size:11px; font-weight:700; color:var(--purple); background:var(--purple-dim); padding:4px 10px;\">Sezon</div>\n      <div style=\"font-size:14px; font-weight:700;\">Sendgift - sezonowy gateway</div>\n    </div>\n    <div style=\"background:var(--card); border:1px solid var(--border); padding:16px 18px;\">\n      <div style=\"display:flex; align-items:center; gap:6px; margin-bottom:8px;\"><span class=\"bt\" style=\"background:var(--warn-dim); color:var(--warn); font-size:10px; padding:2px 6px;\">SG</span><span style=\"font-size:11px; color:var(--text-dim);\">- OM/HR - post-purchase - DF</span></div>\n      <div style=\"font-size:14px; color:var(--text-muted); line-height:1.6;\">Skoro dbasz o pracownikow raz w roku - a gdyby tak codziennie? Owocowe Czwartki to dopiero poczatek.</div>\n      <div style=\"font-size:11px; color:var(--text-dim); margin-top:10px; padding-top:8px; border-top:1px solid var(--border);\">Kanal: seria emaili po zakupie · Cel: klient Sendgift staje sie klientem DailyFruits</div>\n    </div>\n  </div>\n\n  <!-- Dual audience insight -->\n  <div style=\"background:var(--lime-dim); border:1px solid rgba(200,241,53,0.15); border-left:3px solid var(--lime); padding:16px 18px; margin-bottom:16px;\">\n    <div style=\"font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--lime); margin-bottom:8px;\">Kluczowa decyzja</div>\n    <div style=\"font-size:15px; font-weight:700; margin-bottom:8px;\">Dual audience strategy: dwa strumienie, jeden ekosystem</div>\n    <div style=\"font-size:13px; color:var(--text-muted); line-height:1.7;\">DF i BO mowia do Office Managera - jezykiem produktu, wygody, rytualu. BW mowi do HR Directora - jezykiem strategii, ROI, retencji. <strong style=\"color:var(--text);\">To nie jest albo/albo. To dwa równolegles strumienie</strong> które spotykaja sie w momencie, gdy klient przechodzi z etapu 1 do etapu 3 - i BW przejmuje rozmowe.</div>\n  </div>\n\n  <!-- KPIs powiazane z etapami -->\n  <div style=\"font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:12px;\">KPIs per etap</div>\n  <div style=\"display:grid; grid-template-columns:1fr 1fr; gap:8px;\">\n    <div style=\"background:var(--card); border:1px solid var(--border); padding:14px 18px; display:flex; align-items:center; justify-content:space-between;\">\n      <div><div style=\"font-size:13px; color:var(--text);\">Etap 1: Od zapytania do próbnego zamowienia</div><div style=\"font-size:11px; color:var(--text-dim);\">DF + BO - Office Manager</div></div>\n      <div style=\"font-size:15px; font-weight:800; color:var(--warn);\">baseline</div>\n    </div>\n    <div style=\"background:var(--card); border:1px solid var(--border); padding:14px 18px; display:flex; align-items:center; justify-content:space-between;\">\n      <div><div style=\"font-size:13px; color:var(--text);\">Etap 2: Sprzedaz krzyzowa</div><div style=\"font-size:11px; color:var(--text-dim);\">Automatyczny email DF - BetterOffice</div></div>\n      <div style=\"font-size:15px; font-weight:800; color:var(--green);\">+50% rok do roku</div>\n    </div>\n    <div style=\"background:var(--card); border:1px solid var(--border); padding:14px 18px; display:flex; align-items:center; justify-content:space-between;\">\n      <div><div style=\"font-size:13px; color:var(--text);\">Etap 2: Zmiana osoby decyzyjnej</div><div style=\"font-size:11px; color:var(--text-dim);\">Kontakt BetterWorkplace z HR</div></div>\n      <div style=\"font-size:15px; font-weight:800; color:var(--green);\">35% zapytan od HR</div>\n    </div>\n    <div style=\"background:var(--card); border:1px solid var(--border); padding:14px 18px; display:flex; align-items:center; justify-content:space-between;\">\n      <div><div style=\"font-size:13px; color:var(--text);\">Etap 3: Wartosc kontraktu</div><div style=\"font-size:11px; color:var(--text-dim);\">Program BetterWorkplace vs pojedynczy produkt</div></div>\n      <div style=\"font-size:15px; font-weight:800; color:var(--green);\">+80%</div>\n    </div>\n  </div>\n\n  <div class=\"dlv-scope\" style=\"margin-top:16px;\">\n    <span class=\"scope-item\">Pelna matryca per etap relacji</span>\n    <span class=\"scope-item\">Dual audience strategy</span>\n    <span class=\"scope-item\">Komunikat + kanal + KPI per komórka</span>\n    <span class=\"scope-item\">Priorytet kanalow per marka</span>\n  </div>\n</div>\n\n<!-- s07: D05 Ecosystem Journey Map (UKRYTE) --><div style=\"display:none !important;\">\n<div class=\"section\" id=\"s07\">\n  <div class=\"sec-eyebrow\" style=\"color:var(--green);\">Deliverable 05</div>\n  <h1 class=\"sec-title\">Mapa ścieżek <span>ekosystemu</span></h1>\n  <div style=\"font-size:12px; color:var(--text-dim); margin-top:-6px; margin-bottom:8px;\">Ecosystem Journey Map</div>\n  <p class=\"sec-sub\">Jak klient przechodzi przez ekosystem - od pierwszego kontaktu z jedna marka do pelnego programu BetterWorkplace. Nie z naszej perspektywy, ale z perspektywy klienta: co mysli, czego szuka, co go blokuje.</p>\n\n  <!-- Journey: perspektywa klienta -->\n  <div style=\"font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:12px;\">Sciezka klienta przez ekosystem</div>\n\n  <!-- Etap 1 -->\n  <div style=\"background:var(--card2); border:1px solid var(--border2); padding:22px; margin-bottom:10px; border-left:3px solid var(--warn);\n    <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">\n      <div style="font-size:11px; font-weight:700; color:var(--warn); background:var(--warn-dim); padding:4px 10px;">Etap 1</div>\n      <div style="font-size:15px; font-weight:700;">Szukam dostawcy</div>\n    </div>\n    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:12px;">\n      <div style="background:var(--card); border:1px solid var(--border); padding:14px;">\n        <div style="font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;">Co klient mysli</div>\n        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">Potrzebuje owocow do biura albo Szukam kogos od kawy. Konkretna potrzeba, Google, porownywanie cen.</div>\n      </div>\n      <div style="background:var(--card); border:1px solid var(--border); padding:14px;">\n        <div style="font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;">Punkt wejscia</div>\n        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;"><span class="bt bt-df" style="font-size:10px; padding:2px 6px;">DF</span> strona, Google Ads lub <span class="bt bt-bo" style="font-size:10px; padding:2px 6px;">BO</span> polecenie od klienta DF</div>\n      </div>\n      <div style="background:var(--card); border:1px solid var(--border); padding:14px;">\n        <div style="font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;">Co go blokuje</div>\n        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">Porownuje wylacznie cene. Nie widzi rozniczy miedzy DF a losowa hurtownia. Brak wyroznnika.</div>\n      </div>\n    </div>\n    <div style="border-left:3px solid var(--lime); padding:8px 14px; background:var(--lime-dim);">\n      <div style="font-size:13px; color:var(--text-muted);"><strong style="color:var(--text);">Zadanie komunikacji:</strong> Pokazac ze DF to nie hurtownia - to Owocowe Czwartki, markowy ritual, doswiadczenie. Przenosi rozmowe z ceny na wartosc.</div>\n    </div>\n  </div>\n\n  <!-- Etap 2 -->\n  <div style="background:var(--card2); border:1px solid var(--border2); padding:22px; margin-bottom:10px; border-left:3px solid var(--blue);">\n    <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">\n      <div style="font-size:11px; font-weight:700; color:var(--blue); background:var(--blue-dim); padding:4px 10px;">Etap 2</div>\n      <div style="font-size:15px; font-weight:700;">Jestem klientem, ale jednego produktu</div>\n    </div>\n    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:12px;">\n      <div style="background:var(--card); border:1px solid var(--border); padding:14px;">\n        <div style="font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;">Co klient mysli</div>\n        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">Owoce sa OK, ale kawe zamawiam gdzie indziej. Nie wiem, ze ten dostawca ma cos jeszcze.</div>\n      </div>\n      <div style="background:var(--card); border:1px solid var(--border); padding:14px;">\n        <div style="font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;">Moment cross-sell</div>\n        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">Automatyczny email po 30/60/90 dniach: Twoje Owocowe Czwartki ida swietnie - a co gdyby kawa tez byla od nas?</div>\n      </div>\n      <div style="background:var(--card); border:1px solid var(--border); padding:14px;">\n        <div style="font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;">Co go blokuje</div>\n        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">Nie widzi ekosystemu. Kazdy produkt traktuje osobno. Nie wie, ze zmiana dostawcy kawy to jedno klikniecie.</div>\n      </div>\n    </div>\n    <div style="border-left:3px solid var(--lime); padding:8px 14px; background:var(--lime-dim);">\n      <div style="font-size:13px; color:var(--text-muted);"><strong style="color:var(--text);">Zadanie komunikacji:</strong> Pokazac ze to jeden partner. Triggered email, nie newsletter. Konkretna oferta dopasowana do tego, co klient juz kupuje.</div>\n    </div>\n  </div>\n\n  <!-- Etap 3 -->\n  <div style="background:var(--card2); border:1px solid var(--border2); padding:22px; margin-bottom:10px; border-left:3px solid var(--green);">\n    <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">\n      <div style="font-size:11px; font-weight:700; color:var(--green); background:var(--green-dim); padding:4px 10px;">Etap 3</div>\n      <div style="font-size:15px; font-weight:700;">Mam 2+ produkty - ale nie wiem, ze to może byc program</div>\n    </div>\n    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:12px;">\n      <div style="background:var(--card); border:1px solid var(--border); padding:14px;">\n        <div style="font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;">Co klient mysli</div>\n        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">Mamy owoce i kawe z tego samego miejsca, fajnie. Ale to nie jest benefit - to po prostu dostawca.</div>\n      </div>\n      <div style="background:var(--card); border:1px solid var(--border); padding:14px;">\n        <div style="font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;">Moment zmiany decydenta</div>\n        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;"><span class="bt bt-bw" style="font-size:10px; padding:2px 6px;">BW</span> inicjuje rozmowe z HR Directorem: To co macie to juz program zywieniowy - zobaczmy jak ujac to jako benefit</div>\n      </div>\n      <div style="background:var(--card); border:1px solid var(--border); padding:14px;">\n        <div style="font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;">Co go blokuje</div>\n        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">Nie ma dowodu na ROI. HR potrzebuje argumentow dla CFO: dlaczego placic za owoce z budzetu benefitow?</div>\n      </div>\n    </div>\n    <div style="border-left:3px solid var(--lime); padding:8px 14px; background:var(--lime-dim);">\n      <div style="font-size:13px; color:var(--text-muted);"><strong style="color:var(--text);">Zadanie komunikacji:</strong> Historia sukcesu klienta + kalkulator zwrotu z inwestycji. Material ktorly HR może pokazac CFO. BW przejmuje rozmowe od sub-brandow.</div>\n    </div>\n  </div>\n\n  <!-- Etap 4 -->\n  <div style="background:var(--card2); border:1px solid var(--border2); padding:22px; margin-bottom:10px; border-left:3px solid var(--lime);">\n    <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">\n      <div style="font-size:11px; font-weight:700; color:var(--lime); background:var(--lime-dim); padding:4px 10px;">Etap 4</div>\n      <div style="font-size:15px; font-weight:700;\">\ Petny program - klient ekosystemowy</div>\n    </div>\n    <div style=\"display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:12px;\">\n      <div style=\"background:var(--card); border:1px solid var(--border); padding:14px;\">\n        <div style=\"font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;\">Co klient mysli</div>\n        <div style=\"font-size:13px; color:var(--text-muted); line-height:1.6;\">BetterWorkplace to nasz partner wellbeingowy. Nie chce zmieniac - bo wszystko dziala z jednego miejsca.</div>\n      </div>\n      <div style=\"background:var(--card); border:1px solid var(--border); padding:14px;\">\n        <div style=\"font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;\">Moment lock-in</div>\n        <div style=\"font-size:13px; color:var(--text-muted); line-height:1.6;\"><span class=\"bt bt-tb\" style=\"font-size:10px; padding:2px 6px;\">TB</span> Platforma do zarzadzania wszystkimi benefitami. Jedna faktura, jeden dashboard, zero powodow do odejscia.</div>\n      </div>\n      <div style=\"background:var(--card); border:1px solid var(--border); padding:14px;\">\n        <div style=\"font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;\">Co utrzymuje</div>\n        <div style=\"font-size:13px; color:var(--text-muted); line-height:1.6;\">Wygoda (wszystko w jednym), przyzwyczajenie (Owocowe Czwartki to staly element tygodnia), koszt zmiany (trzeba by szukac 4 nowych dostawcow).</div>\n      </div>\n    </div>\n    <div style=\"border-left:3px solid var(--lime); padding:8px 14px; background:var(--lime-dim);\">\n      <div style=\"font-size:13px; color:var(--text-muted);\"><strong style=\"color:var(--text);\">Zadanie komunikacji:</strong> Utrzymanie relacji - regularny content, nowe produkty, sezonowe akcje (Sendgift). Klient czuje sie zaopiekowany, nie sprzedany.</div>\n    </div>\n  </div>\n\n  <!-- Sendgift: boczne wejscie -->\n  <div style=\"background:var(--card2); border:1px solid var(--border2); padding:22px; margin-bottom:16px; border-left:3px solid var(--warn);\">\n    <div style=\"display:flex; align-items:center; gap:10px; margin-bottom:14px;\">\n      <div style=\"font-size:11px; font-weight:700; color:var(--warn); background:var(--warn-dim); padding:4px 10px;\">Boczne wejscie</div>\n      <div style=\"font-size:15px; font-weight:700;\">Sendgift - sezonowy punkt kontaktu</div>\n    </div>\n    <div style=\"display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px;\">\n      <div style=\"background:var(--card); border:1px solid var(--border); padding:14px;\">\n        <div style=\"font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;\">Co klient mysli</div>\n        <div style=\"font-size:13px; color:var(--text-muted); line-height:1.6;\">Potrzebuje paczek swiatecznych dla zespolu. Jednorazowa potrzeba, zero swiadomosci ze to czesc ekosystemu.</div>\n      </div>\n      <div style=\"background:var(--card); border:1px solid var(--border); padding:14px;\">\n        <div style=\"font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;\">Zadanie komunikacji</div>\n        <div style=\"font-size:13px; color:var(--text-muted); line-height:1.6;\">Post-purchase email: Skoro dbasz o pracownikow raz w roku - a gdyby tak codziennie? Owocowe Czwartki to dopiero poczatek. Konwersja na klienta DF.</div>\n      </div>\n    </div>\n  </div>\n\n  <!-- Trigger table -->\n  <div style=\"font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:12px;\">Mechanizmy przeiscia miedzy etapami</div>\n  <div style=\"background:var(--card2); border:1px solid var(--border2); padding:4px; margin-bottom:16px; overflow-x:auto;\">\n    <table style=\"width:100%; border-collapse:collapse; font-size:13px;\">\n      <thead>\n        <tr style=\"border-bottom:2px solid var(--border);\">\n          <th style=\"text-align:left; padding:14px 14px; color:var(--text-dim); font-weight:700; font-size:10px; letter-spacing:1px; text-transform:uppercase;\">Przejscie</th>\n          <th style=\"text-align:left; padding:14px 14px; color:var(--text-dim); font-weight:700; font-size:10px; letter-spacing:1px; text-transform:uppercase;\">Wyzwalacz</th>\n          <th style=\"text-align:left; padding:14px 14px; color:var(--text-dim); font-weight:700; font-size:10px; letter-spacing:1px; text-transform:uppercase;\">Dzialanie</th>\n          <th style=\"text-align:left; padding:14px 14px; color:var(--text-dim); font-weight:700; font-size:10px; letter-spacing:1px; text-transform:uppercase;\">Cel</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr style=\"border-bottom:1px solid var(--border);\">\n          <td style=\"padding:16px 14px; font-weight:600;\">Etap 1 - 2</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Klient zlozyl pierwsze zamowienie DF lub BO</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Automatyczny email cross-sell po 30, 60 i 90 dniach</td>\n          <td style=\"padding:16px 14px; color:var(--green); font-weight:600;\">Klient kupuje 2. produkt</td>\n        </tr>\n        <tr style=\"border-bottom:1px solid var(--border);\">\n          <td style=\"padding:16px 14px; font-weight:600;\">Etap 2 - 3</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Klient ma 2+ produkty od 3+ miesiecy</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">BW inicjuje rozmowe z HR Directorem</td>\n          <td style=\"padding:16px 14px; color:var(--green); font-weight:600;\">Zmiana z OM na HR, deal x10</td>\n        </tr>\n        <tr style=\"border-bottom:1px solid var(--border);\">\n          <td style=\"padding:16px 14px; font-weight:600;\">Etap 3 - 4</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">HR zatwierdzi budzet na program</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Wdrozenie TeamBudget jako platformy zarzadzania</td>\n          <td style=\"padding:16px 14px; color:var(--green); font-weight:600;\">Petny lock-in ekosystemu</td>\n        </tr>\n        <tr>\n          <td style=\"padding:16px 14px; font-weight:600;\">Sendgift - Etap 1</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Klient kupil paczki swiateczne</td>\n          <td style=\"padding:16px 14px; color:var(--text-muted); line-height:1.6;\">Post-purchase email: a gdyby tak codziennie?</td>\n          <td style=\"padding:16px 14px; color:var(--green); font-weight:600;\">Konwersja na klienta DF</td>\n        </tr>\n      </tbody>\n    </table>\n  </div>\n\n  <div class=\"dlv-scope\" style=\"margin-top:12px;\">\n    <span class=\"scope-item\">Mapa sciezek z perspektywy klienta</span>\n    <span class=\"scope-item\">Mechanizmy przeiscia miedzy etapami</span>\n    <span class=\"scope-item\">Blokady i zadania komunikacji per etap</span>\n    <span class=\"scope-item\">Sekwencje emailowe cross-sell</span>\n    <span class=\"scope-item\">Synergie miedzy markami</span>\n  </div>\n</div>\n\n</div><!-- s08: D06 Implementation Roadmap (UKRYTE) --><div style=\"display:none !important;\">\n<div class=\"section\" id=\"s08\">\n  <div class=\"sec-eyebrow\" style=\"color:var(--green);\">Deliverable 06</div>\n  <h1 class=\"sec-title\">Plan <span>wdrozenia</span></h1>\n  <div style=\"font-size:12px; color:var(--text-dim); margin-top:-6px; margin-bottom:8px;\">Implementation Roadmap</div>\n  <p class=\"sec-sub\">Strategia staje sie operacja. Kazde dzialanie wynika bezposrednio z wnioskow z wczesniejszych sekcji - nie jest losowe. Priorytet: to co daje mierzalny wynik najszybciej.</p>\n\n  <!-- Logika priorytetyzacji -->\n  <div style=\"background:var(--card2); border:1px solid var(--border2); padding:22px; margin-bottom:16px;\">\n    <div style=\"font-size:9px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;\">Jak priorytetyzujemy</div>\n    <div style=\"display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;\">\n      <div style=\"border:1px solid var(--border); padding:14px;\">\n        <div style=\"font-size:11px; font-weight:700; color:var(--green); margin-bottom:6px;\">Szybki wynik</div>\n        <div style=\"font-size:13px; color:var(--text-muted); line-height:1.6;\">Można wdrozyt w 2-4 tygodnie, mierzalny efekt od pierwszego dnia. Minimalny koszt, maksymalny sygnal.</div>\n      </div>\n      <div style=\"border:1px solid var(--border); padding:14px;\">\n        <div style=\"font-size:11px; font-weight:700; color:var(--blue); margin-bottom:6px;\">Budowanie fundamentu</div>\n        <div style=\"font-size:13px; color:var(--text-muted); line-height:1.6;\">Wymaga 2-3 miesiecy, ale tworzy infrastrukture pod skalowanie. Bez tego reszta nie dziala.</div>\n      </div>\n      <div style=\"border:1px solid var(--border); padding:14px;\">\n        <div style=\"font-size:11px; font-weight:700; color:var(--purple); margin-bottom:6px;\">Skalowanie</div>\n        <div style=\"font-size:13px; color:var(--text-muted); line-height:1.6;\">Dzialania Fazy 2+. Bazuja na fundamencie z Fazy 1 - bez niego nie maja sensu.</div>\n      </div>\n    </div>\n  </div>\n\n  <!-- Quick Wins -->\n  <div style=\"font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green); margin-bottom:12px;\">Szybkie wygrane - pierwsze 30 dni</div>\n\n  <div style=\"background:var(--card2); border:1px solid var(--border2); padding:22px; margin-bottom:10px; border-left:3px solid var(--green);\">\n    <div style=\"display:flex; align-items:center; gap:10px; margin-bottom:14px;\">\n      <div style=\"font-size:11px; font-weight:700; color:var(--green); background:var(--green-dim); padding:4px 10px;\">Tydzien 1-2</div>\n      <div style=\"font-size:15px; font-weight:700;\">LinkedIn BW: nowy profil + pierwsza seria tresci</div>\n    </div>\n    <div style=\"display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:12px;\">\n      <div style=\"background:var(--card); border:1px solid var(--border); padding:14px;\">\n        <div style=\"font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;\">Co robimy</div>\n        <div style=\"font-size:13px; color:var(--text-muted); line-height:1.6;\">Przepisanie profilu LinkedIn BetterWorkplace pod narracje trzeci filar benefitow. Seria 4 postow testujacych przekaz na HR Directors.</div>\n      </div>\n      <div style=\"background:var(--card); border:1px solid var(--border); padding:14px;\">\n        <div style=\"font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;\">Dlaczego to pierwsze</div>\n        <div style=\"font-size:13px; color:var(--text-muted); line-height:1.6;\">Odkrycie #3: decyzja trafia do zlej osoby. LinkedIn to jedyny kanal gdzie BW może mówic bezposrednio do HR Directorow. Zerowy koszt.</div>\n      </div>\n      <div style=\"background:var(--card); border:1px solid var(--border); padding:14px;\">\n        <div style=\"font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;\">Mierzalny wynik</div>\n        <div style=\"font-size:13px; color:var(--text-muted); line-height:1.6;\">Engagement rate, liczba zapytan od HR (baseline do KPI 35% zapytan od HR z Matrycy Komunikacji).</div>\n      </div>\n    </div>\n  </div>\n\n  <div style=\"background:var(--card2); border:1px solid var(--border2); padding:22px; margin-bottom:10px; border-left:3px solid var(--green);\">\n    <div style=\"display:flex; align-items:center; gap:10px; margin-bottom:14px;\">\n      <div style=\"font-size:11px; font-weight:700; color:var(--green); background:var(--green-dim); padding:4px 10px;\">Tydzien 2-4</div>\n      <div style=\"font-size:15px; font-weight:700;\">Owocowe Czwartki - branding kit dla klientow DF</div>\n    </div>\n    <div style=\"display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:12px;\">\n      <div style=\"background:var(--card); border:1px solid var(--border); padding:14px;\">\n        <div style=\"font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;\">Co robimy</div>\n        <div style=\"font-size:13px; color:var(--text-muted); line-height:1.6;\">Prosty branding kit (naklejki, tent cards, szablon social media) wysylany z kazdym czwartkowym zamowieniem. Klient stawia w kuchni, pracownicy robia zdjecia.</div>\n      </div>\n      <div style=\"background:var(--card); border:1px solid var(--border); padding:14px;\">\n        <div style=\"font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;\">Dlaczego to teraz</div>\n        <div style=\"font-size:13px; color:var(--text-muted); line-height:1.6;\">Obszar okazji z karty DF: Owocowe Czwartki to kulturowy mem do przejęcia. Branding kit zamienia istniejace zamowienia w nosnik marki - zero dodatkowego kosztu akwizycji.</div>\n      </div>\n      <div style=\"background:var(--card); border:1px solid var(--border); padding:14px;\">\n        <div style=\"font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;\">Mierzalny wynik</div>\n        <div style=\"font-size:13px; color:var(--text-muted); line-height:1.6;\">Liczba zdiec/postow od klientow (UGC), wzrost rozpoznawalnosci marki DF wsrod pracownikow biurowych.</div>\n      </div>\n    </div>\n  </div>\n\n  <div style=\"background:var(--card2); border:1px solid var(--border2); padding:22px; margin-bottom:10px; border-left:3px solid var(--green);\">\n    <div style=\"display:flex; align-items:center; gap:10px; margin-bottom:14px;\">\n      <div style=\"font-size:11px; font-weight:700; color:var(--green); background:var(--green-dim); padding:4px 10px;\">Tydzien 3-5</div>\n      <div style=\"font-size:15px; font-weight:700;\">Email cross-sell: DF - BO</div>\n    </div>\n    <div style=\"display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:12px;\">\n      <div style=\"background:var(--card); border:1px solid var(--border); padding:14px;\">\n        <div style=\"font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;\">Co robimy</div>\n        <div style=\"font-size:13px; color:var(--text-muted); line-height:1.6;\">3 automatyczne emaile po pierwszym zamowieniu DF (30, 60, 90 dni): Twoje Owocowe Czwartki ida swietnie - a co gdyby kawa tez byla od nas?</div>\n      </div>\n      <div style=\"background:var(--card); border:1px solid var(--border); padding:14px;\">\n        <div style=\"font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;\">D/div>\n      </div>\n    </div>\n  </div>\n\n  <!-- Powiazania z innymi sekcjami -->\n  <div style=\"background:var(--lime-dim); border:1px solid rgba(200,241,53,0.15); border-left:3px solid var(--lime); padding:16px 18px; margin-bottom:16px;\">\n    <div style=\"font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--lime); margin-bottom:8px;\">Jak to sie laczy</div>\n    <div style=\"font-size:13px; color:var(--text-muted); line-height:1.7;\">Kazde dzialanie w planie wdrozenia wynika z konkretnego wniosku z wczesniejszych sekcji:</div>\n    <div style=\"display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px;\">\n      <div style=\"background:var(--card); border:1px solid var(--border); padding:12px;\">\n        <div style=\"font-size:12px; color:var(--text); margin-bottom:4px;\"><strong>LinkedIn BW</strong> - Odkrycie #3</div>\n        <div style=\"font-size:11px; color:var(--text-dim);\">Decyzja trafia do zlej osoby - mowimy bezposrednio do HR</div>\n      </div>\n      <div style=\"background:var(--card); border:1px solid var(--border); padding:12px;\">\n        <div style=\"font-size:12px; color:var(--text); margin-bottom:4px;\"><strong>Branding kit OC</strong> - Karta rol DF</div>\n        <div style=\"font-size:11px; color:var(--text-dim);\">Owocowe Czwartki jako kulturowy asset - przejmujemy go fizycznie</div>\n      </div>\n      <div style=\"background:var(--card); border:1px solid var(--border); padding:12px;\">\n        <div style=\"font-size:12px; color:var(--text); margin-bottom:4px;\"><strong>Email cross-sell</strong> - Mapa sciezek, Etap 1-2</div>\n        <div style=\"font-size:11px; color:var(--text-dim);\">Klient nie widzi ekosystemu - automatyczny trigger cross-sell</div>\n      </div>\n      <div style=\"background:var(--card); border:1px solid var(--border); padding:12px;\">\n        <div style=\"font-size:12px; color:var(--text); margin-bottom:4px;\"><strong>Rebranding BO</strong> - Karta rol BO</div>\n        <div style=\"font-size:11px; color:var(--text-dim);\">Pelny reset pozycjonowania - z kawa na cala kuchnia</div>\n      </div>\n      <div style=\"background:var(--card); border:1px solid var(--border); padding:12px;\">\n        <div style=\"font-size:12px; color:var(--text); margin-bottom:4px;\"><strong>Historia sukcesu</strong> - Mapa sciezek, Etap 2-3</div>\n        <div style=\"font-size:11px; color:var(--text-dim);\">HR potrzebuje dowodu dla CFO - dajemy mu gotowy argument</div>\n      </div>\n      <div style=\"background:var(--card); border:1px solid var(--border); padding:12px;\">\n        <div style=\"font-size:12px; color:var(--text); margin-bottom:4px;\"><strong>TB pre-launch</strong> - Karta rol TB</div>\n        <div style=\"font-size:11px; color:var(--text-dim);\">Stworz popyt zanim masz produkt - narracja przez BW</div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"dlv-scope\" style=\"margin-top:12px;\">\n    <span class=\"scope-item\">Priorytetyzacja dzialon (3 poziomy)</span>\n    <span class=\"scope-item\">Powiazanie z odkryciami i kartami rol</span>\n    <span class=\"scope-item\">Mierzalny wynik per dzialanie</span>\n    <span class=\"scope-item\">Odpowiedzialnosci i zaleznosci</span>\n    <span class=\"scope-item\">Harmonogram wdrozenia</span>\n  </div>\n</div>\n\n</div><!-- s09: Timeline -->\n<div class=\"section\" id=\"s09\">\n  <div class=\"sec-eyebrow\" style=\"color:var(--purple);\">Plan realizacji</div>\n  <h1 class=\"sec-title\">Harmonogram <span>i fazy</span></h1>\n  <div style=\"font-size:12px; color:var(--text-dim); margin-top:-6px; margin-bottom:8px;\">Timeline</div>\n  <p class=\"sec-sub\">Cztery fazy wspolpracy - od fundamentow strategicznych do sezonu wysokiego. Kazda faza ma jasny scope i punkt decyzyjny przed wejsciem w nastepna.</p>\n\n  <div class=\"tl-item\">\n    <div class=\"tl-dot-col\">\n      <div class=\"tl-dot\" style=\"background:var(--text-dim);\"></div>\n    </div>\n    <div class=\"tl-body\">\n      <div class=\"tl-when\">Faza 0 · Marzec 2026 · Zakonczone</div>\n      <div class=\"tl-title\" style=\"color:var(--text-muted);\">Discovery i Ecosystem Analysis</div>\n      <div class=\"tl-desc\">Audyt ekosystemu, diagnoza architektury marki, zdefiniowanie wyzwania strategicznego.</div>\n      <div class=\"tl-tags\">\n        <span class=\"tl-tag\" style=\"color:var(--green); border-color:var(--green);\">Zakonczone</span>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"tl-item\">\n    <div class=\"tl-dot-col\">\n      <div class=\"tl-dot\" style=\"background:var(--lime);\"></div>\n    </div>\n    <div class=\"tl-body\">\n      <div class=\"tl-when\" style=\"color:var(--lime);\">Faza 1 · Kwiecien 2026 · Aktywna</div>\n      <div class=\"tl-title\">Fundament strategiczny</div>\n      <div class=\"tl-desc\">6 deliverables: Brand Architecture Map, Ecosystem Role Cards, Narrative & Messaging Framework, Communication Matrix, Ecosystem Journey Map, Implementation Roadmap.</div>\n      <div class=\"tl-tags\">\n        <span class=\"tl-tag\" style=\"color:var(--lime); border-color:var(--lime);\">W toku</span>\n        <span class=\"tl-tag\">6 deliverables</span>\n        <span class=\"tl-tss=\"tl-dot\" style=\"background:var(--border2);\"></div>\n    </div>\n    <div class=\"tl-body\">\n      <div class=\"tl-when\">Wysoki Sezon · Sierpien-Grudzien 2026</div>\n      <div class=\"tl-title\">Skalowanie i optymalizacja</div>\n      <div class=\"tl-desc\">Kampanie sezonowe (Sendgift), TeamBudget pre-launch, optymalizacja lejkow cross-sell.</div>\n      <div class=\"tl-tags\">\n        <span class=\"tl-tag\">Sendgift / sezon</span>\n        <span class=\"tl-tag\">TB pre-launch</span>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"callout purple\" style=\"margin-top:8px;\">\n    <p><strong>Punkt decyzyjny:</strong> Po dostarczeniu Fazy 1 nastepuje review - weryfikacja deliverables, korekta priorytetow, potwierdzenie zakresu Fazy 2. Kazda faza jest zamknieta i rozliczalna osobno.</p>\n  </div>\n</div>\n\n</main>\n\n<script>\nfunction show(id, el) {\n  event.preventDefault();\n  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));\n  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));\n  document.getElementById(id).classList.add('active');\n  el.classList.add('active');\n  window.scrollTo(0, 0);\n}\n</script>\n\n</body>\n</html>\n
