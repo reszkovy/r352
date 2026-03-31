@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BetterWorkplace – Performance Campaign · 20k PLN</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0d0d0d;
+  --sidebar: #111111;
+  --card: #161616;
+  --card2: #1c1c1c;
+  --border: #252525;
+  --border2: #2e2e2e;
+  --lime: #c8f135;
+  --lime-dim: rgba(200,241,53,0.08);
+  --blue: #3b82f6;
+  --blue-dim: rgba(59,130,246,0.08);
+  --green: #22c55e;
+  --green-dim: rgba(34,197,94,0.08);
+  --purple: #a855f7;
+  --purple-dim: rgba(168,85,247,0.08);
+  --warn: #f59e0b;
+  --warn-dim: rgba(245,158,11,0.08);
+  --red: #ef4444;
+  --red-dim: rgba(239,68,68,0.08);
+  --text: #e8e8e8;
+  --text-muted: #888;
+  --text-dim: #3a3a3a;
+  --li: #4285F4;
+  --meta: #1877F2;
+  --ggl: #34A853;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { height:100%; }
+body {
+  font-family:'DM Sans',system-ui,sans-serif;
+  background:var(--bg); color:var(--text);
+  line-height:1.65; -webkit-font-smoothing:antialiased;
+  display:flex;
+}
+
+/* scrollbar */
+.sidebar::-webkit-scrollbar, .main::-webkit-scrollbar { width:3px; }
+.sidebar::-webkit-scrollbar-track, .main::-webkit-scrollbar-track { background:transparent; }
+.sidebar::-webkit-scrollbar-thumb, .main::-webkit-scrollbar-thumb { background:var(--border); }
+.sidebar, .main { scrollbar-width:thin; scrollbar-color:var(--border) transparent; }
+
+/* sidebar */
+.sidebar {
+  width:260px; flex-shrink:0; background:var(--sidebar);
+  border-right:1px solid var(--border);
+  position:sticky; top:0; height:100vh;
+  overflow-y:auto; display:flex; flex-direction:column;
+}
+.sb-head { padding:20px 22px 16px; border-bottom:1px solid var(--border); }
+.sb-eyebrow { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--text-dim); margin-bottom:12px; font-weight:600; }
+.sb-title { font-size:18px; font-weight:700; letter-spacing:-0.3px; line-height:1.2; }
+.sb-sub { font-size:11px; color:var(--text-muted); margin-top:6px; line-height:1.5; }
+
+nav { flex:1; padding:12px 0; }
+.sb-group { padding:0 14px; margin-bottom:4px; }
+.sb-group-label { font-size:8px; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); padding:8px 8px 4px; font-weight:700; }
+.nav-item {
+  display:flex; align-items:center; gap:8px;
+  padding:7px 10px; font-size:12px; color:var(--text-muted);
+  text-decoration:none; transition:all .15s;
+  border-left:2px solid transparent; cursor:pointer;
+}
+.nav-item:hover { color:var(--text); background:rgba(255,255,255,0.02); }
+.nav-item.active { color:var(--text); border-left-color:var(--lime); background:rgba(200,241,53,0.04); }
+.nd { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+.nd-lime { background:var(--lime); }
+.nd-blue { background:var(--blue); }
+.nd-green { background:var(--green); }
+.nd-purple { background:var(--purple); }
+.nd-warn { background:var(--warn); }
+
+.sb-footer { padding:16px 22px; border-top:1px solid var(--border); margin-top:auto; font-size:10px; color:var(--text-dim); line-height:1.6; }
+
+/* main */
+.main { flex:1; overflow-y:auto; height:100vh; }
+.section { display:none; padding:48px 56px 64px; max-width:820px; }
+.section.active { display:block; }
+.sec-eyebrow { font-size:10px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:12px; }
+.sec-title { font-size:32px; font-weight:800; letter-spacing:-0.5px; line-height:1.15; margin-bottom:4px; }
+.sec-title span { color:var(--lime); }
+.sec-sub { font-size:14px; color:var(--text-muted); line-height:1.7; margin-bottom:28px; max-width:600px; }
+
+.hero-band {
+  background:var(--card2); border:1px solid var(--border2);
+  padding:28px 24px; margin-bottom:20px;
+}
+.card {
+  background:var(--card2); border:1px solid var(--border2);
+  padding:20px 22px;
+}
+.card h3 { font-size:13px; font-weight:700; margin-bottom:8px; }
+.card p { font-size:13px; color:var(--text-muted); line-height:1.7; }
+
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; }
+.divider { border-top:1px solid var(--border); margin:24px 0; }
+
+/* channel colors */
+.ch-li { color:#4285F4; }
+.ch-meta { color:#1877F2; }
+.ch-ggl { color:#34A853; }
+
+/* ad mockup */
+.ad-mock {
+  background:var(--card); border:1px solid var(--border);
+  padding:20px; margin-bottom:12px; position:relative;
+}
+.ad-mock-label {
+  position:absolute; top:10px; right:12px;
+  font-size:8px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+  padding:2px 8px; border-radius:2px;
+}
+.ad-mock h4 { font-size:15px; font-weight:700; margin-bottom:6px; line-height:1.3; }
+.ad-mock .ad-desc { font-size:12px; color:var(--text-muted); line-height:1.6; margin-bottom:10px; }
+.ad-mock .ad-cta {
+  display:inline-block; font-size:10px; font-weight:700;
+  letter-spacing:1px; text-transform:uppercase;
+  padding:6px 14px; border:1px solid var(--border2);
+}
+.ad-mock .ad-meta { font-size:10px; color:var(--text-dim); margin-top:10px; }
+
+/* budget table */
+.budget-table { width:100%; border-collapse:collapse; }
+.budget-table th {
+  font-size:9px; letter-spacing:1.5px; text-transform:uppercase;
+  color:var(--text-dim); text-align:left; padding:10px 14px;
+  border-bottom:1px solid var(--border);
+}
+.budget-table td {
+  padding:12px 14px; font-size:13px; color:var(--text-muted);
+  border-bottom:1px solid var(--border);
+}
+.budget-table tr:last-child td { border-bottom:none; font-weight:700; color:var(--text); }
+
+/* KPI */
+.kpi-card {
+  background:var(--card2); border:1px solid var(--border2);
+  padding:16px 18px; text-align:center;
+}
+.kpi-val { font-size:28px; font-weight:800; letter-spacing:-1px; }
+.kpi-label { font-size:10px; color:var(--text-dim); margin-top:4px; letter-spacing:0.5px; }
+
+/* Password */
+#pw-screen {
+  position:fixed; inset:0; z-index:9999;
+  background:var(--bg);
+  display:flex; align-items:center; justify-content:center;
+  flex-direction:column; gap:18px;
+}
+#pw-screen .pw-logo { font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--lime); }
+#pw-screen input {
+  background:var(--card); border:1px solid var(--border2); color:var(--text);
+  padding:12px 18px; font-size:14px; font-family:'DM Sans',sans-serif;
+  width:260px; text-align:center; outline:none;
+}
+#pw-screen input:focus { border-color:var(--lime); }
+#pw-screen .pw-btn {
+  background:var(--lime); color:#000; border:none; padding:10px 32px;
+  font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase;
+  cursor:pointer; font-family:'DM Sans',sans-serif;
+}
+#pw-screen .pw-err { color:var(--red); font-size:11px; height:16px; }
+#main-content { display:none; }
+</style>
+</head>
+<body>
+
+<div id="pw-screen">
+  <div class="pw-logo">BetterWorkplace</div>
+  <div style="font-size:22px; font-weight:700; color:var(--text); letter-spacing:-0.5px;">Performance Campaign</div>
+  <div style="font-size:12px; color:var(--text-muted);">Wpisz hasło, aby zobaczyć dokument</div>
+  <input type="password" id="pw-input" placeholder="Hasło" onkeydown="if(event.key==='Enter')checkPw()">
+  <button class="pw-btn" onclick="checkPw()">Wejdź</button>
+  <div class="pw-err" id="pw-err"></div>
+</div>
+
+<div id="main-content">
+
+<aside class="sidebar">
+  <div class="sb-head">
+    <div class="sb-eyebrow">BetterWorkplace</div>
+    <div class="sb-title">Performance Campaign</div>
+    <div class="sb-sub">Dual stream: BW (80%) + DF (20%) · budżet 20k PLN · LinkedIn, Meta, Google</div>
+  </div>
+
+  <nav>
+    <div class="sb-group">
+      <div class="sb-group-label">Strategia</div>
+      <a class="nav-item active" href="#" onclick="show('s_overview',this)">
+        <span class="nd nd-lime"></span> Overview
+      </a>
+      <a class="nav-item" href="#" onclick="show('s_budget',this)">
+        <span class="nd nd-lime"></span> Budżet i KPIs
+      </a>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label">Kanały</div>
+      <a class="nav-item" href="#" onclick="show('s_linkedin',this)">
+        <span class="nd nd-blue"></span> LinkedIn Ads
+      </a>
+      <a class="nav-item" href="#" onclick="show('s_meta',this)">
+        <span class="nd nd-purple"></span> Meta Ads
+      </a>
+      <a class="nav-item" href="#" onclick="show('s_google',this)">
+        <span class="nd nd-green"></span> Google Ads
+      </a>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label">DailyFruits · 20%</div>
+      <a class="nav-item" href="#" onclick="show('s_df',this)">
+        <span class="nd nd-green"></span> DF Stream
+      </a>
+    </div>
+
+    <div class="sb-group">
+      <div class="sb-group-label">Wdrożenie</div>
+      <a class="nav-item" href="#" onclick="show('s_timeline',this)">
+        <span class="nd nd-warn"></span> Timeline i next steps
+      </a>
+    </div>
+  </nav>
+
+  <div class="sb-footer">
+    <strong>Performance Campaign Brief</strong><br>
+    BW 80% + DF 20% · 20k PLN<br>
+    3 kanały · Dual stream<br>
+    Marzec 2026
+  </div>
+</aside>
+
+<main class="main">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- OVERVIEW -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section active" id="s_overview">
+  <div class="sec-eyebrow" style="color:var(--lime);">Propozycja kampanii</div>
+  <h1 class="sec-title">Kampania <span>reklamowa</span></h1>
+  <p class="sec-sub">Kampania w dwóch nurtach: 80% budżetu na BetterWorkplace (reklamy do dyrektorów HR) + 20% na DailyFruits (reklamy do osób zamawiających do biura). Łączny budżet: 20 000 PLN.</p>
+
+  <div class="hero-band">
+    <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--lime); margin-bottom:14px;">O co chodzi w tej kampanii</div>
+    <div style="font-size:18px; font-weight:700; letter-spacing:-0.3px; line-height:1.4; max-width:560px; margin-bottom:12px;">Dwa nurty reklam, jeden cel: pokazać BetterWorkplace jako partnera benefitowego.</div>
+    <div style="font-size:13px; color:var(--text-muted); line-height:1.7; max-width:560px;">BetterWorkplace (80% = 16k PLN) — reklamy skierowane do dyrektorów HR. Cel: żeby zaczęli kojarzyć BW jako „trzeci filar benefitów" obok Multisportu i Medicover. DailyFruits (20% = 4k PLN) — reklamy skierowane do osób zamawiających do biura (Office Managerów). Cel: przyciągnąć nowych klientów na owoce, a potem pokazać im cały ekosystem BW.</div>
+  </div>
+
+  <!-- Dual stream -->
+  <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;">Dwa nurty kampanii</div>
+
+  <div class="grid-2" style="margin-bottom:20px;">
+    <div style="background:var(--lime-dim); border:1px solid rgba(200,241,53,0.15); padding:20px; border-top:3px solid var(--lime);">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
+        <div style="font-size:14px; font-weight:700; color:var(--lime);">BetterWorkplace</div>
+        <div style="font-size:12px; font-weight:700; color:var(--lime);">80% · 16 000 PLN</div>
+      </div>
+      <div style="font-size:12px; color:var(--text-muted); line-height:1.7; margin-bottom:10px;">Budowanie rozpoznawalności marki. Cel: żeby dyrektorzy HR zaczęli postrzegać BW jako partnera benefitowego, nie dostawcę owoców. Przy okazji zbieramy bazę odwiedzających stronę, do których możemy wrócić z kolejnymi reklamami.</div>
+      <div style="font-size:11px; color:var(--text-dim);">Dla kogo: dyrektorzy HR, szefowie People & Culture · Ton: strategiczny, o wynikach biznesowych</div>
+    </div>
+    <div style="background:var(--green-dim); border:1px solid rgba(34,197,94,0.15); padding:20px; border-top:3px solid var(--green);">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
+        <div style="font-size:14px; font-weight:700; color:var(--green);">DailyFruits</div>
+        <div style="font-size:12px; font-weight:700; color:var(--green);">20% · 4 000 PLN</div>
+      </div>
+      <div style="font-size:12px; color:var(--text-muted); line-height:1.7; margin-bottom:10px;">Przyciągnięcie nowych klientów na stronę DailyFruits. Cel: zbudować ruch, pokazać że DF to więcej niż owoce. Osoby, które odwiedzą stronę DF, potem zobaczą też reklamy BetterWorkplace.</div>
+      <div style="font-size:11px; color:var(--text-dim);">Dla kogo: Office Managerowie, osoby zamawiające do biura · Ton: produktowy, o wygodzie i świeżości</div>
+    </div>
+  </div>
+
+  <!-- Principles -->
+  <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;">Zasady kampanii</div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:10px; margin-bottom:20px;">
+    <div style="background:var(--card2); border:1px solid var(--border2); padding:18px; border-top:3px solid var(--lime);">
+      <div style="font-size:12px; font-weight:700; margin-bottom:6px;">BW: język partnera</div>
+      <div style="font-size:11px; color:var(--text-muted); line-height:1.6;">Dobrostan pracowników, utrzymanie zespołu, satysfakcja — nie „owoce od 2,99 zł".</div>
+    </div>
+    <div style="background:var(--card2); border:1px solid var(--border2); padding:18px; border-top:3px solid var(--green);">
+      <div style="font-size:12px; font-weight:700; margin-bottom:6px;">DF: język produktu</div>
+      <div style="font-size:11px; color:var(--text-muted); line-height:1.6;">Wygoda, świeżość, rytuał biurowy. Owocowe Czwartki jako przyciągacz uwagi.</div>
+    </div>
+    <div style="background:var(--card2); border:1px solid var(--border2); padding:18px; border-top:3px solid var(--blue);">
+      <div style="font-size:12px; font-weight:700; margin-bottom:6px;">Dwa decydenci</div>
+      <div style="font-size:11px; color:var(--text-muted); line-height:1.6;">BW → dyrektor HR. DF → Office Manager. Różne osoby, różne komunikaty.</div>
+    </div>
+    <div style="background:var(--card2); border:1px solid var(--border2); padding:18px; border-top:3px solid var(--purple);">
+      <div style="font-size:12px; font-weight:700; margin-bottom:6px;">Wzajemne wzmacnianie</div>
+      <div style="font-size:11px; color:var(--text-muted); line-height:1.6;">Kto odwiedzi stronę DF → potem zobaczy reklamy BW. Klient owoców → poznaje cały ekosystem.</div>
+    </div>
+  </div>
+
+  <!-- Channel logic -->
+  <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;">Logika kanałów</div>
+
+  <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:20px;">
+    <div style="background:var(--card2); border:1px solid var(--border2); padding:18px; border-left:3px solid #4285F4;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+        <div style="font-size:14px; font-weight:700; color:#4285F4;">LinkedIn</div>
+        <div style="font-size:10px; color:var(--text-dim);">40% budżetu · 8 000 PLN</div>
+        <div style="font-size:9px; padding:2px 6px; background:var(--lime-dim); color:var(--lime); font-weight:700;">TYLKO BW</div>
+      </div>
+      <div style="font-size:12px; color:var(--text-muted); line-height:1.7;"><strong style="color:var(--text);">Główny kanał BW.</strong> Jedyna platforma, gdzie można precyzyjnie wybrać odbiorców po stanowisku (np. „HR Director"). Reklama jest droższa, ale trafia dokładnie do właściwej osoby. Cały budżet LinkedIn idzie wyłącznie na BetterWorkplace.</div>
+    </div>
+    <div style="background:var(--card2); border:1px solid var(--border2); padding:18px; border-left:3px solid #1877F2;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+        <div style="font-size:14px; font-weight:700; color:#1877F2;">Meta (FB + IG)</div>
+        <div style="font-size:10px; color:var(--text-dim);">40% budżetu · 8 000 PLN</div>
+        <div style="font-size:9px; padding:2px 6px; background:var(--lime-dim); color:var(--lime); font-weight:700;">BW 5k</div>
+        <div style="font-size:9px; padding:2px 6px; background:var(--green-dim); color:var(--green); font-weight:700;">DF 3k</div>
+      </div>
+      <div style="font-size:12px; color:var(--text-muted); line-height:1.7;"><strong style="color:var(--text);">Duży zasięg za niską cenę + reklamy DF.</strong> BW (5k): reklamy do osób podobnych do tych, które odwiedziły stronę z LinkedIn. DF (3k): reklamy produktowe, Owocowe Czwartki, ruch na stronę DailyFruits. Reklama na FB/IG jest 5× tańsza niż na LinkedIn, więc docieramy do dużo większej liczby osób.</div>
+    </div>
+    <div style="background:var(--card2); border:1px solid var(--border2); padding:18px; border-left:3px solid #34A853;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+        <div style="font-size:14px; font-weight:700; color:#34A853;">Google</div>
+        <div style="font-size:10px; color:var(--text-dim);">20% budżetu · 4 000 PLN</div>
+        <div style="font-size:9px; padding:2px 6px; background:var(--lime-dim); color:var(--lime); font-weight:700;">BW 3k</div>
+        <div style="font-size:9px; padding:2px 6px; background:var(--green-dim); color:var(--green); font-weight:700;">DF 1k</div>
+      </div>
+      <div style="font-size:12px; color:var(--text-muted); line-height:1.7;"><strong style="color:var(--text);">Łapiemy tych, którzy sami szukają.</strong> BW (3k): reklamy w wyszukiwarce na hasła typu „benefity pracownicze", „wellbeing w firmie" + przypominające banery dla osób, które już odwiedziły stronę. DF (1k): reklamy na hasła „owoce do biura", „owocowe czwartki", „catering biurowy".</div>
+    </div>
+  </div>
+
+  <div style="background:var(--lime-dim); border:1px solid rgba(200,241,53,0.15); border-left:3px solid var(--lime); padding:16px 18px;">
+    <div style="font-size:13px; color:var(--text-muted); line-height:1.7;"><strong style="color:var(--text);">Jak to działa razem:</strong> Osoba, która kliknie reklamę DailyFruits na Facebooku → za kilka dni zobaczy reklamę BetterWorkplace w Google. Osoba, która odwiedzi stronę BW z LinkedIn → na Facebooku reklamy trafią do osób o podobnym profilu. Oba nurty wzajemnie się wzmacniają — osoby zainteresowane owocami poznają cały ekosystem.</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════ -->
+<!-- BUDŻET I KPIs -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section" id="s_budget">
+  <div class="sec-eyebrow" style="color:var(--lime);">Finanse</div>
+  <h1 class="sec-title">Budżet <span>i cele</span></h1>
+  <p class="sec-sub">Podział 20 000 PLN: 16 000 na BetterWorkplace (80%) + 4 000 na DailyFruits (20%). Szacunki oparte na średnich cenach reklam w Polsce w 2026 roku.</p>
+
+  <!-- BW Budget -->
+  <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--lime); margin-bottom:10px;">BetterWorkplace · 16 000 PLN (80%)</div>
+  <div style="background:var(--card2); border:1px solid var(--border2); padding:4px; margin-bottom:16px;">
+    <table class="budget-table">
+      <thead>
+        <tr>
+          <th>Kanał</th>
+          <th>Budżet</th>
+          <th>Koszt za 1000 wyświetleń</th>
+          <th>Koszt za 1 kliknięcie</th>
+          <th>Ile osób zobaczy reklamę</th>
+          <th>Ile osób kliknie</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong style="color:#4285F4;">LinkedIn</strong></td>
+          <td>8 000 zł</td>
+          <td>45–65 zł</td>
+          <td>8–14 zł</td>
+          <td>125–180 tys.</td>
+          <td>570–1 000</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#1877F2;">Meta (FB+IG)</strong></td>
+          <td>5 000 zł</td>
+          <td>8–15 zł</td>
+          <td>1,5–3,5 zł</td>
+          <td>335–625 tys.</td>
+          <td>1 430–3 330</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#34A853;">Google</strong></td>
+          <td>3 000 zł</td>
+          <td>12–25 zł</td>
+          <td>3–7 zł</td>
+          <td>120–250 tys.</td>
+          <td>430–1 000</td>
+        </tr>
+        <tr>
+          <td><strong style="color:var(--lime);">BW RAZEM</strong></td>
+          <td style="color:var(--lime);">16 000 zł</td>
+          <td>—</td>
+          <td>—</td>
+          <td style="color:var(--lime);">580 tys. – 1 mln</td>
+          <td style="color:var(--lime);">2 430–5 330</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- DF Budget -->
+  <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green); margin-bottom:10px;">DailyFruits · 4 000 PLN (20%)</div>
+  <div style="background:var(--card2); border:1px solid var(--border2); padding:4px; margin-bottom:24px;">
+    <table class="budget-table">
+      <thead>
+        <tr>
+          <th>Kanał</th>
+          <th>Budżet</th>
+          <th>Koszt za 1000 wyświetleń</th>
+          <th>Koszt za 1 kliknięcie</th>
+          <th>Ile osób zobaczy reklamę</th>
+          <th>Ile osób kliknie</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong style="color:#1877F2;">Meta (FB+IG)</strong></td>
+          <td>3 000 zł</td>
+          <td>6–12 zł</td>
+          <td>1–2,5 zł</td>
+          <td>250–500 tys.</td>
+          <td>1 200–3 000</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#34A853;">Google</strong></td>
+          <td>1 000 zł</td>
+          <td>10–20 zł</td>
+          <td>2–5 zł</td>
+          <td>50–100 tys.</td>
+          <td>200–500</td>
+        </tr>
+        <tr>
+          <td><strong style="color:var(--green);">DF RAZEM</strong></td>
+          <td style="color:var(--green);">4 000 zł</td>
+          <td>—</td>
+          <td>—</td>
+          <td style="color:var(--green);">300–600 tys.</td>
+          <td style="color:var(--green);">1 400–3 500</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- KPI targets -->
+  <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;">Spodziewane wyniki (w ciągu miesiąca)</div>
+
+  <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; margin-bottom:10px;">
+    <div class="kpi-card" style="border-top:2px solid var(--lime);">
+      <div class="kpi-val" style="color:var(--lime);">1,6 mln+</div>
+      <div class="kpi-label">Wyświetleń łącznie (BW+DF)</div>
+    </div>
+    <div class="kpi-card" style="border-top:2px solid var(--lime);">
+      <div class="kpi-val" style="color:var(--lime);">5 000+</div>
+      <div class="kpi-label">Kliknięć na stronę BW</div>
+    </div>
+    <div class="kpi-card" style="border-top:2px solid var(--lime);">
+      <div class="kpi-val" style="color:var(--lime);">3 000+</div>
+      <div class="kpi-label">Osób do ponownego kontaktu</div>
+    </div>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; margin-bottom:24px;">
+    <div class="kpi-card" style="border-top:2px solid var(--green);">
+      <div class="kpi-val" style="color:var(--green);">600 tys.+</div>
+      <div class="kpi-label">Wyświetleń reklam DF</div>
+    </div>
+    <div class="kpi-card" style="border-top:2px solid var(--green);">
+      <div class="kpi-val" style="color:var(--green);">3 000+</div>
+      <div class="kpi-label">Kliknięć na stronę DF</div>
+    </div>
+    <div class="kpi-card" style="border-top:2px solid var(--green);">
+      <div class="kpi-val" style="color:var(--green);">~1,5 zł</div>
+      <div class="kpi-label">Średni koszt kliknięcia DF</div>
+    </div>
+  </div>
+
+  <div style="background:var(--warn-dim); border:1px solid rgba(245,158,11,0.15); border-left:3px solid var(--warn); padding:16px 18px; margin-bottom:20px;">
+    <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--warn); margin-bottom:6px;">Dlaczego dwa nurty</div>
+    <div style="font-size:13px; color:var(--text-muted); line-height:1.7;">BW (80%) zbiera bazę osób z HR, które odwiedziły stronę — będziemy mogli do nich wrócić z konkretnymi ofertami w następnej fazie. DF (20%) przyciąga tanio nowych odwiedzających (ok. 1,5 zł za kliknięcie na Facebooku). Ci odwiedzający potem automatycznie zobaczą reklamy BW o „trzecim filarze benefitów" — bez dodatkowego kosztu.</div>
+  </div>
+
+  <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;">Dlaczego taki podział</div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:10px; margin-bottom:16px;">
+    <div style="background:var(--card2); border:1px solid var(--border2); padding:16px;">
+      <div style="font-size:12px; font-weight:700; color:#4285F4; margin-bottom:6px;">40% LinkedIn · 8 000 zł</div>
+      <div style="font-size:11px; color:var(--text-muted); line-height:1.6;">Tylko BW. Najdroższy kanał, ale jedyny, w którym możemy precyzyjnie trafić do dyrektorów HR. Droższa reklama, ale trafia we właściwe osoby.</div>
+    </div>
+    <div style="background:var(--card2); border:1px solid var(--border2); padding:16px;">
+      <div style="font-size:12px; font-weight:700; color:#1877F2; margin-bottom:6px;">40% Meta · 8 000 zł</div>
+      <div style="font-size:11px; color:var(--text-muted); line-height:1.6;">BW 5k + DF 3k. Reklama na FB/IG jest 5× tańsza niż LinkedIn. Filmy i karuzele dla obu marek.</div>
+    </div>
+    <div style="background:var(--card2); border:1px solid var(--border2); padding:16px;">
+      <div style="font-size:12px; font-weight:700; color:#34A853; margin-bottom:6px;">20% Google · 4 000 zł</div>
+      <div style="font-size:11px; color:var(--text-muted); line-height:1.6;">BW 3k + DF 1k. Reklamy w wyszukiwarce + banery przypominające dla tych, co już odwiedzili stronę.</div>
+    </div>
+    <div style="background:var(--card2); border:1px solid var(--border2); padding:16px;">
+      <div style="font-size:12px; font-weight:700; color:var(--green); margin-bottom:6px;">DF = 20% całości</div>
+      <div style="font-size:11px; color:var(--text-muted); line-height:1.6;">4 000 PLN rozłożone na Meta i Google. Niski koszt kliknięcia, duży zasięg, wejście klientów do ekosystemu.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════ -->
+<!-- LINKEDIN -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section" id="s_linkedin">
+  <div class="sec-eyebrow" style="color:#4285F4;">Kanał 01</div>
+  <h1 class="sec-title">LinkedIn <span>Ads</span></h1>
+  <div style="font-size:12px; color:var(--text-dim); margin-top:-6px; margin-bottom:8px;">Budżet: 8 000 PLN · Główny kanał BW · Cały budżet na BetterWorkplace</div>
+  <p class="sec-sub">LinkedIn to jedyny kanał z natywnym targetingiem na osoby decyzyjne w HR. Całe 8k idzie na BW — tu DF nie ma sensu (OM nie siedzi na LinkedIn). Reklamy graficzne, wideo i dokumentowe (PDF do przeglądania).</p>
+
+  <!-- Targeting -->
+  <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;">Targeting</div>
+
+  <div class="grid-2" style="margin-bottom:20px;">
+    <div style="background:var(--card2); border:1px solid var(--border2); padding:18px;">
+      <div style="font-size:11px; font-weight:700; color:#4285F4; margin-bottom:10px;">Grupa A: Osoby decyzyjne w HR</div>
+      <div style="font-size:12px; color:var(--text-muted); line-height:1.8;">
+        <strong style="color:var(--text);">Dział:</strong> Human Resources<br>
+        <strong style="color:var(--text);">Poziom stanowiska:</strong> Director, VP, CXO<br>
+        <strong style="color:var(--text);">Wielkość firmy:</strong> 100–5000+<br>
+        <strong style="color:var(--text);">Lokalizacja:</strong> Polska (Warszawa, Kraków, Wrocław, Poznań, Trójmiasto)<br>
+        <strong style="color:var(--text);">Szacunkowa liczba osób:</strong> 15–25k osób
+      </div>
+    </div>
+    <div style="background:var(--card2); border:1px solid var(--border2); padding:18px;">
+      <div style="font-size:11px; font-weight:700; color:#4285F4; margin-bottom:10px;">Grupa B: Kadra zarządzająca i szefowie HR</div>
+      <div style="font-size:12px; color:var(--text-muted); line-height:1.8;">
+        <strong style="color:var(--text);">Stanowisko:</strong> People & Culture, Head of HR, CHRO, Comp & Benefits<br>
+        <strong style="color:var(--text);">Zainteresowania:</strong> Employee engagement, Employer branding<br>
+        <strong style="color:var(--text);">Wielkość firmy:</strong> 200+<br>
+        <strong style="color:var(--text);">Szacunkowa liczba osób:</strong> 8–15k osób
+      </div>
+    </div>
+  </div>
+
+  <!-- Ad formats -->
+  <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;">Formaty i przykłady kreacji</div>
+
+  <!-- Ad 1 -->
+  <div class="ad-mock">
+    <div class="ad-mock-label" style="background:rgba(66,133,244,0.15); color:#4285F4;">Reklama graficzna</div>
+    <div style="font-size:10px; color:var(--text-dim); margin-bottom:10px;">BetterWorkplace · Promoted</div>
+    <h4>Multisport. Medicover. A trzeci filar?</h4>
+    <div class="ad-desc">Twoja firma inwestuje w fitness i zdrowie. Ale co z żywieniem, codziennie, w biurze? BetterWorkplace to ekosystem, który łączy to, czego brakuje: od owoców po pełne żywienie biurowe, od paczek po zarządzanie budżetem benefitowym. Jeden partner zamiast czterech dostawców.</div>
+    <div class="ad-cta" style="border-color:#4285F4; color:#4285F4;">Dowiedz się więcej →</div>
+    <div class="ad-meta">Format: 1200×628 · Przycisk: Dowiedz się więcej · Kierunek: LP</div>
+  </div>
+
+  <!-- Ad 2 -->
+  <div class="ad-mock">
+    <div class="ad-mock-label" style="background:rgba(66,133,244,0.15); color:#4285F4;">Reklama wideo (15 sekund)</div>
+    <div style="font-size:10px; color:var(--text-dim); margin-bottom:10px;">BetterWorkplace · Promoted</div>
+    <h4>Owocowe Czwartki to dopiero początek.</h4>
+    <div class="ad-desc">Scenariusz: Szybkie ujęcia biurowe → owoce na stole → przejście do lunchy, paczek, dashboardu benefitowego → zamknięcie na „BetterWorkplace — trzeci filar benefitów". Voiceover: „Twoja firma już to robi. Czas zacząć to zarządzać."</div>
+    <div class="ad-cta" style="border-color:#4285F4; color:#4285F4;">Odwiedź stronę →</div>
+    <div class="ad-meta">Format: 1080×1080 lub 9:16 · Czas: 15s · Subtitles: TAK (85% mute)</div>
+  </div>
+
+  <!-- Ad 3 -->
+  <div class="ad-mock">
+    <div class="ad-mock-label" style="background:rgba(66,133,244,0.15); color:#4285F4;">Reklama z dokumentem PDF</div>
+    <div style="font-size:10px; color:var(--text-dim); margin-bottom:10px;">BetterWorkplace · Promoted</div>
+    <h4>3 powody, dla których HR powinien zarządzać żywieniem w biurze</h4>
+    <div class="ad-desc">Slide 1: Tytuł + hook · Slide 2: „78% pracowników uważa żywienie za najważniejszy benefit po zdrowotnym" · Slide 3: „Firmy z programem żywieniowym mają 23% niższą rotację" · Slide 4: Ekosystem BW w 1 grafice · Slide 5: CTA → LP</div>
+    <div class="ad-cta" style="border-color:#4285F4; color:#4285F4;">Pobierz prezentację →</div>
+    <div class="ad-meta">Format: Dokument PDF (5 slajdów) · Cel: engagement + LP traffic</div>
+  </div>
+
+  <div style="background:var(--lime-dim); border:1px solid rgba(200,241,53,0.15); border-left:3px solid var(--lime); padding:16px 18px; margin-top:8px;">
+    <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--lime); margin-bottom:6px;">Rekomendacja</div>
+    <div style="font-size:13px; color:var(--text-muted); line-height:1.7;">Zaczynamy od reklamy graficznej + dokumentowej (testujemy dwie wersje). Wideo dodajemy po 2 tygodniach, gdy widzimy, który przekaz lepiej przyciąga uwagę. Podział budżetu: 60% grafika + dokument, 40% wideo po optymalizacji.</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════ -->
+<!-- META -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section" id="s_meta">
+  <div class="sec-eyebrow" style="color:#1877F2;">Kanał 02</div>
+  <h1 class="sec-title">Meta <span>Ads</span></h1>
+  <div style="font-size:12px; color:var(--text-dim); margin-top:-6px; margin-bottom:8px;">Budżet: 8 000 PLN (BW 5 000 + DF 3 000) · Duży zasięg + reklamy DailyFruits</div>
+  <p class="sec-sub">Meta to hub obu strumieni. BW stream (5k): lookalike na LinkedIn visitors, video awareness. DF stream (3k): product ads, Owocowe Czwartki hook, ruch na stronę DailyFruits. Tani CPM skaluje zasięg obu marek.</p>
+
+  <!-- Targeting -->
+  <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;">Targeting</div>
+
+  <div class="grid-2" style="margin-bottom:20px;">
+    <div style="background:var(--card2); border:1px solid var(--border2); padding:18px;">
+      <div style="font-size:11px; font-weight:700; color:#1877F2; margin-bottom:10px;">Grupa A: Osoby podobne do odwiedzających stronę</div>
+      <div style="font-size:12px; color:var(--text-muted); line-height:1.8;">
+        <strong style="color:var(--text);">Skąd bierzemy dane:</strong> Pixel na LP (visitors z LinkedIn)<br>
+        <strong style="color:var(--text);">Szukamy 1% Polaków najbardziej podobnych do naszych odwiedzających</strong><br>
+        <strong style="color:var(--text);">Wiek:</strong> 28–55<br>
+        <strong style="color:var(--text);">Gdzie wyświetlamy:</strong> IG Feed, IG Stories, FB Feed
+      </div>
+    </div>
+    <div style="background:var(--card2); border:1px solid var(--border2); padding:18px;">
+      <div style="font-size:11px; font-weight:700; color:#1877F2; margin-bottom:10px;">Grupa B: Osoby zainteresowane tematem</div>
+      <div style="font-size:12px; color:var(--text-muted); line-height:1.8;">
+        <strong style="color:var(--text);">Zainteresowania:</strong> Human resources, Employee benefits, Employer branding, Wellbeing<br>
+        <strong style="color:var(--text);">Stanowisko:</strong> HR Manager, HR Director, People Operations<br>
+        <strong style="color:var(--text);">Firmy:</strong> od 50 pracowników
+      </div>
+    </div>
+  </div>
+
+  <!-- Ad formats -->
+  <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;">Formaty i przykłady kreacji</div>
+
+  <!-- Ad 1 — gotowa kreacja -->
+  <div class="ad-mock">
+    <div class="ad-mock-label" style="background:rgba(24,119,242,0.15); color:#1877F2;">Statyczna grafika · Owoce (Facebook + Instagram)</div>
+    <div style="font-size:10px; color:var(--text-dim); margin-bottom:10px;">BetterWorkplace · Sponsorowane</div>
+    <h4>Owoce dla Twojego Zespołu</h4>
+    <div class="ad-desc">Visual: Skrzynki z owocami na jasnym tle, ciepły klimat. Copy: „Codzienna dostępność zdrowego jedzenia jako benefit w Twoim biurze." Przycisk SPRAWDŹ + logo Better. Wariant Stories: format 9:16.</div>
+    <div class="ad-cta" style="border-color:#1877F2; color:#1877F2;">Sprawdź →</div>
+    <div class="ad-meta">Format: 1080×1080 + 9:16 · Placement: FB + IG Feed + Stories · Status: ✅ kreacja gotowa</div>
+  </div>
+
+  <!-- Ad 2 — gotowa kreacja -->
+  <div class="ad-mock">
+    <div class="ad-mock-label" style="background:rgba(24,119,242,0.15); color:#1877F2;">Statyczna grafika · Wellbeing (Facebook + Instagram)</div>
+    <div style="font-size:10px; color:var(--text-dim); margin-bottom:10px;">BetterWorkplace · Sponsorowane</div>
+    <h4>Wellbeing zespołu</h4>
+    <div class="ad-desc">Visual: Zespół pracowników z owocami i zdrowymi posiłkami, zielone tło. Copy: „Poprzez codzienną dostępność owoców i warzyw w Twoim biurze." Przycisk SPRAWDŹ + logo Better.</div>
+    <div class="ad-cta" style="border-color:#1877F2; color:#1877F2;">Sprawdź →</div>
+    <div class="ad-meta">Format: 1080×1080 · Placement: FB + IG Feed · Status: ✅ kreacja gotowa</div>
+  </div>
+
+  <!-- Ad 3 — gotowa kreacja -->
+  <div class="ad-mock">
+    <div class="ad-mock-label" style="background:rgba(24,119,242,0.15); color:#1877F2;">Statyczna grafika · Abonament (Facebook + Instagram)</div>
+    <div style="font-size:10px; color:var(--text-dim); margin-bottom:10px;">BetterWorkplace · Sponsorowane</div>
+    <h4>Abonament na zdrowe jedzenie</h4>
+    <div class="ad-desc">Visual: Kalendarz z dniami tygodnia (PON–PT), kolorowe kółka, produkty w tle. Copy: „Dla zwiększenia wydajności twojego zespołu." Komunikuje regularność dostaw i systemowe podejście.</div>
+    <div class="ad-cta" style="border-color:#1877F2; color:#1877F2;">Sprawdź →</div>
+    <div class="ad-meta">Format: 1080×1080 · Placement: FB + IG Feed · Status: ✅ kreacja gotowa</div>
+  </div>
+
+  <!-- Ad 4 — gotowa kreacja -->
+  <div class="ad-mock">
+    <div class="ad-mock-label" style="background:rgba(24,119,242,0.15); color:#1877F2;">Statyczna grafika · Lepsze jedzenie (Facebook + Instagram)</div>
+    <div style="font-size:10px; color:var(--text-dim); margin-bottom:10px;">BetterWorkplace · Sponsorowane</div>
+    <h4>Lepsze jedzenie</h4>
+    <div class="ad-desc">Visual: Zespół pracowników (budowlanka/biuro) z owocami. Copy: „Poprzez codzienną dostępność owoców i warzyw w Twoim biurze." Przycisk SPRAWDŹ + logo Better. Kreacja pokazuje różne typy zespołów.</div>
+    <div class="ad-cta" style="border-color:#1877F2; color:#1877F2;">Sprawdź →</div>
+    <div class="ad-meta">Format: 1080×1080 · Placement: FB + IG Feed · Status: ✅ kreacja gotowa</div>
+  </div>
+
+  <!-- Ad 5 — gotowa kreacja -->
+  <div class="ad-mock">
+    <div class="ad-mock-label" style="background:rgba(24,119,242,0.15); color:#1877F2;">Statyczna grafika · Kanapki (Facebook + Instagram)</div>
+    <div style="font-size:10px; color:var(--text-dim); margin-bottom:10px;">BetterWorkplace · Sponsorowane</div>
+    <h4>Kanapki jako benefit?</h4>
+    <div class="ad-desc">Visual: Zdjęcia kanapek na żółtym tle, apetyczny food styling. Copy: „Codzienna dostępność zdrowego jedzenia jako benefit w Twoim biurze." Dwa warianty: pionowy (Stories) i kwadratowy (Feed).</div>
+    <div class="ad-cta" style="border-color:#1877F2; color:#1877F2;">Sprawdź →</div>
+    <div class="ad-meta">Format: 1080×1080 + 9:16 · Placement: FB + IG Feed + Stories · Status: ✅ kreacja gotowa</div>
+  </div>
+
+  <!-- Ad 6 — gotowa kreacja -->
+  <div class="ad-mock">
+    <div class="ad-mock-label" style="background:rgba(24,119,242,0.15); color:#1877F2;">Statyczna grafika · Kawa (Facebook + Instagram)</div>
+    <div style="font-size:10px; color:var(--text-dim); margin-bottom:10px;">BetterWorkplace · Sponsorowane</div>
+    <h4>Kawa to standard?</h4>
+    <div class="ad-desc">Visual: Ziarna kawy na ciemnym tle, premium klimat. Copy: „Zadbaj o to by jej jakość była najlepsza, a dostawy i zamówienia bezproblemowe." Kreacja rozszerza ekosystem poza owoce.</div>
+    <div class="ad-cta" style="border-color:#1877F2; color:#1877F2;">Sprawdź →</div>
+    <div class="ad-meta">Format: 1080×1080 · Placement: FB + IG Feed · Status: ✅ kreacja gotowa</div>
+  </div>
+
+  <!-- Ad 7 — do przygotowania -->
+  <div class="ad-mock">
+    <div class="ad-mock-label" style="background:rgba(24,119,242,0.15); color:#1877F2;">Krótkie wideo 15s (Instagram/Facebook)</div>
+    <div style="font-size:10px; color:var(--text-dim); margin-bottom:10px;">BetterWorkplace · Sponsorowane</div>
+    <h4>Masz Multisport. Masz Medicover. A co z żywieniem?</h4>
+    <div class="ad-desc">Scenariusz: Dynamiczne ujęcia biura → zoom na pustą kuchnię → cut do pełnego stołu z BetterWorkplace → tekst na ekranie „Trzeci filar benefitów" → logo + CTA. Format native do Stories/Reels — full-screen, vertical, z muzyką.</div>
+    <div class="ad-cta" style="border-color:#1877F2; color:#1877F2;">Swipe up →</div>
+    <div class="ad-meta">Format: 9:16 · Czas: 15s · Placement: IG Stories + Reels · Cel: obejrzenia wideo + kliknięcia na stronę · Status: 🔲 do przygotowania</div>
+  </div>
+
+  <div style="background:var(--lime-dim); border:1px solid rgba(200,241,53,0.15); border-left:3px solid var(--lime); padding:16px 18px; margin-top:8px;">
+    <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--lime); margin-bottom:6px;">Rekomendacja</div>
+    <div style="font-size:13px; color:var(--text-muted); line-height:1.7;">Od pierwszego dnia zbieramy dane o odwiedzających stronę z LinkedIn, żeby na tej podstawie znaleźć podobne osoby na Facebooku. Zaczynamy od wideo + karuzeli — testujemy 3 warianty przekazu. Po 7 dniach wyłączamy słabszą reklamę i dodajemy grafikę z najlepszym przekazem.</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════ -->
+<!-- GOOGLE -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section" id="s_google">
+  <div class="sec-eyebrow" style="color:#34A853;">Kanał 03</div>
+  <h1 class="sec-title">Google <span>Ads</span></h1>
+  <div style="font-size:12px; color:var(--text-dim); margin-top:-6px; margin-bottom:8px;">Budżet: 4 000 PLN (BW 3 000 + DF 1 000) · Łapiemy zainteresowanych</div>
+  <p class="sec-sub">Google łapie ludzi, którzy sami szukają rozwiązań. BW (3k): search „benefity" + display remarketing. DF (1k): search „owoce do biura", „catering biurowy".</p>
+
+  <!-- Campaigns -->
+  <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;">Struktura kampanii</div>
+
+  <div class="grid-2" style="margin-bottom:20px;">
+    <div style="background:var(--card2); border:1px solid var(--border2); padding:18px; border-top:3px solid #34A853;">
+      <div style="font-size:12px; font-weight:700; color:#34A853; margin-bottom:10px;">Kampania 1: Reklamy w wyszukiwarce · 2 500 PLN</div>
+      <div style="font-size:12px; color:var(--text-muted); line-height:1.8;">
+        <strong style="color:var(--text);">Grupa reklam 1 — Benefity:</strong><br>
+        „benefity pracownicze firmy", „nowe benefity dla pracowników", „benefity pozapłacowe 2026"<br><br>
+        <strong style="color:var(--text);">Grupa reklam 2 — Dobrostan w firmie:</strong><br>
+        „wellbeing w firmie", „program wellbeing pracowników", „zdrowie w miejscu pracy"<br><br>
+        <strong style="color:var(--text);">Grupa reklam 3 — Powiązane z marką:</strong><br>
+        „owocowe czwartki firma", „owoce do biura", „catering biurowy benefit"
+      </div>
+    </div>
+    <div style="background:var(--card2); border:1px solid var(--border2); padding:18px; border-top:3px solid #34A853;">
+      <div style="font-size:12px; font-weight:700; color:#34A853; margin-bottom:10px;">Kampania 2: Banery przypominające · 1 500 PLN</div>
+      <div style="font-size:12px; color:var(--text-muted); line-height:1.8;">
+        <strong style="color:var(--text);">Dla kogo:</strong> Osoby, które odwiedziły stronę (z dowolnego źródła) — minimum 100 osób<br><br>
+        <strong style="color:var(--text);">Format reklamy:</strong> Elastyczne banery z 3 wariantami nagłówka + 2 warianty opisu<br><br>
+        <strong style="color:var(--text);">Frequency cap:</strong> Każda osoba zobaczy max 3 banery dziennie<br><br>
+        <strong style="color:var(--text);">Cel:</strong> Przypomnienie o BW + ponowna wizyta na stronie
+      </div>
+    </div>
+  </div>
+
+  <!-- Search ad examples -->
+  <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;">Przykłady reklam Search</div>
+
+  <!-- Ad 1 -->
+  <div class="ad-mock">
+    <div class="ad-mock-label" style="background:rgba(52,168,83,0.15); color:#34A853;">Reklama w wyszukiwarce · Benefity</div>
+    <div style="font-size:10px; color:#34A853; margin-bottom:6px;">Reklama · betterworkplace.pl</div>
+    <h4>Trzeci Filar Benefitów | BetterWorkplace</h4>
+    <div class="ad-desc">Obok Multisportu i Medicover — żywienie biurowe jako strategiczny benefit. Jeden ekosystem: owoce, lunche, paczki, zarządzanie budżetem. Sprawdź, jak firmy 200+ redukują rotację.</div>
+    <div class="ad-meta" style="margin-top:8px;">Nagłówki: 3 warianty · Opisy: 2 warianty · Dodatkowe linki: cennik, dla HR, owocowe czwartki, o nas</div>
+  </div>
+
+  <!-- Ad 2 -->
+  <div class="ad-mock">
+    <div class="ad-mock-label" style="background:rgba(52,168,83,0.15); color:#34A853;">Reklama w wyszukiwarce · Wellbeing</div>
+    <div style="font-size:10px; color:#34A853; margin-bottom:6px;">Reklama · betterworkplace.pl</div>
+    <h4>Program Wellbeing dla Firm | Od Strategii do Wdrożenia</h4>
+    <div class="ad-desc">Nie kolejna platforma kafeteryjna. BetterWorkplace to ekosystem żywieniowego wellbeingu: od owoców po pełne żywienie biurowe. Dołącz do firm, które traktują żywienie jako benefit, nie koszt kuchni.</div>
+    <div class="ad-meta" style="margin-top:8px;">Nagłówki: 3 warianty · Opisy: 2 warianty · Wykluczone hasła (żeby nie płacić za nietrafione kliknięcia): „praca", „oferta pracy", „dieta"</div>
+  </div>
+
+  <!-- Ad 3 -->
+  <div class="ad-mock">
+    <div class="ad-mock-label" style="background:rgba(52,168,83,0.15); color:#34A853;">Reklama w wyszukiwarce · Owocowe Czwartki</div>
+    <div style="font-size:10px; color:#34A853; margin-bottom:6px;">Reklama · betterworkplace.pl</div>
+    <h4>Owocowe Czwartki to Dopiero Początek | BetterWorkplace</h4>
+    <div class="ad-desc">Dostarczamy owoce do biur od 2009 roku. Dziś to cały ekosystem: DailyFruits, DailyFoods, Sendgift i więcej. Zrób z tego strategiczny benefit — nie tylko pozycję na fakturze.</div>
+    <div class="ad-meta" style="margin-top:8px;">Hasła markowe + kategoriowe · Szac. koszt kliknięcia: 2–4 PLN (mniejsza konkurencja na te hasła)</div>
+  </div>
+
+  <div style="background:var(--lime-dim); border:1px solid rgba(200,241,53,0.15); border-left:3px solid var(--lime); padding:16px 18px; margin-top:8px;">
+    <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--lime); margin-bottom:6px;">Rekomendacja</div>
+    <div style="font-size:13px; color:var(--text-muted); line-height:1.7;">Reklamy w wyszukiwarce włączamy od pierwszego dnia — ludzie cały czas szukają tych haseł. Banery przypominające włączamy po 7–10 dniach, gdy stronę odwiedzi min. 100 osób. Od razu wykluczamy hasła związane z szukaniem pracy i dietą, żeby nie marnować budżetu.</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════ -->
+<!-- DF STREAM -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section" id="s_df">
+  <div class="sec-eyebrow" style="color:var(--green);">Nurt 02</div>
+  <h1 class="sec-title">DailyFruits <span>Stream</span></h1>
+  <div style="font-size:12px; color:var(--text-dim); margin-top:-6px; margin-bottom:8px;">Budżet: 4 000 PLN · Meta 3k + Google 1k · Punkt wejścia do ekosystemu</div>
+  <p class="sec-sub">DF stream ma jedno zadanie: tani ruch produktowy, który karmi retargeting BW. Office Manager klika na owoce — i za tydzień widzi „trzeci filar benefitów" na Facebooku. punkt wejścia do ekosystemu.</p>
+
+  <!-- Dlaczego DF osobno -->
+  <div style="background:var(--green-dim); border:1px solid rgba(34,197,94,0.15); border-left:3px solid var(--green); padding:16px 18px; margin-bottom:20px;">
+    <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green); margin-bottom:6px;">Dlaczego osobny stream</div>
+    <div style="font-size:13px; color:var(--text-muted); line-height:1.7;">DF to punkt wejścia do ekosystemu. 80% klientów BW zaczyna od owoców. Przy koszt 1000 wyświetleń: 6–12 zł na Facebooku (na LinkedIn to 45–65 zł), 3k PLN generuje 250–500 tys. wyświetleń. To 3x więcej niż za te same pieniądze na LinkedIn. Tani ruch → retargeting → eskalacja do BW messaging.</div>
+  </div>
+
+  <!-- DF targeting -->
+  <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;">Targeting DF</div>
+
+  <div class="grid-2" style="margin-bottom:20px;">
+    <div style="background:var(--card2); border:1px solid var(--border2); padding:18px;">
+      <div style="font-size:11px; font-weight:700; color:var(--green); margin-bottom:10px;">Meta: Office & Facility Managers</div>
+      <div style="font-size:12px; color:var(--text-muted); line-height:1.8;">
+        <strong style="color:var(--text);">Zainteresowania:</strong> Office management, Facility management, Catering, Healthy eating<br>
+        <strong style="color:var(--text);">Stanowisko:</strong> Office Manager, Facility Manager, Admin<br>
+        <strong style="color:var(--text);">Wiek:</strong> 25–45<br>
+        <strong style="color:var(--text);">Lokalizacja:</strong> Warszawa, Kraków, Wrocław, Poznań, Trójmiasto, Łódź<br>
+        <strong style="color:var(--text);">Gdzie wyświetlamy:</strong> FB Feed, IG Feed, IG Stories
+      </div>
+    </div>
+    <div style="background:var(--card2); border:1px solid var(--border2); padding:18px;">
+      <div style="font-size:11px; font-weight:700; color:var(--green); margin-bottom:10px;">Google: Product Intent</div>
+      <div style="font-size:12px; color:var(--text-muted); line-height:1.8;">
+        <strong style="color:var(--text);">Frazy:</strong> „owoce do biura", „owocowe czwartki firma", „dostawa owoców biuro", „catering biurowy owoce"<br>
+        <strong style="color:var(--text);">Wykluczone hasła:</strong> „hurtownia", „sklep", „dieta", „przepis"<br>
+        <strong style="color:var(--text);">Lokalizacja:</strong> Duże miasta PL<br>
+        <strong style="color:var(--text);">Szac. koszt kliknięcia:</strong> 2–5 zł
+      </div>
+    </div>
+  </div>
+
+  <!-- DF Ad examples -->
+  <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;">Przykłady kreacji DF</div>
+
+  <div style="background:var(--green-dim); border:1px solid rgba(34,197,94,0.15); border-left:3px solid var(--green); padding:16px 18px; margin-bottom:14px;">
+    <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green); margin-bottom:6px;">Uwaga o kreacjach</div>
+    <div style="font-size:13px; color:var(--text-muted); line-height:1.7;">Gotowe kreacje BW (owoce, wellbeing, abonament, kanapki, kawa, lepsze jedzenie) mogą być wykorzystane również w DF streamie z drobną zmianą: zamiana logo na DailyFruits i dodanie dopisku „by BetterWorkplace". Poniżej kreacje specyficzne dla DF streamu, do przygotowania.</div>
+  </div>
+
+  <!-- DF Ad 1 — do przygotowania -->
+  <div class="ad-mock">
+    <div class="ad-mock-label" style="background:rgba(34,197,94,0.15); color:var(--green);">Meta · Reels/Stories 15s</div>
+    <div style="font-size:10px; color:var(--text-dim); margin-bottom:10px;">DailyFruits · Sponsorowane</div>
+    <h4>Owocowe Czwartki? Robimy to od 2009.</h4>
+    <div class="ad-desc">Scenariusz: Timelapse — kosze owoców wchodzą do biura → uśmiechnięci ludzie → zoom na logo „DailyFruits, by BetterWorkplace" → tekst: „Świeże owoce. Każdego dnia. Do Twojego biura." Vibe: energiczny, ciepły, lifestyle biurowy.</div>
+    <div class="ad-cta" style="border-color:var(--green); color:var(--green);">Zamów dostawę →</div>
+    <div class="ad-meta">Format: 9:16 · 15s · Placement: IG Stories + Reels + FB Reels · Status: 🔲 do przygotowania</div>
+  </div>
+
+  <!-- DF Ad 2 — Google Search -->
+  <div class="ad-mock">
+    <div class="ad-mock-label" style="background:rgba(52,168,83,0.15); color:#34A853;">Google Search</div>
+    <div style="font-size:10px; color:#34A853; margin-bottom:6px;">Reklama · dailyfruits.pl</div>
+    <h4>Owoce do Biura od DailyFruits | Dostawa w 24h</h4>
+    <div class="ad-desc">Świeże owoce, zdrowe przekąski i kawa do Twojego biura. Dostarczamy od 2009 roku. Zamów próbną dostawę, bez zobowiązań. Obsługujemy firmy od 20 do 5000+ osób.</div>
+    <div class="ad-meta" style="margin-top:8px;">Dodatkowe linki (Cennik, Dla HR, Owocowe Czwartki, O nas) · Podpisy: „Od 2009 roku", „Darmowa dostawa" · Status: 🔲 do przygotowania</div>
+  </div>
+
+  <!-- Cross-pollination -->
+  <div style="background:var(--lime-dim); border:1px solid rgba(200,241,53,0.15); border-left:3px solid var(--lime); padding:16px 18px; margin-top:8px;">
+    <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--lime); margin-bottom:6px;">Połączenie z BetterWorkplace</div>
+    <div style="font-size:13px; color:var(--text-muted); line-height:1.7;">Każdy visitor DF automatycznie trafia do lista odbiorców na Meta i Google → w kolejnym tygodniu zobaczy reklamę BW o „trzecim filarze benefitów". Dopisek „by BetterWorkplace" w kreacjach DF buduje świadomość marki nadrzędnej od pierwszego kontaktu. Koszt pozyskania tego visitora to ~1,5 zł vs ok. 10 zł na LinkedIn.</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════ -->
+<!-- TIMELINE -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section" id="s_timeline">
+  <div class="sec-eyebrow" style="color:var(--warn);">Wdrożenie</div>
+  <h1 class="sec-title">Timeline <span>i next steps</span></h1>
+  <p class="sec-sub">4-tygodniowy plan uruchomienia kampanii. Zakładamy gotowy LP i dostępność materiałów wizualnych.</p>
+
+  <!-- Timeline -->
+  <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:24px;">
+
+    <div style="background:var(--card2); border:1px solid var(--border2); padding:18px; border-left:3px solid var(--green);">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+        <div style="font-size:10px; font-weight:700; padding:2px 8px; background:var(--green-dim); color:var(--green);">TYDZIEŃ 1</div>
+        <div style="font-size:12px; font-weight:700;">Przygotowanie i start</div>
+      </div>
+      <div style="font-size:12px; color:var(--text-muted); line-height:1.8;">
+        Instalacja kodów śledzących na stronie docelowej (potrzebne do mierzenia wyników) · Konfiguracja kont reklamowych · Stworzenie grup odbiorców w LinkedIn · Przesłanie reklam (3 wersje na każdy kanał) · Start: LinkedIn Search Ads (always-on) + LinkedIn Sponsored Content · Start: Google Search
+      </div>
+    </div>
+
+    <div style="background:var(--card2); border:1px solid var(--border2); padding:18px; border-left:3px solid var(--blue);">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+        <div style="font-size:10px; font-weight:700; padding:2px 8px; background:var(--blue-dim); color:var(--blue);">TYDZIEŃ 2</div>
+        <div style="font-size:12px; font-weight:700;">Start reklam na FB/IG + pierwsza korekta</div>
+      </div>
+      <div style="font-size:12px; color:var(--text-muted); line-height:1.8;">
+        Start reklam na FB/IG (wideo + karuzela) · Stworzenie grupy osób podobnych do odwiedzających stronę z tygodnia 1 · Pierwsza korekta LinkedIn: wyłączamy słabe reklamy, zwiększamy budżet na skuteczne · Przegląd wyników: procent kliknięć, koszt kliknięcia, zaangażowanie — osobno dla każdej reklamy
+      </div>
+    </div>
+
+    <div style="background:var(--card2); border:1px solid var(--border2); padding:18px; border-left:3px solid var(--purple);">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+        <div style="font-size:10px; font-weight:700; padding:2px 8px; background:var(--purple-dim); color:var(--purple);">TYDZIEŃ 3</div>
+        <div style="font-size:12px; font-weight:700;">Banery przypominające + poprawki</div>
+      </div>
+      <div style="font-size:12px; color:var(--text-muted); line-height:1.8;">
+        Włączamy banery przypominające w Google (gdy stronę odwiedziło min. 100 osób) · Nowa wersja reklamy z przekazem, który najlepiej zadziałał · Przesunięcie budżetu: zabieramy pieniądze z kanału, gdzie kliknięcia są najdroższe · Testowanie dwóch wersji strony docelowej (jeśli możliwe)
+      </div>
+    </div>
+
+    <div style="background:var(--card2); border:1px solid var(--border2); padding:18px; border-left:3px solid var(--warn);">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+        <div style="font-size:10px; font-weight:700; padding:2px 8px; background:var(--warn-dim); color:var(--warn);">TYDZIEŃ 4</div>
+        <div style="font-size:12px; font-weight:700;">Podsumowanie i decyzja o dalszych krokach</div>
+      </div>
+      <div style="font-size:12px; color:var(--text-muted); line-height:1.8;">
+        Pełne podsumowanie: wyświetlenia, kliknięcia, koszt kliknięcia, ile osób odwiedziło stronę · Raport z rekomendacją: zwiększyć budżet, zmienić reklamy, albo zmienić kanał · Decyzja o następnym etapie: kampania zbierająca kontakty z bazy odwiedzających
+      </div>
+    </div>
+
+  </div>
+
+  <!-- What's needed -->
+  <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;">Co jest potrzebne do startu</div>
+
+  <div class="grid-2" style="margin-bottom:20px;">
+    <div style="background:var(--card2); border:1px solid var(--border2); padding:18px;">
+      <div style="font-size:12px; font-weight:700; color:var(--green); margin-bottom:8px;">Niezbędne do startu</div>
+      <div style="font-size:12px; color:var(--text-muted); line-height:1.8;">
+        Strona docelowa z kodami śledzącymi (Meta + Google)<br>
+        Konto LinkedIn Campaign Manager<br>
+        Konto Google Ads + Merchant Center<br>
+        Konto Meta Business Manager<br>
+        Materiały: min. 3 grafiki 1080×1080 + 1 wideo 15s<br>
+        <span style="color:var(--green);">✅ 7 kreacji BW gotowych (Meta): owoce, wellbeing, abonament, lepsze jedzenie, kanapki, kawa + warianty Stories</span><br>
+        <span style="color:var(--warn);">🔲 Wideo BW 15s (Meta): do przygotowania</span><br>
+        <span style="color:var(--warn);">🔲 Kreacje LinkedIn BW: do przygotowania (grafika + PDF dokument + wideo)</span><br>
+        <span style="color:var(--warn);">🔲 Wideo DF 15s (Meta Reels): do przygotowania</span>
+      </div>
+    </div>
+    <div style="background:var(--card2); border:1px solid var(--border2); padding:18px;">
+      <div style="font-size:12px; font-weight:700; color:var(--blue); margin-bottom:8px;">Przydatne, ale nie konieczne</div>
+      <div style="font-size:12px; color:var(--text-muted); line-height:1.8;">
+        Oznaczanie linków do śledzenia wyników (Google Analytics)<br>
+        Połączenie z systemem zarządzania klientami<br>
+        Dokument PDF do reklamy dokumentu LinkedIn<br>
+        Druga wersja strony docelowej do testów<br>
+        Lista emaili obecnych klientów DailyFruits
+      </div>
+    </div>
+  </div>
+
+  <!-- Faza 2 hint -->
+  <div style="background:var(--lime-dim); border:1px solid rgba(200,241,53,0.15); border-left:3px solid var(--lime); padding:16px 18px;">
+    <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--lime); margin-bottom:6px;">Co dalej — Faza 2 kampanii</div>
+    <div style="font-size:13px; color:var(--text-muted); line-height:1.7;">Po 4 tygodniach mamy bazę odwiedzających 3k+ osób, dane o najskuteczniejszych hookach i kanałach, oraz brand recall wśród HR. Faza 2 to konwersja: formularze kontaktowe LinkedIn, materiały do pobrania (kalkulator zwrotu z inwestycji, raport branżowy), seria emaili budujących relację. Sugerowany budżet: 30–50 tys. PLN miesięcznie.</div>
+  </div>
+</div>
+
+</main>
+
+</div><!-- /main-content -->
+
+<script>
+function hashStr(s){let h=0;for(let i=0;i<s.length;i++){h=((h<<5)-h)+s.charCodeAt(i);h|=0;}return h;}
+function checkPw(){
+  const v=document.getElementById('pw-input').value;
+  if(hashStr(v)===1556321568){
+    document.getElementById('pw-screen').style.display='none';
+    const mc=document.getElementById('main-content');
+    mc.style.display='flex';
+    sessionStorage.setItem('bw_perf_auth','1');
+  } else {
+    document.getElementById('pw-err').textContent='Nieprawidłowe hasło';
+  }
+}
+if(sessionStorage.getItem('bw_perf_auth')==='1'){
+  document.getElementById('pw-screen').style.display='none';
+  document.getElementById('main-content').style.display='flex';
+}
+
+function show(id, el) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+  document.querySelector('.main').scrollTo(0, 0);
+}
+</script>
+
+</body>
+</html>
