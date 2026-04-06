@@ -148,41 +148,10 @@ nav { flex:1; padding:12px 0; }
 .kpi-val { font-size:28px; font-weight:800; letter-spacing:-1px; }
 .kpi-label { font-size:10px; color:var(--text-dim); margin-top:4px; letter-spacing:0.5px; }
 
-/* Password */
-#pw-screen {
-  position:fixed; inset:0; z-index:9999;
-  background:var(--bg);
-  display:flex; align-items:center; justify-content:center;
-  flex-direction:column; gap:18px;
-}
-#pw-screen .pw-logo { font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--lime); }
-#pw-screen input {
-  background:var(--card); border:1px solid var(--border2); color:var(--text);
-  padding:12px 18px; font-size:14px; font-family:'DM Sans',sans-serif;
-  width:260px; text-align:center; outline:none;
-}
-#pw-screen input:focus { border-color:var(--lime); }
-#pw-screen .pw-btn {
-  background:var(--lime); color:#000; border:none; padding:10px 32px;
-  font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase;
-  cursor:pointer; font-family:'DM Sans',sans-serif;
-}
-#pw-screen .pw-err { color:var(--red); font-size:11px; height:16px; }
-#main-content { display:none; }
 </style>
 </head>
 <body>
 
-<div id="pw-screen">
-  <div class="pw-logo">BetterWorkplace</div>
-  <div style="font-size:22px; font-weight:700; color:var(--text); letter-spacing:-0.5px;">Performance Campaign</div>
-  <div style="font-size:12px; color:var(--text-muted);">Wpisz hasło, aby zobaczyć dokument</div>
-  <input type="password" id="pw-input" placeholder="Hasło" onkeydown="if(event.key==='Enter')checkPw()">
-  <button class="pw-btn" onclick="checkPw()">Wejdź</button>
-  <div class="pw-err" id="pw-err"></div>
-</div>
-
-<div id="main-content">
 
 <aside class="sidebar">
   <div class="sb-head">
@@ -923,26 +892,7 @@ nav { flex:1; padding:12px 0; }
 
 </main>
 
-</div><!-- /main-content -->
-
 <script>
-function hashStr(s){let h=0;for(let i=0;i<s.length;i++){h=((h<<5)-h)+s.charCodeAt(i);h|=0;}return h;}
-function checkPw(){
-  const v=document.getElementById('pw-input').value;
-  if(hashStr(v)===1556321568){
-    document.getElementById('pw-screen').style.display='none';
-    const mc=document.getElementById('main-content');
-    mc.style.display='flex';
-    sessionStorage.setItem('bw_perf_auth','1');
-  } else {
-    document.getElementById('pw-err').textContent='Nieprawidłowe hasło';
-  }
-}
-if(sessionStorage.getItem('bw_perf_auth')==='1'){
-  document.getElementById('pw-screen').style.display='none';
-  document.getElementById('main-content').style.display='flex';
-}
-
 function show(id, el) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
