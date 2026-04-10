@@ -611,9 +611,6 @@ body {
       <a class="nav-item" href="#" onclick="show('s07',this)">
         <span class="nd nd-green"></span> Mapa ścieżek
       </a>
-      <a class="nav-item" href="#" onclick="show('s08',this)">
-        <span class="nd nd-green"></span> Plan wdrożenia
-      </a>
     </div>
 
     <div class="sb-group">
@@ -742,6 +739,7 @@ body {
     <button class="mood-tab active" onclick="switchMood('df',this)">DailyFruits</button>
     <button class="mood-tab" onclick="switchMood('bw',this)">BetterWorkplace</button>
     <button class="mood-tab" style="opacity:0.3; cursor:not-allowed; pointer-events:none;">DailyFoods</button>
+    <button class="mood-tab" style="opacity:0.3; cursor:not-allowed; pointer-events:none;">BetterOffice</button>
     <button class="mood-tab" style="opacity:0.3; cursor:not-allowed; pointer-events:none;">TeamBudget</button>
     <button class="mood-tab" style="opacity:0.3; cursor:not-allowed; pointer-events:none;">SendGift</button>
   </div>
@@ -869,7 +867,7 @@ body {
   <div class="grid-2" style="margin-bottom:16px;">
     <div class="card">
       <h3>Gdzie jesteśmy teraz</h3>
-      <p>5 bytów markowych, brak spójnej narracji. Klient kupuje owoce od DailyFruits, kawę zamawia osobno, i nie wie że mógłby mieć pełne żywienie biurowe (DailyFoods) + paczki (Sendgift) + zarządzanie (TeamBudget) od jednego partnera. Cross-sell rate poniżej potencjału, decyzje trafiają do OM zamiast do HR.</p>
+      <p>5 bytów markowych, brak spójnej narracji. Klient kupuje owoce od DailyFruits, kawę zamawia osobno od Małej Palarni (przyszłe BetterOffice), i nie wie że mógłby mieć pełne żywienie biurowe (DailyFoods) + wyposażenie kuchni (BetterOffice) + paczki (Sendgift) + zarządzanie (TeamBudget) od jednego partnera. Cross-sell rate poniżej potencjału, decyzje trafiają do OM zamiast do HR.</p>
     </div>
     <div class="card">
       <h3>Gdzie chcemy być po Fazie 1</h3>
@@ -1032,7 +1030,7 @@ body {
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
       <div style="background:var(--card); border:1px solid var(--border); padding:14px;">
         <div style="font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;">Co odkryliśmy</div>
-        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">5 marek, 3 domeny, zero spójnej narracji. Klient kupuje owoce od DailyFruits i nie wie, że może mieć kawę i lunche (DailyFoods), paczki (Sendgift) i zarządzanie benefitami (TeamBudget) od tego samego partnera.</div>
+        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">5 marek, 3 domeny, zero spójnej narracji. Klient kupuje owoce od DailyFruits i nie wie, że może mieć kawę i lunche (DailyFoods), kuchnię biurową pod klucz (BetterOffice), paczki (Sendgift) i zarządzanie benefitami (TeamBudget) od tego samego partnera.</div>
       </div>
       <div style="background:var(--card); border:1px solid var(--border); padding:14px;">
         <div style="font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;">Główny problem</div>
@@ -1166,7 +1164,7 @@ body {
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px;">
       <div style="background:var(--card); border:1px solid var(--border); padding:14px;">
         <div style="font-size:10px; font-weight:700; color:var(--red); margin-bottom:6px;">Problem</div>
-        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">Osobne narracje, zero połączeń. Klient kupujący owoce od DailyFruits nie wie, że może mieć kawę i lunche (DailyFoods), paczki (Sendgift) i zarządzanie benefitami (TeamBudget) od tego samego partnera. Stracone przychody.</div>
+        <div style="font-size:13px; color:var(--text-muted); line-height:1.6;">Osobne narracje, zero połączeń. Klient kupujący owoce od DailyFruits nie wie, że może mieć kawę i lunche (DailyFoods), kuchnię biurową (BetterOffice), paczki (Sendgift) i zarządzanie benefitami (TeamBudget) od tego samego partnera. Stracone przychody.</div>
       </div>
       <div style="background:var(--card); border:1px solid var(--border); padding:14px;">
         <div style="font-size:10px; font-weight:700; color:var(--green); margin-bottom:6px;">Gdzie to rozwiązujemy</div>
@@ -1251,33 +1249,43 @@ body {
     <!-- ═══ TIER 2: ENDORSED BRANDS ═══ -->
     <div style="display:grid; grid-template-columns:1fr 48px 1fr; gap:0; align-items:stretch; margin-bottom:0; position:relative; z-index:1;">
 
-      <!-- DailyFruits -->
+      <!-- DailyFruits + DailyFoods (sub-brand) -->
       <div class="arch-node" style="background:var(--green-dim); border-color:rgba(34,197,94,0.25); padding:20px 16px;">
         <div class="arch-node-tier" style="color:var(--green);">Tier 2 · Endorsed Brand</div>
         <div class="arch-node-name" style="font-size:18px;">DailyFruits</div>
         <div class="arch-node-role">Revenue driver · Owoce do biur<br>Audience: Office Manager</div>
         <div class="arch-endorsed">by BetterWorkplace</div>
+        <!-- DailyFoods sub-brand nested -->
+        <div style="margin-top:12px; padding:10px 12px; background:rgba(168,85,247,0.06); border:1px dashed rgba(168,85,247,0.25); border-radius:8px;">
+          <div style="font-size:8px; letter-spacing:1.5px; text-transform:uppercase; color:var(--purple); font-weight:600; margin-bottom:4px;">Sub-brand</div>
+          <div style="font-size:14px; font-weight:700; color:var(--text);">DailyFoods</div>
+          <div style="font-size:10px; color:var(--text-muted); margin-top:2px;">Kawa, lunche, kanapki · Rozszerzenie oferty DF</div>
+          <div style="display:flex; gap:4px; margin-top:6px; flex-wrap:wrap;">
+            <div class="arch-node-tag" style="background:rgba(168,85,247,0.08); color:var(--purple); border:1px solid rgba(168,85,247,0.15); font-size:7px;">pełne żywienie biurowe</div>
+            <div class="arch-node-tag" style="background:rgba(168,85,247,0.08); color:var(--purple); border:1px solid rgba(168,85,247,0.15); font-size:7px;">wzrost koszyka</div>
+          </div>
+        </div>
         <div style="display:flex; gap:4px; justify-content:center; margin-top:10px; flex-wrap:wrap;">
           <div class="arch-node-tag" style="background:rgba(34,197,94,0.08); color:var(--green); border:1px solid rgba(34,197,94,0.15); font-size:8px;">główne źródło przychodu</div>
           <div class="arch-node-tag" style="background:rgba(34,197,94,0.08); color:var(--green); border:1px solid rgba(34,197,94,0.15); font-size:8px;">punkt wejścia do ekosystemu</div>
         </div>
       </div>
 
-      <!-- Cross-sell arrow between DF and DFo -->
+      <!-- Cross-sell arrow between DF and TB -->
       <div class="arch-xsell" style="flex-direction:column; display:flex; align-items:center; justify-content:center;">
         <div style="font-size:8px; color:var(--warn); opacity:0.6; letter-spacing:1px; text-transform:uppercase; writing-mode:vertical-lr; transform:rotate(180deg); margin-bottom:4px;">cross-sell</div>
         <div style="font-size:16px; color:var(--warn); opacity:0.5;">⇄</div>
       </div>
 
-      <!-- DailyFoods -->
-      <div class="arch-node" style="background:var(--purple-dim); border-color:rgba(168,85,247,0.25); padding:20px 16px;">
-        <div class="arch-node-tier" style="color:var(--purple);">Tier 2 · Endorsed Brand</div>
-        <div class="arch-node-name" style="font-size:18px;">DailyFoods</div>
-        <div class="arch-node-role">Siostrzany brand · Kawa, lunche, kanapki<br>Audience: Office Manager</div>
+      <!-- TeamBudget -->
+      <div class="arch-node" style="background:var(--blue-dim); border-color:rgba(59,130,246,0.25); padding:20px 16px;">
+        <div class="arch-node-tier" style="color:var(--blue);">Tier 2 · Product Brand</div>
+        <div class="arch-node-name" style="font-size:18px;">TeamBudget</div>
+        <div class="arch-node-role">Platforma SaaS · Zarządzanie benefitami<br>Audience: HR + Finanse</div>
         <div class="arch-endorsed">by BetterWorkplace</div>
         <div style="display:flex; gap:4px; justify-content:center; margin-top:10px; flex-wrap:wrap;">
-          <div class="arch-node-tag" style="background:rgba(168,85,247,0.08); color:var(--purple); border:1px solid rgba(168,85,247,0.15); font-size:8px;">pełne żywienie biurowe</div>
-          <div class="arch-node-tag" style="background:rgba(168,85,247,0.08); color:var(--purple); border:1px solid rgba(168,85,247,0.15); font-size:8px;">wzrost koszyka</div>
+          <div class="arch-node-tag" style="background:rgba(59,130,246,0.08); color:var(--blue); border:1px solid rgba(59,130,246,0.15); font-size:8px;">lock-in mechanizm</div>
+          <div class="arch-node-tag" style="background:rgba(59,130,246,0.08); color:var(--blue); border:1px solid rgba(59,130,246,0.15); font-size:8px;">platforma benefitowa</div>
         </div>
       </div>
     </div>
@@ -1287,17 +1295,17 @@ body {
       <div class="arch-label" style="margin:0 40px; padding:14px 0;">warstwa wiążąca ↓</div>
     </div>
 
-    <!-- ═══ TIER 3: PRODUCT & SEASONAL ═══ -->
+    <!-- ═══ TIER 3: SUPPORT & SEASONAL ═══ -->
     <div style="display:grid; grid-template-columns:1fr 48px 1fr; gap:0; align-items:stretch; position:relative; z-index:1;">
 
-      <!-- TeamBudget -->
-      <div class="arch-node" style="background:var(--blue-dim); border-color:rgba(59,130,246,0.2); padding:18px 16px;">
-        <div class="arch-node-tier" style="color:var(--blue);">Tier 3 · Product Brand</div>
-        <div class="arch-node-name" style="font-size:16px;">TeamBudget</div>
-        <div class="arch-node-role">Platforma SaaS · Zarządzanie benefitami<br>Audience: HR + Finanse</div>
+      <!-- BetterOffice -->
+      <div class="arch-node" style="background:rgba(14,165,233,0.04); border-color:rgba(14,165,233,0.2); padding:18px 16px;">
+        <div class="arch-node-tier" style="color:#0ea5e9;">Tier 3 · Support Brand</div>
+        <div class="arch-node-name" style="font-size:16px;">BetterOffice</div>
+        <div class="arch-node-role">Wyposażenie i artykuły biurowe<br>Audience: Office Manager, Administracja</div>
         <div style="display:flex; gap:4px; justify-content:center; margin-top:8px;">
-          <div class="arch-node-tag" style="background:rgba(59,130,246,0.08); color:var(--blue); border:1px solid rgba(59,130,246,0.15); font-size:8px;">lock-in mechanizm</div>
-          <div class="arch-node-tag" style="background:var(--red-dim); color:var(--red); border:1px solid rgba(239,68,68,0.15); font-size:8px;">faza 2+</div>
+          <div class="arch-node-tag" style="background:rgba(14,165,233,0.08); color:#0ea5e9; border:1px solid rgba(14,165,233,0.15); font-size:8px;">uzupełnienie ekosystemu</div>
+          <div class="arch-node-tag" style="background:rgba(14,165,233,0.08); color:#0ea5e9; border:1px solid rgba(14,165,233,0.15); font-size:8px;">cross-sell z DF</div>
         </div>
       </div>
 
@@ -1339,7 +1347,7 @@ body {
   <div class="finding" style="margin-bottom:10px;">
     <div class="finding-num">Logika wsparcia marki<br><span style="font-size:8px; color:var(--text-dim); font-weight:400; letter-spacing:1px;">ENDORSEMENT LOGIC</span></div>
     <h3>Dlaczego „by BetterWorkplace", a nie marki całkowicie niezależne?</h3>
-    <p>Model wspieranych marek pozwala każdemu bytowi zachować własną tożsamość (DailyFruits mówi o owocach, DailyFoods o kawie i lunchach), jednocześnie budując postrzeganą wartość przez połączenie z marką nadrzędną. Klient widzi: „to nie jest losowy dostawca – to część większego ekosystemu". To jest dźwignia do sprzedaży krzyżowej.</p>
+    <p>Model wspieranych marek pozwala każdemu bytowi zachować własną tożsamość (DailyFruits mówi o owocach, DailyFoods o kawie i lunchach, BetterOffice o kuchni biurowej), jednocześnie budując postrzeganą wartość przez połączenie z marką nadrzędną. Klient widzi: „to nie jest losowy dostawca – to część większego ekosystemu". To jest dźwignia do sprzedaży krzyżowej.</p>
     <div class="finding-arrow">→ Rezultat: wizualna mapa hierarchii + wytyczne stosowania „by BetterWorkplace" (kiedy, gdzie i w jakiej formie)</div>
   </div>
 
@@ -1551,6 +1559,65 @@ body {
     </div>
   </div>
 
+  <div class="card" style="border-left:3px solid #0ea5e9; margin-bottom:10px;">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+      <div style="width:42px; height:42px; border-radius:0; background:rgba(14,165,233,0.06); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; font-family:'DM Sans',system-ui,sans-serif; font-size:18px;">BO</div>
+      <div>
+        <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#0ea5e9;">Marka wspierana · Dawniej Mała Palarnia<br><span style="font-size:8px; opacity:0.5; letter-spacing:1px;">SUPPORT BRAND</span></div>
+        <div style="font-size:17px; font-weight:700;">BetterOffice</div>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+      <div style="background:var(--card2); border-radius:0; padding:10px 14px;">
+        <div style="font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:4px;">Rola</div>
+        <div style="font-size:13px; color:var(--text-muted);">Wyposażenie kuchni biurowej – kawa, serwis ekspresów, artykuły biurowe</div>
+      </div>
+      <div style="background:var(--card2); border-radius:0; padding:10px 14px;">
+        <div style="font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:4px;">Audience</div>
+        <div style="font-size:13px; color:var(--text-muted);">Office Manager, Facility Manager, Administracja</div>
+      </div>
+      <div style="background:var(--card2); border-radius:0; padding:10px 14px;">
+        <div style="font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:4px;">Obietnica</div>
+        <div style="font-size:13px; color:var(--text);">„Kuchnia biurowa pod kontrolą — kawa, serwis i zaopatrzenie w jednych rękach"</div>
+      </div>
+      <div style="background:var(--card2); border-radius:0; padding:10px 14px;">
+        <div style="font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:4px;">Ton</div>
+        <div style="font-size:13px; color:var(--text-muted);">Operacyjny, niezawodny, konkretny – partner OM, nie craft story</div>
+      </div>
+    </div>
+    <div style="background:var(--card2); border-radius:0; padding:10px 14px; margin-top:8px;">
+      <div style="font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:4px;">Terytorium</div>
+      <div style="font-size:13px; color:var(--text-muted);">Kawa (ziarnista, kapsułki, serwis ekspresów), artykuły jednorazowe, wyposażenie kuchni, zaopatrzenie biurowe – wszystko co operacyjne w przestrzeni biura</div>
+    </div>
+    <!-- BO: Obszar okazji – rebranding z Małej Palarni -->
+    <div style="background:rgba(14,165,233,0.04); border:1px solid rgba(14,165,233,0.15); border-left:3px solid #0ea5e9; padding:16px 18px; margin-top:10px;">
+      <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#0ea5e9; margin-bottom:8px;">Obszar okazji</div>
+      <div style="font-size:15px; font-weight:700; margin-bottom:8px;">Rebranding jako pełny reset pozycjonowania</div>
+      <div style="font-size:13px; color:var(--text-muted); line-height:1.7; margin-bottom:12px;">Mała Palarnia to rzemieślnicza kawa z Białegostoku – wąska nisza, entuzjaści kawy, mały koszyk. BetterOffice to zupełnie inna propozycja: <strong style="color:var(--text);">partner do zarządzania całą kuchnią biurową</strong>. Rebranding to nie zmiana loga – to szansa na otwarcie nowej kategorii, której stara marka nie mogła obsłużyć.</div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <div style="flex:1; min-width:140px; background:var(--card); border:1px solid var(--border); padding:10px 14px;">
+          <div style="font-size:10px; font-weight:700; color:#0ea5e9; margin-bottom:4px;">Powiększenie koszyka</div>
+          <div style="font-size:12px; color:var(--text-muted);">Klient kupuje nie tylko kawę, ale cały zestaw do kuchni biurowej – basket value rośnie 3–5×</div>
+        </div>
+        <div style="flex:1; min-width:140px; background:var(--card); border:1px solid var(--border); padding:10px 14px;">
+          <div style="font-size:10px; font-weight:700; color:#0ea5e9; margin-bottom:4px;">Cross-sell z DF</div>
+          <div style="font-size:12px; color:var(--text-muted);">Klient DF ma już owoce – kawa i wyposażenie kuchni to naturalny następny krok. Jeden partner.</div>
+        </div>
+        <div style="flex:1; min-width:140px; background:var(--card); border:1px solid var(--border); padding:10px 14px;">
+          <div style="font-size:10px; font-weight:700; color:#0ea5e9; margin-bottom:4px;">Nowa kategoria</div>
+          <div style="font-size:12px; color:var(--text-muted);">Z „palarnia kawy" na „partner kuchni biurowej" – inny rynek, inny budżet, inny decision maker.</div>
+        </div>
+        <div style="flex:1; min-width:140px; background:var(--card); border:1px solid var(--border); padding:10px 14px;">
+          <div style="font-size:10px; font-weight:700; color:#0ea5e9; margin-bottom:4px;">Etapowa migracja</div>
+          <div style="font-size:12px; color:var(--text-muted);">Etap 1: endorsement „by BW" na malapalarnia.pl. Etap 2: nowa strona betteroffice.pl. Etap 3: przekierowania 301 + pełny launch.</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:10px; padding:10px 14px; border:1px dashed rgba(14,165,233,0.2); background:rgba(14,165,233,0.03);">
+      <div style="font-size:11px; color:var(--text-dim); line-height:1.6;"><strong style="color:#0ea5e9;">Scope note:</strong> BetterOffice rebranding wchodzi w Fazę 2. Faza 1 ustala architekturę i definiuje rolę BO w ekosystemie. Szczegółowy plan migracji (timeline, SEO, identyfikacja wizualna) to osobny deliverable.</div>
+    </div>
+  </div>
+
   <div class="card" style="border-left:3px solid var(--blue); margin-bottom:10px;">
     <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
       <div style="width:42px; height:42px; border-radius:0; background:var(--blue-dim); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; font-family:'DM Sans',system-ui,sans-serif; font-size:18px;">TB</div>
@@ -1683,7 +1750,7 @@ body {
   <div class="finding" style="margin-bottom:10px;">
     <div class="finding-num">Warstwa 2 – Endorsed</div>
     <h3>Sub-brandy mówią "co" i "jak"</h3>
-    <p>DailyFruits: playful, ludzki, bliski pracownikowi. "Owocowe Czwartki", nie "program żywieniowy". DailyFoods: ta sama energia, szerszy stół. Kawa, kanapki, lunche – codzienne jedzenie, playful ton. Razem z DF tworzą rodzinę Daily* mówiącą do ludzi, nie do firm.</p>
+    <p>DailyFruits: playful, ludzki, bliski pracownikowi. "Owocowe Czwartki", nie "program żywieniowy". DailyFoods: ta sama energia, szerszy stół. Kawa, kanapki, lunche – codzienne jedzenie, playful ton. Razem z DF tworzą rodzinę Daily* mówiącą do ludzi, nie do firm. BetterOffice: operacyjny, konkretny, niezawodny — "kuchnia biurowa pod kontrolą". Inny ton niż Daily* — mówi do Office Managera językiem wygody i zarządzania przestrzenią, nie rytuału.</p>
   </div>
 
   <div class="finding" style="margin-bottom:10px;">
@@ -1711,7 +1778,7 @@ body {
       <div style="font-size:11px; color:var(--lime); margin-top:6px; font-weight:500;">Dźwignia: Owocowe Czwartki jako markowy rytuał DF</div>
     </div>
   </div>
-  <div class="grid-2">
+  <div class="grid-2" style="margin-bottom:10px;">
     <div style="background:var(--card2); border:1px solid var(--border2); border-radius:0; padding:16px;">
       <div style="font-size:11px; font-weight:700; color:var(--purple); margin-bottom:8px;">DailyFoods</div>
       <div style="font-size:12px; color:var(--text-dim); margin-bottom:4px;">DZIŚ:</div>
@@ -1721,11 +1788,28 @@ body {
       <div style="font-size:11px; color:var(--lime); margin-top:6px; font-weight:500;">Dźwignia: siostrzana marka DF → Daily* family</div>
     </div>
     <div style="background:var(--card2); border:1px solid var(--border2); border-radius:0; padding:16px;">
+      <div style="font-size:11px; font-weight:700; color:#0ea5e9; margin-bottom:8px;">BetterOffice</div>
+      <div style="font-size:12px; color:var(--text-dim); margin-bottom:4px;">DZIŚ:</div>
+      <div style="font-size:13px; color:var(--text-muted); margin-bottom:8px;">"Mała Palarnia kawy z Białegostoku"</div>
+      <div style="font-size:12px; color:var(--green); margin-bottom:4px;">CEL:</div>
+      <div style="font-size:13px; font-weight:600;">"Jeden partner do całej kuchni biurowej"</div>
+      <div style="font-size:11px; color:var(--lime); margin-top:6px; font-weight:500;">Dźwignia: rebranding MP → nowa kategoria, cross-sell z DF</div>
+    </div>
+  </div>
+  <div class="grid-2">
+    <div style="background:var(--card2); border:1px solid var(--border2); border-radius:0; padding:16px;">
       <div style="font-size:11px; font-weight:700; color:var(--blue); margin-bottom:8px;">TeamBudget</div>
       <div style="font-size:12px; color:var(--text-dim); margin-bottom:4px;">DZIS:</div>
       <div style="font-size:13px; color:var(--text-muted); margin-bottom:8px;">"Nieznany produkt"</div>
       <div style="font-size:12px; color:var(--green); margin-bottom:4px;">CEL:</div>
       <div style="font-size:13px; font-weight:600;">"Platforma zarządzania budżetem benefitów"</div>
+    </div>
+    <div style="background:var(--card2); border:1px solid var(--border2); border-radius:0; padding:16px;">
+      <div style="font-size:11px; font-weight:700; color:var(--warn); margin-bottom:8px;">Sendgift</div>
+      <div style="font-size:12px; color:var(--text-dim); margin-bottom:4px;">DZIŚ:</div>
+      <div style="font-size:13px; color:var(--text-muted); margin-bottom:8px;">"Jednorazowe paczki świąteczne"</div>
+      <div style="font-size:12px; color:var(--green); margin-bottom:4px;">CEL:</div>
+      <div style="font-size:13px; font-weight:600;">"Sezonowy gateway do całego ekosystemu BW"</div>
     </div>
   </div>
 
@@ -1853,6 +1937,13 @@ body {
         <div style="font-size:11px; color:var(--text-dim); margin-top:10px; padding-top:8px; border-top:1px solid var(--border);">Kanał: automatyczny email po 30, 60 i 90 dniach · Cel: klient DF zaczyna kupować też z DailyFoods</div>
       </div>
       <div style="background:var(--card); border:1px solid var(--border); padding:16px 18px;">
+        <div style="display:flex; align-items:center; gap:6px; margin-bottom:8px;"><span class="bt" style="background:rgba(14,165,233,0.08); color:#0ea5e9; font-size:10px; padding:2px 6px;">BO</span><span style="font-size:11px; color:var(--text-dim);">→ Office Manager</span></div>
+        <div style="font-size:14px; color:var(--text-muted); line-height:1.6;">„Masz owoce i jedzenie – a co z kawą i wyposażeniem kuchni? BetterOffice zamyka temat w jednych rękach."</div>
+        <div style="font-size:11px; color:var(--text-dim); margin-top:10px; padding-top:8px; border-top:1px solid var(--border);">Kanał: cross-sell email z DF/DFo, strona betteroffice.pl · Cel: klient dodaje kawę i zaopatrzenie kuchni</div>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr; gap:8px; margin-top:8px;">
+      <div style="background:var(--card); border:1px solid var(--border); padding:16px 18px;">
         <div style="display:flex; align-items:center; gap:6px; margin-bottom:8px;"><span class="bt bt-bw" style="font-size:10px; padding:2px 6px;">BW</span><span style="font-size:11px; color:var(--text-dim);">→ HR Director (nowy kontakt)</span></div>
         <div style="font-size:14px; color:var(--text-muted); line-height:1.6;">„Wasza firma już korzysta z DailyFruits – wiecie, że to może być pełny program wellbeingowy?"</div>
         <div style="font-size:11px; color:var(--text-dim); margin-top:10px; padding-top:8px; border-top:1px solid var(--border);">Kanał: LinkedIn, kontakt sprzedażowy · Cel: rozmowa przechodzi z Office Managera na HR Directora</div>
@@ -1924,6 +2015,38 @@ body {
     </div>
     <div class="callout" style="margin-top:12px; margin-bottom:0;">
       <p><strong>Dlaczego to jest w strategii:</strong> Ten email to najprostsza implementacja tego, co opisujemy w matrycy (Etap 2, cross-sell DF→DFo). Jeden automat, zero budżetu mediowego, mierzalny efekt. Wersje na dzień 60 i 90 budują na tym samym schemacie z rosnącą intensywnością oferty.</p>
+    </div>
+  </div>
+
+  <div style="background:var(--card2); border:1px solid var(--border2); padding:22px; margin-bottom:20px;">
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+      <span class="bt bt-df" style="font-size:10px; padding:2px 6px;">DF</span>
+      <span style="font-size:14px; color:var(--text-dim);">→</span>
+      <span class="bt" style="background:rgba(14,165,233,0.08); color:#0ea5e9; font-size:10px; padding:2px 6px;">BO</span>
+      <div style="font-size:14px; font-weight:700; margin-left:6px;">Cross-sell email · Dzień 60</div>
+    </div>
+    <div style="background:var(--bg); border:1px solid var(--border); padding:20px 24px; font-size:13px; line-height:1.8;">
+      <div style="font-size:11px; color:var(--text-dim); margin-bottom:12px;">
+        <strong>Od:</strong> DailyFruits &lt;hello@dailyfruits.pl&gt;<br>
+        <strong>Temat:</strong> Kuchnia działa — a co z kawą i resztą zaopatrzenia?
+      </div>
+      <div style="color:var(--text-muted);">
+        Cześć <strong style="color:var(--text);">[imię]</strong>,<br><br>
+        Dwa miesiące razem — Owocowe Czwartki weszły na stałe do kalendarza. Wielu naszych klientów pyta o kawę, ekspresy i zaopatrzenie kuchni. Dlatego powstał <strong style="color:var(--text);">BetterOffice</strong> — kawa ziarnista, serwis ekspresów, artykuły jednorazowe i wszystko, czego potrzebuje biurowa kuchnia.<br><br>
+        <strong style="color:var(--text);">Jeden partner. Owoce, jedzenie i kuchnia — w jednych rękach.</strong><br><br>
+        Chcesz zobaczyć ofertę? Odezwij się — dobierzemy zestaw do Waszego biura.<br><br>
+        Do usłyszenia,<br>
+        <strong style="color:var(--text);">Zespół DailyFruits</strong>
+      </div>
+    </div>
+    <div style="display:flex; gap:8px; margin-top:12px; flex-wrap:wrap;">
+      <div style="font-size:11px; color:var(--text-dim); background:var(--card); border:1px solid var(--border); padding:6px 12px;"><strong style="color:var(--text-muted);">Trigger:</strong> 60 dni od pierwszego zamówienia DF (lub 30 dni po cross-sell DFo)</div>
+      <div style="font-size:11px; color:var(--text-dim); background:var(--card); border:1px solid var(--border); padding:6px 12px;"><strong style="color:var(--text-muted);">Cel:</strong> kliknięcie → zapytanie BetterOffice</div>
+      <div style="font-size:11px; color:var(--text-dim); background:var(--card); border:1px solid var(--border); padding:6px 12px;"><strong style="color:var(--text-muted);">Efekt:</strong> basket value klienta DF rośnie o kategorię kuchni biurowej</div>
+      <div style="font-size:11px; color:var(--text-dim); background:var(--card); border:1px solid var(--border); padding:6px 12px;"><strong style="color:var(--text-muted);">Ton:</strong> operacyjny, konkretny, BetterOffice voice</div>
+    </div>
+    <div class="callout" style="margin-top:12px; margin-bottom:0;">
+      <p><strong>Dlaczego to jest w strategii:</strong> Druga fala cross-sell — po DailyFoods (jedzenie) przychodzi BetterOffice (kuchnia + zaopatrzenie). Sekwencja DF→DFo→BO buduje pełną ofertę ekosystemu stopniowo, bez przytłaczania klienta jednym „kupuj wszystko" mailem.</p>
     </div>
   </div>
 
@@ -2195,8 +2318,9 @@ body {
   </div>
 </div>
 
-<!-- s08: D06 Implementation Roadmap -->
-<div class="section" id="s08">
+<!-- s08: REMOVED – Plan wdrożenia usunięty jako nieadekwatny -->
+<!-- Oryginalna sekcja dostępna w historii wersji -->
+<div class="section" id="s08" style="display:none;">
   <div class="sec-eyebrow" style="color:var(--green);">Deliverable 06</div>
   <h1 class="sec-title">Plan <span>wdrożenia</span></h1>
   <div style="font-size:12px; color:var(--text-dim); margin-top:-6px; margin-bottom:8px;">Implementation Roadmap</div>
@@ -3078,11 +3202,6 @@ body {
       <div style="font-size:11px; font-weight:700; color:var(--red); margin-bottom:8px;">Ryzyko 3: Zajęcie kategorii</div>
       <div style="font-size:14px; font-weight:700; margin-bottom:6px;">Ktoś inny zdefiniuje „trzeci filar"</div>
       <div style="font-size:13px; color:var(--text-muted); line-height:1.7;">Kafeterie benefitowe (Cafeteria, MyBenefit) rozszerzają ofertę o żywienie. Jeśli jedna z nich nazwie się „partner żywieniowy biura" pierwsza – BW traci window of opportunity na category creation.</div>
-    </div>
-    <div style="background:var(--card2); border:1px solid var(--border2); padding:18px; border-left:3px solid var(--red);">
-      <div style="font-size:11px; font-weight:700; color:var(--red); margin-bottom:8px;">Ryzyko 4: Szklany sufit</div>
-      <div style="font-size:14px; font-weight:700; margin-bottom:6px;">Za duży żeby upaść, za mały żeby rosnąć</div>
-      <div style="font-size:13px; color:var(--text-muted); line-height:1.7;">BW (~60M PLN) ma skalę, ale bez strategicznej narracji nie przejdzie na poziom partnera benefitowego. Rozmowy z dużymi klientami kończą się na „ile kosztuje kilo jabłek?"</div>
     </div>
   </div>
 
