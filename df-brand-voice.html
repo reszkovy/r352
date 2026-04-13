@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DailyFruits – Brand Voice & Visual Identity Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'Achiko';
+  src: url('Achiko.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --green-dark: #1B5E3A;
+  --green-mid: #347550;
+  --lime: #8DC63F;
+  --lime-light: #A4C348;
+  --lime-pale: #D5E8A0;
+  --red: #E43020;
+  --yellow: #FFF200;
+  --cream: #FFF9E0;
+  --white: #FFFFFF;
+  --text: #1B5E3A;
+  --text-muted: #4a7a5c;
+  --text-dim: #8aab96;
+  --border: #d5e0c8;
+  --border2: #c4d4b2;
+  --card: #FFFFFF;
+  --card2: rgba(255,255,255,0.7);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'DM Sans',system-ui,sans-serif;
+  background:var(--cream); color:var(--text);
+  line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+
+/* ══ BACK NAV ══ */
+.back-nav {
+  position:fixed; top:16px; right:20px; z-index:9999;
+  font-size:11px; font-weight:600; color:#0d0d0d;
+  text-decoration:none; letter-spacing:0.3px;
+  background:#fff; padding:8px 18px; border-radius:8px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+  transition:all .2s;
+}
+.back-nav:hover { background:var(--lime); }
+
+/* Top bar */
+.topbar {
+  background:var(--green-dark); padding:14px 40px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.topbar-logo { font-size:15px; font-weight:700; color:#fff; letter-spacing:-0.3px; }
+.topbar-logo span { color:var(--lime); }
+.topbar-meta { font-size:10px; color:rgba(255,255,255,0.5); letter-spacing:1px; text-transform:uppercase; }
+
+.wrap { max-width:920px; margin:0 auto; padding:48px 20px 60px; }
+
+/* Header */
+.header { margin-bottom:56px; text-align:center; }
+.header-badge {
+  display:inline-block; font-size:9px; font-weight:700; letter-spacing:3px;
+  text-transform:uppercase; color:var(--white); background:var(--lime);
+  padding:5px 14px; border-radius:20px; margin-bottom:20px;
+}
+.header h1 { font-size:36px; font-weight:900; letter-spacing:-1px; margin-bottom:8px; color:var(--green-dark); line-height:1.15; }
+.header h1 span { color:var(--lime); }
+.header-sub { font-size:14px; color:var(--text-muted); margin-bottom:8px; }
+.header-meta { font-size:11px; color:var(--text-dim); }
+
+/* Sections */
+.section { margin-bottom:48px; }
+.sec-label {
+  font-size:9px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase;
+  color:var(--lime); margin-bottom:18px;
+  display:flex; align-items:center; gap:12px;
+}
+.sec-label::after { content:''; flex:1; height:1px; background:var(--border); }
+
+/* Cards */
+.card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:24px; margin-bottom:14px; box-shadow:0 1px 3px rgba(27,94,58,0.04); }
+.card-sm { background:var(--cream); border:1px solid var(--border); border-radius:8px; padding:16px; }
+
+/* Grid */
+.g2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.g3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
+.g4 { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:12px; }
+
+/* Labels */
+.label { font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:6px; }
+.val { font-size:14px; color:var(--text-muted); line-height:1.7; }
+.val strong { color:var(--green-dark); }
+.example { font-size:12px; color:var(--green-mid); margin-top:8px; font-style:italic; line-height:1.5; background:rgba(141,198,63,0.1); padding:8px 12px; border-radius:6px; }
+.anti-example { font-size:12px; color:var(--red); margin-top:6px; font-style:italic; line-height:1.5; background:rgba(228,48,32,0.06); padding:8px 12px; border-radius:6px; }
+
+/* Swatch */
+.swatch { width:40px; height:40px; border-radius:8px; flex-shrink:0; box-shadow:0 1px 4px rgba(0,0,0,0.1); }
+.color-row { display:flex; align-items:center; gap:14px; padding:14px 0; border-bottom:1px solid var(--border); }
+.color-row:last-child { border-bottom:none; }
+.color-name { font-size:14px; font-weight:600; color:var(--green-dark); min-width:100px; }
+.color-hex { font-size:12px; color:var(--text-dim); font-family:'DM Sans',monospace; min-width:80px; background:var(--cream); padding:2px 8px; border-radius:4px; }
+.color-role { font-size:13px; color:var(--text-muted); }
+
+/* Tables */
+.vocab-table { width:100%; border-collapse:collapse; font-size:14px; }
+.vocab-table th { text-align:left; padding:14px 16px; font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--text-dim); border-bottom:2px solid var(--lime); }
+.vocab-table td { padding:14px 16px; border-bottom:1px solid var(--border); }
+.vocab-table td:first-child { color:var(--red); text-decoration:line-through; opacity:0.8; }
+.vocab-table td:last-child { color:var(--green-dark); font-weight:600; }
+
+.tone-table { width:100%; border-collapse:collapse; font-size:13px; }
+.tone-table th { text-align:left; padding:14px 16px; font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--text-dim); border-bottom:2px solid var(--lime); }
+.tone-table td { padding:14px 16px; border-bottom:1px solid var(--border); color:var(--text-muted); line-height:1.6; }
+
+/* Accent bar for claim */
+.claim-bar {
+  background:var(--green-dark); color:var(--white); padding:28px 32px;
+  border-radius:12px; text-align:center; margin-bottom:14px;
+}
+.claim-bar .claim-text { font-size:26px; font-weight:900; letter-spacing:-0.5px; }
+.claim-bar .claim-sub { font-size:12px; color:rgba(255,255,255,0.6); margin-top:6px; text-transform:uppercase; letter-spacing:2px; }
+
+@media (max-width:700px) {
+  .g4 { grid-template-columns:1fr 1fr; }
+  .g3 { grid-template-columns:1fr; }
+  .g2 { grid-template-columns:1fr; }
+  .header h1 { font-size:26px; }
+  .topbar { padding:12px 20px; }
+}
+
+@media print {
+  .topbar { background:#1B5E3A !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body { background:#fff; }
+}
+</style>
+</head>
+<body>
+
+<a class="back-nav" href="index.html">← Panel klienta</a>
+
+<div class="wrap" style="padding-top:0;">
+
+  <!-- HERO BANNER -->
+  <div style="margin:0 -20px 0; overflow:hidden;">
+    <img src="df-banner.webp" alt="DailyFruits brand banner" style="width:100%; display:block; object-fit:contain;">
+  </div>
+
+  <!-- HEADER -->
+  <div class="header" style="margin-top:32px;">
+    <div class="header-badge">by BetterWorkplace</div>
+    <h1>Brand Voice &<br><span style="font-family:'Achiko',cursive; font-weight:400;">Visual Identity</span> Guide</h1>
+    <div class="header-sub">Tone of Voice · Kolory · Typografia · Do's & Don'ts</div>
+    <div class="header-meta">Wersja 1.0 · Kwiecień 2026</div>
+  </div>
+
+  <!-- CLAIM -->
+  <div class="claim-bar">
+    <div class="claim-text" style="font-family:'Achiko',cursive;">Zdrowsze jedzenie, lepsza praca.</div>
+    <div class="claim-sub">Claim marki</div>
+  </div>
+
+  <!-- 1. OSOBOWOŚĆ MARKI -->
+  <div class="section">
+    <div class="sec-label">01 · Osobowość marki</div>
+    <div class="card" style="border-left:4px solid var(--lime);">
+      <div style="font-size:15px; color:var(--green-dark); line-height:1.8; margin-bottom:22px;">
+        Gdyby DailyFruits był osobą, byłby <strong>kompetentnym doradcą HR</strong>, który wie, że wellbeing zaczyna się od kuchni. Nie moralizuje — po prostu stawia skrzynkę świeżych owoców i mówi: <em style="color:var(--green-mid);">„To działa. Sprawdziliśmy w 2000 firmach."</em> Jest ciepły, ale konkretny. Nigdy nie przesadza z entuzjazmem, bo jego siłą są twarde dane, nie hasła.
+      </div>
+      <div class="g2">
+        <div class="card-sm">
+          <div class="label">Misja</div>
+          <div class="val">Nie jesteśmy dostawcą owoców. Budujemy kulturę zdrowia w Twojej firmie — zaczynając od kuchni.</div>
+        </div>
+        <div class="card-sm">
+          <div class="label">Archetyp</div>
+          <div class="val"><strong>Opiekun</strong> (Caregiver) + <strong>Mędrzec</strong> (Sage). Dba o ludzi, ale na bazie danych i procesów, nie emocji. Praktyczny wellbeing, nie korporacyjny wellness-washing.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. ATRYBUTY GŁOSU -->
+  <div class="section">
+    <div class="sec-label">02 · Atrybuty głosu</div>
+    <div class="g4" style="margin-bottom:14px;">
+
+      <div class="card" style="border-top:4px solid var(--lime); padding:20px;">
+        <div style="font-size:16px; font-weight:700; color:var(--green-dark); margin-bottom:10px;">Konkretny</div>
+        <div class="val" style="font-size:13px;">Precyzyjny, mierzalny, oparty na danych. Każdy argument ma liczbę.</div>
+        <div style="font-size:11px; color:var(--text-dim); margin-top:10px;">Nie jesteśmy: sucho-korporacyjni. Dane podajemy z ciepłem.</div>
+        <div class="example">✓ „81% pracowników potwierdza poprawę wellbeingu po 3 miesiącach."</div>
+        <div class="anti-example">✗ „Nasi pracownicy są szczęśliwsi!"</div>
+      </div>
+
+      <div class="card" style="border-top:4px solid var(--lime); padding:20px;">
+        <div style="font-size:16px; font-weight:700; color:var(--green-dark); margin-bottom:10px;">Ciepły</div>
+        <div class="val" style="font-size:13px;">Przyjaźni, bezpośredni. „Twój zespół", nie „Państwa organizacja".</div>
+        <div style="font-size:11px; color:var(--text-dim); margin-top:10px;">Nie jesteśmy: infantylni, nie używamy emoji w B2B.</div>
+        <div class="example">✓ „Powiedz nam ile macie osób i czego potrzebujecie."</div>
+        <div class="anti-example">✗ „Hej! Napiszcie do nas, ogarniemy to!"</div>
+      </div>
+
+      <div class="card" style="border-top:4px solid var(--lime); padding:20px;">
+        <div style="font-size:16px; font-weight:700; color:var(--green-dark); margin-bottom:10px;">Pewny siebie</div>
+        <div class="val" style="font-size:13px;">Lider kategorii: 10+ lat, 2000+ firm, 13 miast. Pewność z wyników.</div>
+        <div style="font-size:11px; color:var(--text-dim); margin-top:10px;">Nie jesteśmy: aroganccy. Nie deprecjonujemy konkurencji.</div>
+        <div class="example">✓ „Jeden partner zamiast trzech dostawców."</div>
+        <div class="anti-example">✗ „Jesteśmy najlepsi na rynku!"</div>
+      </div>
+
+      <div class="card" style="border-top:4px solid var(--lime); padding:20px;">
+        <div style="font-size:16px; font-weight:700; color:var(--green-dark); margin-bottom:10px;">Praktyczny</div>
+        <div class="val" style="font-size:13px;">Zorientowani na rozwiązania. Nie owoce — benefit pracowniczy.</div>
+        <div style="font-size:11px; color:var(--text-dim); margin-top:10px;">Nie jesteśmy: idealistyczni, aspiracyjni. Zero „zmień świat".</div>
+        <div class="example">✓ „24h czas dostawy. 13 miast. 2000+ firm nam zaufało."</div>
+        <div class="anti-example">✗ „Wspólnie budujemy zdrowszą przyszłość dla pokoleń."</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 3. DO'S & DON'TS -->
+  <div class="section">
+    <div class="sec-label">03 · Do's & Don'ts</div>
+    <div class="g2" style="margin-bottom:16px;">
+
+      <div class="card" style="border-left:4px solid var(--lime);">
+        <div style="font-size:11px; font-weight:700; color:var(--lime); margin-bottom:14px; letter-spacing:1.5px;">DO — TAK PISZEMY</div>
+        <div class="val" style="font-size:13px; line-height:2.1;">
+          Używaj „Ty/Twój" zamiast „Państwo" w copy marketingowym<br>
+          Zaczynaj od korzyści, nie od produktu (<em>„Zmniejsz absencję"</em> > <em>„Kup owoce"</em>)<br>
+          Podawaj twarde liczby: 2000+ firm, 13 miast, 24h dostawa, 81%<br>
+          Używaj krótkich zdań (max 20 słów)<br>
+          Nazywaj rytuały: Owocowe Czwartki, Kanapkowe Wtorki<br>
+          Aktywne czasowniki: „Zamów", „Sprawdź", „Zacznij"<br>
+          Claim fontem Achiko, body fontem DM Sans<br>
+          Podkreślaj ekosystem: DF + DFo + BW<br>
+          Mów o „kulturze zdrowia", „rytuałach"
+        </div>
+      </div>
+
+      <div class="card" style="border-left:4px solid var(--red);">
+        <div style="font-size:11px; font-weight:700; color:var(--red); margin-bottom:14px; letter-spacing:1.5px;">DON'T — TEGO UNIKAMY</div>
+        <div class="val" style="font-size:13px; line-height:2.1;">
+          „innovative", „synergia", „holistyczny", „complex solution"<br>
+          WIELKIE LITERY (SUPER OFERTA!)<br>
+          Emoji w komunikacji B2B (LinkedIn, email, strona)<br>
+          Obietnice bez pokrycia („najlepsze owoce na świecie")<br>
+          „tani/najtaniej" — mów „opłacalny", „inwestycja w zespół"<br>
+          Deprecjonowanie konkurencji wprost<br>
+          Stockowe zdjęcia ludzi — packshoty produktowe<br>
+          Słowo „dostawca" na określenie DailyFruits<br>
+          Mieszanie języków (polsko-angielskie zdania)
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Słownik -->
+    <div class="card">
+      <div style="font-size:11px; font-weight:700; color:var(--text-dim); margin-bottom:14px; letter-spacing:1.5px;">SŁOWA ZAKAZANE VS. PREFEROWANE</div>
+      <table class="vocab-table">
+        <thead><tr><th>Nie używaj</th><th>Używaj zamiast</th></tr></thead>
+        <tbody>
+          <tr><td>dostawca owoców</td><td>partner wellbeingowy / ekosystem zdrowia</td></tr>
+          <tr><td>tani / najtaniej</td><td>opłacalny / inwestycja w zespół</td></tr>
+          <tr><td>kupować owoce</td><td>zamawiać / zadbać o zespół</td></tr>
+          <tr><td>klient</td><td>partner / firma</td></tr>
+          <tr><td>innowacyjny / nowoczesny</td><td>sprawdzony / mierzalny</td></tr>
+          <tr><td>wellness</td><td>wellbeing żywieniowy / kultura zdrowia</td></tr>
+          <tr><td>paczka owoców</td><td>skrzynka / zestaw / abonament</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- BRAND ADAPTACJE -->
+  <div class="section">
+    <div class="sec-label">Adaptacje brandingowe — materiały referencyjne</div>
+
+    <!-- Packaging duo -->
+    <div style="background:var(--white); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:14px;">
+      <img src="df-boxy-duo.webp" alt="DailyFruits + DailyFoods boxy" style="width:100%; object-fit:contain; display:block;">
+      <div style="padding:16px 20px;">
+        <div style="font-size:13px; font-weight:700; color:var(--green-dark);">Packaging — DailyFruits + DailyFoods</div>
+        <div style="font-size:12px; color:var(--text-dim);">Spójna rodzina opakowań Daily*. Zielony DF, żółty DFo. Ten sam system graficzny, dwa kolory.</div>
+      </div>
+    </div>
+
+    <!-- Social kreacje -->
+    <div class="g3" style="margin-bottom:14px;">
+      <div style="background:var(--white); border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+        <img src="df-branding-full.webp" alt="Owocowa skrzynia — kreacja social" style="width:100%; object-fit:contain;">
+        <div style="padding:12px 16px;">
+          <div style="font-size:11px; font-weight:700; color:var(--green-dark);">Kreacja social — Owocowe Czwartki</div>
+          <div style="font-size:10px; color:var(--text-dim);">Font Achiko + packshot + claims</div>
+        </div>
+      </div>
+      <div style="background:var(--white); border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+        <img src="df-social-post.webp" alt="Kanapka prawem nie towarem" style="width:100%; object-fit:contain;">
+        <div style="padding:12px 16px;">
+          <div style="font-size:11px; font-weight:700; color:var(--green-dark);">Kreacja social — DailyFoods</div>
+          <div style="font-size:10px; color:var(--text-dim);">Green Dark bg + Yellow akcenty + packshot</div>
+        </div>
+      </div>
+      <div style="background:var(--white); border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+        <img src="df-branding-elements.webp" alt="Lody sezonowe" style="width:100%; object-fit:contain;">
+        <div style="padding:12px 16px;">
+          <div style="font-size:11px; font-weight:700; color:var(--green-dark);">Kreacja sezonowa — lody</div>
+          <div style="font-size:10px; color:var(--text-dim);">Achiko + product photography + logo badge</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Van + ikony -->
+    <div class="g2" style="margin-bottom:14px;">
+      <div style="background:var(--white); border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+        <img src="df-van.webp" alt="DailyFruits van" style="width:100%; object-fit:contain;">
+        <div style="padding:14px 16px;">
+          <div style="font-size:12px; font-weight:700; color:var(--green-dark);">Fleet branding</div>
+          <div style="font-size:11px; color:var(--text-dim);">Pełny branding na flotę dostawczą. Logo + jabłko + by betterworkplace.</div>
+        </div>
+      </div>
+      <div style="background:var(--white); border:1px solid var(--border); border-radius:12px; overflow:hidden; padding:20px;">
+        <div style="font-size:12px; font-weight:700; color:var(--green-dark); margin-bottom:14px;">Ikony ilustracyjne</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px;">
+          <div style="text-align:center;">
+            <img src="df-icon-puchar.webp" alt="Puchar" style="width:80px; height:80px; object-fit:contain; border-radius:8px;">
+            <div style="font-size:10px; color:var(--text-dim); margin-top:6px;">Lider kategorii</div>
+          </div>
+          <div style="text-align:center;">
+            <img src="df-icon-recykling.webp" alt="Recykling" style="width:80px; height:80px; object-fit:contain; border-radius:8px;">
+            <div style="font-size:10px; color:var(--text-dim); margin-top:6px;">Abonament</div>
+          </div>
+          <div style="text-align:center;">
+            <img src="df-icon-handshake.webp" alt="Handshake" style="width:80px; height:80px; object-fit:contain; border-radius:8px;">
+            <div style="font-size:10px; color:var(--text-dim); margin-top:6px;">Partnerstwo</div>
+          </div>
+        </div>
+        <div style="font-size:10px; color:var(--text-dim); margin-top:12px; line-height:1.6;">Styl: hand-drawn, brand colors (Lime bg, Yellow bg, Red bg). Spójny z tonem marki — ciepły, ludzki, nie-korporacyjny.</div>
+      </div>
+    </div>
+
+    <!-- DailyFoods banner -->
+    <div style="background:var(--white); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:14px;">
+      <img src="df-dailyfoods-banner.webp" alt="DailyFoods banner" style="width:100%; object-fit:contain; display:block;">
+      <div style="padding:14px 20px;">
+        <div style="font-size:12px; font-weight:700; color:var(--green-dark);">Alternatywna wersja komunikacji — paczki mieszane (nie tylko owoce)</div>
+        <div style="font-size:11px; color:var(--text-dim);">Yellow background dla produktów spoza core'u owocowego (kanapki, śniadania, kawa, lody). Ten sam system elementów: jabłko, logo DF badge, ikony produktowe.</div>
+      </div>
+    </div>
+
+    <!-- WWW screenshot -->
+    <div style="background:var(--white); border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+      <img src="df-www-screenshot.webp" alt="DailyFruits strona www" style="width:100%; display:block;">
+      <div style="padding:14px 20px;">
+        <div style="font-size:12px; font-weight:700; color:var(--green-dark);">Strona www — dailyfruits.pl</div>
+        <div style="font-size:11px; color:var(--text-dim);">Claim Achiko + DM Sans body. Cream tło, Green Dark tekst, Red CTA. Packshot boxa jako hero. Twarde dane w nagłówku (24h, 13 miast, 2000+).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. SYSTEM KOLORÓW -->
+  <div class="section">
+    <div class="sec-label">04 · System kolorów</div>
+
+    <div class="card" style="margin-bottom:14px;">
+      <div style="font-size:11px; font-weight:700; color:var(--text-dim); margin-bottom:18px; letter-spacing:1.5px;">KOLORY GŁÓWNE</div>
+      <div class="color-row">
+        <div class="swatch" style="background:#1B5E3A;"></div>
+        <div class="color-name">Green Dark</div>
+        <div class="color-hex">#1B5E3A</div>
+        <div class="color-role">Kolor główny. Nagłówki, footer, nawigacja. Świeżość i zaufanie.</div>
+      </div>
+      <div class="color-row">
+        <div class="swatch" style="background:#8DC63F;"></div>
+        <div class="color-name">Lime</div>
+        <div class="color-hex">#8DC63F</div>
+        <div class="color-role">Akcent #1. Przyciski hover, ikony benefitów, aktywne taby.</div>
+      </div>
+      <div class="color-row">
+        <div class="swatch" style="background:#E43020;"></div>
+        <div class="color-name">Red</div>
+        <div class="color-hex">#E43020</div>
+        <div class="color-role">CTA i urgency. Przyciski konwersji. Nigdy na tle.</div>
+      </div>
+      <div class="color-row">
+        <div class="swatch" style="background:#FFF200; border:1px solid #e0d88a;"></div>
+        <div class="color-name">Yellow</div>
+        <div class="color-hex">#FFF200</div>
+        <div class="color-role">Wywoławczy. Stickery, ikony info. Ostrożnie na jasnych tłach.</div>
+      </div>
+      <div class="color-row">
+        <div class="swatch" style="background:#FFF9E0; border:1px solid #e0d8b0;"></div>
+        <div class="color-name">Cream</div>
+        <div class="color-hex">#FFF9E0</div>
+        <div class="color-role">Tło strony i kart. Ciepły, naturalny, organiczny charakter.</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:14px;">
+      <div style="font-size:11px; font-weight:700; color:var(--text-dim); margin-bottom:18px; letter-spacing:1.5px;">KOLORY POMOCNICZE</div>
+      <div class="color-row">
+        <div class="swatch" style="background:#347550;"></div>
+        <div class="color-name">Green Mid</div>
+        <div class="color-hex">#347550</div>
+        <div class="color-role">Linki, pod-nagłówki, bordery aktywnych tabów.</div>
+      </div>
+      <div class="color-row">
+        <div class="swatch" style="background:#A4C348;"></div>
+        <div class="color-name">Lime Light</div>
+        <div class="color-hex">#A4C348</div>
+        <div class="color-role">Hover states, delikatne gradienty, secondary akcenty.</div>
+      </div>
+      <div class="color-row">
+        <div class="swatch" style="background:#D5E8A0;"></div>
+        <div class="color-name">Lime Pale</div>
+        <div class="color-hex">#D5E8A0</div>
+        <div class="color-role">Tła kart benefitów, separatory. Subtelny, nie dominuje.</div>
+      </div>
+      <div class="color-row">
+        <div class="swatch" style="background:#F06878;"></div>
+        <div class="color-name">Coral</div>
+        <div class="color-hex">#F06878</div>
+        <div class="color-role">Zarezerwowany. Potencjalnie DailyFoods lub kampanie sezonowe.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="font-size:11px; font-weight:700; color:var(--text-dim); margin-bottom:14px; letter-spacing:1.5px;">ZASADY UŻYCIA</div>
+      <div class="val" style="font-size:13px; line-height:2.1;">
+        Green Dark to ZAWSZE kolor tekstu na jasnym tle (nie czarny, nie szary)<br>
+        Red TYLKO na CTA i akcentach — nigdy jako tło sekcji<br>
+        Yellow nigdy jako kolor tekstu — za słaby kontrast. Tylko na ciemnym tle<br>
+        Cream jest domyślnym tłem — biały (#FFF) punktowo (karty, inputy)
+      </div>
+      <div style="margin-top:16px; display:flex; gap:4px; align-items:center;">
+        <div style="flex:60; height:32px; background:#FFF9E0; border:1px solid #d5d0a8; border-radius:6px;"></div>
+        <div style="flex:25; height:32px; background:#1B5E3A; border-radius:6px;"></div>
+        <div style="flex:10; height:32px; background:#8DC63F; border-radius:6px;"></div>
+        <div style="flex:5; height:32px; background:#E43020; border-radius:6px;"></div>
+      </div>
+      <div style="display:flex; gap:4px; margin-top:6px; font-size:10px; color:var(--text-dim);">
+        <div style="flex:60; text-align:center;">~60% Cream</div>
+        <div style="flex:25; text-align:center;">~25% Green</div>
+        <div style="flex:10; text-align:center;">~10% Lime</div>
+        <div style="flex:5; text-align:center;">~5%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. TYPOGRAFIA -->
+  <div class="section">
+    <div class="sec-label">05 · Typografia</div>
+
+    <div class="g2" style="margin-bottom:14px;">
+      <div class="card" style="border-left:4px solid var(--lime);">
+        <div style="font-size:20px; font-weight:900; color:var(--green-dark); margin-bottom:10px;">DM Sans</div>
+        <div style="font-size:10px; color:var(--lime); margin-bottom:12px; letter-spacing:1px; font-weight:700;">FONT GŁÓWNY · GOOGLE FONTS · OPEN SOURCE</div>
+        <div class="val" style="font-size:13px; line-height:2;">
+          Body: 400 (regular), 15-16px<br>
+          Nagłówki: 700 (bold) i 900 (black)<br>
+          Labele: 500 (medium), 13-14px<br>
+          Pełne wsparcie polskich znaków<br>
+          Użycie: strona, emaile, dokumenty, prezentacje
+        </div>
+      </div>
+      <div class="card" style="border-left:4px solid var(--text-dim);">
+        <div style="font-family:'Achiko',cursive; font-size:28px; font-weight:400; color:var(--green-dark); margin-bottom:10px;">Achiko</div>
+        <div style="font-size:10px; color:var(--text-dim); margin-bottom:12px; letter-spacing:1px; font-weight:700;">FONT DISPLAY · CUSTOM · WOFF2 + TTF</div>
+        <div class="val" style="font-size:13px; line-height:2;">
+          Użycie: hero claim, stickery sekcji, dekoracje<br>
+          Waga: 400 (regular) — jedyna dostępna<br>
+          <strong style="color:var(--red);">UWAGA:</strong> Brak pełnego polskiego zestawu<br>
+          Obsługuje tylko ł i ó (brak ą, ę, ć, ś, ź, ż)<br>
+          W Achiko TYLKO słowa bez polskich diakrytyków
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="font-size:11px; font-weight:700; color:var(--text-dim); margin-bottom:14px; letter-spacing:1.5px;">HIERARCHIA TYPOGRAFICZNA</div>
+      <table class="tone-table">
+        <thead><tr><th>Element</th><th>Font</th><th>Waga</th><th>Rozmiar</th><th>Kolor</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:700; color:var(--green-dark);">H1 Hero</td><td>DM Sans + Achiko</td><td>900 / 400</td><td>38-68px (clamp)</td><td>Green Dark + Lime</td></tr>
+          <tr><td style="font-weight:700; color:var(--green-dark);">H2 Sekcje</td><td>DM Sans</td><td>900</td><td>28-36px</td><td>Green Dark</td></tr>
+          <tr><td style="font-weight:700; color:var(--green-dark);">H3 Karty</td><td>DM Sans</td><td>700</td><td>18-22px</td><td>Green Dark</td></tr>
+          <tr><td style="font-weight:700; color:var(--green-dark);">Body</td><td>DM Sans</td><td>400</td><td>15-16px</td><td>Green Dark</td></tr>
+          <tr><td style="font-weight:700; color:var(--green-dark);">Label</td><td>DM Sans</td><td>700</td><td>13-14px</td><td>Green Dark 50%</td></tr>
+          <tr><td style="font-weight:700; color:var(--green-dark);">CTA Button</td><td>DM Sans</td><td>900</td><td>15-16px</td><td>White na Red/Green</td></tr>
+          <tr><td style="font-weight:700; color:var(--green-dark);">Sticker</td><td>Achiko</td><td>400</td><td>16-24px</td><td>Green Dark / Lime</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:16px; padding:14px 16px; background:var(--cream); border:1px solid var(--border); border-radius:8px;">
+        <div style="font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px; letter-spacing:1px;">ZASADY</div>
+        <div class="val" style="font-size:12px; line-height:1.8;">
+          Letter-spacing H1: -0.03em (tight) · Line-height body: 1.7 · Line-height nagłówków: 1.08-1.2<br>
+          Sentence case w nagłówkach (nie Title Case) · Nigdy ALL CAPS w body · Max długość linii: 65-75 znaków
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. ODBIORCY I TON -->
+  <div class="section">
+    <div class="sec-label">06 · Odbiorcy i spektrum tonu</div>
+
+    <div class="card" style="margin-bottom:14px;">
+      <div style="font-size:11px; font-weight:700; color:var(--text-dim); margin-bottom:16px; letter-spacing:1.5px;">GRUPA DOCELOWA</div>
+      <div class="g3">
+        <div class="card-sm" style="border-top:4px solid var(--lime);">
+          <div style="font-size:10px; font-weight:700; color:var(--lime); margin-bottom:6px;">PRIMARY</div>
+          <div style="font-size:15px; font-weight:700; color:var(--green-dark); margin-bottom:8px;">Office Manager / HR</div>
+          <div class="val" style="font-size:12px;">Decydent operacyjny. Szuka benefitu łatwego do wdrożenia i rozliczenia, który realnie docenią pracownicy.</div>
+        </div>
+        <div class="card-sm" style="border-top:4px solid var(--green-mid);">
+          <div style="font-size:10px; font-weight:700; color:var(--green-mid); margin-bottom:6px;">SECONDARY</div>
+          <div style="font-size:15px; font-weight:700; color:var(--green-dark); margin-bottom:8px;">CEO / CFO</div>
+          <div class="val" style="font-size:12px;">Decydent budżetowy. Chce ROI: mniej absencji, lepsza retencja, niski koszt per pracownik.</div>
+        </div>
+        <div class="card-sm" style="border-top:4px solid var(--text-dim);">
+          <div style="font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;">TERTIARY</div>
+          <div style="font-size:15px; font-weight:700; color:var(--green-dark); margin-bottom:8px;">Pracownicy</div>
+          <div class="val" style="font-size:12px;">Beneficjenci końcowi. Nie decydują o zakupie, ale ich zadowolenie decyduje o kontynuacji.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="font-size:11px; font-weight:700; color:var(--text-dim); margin-bottom:16px; letter-spacing:1.5px;">TON W ZALEŻNOŚCI OD KANAŁU</div>
+      <table class="tone-table">
+        <thead><tr><th>Kanał</th><th>Ton</th><th>Przykład</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:700; color:var(--green-dark);">Strona www</td><td>Pewny, ciepły, konkretny</td><td style="font-style:italic;">Nie jesteśmy dostawcą owoców. Budujemy kulturę zdrowia.</td></tr>
+          <tr><td style="font-weight:700; color:var(--green-dark);">LinkedIn</td><td>Ekspercki, inspirujący</td><td style="font-style:italic;">81% firm, które wdrożyły program owocowy, notuje wzrost satysfakcji.</td></tr>
+          <tr><td style="font-weight:700; color:var(--green-dark);">Email B2B</td><td>Bezpośredni, pomocny</td><td style="font-style:italic;">Przygotowaliśmy propozycję dopasowaną do Waszego biura.</td></tr>
+          <tr><td style="font-weight:700; color:var(--green-dark);">Formularz</td><td>Prosty, bez tarcia</td><td style="font-style:italic;">Powiedz nam ile macie osób — reszta po naszej stronie.</td></tr>
+          <tr><td style="font-weight:700; color:var(--green-dark);">Social</td><td>Lekki, wizualny</td><td style="font-style:italic;">Owocowy Czwartek w [firma]. Kto ma tak samo?</td></tr>
+          <tr><td style="font-weight:700; color:var(--green-dark);">Oferta / PDF</td><td>Profesjonalny, szczegółowy</td><td style="font-style:italic;">Abonament obejmuje cotygodniową dostawę 12 kg owoców premium.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="margin-top:56px; padding:24px 32px; background:var(--green-dark); border-radius:12px; text-align:center;">
+    <div style="font-family:'Achiko',cursive; font-size:18px; font-weight:400; color:#fff; margin-bottom:6px; text-transform:lowercase;">daily<span style="color:var(--lime);">fruits</span></div>
+    <div style="font-size:10px; color:rgba(255,255,255,0.4); letter-spacing:2px; text-transform:uppercase; margin-bottom:6px;">by BetterWorkplace</div>
+    <div style="font-size:11px; color:rgba(255,255,255,0.5); line-height:1.8;">
+      Brand Voice & Visual Identity Guide · v1.0 · Kwiecień 2026<br>
+      Dokument poufny — nie udostępniaj osobom nieuprawnionym
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
