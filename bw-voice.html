@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BetterWorkplace – Brand Voice Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,900;1,9..40,400&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #ffffff;
+  --bg2: #f7f7f5;
+  --card: #ffffff;
+  --card2: #f7f7f5;
+  --border: #e9e7e7;
+  --border2: #ddd;
+  --green: #2d6a4f;
+  --green-light: #40916c;
+  --green-dim: rgba(45,106,79,0.06);
+  --green-accent: #52b788;
+  --orange: #ff6921;
+  --orange-dim: rgba(255,105,33,0.06);
+  --red: #d64045;
+  --red-dim: rgba(214,64,69,0.05);
+  --text: #1f0b09;
+  --text-muted: #665f5e;
+  --text-dim: #989898;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'DM Sans',system-ui,sans-serif;
+  background:var(--bg); color:var(--text);
+  line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+
+/* ══ BACK NAV ══ */
+.back-nav {
+  position:fixed; top:16px; right:20px; z-index:9999;
+  font-size:11px; font-weight:600; color:#fff;
+  text-decoration:none; letter-spacing:0.3px;
+  background:#1F0B09; padding:8px 18px; border-radius:8px;
+  transition:all .2s;
+}
+.back-nav:hover { background:#FF6921; }
+
+.wrap { max-width:800px; margin:0 auto; padding:60px 20px 80px; }
+
+/* ══ HEADER ══ */
+.header { margin-bottom:56px; }
+.header-eyebrow {
+  font-size:9px; font-weight:700; letter-spacing:3px;
+  text-transform:uppercase; color:var(--text-dim); margin-bottom:16px;
+}
+.header h1 {
+  font-size:38px; font-weight:900; letter-spacing:-1.2px;
+  line-height:1.1; margin-bottom:12px; color:var(--text);
+}
+.header h1 span { color:var(--green); }
+.header-sub {
+  font-size:14px; color:var(--text-muted); line-height:1.7; max-width:540px;
+}
+.header-meta {
+  font-size:11px; color:var(--text-dim); margin-top:10px;
+}
+
+/* ══ SECTIONS ══ */
+.section { margin-bottom:56px; }
+.sec-label {
+  font-size:9px; font-weight:700; letter-spacing:2.5px;
+  text-transform:uppercase; color:var(--green); margin-bottom:20px;
+}
+
+/* ══ CARDS ══ */
+.card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:12px; padding:28px; margin-bottom:12px;
+  box-shadow:0 1px 3px rgba(0,0,0,0.04);
+}
+.card-sm {
+  background:var(--card2); border-radius:8px; padding:16px 18px;
+}
+.label {
+  font-size:9px; font-weight:700; letter-spacing:1.5px;
+  text-transform:uppercase; color:var(--text-dim); margin-bottom:6px;
+}
+.val { font-size:13px; color:var(--text-muted); line-height:1.7; }
+
+.g2 { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.g4 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+
+/* ══ VOICE ATTR ══ */
+.voice-card {
+  background:var(--card); border:1px solid var(--border);
+  border-top:3px solid var(--green); border-radius:12px;
+  padding:24px;
+  box-shadow:0 1px 3px rgba(0,0,0,0.04);
+}
+.voice-card h3 {
+  font-size:17px; font-weight:700; margin-bottom:8px; color:var(--text);
+}
+.voice-card .desc {
+  font-size:13px; color:var(--text-muted); line-height:1.7; margin-bottom:12px;
+}
+.voice-card .not {
+  font-size:11px; color:var(--text-dim); margin-bottom:14px;
+}
+.example {
+  font-size:12px; color:var(--green); padding:8px 12px;
+  background:var(--green-dim); border-radius:6px; margin-bottom:6px;
+  line-height:1.5;
+}
+.anti-example {
+  font-size:12px; color:var(--red); padding:8px 12px;
+  background:var(--red-dim); border-radius:6px;
+  line-height:1.5;
+}
+
+/* ══ DO/DONT ══ */
+.dd-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.do-card, .dont-card {
+  border-radius:12px; padding:24px;
+}
+.do-card {
+  background:var(--green-dim); border:1px solid rgba(45,106,79,0.12);
+}
+.dont-card {
+  background:var(--red-dim); border:1px solid rgba(214,64,69,0.1);
+}
+.do-card h3 { color:var(--green); font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-bottom:14px; }
+.dont-card h3 { color:var(--red); font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-bottom:14px; }
+.dd-item {
+  font-size:13px; color:var(--text-muted); line-height:1.6;
+  padding:8px 0; border-bottom:1px solid rgba(0,0,0,0.05);
+}
+.dd-item:last-child { border-bottom:none; }
+
+/* ══ VOCAB ══ */
+.vocab-row {
+  display:grid; grid-template-columns:1fr 1fr; gap:0;
+  border-bottom:1px solid var(--border);
+  padding:12px 0;
+  font-size:13px;
+}
+.vocab-row:first-child { border-top:1px solid var(--border); }
+.vocab-no { color:var(--red); text-decoration:line-through; opacity:0.6; }
+.vocab-yes { color:var(--green); font-weight:600; }
+
+/* ══ AUDIENCE ══ */
+.aud-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:12px; padding:24px;
+  box-shadow:0 1px 3px rgba(0,0,0,0.04);
+}
+.aud-card h3 { font-size:15px; font-weight:700; margin-bottom:6px; color:var(--text); }
+.aud-card .role { font-size:11px; color:var(--green); font-weight:600; margin-bottom:10px; }
+.aud-card p { font-size:13px; color:var(--text-muted); line-height:1.7; }
+
+/* ══ SPECTRUM ══ */
+.spectrum {
+  display:flex; height:8px; border-radius:4px; overflow:hidden;
+  margin:16px 0 8px;
+}
+.spectrum div { height:100%; }
+.spectrum-labels {
+  display:flex; justify-content:space-between;
+  font-size:10px; color:var(--text-dim);
+}
+
+/* ══ TABLE ══ */
+.voice-table {
+  display:grid; grid-template-columns:1fr; gap:1px;
+  background:var(--border); border-radius:12px; overflow:hidden;
+  box-shadow:0 1px 3px rgba(0,0,0,0.04);
+}
+.voice-table-row {
+  display:grid; grid-template-columns:160px 1fr 1fr;
+  background:var(--card); padding:14px 18px;
+}
+.voice-table-header {
+  display:grid; grid-template-columns:160px 1fr 1fr;
+  background:var(--card2); padding:14px 18px;
+}
+
+/* ══ FOOTER ══ */
+.footer {
+  margin-top:56px; padding-top:28px; border-top:1px solid var(--border);
+  font-size:10px; color:var(--text-dim); text-align:center; line-height:1.6;
+}
+
+@media (max-width:600px) {
+  .g2, .g4, .dd-grid { grid-template-columns:1fr; }
+  .header h1 { font-size:28px; }
+  .vocab-row { grid-template-columns:1fr 1fr; }
+  .voice-table-row, .voice-table-header { grid-template-columns:100px 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<a class="back-nav" href="index.html">← Panel klienta</a>
+
+<div class="wrap">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-eyebrow">BetterWorkplace</div>
+    <h1>Brand Voice <span>Guide</span></h1>
+    <div class="header-sub">Jak BetterWorkplace mówi jako marka nadrzędna — ton, osobowość, hierarchia przekazów, zasady komunikacji. Bez warstwy wizualnej — czysty merytoryczny layer.</div>
+    <div class="header-meta">Wersja 1.0 · Kwiecień 2026</div>
+  </div>
+
+  <!-- CLAIM -->
+  <div style="background:#1F0B09; border-radius:12px; padding:36px 32px; margin-bottom:48px; text-align:center;">
+    <div style="font-size:26px; font-weight:900; color:#fff; letter-spacing:-0.5px; line-height:1.3;">Ekosystem benefitów.<br>Jeden partner. Lepsze miejsce pracy.</div>
+    <div style="font-size:11px; color:rgba(255,255,255,0.5); margin-top:10px; letter-spacing:1.5px; text-transform:uppercase; font-weight:600;">Claim marki</div>
+  </div>
+
+  <!-- 01: OSOBOWOŚĆ -->
+  <div class="section">
+    <div class="sec-label">01 · Osobowość marki</div>
+    <div class="card" style="border-left:3px solid var(--green);">
+      <div style="font-size:15px; color:var(--text); line-height:1.8; margin-bottom:22px;">
+        Gdyby BetterWorkplace był osobą, byłby <strong>doświadczonym partnerem strategicznym</strong>, który rozmawia z zarządem, nie z recepcją. Nie sprzedaje owoców — pokazuje, dlaczego wellbeing żywieniowy jest <em style="color:var(--green);">trzecim filarem benefitów pracowniczych</em>, obok Multisportu i Medicoveru. Mówi językiem ROI, retencji i employer brandingu. Jest pewny siebie, bo tworzy kategorię, której nikt inny nie zajął.
+      </div>
+      <div class="g2">
+        <div class="card-sm">
+          <div class="label">Misja</div>
+          <div class="val">Zmieniamy postrzeganie żywienia w biurze — z kosztu operacyjnego na strategiczny benefit pracowniczy z mierzalnym ROI.</div>
+        </div>
+        <div class="card-sm">
+          <div class="label">Archetyp</div>
+          <div class="val"><strong>Mędrzec</strong> (Sage) + <strong>Władca</strong> (Ruler). Definiuje nową kategorię i zarządza ekosystemem z pozycji wiedzy, danych i doświadczenia. Nie prosi — proponuje na poziomie strategii.</div>
+        </div>
+      </div>
+      <div class="g2" style="margin-top:10px;">
+        <div class="card-sm">
+          <div class="label">Obietnica</div>
+          <div class="val">Jeden partner do całego wellbeingu żywieniowego w firmie.</div>
+        </div>
+        <div class="card-sm">
+          <div class="label">Terytorium</div>
+          <div class="val">Trzeci filar benefitów pracowniczych. Retencja, employer branding, ROI wellbeingu, category creation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02: ATRYBUTY GŁOSU -->
+  <div class="section">
+    <div class="sec-label">02 · Atrybuty głosu</div>
+    <div class="g4">
+
+      <div class="voice-card">
+        <h3>Strategiczny</h3>
+        <div class="desc">Mówi „dlaczego", nie „co". Nie sprzedaje produktów — buduje kategorię. Język: partnerstwo, ROI, retencja, employer branding.</div>
+        <div class="not">Nie jesteśmy: abstrakcyjni. Każda strategiczna teza ma konkretny dowód.</div>
+        <div class="example">✓ „Wellbeing żywieniowy to strategia retencji, nie gadżet."</div>
+        <div class="anti-example">✗ „Oferujemy szeroki asortyment produktów do biura."</div>
+      </div>
+
+      <div class="voice-card">
+        <h3>Partnerski</h3>
+        <div class="desc">Rozmawiamy jak równy z równym — z HR Directorem i C-levelem. Nie jesteśmy dostawcą do odwołania. Jesteśmy partnerem, którego się wybiera.</div>
+        <div class="not">Nie jesteśmy: służalczy. Nie zabiegamy — proponujemy.</div>
+        <div class="example">✓ „Razem zbudujemy program, który Wasz HR pokaże na boardzie."</div>
+        <div class="anti-example">✗ „Mamy nadzieję, że nasza oferta spełni Państwa oczekiwania."</div>
+      </div>
+
+      <div class="voice-card">
+        <h3>Pewny siebie</h3>
+        <div class="desc">Tworzymy kategorię, której nikt inny nie zajął. 10+ lat, ekosystem 5 marek, ogólnopolska skala. To nie jest startup z pomysłem — to lider z infrastrukturą.</div>
+        <div class="not">Nie jesteśmy: aroganccy. Pewność z wyników, nie z ego.</div>
+        <div class="example">✓ „Definiujemy trzeci filar benefitów. Pierwszy i jedyny na polskim rynku."</div>
+        <div class="anti-example">✗ „Jesteśmy najlepszą firmą na rynku."</div>
+      </div>
+
+      <div class="voice-card">
+        <h3>Precyzyjny</h3>
+        <div class="desc">Każdy argument oparty na danych. ROI, retencja, NPS, koszty churnu. Język, który CFO zrozumie i HR weźmie na board meeting.</div>
+        <div class="not">Nie jesteśmy: sucho-korporacyjni. Dane podajemy w kontekście biznesowym, nie w tabelkach.</div>
+        <div class="example">✓ „Benefit wpisany w politykę HR jest 5-10x trudniejszy do usunięcia niż dostawca do odwołania."</div>
+        <div class="anti-example">✗ „Nasze rozwiązania przynoszą wieloaspektowe korzyści."</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 03: HIERARCHIA PRZEKAZÓW -->
+  <div class="section">
+    <div class="sec-label">03 · Hierarchia przekazów</div>
+    <div style="font-size:13px; color:var(--text-muted); margin-bottom:20px; line-height:1.7;">BetterWorkplace nie mówi o owocach, kawie ani kanapkach. To robią sub-brandy. BW mówi o kategorii, ekosystemie i strategii.</div>
+
+    <div class="card" style="border-left:3px solid var(--green); margin-bottom:10px;">
+      <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green); margin-bottom:6px;">Warstwa 1 · Master</div>
+      <div style="font-size:17px; font-weight:700; margin-bottom:8px;">BW mówi „dlaczego"</div>
+      <div class="val">Buduje kategorię „trzeciego filaru". Język strategii i ROI. Rozmówca: HR Director, C-level. Nie sprzedaje produktów — pozycjonuje ekosystem.</div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--green-accent); margin-bottom:10px;">
+      <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green-accent); margin-bottom:6px;">Warstwa 2 · Endorsed</div>
+      <div style="font-size:17px; font-weight:700; margin-bottom:8px;">Sub-brandy mówią „co" i „jak"</div>
+      <div class="val">DailyFruits, DailyFoods, BetterOffice — każdy ma własny ton i audience. Mówią o produktach, rytuałach, wygodzie. BW jest endorserem w tle: „by BetterWorkplace".</div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--text-dim);">
+      <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:6px;">Warstwa 3 · Product</div>
+      <div style="font-size:17px; font-weight:700; margin-bottom:8px;">TeamBudget mówi „kontrola"</div>
+      <div class="val">Platforma, automatyzacja, jedna faktura. Język tech/utility. Do CFO i HR. Pre-launch: messaging idzie przez BW, żeby budować świadomość zanim produkt wejdzie na rynek.</div>
+    </div>
+  </div>
+
+  <!-- 04: DO'S & DON'TS -->
+  <div class="section">
+    <div class="sec-label">04 · Do's & Don'ts</div>
+    <div class="dd-grid">
+      <div class="do-card">
+        <h3>Do's</h3>
+        <div class="dd-item">Mów językiem C-level: ROI, retencja, employer branding, strategia</div>
+        <div class="dd-item">Pozycjonuj jako „trzeci filar" — nie jako alternatywa dla kogokolwiek</div>
+        <div class="dd-item">Używaj „partner", nie „dostawca" — zawsze</div>
+        <div class="dd-item">Pokazuj ekosystem: DailyFruits, DailyFoods, BetterOffice, TeamBudget jako spójną całość</div>
+        <div class="dd-item">Argumentuj danymi: ile firm, ile miast, jaki wpływ na wellbeing</div>
+        <div class="dd-item">Mów „dlaczego" zanim powiesz „co" — buduj kategorię, potem pokaż produkt</div>
+        <div class="dd-item">Traktuj rozmówcę jak partnera — na równi, nie z pozycji dostawcy</div>
+      </div>
+      <div class="dont-card">
+        <h3>Don'ts</h3>
+        <div class="dd-item">Nie mów o owocach, kawie, kanapkach — to język sub-brandów</div>
+        <div class="dd-item">Nie używaj „oferta", „asortyment", „katalog" — to język hurtowni</div>
+        <div class="dd-item">Nie zabiegaj — BW proponuje, nie prosi</div>
+        <div class="dd-item">Nie używaj „Państwo" ani formalnego dystansu — partnerzy mówią na „Wy"</div>
+        <div class="dd-item">Nie porównuj się bezpośrednio z Multisportem/Medicoverem — BW to uzupełnienie, nie zamiennik</div>
+        <div class="dd-item">Nie obiecuj bez danych — każde twierdzenie musi mieć dowód</div>
+        <div class="dd-item">Nie mieszaj warstw — BW nie mówi o cenach, gramaturach, smakach</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05: SŁOWNIK -->
+  <div class="section">
+    <div class="sec-label">05 · Słownik marki</div>
+    <div style="font-size:13px; color:var(--text-muted); margin-bottom:16px; line-height:1.7;">Konkretne zamienniki — co BetterWorkplace mówi, a czego nigdy nie powie.</div>
+    <div class="vocab-row"><div class="vocab-no">dostawca owoców</div><div class="vocab-yes">partner wellbeingowy</div></div>
+    <div class="vocab-row"><div class="vocab-no">oferta / asortyment</div><div class="vocab-yes">ekosystem / program</div></div>
+    <div class="vocab-row"><div class="vocab-no">klient</div><div class="vocab-yes">partner / firma</div></div>
+    <div class="vocab-row"><div class="vocab-no">sprzedaż</div><div class="vocab-yes">partnerstwo / współpraca</div></div>
+    <div class="vocab-row"><div class="vocab-no">koszt kuchni</div><div class="vocab-yes">inwestycja w wellbeing</div></div>
+    <div class="vocab-row"><div class="vocab-no">zamówienie</div><div class="vocab-yes">program / konfiguracja</div></div>
+    <div class="vocab-row"><div class="vocab-no">gadżet / benefit z listy</div><div class="vocab-yes">trzeci filar benefitów</div></div>
+    <div class="vocab-row"><div class="vocab-no">tani / budżetowy</div><div class="vocab-yes">efektywny / mierzalny</div></div>
+    <div class="vocab-row"><div class="vocab-no">obsługujemy firmy</div><div class="vocab-yes">współpracujemy z firmami</div></div>
+    <div class="vocab-row"><div class="vocab-no">najlepsza firma na rynku</div><div class="vocab-yes">tworzymy nową kategorię</div></div>
+  </div>
+
+  <!-- 06: ODBIORCY -->
+  <div class="section">
+    <div class="sec-label">06 · Odbiorcy i adaptacja tonu</div>
+    <div style="font-size:13px; color:var(--text-muted); margin-bottom:20px; line-height:1.7;">BetterWorkplace mówi głównie do decydentów strategicznych. Ton się lekko przesuwa w zależności od rozmówcy, ale nigdy nie schodzi na poziom produktowy.</div>
+
+    <div class="g2" style="gap:12px;">
+      <div class="aud-card">
+        <div class="role">Główny odbiorca</div>
+        <h3>HR Director / CHRO</h3>
+        <p>Język: retencja, employee experience, employer branding, ROI wellbeingu. BW jako strategiczny element polityki HR. Ton: partnerski, pewny, oparty na danych.</p>
+        <div class="spectrum" style="margin-top:14px;">
+          <div style="width:10%; background:var(--border2);"></div>
+          <div style="width:70%; background:var(--green);"></div>
+          <div style="width:20%; background:var(--border2);"></div>
+        </div>
+        <div class="spectrum-labels"><span>Formalny</span><span>← Partnerski →</span><span>Swobodny</span></div>
+      </div>
+      <div class="aud-card">
+        <div class="role">Decydent budżetowy</div>
+        <h3>C-level / CFO</h3>
+        <p>Język: koszt vs. inwestycja, pricing power benefitu, lock-in, LTV. BW jako partner z mierzalnym zwrotem. Ton: precyzyjny, zwięzły, zero fluffu.</p>
+        <div class="spectrum" style="margin-top:14px;">
+          <div style="width:25%; background:var(--green);"></div>
+          <div style="width:55%; background:var(--border2);"></div>
+          <div style="width:20%; background:var(--border2);"></div>
+        </div>
+        <div class="spectrum-labels"><span>Formalny</span><span>← Precyzyjny →</span><span>Swobodny</span></div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;">
+      <div class="card">
+        <div class="label">Zasada nadrzędna</div>
+        <div style="font-size:15px; font-weight:700; margin-bottom:8px;">BW nigdy nie schodzi na poziom produktowy</div>
+        <div class="val">Kiedy rozmowa schodzi na owoce, kawę, kanapki — przekazujemy pałeczkę odpowiedniemu sub-brandowi. BW mówi o ekosystemie, kategorii i strategii. Zawsze.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07: BW vs SUB-BRANDS -->
+  <div class="section">
+    <div class="sec-label">07 · BW vs. Sub-brandy — podział głosu</div>
+    <div style="font-size:13px; color:var(--text-muted); margin-bottom:20px; line-height:1.7;">Jasna granica: co mówi BetterWorkplace, a co mówią poszczególne marki w ekosystemie.</div>
+
+    <div class="voice-table">
+
+      <div class="voice-table-header">
+        <div style="font-size:10px; font-weight:700; color:var(--text-dim); letter-spacing:1px; text-transform:uppercase;">Temat</div>
+        <div style="font-size:10px; font-weight:700; color:var(--green); letter-spacing:1px; text-transform:uppercase;">BW mówi</div>
+        <div style="font-size:10px; font-weight:700; color:var(--green-accent); letter-spacing:1px; text-transform:uppercase;">Sub-brand mówi</div>
+      </div>
+
+      <div class="voice-table-row">
+        <div style="font-size:12px; font-weight:600;">Wellbeing</div>
+        <div style="font-size:12px; color:var(--text-muted);">„Trzeci filar benefitów — ROI retencji"</div>
+        <div style="font-size:12px; color:var(--text-muted);">„81% poprawy wellbeingu po 3 miesiącach" (DF)</div>
+      </div>
+
+      <div class="voice-table-row">
+        <div style="font-size:12px; font-weight:600;">Produkt</div>
+        <div style="font-size:12px; color:var(--text-muted);">„Ekosystem 5 marek pod jednym parasolem"</div>
+        <div style="font-size:12px; color:var(--text-muted);">„Świeże owoce, dostawa next-day, 60s zamówienie" (DF)</div>
+      </div>
+
+      <div class="voice-table-row">
+        <div style="font-size:12px; font-weight:600;">Skala</div>
+        <div style="font-size:12px; color:var(--text-muted);">„Ogólnopolski partner z infrastrukturą w 13 miastach"</div>
+        <div style="font-size:12px; color:var(--text-muted);">„Wielolokalizacyjna dostawa, jeden panel" (BO)</div>
+      </div>
+
+      <div class="voice-table-row">
+        <div style="font-size:12px; font-weight:600;">Cena</div>
+        <div style="font-size:12px; color:var(--text-muted);">„Inwestycja z mierzalnym zwrotem, nie koszt"</div>
+        <div style="font-size:12px; color:var(--text-muted);">„Od X PLN/os/msc, bez zobowiązań" (DF/DFo)</div>
+      </div>
+
+      <div class="voice-table-row">
+        <div style="font-size:12px; font-weight:600;">Tech</div>
+        <div style="font-size:12px; color:var(--text-muted);">„Platforma zarządzania benefitami" (pre-TB)</div>
+        <div style="font-size:12px; color:var(--text-muted);">„Jedna faktura, jeden dashboard, pełna kontrola" (TB)</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 08: SYSTEM KOLORÓW -->
+  <div class="section">
+    <div class="sec-label">08 · System kolorów</div>
+    <div style="font-size:13px; color:var(--text-muted); margin-bottom:24px; line-height:1.7;">Paleta BetterWorkplace jest ciepła i organiczna — oparta na głębokim brązie, pomarańczowym akcencie i neonowej zieleni. Warm neutrals budują profesjonalizm, a kolory brandowe dodają energii i rozpoznawalności.</div>
+
+    <!-- Kolory główne -->
+    <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;">Kolory główne</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:28px;">
+
+      <div class="card" style="padding:0; overflow:hidden;">
+        <div style="height:80px; background:#1F0B09;"></div>
+        <div style="padding:16px;">
+          <div style="font-size:13px; font-weight:700; margin-bottom:4px;">Dark Brown</div>
+          <div style="font-size:11px; color:var(--text-muted);">#1F0B09</div>
+          <div style="font-size:11px; color:var(--text-dim); margin-top:4px;">Nagłówki, tekst główny, CTA, nav</div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0; overflow:hidden;">
+        <div style="height:80px; background:#FF6921;"></div>
+        <div style="padding:16px;">
+          <div style="font-size:13px; font-weight:700; margin-bottom:4px;">Orange</div>
+          <div style="font-size:11px; color:var(--text-muted);">#FF6921</div>
+          <div style="font-size:11px; color:var(--text-dim); margin-top:4px;">Akcent, eyebrow, logo, ikony</div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0; overflow:hidden;">
+        <div style="height:80px; background:#B2FF0D;"></div>
+        <div style="padding:16px;">
+          <div style="font-size:13px; font-weight:700; margin-bottom:4px;">Lime Green</div>
+          <div style="font-size:11px; color:var(--text-muted);">#B2FF0D</div>
+          <div style="font-size:11px; color:var(--text-dim); margin-top:4px;">Checkmarks, wyróżnienia, energia</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Kolory pomocnicze -->
+    <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;">Neutralne i pomocnicze</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:12px; margin-bottom:28px;">
+
+      <div class="card" style="padding:0; overflow:hidden;">
+        <div style="height:60px; background:#FFFFFF; border-bottom:1px solid var(--border);"></div>
+        <div style="padding:14px;">
+          <div style="font-size:12px; font-weight:700; margin-bottom:2px;">White</div>
+          <div style="font-size:11px; color:var(--text-muted);">#FFFFFF</div>
+          <div style="font-size:10px; color:var(--text-dim); margin-top:3px;">Tło główne, karty, sekcje</div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0; overflow:hidden;">
+        <div style="height:60px; background:#E9E7E7;"></div>
+        <div style="padding:14px;">
+          <div style="font-size:12px; font-weight:700; margin-bottom:2px;">Warm Gray</div>
+          <div style="font-size:11px; color:var(--text-muted);">#E9E7E7</div>
+          <div style="font-size:10px; color:var(--text-dim); margin-top:3px;">Bordery, separatory, disabled</div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0; overflow:hidden;">
+        <div style="height:60px; background:#665F5E;"></div>
+        <div style="padding:14px;">
+          <div style="font-size:12px; font-weight:700; margin-bottom:2px;">Neutral 60</div>
+          <div style="font-size:11px; color:var(--text-muted);">#665F5E</div>
+          <div style="font-size:10px; color:var(--text-dim); margin-top:3px;">Tekst body, opisy, paragrafy</div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0; overflow:hidden;">
+        <div style="height:60px; background:#FFFB0D;"></div>
+        <div style="padding:14px;">
+          <div style="font-size:12px; font-weight:700; margin-bottom:2px;">Yellow</div>
+          <div style="font-size:11px; color:var(--text-muted);">#FFFB0D</div>
+          <div style="font-size:10px; color:var(--text-dim); margin-top:3px;">Akcent sezonowy, highlight</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Proporcje -->
+    <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:12px;">Proporcje użycia</div>
+    <div style="display:flex; height:14px; border-radius:7px; overflow:hidden; margin-bottom:8px;">
+      <div style="width:45%; background:#FFFFFF; border:1px solid var(--border); border-radius:7px 0 0 7px;"></div>
+      <div style="width:20%; background:#E9E7E7;"></div>
+      <div style="width:15%; background:#1F0B09;"></div>
+      <div style="width:10%; background:#FF6921;"></div>
+      <div style="width:10%; background:#B2FF0D; border-radius:0 7px 7px 0;"></div>
+    </div>
+    <div style="display:flex; justify-content:space-between; font-size:10px; color:var(--text-dim);">
+      <span>White 45%</span>
+      <span>Warm Gray 20%</span>
+      <span>Dark Brown 15%</span>
+      <span>Orange 10%</span>
+      <span>Lime 10%</span>
+    </div>
+
+    <!-- Zasady -->
+    <div class="card" style="margin-top:20px;">
+      <div class="label">Zasady kolorystyczne</div>
+      <div class="g2" style="margin-top:10px;">
+        <div class="card-sm">
+          <div style="font-size:13px; font-weight:600; margin-bottom:4px;">Dark Brown = fundament</div>
+          <div class="val">#1F0B09 to kolor tekstu, nagłówków i CTA. Ciepły brąz zamiast zimnej czerni — buduje profesjonalizm z ludzkim charakterem.</div>
+        </div>
+        <div class="card-sm">
+          <div style="font-size:13px; font-weight:600; margin-bottom:4px;">Orange = akcent i kierunek</div>
+          <div class="val">#FF6921 na eyebrow, ikonach i logo. Przyciąga uwagę bez dominowania. Nigdy jako tło dla dużych powierzchni.</div>
+        </div>
+      </div>
+      <div class="g2" style="margin-top:10px;">
+        <div class="card-sm">
+          <div style="font-size:13px; font-weight:600; margin-bottom:4px;">Lime Green = energia i potwierdzenie</div>
+          <div class="val">#B2FF0D na checkmarkach, wyróżnieniach i hover states. Daje świeżość i nowoczesność. Sparingly — max 10% powierzchni.</div>
+        </div>
+        <div class="card-sm">
+          <div style="font-size:13px; font-weight:600; margin-bottom:4px;">White + Warm Gray = przestrzeń</div>
+          <div class="val">65% strony to białe/szare tło. Ciepłe odcienie szarości (#E9E7E7) zamiast zimnych — spójne z organicznym tonem brandu.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 09: TYPOGRAFIA -->
+  <div class="section">
+    <div class="sec-label">09 · Typografia</div>
+    <div style="font-size:13px; color:var(--text-muted); margin-bottom:24px; line-height:1.7;">Dwa fonty, czytelny podział ról. DM Sans na nagłówkach — geometryczny, pewny siebie. Nunito Sans na body — ciepły, czytelny, przyjazny. Razem budują profesjonalny, ale ludzki ton BetterWorkplace.</div>
+
+    <!-- DM Sans — Headings -->
+    <div class="card" style="border-left:3px solid #FF6921; padding:32px; margin-bottom:12px;">
+      <div style="font-size:11px; color:var(--text-dim); letter-spacing:2px; text-transform:uppercase; font-weight:700; margin-bottom:20px;">DM Sans · Nagłówki i display</div>
+
+      <!-- Display / H2 -->
+      <div style="margin-bottom:28px;">
+        <div style="font-size:72px; font-weight:700; letter-spacing:-2.5px; line-height:1.2; color:#1F0B09;">Ekosystem benefitów.</div>
+        <div style="display:flex; gap:16px; margin-top:8px;">
+          <div style="font-size:10px; color:var(--text-dim); background:var(--card2); padding:4px 10px; border-radius:4px;">Display · 72px · Bold (700)</div>
+          <div style="font-size:10px; color:var(--text-dim); background:var(--card2); padding:4px 10px; border-radius:4px;">Hero sekcje, statement</div>
+        </div>
+      </div>
+
+      <!-- H1 -->
+      <div style="margin-bottom:28px;">
+        <div style="font-size:36px; font-weight:200; letter-spacing:normal; line-height:1.2; color:#1F0B09;">14 lat pomagamy firmom budować lepsze miejsca pracy.</div>
+        <div style="display:flex; gap:16px; margin-top:8px;">
+          <div style="font-size:10px; color:var(--text-dim); background:var(--card2); padding:4px 10px; border-radius:4px;">H1 · 36px · Light (200)</div>
+          <div style="font-size:10px; color:var(--text-dim); background:var(--card2); padding:4px 10px; border-radius:4px;">Tytuły stron, hero subtitle</div>
+        </div>
+      </div>
+
+      <!-- H3 -->
+      <div style="margin-bottom:28px;">
+        <div style="font-size:24px; font-weight:600; letter-spacing:-0.4px; line-height:1.3; color:#1F0B09;">Jeden dostawca, jedna faktura, zero chaosu</div>
+        <div style="display:flex; gap:16px; margin-top:8px;">
+          <div style="font-size:10px; color:var(--text-dim); background:var(--card2); padding:4px 10px; border-radius:4px;">H3 · 24px · SemiBold (600)</div>
+          <div style="font-size:10px; color:var(--text-dim); background:var(--card2); padding:4px 10px; border-radius:4px;">Nagłówki sekcji, karty</div>
+        </div>
+      </div>
+
+      <!-- Eyebrow -->
+      <div>
+        <div style="font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#FF6921;">Dla nowoczesnych firm</div>
+        <div style="display:flex; gap:16px; margin-top:8px;">
+          <div style="font-size:10px; color:var(--text-dim); background:var(--card2); padding:4px 10px; border-radius:4px;">Eyebrow · 12px · Bold (700) · Uppercase</div>
+          <div style="font-size:10px; color:var(--text-dim); background:var(--card2); padding:4px 10px; border-radius:4px;">Etykiety, badże, sekcje · kolor Orange</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nunito Sans — Body -->
+    <div class="card" style="border-left:3px solid #665F5E; padding:32px;">
+      <div style="font-size:11px; color:var(--text-dim); letter-spacing:2px; text-transform:uppercase; font-weight:700; margin-bottom:20px;">Nunito Sans · Treść i opisy</div>
+
+      <!-- Body -->
+      <div style="margin-bottom:28px;">
+        <div style="font-size:16px; font-weight:400; line-height:1.6; color:#665F5E; font-family:'Nunito Sans',sans-serif;">Owoce, kawa, przekąski, prezenty, serwis, edukacja. Wszystko, czego potrzebuje nowoczesne miejsce pracy.</div>
+        <div style="display:flex; gap:16px; margin-top:8px;">
+          <div style="font-size:10px; color:var(--text-dim); background:var(--card2); padding:4px 10px; border-radius:4px;">Body · 16px · Regular (400)</div>
+          <div style="font-size:10px; color:var(--text-dim); background:var(--card2); padding:4px 10px; border-radius:4px;">Treść główna, opisy, paragrafy</div>
+        </div>
+      </div>
+
+      <!-- Small / Button -->
+      <div>
+        <div style="font-size:14px; font-weight:400; line-height:1.6; color:#665F5E; font-family:'Nunito Sans',sans-serif;">Im dłużej z nami, tym więcej korzyści i rabatów. Dedykowany opiekun, jedna faktura.</div>
+        <div style="display:flex; gap:16px; margin-top:8px;">
+          <div style="font-size:10px; color:var(--text-dim); background:var(--card2); padding:4px 10px; border-radius:4px;">Small · 14px · Regular (400)</div>
+          <div style="font-size:10px; color:var(--text-dim); background:var(--card2); padding:4px 10px; border-radius:4px;">Meta, opisy kart, buttony (18px bold)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Zasady typograficzne -->
+    <div class="card" style="margin-top:12px;">
+      <div class="label">Zasady typograficzne</div>
+      <div class="g2" style="margin-top:10px;">
+        <div class="card-sm">
+          <div style="font-size:13px; font-weight:600; margin-bottom:4px;">DM Sans = nagłówki, Nunito Sans = body</div>
+          <div class="val">Nigdy odwrotnie. DM Sans daje geometryczny charakter headlinom. Nunito Sans zapewnia czytelność na długich tekstach.</div>
+        </div>
+        <div class="card-sm">
+          <div style="font-size:13px; font-weight:600; margin-bottom:4px;">Kontrast wag buduje hierarchię</div>
+          <div class="val">Display: Bold (700). H1: Light (200) — kontrast wagi tworzy wyrafinowany efekt. Body: Regular (400).</div>
+        </div>
+      </div>
+      <div class="g2" style="margin-top:10px;">
+        <div class="card-sm">
+          <div style="font-size:13px; font-weight:600; margin-bottom:4px;">Negatywny letter-spacing na display</div>
+          <div class="val">72px display: -2.5px spacing. H3 (24px): -0.4px. Body i mniejsze: normalny spacing. Im większy font, tym ciasniej.</div>
+        </div>
+        <div class="card-sm">
+          <div style="font-size:13px; font-weight:600; margin-bottom:4px;">Orange tylko na eyebrow</div>
+          <div class="val">Kolor #FF6921 wyłącznie na uppercase etykietach i ikonach. Nigdy w nagłówkach ani body text.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    BetterWorkplace · Brand Voice Guide · v1.0<br>
+    Dokument poufny · Kwiecień 2026
+  </div>
+
+</div>
+
+</body>
+</html>

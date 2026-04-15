@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DailyFruits – Brand Messaging Framework</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'Achiko';
+  src: url('Achiko.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --green-dark: #1B5E3A;
+  --green-mid: #347550;
+  --lime: #8DC63F;
+  --lime-light: #A4C348;
+  --cream: #FFF9E0;
+  --white: #FFFFFF;
+  --text: #1B5E3A;
+  --text-muted: #4a7a5c;
+  --text-dim: #8aab96;
+  --border: #d5e0c8;
+  --card: #FFFFFF;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'DM Sans',system-ui,sans-serif;
+  background:var(--cream); color:var(--text);
+  line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+
+/* ══ BACK NAV ══ */
+.back-nav {
+  position:fixed; top:16px; right:20px; z-index:9999;
+  font-size:11px; font-weight:600; color:#0d0d0d;
+  text-decoration:none; letter-spacing:0.3px;
+  background:#fff; padding:8px 18px; border-radius:8px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+  transition:all .2s;
+}
+.back-nav:hover { background:var(--lime); }
+
+.wrap { max-width:960px; margin:0 auto; padding:48px 20px 80px; }
+
+/* ══ HEADER ══ */
+.header { text-align:center; margin-bottom:56px; }
+.header-badge {
+  font-size:9px; font-weight:700; letter-spacing:2.5px;
+  text-transform:uppercase; color:var(--text-dim); margin-bottom:12px;
+}
+.header h1 {
+  font-size:36px; font-weight:900; letter-spacing:-1px;
+  line-height:1.15; color:var(--green-dark); margin-bottom:8px;
+}
+.header-sub {
+  font-size:13px; color:var(--text-muted); letter-spacing:0.5px;
+}
+.header-meta {
+  font-size:11px; color:var(--text-dim); margin-top:6px;
+}
+
+/* ══ FRAMEWORK ROWS ══ */
+.fw-row {
+  display:grid;
+  grid-template-columns:220px 1fr;
+  gap:0;
+  border-top:2px dashed var(--border);
+  padding:40px 0;
+}
+.fw-row:first-of-type { border-top:none; padding-top:0; }
+
+.fw-label {
+  padding-right:32px;
+}
+.fw-label h2 {
+  font-size:20px; font-weight:800; letter-spacing:-0.5px;
+  color:var(--green-dark); margin-bottom:8px;
+}
+.fw-label p {
+  font-size:11px; color:var(--text-dim); line-height:1.6;
+}
+
+/* ══ CARDS ══ */
+.fw-content-single {
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:28px 32px;
+}
+.fw-content-single .big-text {
+  font-size:22px; font-weight:700; color:var(--green-dark);
+  line-height:1.4; letter-spacing:-0.3px;
+}
+.fw-content-single .big-text span {
+  color:var(--lime);
+}
+.fw-content-single .sub-text {
+  font-size:13px; color:var(--text-muted); margin-top:10px; line-height:1.7;
+}
+
+.fw-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:14px;
+}
+
+.fw-card {
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:24px;
+  transition:all .2s;
+}
+.fw-card:hover {
+  border-color:var(--lime);
+  transform:translateY(-2px);
+  box-shadow:0 4px 16px rgba(27,94,58,0.06);
+}
+.fw-card-num {
+  font-size:9px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; color:var(--lime);
+  margin-bottom:10px;
+}
+.fw-card h3 {
+  font-size:15px; font-weight:700; color:var(--green-dark);
+  margin-bottom:8px; letter-spacing:-0.2px;
+}
+.fw-card p {
+  font-size:12px; color:var(--text-muted); line-height:1.65;
+}
+
+/* ══ RTB SUB-CARDS ══ */
+.rtb-group {
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:14px;
+}
+.rtb-col {
+  display:flex; flex-direction:column; gap:10px;
+}
+.rtb-col-label {
+  font-size:9px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; color:var(--lime);
+  padding-bottom:8px; border-bottom:2px solid var(--border);
+  margin-bottom:4px;
+}
+.rtb-card {
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px 18px;
+  transition:border-color .2s;
+}
+.rtb-card:hover { border-color:var(--lime); }
+.rtb-card .dot {
+  width:6px; height:6px; border-radius:50%;
+  background:var(--green-dark); margin-bottom:8px;
+}
+.rtb-card p {
+  font-size:12px; color:var(--text-muted); line-height:1.6;
+}
+.rtb-card strong {
+  color:var(--green-dark);
+}
+
+/* ══ CONNECTOR DOTS ══ */
+.connector {
+  display:flex; align-items:center; justify-content:center;
+  padding:16px 0;
+}
+.connector-line {
+  width:2px; height:24px; background:var(--border);
+  position:relative;
+}
+.connector-line::before,
+.connector-line::after {
+  content:''; position:absolute; left:50%; transform:translateX(-50%);
+  width:8px; height:8px; border-radius:50%; background:var(--green-dark);
+}
+.connector-line::before { top:-4px; }
+.connector-line::after { bottom:-4px; }
+
+/* ══ FOOTER ══ */
+.footer {
+  text-align:center; margin-top:56px; padding-top:32px;
+  border-top:1px solid var(--border);
+  font-size:10px; color:var(--text-dim); line-height:1.6;
+}
+
+@media (max-width:700px) {
+  .fw-row { grid-template-columns:1fr; gap:16px; }
+  .fw-grid, .rtb-group { grid-template-columns:1fr; }
+  .header h1 { font-size:26px; }
+}
+</style>
+</head>
+<body>
+
+<a class="back-nav" href="index.html">← Panel klienta</a>
+
+<div class="wrap">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-badge">DailyFruits · by BetterWorkplace</div>
+    <h1>Brand Messaging<br><span style="font-family:'Achiko',cursive; font-weight:400;">Framework</span></h1>
+    <div class="header-sub">Struktura komunikacji marki DailyFruits</div>
+    <div class="header-meta">Wersja 1.0 · Kwiecień 2026</div>
+  </div>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- BIG IDEA -->
+  <!-- ═══════════════════════════════════ -->
+  <div class="fw-row">
+    <div class="fw-label">
+      <h2>Big Idea</h2>
+      <p>Główna myśl marki — powód, dla którego istnieje. To hasło, za którym stoi cała komunikacja.</p>
+    </div>
+    <div class="fw-content-single">
+      <div class="big-text">Zdrowsze jedzenie, <span>lepsza praca.</span></div>
+      <div class="sub-text">DailyFruits nie dostarcza owoców — buduje kulturę zdrowia w miejscu pracy. Każda skrzynka to inwestycja w produktywność, retencję i wellbeing zespołu. Prosta zmiana, mierzalny efekt.</div>
+    </div>
+  </div>
+
+  <!-- CONNECTOR -->
+  <div class="connector"><div class="connector-line"></div></div>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- VALUE PROPOSITION -->
+  <!-- ═══════════════════════════════════ -->
+  <div class="fw-row">
+    <div class="fw-label">
+      <h2>Value Proposition</h2>
+      <p>Główna wartość, którą otrzymuje klient. Odpowiada na pytanie: dlaczego DailyFruits, a nie alternatywa?</p>
+    </div>
+    <div class="fw-content-single">
+      <div class="big-text">Jedyny dostawca w Polsce, który łączy <span>świeże jedzenie do biura</span> z mierzalnym wpływem na wellbeing zespołu.</div>
+      <div class="sub-text">10+ lat doświadczenia, 2000+ obsługiwanych firm, 13 miast. Nie tylko logistyka — dajemy dane, które pokazują HR-owi realny efekt. Zamów w 60 sekund, zmień w dowolnym momencie, zrezygnuj bez zobowiązań.</div>
+    </div>
+  </div>
+
+  <!-- CONNECTOR -->
+  <div class="connector"><div class="connector-line"></div></div>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- BENEFITS -->
+  <!-- ═══════════════════════════════════ -->
+  <div class="fw-row">
+    <div class="fw-label">
+      <h2>Benefits</h2>
+      <p>Trzy kluczowe korzyści, które czynią markę atrakcyjną i zrozumiałą dla odbiorców.</p>
+    </div>
+    <div class="fw-grid">
+      <div class="fw-card">
+        <div class="fw-card-num">Benefit 01</div>
+        <h3>Zero friction, pełna kontrola</h3>
+        <p>Zamówienie w 60 sekund, zmiana składu w dowolnym momencie, brak umów długoterminowych. Elastyczność, która pasuje do tempa Twojej firmy.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-num">Benefit 02</div>
+        <h3>Mierzalny wpływ na zespół</h3>
+        <p>81% pracowników potwierdza poprawę wellbeingu po 3 miesiącach. To nie obietnica — to dane z 2000+ firm, które widzimy co kwartał.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-num">Benefit 03</div>
+        <h3>Skala bez kompromisów</h3>
+        <p>Od 10-osobowego biura po korporację w 13 miastach — ten sam standard świeżości, ta sama niezawodność dostawy. Rośniesz? My rośniemy z Tobą.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONNECTOR -->
+  <div class="connector"><div class="connector-line"></div></div>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- REASONS TO BELIEVE -->
+  <!-- ═══════════════════════════════════ -->
+  <div class="fw-row">
+    <div class="fw-label">
+      <h2>Reasons to Believe</h2>
+      <p>Dowody, które czynią obietnice marki wiarygodnymi — twarde fakty, nie hasła.</p>
+    </div>
+    <div class="rtb-group">
+
+      <div class="rtb-col">
+        <div class="rtb-col-label">Zero friction</div>
+        <div class="rtb-card">
+          <div class="dot"></div>
+          <p><strong>60-sekundowe zamówienie</strong> — konfigurator online, zero telefonów, zero maili</p>
+        </div>
+        <div class="rtb-card">
+          <div class="dot"></div>
+          <p><strong>Brak umów i zobowiązań</strong> — zmień, pauzuj lub zrezygnuj w dowolnym momencie</p>
+        </div>
+        <div class="rtb-card">
+          <div class="dot"></div>
+          <p><strong>Dostawa next-day</strong> — zamów dziś, jutro masz na biurku</p>
+        </div>
+      </div>
+
+      <div class="rtb-col">
+        <div class="rtb-col-label">Mierzalny wpływ</div>
+        <div class="rtb-card">
+          <div class="dot"></div>
+          <p><strong>81% poprawa wellbeingu</strong> — potwierdzona w badaniach po 3 miesiącach</p>
+        </div>
+        <div class="rtb-card">
+          <div class="dot"></div>
+          <p><strong>2000+ firm</strong> w portfolio — od startupów po korporacje z listy WIG20</p>
+        </div>
+        <div class="rtb-card">
+          <div class="dot"></div>
+          <p><strong>Raporty dla HR</strong> — kwartalne dane o konsumpcji i satysfakcji zespołu</p>
+        </div>
+      </div>
+
+      <div class="rtb-col">
+        <div class="rtb-col-label">Skala</div>
+        <div class="rtb-card">
+          <div class="dot"></div>
+          <p><strong>13 miast w Polsce</strong> — ogólnopolska logistyka z lokalną precyzją</p>
+        </div>
+        <div class="rtb-card">
+          <div class="dot"></div>
+          <p><strong>10+ lat na rynku</strong> — przetrwaliśmy COVID, nie straciliśmy ani jednej dostawy</p>
+        </div>
+        <div class="rtb-card">
+          <div class="dot"></div>
+          <p><strong>Multi-lokalizacja</strong> — jeden panel, wiele biur, spójna jakość</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    DailyFruits · Brand Messaging Framework · v1.0<br>
+    Dokument poufny — BetterWorkplace · Kwiecień 2026
+  </div>
+
+</div>
+
+</body>
+</html>

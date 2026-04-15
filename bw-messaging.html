@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BetterWorkplace – Brand Messaging Framework</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0d0d0d;
+  --card: #161616;
+  --card2: #1c1c1c;
+  --border: #252525;
+  --border2: #2e2e2e;
+  --lime: #c8f135;
+  --lime-dim: rgba(200,241,53,0.08);
+  --green: #22c55e;
+  --green-dim: rgba(34,197,94,0.08);
+  --text: #e8e8e8;
+  --text-muted: #888;
+  --text-dim: #3a3a3a;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'DM Sans',system-ui,sans-serif;
+  background:var(--bg); color:var(--text);
+  line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+
+/* ══ BACK NAV ══ */
+.back-nav {
+  position:fixed; top:16px; right:20px; z-index:9999;
+  font-size:11px; font-weight:600; color:#0d0d0d;
+  text-decoration:none; letter-spacing:0.3px;
+  background:#fff; padding:8px 18px; border-radius:8px;
+  transition:all .2s;
+}
+.back-nav:hover { background:var(--lime); }
+
+.wrap { max-width:900px; margin:0 auto; padding:60px 20px 80px; }
+
+/* ══ HEADER ══ */
+.header { margin-bottom:56px; }
+.header-eyebrow {
+  font-size:9px; font-weight:700; letter-spacing:3px;
+  text-transform:uppercase; color:var(--text-dim); margin-bottom:16px;
+}
+.header h1 {
+  font-size:38px; font-weight:900; letter-spacing:-1.2px;
+  line-height:1.1; margin-bottom:12px;
+}
+.header h1 span { color:var(--lime); }
+.header-sub {
+  font-size:14px; color:var(--text-muted); line-height:1.7; max-width:540px;
+}
+.header-meta {
+  font-size:11px; color:var(--text-dim); margin-top:10px;
+}
+
+/* ══ FRAMEWORK ROWS ══ */
+.fw-row {
+  display:grid;
+  grid-template-columns:200px 1fr;
+  gap:0;
+  border-top:1px solid var(--border);
+  padding:40px 0;
+}
+.fw-row:first-of-type { border-top:none; padding-top:0; }
+
+.fw-label { padding-right:28px; }
+.fw-label h2 {
+  font-size:18px; font-weight:800; letter-spacing:-0.3px;
+  margin-bottom:8px;
+}
+.fw-label p {
+  font-size:11px; color:var(--text-dim); line-height:1.6;
+}
+
+/* ══ CONTENT CARDS ══ */
+.fw-single {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:28px 32px;
+}
+.fw-single .big {
+  font-size:22px; font-weight:700; line-height:1.35;
+  letter-spacing:-0.3px;
+}
+.fw-single .big span { color:var(--lime); }
+.fw-single .sub {
+  font-size:13px; color:var(--text-muted); margin-top:12px; line-height:1.7;
+}
+
+.fw-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:12px;
+}
+
+.fw-card {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:24px;
+  transition:all .2s;
+}
+.fw-card:hover {
+  border-color:var(--lime);
+  transform:translateY(-2px);
+}
+.fw-card-num {
+  font-size:9px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; color:var(--lime);
+  margin-bottom:10px;
+}
+.fw-card h3 {
+  font-size:15px; font-weight:700; margin-bottom:8px;
+  letter-spacing:-0.2px;
+}
+.fw-card p {
+  font-size:12px; color:var(--text-muted); line-height:1.65;
+}
+
+/* ══ RTB ══ */
+.rtb-group {
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:12px;
+}
+.rtb-col { display:flex; flex-direction:column; gap:8px; }
+.rtb-col-label {
+  font-size:9px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; color:var(--lime);
+  padding-bottom:8px; border-bottom:1px solid var(--border);
+  margin-bottom:4px;
+}
+.rtb-card {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px 18px;
+  transition:border-color .2s;
+}
+.rtb-card:hover { border-color:var(--lime); }
+.rtb-card .dot {
+  width:6px; height:6px; border-radius:50%;
+  background:var(--lime); margin-bottom:8px;
+}
+.rtb-card p {
+  font-size:12px; color:var(--text-muted); line-height:1.6;
+}
+.rtb-card strong { color:var(--text); }
+
+/* ══ CONNECTOR ══ */
+.connector {
+  display:flex; align-items:center; justify-content:center;
+  padding:14px 0;
+}
+.connector-line {
+  width:2px; height:24px; background:var(--border);
+  position:relative;
+}
+.connector-line::before,
+.connector-line::after {
+  content:''; position:absolute; left:50%; transform:translateX(-50%);
+  width:8px; height:8px; border-radius:50%; background:var(--lime);
+}
+.connector-line::before { top:-4px; }
+.connector-line::after { bottom:-4px; }
+
+/* ══ FOOTER ══ */
+.footer {
+  margin-top:56px; padding-top:28px; border-top:1px solid var(--border);
+  font-size:10px; color:var(--text-dim); text-align:center; line-height:1.6;
+}
+
+@media (max-width:700px) {
+  .fw-row { grid-template-columns:1fr; gap:16px; }
+  .fw-grid, .rtb-group { grid-template-columns:1fr; }
+  .header h1 { font-size:28px; }
+}
+</style>
+</head>
+<body>
+
+<a class="back-nav" href="index.html">← Panel klienta</a>
+
+<div class="wrap">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-eyebrow">BetterWorkplace</div>
+    <h1>Brand Messaging <span>Framework</span></h1>
+    <div class="header-sub">Struktura komunikacji BetterWorkplace jako marki nadrzędnej — Big Idea, Value Proposition, Benefits i Reasons to Believe.</div>
+    <div class="header-meta">Wersja 1.0 · Kwiecień 2026</div>
+  </div>
+
+  <!-- ═══════════════════════ BIG IDEA ═══════════════════════ -->
+  <div class="fw-row">
+    <div class="fw-label">
+      <h2>Big Idea</h2>
+      <p>Główna myśl marki — hasło, za którym stoi cała komunikacja BW. Nie tagline, ale pozycja kategorii.</p>
+    </div>
+    <div class="fw-single">
+      <div class="big">Trzeci filar <span>benefitów pracowniczych.</span></div>
+      <div class="sub">Multisport dba o ciało. Medicover dba o zdrowie. BetterWorkplace dba o codzienne samopoczucie w pracy — przez jedzenie, kawę, przestrzeń i narzędzia. To nie rebranding. To category creation — definiowanie nowej kategorii benefitowej, zanim ktokolwiek inny ją zajmie.</div>
+    </div>
+  </div>
+
+  <div class="connector"><div class="connector-line"></div></div>
+
+  <!-- ═══════════════════════ VALUE PROPOSITION ═══════════════════════ -->
+  <div class="fw-row">
+    <div class="fw-label">
+      <h2>Value Proposition</h2>
+      <p>Główna wartość dla decydenta. Dlaczego BW, a nie status quo (4 osobnych dostawców)?</p>
+    </div>
+    <div class="fw-single">
+      <div class="big">Jeden partner, który zamienia <span>koszt kuchni w strategiczny benefit</span> z mierzalnym ROI.</div>
+      <div class="sub">Zamiast 4 dostawców, 4 faktur i zerowej widoczności w raportach HR — jeden ekosystem marek, jeden punkt kontaktu, jedno rozliczenie. Benefit wpisany w politykę HR jest 5–10x trudniejszy do usunięcia niż dostawca do odwołania. To pricing power i lock-in, którego żaden konkurent nie oferuje.</div>
+    </div>
+  </div>
+
+  <div class="connector"><div class="connector-line"></div></div>
+
+  <!-- ═══════════════════════ BENEFITS ═══════════════════════ -->
+  <div class="fw-row">
+    <div class="fw-label">
+      <h2>Benefits</h2>
+      <p>Trzy strategiczne korzyści dla decydentów — HR Directors i C-level.</p>
+    </div>
+    <div class="fw-grid">
+      <div class="fw-card">
+        <div class="fw-card-num">Benefit 01</div>
+        <h3>Category creation — nowa półka</h3>
+        <p>BW nie konkuruje z dostawcami owoców. Tworzy nową kategorię: wellbeing żywieniowy jako benefit. Inne pole gry, inna rozmowa, inna cena.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-num">Benefit 02</div>
+        <h3>Ekosystem, nie fragmentacja</h3>
+        <p>DailyFruits, DailyFoods, BetterOffice, TeamBudget — jeden partner zamiast 4 dostawców. Cross-sell jest wbudowany w architekturę, nie wymuszony przez sprzedawcę.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-num">Benefit 03</div>
+        <h3>Mierzalny ROI dla HR</h3>
+        <p>Dane, raporty, wpływ na retencję i employer branding. HR dostaje materiał na board meeting. CFO widzi inwestycję, nie koszt.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"><div class="connector-line"></div></div>
+
+  <!-- ═══════════════════════ RTB ═══════════════════════ -->
+  <div class="fw-row">
+    <div class="fw-label">
+      <h2>Reasons to Believe</h2>
+      <p>Dowody, które czynią obietnice BW wiarygodnymi na poziomie C-level.</p>
+    </div>
+    <div class="rtb-group">
+
+      <div class="rtb-col">
+        <div class="rtb-col-label">Category creation</div>
+        <div class="rtb-card">
+          <div class="dot"></div>
+          <p><strong>Nikt inny tego nie robi</strong> — żaden gracz na polskim rynku nie łączy żywienia biurowego z narracją benefitową</p>
+        </div>
+        <div class="rtb-card">
+          <div class="dot"></div>
+          <p><strong>Budżet HR vs. budżet kuchni</strong> — benefit budget jest 5–10x większy niż koszt operacyjny. Inna półka cenowa</p>
+        </div>
+        <div class="rtb-card">
+          <div class="dot"></div>
+          <p><strong>Post-COVID timing</strong> — employee experience i wellbeing w top 3 priorytetów HR. Rynek jest gotowy</p>
+        </div>
+      </div>
+
+      <div class="rtb-col">
+        <div class="rtb-col-label">Ekosystem</div>
+        <div class="rtb-card">
+          <div class="dot"></div>
+          <p><strong>5 marek, 1 parasol</strong> — DailyFruits, DailyFoods, BetterOffice, TeamBudget, Sendgift pod jednym BW</p>
+        </div>
+        <div class="rtb-card">
+          <div class="dot"></div>
+          <p><strong>Cross-sell wbudowany w architekturę</strong> — klient z 1 produktem naturalnie przechodzi na 2+, potem na pełny program</p>
+        </div>
+        <div class="rtb-card">
+          <div class="dot"></div>
+          <p><strong>Lock-in przez wartość</strong> — benefit w polityce HR jest trudniejszy do usunięcia niż dostawca do odwołania</p>
+        </div>
+      </div>
+
+      <div class="rtb-col">
+        <div class="rtb-col-label">ROI</div>
+        <div class="rtb-card">
+          <div class="dot"></div>
+          <p><strong>10+ lat, 2000+ firm, 13 miast</strong> — infrastruktura ogólnopolska, nie startup z pomysłem</p>
+        </div>
+        <div class="rtb-card">
+          <div class="dot"></div>
+          <p><strong>Dane dla HR</strong> — kwartalne raporty wpływu na wellbeing, materiał na board meeting</p>
+        </div>
+        <div class="rtb-card">
+          <div class="dot"></div>
+          <p><strong>Pipeline wartości</strong> — klient 1-produktowy → multi-product → pełny program. Każdy krok zwiększa LTV i zmniejsza churn</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    BetterWorkplace · Brand Messaging Framework · v1.0<br>
+    Dokument poufny · Kwiecień 2026
+  </div>
+
+</div>
+
+</body>
+</html>
