@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DailyFruits — Raport SEO & Performance</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--green:#1B5E3A;--lime:#8DC63F;--cream:#FFF9E0;--white:#FFFFFF;--gray:#3D5A1E;--red:#E43020;--bg:#F8F7F2}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:#2a2a2a;line-height:1.7;-webkit-font-smoothing:antialiased}
+.report{max-width:900px;margin:0 auto;padding:40px 24px 80px}
+
+.cover{background:var(--green);color:#fff;border-radius:24px;padding:64px 56px;margin-bottom:48px;position:relative;overflow:hidden}
+.cover::after{content:'';position:absolute;right:-60px;top:-60px;width:300px;height:300px;border-radius:50%;background:rgba(141,198,63,0.12)}
+.cover h1{font-size:clamp(32px,5vw,48px);font-weight:900;line-height:1.1;margin-bottom:8px}
+.cover h1 span{color:var(--lime)}
+.cover .subtitle{font-size:20px;color:rgba(255,255,255,0.7);margin-bottom:32px}
+.cover .meta{font-size:14px;color:rgba(255,255,255,0.4)}
+.cover-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
+.cover-stat{background:rgba(255,255,255,0.08);border-radius:16px;padding:20px 16px;text-align:center}
+.cover-stat .num{font-size:32px;font-weight:900;color:var(--lime);line-height:1}
+.cover-stat .label{font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px;text-transform:uppercase;letter-spacing:0.5px}
+
+section{margin-bottom:48px}
+h2{font-size:28px;font-weight:900;color:var(--green);margin-bottom:24px;padding-bottom:12px;border-bottom:3px solid var(--lime)}
+h3{font-size:18px;font-weight:700;color:var(--green);margin:28px 0 12px}
+p{font-size:15px;margin-bottom:14px;color:#444}
+strong{color:var(--green)}
+
+.card{background:var(--white);border-radius:16px;padding:28px 32px;margin-bottom:16px;border:1px solid rgba(27,94,58,0.08)}
+.card h3{margin-top:0}
+.card-accent{border-left:4px solid var(--lime)}
+
+table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:14px;border-radius:12px;overflow:hidden}
+thead{background:var(--green);color:#fff}
+th{padding:12px 16px;text-align:left;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:0.5px}
+td{padding:11px 16px;border-bottom:1px solid #eee}
+tr:nth-child(even){background:rgba(141,198,63,0.04)}
+tr:hover{background:rgba(141,198,63,0.08)}
+td:first-child{font-weight:600;color:var(--green)}
+
+.tag{display:inline-block;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:700;margin-right:4px}
+.tag-green{background:rgba(141,198,63,0.15);color:#3B6D11}
+.tag-red{background:rgba(228,48,32,0.1);color:#c0392b}
+.tag-blue{background:rgba(52,117,80,0.1);color:#1B5E3A}
+.tag-gray{background:rgba(0,0,0,0.05);color:#666}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.metric-card{background:var(--white);border-radius:16px;padding:24px;border:1px solid rgba(27,94,58,0.08);text-align:center}
+.metric-card .num{font-size:36px;font-weight:900;color:var(--green);line-height:1}
+.metric-card .label{font-size:13px;color:#888;margin-top:6px}
+
+.schema-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 24px}
+.schema-card{background:var(--white);border-radius:12px;padding:20px;border:1px solid rgba(27,94,58,0.08);text-align:center}
+.schema-card .icon{font-size:28px;margin-bottom:8px}
+.schema-card .name{font-size:14px;font-weight:700;color:var(--green)}
+.schema-card .desc{font-size:12px;color:#888;margin-top:4px}
+
+.timeline{position:relative;padding-left:28px;margin:16px 0}
+.timeline::before{content:'';position:absolute;left:8px;top:4px;bottom:4px;width:2px;background:var(--lime)}
+.timeline-item{position:relative;margin-bottom:20px}
+.timeline-item::before{content:'';position:absolute;left:-24px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--lime);border:2px solid var(--white)}
+.timeline-item h4{font-size:14px;font-weight:700;color:var(--green);margin-bottom:2px}
+.timeline-item p{font-size:13px;margin:0;color:#666}
+
+.city-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0}
+.city-chip{background:var(--white);border:1px solid rgba(27,94,58,0.1);border-radius:10px;padding:10px 12px;text-align:center}
+.city-chip .name{font-size:13px;font-weight:700;color:var(--green)}
+.city-chip .stat{font-size:11px;color:var(--lime);font-weight:700}
+
+.footer-note{text-align:center;font-size:12px;color:#aaa;margin-top:64px;padding-top:24px;border-top:1px solid #e0e0e0}
+
+@media(max-width:768px){
+.cover{padding:40px 28px}
+.cover-stats{grid-template-columns:repeat(2,1fr)}
+.grid-2,.schema-grid{grid-template-columns:1fr}
+.city-grid{grid-template-columns:repeat(2,1fr)}
+table{font-size:12px}
+th,td{padding:8px 10px}
+}
+@media print{
+body{background:#fff}
+.cover{break-after:page}
+section{break-inside:avoid}
+}
+.back-nav {
+  position:fixed; top:16px; right:20px; z-index:9999;
+  font-size:11px; font-weight:600; color:#fff;
+  text-decoration:none; letter-spacing:0.3px;
+  background:#1B5E3A; padding:8px 18px; border-radius:8px;
+  transition:all .2s;
+}
+.back-nav:hover { background:#8DC63F; color:#1B5E3A; }
+</style>
+</head>
+<body>
+<a class="back-nav" href="index.html">← Panel klienta</a>
+<div class="report">
+
+<div class="cover">
+    <h1>DailyFruits<span>.pl</span></h1>
+    <p class="subtitle">Raport SEO & Performance — kwiecień 2026</p>
+    <p class="meta">DailyFruits.pl — Raport wewnętrzny</p>
+    <div class="cover-stats">
+        <div class="cover-stat"><div class="num">29</div><div class="label">Stron HTML</div></div>
+        <div class="cover-stat"><div class="num">200</div><div class="label">Redirectów 301</div></div>
+        <div class="cover-stat"><div class="num">13</div><div class="label">City pages</div></div>
+        <div class="cover-stat"><div class="num">6</div><div class="label">Typów schema</div></div>
+    </div>
+</div>
+
+<section>
+    <h2>1. Podsumowanie</h2>
+    <p>Strona dailyfruits.pl przeszła kompleksową optymalizację SEO i performance obejmującą 29 stron HTML, 200 redirectów 301, pełne schema markup i 13 dedykowanych city landing pages. Poniżej szczegółowy opis wszystkich działań.</p>
+    <div class="grid-2" style="margin-top:20px">
+        <div class="metric-card"><div class="num">28/29</div><div class="label">Stron ze schema JSON-LD (96%)</div></div>
+        <div class="metric-card"><div class="num">80</div><div class="label">Unikalnych FAQ (pytań + odpowiedzi)</div></div>
+        <div class="metric-card"><div class="num">28</div><div class="label">URLs w sitemap.xml</div></div>
+        <div class="metric-card"><div class="num">~50MB</div><div class="label">Usuniętych niepotrzebnych plików</div></div>
+    </div>
+</section>
+
+<section>
+    <h2>2. SEO techniczny</h2>
+
+    <div class="card card-accent">
+        <h3>Redirecty 301 (migracja z WordPress)</h3>
+        <p>Zmapowano <strong>200 redirectów 301</strong> w vercel.json pokrywających pełną strukturę starego serwisu WordPress. Obejmuje to page-sitemap URLs, dated blog URLs (/2023/04/...), warianty z trailing slash i bez, oraz deep links do starych artykułów.</p>
+    </div>
+
+    <div class="card card-accent">
+        <h3>Sitemap.xml + robots.txt</h3>
+        <p>Wygenerowano sitemap.xml z <strong>28 URL-ami</strong> pogrupowanymi w sekcje: core pages (4), content pages (3), blog posts (6), city landing pages (13). Dodano lastmod, changefreq i priority. Robots.txt wskazuje na sitemap i zezwala na pełne crawlowanie.</p>
+    </div>
+
+    <div class="card card-accent">
+        <h3>Canonical URLs + meta robots</h3>
+        <p>Każda z 29 stron ma <strong>canonical URL</strong>, meta robots index/follow, pełny zestaw Open Graph i Twitter Card meta tagów. OG image wskazuje na HORIZONTAL.webp.</p>
+    </div>
+
+    <div class="card card-accent">
+        <h3>Custom 404</h3>
+        <p>Zamiast redirect-all-to-homepage dodano <strong>custom 404.html</strong> z nawigacją i linkami do kluczowych stron. Zmniejsza bounce rate z nieistniejących URL-i.</p>
+    </div>
+
+    <div class="card card-accent">
+        <h3>HTML semantyczny</h3>
+        <p>Uporządkowano hierarchię nagłówków: <strong>jeden H1 per strona</strong>, H2 dla sekcji, H3 dla podsekcji. Dodano aria-labels do hamburger menu i przycisków. Formularze mają label + placeholder.</p>
+    </div>
+</section>
+
+<section>
+    <h2>3. Schema markup (structured data)</h2>
+    <p>Wdrożono 6 typów schema JSON-LD na 28 stronach:</p>
+
+    <div class="schema-grid">
+        <div class="schema-card"><div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1B5E3A" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="name">LocalBusiness</div><div class="desc">13 city pages</div></div>
+        <div class="schema-card"><div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1B5E3A" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div><div class="name">Service</div><div class="desc">4 offer pages × 13 miast</div></div>
+        <div class="schema-card"><div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1B5E3A" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div><div class="name">OfferCatalog</div><div class="desc">oferta → 3 sub-services</div></div>
+        <div class="schema-card"><div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1B5E3A" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></div><div class="name">FAQPage</div><div class="desc">16 stron × 5 pytań</div></div>
+        <div class="schema-card"><div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1B5E3A" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg></div><div class="name">BreadcrumbList</div><div class="desc">28 stron</div></div>
+        <div class="schema-card"><div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1B5E3A" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div><div class="name">Article</div><div class="desc">6 wpisów blog</div></div>
+    </div>
+
+    <div class="card">
+        <h3>Service schema na stronach ofertowych</h3>
+        <p>Każda z 4 stron ofertowych ma Service schema z: <strong>serviceType</strong> opisującym usługę (np. "Office Food Delivery", "Event Catering"), listą <strong>13 miast jako areaServed</strong> z typem City, oraz <strong>provider</strong> z pełnymi danymi kontaktowymi BetterWorkplace. Strona /oferta dodatkowo zawiera OfferCatalog z linkami do 3 deep offer pages.</p>
+    </div>
+
+    <div class="card">
+        <h3>LocalBusiness na city pages</h3>
+        <p>Każda z 13 stron miast ma LocalBusiness schema z <strong>addressLocality</strong> ustawionym na konkretne miasto, <strong>areaServed</strong> jako City, oraz <strong>parentOrganization</strong> linkującą do DailyFruits. To pozwala Google wyświetlać wyniki w local pack.</p>
+    </div>
+</section>
+
+<section>
+    <h2>4. City landing pages (13 miast)</h2>
+    <p>Stworzono 13 dedykowanych stron SEO, każda z unikalnym contentem, zdjęciem, dzielnicami, biurowcami, testimonialem i FAQ:</p>
+
+    <div class="city-grid">
+        <div class="city-chip"><div class="name">Warszawa</div><div class="stat">600+ firm</div></div>
+        <div class="city-chip"><div class="name">Kraków</div><div class="stat">350+ firm</div></div>
+        <div class="city-chip"><div class="name">Wrocław</div><div class="stat">200+ firm</div></div>
+        <div class="city-chip"><div class="name">Trójmiasto</div><div class="stat">180+ firm</div></div>
+        <div class="city-chip"><div class="name">Poznań</div><div class="stat">150+ firm</div></div>
+        <div class="city-chip"><div class="name">Łódź</div><div class="stat">120+ firm</div></div>
+        <div class="city-chip"><div class="name">Katowice</div><div class="stat">100+ firm</div></div>
+        <div class="city-chip"><div class="name">Szczecin</div><div class="stat">80+ firm</div></div>
+        <div class="city-chip"><div class="name">Lublin</div><div class="stat">60+ firm</div></div>
+        <div class="city-chip"><div class="name">Bydgoszcz</div><div class="stat">50+ firm</div></div>
+        <div class="city-chip"><div class="name">Rzeszów</div><div class="stat">45+ firm</div></div>
+        <div class="city-chip"><div class="name">Białystok</div><div class="stat">40+ firm</div></div>
+        <div class="city-chip"><div class="name">Kielce</div><div class="stat">35+ firm</div></div>
+    </div>
+
+    <div class="card">
+        <h3>Struktura każdej city page</h3>
+        <p>Hero z unikalnym copy + zdjęcie z Unsplash, offer grid (8 kart z SVG ikonami), sekcja lokalna z dzielnicami i biurowcami, social proof z testimonialem i nazwą firmy (Allegro, Sabre, Nokia...), 3-step "Jak zacząć", FAQ (5 pytań z JSON-LD), CTA z telefonem i formularzem, internal linking do deep offer pages.</p>
+    </div>
+
+    <div class="card">
+        <h3>Internal linking</h3>
+        <p><strong>City index bar</strong> na dole każdej z 28 stron linkuje do wszystkich 13 miast. Każda city page linkuje do 3 deep offer pages (kanapki, catering, programy). Homepage i strony ofertowe linkują do city pages. Pełna dwukierunkowa sieć wewnętrzna.</p>
+    </div>
+</section>
+
+<section>
+    <h2>5. Performance i optymalizacja</h2>
+
+    <div class="card card-accent">
+        <h3>Critical rendering path</h3>
+        <p>Usunięto <strong>Lenis smooth scroll</strong> library (powodował 15s blank screen). Usunięto loader/page transition overlay ze wszystkich stron. Dodano <strong>preload hero image</strong> z fetchpriority="high" na homepage.</p>
+    </div>
+
+    <div class="card card-accent">
+        <h3>Lazy loading</h3>
+        <p>Wszystkie obrazy poza hero mają <strong>loading="lazy"</strong>. Hero images mają loading="eager" i explicit width/height dla stabilności CLS.</p>
+    </div>
+
+    <div class="card card-accent">
+        <h3>CSS optimization</h3>
+        <p>CSS inline w każdej stronie — <strong>zero external render-blocking stylesheets</strong>. Zredukowano paddingi sekcji (120px → 80px). Wave dividers zmniejszone (60px → 40px).</p>
+    </div>
+
+    <h3>Usunięte elementy spowalniające</h3>
+    <table>
+        <thead><tr><th>Element</th><th>Problem</th><th>Akcja</th></tr></thead>
+        <tbody>
+            <tr><td>Lenis smooth scroll</td><td>15s blank screen bug</td><td><span class="tag tag-red">Usunięty</span></td></tr>
+            <tr><td>Page transition loader</td><td>Blokował rendering</td><td><span class="tag tag-red">Usunięty</span></td></tr>
+            <tr><td>Floating CTA badge</td><td>Duplikat nav CTA</td><td><span class="tag tag-red">Usunięty</span></td></tr>
+            <tr><td>Unused PNG files</td><td>~50MB bloatu</td><td><span class="tag tag-red">Usunięte</span></td></tr>
+            <tr><td>4 filler blog posts</td><td>Thin content, zero SEO value</td><td><span class="tag tag-red">Usunięte</span></td></tr>
+            <tr><td>scroll-behavior: smooth</td><td>Janky scroll na subpages</td><td><span class="tag tag-red">Usunięte z 20 stron</span></td></tr>
+        </tbody>
+    </table>
+</section>
+
+<section>
+    <h2>6. Content i on-page SEO</h2>
+
+    <div class="card">
+        <h3>Meta tagi</h3>
+        <p>Każda z 29 stron ma <strong>unikalny title</strong> (do 60 znaków) z keyword + brand, <strong>meta description</strong> (do 155 znaków) z CTA i lokalizacją, Open Graph title/description/image/url, oraz Twitter Card summary_large_image.</p>
+    </div>
+
+    <div class="card">
+        <h3>Blog — Article schema</h3>
+        <p>6 wpisów blogowych ma Article JSON-LD z: headline, datePublished, dateModified, author, publisher z logo, oraz image. Rich results z datą i autorem w SERP.</p>
+    </div>
+
+    <div class="card">
+        <h3>FAQ schema</h3>
+        <p><strong>16 stron</strong> ma FAQPage schema (13 city + 3 offer), każda z 5 unikalnymi pytaniami i odpowiedziami. FAQ widoczne na stronie jako accordion i w JSON-LD. <strong>80 unikalnych pytań</strong> — podwaja szansę na featured snippet.</p>
+    </div>
+
+    <div class="card">
+        <h3>Quality fixes</h3>
+        <p>Naprawiono <strong>26 błędów gramatycznych</strong> w nagłówkach ("do Warszawie" → "w Warszawie"). Ulepszono testimoniale — dodano nazwy firm (Allegro, Sabre, Nokia, Netguru, Pratt & Whitney). Zamieniono emoji na <strong>SVG ikony</strong> w offer gridzie dla spójności brandowej.</p>
+    </div>
+</section>
+
+<section>
+    <h2>7. AEO (AI Engine Optimization)</h2>
+    <p>Strona zoptymalizowana pod AI search engines (ChatGPT, Perplexity, Google AI Overview):</p>
+
+    <div class="grid-2">
+        <div class="card"><h3>Structured data</h3><p>6 typów schema daje AI modelom jednoznaczne sygnały o typie usługi, lokalizacji i ofercie.</p></div>
+        <div class="card"><h3>FAQ content</h3><p>80 unikalnych pytań/odpowiedzi — gotowy materiał do cytowania przez AI.</p></div>
+        <div class="card"><h3>Entity clarity</h3><p>"DailyFruits by BetterWorkplace" konsekwentnie jako provider we wszystkich schema.</p></div>
+        <div class="card"><h3>Local signals</h3><p>13 miast × dzielnice × biurowce = granularne dane lokalizacyjne.</p></div>
+        <div class="card"><h3>Service taxonomy</h3><p>OfferCatalog z 3 sub-services daje AI jasny obraz struktury oferty.</p></div>
+        <div class="card"><h3>Semantic HTML</h3><p>Czytelna hierarchia H1→H2→H3, aria-labels, semantic sections.</p></div>
+    </div>
+</section>
+
+<section>
+    <h2>8. Pełne zestawienie działań</h2>
+
+    <table>
+        <thead><tr><th>Kategoria</th><th>Działanie</th><th>Zakres</th></tr></thead>
+        <tbody>
+            <tr><td><span class="tag tag-blue">SEO tech</span></td><td>Redirecty 301 z WordPress</td><td>200 redirectów</td></tr>
+            <tr><td><span class="tag tag-blue">SEO tech</span></td><td>Sitemap.xml + robots.txt</td><td>28 URLs</td></tr>
+            <tr><td><span class="tag tag-blue">SEO tech</span></td><td>Canonical + meta robots</td><td>29 stron</td></tr>
+            <tr><td><span class="tag tag-blue">SEO tech</span></td><td>Custom 404 page</td><td>1 strona</td></tr>
+            <tr><td><span class="tag tag-green">Schema</span></td><td>LocalBusiness</td><td>13 city pages</td></tr>
+            <tr><td><span class="tag tag-green">Schema</span></td><td>Service + areaServed</td><td>4 strony × 13 miast</td></tr>
+            <tr><td><span class="tag tag-green">Schema</span></td><td>OfferCatalog</td><td>oferta → 3 sub-services</td></tr>
+            <tr><td><span class="tag tag-green">Schema</span></td><td>FAQPage</td><td>16 stron × 5 pytań</td></tr>
+            <tr><td><span class="tag tag-green">Schema</span></td><td>BreadcrumbList</td><td>28 stron</td></tr>
+            <tr><td><span class="tag tag-green">Schema</span></td><td>Article</td><td>6 wpisów blog</td></tr>
+            <tr><td><span class="tag tag-gray">Content</span></td><td>City landing pages</td><td>13 stron z unikalnym copy</td></tr>
+            <tr><td><span class="tag tag-gray">Content</span></td><td>City photos (Unsplash)</td><td>13 hero images</td></tr>
+            <tr><td><span class="tag tag-gray">Content</span></td><td>Testimoniale z firmami</td><td>13 unikalnych (Allegro, Sabre...)</td></tr>
+            <tr><td><span class="tag tag-gray">Content</span></td><td>City index bar</td><td>28 stron</td></tr>
+            <tr><td><span class="tag tag-gray">Content</span></td><td>Deep offer links</td><td>Kanapki, catering, programy</td></tr>
+            <tr><td><span class="tag tag-gray">Content</span></td><td>Gramatyka fix</td><td>26 nagłówków</td></tr>
+            <tr><td><span class="tag tag-red">Perfo</span></td><td>Kill Lenis smooth scroll</td><td>29 stron</td></tr>
+            <tr><td><span class="tag tag-red">Perfo</span></td><td>Kill page loader</td><td>29 stron</td></tr>
+            <tr><td><span class="tag tag-red">Perfo</span></td><td>Lazy loading images</td><td>Wszystkie img poza hero</td></tr>
+            <tr><td><span class="tag tag-red">Perfo</span></td><td>Preload hero image</td><td>fetchpriority=high</td></tr>
+            <tr><td><span class="tag tag-red">Perfo</span></td><td>CSS inline (zero blocking)</td><td>29 stron</td></tr>
+            <tr><td><span class="tag tag-red">Perfo</span></td><td>Kill unused PNGs</td><td>~50MB</td></tr>
+            <tr><td><span class="tag tag-red">Perfo</span></td><td>Reduce section padding</td><td>120px → 80px</td></tr>
+            <tr><td><span class="tag tag-red">Perfo</span></td><td>Kill scroll-behavior:smooth</td><td>20 subpages</td></tr>
+            <tr><td><span class="tag tag-blue">On-page</span></td><td>Meta titles + descriptions</td><td>29 unikalnych</td></tr>
+            <tr><td><span class="tag tag-blue">On-page</span></td><td>OG + Twitter Cards</td><td>29 stron</td></tr>
+            <tr><td><span class="tag tag-blue">On-page</span></td><td>H1 hierarchy fix</td><td>1 H1 per strona</td></tr>
+            <tr><td><span class="tag tag-blue">On-page</span></td><td>SVG ikony (replace emoji)</td><td>13 × 8 ikon</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<div class="footer-note">
+    DailyFruits SEO & Performance Report | Kwiecień 2026 | dailyfruits.vercel.app
+</div>
+
+</div>
+</body>
+</html>
