@@ -252,6 +252,46 @@ body {
 .hub-section--df .hub-card-arrow { color:var(--accent-df); }
 .hub-section--tb .hub-card-arrow { color:var(--accent-tb); }
 
+/* ── Hero card (position 0) ── */
+.hub-hero-card {
+  display:flex; align-items:center; justify-content:space-between;
+  width:100%; margin-top:20px;
+  padding:28px 32px;
+  background:linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  border-radius:16px;
+  text-decoration:none; color:#fff;
+  transition:all .3s ease;
+  position:relative; overflow:hidden;
+}
+.hub-hero-card::after {
+  content:''; position:absolute;
+  width:260px; height:260px; border-radius:50%;
+  border:1.5px solid rgba(255,255,255,0.12);
+  right:-60px; top:-60px; pointer-events:none;
+}
+.hub-hero-card:hover {
+  transform:translateY(-2px);
+  box-shadow:0 12px 40px rgba(34,197,94,0.25);
+}
+.hub-hero-card .hero-eyebrow {
+  font-size:10px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; color:rgba(255,255,255,0.6);
+  margin-bottom:8px;
+}
+.hub-hero-card .hero-title {
+  font-size:20px; font-weight:800; letter-spacing:-0.4px;
+  margin-bottom:6px;
+}
+.hub-hero-card .hero-desc {
+  font-size:13px; color:rgba(255,255,255,0.75); line-height:1.5;
+  max-width:520px;
+}
+.hub-hero-card .hero-arrow {
+  font-size:28px; font-weight:300; opacity:0.5;
+  transition:all .25s; flex-shrink:0; margin-left:24px;
+}
+.hub-hero-card:hover .hero-arrow { opacity:1; transform:translateX(4px); }
+
 /* ── Footer ── */
 .hub-footer {
   margin-top:48px; font-size:11px; color:var(--text-dim);
@@ -295,6 +335,16 @@ body {
   <div class="hub-eyebrow">BetterWorkplace</div>
   <div class="hub-title">Panel <span>klienta</span></div>
   <div class="hub-sub">Wybierz dokument, z którym chcesz się zapoznać.</div>
+
+  <!-- 00 STRATEGIA GŁÓWNA -->
+  <a class="hub-hero-card" href="strategia.html">
+    <div>
+      <div class="hero-eyebrow">00 · Strategia główna</div>
+      <div class="hero-title">Strategia ekosystemu 2026</div>
+      <div class="hero-desc">Architektura marek, narracja, matryca komunikacji, mapa ścieżek i governance całego ekosystemu BetterWorkplace.</div>
+    </div>
+    <div class="hero-arrow">→</div>
+  </a>
 
   <!-- 01 STRATEGIA OGÓLNA -->
   <div class="hub-section hub-section--strategy">
