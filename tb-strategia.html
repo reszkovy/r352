@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TeamBudget — Strategia & Branding</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pale-white: #FFFBF4;
+  --pale-black: #473A39;
+  --blue: #4375FF;
+  --orange: #FE692B;
+  --sunny: #FEF3DE;
+  --deep-yellow: #FDA33C;
+  --pale-green: #15A477;
+  --muted: #8a7e7c;
+  --dim: #b5aaa8;
+  --border: #e8ddd9;
+  --border2: #d4c9c5;
+  --card: #f5ede8;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'DM Sans',system-ui,sans-serif;
+  background:var(--pale-white); color:var(--pale-black);
+  line-height:1.65; -webkit-font-smoothing:antialiased;
+}
+
+/* NAV */
+.back-nav {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:14px 28px; font-size:12px; font-weight:500;
+  color:var(--blue); text-decoration:none;
+  letter-spacing:0.3px;
+}
+.back-nav:hover { text-decoration:underline; }
+
+/* HERO */
+.hero {
+  background:var(--blue); color:var(--pale-white);
+  padding:80px 40px 60px; position:relative; overflow:hidden;
+}
+.hero-inner { max-width:900px; margin:0 auto; position:relative; z-index:1; }
+.hero-eyebrow {
+  font-family:'DM Mono',monospace; font-size:11px;
+  letter-spacing:3px; text-transform:uppercase;
+  opacity:0.6; margin-bottom:16px;
+}
+.hero h1 {
+  font-size:48px; font-weight:800; letter-spacing:-1.5px;
+  line-height:1.1; margin-bottom:16px;
+}
+.hero h1 span { color:var(--orange); }
+.hero-sub {
+  font-size:16px; opacity:0.8; max-width:560px; line-height:1.6;
+}
+.hero-signet {
+  position:absolute; right:-40px; top:50%; transform:translateY(-50%);
+  width:300px; height:300px; opacity:0.08;
+}
+.hero-signet svg { width:100%; height:100%; }
+
+/* CONTENT */
+.content { max-width:900px; margin:0 auto; padding:0 40px; }
+
+/* SECTIONS */
+.section { padding:48px 0 0; }
+.section-eyebrow {
+  font-family:'DM Mono',monospace; font-size:10px;
+  letter-spacing:3px; text-transform:uppercase;
+  color:var(--blue); margin-bottom:10px; font-weight:500;
+}
+.section h2 {
+  font-size:28px; font-weight:800; letter-spacing:-0.5px;
+  margin-bottom:8px; line-height:1.2;
+}
+.section-desc {
+  font-size:14px; color:var(--muted); line-height:1.7;
+  margin-bottom:24px; max-width:640px;
+}
+.divider {
+  border:none; border-top:1px solid var(--border);
+  margin:48px 0 0;
+}
+
+/* CARDS */
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px; }
+.grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:12px; }
+.grid-4 { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:12px; margin-bottom:12px; }
+
+.card {
+  background:var(--card); border:1px solid var(--border);
+  padding:20px; position:relative;
+}
+.card-label {
+  font-family:'DM Mono',monospace; font-size:9px;
+  letter-spacing:2px; text-transform:uppercase;
+  margin-bottom:8px; font-weight:500;
+}
+.card h3 {
+  font-size:16px; font-weight:700; letter-spacing:-0.2px;
+  margin-bottom:6px; line-height:1.3;
+}
+.card p {
+  font-size:13px; color:var(--muted); line-height:1.6;
+}
+
+/* COLOR SWATCHES */
+.swatch {
+  aspect-ratio:1; border-radius:0; display:flex;
+  flex-direction:column; justify-content:flex-end;
+  padding:12px; position:relative;
+}
+.swatch-name {
+  font-family:'DM Mono',monospace; font-size:9px;
+  letter-spacing:1.5px; text-transform:uppercase;
+  margin-bottom:2px;
+}
+.swatch-hex { font-family:'DM Mono',monospace; font-size:11px; }
+
+/* ECOSYSTEM MAP */
+.eco-card {
+  background:var(--card); border:1px solid var(--border);
+  padding:16px; text-align:center;
+}
+.eco-card.active {
+  border:2px solid var(--blue); background:rgba(67,117,255,0.06);
+}
+.eco-label {
+  font-family:'DM Mono',monospace; font-size:8px;
+  letter-spacing:2px; text-transform:uppercase;
+  margin-bottom:6px;
+}
+.eco-name { font-size:15px; font-weight:700; margin-bottom:4px; }
+.eco-role { font-size:11px; color:var(--muted); }
+
+/* INSIGHT BLOCKS */
+.insight {
+  border-left:3px solid var(--blue);
+  padding:16px 20px; background:rgba(67,117,255,0.04);
+  margin-bottom:12px;
+}
+.insight-label {
+  font-family:'DM Mono',monospace; font-size:9px;
+  letter-spacing:2px; text-transform:uppercase;
+  color:var(--blue); margin-bottom:6px;
+}
+.insight h3 {
+  font-size:15px; font-weight:700; margin-bottom:4px;
+}
+.insight p { font-size:13px; color:var(--muted); line-height:1.6; }
+
+/* PERCEPTION */
+.perception {
+  background:var(--card); border:1px solid var(--border);
+  padding:16px 20px; margin-bottom:10px;
+}
+.perc-from {
+  font-size:12px; color:var(--muted); margin-bottom:2px;
+  text-decoration:line-through; opacity:0.6;
+}
+.perc-to {
+  font-size:14px; font-weight:700; color:var(--pale-black);
+}
+.perc-arrow {
+  font-size:12px; color:var(--blue); margin:4px 0;
+}
+
+/* TODO LIST */
+.todo-item {
+  display:flex; align-items:flex-start; gap:12px;
+  padding:14px 18px; background:var(--card);
+  border:1px solid var(--border); margin-bottom:6px;
+}
+.todo-check {
+  width:20px; height:20px; border:2px solid var(--border2);
+  flex-shrink:0; margin-top:2px;
+}
+.todo-title { font-size:14px; font-weight:600; margin-bottom:2px; }
+.todo-desc { font-size:12px; color:var(--muted); line-height:1.5; }
+
+/* HIGHLIGHT BAR */
+.highlight {
+  background:var(--orange); color:var(--pale-white);
+  padding:28px 32px; margin:32px 0;
+}
+.highlight h3 {
+  font-size:20px; font-weight:800; letter-spacing:-0.3px;
+  margin-bottom:8px;
+}
+.highlight p { font-size:14px; opacity:0.9; line-height:1.6; }
+
+/* TYPOGRAPHY SHOWCASE */
+.type-row {
+  display:flex; align-items:baseline; gap:20px;
+  padding:16px 0; border-bottom:1px solid var(--border);
+}
+.type-label {
+  font-family:'DM Mono',monospace; font-size:9px;
+  letter-spacing:2px; text-transform:uppercase;
+  color:var(--muted); width:120px; flex-shrink:0;
+}
+.type-sample { flex:1; }
+
+/* FOOTER */
+.footer {
+  padding:32px 0; margin-top:48px;
+  border-top:1px solid var(--border);
+  font-size:11px; color:var(--dim);
+  display:flex; justify-content:space-between;
+  align-items:center;
+}
+.footer-badge {
+  font-family:'DM Mono',monospace; font-size:9px;
+  letter-spacing:2px; text-transform:uppercase;
+  color:var(--blue);
+}
+
+@media (max-width:700px) {
+  .hero { padding:48px 24px 40px; }
+  .hero h1 { font-size:32px; }
+  .content { padding:0 24px; }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns:1fr; }
+  .type-row { flex-direction:column; gap:6px; }
+  .type-label { width:auto; }
+}
+</style>
+</head>
+<body>
+
+<a class="back-nav" href="index.html">← Panel klienta</a>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">TeamBudget · Strategia 2026</div>
+    <h1>Benefity, które ładują energię zespołu<br>i wzmacniają <span>team vibe.</span></h1>
+    <div class="hero-sub">Platforma zarządzania benefitami pracowniczymi — trzeci filar ekosystemu BetterWorkplace. Branding, pozycjonowanie strategiczne i roadmapa wdrożenia.</div>
+  </div>
+  <div class="hero-signet">
+    <svg viewBox="0 0 200 200" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M100 90c0-40 0-80 0-80C55 10 20 45 10 85c0 2 0 5 0 5h80c5 0 10-5 10-10z" opacity="0.9"/>
+      <path d="M110 90c0-40 0-80 0-80c45 0 80 35 90 75 0 2 0 5 0 5h-80c-5 0-10-5-10-10z" opacity="0.7"/>
+      <path d="M100 110c0 40 0 80 0 80C55 190 20 155 10 115c0-2 0-5 0-5h80c5 0 10 5 10 10z" opacity="0.8"/>
+      <path d="M110 110c0 40 0 80 0 80c45 0 80-35 90-75 0-2 0-5 0-5h-80c-5 0-10 5-10 10z" opacity="0.6"/>
+    </svg>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- ═══ 01. POZYCJA W EKOSYSTEMIE ═══ -->
+  <div class="section">
+    <div class="section-eyebrow">01 · Pozycja w ekosystemie</div>
+    <h2>TeamBudget w architekturze BetterWorkplace</h2>
+    <div class="section-desc">TeamBudget to marka produktowa — platforma SaaS, która scala wszystkie usługi ekosystemu BW w jedno narzędzie do zarządzania benefitami. Warstwa utrzymania klienta i lock-in layer.</div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr 1fr; gap:8px; margin-bottom:20px;">
+      <div class="eco-card">
+        <div class="eco-label" style="color:var(--pale-green);">Master</div>
+        <div class="eco-name">BW</div>
+        <div class="eco-role">Parasol narracyjny</div>
+      </div>
+      <div class="eco-card">
+        <div class="eco-label" style="color:var(--pale-green);">Endorsed</div>
+        <div class="eco-name">DF</div>
+        <div class="eco-role">Owoce & przekąski</div>
+      </div>
+      <div class="eco-card">
+        <div class="eco-label" style="color:var(--pale-green);">Endorsed</div>
+        <div class="eco-name">DFo</div>
+        <div class="eco-role">Kawa & lunche</div>
+      </div>
+      <div class="eco-card">
+        <div class="eco-label" style="color:var(--pale-green);">Endorsed</div>
+        <div class="eco-name">BO</div>
+        <div class="eco-role">Kuchnia biurowa</div>
+      </div>
+      <div class="eco-card active">
+        <div class="eco-label" style="color:var(--blue);">Product</div>
+        <div class="eco-name" style="color:var(--blue);">TB</div>
+        <div class="eco-role">Platforma SaaS</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-label" style="color:var(--blue);">Rola strategiczna</div>
+        <h3>Lock-in layer ekosystemu</h3>
+        <p>Im więcej produktów klient ma w ekosystemie BW, tym trudniej odejść. TeamBudget jest klejem, który scala wszystkie usługi w jedno narzędzie zarządzania.</p>
+      </div>
+      <div class="card">
+        <div class="card-label" style="color:var(--orange);">Target audience</div>
+        <h3>HR Director + CFO</h3>
+        <p>Język tech/utility — platforma, automatyzacja, jedna faktura. Inny poziom rozmowy: z „dostawca owoców" na „partner technologiczny do zarządzania benefitami".</p>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <h3>TeamBudget rozwiązuje problem, którego klient jeszcze nie nazwał.</h3>
+      <p>Każdy klient BW z 2+ produktami już zarządza nimi ręcznie — osobne faktury, osobne zamówienia, osobny kontakt z każdym bytem. Narracja „jedna platforma do wszystkiego" buduje oczekiwanie zanim produkt wejdzie na rynek.</p>
+    </div>
+
+    <!-- Perception shift -->
+    <div class="section-eyebrow" style="margin-top:32px;">Zmiana percepcji</div>
+    <div class="perception">
+      <div class="perc-from">"Nieznany produkt"</div>
+      <div class="perc-arrow">↓</div>
+      <div class="perc-to">"Platforma zarządzania budżetem benefitów"</div>
+    </div>
+    <div class="perception">
+      <div class="perc-from">"Dostawca owoców i kawy"</div>
+      <div class="perc-arrow">↓</div>
+      <div class="perc-to">"Partner technologiczny do zarządzania benefitami"</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ═══ 02. BRANDING ═══ -->
+  <div class="section">
+    <div class="section-eyebrow">02 · Identyfikacja wizualna</div>
+    <h2>System brandingowy TeamBudget</h2>
+    <div class="section-desc">Brand Identity zbudowany na okręgu podzielonym na segmenty — symbolizuje wykres kołowy (budżet), zespół (jednostki łączące się w grupę) i przeciętą pomarańczę (DNA ekosystemu BetterWorkplace).</div>
+
+    <!-- Colors -->
+    <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:12px;">Paleta podstawowa</div>
+    <div class="grid-4">
+      <div class="swatch" style="background:#FFFBF4; border:1px solid var(--border);">
+        <div class="swatch-name" style="color:var(--pale-black);">Pale White</div>
+        <div class="swatch-hex" style="color:var(--pale-black);">#FFFBF4</div>
+      </div>
+      <div class="swatch" style="background:#473A39;">
+        <div class="swatch-name" style="color:#FFFBF4;">Pale Black</div>
+        <div class="swatch-hex" style="color:#FFFBF4;">#473A39</div>
+      </div>
+      <div class="swatch" style="background:#4375FF;">
+        <div class="swatch-name" style="color:#FFFBF4;">Blue Sky</div>
+        <div class="swatch-hex" style="color:#FFFBF4;">#4375FF</div>
+      </div>
+      <div class="swatch" style="background:#FE692B;">
+        <div class="swatch-name" style="color:#FFFBF4;">Orange</div>
+        <div class="swatch-hex" style="color:#FFFBF4;">#FE692B</div>
+      </div>
+    </div>
+
+    <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin:20px 0 12px;">Paleta dodatkowa</div>
+    <div class="grid-4">
+      <div class="swatch" style="background:#FEF3DE; border:1px solid var(--border);">
+        <div class="swatch-name" style="color:var(--pale-black);">Sunny White</div>
+        <div class="swatch-hex" style="color:var(--pale-black);">#FEF3DE</div>
+      </div>
+      <div class="swatch" style="background:#FDA33C;">
+        <div class="swatch-name" style="color:#FFFBF4;">Deep Yellow</div>
+        <div class="swatch-hex" style="color:#FFFBF4;">#FDA33C</div>
+      </div>
+      <div class="swatch" style="background:#15A477;">
+        <div class="swatch-name" style="color:#FFFBF4;">Pale Green</div>
+        <div class="swatch-hex" style="color:#FFFBF4;">#15A477</div>
+      </div>
+      <div class="swatch" style="background:var(--card); border:1px solid var(--border); display:flex; align-items:center; justify-content:center;">
+        <div style="text-align:center;">
+          <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:1px; color:var(--muted); margin-bottom:4px;">ETYKIETY</div>
+          <div style="display:flex; gap:6px; justify-content:center;">
+            <span style="background:var(--deep-yellow); color:#fff; padding:2px 8px; border-radius:12px; font-size:10px; font-weight:600;">sprawczość</span>
+            <span style="background:var(--pale-green); color:#fff; padding:2px 8px; border-radius:12px; font-size:10px; font-weight:600;">relacje</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Typography -->
+    <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin:28px 0 12px;">Typografia</div>
+
+    <div class="type-row">
+      <div class="type-label">Pangram Sans<br>Bold</div>
+      <div class="type-sample">
+        <div style="font-size:28px; font-weight:800; letter-spacing:-0.5px; line-height:1.2;">Benefity, które ładują energię zespołu i wzmacniają team vibe.</div>
+        <div style="font-size:10px; color:var(--muted); margin-top:4px;">Nagłówki, headery, tekst wprowadzający (lead text)</div>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-label">DM Sans<br>Regular</div>
+      <div class="type-sample">
+        <div style="font-size:14px; line-height:1.7;">Dbamy o benefity, które wspierają nie tylko komfort pracy, ale i współpracę, zaangażowanie. Wspierające zarządzanie i dobrze dobrane rozwiązania pomagają budować środowisko, w którym ludzie chcą pracować.</div>
+        <div style="font-size:10px; color:var(--muted); margin-top:4px;">Treść tekstu (body), podpisy (caption)</div>
+      </div>
+    </div>
+    <div class="type-row" style="border-bottom:none;">
+      <div class="type-label">DM Mono<br>Regular</div>
+      <div class="type-sample">
+        <div style="font-family:'DM Mono',monospace; font-size:13px; letter-spacing:1px; text-transform:uppercase;">BENEFITY. TEAM. BALANCE.</div>
+        <div style="font-size:10px; color:var(--muted); margin-top:4px;">Tylko uppercase: teksty techniczne, podpisy nad nagłówkiem</div>
+      </div>
+    </div>
+
+    <!-- Key Visual -->
+    <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin:28px 0 12px;">Motywy graficzne</div>
+    <div class="grid-3">
+      <div class="card" style="text-align:center; padding:28px 16px;">
+        <div style="font-size:32px; margin-bottom:8px; color:var(--blue);">Aa</div>
+        <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted);">1. Typografia</div>
+      </div>
+      <div class="card" style="text-align:center; padding:28px 16px;">
+        <div style="font-size:32px; margin-bottom:8px;">📸</div>
+        <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted);">2. Fotografia</div>
+      </div>
+      <div class="card" style="text-align:center; padding:28px 16px;">
+        <div style="font-size:32px; margin-bottom:8px; color:var(--orange);">◐</div>
+        <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted);">3. Pattern</div>
+      </div>
+      <div class="card" style="text-align:center; padding:28px 16px;">
+        <div style="font-size:32px; margin-bottom:8px; color:var(--blue);">⬡</div>
+        <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted);">4. Kształty sygnetu</div>
+      </div>
+      <div class="card" style="text-align:center; padding:28px 16px;">
+        <div style="font-size:32px; margin-bottom:8px; color:var(--pale-black);">❋</div>
+        <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted);">5. Sygnet w użyciu</div>
+      </div>
+      <div class="card" style="text-align:center; padding:28px 16px;">
+        <div style="display:flex; gap:4px; justify-content:center; margin-bottom:8px;">
+          <span style="background:var(--blue); color:#fff; padding:2px 8px; border-radius:10px; font-size:10px; font-weight:600;">dobra energia</span>
+        </div>
+        <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted);">6. System naklejkowy</div>
+      </div>
+    </div>
+
+    <!-- Logo versions -->
+    <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin:28px 0 12px;">Wersje kolorystyczne logotypu</div>
+    <div class="grid-2">
+      <div style="background:var(--orange); padding:32px; display:flex; align-items:center; justify-content:center;">
+        <div style="color:var(--pale-white); font-size:24px; font-weight:700; letter-spacing:-0.5px;">TeamBudget</div>
+      </div>
+      <div style="background:var(--blue); padding:32px; display:flex; align-items:center; justify-content:center;">
+        <div style="color:var(--pale-white); font-size:24px; font-weight:700; letter-spacing:-0.5px;">TeamBudget</div>
+      </div>
+      <div style="background:var(--pale-black); padding:32px; display:flex; align-items:center; justify-content:center;">
+        <div style="color:var(--pale-white); font-size:24px; font-weight:700; letter-spacing:-0.5px;">TeamBudget</div>
+      </div>
+      <div style="background:var(--sunny); padding:32px; display:flex; align-items:center; justify-content:center; border:1px solid var(--border);">
+        <div style="color:var(--pale-black); font-size:24px; font-weight:700; letter-spacing:-0.5px;">TeamBudget</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ═══ 03. STRATEGICZNE INSIGHTY ═══ -->
+  <div class="section">
+    <div class="section-eyebrow">03 · Strategiczne insighty</div>
+    <h2>Co wiemy z dotychczasowej strategii</h2>
+    <div class="section-desc">Kluczowe wnioski z Fazy 1 strategii BetterWorkplace, które definiują pozycjonowanie i messaging TeamBudget.</div>
+
+    <div class="insight">
+      <div class="insight-label">Insight 1</div>
+      <h3>TeamBudget mówi "kontrola"</h3>
+      <p>Platforma, automatyzacja, jedna faktura. Język tech/utility — do CFO i HR. Pre-launch: messaging idzie przez BW, żeby budować świadomość zanim produkt wejdzie na rynek.</p>
+    </div>
+
+    <div class="insight" style="border-color:var(--orange);">
+      <div class="insight-label" style="color:var(--orange);">Insight 2</div>
+      <h3>Pre-positioning przez narrację BW</h3>
+      <p>BW mówi o „jednym miejscu do zarządzania" już teraz — TB wchodzi na przygotowany grunt. Klient ma już oczekiwanie zanim produkt istnieje.</p>
+    </div>
+
+    <div class="insight" style="border-color:var(--pale-green);">
+      <div class="insight-label" style="color:var(--pale-green);">Insight 3</div>
+      <h3>Warstwa utrzymania klienta</h3>
+      <p>Im więcej produktów klient ma w ekosystemie, tym trudniej odejść. TB jest klejem, który scala wszystkie usługi. To zmienia relację z „dostawca" na „partner technologiczny".</p>
+    </div>
+
+    <div class="insight" style="border-color:var(--deep-yellow);">
+      <div class="insight-label" style="color:var(--deep-yellow);">Insight 4</div>
+      <h3>Obietnica marki: „Jedna platforma do zarządzania benefitami"</h3>
+      <p>Jasna obietnica funkcjonalna — „budżet zespołu". Brzmi jak narzędzie, co pasuje do pozycjonowania SaaS. Łatwe do zapamiętania. Terytorium: kontrola budżetu, automatyzacja, 1 faktura.</p>
+    </div>
+
+    <div class="grid-3" style="margin-top:20px;">
+      <div class="card" style="border-top:3px solid var(--blue);">
+        <div class="card-label" style="color:var(--blue);">Pre-positioning</div>
+        <p>BW mówi o „jednym miejscu do zarządzania" już teraz — TB wchodzi na przygotowany grunt</p>
+      </div>
+      <div class="card" style="border-top:3px solid var(--pale-green);">
+        <div class="card-label" style="color:var(--pale-green);">Warstwa retencji</div>
+        <p>Im więcej produktów w ekosystemie, tym wyższy lock-in — TB jest klejem który to scala</p>
+      </div>
+      <div class="card" style="border-top:3px solid var(--orange);">
+        <div class="card-label" style="color:var(--orange);">Zmiana rozmowy</div>
+        <p>Z „dostawca owoców i kawy" na „partner technologiczny do zarządzania benefitami"</p>
+      </div>
+    </div>
+
+    <!-- Scope note -->
+    <div style="padding:14px 18px; border:1px dashed rgba(67,117,255,0.3); background:rgba(67,117,255,0.03); margin-top:16px;">
+      <div style="font-size:12px; color:var(--muted); line-height:1.6;"><strong style="color:var(--blue);">Scope note:</strong> TeamBudget jest celowo zarysowany na poziomie koncepcji. Szczegółowa analiza produktowa, roadmapa i strategia go-to-market wchodzą w Fazę 2, po walidacji architektury marek i modelu cross-sell z Fazy 1.</div>
+    </div>
+
+    <!-- Kafeteria insight -->
+    <div style="background:var(--card); border:1px solid var(--border); padding:20px; margin-top:20px;">
+      <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--orange); margin-bottom:8px;">Pozycjonowanie vs. Kafeteria</div>
+      <div style="font-size:14px; font-weight:700; margin-bottom:6px;">BW to nie kafeteria — to dostawca z platformą.</div>
+      <div style="font-size:13px; color:var(--muted); line-height:1.7;">Kafeterie nie mają produktu, BW ma. To fundamentalna różnica: BW kontroluje jakość doświadczenia, kafeteria tylko przekleja oferty. TeamBudget może docelowo stać się „kafeterią żywieniową" — ale z własnymi produktami jako rdzeniem. Centralizacja wydatków biurowych w jednym narzędziu to mechanizm, który z dostawcy robi partnera.</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ═══ 04. DO ZROBIENIA ═══ -->
+  <div class="section">
+    <div class="section-eyebrow">04 · Roadmapa</div>
+    <h2>Do zrobienia</h2>
+    <div class="section-desc">Lista kroków strategicznych do opracowania przed launche'm TeamBudget. Każdy punkt to osobny deliverable wymagający dedykowanego workshopu lub analizy.</div>
+
+    <div class="todo-item">
+      <div class="todo-check"></div>
+      <div>
+        <div class="todo-title">Pozycjonowanie w ekosystemie</div>
+        <div class="todo-desc">Relacja TB ↔ BW ↔ DF — jak marka wchodzi w istniejącą architekturę, zasady endorsementu, hierarchia komunikacji</div>
+      </div>
+    </div>
+    <div class="todo-item">
+      <div class="todo-check"></div>
+      <div>
+        <div class="todo-title">Strategia GTM</div>
+        <div class="todo-desc">Kiedy, komu, jak wchodzimy na rynek — timeline, priorytety rynkowe, kanały launchu</div>
+      </div>
+    </div>
+    <div class="todo-item">
+      <div class="todo-check"></div>
+      <div>
+        <div class="todo-title">Definicja MVP</div>
+        <div class="todo-desc">Co TB robi w wersji 1.0 — scope funkcjonalności, integracje z istniejącymi systemami BW</div>
+      </div>
+    </div>
+    <div class="todo-item">
+      <div class="todo-check"></div>
+      <div>
+        <div class="todo-title">Pricing / model biznesowy</div>
+        <div class="todo-desc">SaaS, prowizja, bundle? Jaki model monetyzacji najlepiej pasuje do ekosystemu BW</div>
+      </div>
+    </div>
+    <div class="todo-item">
+      <div class="todo-check"></div>
+      <div>
+        <div class="todo-title">Endorsement BW</div>
+        <div class="todo-desc">Jak widocznie BW wspiera TB — logo, komunikacja, co-branding, „powered by BetterWorkplace"</div>
+      </div>
+    </div>
+    <div class="todo-item">
+      <div class="todo-check"></div>
+      <div>
+        <div class="todo-title">Content strategy</div>
+        <div class="todo-desc">Blog, LinkedIn, sales materials — plan treści budujących awareness przed launche'm</div>
+      </div>
+    </div>
+    <div class="todo-item">
+      <div class="todo-check"></div>
+      <div>
+        <div class="todo-title">Onboarding flow</div>
+        <div class="todo-desc">Ścieżka aktywacji klienta w platformie — od pierwszego logowania do pełnej adopcji</div>
+      </div>
+    </div>
+    <div class="todo-item">
+      <div class="todo-check"></div>
+      <div>
+        <div class="todo-title">Matryca komunikacji TB</div>
+        <div class="todo-desc">Persona → przekaz → kanał — dedykowana matryca dla TeamBudget analogiczna do matrycy BW</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>TeamBudget · Dokument poufny · Nie udostępniaj osobom nieuprawnionym</div>
+    <div class="footer-badge">BetterWorkplace Ecosystem · 2026</div>
+  </div>
+
+</div>
+
+</body>
+</html>
