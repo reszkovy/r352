@@ -10,7 +10,6 @@
   --bg: #FAFAF7;
   --bg-warm: #F5F3EE;
   --card: #FFFFFF;
-  --card-hover: #FEFEFE;
   --border: #E8E4DE;
   --border-light: #F0EDE8;
   --shadow: rgba(0,0,0,0.05);
@@ -21,7 +20,6 @@
   --text-muted: #888888;
   --text-dim: #B0A99F;
 
-  /* Section accents */
   --accent-strategy: #3D3D3D;
   --accent-strategy-bg: #F5F4F2;
   --accent-strategy-light: rgba(61,61,61,0.06);
@@ -37,6 +35,10 @@
   --accent-tb: #4375FF;
   --accent-tb-bg: #F2F5FF;
   --accent-tb-light: rgba(67,117,255,0.07);
+
+  --accent-exec: #8B5CF6;
+  --accent-exec-bg: #F5F3FF;
+  --accent-exec-light: rgba(139,92,246,0.07);
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -45,14 +47,13 @@ body {
   font-family:'DM Sans',system-ui,-apple-system,sans-serif;
   background:var(--bg); color:var(--text);
   line-height:1.65; -webkit-font-smoothing:antialiased;
-  display:flex; align-items:center; justify-content:center;
 }
 
 /* ══ PASSWORD SCREEN ══ */
 #pw-screen {
   display:flex; align-items:center; justify-content:center;
   flex-direction:column; gap:24px;
-  width:100%; height:100%;
+  width:100%; min-height:100vh;
   background:var(--bg);
 }
 #pw-screen.hidden { display:none; }
@@ -140,20 +141,67 @@ body {
   line-height:1.6;
 }
 
+/* ── Hero card ── */
+.hub-hero-card {
+  display:flex; align-items:center; justify-content:space-between;
+  width:100%; margin-top:8px;
+  padding:32px 36px;
+  background:linear-gradient(135deg, #2A2A2A 0%, #3D3D3D 100%);
+  border-radius:16px;
+  text-decoration:none; color:#fff;
+  transition:all .3s ease;
+  position:relative; overflow:hidden;
+}
+.hub-hero-card::before {
+  content:'STRATEGIA'; position:absolute;
+  font-size:clamp(80px,14vw,140px); font-weight:900;
+  letter-spacing:-0.04em; color:rgba(255,255,255,0.03);
+  right:20px; top:50%; transform:translateY(-50%);
+  pointer-events:none; line-height:1;
+}
+.hub-hero-card::after {
+  content:''; position:absolute;
+  width:300px; height:300px; border-radius:50%;
+  border:1.5px solid rgba(255,255,255,0.06);
+  right:-80px; top:-80px; pointer-events:none;
+}
+.hub-hero-card:hover {
+  transform:translateY(-2px);
+  box-shadow:0 16px 48px rgba(0,0,0,0.2);
+}
+.hub-hero-card .hero-eyebrow {
+  font-size:10px; font-weight:700; letter-spacing:2.5px;
+  text-transform:uppercase; color:rgba(255,255,255,0.45);
+  margin-bottom:10px;
+}
+.hub-hero-card .hero-title {
+  font-size:22px; font-weight:800; letter-spacing:-0.5px;
+  margin-bottom:8px;
+}
+.hub-hero-card .hero-desc {
+  font-size:13px; color:rgba(255,255,255,0.6); line-height:1.6;
+  max-width:560px;
+}
+.hub-hero-card .hero-arrow {
+  font-size:32px; font-weight:300; opacity:0.4;
+  transition:all .25s; flex-shrink:0; margin-left:32px;
+}
+.hub-hero-card:hover .hero-arrow { opacity:1; transform:translateX(4px); }
+
 /* ── Section wrapper ── */
 .hub-section {
   width:100%;
-  margin-top:40px;
+  margin-top:32px;
   padding:28px 28px 24px;
   border-radius:16px;
   position:relative;
 }
-.hub-section:first-of-type { margin-top:20px; }
 
 .hub-section--strategy { background:var(--accent-strategy-bg); }
 .hub-section--bw { background:var(--accent-bw-bg); }
 .hub-section--df { background:var(--accent-df-bg); }
 .hub-section--tb { background:var(--accent-tb-bg); }
+.hub-section--exec { background:var(--accent-exec-bg); }
 
 /* ── Section label ── */
 .hub-section-label {
@@ -180,6 +228,9 @@ body {
 .hub-section--tb .hub-section-label { color:var(--accent-tb); }
 .hub-section--tb .hub-section-label::after { background:rgba(67,117,255,0.15); }
 
+.hub-section--exec .hub-section-label { color:var(--accent-exec); }
+.hub-section--exec .hub-section-label::after { background:rgba(139,92,246,0.15); }
+
 /* ── Grid ── */
 .hub-grid {
   display:grid; grid-template-columns:repeat(3,1fr);
@@ -201,20 +252,21 @@ body {
   border-left:3px solid transparent;
 }
 
-/* Section-specific card accents */
 .hub-section--strategy .hub-card { border-left-color:var(--accent-strategy); }
 .hub-section--bw .hub-card { border-left-color:var(--accent-bw); }
 .hub-section--df .hub-card { border-left-color:var(--accent-df); }
 .hub-section--tb .hub-card { border-left-color:var(--accent-tb); }
+.hub-section--exec .hub-card { border-left-color:var(--accent-exec); }
 
 .hub-card:hover {
   transform:translateY(-2px);
   box-shadow:0 8px 24px var(--shadow-hover), 0 2px 8px var(--shadow);
 }
-.hub-section--strategy .hub-card:hover { border-left-color:var(--accent-strategy); border-color:var(--accent-strategy); }
-.hub-section--bw .hub-card:hover { border-left-color:var(--accent-bw); border-color:var(--accent-bw); }
-.hub-section--df .hub-card:hover { border-left-color:var(--accent-df); border-color:var(--accent-df); }
-.hub-section--tb .hub-card:hover { border-left-color:var(--accent-tb); border-color:var(--accent-tb); }
+.hub-section--strategy .hub-card:hover { border-color:var(--accent-strategy); }
+.hub-section--bw .hub-card:hover { border-color:var(--accent-bw); }
+.hub-section--df .hub-card:hover { border-color:var(--accent-df); }
+.hub-section--tb .hub-card:hover { border-color:var(--accent-tb); }
+.hub-section--exec .hub-card:hover { border-color:var(--accent-exec); }
 
 .hub-card:hover .hub-card-arrow { opacity:1; transform:translateX(0); }
 
@@ -228,6 +280,7 @@ body {
 .hub-section--bw .hub-card-badge { color:var(--accent-bw); background:var(--accent-bw-light); }
 .hub-section--df .hub-card-badge { color:var(--accent-df); background:var(--accent-df-light); }
 .hub-section--tb .hub-card-badge { color:var(--accent-tb); background:var(--accent-tb-light); }
+.hub-section--exec .hub-card-badge { color:var(--accent-exec); background:var(--accent-exec-light); }
 
 .hub-card-title {
   font-size:15px; font-weight:700; letter-spacing:-0.2px;
@@ -251,46 +304,7 @@ body {
 .hub-section--bw .hub-card-arrow { color:var(--accent-bw); }
 .hub-section--df .hub-card-arrow { color:var(--accent-df); }
 .hub-section--tb .hub-card-arrow { color:var(--accent-tb); }
-
-/* ── Hero card (position 0) ── */
-.hub-hero-card {
-  display:flex; align-items:center; justify-content:space-between;
-  width:100%; margin-top:20px;
-  padding:28px 32px;
-  background:linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-  border-radius:16px;
-  text-decoration:none; color:#fff;
-  transition:all .3s ease;
-  position:relative; overflow:hidden;
-}
-.hub-hero-card::after {
-  content:''; position:absolute;
-  width:260px; height:260px; border-radius:50%;
-  border:1.5px solid rgba(255,255,255,0.12);
-  right:-60px; top:-60px; pointer-events:none;
-}
-.hub-hero-card:hover {
-  transform:translateY(-2px);
-  box-shadow:0 12px 40px rgba(34,197,94,0.25);
-}
-.hub-hero-card .hero-eyebrow {
-  font-size:10px; font-weight:700; letter-spacing:2px;
-  text-transform:uppercase; color:rgba(255,255,255,0.6);
-  margin-bottom:8px;
-}
-.hub-hero-card .hero-title {
-  font-size:20px; font-weight:800; letter-spacing:-0.4px;
-  margin-bottom:6px;
-}
-.hub-hero-card .hero-desc {
-  font-size:13px; color:rgba(255,255,255,0.75); line-height:1.5;
-  max-width:520px;
-}
-.hub-hero-card .hero-arrow {
-  font-size:28px; font-weight:300; opacity:0.5;
-  transition:all .25s; flex-shrink:0; margin-left:24px;
-}
-.hub-hero-card:hover .hero-arrow { opacity:1; transform:translateX(4px); }
+.hub-section--exec .hub-card-arrow { color:var(--accent-exec); }
 
 /* ── Footer ── */
 .hub-footer {
@@ -306,11 +320,15 @@ body {
   #hub { padding:28px 20px 48px; }
   .hub-grid { grid-template-columns:1fr 1fr; }
   .hub-section { padding:22px 20px 20px; margin-top:28px; }
+  .hub-hero-card { padding:24px 28px; }
+  .hub-hero-card .hero-title { font-size:18px; }
 }
 @media (max-width:500px) {
   .hub-grid { grid-template-columns:1fr; }
   .hub-title { font-size:22px; }
   .hub-section { padding:18px 16px 16px; margin-top:24px; }
+  .hub-hero-card { flex-direction:column; align-items:flex-start; }
+  .hub-hero-card .hero-arrow { margin:12px 0 0; }
 }
 </style>
 </head>
@@ -336,28 +354,20 @@ body {
   <div class="hub-title">Panel <span>klienta</span></div>
   <div class="hub-sub">Wybierz dokument, z którym chcesz się zapoznać.</div>
 
-  <!-- 00 STRATEGIA GŁÓWNA -->
+  <!-- 00 STRATEGIA GŁÓWNA — hero -->
   <a class="hub-hero-card" href="strategia.html">
     <div>
-      <div class="hero-eyebrow">00 · Strategia główna</div>
-      <div class="hero-title">Strategia ekosystemu 2026</div>
-      <div class="hero-desc">Architektura marek, narracja, matryca komunikacji, mapa ścieżek i governance całego ekosystemu BetterWorkplace.</div>
+      <div class="hero-eyebrow">Strategia główna</div>
+      <div class="hero-title">Strategia ekosystemu BetterWorkplace 2026</div>
+      <div class="hero-desc">Architektura marek, narracja, matryca komunikacji, mapa ścieżek i governance całego ekosystemu.</div>
     </div>
     <div class="hero-arrow">→</div>
   </a>
 
-  <!-- 01 STRATEGIA OGÓLNA -->
+  <!-- 01 STRATEGIA -->
   <div class="hub-section hub-section--strategy">
-    <div class="hub-section-label">01 · Strategia ogólna</div>
+    <div class="hub-section-label">01 · Strategia</div>
     <div class="hub-grid">
-
-      <a class="hub-card" href="strategia.html">
-        <div class="hub-card-badge">Faza 1</div>
-        <div class="hub-card-title">Strategia 2026</div>
-        <div class="hub-card-desc">Architektura marek, narracja, matryca komunikacji i mapa ścieżek ekosystemu.</div>
-        <div class="hub-card-meta">SALT · 5 deliverables · v3</div>
-        <div class="hub-card-arrow">→</div>
-      </a>
 
       <a class="hub-card" href="framework.html">
         <div class="hub-card-badge">Metodologia</div>
@@ -391,14 +401,6 @@ body {
         <div class="hub-card-arrow">→</div>
       </a>
 
-      <a class="hub-card" href="bw-voice.html">
-        <div class="hub-card-badge">Brand</div>
-        <div class="hub-card-title">Brand Voice Guide</div>
-        <div class="hub-card-desc">Archetyp, atrybuty głosu, hierarchia przekazów, do's & don'ts.</div>
-        <div class="hub-card-meta">Ton · Podział głosu BW vs sub-brandy</div>
-        <div class="hub-card-arrow">→</div>
-      </a>
-
     </div>
   </div>
 
@@ -412,14 +414,6 @@ body {
         <div class="hub-card-title">WWW sprzedażowe</div>
         <div class="hub-card-desc">Strona sprzedażowa — owoce, przekąski i zdrowe nawyki w biurze.</div>
         <div class="hub-card-meta">Propozycja nowej strony</div>
-        <div class="hub-card-arrow">→</div>
-      </a>
-
-      <a class="hub-card" href="df-brand-voice.html">
-        <div class="hub-card-badge">Brand</div>
-        <div class="hub-card-title">Brand Voice Guide</div>
-        <div class="hub-card-desc">Tone of voice, kolory, typografia, do's & don'ts dla DF.</div>
-        <div class="hub-card-meta">Osobowość · Atrybuty · Adaptacje</div>
         <div class="hub-card-arrow">→</div>
       </a>
 
@@ -444,6 +438,30 @@ body {
         <div class="hub-card-title">Strategia & Branding TB</div>
         <div class="hub-card-desc">Branding, pozycjonowanie w ekosystemie, insighty strategiczne i roadmapa wdrożenia.</div>
         <div class="hub-card-meta">Brand book · Insighty · Roadmapa</div>
+        <div class="hub-card-arrow">→</div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- 05 EXECUTION — strategie komunikacji marek -->
+  <div class="hub-section hub-section--exec">
+    <div class="hub-section-label">05 · Execution — strategie komunikacji</div>
+    <div class="hub-grid">
+
+      <a class="hub-card" href="bw-voice.html">
+        <div class="hub-card-badge">BetterWorkplace</div>
+        <div class="hub-card-title">Brand Voice Guide — BW</div>
+        <div class="hub-card-desc">Archetyp, atrybuty głosu, hierarchia przekazów, do's & don'ts.</div>
+        <div class="hub-card-meta">Ton · Podział głosu BW vs sub-brandy</div>
+        <div class="hub-card-arrow">→</div>
+      </a>
+
+      <a class="hub-card" href="df-brand-voice.html">
+        <div class="hub-card-badge">DailyFruits</div>
+        <div class="hub-card-title">Brand Voice Guide — DF</div>
+        <div class="hub-card-desc">Tone of voice, kolory, typografia, do's & don'ts dla DF.</div>
+        <div class="hub-card-meta">Osobowość · Atrybuty · Adaptacje</div>
         <div class="hub-card-arrow">→</div>
       </a>
 
