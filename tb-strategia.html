@@ -278,8 +278,7 @@ body {
   letter-spacing:0.06em; text-transform:uppercase;
   color:var(--orange); margin-bottom:6px;
 }
-.question-card h3 { font-size:16px; font-weight:700; margin-bottom:6px; }
-.question-card p { font-size:13px; color:var(--muted); line-height:1.6; }
+.question-card h3 { font-size:17px; font-weight:700; margin-bottom:0; letter-spacing:-0.01em; line-height:1.4; }
 
 /* KAFETERIA BOX */
 .callout-box {
@@ -321,7 +320,10 @@ body {
 </head>
 <body>
 
-<a class="back-nav" href="index.html">← Panel klienta</a>
+<div style="display:flex; gap:24px; align-items:center;">
+  <a class="back-nav" href="index.html">← Panel klienta</a>
+  <a class="back-nav" href="strategia.html" style="color:var(--muted);">Strategia ogólna →</a>
+</div>
 
 <!-- ═══ HERO ═══ -->
 <div class="hero">
@@ -597,27 +599,22 @@ body {
       <div class="question-card">
         <div class="question-num">Pytanie 01</div>
         <h3>Jaki jest realny timeline MVP TeamBudget?</h3>
-        <p>Czy mówimy o Q3 2026, Q4, czy 2027? Od tego zależy cała strategia pre-launch — kiedy zaczynamy budować narrację, kiedy uruchamiamy content, kiedy idziemy do pierwszych klientów. Bez daty nie ma planu.</p>
       </div>
       <div class="question-card">
         <div class="question-num">Pytanie 02</div>
         <h3>Który model monetyzacji: SaaS fee, prowizja od transakcji, czy bundle z produktami?</h3>
-        <p>To definiuje cały messaging. SaaS = „narzędzie do kontroli". Prowizja = „bez opłat, zarabiamy razem". Bundle = „wszystko w jednej cenie". Każdy model zmienia sposób, w jaki rozmawiamy z klientem i jak pozycjonujemy wartość.</p>
       </div>
       <div class="question-card">
         <div class="question-num">Pytanie 03</div>
         <h3>Czy TB startuje jako narzędzie wewnętrzne (dla obecnych klientów BW) czy jako produkt na rynek?</h3>
-        <p>Wariant A: TB jako „upgrade" dla klientów BW z 2+ produktami — niskie ryzyko, szybka walidacja. Wariant B: TB jako samodzielna platforma kafeteryjna — większy rynek, ale potrzebny osobny GTM i branding. To fundamentalnie różne strategie.</p>
       </div>
       <div class="question-card">
         <div class="question-num">Pytanie 04</div>
         <h3>Jak wygląda MVP scope — co TB robi, a czego celowo nie robi w wersji 1.0?</h3>
-        <p>Dashboard z zamówieniami? Automatyczne faktury? Raportowanie budżetowe? Selfservice zamawianie? Każda funkcja to miesiące developmentu. Musimy zdecydować co jest „must have day 1" vs. „nice to have later" żeby nie budować rok zanim pokażemy cokolwiek.</p>
       </div>
       <div class="question-card">
         <div class="question-num">Pytanie 05</div>
         <h3>Kto jest wewnętrznym ownerem TB i jaki ma budżet na pierwsze 6 miesięcy?</h3>
-        <p>Strategia bez właściciela to dokument na półce. TB potrzebuje osoby odpowiedzialnej za product development, GTM i relację z pierwszymi 5-10 klientami pilotażowymi. Bez tego — piękna koncepcja, zero execution.</p>
       </div>
     </div>
   </div>

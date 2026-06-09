@@ -124,6 +124,31 @@ body {
 .claim-bar .claim-text { font-size:26px; font-weight:900; letter-spacing:-0.5px; }
 .claim-bar .claim-sub { font-size:12px; color:rgba(255,255,255,0.6); margin-top:6px; text-transform:uppercase; letter-spacing:2px; }
 
+/* ══ SMOOTH REVEAL ══ */
+[data-reveal] {
+  opacity:0; transform:translateY(28px);
+  transition: opacity .9s cubic-bezier(0.22,1,0.36,1), transform .9s cubic-bezier(0.22,1,0.36,1);
+  will-change:opacity,transform;
+}
+[data-reveal].is-visible { opacity:1; transform:translateY(0); }
+[data-reveal-stagger] > * {
+  opacity:0; transform:translateY(20px);
+  transition: opacity .7s cubic-bezier(0.22,1,0.36,1), transform .7s cubic-bezier(0.22,1,0.36,1);
+  will-change:opacity,transform;
+}
+[data-reveal-stagger].is-visible > * { opacity:1; transform:translateY(0); }
+[data-reveal-stagger].is-visible > *:nth-child(1) { transition-delay:0ms; }
+[data-reveal-stagger].is-visible > *:nth-child(2) { transition-delay:80ms; }
+[data-reveal-stagger].is-visible > *:nth-child(3) { transition-delay:160ms; }
+[data-reveal-stagger].is-visible > *:nth-child(4) { transition-delay:240ms; }
+[data-reveal-stagger].is-visible > *:nth-child(5) { transition-delay:320ms; }
+[data-reveal-stagger].is-visible > *:nth-child(6) { transition-delay:400ms; }
+[data-reveal-stagger].is-visible > *:nth-child(7) { transition-delay:480ms; }
+[data-reveal-stagger].is-visible > *:nth-child(8) { transition-delay:560ms; }
+@media (prefers-reduced-motion:reduce) {
+  [data-reveal],[data-reveal-stagger] > * { opacity:1!important; transform:none!important; transition:none!important; }
+}
+
 @media (max-width:700px) {
   .g4 { grid-template-columns:1fr 1fr; }
   .g3 { grid-template-columns:1fr; }
@@ -145,12 +170,12 @@ body {
 <div class="wrap" style="padding-top:0;">
 
   <!-- HERO BANNER -->
-  <div style="margin:0 -20px 0; overflow:hidden;">
+  <div data-reveal style="margin:0 -20px 0; overflow:hidden;">
     <img src="df-banner.webp" alt="DailyFruits brand banner" style="width:100%; display:block; object-fit:contain;">
   </div>
 
   <!-- HEADER -->
-  <div class="header" style="margin-top:32px;">
+  <div class="header" data-reveal style="margin-top:32px;">
     <div class="header-badge">by BetterWorkplace</div>
     <h1>Brand Voice &<br><span style="font-family:'Achiko',cursive; font-weight:400;">Visual Identity</span> Guide</h1>
     <div class="header-sub">Tone of Voice · Kolory · Typografia · Do's & Don'ts</div>
@@ -158,19 +183,19 @@ body {
   </div>
 
   <!-- CLAIM -->
-  <div class="claim-bar">
+  <div class="claim-bar" data-reveal>
     <div class="claim-text" style="font-family:'Achiko',cursive;">Zdrowsze jedzenie, lepsza praca.</div>
     <div class="claim-sub">Claim marki</div>
   </div>
 
   <!-- 1. OSOBOWOŚĆ MARKI -->
   <div class="section">
-    <div class="sec-label">01 · Osobowość marki</div>
-    <div class="card" style="border-left:4px solid var(--lime);">
+    <div class="sec-label" data-reveal>01 · Osobowość marki</div>
+    <div class="card" data-reveal style="border-left:4px solid var(--lime);">
       <div style="font-size:15px; color:var(--green-dark); line-height:1.8; margin-bottom:22px;">
         Gdyby DailyFruits był osobą, byłby <strong>kompetentnym doradcą HR</strong>, który wie, że wellbeing zaczyna się od kuchni. Nie moralizuje — po prostu stawia skrzynkę świeżych owoców i mówi: <em style="color:var(--green-mid);">„To działa. Sprawdziliśmy w 2000 firmach."</em> Jest ciepły, ale konkretny. Nigdy nie przesadza z entuzjazmem, bo jego siłą są twarde dane, nie hasła.
       </div>
-      <div class="g2">
+      <div class="g2" data-reveal-stagger>
         <div class="card-sm">
           <div class="label">Misja</div>
           <div class="val">Nie jesteśmy dostawcą owoców. Budujemy kulturę zdrowia w Twojej firmie — zaczynając od kuchni.</div>
@@ -180,7 +205,7 @@ body {
           <div class="val"><strong>Opiekun</strong> (Caregiver) + <strong>Mędrzec</strong> (Sage). Dba o ludzi, ale na bazie danych i procesów, nie emocji. Praktyczny wellbeing, nie korporacyjny wellness-washing.</div>
         </div>
       </div>
-      <div class="g2" style="margin-top:10px;">
+      <div class="g2" data-reveal-stagger style="margin-top:10px;">
         <div class="card-sm">
           <div class="label">Obietnica</div>
           <div class="val">Zdrowsze jedzenie, lepsza praca. Jeden dostawca, zero komplikacji, mierzalny wpływ na zespół.</div>
@@ -195,8 +220,8 @@ body {
 
   <!-- 2. ATRYBUTY GŁOSU -->
   <div class="section">
-    <div class="sec-label">02 · Atrybuty głosu</div>
-    <div class="g4" style="margin-bottom:14px;">
+    <div class="sec-label" data-reveal>02 · Atrybuty głosu</div>
+    <div class="g4" data-reveal-stagger style="margin-bottom:14px;">
 
       <div class="card" style="border-top:4px solid var(--lime); padding:20px;">
         <div style="font-size:16px; font-weight:700; color:var(--green-dark); margin-bottom:10px;">Konkretny</div>
@@ -235,8 +260,8 @@ body {
 
   <!-- 3. DO'S & DON'TS -->
   <div class="section">
-    <div class="sec-label">03 · Do's & Don'ts</div>
-    <div class="g2" style="margin-bottom:16px;">
+    <div class="sec-label" data-reveal>03 · Do's & Don'ts</div>
+    <div class="g2" data-reveal-stagger style="margin-bottom:16px;">
 
       <div class="card" style="border-left:4px solid var(--lime);">
         <div style="font-size:11px; font-weight:700; color:var(--lime); margin-bottom:14px; letter-spacing:1.5px;">DO — TAK PISZEMY</div>
@@ -271,7 +296,7 @@ body {
     </div>
 
     <!-- Słownik -->
-    <div class="card">
+    <div class="card" data-reveal>
       <div style="font-size:11px; font-weight:700; color:var(--text-dim); margin-bottom:14px; letter-spacing:1.5px;">SŁOWA ZAKAZANE VS. PREFEROWANE</div>
       <table class="vocab-table">
         <thead><tr><th>Nie używaj</th><th>Używaj zamiast</th></tr></thead>
@@ -290,10 +315,10 @@ body {
 
   <!-- BRAND ADAPTACJE -->
   <div class="section">
-    <div class="sec-label">Adaptacje brandingowe — materiały referencyjne</div>
+    <div class="sec-label" data-reveal>Adaptacje brandingowe — materiały referencyjne</div>
 
     <!-- Packaging duo -->
-    <div style="background:var(--white); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:14px;">
+    <div data-reveal style="background:var(--white); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:14px;">
       <img src="df-boxy-duo.webp" alt="DailyFruits + DailyFoods boxy" style="width:100%; object-fit:contain; display:block;">
       <div style="padding:16px 20px;">
         <div style="font-size:13px; font-weight:700; color:var(--green-dark);">Packaging — DailyFruits + DailyFoods</div>
@@ -302,7 +327,7 @@ body {
     </div>
 
     <!-- Social kreacje -->
-    <div class="g3" style="margin-bottom:14px;">
+    <div class="g3" data-reveal-stagger style="margin-bottom:14px;">
       <div style="background:var(--white); border:1px solid var(--border); border-radius:12px; overflow:hidden;">
         <img src="df-branding-full.webp" alt="Owocowa skrzynia — kreacja social" style="width:100%; object-fit:contain;">
         <div style="padding:12px 16px;">
@@ -327,7 +352,7 @@ body {
     </div>
 
     <!-- Van + ikony -->
-    <div class="g2" style="margin-bottom:14px;">
+    <div class="g2" data-reveal-stagger style="margin-bottom:14px;">
       <div style="background:var(--white); border:1px solid var(--border); border-radius:12px; overflow:hidden;">
         <img src="df-van.webp" alt="DailyFruits van" style="width:100%; object-fit:contain;">
         <div style="padding:14px 16px;">
@@ -356,7 +381,7 @@ body {
     </div>
 
     <!-- DailyFoods banner -->
-    <div style="background:var(--white); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:14px;">
+    <div data-reveal style="background:var(--white); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:14px;">
       <img src="df-dailyfoods-banner.webp" alt="DailyFoods banner" style="width:100%; object-fit:contain; display:block;">
       <div style="padding:14px 20px;">
         <div style="font-size:12px; font-weight:700; color:var(--green-dark);">Alternatywna wersja komunikacji — paczki mieszane (nie tylko owoce)</div>
@@ -365,7 +390,7 @@ body {
     </div>
 
     <!-- WWW screenshot -->
-    <div style="background:var(--white); border:1px solid var(--border); border-radius:12px; overflow:hidden;">
+    <div data-reveal style="background:var(--white); border:1px solid var(--border); border-radius:12px; overflow:hidden;">
       <img src="df-www-screenshot.webp" alt="DailyFruits strona www" style="width:100%; display:block;">
       <div style="padding:14px 20px;">
         <div style="font-size:12px; font-weight:700; color:var(--green-dark);">Strona www — dailyfruits.pl</div>
@@ -376,9 +401,9 @@ body {
 
   <!-- 4. SYSTEM KOLORÓW -->
   <div class="section">
-    <div class="sec-label">04 · System kolorów</div>
+    <div class="sec-label" data-reveal>04 · System kolorów</div>
 
-    <div class="card" style="margin-bottom:14px;">
+    <div class="card" data-reveal style="margin-bottom:14px;">
       <div style="font-size:11px; font-weight:700; color:var(--text-dim); margin-bottom:18px; letter-spacing:1.5px;">KOLORY GŁÓWNE</div>
       <div class="color-row">
         <div class="swatch" style="background:#1B5E3A;"></div>
@@ -412,7 +437,7 @@ body {
       </div>
     </div>
 
-    <div class="card" style="margin-bottom:14px;">
+    <div class="card" data-reveal style="margin-bottom:14px;">
       <div style="font-size:11px; font-weight:700; color:var(--text-dim); margin-bottom:18px; letter-spacing:1.5px;">KOLORY POMOCNICZE</div>
       <div class="color-row">
         <div class="swatch" style="background:#347550;"></div>
@@ -440,7 +465,7 @@ body {
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" data-reveal>
       <div style="font-size:11px; font-weight:700; color:var(--text-dim); margin-bottom:14px; letter-spacing:1.5px;">ZASADY UŻYCIA</div>
       <div class="val" style="font-size:13px; line-height:2.1;">
         Green Dark to ZAWSZE kolor tekstu na jasnym tle (nie czarny, nie szary)<br>
@@ -465,9 +490,9 @@ body {
 
   <!-- 5. TYPOGRAFIA -->
   <div class="section">
-    <div class="sec-label">05 · Typografia</div>
+    <div class="sec-label" data-reveal>05 · Typografia</div>
 
-    <div class="g2" style="margin-bottom:14px;">
+    <div class="g2" data-reveal-stagger style="margin-bottom:14px;">
       <div class="card" style="border-left:4px solid var(--lime);">
         <div style="font-size:20px; font-weight:900; color:var(--green-dark); margin-bottom:10px;">DM Sans</div>
         <div style="font-size:10px; color:var(--lime); margin-bottom:12px; letter-spacing:1px; font-weight:700;">FONT GŁÓWNY · GOOGLE FONTS · OPEN SOURCE</div>
@@ -492,7 +517,7 @@ body {
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" data-reveal>
       <div style="font-size:11px; font-weight:700; color:var(--text-dim); margin-bottom:14px; letter-spacing:1.5px;">HIERARCHIA TYPOGRAFICZNA</div>
       <table class="tone-table">
         <thead><tr><th>Element</th><th>Font</th><th>Waga</th><th>Rozmiar</th><th>Kolor</th></tr></thead>
@@ -518,11 +543,11 @@ body {
 
   <!-- 6. ODBIORCY I TON -->
   <div class="section">
-    <div class="sec-label">06 · Odbiorcy i spektrum tonu</div>
+    <div class="sec-label" data-reveal>06 · Odbiorcy i spektrum tonu</div>
 
-    <div class="card" style="margin-bottom:14px;">
+    <div class="card" data-reveal style="margin-bottom:14px;">
       <div style="font-size:11px; font-weight:700; color:var(--text-dim); margin-bottom:16px; letter-spacing:1.5px;">GRUPA DOCELOWA</div>
-      <div class="g3">
+      <div class="g3" data-reveal-stagger>
         <div class="card-sm" style="border-top:4px solid var(--lime);">
           <div style="font-size:10px; font-weight:700; color:var(--lime); margin-bottom:6px;">PRIMARY</div>
           <div style="font-size:15px; font-weight:700; color:var(--green-dark); margin-bottom:8px;">Office Manager / HR</div>
@@ -541,7 +566,7 @@ body {
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" data-reveal>
       <div style="font-size:11px; font-weight:700; color:var(--text-dim); margin-bottom:16px; letter-spacing:1.5px;">TON W ZALEŻNOŚCI OD KANAŁU</div>
       <table class="tone-table">
         <thead><tr><th>Kanał</th><th>Ton</th><th>Przykład</th></tr></thead>
@@ -558,7 +583,7 @@ body {
   </div>
 
   <!-- FOOTER -->
-  <div style="margin-top:56px; padding:24px 32px; background:var(--green-dark); border-radius:12px; text-align:center;">
+  <div data-reveal style="margin-top:56px; padding:24px 32px; background:var(--green-dark); border-radius:12px; text-align:center;">
     <div style="font-family:'Achiko',cursive; font-size:18px; font-weight:400; color:#fff; margin-bottom:6px; text-transform:lowercase;">daily<span style="color:var(--lime);">fruits</span></div>
     <div style="font-size:10px; color:rgba(255,255,255,0.4); letter-spacing:2px; text-transform:uppercase; margin-bottom:6px;">by BetterWorkplace</div>
     <div style="font-size:11px; color:rgba(255,255,255,0.5); line-height:1.8;">
@@ -568,5 +593,33 @@ body {
   </div>
 
 </div>
+
+<script>
+(function(){
+  var s = document.createElement('script');
+  s.src = 'https://unpkg.com/lenis@1.3.17/dist/lenis.min.js';
+  s.onload = function(){
+    var lenis = new Lenis({ duration:1.6, easing:function(t){ return Math.min(1,1.001-Math.pow(2,-10*t)); } });
+    function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+  };
+  document.head.appendChild(s);
+})();
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal],[data-reveal-stagger]').forEach(function(el){ el.classList.add('is-visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin:'0px 0px -8% 0px', threshold:0.08 });
+  document.querySelectorAll('[data-reveal],[data-reveal-stagger]').forEach(function(el){ io.observe(el); });
+})();
+</script>
 </body>
 </html>
