@@ -68,85 +68,90 @@ body {
 
 /* ══ HUB SCREEN ══ */
 #hub {
-  display:none; flex-direction:column; align-items:center;
-  justify-content:center; width:100%; height:100%;
-  padding:40px 20px;
+  display:none; flex-direction:column; align-items:flex-start;
+  width:100%; min-height:100vh;
+  padding:32px 40px 48px;
+  max-width:1100px; margin:0 auto;
 }
 #hub.visible { display:flex; }
 
 .hub-eyebrow {
   font-size:9px; letter-spacing:3px; text-transform:uppercase;
-  color:var(--text-dim); margin-bottom:12px; font-weight:600;
+  color:var(--text-dim); margin-bottom:8px; font-weight:600;
 }
 .hub-title {
-  font-size:28px; font-weight:800; letter-spacing:-0.5px;
-  margin-bottom:6px;
+  font-size:24px; font-weight:800; letter-spacing:-0.5px;
+  margin-bottom:4px;
 }
 .hub-title span { color:var(--lime); }
 .hub-sub {
-  font-size:13px; color:var(--text-muted); margin-bottom:48px;
-  max-width:420px; text-align:center; line-height:1.6;
+  font-size:12px; color:var(--text-muted); margin-bottom:28px;
+  line-height:1.5;
 }
 
 .hub-grid {
-  display:grid; grid-template-columns:1fr 1fr;
-  gap:20px; max-width:640px; width:100%;
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:10px; width:100%;
 }
 
 .hub-card {
   background:var(--card); border:1px solid var(--border);
-  border-radius:12px; padding:36px 28px 32px;
+  border-radius:10px; padding:18px 20px 16px;
   text-decoration:none; color:var(--text);
   transition:all .25s ease; position:relative;
   overflow:hidden; cursor:pointer;
+  display:flex; flex-direction:column;
 }
 .hub-card:hover {
   border-color:var(--lime);
   background:var(--card2);
-  transform:translateY(-2px);
+  transform:translateY(-1px);
 }
 .hub-card:hover .hub-card-arrow { opacity:1; transform:translateX(0); }
 
 .hub-card-badge {
-  font-size:9px; font-weight:600; letter-spacing:2px;
-  text-transform:uppercase; margin-bottom:16px;
+  font-size:8px; font-weight:700; letter-spacing:1.5px;
+  text-transform:uppercase; margin-bottom:8px;
   display:inline-block; color:var(--text-dim);
 }
 .hub-card-title {
-  font-size:18px; font-weight:700; letter-spacing:-0.3px;
-  margin-bottom:8px; line-height:1.3;
+  font-size:14px; font-weight:700; letter-spacing:-0.2px;
+  margin-bottom:6px; line-height:1.3;
 }
 .hub-card-desc {
-  font-size:12px; color:var(--text-muted); line-height:1.6;
-  margin-bottom:20px;
+  font-size:11px; color:var(--text-muted); line-height:1.5;
+  margin-bottom:10px; flex:1;
 }
 .hub-card-meta {
-  font-size:10px; color:var(--text-dim); line-height:1.5;
+  font-size:9px; color:var(--text-dim); line-height:1.4;
 }
 .hub-card-arrow {
-  position:absolute; bottom:20px; right:20px;
-  font-size:20px; color:var(--lime);
-  opacity:0; transform:translateX(-8px);
+  position:absolute; top:18px; right:16px;
+  font-size:14px; color:var(--lime);
+  opacity:0; transform:translateX(-4px);
   transition:all .25s ease;
 }
 
-
 .hub-section-label {
-  font-size:9px; font-weight:700; letter-spacing:2.5px;
+  font-size:8px; font-weight:700; letter-spacing:2.5px;
   text-transform:uppercase; color:var(--text-dim);
-  margin-top:40px; margin-bottom:16px;
-  max-width:640px; width:100%;
+  margin-top:24px; margin-bottom:10px;
+  width:100%;
 }
 .hub-section-label:first-of-type { margin-top:0; }
 
 .hub-footer {
-  margin-top:48px; font-size:10px; color:var(--text-dim);
-  text-align:center; line-height:1.6;
+  margin-top:32px; font-size:9px; color:var(--text-dim);
+  line-height:1.6; width:100%;
 }
 
-@media (max-width:600px) {
+@media (max-width:800px) {
+  #hub { padding:24px 20px 40px; }
+  .hub-grid { grid-template-columns:1fr 1fr; }
+}
+@media (max-width:500px) {
   .hub-grid { grid-template-columns:1fr; }
-  .hub-title { font-size:22px; }
+  .hub-title { font-size:20px; }
 }
 </style>
 </head>
@@ -179,16 +184,24 @@ body {
     <a class="hub-card" href="strategia.html">
       <div class="hub-card-badge">Faza 1</div>
       <div class="hub-card-title">Strategia 2026</div>
-      <div class="hub-card-desc">Strategia marki BetterWorkplace: architektura marek, narracja, matryca komunikacji i mapa ścieżek ekosystemu.</div>
-      <div class="hub-card-meta">Metodologia SALT · 5 deliverables · v3<br>Kwiecień–Maj 2026</div>
+      <div class="hub-card-desc">Architektura marek, narracja, matryca komunikacji i mapa ścieżek ekosystemu.</div>
+      <div class="hub-card-meta">SALT · 5 deliverables · v3</div>
+      <div class="hub-card-arrow">→</div>
+    </a>
+
+    <a class="hub-card" href="framework.html">
+      <div class="hub-card-badge">Metodologia</div>
+      <div class="hub-card-title">Framework SALT → PLATE</div>
+      <div class="hub-card-desc">Dwufazowa metodologia budowania strategii marek — od diagnozy po implementację.</div>
+      <div class="hub-card-meta">SALT + PLATE · Case: BW</div>
       <div class="hub-card-arrow">→</div>
     </a>
 
     <a class="hub-card" href="performance.html">
       <div class="hub-card-badge">Q2 2026</div>
-      <div class="hub-card-title">Wstępny plan kampanii reklamowej</div>
-      <div class="hub-card-desc">Plan kampanii reklamowej: LinkedIn, Meta, Google. Budżet 20k PLN, podział BetterWorkplace + DailyFruits.</div>
-      <div class="hub-card-meta">3 kanały · Dual stream · 20 000 PLN<br>Marzec 2026</div>
+      <div class="hub-card-title">Plan kampanii</div>
+      <div class="hub-card-desc">LinkedIn, Meta, Google. Budżet 20k PLN, dual stream BW + DF.</div>
+      <div class="hub-card-meta">3 kanały · 20 000 PLN</div>
       <div class="hub-card-arrow">→</div>
     </a>
 
@@ -201,16 +214,16 @@ body {
     <a class="hub-card" href="https://better-workplace-corposite.webflow.io/" target="_blank">
       <div class="hub-card-badge">WWW</div>
       <div class="hub-card-title">WWW korporacyjne</div>
-      <div class="hub-card-desc">Strona korporacyjna BetterWorkplace — pozycjonowanie, ekosystem marek, oferta dla firm.</div>
-      <div class="hub-card-meta">Propozycja nowej strony<br>Corposite BetterWorkplace</div>
+      <div class="hub-card-desc">Pozycjonowanie, ekosystem marek, oferta dla firm.</div>
+      <div class="hub-card-meta">Propozycja nowej strony</div>
       <div class="hub-card-arrow">→</div>
     </a>
 
     <a class="hub-card" href="bw-voice.html">
       <div class="hub-card-badge">Brand</div>
       <div class="hub-card-title">Brand Voice Guide</div>
-      <div class="hub-card-desc">Osobowość, archetyp, atrybuty głosu, hierarchia przekazów, do's & don'ts, słownik marki.</div>
-      <div class="hub-card-meta">Ton · Odbiorcy · Podział głosu BW vs sub-brandy<br>v1.0 · Kwiecień 2026</div>
+      <div class="hub-card-desc">Archetyp, atrybuty głosu, hierarchia przekazów, do's & don'ts.</div>
+      <div class="hub-card-meta">Ton · Podział głosu BW vs sub-brandy</div>
       <div class="hub-card-arrow">→</div>
     </a>
 
@@ -223,24 +236,38 @@ body {
     <a class="hub-card" href="https://dailyfruits.vercel.app" target="_blank">
       <div class="hub-card-badge">WWW</div>
       <div class="hub-card-title">WWW sprzedażowe</div>
-      <div class="hub-card-desc">Strona sprzedażowa DailyFruits — owoce, przekąski i zdrowe nawyki w biurze.</div>
-      <div class="hub-card-meta">Propozycja nowej strony<br>Branding DailyFruits</div>
+      <div class="hub-card-desc">Strona sprzedażowa — owoce, przekąski i zdrowe nawyki w biurze.</div>
+      <div class="hub-card-meta">Propozycja nowej strony</div>
       <div class="hub-card-arrow">→</div>
     </a>
 
     <a class="hub-card" href="df-brand-voice.html">
       <div class="hub-card-badge">Brand</div>
       <div class="hub-card-title">Brand Voice Guide</div>
-      <div class="hub-card-desc">Tone of voice, kolory, typografia, do's & don'ts — kompletny przewodnik po brandingu DF.</div>
-      <div class="hub-card-meta">Osobowość marki · Atrybuty głosu · Adaptacje<br>v1.0 · Kwiecień 2026</div>
+      <div class="hub-card-desc">Tone of voice, kolory, typografia, do's & don'ts dla DF.</div>
+      <div class="hub-card-meta">Osobowość · Atrybuty · Adaptacje</div>
       <div class="hub-card-arrow">→</div>
     </a>
 
     <a class="hub-card" href="df-seo-raport.html">
       <div class="hub-card-badge">SEO</div>
       <div class="hub-card-title">Raport SEO & Performance</div>
-      <div class="hub-card-desc">29 stron, 200 redirectów 301, 6 typów schema, 13 city pages, 80 FAQ — pełna optymalizacja dailyfruits.pl.</div>
-      <div class="hub-card-meta">SEO tech · Schema · City pages · AEO<br>Kwiecień 2026</div>
+      <div class="hub-card-desc">29 stron, 200 redirectów, 6 schema, 13 city pages, 80 FAQ.</div>
+      <div class="hub-card-meta">SEO tech · Schema · AEO</div>
+      <div class="hub-card-arrow">→</div>
+    </a>
+
+  </div>
+
+  <!-- 04 TEAMBUDGET -->
+  <div class="hub-section-label">04 · TeamBudget</div>
+  <div class="hub-grid">
+
+    <a class="hub-card" href="strategia.html#teambudget">
+      <div class="hub-card-badge">Koncept</div>
+      <div class="hub-card-title">TeamBudget — Pozycjonowanie</div>
+      <div class="hub-card-desc">Platforma zarządzania benefitami. Trzeci filar ekosystemu BW — centralizacja wydatków biurowych.</div>
+      <div class="hub-card-meta">Pre-launch · Faza 2 scope</div>
       <div class="hub-card-arrow">→</div>
     </a>
 

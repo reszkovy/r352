@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Framework strategiczny — Case Study: BetterWorkplace</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0d0d0d;
+  --card: #161616;
+  --card2: #1c1c1c;
+  --border: #252525;
+  --border2: #2e2e2e;
+  --lime: #c8f135;
+  --lime-dim: rgba(200,241,53,0.08);
+  --blue: #3b82f6;
+  --blue-dim: rgba(59,130,246,0.08);
+  --green: #22c55e;
+  --green-dim: rgba(34,197,94,0.08);
+  --purple: #a855f7;
+  --purple-dim: rgba(168,85,247,0.08);
+  --warn: #f59e0b;
+  --warn-dim: rgba(245,158,11,0.08);
+  --red: #ef4444;
+  --red-dim: rgba(239,68,68,0.08);
+  --orange: #ff6921;
+  --orange-dim: rgba(255,105,33,0.08);
+  --text: #e8e8e8;
+  --text-muted: #888;
+  --text-dim: #3a3a3a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;}
+
+.back-nav{position:fixed;top:16px;right:20px;z-index:9999;font-size:11px;font-weight:600;color:#0d0d0d;text-decoration:none;letter-spacing:.3px;background:#fff;padding:8px 18px;border-radius:8px;transition:all .2s;}
+.back-nav:hover{background:var(--lime);}
+
+.wrap{max-width:860px;margin:0 auto;padding:80px 28px 120px;}
+
+/* HERO */
+.hero{margin-bottom:64px;}
+.hero-eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--lime);margin-bottom:16px;}
+.hero h1{font-size:clamp(36px,5vw,56px);font-weight:900;letter-spacing:-2px;line-height:1.1;margin-bottom:12px;}
+.hero h1 span{color:var(--lime);}
+.hero-sub{font-size:16px;color:var(--text-muted);max-width:600px;line-height:1.7;}
+
+/* SECTIONS */
+.section{margin-bottom:64px;}
+.sec-eyebrow{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-dim);margin-bottom:10px;}
+.sec-title{font-size:28px;font-weight:800;letter-spacing:-1px;margin-bottom:6px;}
+.sec-title span{color:var(--lime);}
+.sec-sub{font-size:14px;color:var(--text-muted);margin-bottom:24px;max-width:640px;}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--border);padding:24px;margin-bottom:10px;}
+.card h3{font-size:15px;font-weight:700;margin-bottom:8px;}
+.card p{font-size:13px;color:var(--text-muted);line-height:1.7;}
+.card-sm{background:var(--card2);border:1px solid var(--border2);padding:16px;}
+.card-sm .label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.card-sm p{font-size:12px;color:var(--text-muted);line-height:1.6;}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+
+/* FLOW */
+.flow-row{display:flex;align-items:center;gap:0;margin-bottom:24px;flex-wrap:wrap;justify-content:center;}
+.flow-step{text-align:center;padding:16px 24px;flex:1;min-width:120px;}
+.flow-step .letter{font-size:32px;font-weight:900;line-height:1;}
+.flow-step .name{font-size:11px;color:var(--text-muted);margin-top:4px;}
+.flow-arrow{font-size:18px;color:var(--text-dim);padding:0 4px;}
+
+/* PHASE */
+.phase{background:var(--card2);border:1px solid var(--border2);padding:28px;margin-bottom:10px;}
+.phase-header{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+.phase-num{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;}
+.phase-title{font-size:18px;font-weight:700;}
+.phase-desc{font-size:13px;color:var(--text-muted);line-height:1.7;}
+
+/* DELIVERABLE CARDS */
+.dlv{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px;}
+.dlv-card{background:var(--card);border:1px solid var(--border);padding:18px;position:relative;}
+.dlv-badge{font-size:10px;font-weight:700;color:var(--lime);background:var(--lime-dim);padding:3px 8px;display:inline-block;margin-bottom:10px;}
+.dlv-title{font-size:13px;font-weight:700;margin-bottom:4px;}
+.dlv-desc{font-size:11px;color:var(--text-muted);line-height:1.5;}
+
+/* EXAMPLE BOX */
+.example{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--warn);padding:20px 24px;margin-top:16px;margin-bottom:10px;}
+.example .tag{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--warn);margin-bottom:8px;}
+.example p{font-size:13px;color:var(--text-muted);line-height:1.7;}
+
+/* CALLOUT */
+.callout{padding:16px 20px;margin-bottom:10px;font-size:13px;color:var(--text-muted);line-height:1.7;}
+.callout strong{color:var(--text);}
+
+/* DIVIDER */
+.divider{height:1px;background:var(--border);margin:48px 0;}
+
+/* FOOTER */
+.footer{text-align:center;font-size:11px;color:var(--text-dim);margin-top:80px;padding-top:24px;border-top:1px solid var(--border);}
+
+@media(max-width:768px){
+  .grid-2,.grid-3,.dlv{grid-template-columns:1fr;}
+  .flow-row{flex-direction:column;}
+  .flow-arrow{transform:rotate(90deg);}
+}
+</style>
+</head>
+<body>
+<a class="back-nav" href="index.html">← Panel klienta</a>
+
+<div class="wrap">
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-eyebrow">Framework</div>
+  <h1>Jak budujemy <span>strategię marki</span></h1>
+  <div class="hero-sub">Pełny proces od diagnozy do wdrożenia — opisany na przykładzie ekosystemu BetterWorkplace. Dwa autorskie frameworki, cztery fazy, mierzalne wyniki.</div>
+</div>
+
+
+<!-- ═══ 1. OVERVIEW ═══ -->
+<div class="section">
+  <div class="sec-eyebrow" style="color:var(--lime);">Przegląd</div>
+  <div class="sec-title">Dwa frameworki, <span>jeden proces</span></div>
+  <div class="sec-sub">Strategia marki to nie jednorazowy dokument — to system decyzji. Nasz proces dzieli się na dwie fazy, z których każda ma własny framework i jasny zestaw deliverables.</div>
+
+  <div class="grid-2" style="margin-bottom:24px;">
+    <div class="card" style="border-top:3px solid var(--lime);">
+      <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);margin-bottom:10px;">Faza 1 · SALT</div>
+      <h3>Kim jesteśmy i do kogo mówimy</h3>
+      <p>Diagnoza, architektura marki, narracja, matryca komunikacji. Budujemy fundament — zanim cokolwiek napiszesz, musisz wiedzieć kim jesteś, czym się wyróżniasz i kto ma Cię słuchać.</p>
+      <div style="margin-top:14px;font-size:11px;color:var(--text-dim);">6 deliverables · 4–6 tygodni</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--blue);">
+      <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:10px;">Faza 2 · PLATE</div>
+      <h3>Co, gdzie i jak mówimy</h3>
+      <p>Plan komunikacji: ścieżka klienta, blokady, cele, tematy, gotowe materiały. Przekładamy strategię na konkretne działania — posty, maile, strony, kampanie, kalendarze.</p>
+      <div style="margin-top:14px;font-size:11px;color:var(--text-dim);">Kampanie + content + wdrożenie · 8–12 tygodni</div>
+    </div>
+  </div>
+
+  <div style="background:var(--card2);border:1px solid var(--border2);padding:16px 20px;display:flex;align-items:center;gap:12px;">
+    <div style="font-size:12px;font-weight:700;color:var(--lime);background:var(--lime-dim);padding:4px 12px;">SALT</div>
+    <div style="font-size:16px;color:var(--text-dim);">→</div>
+    <div style="font-size:12px;font-weight:700;color:var(--blue);background:var(--blue-dim);padding:4px 12px;">PLATE</div>
+    <div style="font-size:12px;color:var(--text-muted);margin-left:8px;">Strategia → Wdrożenie. Bez SALT nie ma PLATE. Bez PLATE strategia leży na półce.</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══ 2. SALT FRAMEWORK ═══ -->
+<div class="section">
+  <div class="sec-eyebrow" style="color:var(--lime);">Faza 1</div>
+  <div class="sec-title">Framework <span>S.A.L.T.</span></div>
+  <div class="sec-sub">Cztery warstwy pracy strategicznej — każda buduje na poprzedniej. Nie zaczynamy od kreatywnych pomysłów. Zaczynamy od zrozumienia problemu.</div>
+
+  <!-- SALT visual -->
+  <div style="background:var(--card2);border:1px solid var(--border2);padding:24px;margin-bottom:24px;">
+    <div class="flow-row">
+      <div class="flow-step">
+        <div class="letter" style="color:var(--lime);">S</div>
+        <div class="name">Sytuacja</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="letter" style="color:var(--blue);">A</div>
+        <div class="name">Odbiorcy</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="letter" style="color:var(--green);">L</div>
+        <div class="name">Przewaga</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="letter" style="color:var(--purple);">T</div>
+        <div class="name">Zmiana</div>
+      </div>
+    </div>
+    <div style="text-align:center;font-size:12px;color:var(--text-dim);">Rozumiemy problem → Wiemy do kogo → Wiemy czym się wyróżniamy → Wiemy co zmieniamy</div>
+  </div>
+
+  <!-- S -->
+  <div class="phase" style="border-left:3px solid var(--lime);">
+    <div class="phase-header">
+      <div style="font-size:28px;font-weight:900;color:var(--lime);">S</div>
+      <div>
+        <div class="phase-title">Sytuacja</div>
+        <div style="font-size:11px;color:var(--text-dim);">Situation — co się dzieje i co nie działa</div>
+      </div>
+    </div>
+    <div class="phase-desc">Audytujemy ekosystem marki, diagnozujemy wewnętrzne i zewnętrzne problemy, mapujemy konkurencję. Szukamy jednego kluczowego wyzwania strategicznego, które określi cały dalszy kierunek.</div>
+    <div class="example">
+      <div class="tag">BetterWorkplace — przykład</div>
+      <p>5 marek, 3 domeny, zero spójnej narracji. Klient kupuje owoce od DailyFruits i nie wie, że może mieć lunche, kuchnię biurową, paczki i zarządzanie benefitami od tego samego partnera. Problem nie jest produktowy — jest percepcyjny i kategorialny.</p>
+    </div>
+    <div style="font-size:11px;color:var(--text-dim);margin-top:8px;">Output: Diagnoza strategiczna, mapa problemów, definicja wyzwania</div>
+  </div>
+
+  <!-- A -->
+  <div class="phase" style="border-left:3px solid var(--blue);">
+    <div class="phase-header">
+      <div style="font-size:28px;font-weight:900;color:var(--blue);">A</div>
+      <div>
+        <div class="phase-title">Odbiorcy</div>
+        <div style="font-size:11px;color:var(--text-dim);">Audience — do kogo mówimy i co ich motywuje</div>
+      </div>
+    </div>
+    <div class="phase-desc">Definiujemy segmenty odbiorców, ich motywacje, blokady i język. Nie „buyer persona z imieniem" — konkretne zachowania zakupowe, ścieżki decyzyjne i wartość kontraktu.</div>
+    <div class="example">
+      <div class="tag">BetterWorkplace — przykład</div>
+      <p><strong style="color:var(--red);">Dziś:</strong> Office Manager negocjuje cenę owoców, budżet kuchni, zmienia dostawcę co kwartał. Wartość kontraktu: x1.<br>
+      <strong style="color:var(--green);">Cel:</strong> HR Director wybiera partnera do wellbeing, budżet benefitowy, szuka ekosystemu. Wartość kontraktu: x10.</p>
+    </div>
+    <div style="font-size:11px;color:var(--text-dim);margin-top:8px;">Output: Segmenty odbiorców, mapa decyzyjna, dual-stream komunikacyjny</div>
+  </div>
+
+  <!-- L -->
+  <div class="phase" style="border-left:3px solid var(--green);">
+    <div class="phase-header">
+      <div style="font-size:28px;font-weight:900;color:var(--green);">L</div>
+      <div>
+        <div class="phase-title">Przewaga</div>
+        <div style="font-size:11px;color:var(--text-dim);">Leverage — czego konkurencja nie ma</div>
+      </div>
+    </div>
+    <div class="phase-desc">Identyfikujemy to, co jest unikalne, trudne do skopiowania i wartościowe dla klientów. Nie „dobra jakość i profesjonalna obsługa" — realna, udowadnialna przewaga strukturalna lub kulturowa.</div>
+    <div class="example">
+      <div class="tag">BetterWorkplace — przykład</div>
+      <p>Jedyny gracz w Polsce łączący żywieniowy wellbeing, zaopatrzenie biurowe i platformę do zarządzania benefitami. Plus kulturowy asset: „Owocowe Czwartki" — rozpoznawalny mem rynku pracy. DailyFruits fizycznie dostarcza te owoce od 2009 roku.</p>
+    </div>
+    <div style="font-size:11px;color:var(--text-dim);margin-top:8px;">Output: Mapa przewag, unikalna pozycja rynkowa, assets kulturowe</div>
+  </div>
+
+  <!-- T -->
+  <div class="phase" style="border-left:3px solid var(--purple);">
+    <div class="phase-header">
+      <div style="font-size:28px;font-weight:900;color:var(--purple);">T</div>
+      <div>
+        <div class="phase-title">Zmiana</div>
+        <div style="font-size:11px;color:var(--text-dim);">Transform — co chcemy zmienić w głowie klienta</div>
+      </div>
+    </div>
+    <div class="phase-desc">Definiujemy jedną konkretną zmianę percepcji — od stanu obecnego do stanu docelowego. Wszystko w strategii służy tej jednej transformacji.</div>
+    <div style="background:var(--card);border:1px solid var(--border);padding:20px;margin-top:16px;margin-bottom:10px;">
+      <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:200px;">
+          <div style="font-size:10px;font-weight:700;color:var(--red);margin-bottom:4px;">PRZED</div>
+          <div style="font-size:15px;font-weight:700;">„Dostawca owoców i kawy"</div>
+          <div style="font-size:11px;color:var(--text-dim);margin-top:2px;">Negocjacja ceny · Budżet kuchni · Office Manager decyduje</div>
+        </div>
+        <div style="font-size:24px;color:var(--lime);">→</div>
+        <div style="flex:1;min-width:200px;">
+          <div style="font-size:10px;font-weight:700;color:var(--green);margin-bottom:4px;">PO</div>
+          <div style="font-size:15px;font-weight:700;">Trzeci filar benefitów pracowniczych</div>
+          <div style="font-size:11px;color:var(--text-dim);margin-top:2px;">Wybór partnera · Budżet benefitowy · HR Director decyduje</div>
+        </div>
+      </div>
+    </div>
+    <div style="font-size:11px;color:var(--text-dim);margin-top:8px;">Output: Definicja zmiany percepcji, mierniki sukcesu transformacji</div>
+  </div>
+</div>
+
+
+<!-- ═══ 3. DELIVERABLES FAZY 1 ═══ -->
+<div class="section">
+  <div class="sec-eyebrow" style="color:var(--lime);">Faza 1 · Output</div>
+  <div class="sec-title">6 <span>deliverables</span></div>
+  <div class="sec-sub">SALT nie kończy się diagnozą — przekłada się na konkretne dokumenty, które stają się jedynym źródłem prawdy dla całej komunikacji marki.</div>
+
+  <div class="dlv">
+    <div class="dlv-card">
+      <div class="dlv-badge">D01</div>
+      <div class="dlv-title">Brand Architecture Map</div>
+      <div class="dlv-desc">Wizualna hierarchia ekosystemu — kto jest marką, produktem, usługą. Relacje i endorsement logic.</div>
+    </div>
+    <div class="dlv-card">
+      <div class="dlv-badge">D02</div>
+      <div class="dlv-title">Ecosystem Role Cards</div>
+      <div class="dlv-desc">Per byt: rola biznesowa, audience, value proposition, messaging territory, differentiation.</div>
+    </div>
+    <div class="dlv-card">
+      <div class="dlv-badge">D03</div>
+      <div class="dlv-title">Narrative & Messaging</div>
+      <div class="dlv-desc">Core narrative, hierarchia przekazów, key messages, tone & style principles, do's & don'ts.</div>
+    </div>
+    <div class="dlv-card">
+      <div class="dlv-badge">D04</div>
+      <div class="dlv-title">Communication Matrix</div>
+      <div class="dlv-desc">Matryca: byt × audience × przekaz × kanał. Role kanałów, priorytety, cele biznesowe komunikacji.</div>
+    </div>
+    <div class="dlv-card">
+      <div class="dlv-badge">D05</div>
+      <div class="dlv-title">Ecosystem Journey Map</div>
+      <div class="dlv-desc">Ścieżki przejścia między bytami, customer journey, cross-sell / upsell triggers, synergie.</div>
+    </div>
+    <div class="dlv-card">
+      <div class="dlv-badge">D06</div>
+      <div class="dlv-title">Implementation Roadmap</div>
+      <div class="dlv-desc">Priorytety wdrożenia, quick wins, ownership, kamienie milowe, timeline, zależności.</div>
+    </div>
+  </div>
+
+  <!-- Dependency flow -->
+  <div style="background:var(--card2);border:1px solid var(--border2);padding:20px;margin-bottom:10px;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;">
+      <div style="text-align:center;padding:10px 20px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--warn);margin-bottom:6px;">Architektura</div>
+        <div style="display:flex;gap:6px;justify-content:center;">
+          <span style="font-size:12px;font-weight:700;background:var(--lime-dim);color:var(--lime);padding:4px 10px;">01</span>
+          <span style="font-size:12px;font-weight:700;background:var(--lime-dim);color:var(--lime);padding:4px 10px;">02</span>
+        </div>
+      </div>
+      <div style="font-size:18px;color:var(--text-dim);padding:0 8px;">→</div>
+      <div style="text-align:center;padding:10px 20px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:6px;">Język</div>
+        <div style="display:flex;gap:6px;justify-content:center;">
+          <span style="font-size:12px;font-weight:700;background:var(--blue-dim);color:var(--blue);padding:4px 10px;">03</span>
+          <span style="font-size:12px;font-weight:700;background:var(--blue-dim);color:var(--blue);padding:4px 10px;">04</span>
+        </div>
+      </div>
+      <div style="font-size:18px;color:var(--text-dim);padding:0 8px;">→</div>
+      <div style="text-align:center;padding:10px 20px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--purple);margin-bottom:6px;">Wdrożenie</div>
+        <div style="display:flex;gap:6px;justify-content:center;">
+          <span style="font-size:12px;font-weight:700;background:var(--purple-dim);color:var(--purple);padding:4px 10px;">05</span>
+          <span style="font-size:12px;font-weight:700;background:var(--purple-dim);color:var(--purple);padding:4px 10px;">06</span>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:10px;font-size:12px;color:var(--text-dim);">Kto jest kim → Co i jak mówimy → Co robimy najpierw</div>
+  </div>
+
+  <div class="example">
+    <div class="tag">BetterWorkplace — co z tego wyszło</div>
+    <p>Branded House z Endorsed Sub-brands. BW jako master brand (Sage+Ruler, mówi „dlaczego"), DailyFruits jako endorsed brand (Caregiver+Sage, mówi „co i jak"). Dual-stream: 70% BW (category creation) + 30% DF (lead generation). Dwa oddzielne Brand Voice Guides, wspólna matryca komunikacji.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══ 4. PLATE FRAMEWORK ═══ -->
+<div class="section">
+  <div class="sec-eyebrow" style="color:var(--blue);">Faza 2</div>
+  <div class="sec-title">Framework <span>P.L.A.T.E.</span></div>
+  <div class="sec-sub">Wiemy już kim jest marka i do kogo mówi (SALT). Teraz planujemy konkretnie: co, gdzie i jak komunikować, żeby dotrzeć do właściwych osób z właściwym przekazem.</div>
+
+  <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px;">
+
+    <div class="phase" style="border-left:3px solid var(--lime);">
+      <div style="display:flex;align-items:flex-start;gap:14px;">
+        <div style="font-size:28px;font-weight:900;color:var(--lime);min-width:28px;">P</div>
+        <div>
+          <div style="font-size:15px;font-weight:700;">Przygotuj ścieżkę klienta</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Rysujemy drogę od pierwszego kontaktu z marką aż do zakupu i powrotu. Na każdym etapie określamy, jaki komunikat jest potrzebny i gdzie go wyświetlić.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase" style="border-left:3px solid var(--blue);">
+      <div style="display:flex;align-items:flex-start;gap:14px;">
+        <div style="font-size:28px;font-weight:900;color:var(--blue);min-width:28px;">L</div>
+        <div>
+          <div style="font-size:15px;font-weight:700;">Znajdź blokady</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Co powstrzymuje klientów przed kolejnym krokiem? Nie wiedzą o pełnej ofercie, nie ufają nowej marce, nie widzą różnicy. Każdą blokadę zamieniamy w konkretny przekaz.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase" style="border-left:3px solid var(--green);">
+      <div style="display:flex;align-items:flex-start;gap:14px;">
+        <div style="font-size:28px;font-weight:900;color:var(--green);min-width:28px;">A</div>
+        <div>
+          <div style="font-size:15px;font-weight:700;">Ustal cele</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Każde działanie komunikacyjne dostaje mierzalny cel — co ma się wydarzyć, kto ma zareagować, jaki jest oczekiwany efekt. Żadnych ogólników.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase" style="border-left:3px solid var(--purple);">
+      <div style="display:flex;align-items:flex-start;gap:14px;">
+        <div style="font-size:28px;font-weight:900;color:var(--purple);min-width:28px;">T</div>
+        <div>
+          <div style="font-size:15px;font-weight:700;">Dopasuj tematy do odbiorców</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Decydent HR chce ROI. Office Manager chce prostoty. Każda grupa dostaje inne tematy, inny ton i inne argumenty — ale w ramach jednej spójnej narracji.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase" style="border-left:3px solid var(--warn);">
+      <div style="display:flex;align-items:flex-start;gap:14px;">
+        <div style="font-size:28px;font-weight:900;color:var(--warn);min-width:28px;">E</div>
+        <div>
+          <div style="font-size:15px;font-weight:700;">Przygotuj gotowe materiały</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Konkretne treści: posty, maile, strony, prezentacje sprzedażowe. Do tego kalendarz publikacji na 90 dni i szablony do powtarzalnego użytku.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="tag">BetterWorkplace — co z tego wyszło</div>
+    <p>Plan kampanii Q2 2026: budżet 20k PLN/msc, 3 kanały (LinkedIn + Meta + Google), dual-stream BW/DF. LinkedIn Thought Leadership Ads do HR Directorów (BW), Meta lead gen do Office Managerów (DF), Google brand defense na frazy z „owoce do biura". SEO DailyFruits: 13 city pages, 80 FAQ, 200 redirectów 301, pełne schema markup.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══ 5. DELIVERABLES FAZY 2 ═══ -->
+<div class="section">
+  <div class="sec-eyebrow" style="color:var(--blue);">Faza 2 · Output</div>
+  <div class="sec-title">Deliverables <span>wdrożeniowe</span></div>
+  <div class="sec-sub">PLATE przekłada strategię na konkretne, gotowe do użycia materiały i systemy.</div>
+
+  <div class="grid-2" style="margin-bottom:10px;">
+    <div class="card">
+      <h3>Brand Voice Guides</h3>
+      <p>Osobowość, archetyp, atrybuty głosu, hierarchia przekazów, do's & don'ts, słownik, kolory, typografia, elementy wizualne. Oddzielny guide per byt markowy.</p>
+      <div style="margin-top:10px;font-size:11px;color:var(--text-dim);">BW: Sage+Ruler · DF: Caregiver+Sage</div>
+    </div>
+    <div class="card">
+      <h3>Plan kampanii</h3>
+      <p>Messaging framework per kanał, budżet, KPIs, kreacje, harmonogram. Podział na strumienie BW (category creation) i DF (lead generation).</p>
+      <div style="margin-top:10px;font-size:11px;color:var(--text-dim);">LinkedIn + Meta + Google · 20k PLN/msc</div>
+    </div>
+  </div>
+  <div class="grid-2" style="margin-bottom:10px;">
+    <div class="card">
+      <h3>SEO & Performance</h3>
+      <p>Optymalizacja techniczna, schema markup, city landing pages, content SEO, AEO (AI Engine Optimization). Wszystko oparte na narracji z SALT.</p>
+      <div style="margin-top:10px;font-size:11px;color:var(--text-dim);">29 stron · 200 redirectów · 6 typów schema</div>
+    </div>
+    <div class="card">
+      <h3>System wizualny</h3>
+      <p>Identyfikacja wizualna: corposite design, elementy brandowe (cutout na białym tle, okrąg na szarym), fotografia, ikony. Spójność na każdym touchpoincie.</p>
+      <div style="margin-top:10px;font-size:11px;color:var(--text-dim);">Wariant A: cutout · Wariant B: okrąg</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="divider"></div>
+
+<!-- ═══ 6. TIMELINE ═══ -->
+<div class="section">
+  <div class="sec-eyebrow" style="color:var(--purple);">Realizacja</div>
+  <div class="sec-title">Cztery fazy <span>współpracy</span></div>
+  <div class="sec-sub">Od fundamentów strategicznych do skalowania. Każda faza ma jasny scope, zestaw deliverables i punkt decyzyjny przed wejściem w następną.</div>
+
+  <div style="display:flex;flex-direction:column;gap:0;">
+
+    <!-- F0 -->
+    <div style="display:flex;gap:20px;padding-bottom:28px;position:relative;">
+      <div style="display:flex;flex-direction:column;align-items:center;min-width:24px;">
+        <div style="width:14px;height:14px;border-radius:50%;background:var(--text-dim);flex-shrink:0;"></div>
+        <div style="width:2px;flex:1;background:var(--border2);"></div>
+      </div>
+      <div>
+        <div style="font-size:10px;font-weight:700;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Faza 0 · Discovery</div>
+        <div style="font-size:15px;font-weight:700;color:var(--text-muted);margin-bottom:6px;">Ecosystem Analysis</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:1.6;">Audyt ekosystemu, diagnoza architektury marki, zdefiniowanie wyzwania strategicznego. Rozmowy z klientem, analiza konkurencji, mapowanie touchpointów.</div>
+        <div style="font-size:10px;font-weight:700;color:var(--green);margin-top:8px;">✓ Zakończone</div>
+      </div>
+    </div>
+
+    <!-- F1 -->
+    <div style="display:flex;gap:20px;padding-bottom:28px;position:relative;">
+      <div style="display:flex;flex-direction:column;align-items:center;min-width:24px;">
+        <div style="width:14px;height:14px;border-radius:50%;background:var(--lime);flex-shrink:0;"></div>
+        <div style="width:2px;flex:1;background:var(--border2);"></div>
+      </div>
+      <div>
+        <div style="font-size:10px;font-weight:700;color:var(--lime);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Faza 1 · SALT</div>
+        <div style="font-size:15px;font-weight:700;margin-bottom:6px;">Fundament strategiczny</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:1.6;">6 deliverables: Brand Architecture Map, Ecosystem Role Cards, Narrative & Messaging Framework, Communication Matrix, Ecosystem Journey Map, Implementation Roadmap.</div>
+        <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">
+          <span style="font-size:10px;font-weight:700;color:var(--lime);border:1px solid rgba(200,241,53,0.3);padding:3px 8px;">6 deliverables</span>
+          <span style="font-size:10px;color:var(--text-dim);border:1px solid var(--border);padding:3px 8px;">4–6 tygodni</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- F2 -->
+    <div style="display:flex;gap:20px;padding-bottom:28px;position:relative;">
+      <div style="display:flex;flex-direction:column;align-items:center;min-width:24px;">
+        <div style="width:14px;height:14px;border-radius:50%;background:var(--blue);flex-shrink:0;"></div>
+        <div style="width:2px;flex:1;background:var(--border2);"></div>
+      </div>
+      <div>
+        <div style="font-size:10px;font-weight:700;color:var(--blue);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Faza 2 · PLATE</div>
+        <div style="font-size:15px;font-weight:700;margin-bottom:6px;">Wdrożenie komunikacyjne</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:1.6;">Brand Voice Guides, plan kampanii, SEO & performance, system wizualny, content calendar. Strategia z SALT zamieniona w gotowe do użycia materiały i systemy.</div>
+        <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">
+          <span style="font-size:10px;color:var(--text-dim);border:1px solid var(--border);padding:3px 8px;">Voice Guides</span>
+          <span style="font-size:10px;color:var(--text-dim);border:1px solid var(--border);padding:3px 8px;">Kampanie</span>
+          <span style="font-size:10px;color:var(--text-dim);border:1px solid var(--border);padding:3px 8px;">SEO</span>
+          <span style="font-size:10px;color:var(--text-dim);border:1px solid var(--border);padding:3px 8px;">8–12 tygodni</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- F3 -->
+    <div style="display:flex;gap:20px;position:relative;">
+      <div style="display:flex;flex-direction:column;align-items:center;min-width:24px;">
+        <div style="width:14px;height:14px;border-radius:50%;background:var(--border2);flex-shrink:0;"></div>
+      </div>
+      <div>
+        <div style="font-size:10px;font-weight:700;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Wysoki sezon</div>
+        <div style="font-size:15px;font-weight:700;margin-bottom:6px;">Skalowanie i optymalizacja</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:1.6;">Kampanie sezonowe, optymalizacja lejków, analiza danych, iteracja na podstawie wyników. Continuous improvement na fundamencie z Fazy 1 i 2.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout" style="background:var(--purple-dim);margin-top:24px;">
+    <strong>Punkt decyzyjny:</strong> Po każdej fazie następuje review — weryfikacja deliverables, korekta priorytetów, potwierdzenie zakresu następnej fazy. Każda faza jest zamknięta i rozliczalna osobno.
+  </div>
+</div>
+
+
+<div class="divider"></div>
+
+<!-- ═══ 7. WARTOŚĆ ═══ -->
+<div class="section">
+  <div class="sec-eyebrow" style="color:var(--warn);">Dlaczego to działa</div>
+  <div class="sec-title">Strategia, nie <span>estetyka</span></div>
+  <div class="sec-sub">Nasz framework różni się od typowego podejścia agencji brandingowej. Nie zaczynamy od logo i kolorów — zaczynamy od problemu biznesowego i kończymy na mierzalnych wynikach.</div>
+
+  <div class="grid-3" style="margin-bottom:16px;">
+    <div class="card-sm">
+      <div class="label" style="color:var(--lime);">Diagnoza przed kreacją</div>
+      <p>Nie tworzymy ładnych rzeczy, które nie rozwiązują problemu. Każdy deliverable wynika z konkretnego odkrycia w SALT.</p>
+    </div>
+    <div class="card-sm">
+      <div class="label" style="color:var(--blue);">Dual-stream zamiast one-size-fits-all</div>
+      <p>Różne marki w ekosystemie mówią do różnych ludzi, różnym językiem, w różnych kanałach. Jeden brand guide to za mało.</p>
+    </div>
+    <div class="card-sm">
+      <div class="label" style="color:var(--green);">Mierzalne cele</div>
+      <p>Nie „zwiększamy świadomość". Konkretne KPIs: CPL, liczba leadów, impressions, conversion rate. Każde działanie ma swój cel.</p>
+    </div>
+  </div>
+  <div class="grid-3">
+    <div class="card-sm">
+      <div class="label" style="color:var(--purple);">Fazowość = kontrola kosztów</div>
+      <p>Nie sprzedajemy „rocznego projektu za 200k". Każda faza zamknięta, rozliczalna osobno, z punktem decyzyjnym.</p>
+    </div>
+    <div class="card-sm">
+      <div class="label" style="color:var(--warn);">AI-first execution</div>
+      <p>Wykorzystujemy AI do skalowania outputu: SEO, content, analityka, generowanie wariantów. Mniejszy zespół, szybszy delivery, niższy koszt.</p>
+    </div>
+    <div class="card-sm">
+      <div class="label" style="color:var(--orange);">System, nie projekt</div>
+      <p>Zostawiamy klientowi system (voice guides, matryca, szablony), a nie jednorazowy projekt. Firma działa dalej bez nas.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  Framework strategiczny · Case Study: BetterWorkplace<br>
+  Dokument poufny · Maj 2026
+</div>
+
+</div>
+</body>
+</html>
