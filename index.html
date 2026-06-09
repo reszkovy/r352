@@ -4,26 +4,45 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BetterWorkplace – Panel klienta</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0d0d0d;
-  --card: #161616;
-  --card2: #1c1c1c;
-  --border: #252525;
-  --border2: #2e2e2e;
-  --lime: #c8f135;
-  --lime-dim: rgba(200,241,53,0.08);
-  --green: #22c55e;
-  --green-dim: rgba(34,197,94,0.08);
-  --text: #e8e8e8;
-  --text-muted: #888;
-  --text-dim: #3a3a3a;
+  --bg: #FAFAF7;
+  --bg-warm: #F5F3EE;
+  --card: #FFFFFF;
+  --card-hover: #FEFEFE;
+  --border: #E8E4DE;
+  --border-light: #F0EDE8;
+  --shadow: rgba(0,0,0,0.05);
+  --shadow-hover: rgba(0,0,0,0.1);
+
+  --text: #2A2A2A;
+  --text-secondary: #555555;
+  --text-muted: #888888;
+  --text-dim: #B0A99F;
+
+  /* Section accents */
+  --accent-strategy: #3D3D3D;
+  --accent-strategy-bg: #F5F4F2;
+  --accent-strategy-light: rgba(61,61,61,0.06);
+
+  --accent-bw: #22c55e;
+  --accent-bw-bg: #F2FAF5;
+  --accent-bw-light: rgba(34,197,94,0.07);
+
+  --accent-df: #FF6B35;
+  --accent-df-bg: #FFF6F2;
+  --accent-df-light: rgba(255,107,53,0.07);
+
+  --accent-tb: #4375FF;
+  --accent-tb-bg: #F2F5FF;
+  --accent-tb-light: rgba(67,117,255,0.07);
 }
+
 * { margin:0; padding:0; box-sizing:border-box; }
 html, body { height:100%; }
 body {
-  font-family:'DM Sans',system-ui,sans-serif;
+  font-family:'DM Sans',system-ui,-apple-system,sans-serif;
   background:var(--bg); color:var(--text);
   line-height:1.65; -webkit-font-smoothing:antialiased;
   display:flex; align-items:center; justify-content:center;
@@ -34,32 +53,59 @@ body {
   display:flex; align-items:center; justify-content:center;
   flex-direction:column; gap:24px;
   width:100%; height:100%;
+  background:var(--bg);
 }
 #pw-screen.hidden { display:none; }
+
 #pw-box {
-  background:var(--card); border:1px solid var(--border);
-  border-radius:12px; padding:48px 40px 40px; text-align:center;
-  max-width:380px; width:90%;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:52px 44px 44px;
+  text-align:center;
+  max-width:400px; width:90%;
+  box-shadow:0 4px 24px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.03);
 }
-#pw-box .pw-icon { font-size:32px; margin-bottom:16px; opacity:0.6; }
-#pw-box h2 { font-size:16px; font-weight:600; letter-spacing:-0.2px; margin-bottom:6px; }
-#pw-box p { font-size:12px; color:var(--text-muted); margin-bottom:24px; line-height:1.5; }
+#pw-box .pw-icon {
+  font-size:36px; margin-bottom:20px;
+  display:inline-block;
+}
+#pw-box h2 {
+  font-size:18px; font-weight:700; letter-spacing:-0.3px;
+  margin-bottom:8px; color:var(--text);
+}
+#pw-box p {
+  font-size:13px; color:var(--text-muted);
+  margin-bottom:28px; line-height:1.6;
+}
 #pw-input {
-  width:100%; padding:12px 16px; border-radius:8px;
-  border:1px solid var(--border2); background:var(--bg);
+  width:100%; padding:13px 18px; border-radius:10px;
+  border:1px solid var(--border);
+  background:var(--bg-warm);
   color:var(--text); font-family:inherit; font-size:14px;
-  outline:none; transition:border-color .2s;
+  outline:none; transition:border-color .2s, box-shadow .2s;
 }
-#pw-input:focus { border-color:var(--lime); }
+#pw-input:focus {
+  border-color:#22c55e;
+  box-shadow:0 0 0 3px rgba(34,197,94,0.1);
+}
 #pw-input.pw-error { border-color:#ef4444; animation:shake .4s ease; }
+#pw-input::placeholder { color:var(--text-dim); }
+
 #pw-btn {
-  margin-top:12px; width:100%; padding:12px;
-  background:var(--lime); color:#0d0d0d; border:none;
-  border-radius:8px; font-family:inherit; font-size:13px;
-  font-weight:600; cursor:pointer; transition:opacity .2s;
+  margin-top:14px; width:100%; padding:13px;
+  background:#2A2A2A; color:#FFFFFF; border:none;
+  border-radius:10px; font-family:inherit; font-size:14px;
+  font-weight:600; cursor:pointer;
+  transition:all .2s ease;
 }
-#pw-btn:hover { opacity:0.85; }
-#pw-error-msg { font-size:11px; color:#ef4444; margin-top:10px; min-height:16px; }
+#pw-btn:hover {
+  background:#1a1a1a;
+  transform:translateY(-1px);
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+}
+#pw-error-msg { font-size:12px; color:#ef4444; margin-top:12px; min-height:16px; }
+
 @keyframes shake {
   0%,100% { transform:translateX(0); }
   20%,60% { transform:translateX(-6px); }
@@ -70,88 +116,161 @@ body {
 #hub {
   display:none; flex-direction:column; align-items:flex-start;
   width:100%; min-height:100vh;
-  padding:32px 40px 48px;
+  padding:48px 40px 64px;
   max-width:1100px; margin:0 auto;
 }
 #hub.visible { display:flex; }
 
+/* ── Header ── */
 .hub-eyebrow {
-  font-size:9px; letter-spacing:3px; text-transform:uppercase;
-  color:var(--text-dim); margin-bottom:8px; font-weight:600;
+  font-size:10px; letter-spacing:3.5px; text-transform:uppercase;
+  color:var(--text-dim); margin-bottom:10px; font-weight:600;
 }
 .hub-title {
-  font-size:24px; font-weight:800; letter-spacing:-0.5px;
-  margin-bottom:4px;
+  font-size:28px; font-weight:800; letter-spacing:-0.6px;
+  margin-bottom:6px; color:var(--text);
 }
-.hub-title span { color:var(--lime); }
+.hub-title span {
+  background:linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
 .hub-sub {
-  font-size:12px; color:var(--text-muted); margin-bottom:28px;
-  line-height:1.5;
+  font-size:14px; color:var(--text-muted); margin-bottom:16px;
+  line-height:1.6;
 }
 
+/* ── Section wrapper ── */
+.hub-section {
+  width:100%;
+  margin-top:40px;
+  padding:28px 28px 24px;
+  border-radius:16px;
+  position:relative;
+}
+.hub-section:first-of-type { margin-top:20px; }
+
+.hub-section--strategy { background:var(--accent-strategy-bg); }
+.hub-section--bw { background:var(--accent-bw-bg); }
+.hub-section--df { background:var(--accent-df-bg); }
+.hub-section--tb { background:var(--accent-tb-bg); }
+
+/* ── Section label ── */
+.hub-section-label {
+  font-size:11px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:16px;
+  width:100%;
+  display:flex; align-items:center; gap:12px;
+}
+.hub-section-label::after {
+  content:'';
+  flex:1; height:1px;
+}
+
+.hub-section--strategy .hub-section-label { color:var(--accent-strategy); }
+.hub-section--strategy .hub-section-label::after { background:rgba(61,61,61,0.12); }
+
+.hub-section--bw .hub-section-label { color:var(--accent-bw); }
+.hub-section--bw .hub-section-label::after { background:rgba(34,197,94,0.15); }
+
+.hub-section--df .hub-section-label { color:var(--accent-df); }
+.hub-section--df .hub-section-label::after { background:rgba(255,107,53,0.15); }
+
+.hub-section--tb .hub-section-label { color:var(--accent-tb); }
+.hub-section--tb .hub-section-label::after { background:rgba(67,117,255,0.15); }
+
+/* ── Grid ── */
 .hub-grid {
   display:grid; grid-template-columns:repeat(3,1fr);
-  gap:10px; width:100%;
+  gap:14px; width:100%;
 }
 
+/* ── Cards ── */
 .hub-card {
-  background:var(--card); border:1px solid var(--border);
-  border-radius:10px; padding:18px 20px 16px;
+  background:var(--card);
+  border:1px solid var(--border-light);
+  border-radius:12px;
+  padding:22px 24px 20px;
   text-decoration:none; color:var(--text);
-  transition:all .25s ease; position:relative;
-  overflow:hidden; cursor:pointer;
+  transition:all .25s ease;
+  position:relative; overflow:hidden;
+  cursor:pointer;
   display:flex; flex-direction:column;
+  box-shadow:0 1px 4px var(--shadow);
+  border-left:3px solid transparent;
 }
+
+/* Section-specific card accents */
+.hub-section--strategy .hub-card { border-left-color:var(--accent-strategy); }
+.hub-section--bw .hub-card { border-left-color:var(--accent-bw); }
+.hub-section--df .hub-card { border-left-color:var(--accent-df); }
+.hub-section--tb .hub-card { border-left-color:var(--accent-tb); }
+
 .hub-card:hover {
-  border-color:var(--lime);
-  background:var(--card2);
-  transform:translateY(-1px);
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px var(--shadow-hover), 0 2px 8px var(--shadow);
 }
+.hub-section--strategy .hub-card:hover { border-left-color:var(--accent-strategy); border-color:var(--accent-strategy); }
+.hub-section--bw .hub-card:hover { border-left-color:var(--accent-bw); border-color:var(--accent-bw); }
+.hub-section--df .hub-card:hover { border-left-color:var(--accent-df); border-color:var(--accent-df); }
+.hub-section--tb .hub-card:hover { border-left-color:var(--accent-tb); border-color:var(--accent-tb); }
+
 .hub-card:hover .hub-card-arrow { opacity:1; transform:translateX(0); }
 
 .hub-card-badge {
-  font-size:8px; font-weight:700; letter-spacing:1.5px;
-  text-transform:uppercase; margin-bottom:8px;
-  display:inline-block; color:var(--text-dim);
+  font-size:9px; font-weight:700; letter-spacing:1.5px;
+  text-transform:uppercase; margin-bottom:10px;
+  display:inline-block;
+  padding:3px 8px; border-radius:4px;
 }
+.hub-section--strategy .hub-card-badge { color:var(--accent-strategy); background:var(--accent-strategy-light); }
+.hub-section--bw .hub-card-badge { color:var(--accent-bw); background:var(--accent-bw-light); }
+.hub-section--df .hub-card-badge { color:var(--accent-df); background:var(--accent-df-light); }
+.hub-section--tb .hub-card-badge { color:var(--accent-tb); background:var(--accent-tb-light); }
+
 .hub-card-title {
-  font-size:14px; font-weight:700; letter-spacing:-0.2px;
-  margin-bottom:6px; line-height:1.3;
+  font-size:15px; font-weight:700; letter-spacing:-0.2px;
+  margin-bottom:8px; line-height:1.35; color:var(--text);
 }
 .hub-card-desc {
-  font-size:11px; color:var(--text-muted); line-height:1.5;
-  margin-bottom:10px; flex:1;
+  font-size:12px; color:var(--text-secondary); line-height:1.6;
+  margin-bottom:12px; flex:1;
 }
 .hub-card-meta {
-  font-size:9px; color:var(--text-dim); line-height:1.4;
+  font-size:10px; color:var(--text-dim); line-height:1.4;
+  font-weight:500;
 }
 .hub-card-arrow {
-  position:absolute; top:18px; right:16px;
-  font-size:14px; color:var(--lime);
+  position:absolute; top:22px; right:20px;
+  font-size:16px;
   opacity:0; transform:translateX(-4px);
   transition:all .25s ease;
 }
+.hub-section--strategy .hub-card-arrow { color:var(--accent-strategy); }
+.hub-section--bw .hub-card-arrow { color:var(--accent-bw); }
+.hub-section--df .hub-card-arrow { color:var(--accent-df); }
+.hub-section--tb .hub-card-arrow { color:var(--accent-tb); }
 
-.hub-section-label {
-  font-size:8px; font-weight:700; letter-spacing:2.5px;
-  text-transform:uppercase; color:var(--text-dim);
-  margin-top:24px; margin-bottom:10px;
-  width:100%;
-}
-.hub-section-label:first-of-type { margin-top:0; }
-
+/* ── Footer ── */
 .hub-footer {
-  margin-top:32px; font-size:9px; color:var(--text-dim);
-  line-height:1.6; width:100%;
+  margin-top:48px; font-size:11px; color:var(--text-dim);
+  line-height:1.7; width:100%;
+  text-align:center;
+  padding-top:24px;
+  border-top:1px solid var(--border-light);
 }
 
+/* ── Responsive ── */
 @media (max-width:800px) {
-  #hub { padding:24px 20px 40px; }
+  #hub { padding:28px 20px 48px; }
   .hub-grid { grid-template-columns:1fr 1fr; }
+  .hub-section { padding:22px 20px 20px; margin-top:28px; }
 }
 @media (max-width:500px) {
   .hub-grid { grid-template-columns:1fr; }
-  .hub-title { font-size:20px; }
+  .hub-title { font-size:22px; }
+  .hub-section { padding:18px 16px 16px; margin-top:24px; }
 }
 </style>
 </head>
@@ -178,99 +297,107 @@ body {
   <div class="hub-sub">Wybierz dokument, z którym chcesz się zapoznać.</div>
 
   <!-- 01 STRATEGIA OGÓLNA -->
-  <div class="hub-section-label">01 · Strategia ogólna</div>
-  <div class="hub-grid">
+  <div class="hub-section hub-section--strategy">
+    <div class="hub-section-label">01 · Strategia ogólna</div>
+    <div class="hub-grid">
 
-    <a class="hub-card" href="strategia.html">
-      <div class="hub-card-badge">Faza 1</div>
-      <div class="hub-card-title">Strategia 2026</div>
-      <div class="hub-card-desc">Architektura marek, narracja, matryca komunikacji i mapa ścieżek ekosystemu.</div>
-      <div class="hub-card-meta">SALT · 5 deliverables · v3</div>
-      <div class="hub-card-arrow">→</div>
-    </a>
+      <a class="hub-card" href="strategia.html">
+        <div class="hub-card-badge">Faza 1</div>
+        <div class="hub-card-title">Strategia 2026</div>
+        <div class="hub-card-desc">Architektura marek, narracja, matryca komunikacji i mapa ścieżek ekosystemu.</div>
+        <div class="hub-card-meta">SALT · 5 deliverables · v3</div>
+        <div class="hub-card-arrow">→</div>
+      </a>
 
-    <a class="hub-card" href="framework.html">
-      <div class="hub-card-badge">Metodologia</div>
-      <div class="hub-card-title">Framework SALT → PLATE</div>
-      <div class="hub-card-desc">Dwufazowa metodologia budowania strategii marek — od diagnozy po implementację.</div>
-      <div class="hub-card-meta">SALT + PLATE · Case: BW</div>
-      <div class="hub-card-arrow">→</div>
-    </a>
+      <a class="hub-card" href="framework.html">
+        <div class="hub-card-badge">Metodologia</div>
+        <div class="hub-card-title">Framework SALT → PLATE</div>
+        <div class="hub-card-desc">Dwufazowa metodologia budowania strategii marek — od diagnozy po implementację.</div>
+        <div class="hub-card-meta">SALT + PLATE · Case: BW</div>
+        <div class="hub-card-arrow">→</div>
+      </a>
 
-    <a class="hub-card" href="performance.html">
-      <div class="hub-card-badge">Q2 2026</div>
-      <div class="hub-card-title">Plan kampanii</div>
-      <div class="hub-card-desc">LinkedIn, Meta, Google. Budżet 20k PLN, dual stream BW + DF.</div>
-      <div class="hub-card-meta">3 kanały · 20 000 PLN</div>
-      <div class="hub-card-arrow">→</div>
-    </a>
+      <a class="hub-card" href="performance.html">
+        <div class="hub-card-badge">Q2 2026</div>
+        <div class="hub-card-title">Plan kampanii</div>
+        <div class="hub-card-desc">LinkedIn, Meta, Google. Budżet 20k PLN, dual stream BW + DF.</div>
+        <div class="hub-card-meta">3 kanały · 20 000 PLN</div>
+        <div class="hub-card-arrow">→</div>
+      </a>
 
+    </div>
   </div>
 
   <!-- 02 BETTERWORKPLACE -->
-  <div class="hub-section-label">02 · BetterWorkplace</div>
-  <div class="hub-grid">
+  <div class="hub-section hub-section--bw">
+    <div class="hub-section-label">02 · BetterWorkplace</div>
+    <div class="hub-grid">
 
-    <a class="hub-card" href="https://better-workplace-corposite.webflow.io/" target="_blank">
-      <div class="hub-card-badge">WWW</div>
-      <div class="hub-card-title">WWW korporacyjne</div>
-      <div class="hub-card-desc">Pozycjonowanie, ekosystem marek, oferta dla firm.</div>
-      <div class="hub-card-meta">Propozycja nowej strony</div>
-      <div class="hub-card-arrow">→</div>
-    </a>
+      <a class="hub-card" href="https://better-workplace-corposite.webflow.io/" target="_blank">
+        <div class="hub-card-badge">WWW</div>
+        <div class="hub-card-title">WWW korporacyjne</div>
+        <div class="hub-card-desc">Pozycjonowanie, ekosystem marek, oferta dla firm.</div>
+        <div class="hub-card-meta">Propozycja nowej strony</div>
+        <div class="hub-card-arrow">→</div>
+      </a>
 
-    <a class="hub-card" href="bw-voice.html">
-      <div class="hub-card-badge">Brand</div>
-      <div class="hub-card-title">Brand Voice Guide</div>
-      <div class="hub-card-desc">Archetyp, atrybuty głosu, hierarchia przekazów, do's & don'ts.</div>
-      <div class="hub-card-meta">Ton · Podział głosu BW vs sub-brandy</div>
-      <div class="hub-card-arrow">→</div>
-    </a>
+      <a class="hub-card" href="bw-voice.html">
+        <div class="hub-card-badge">Brand</div>
+        <div class="hub-card-title">Brand Voice Guide</div>
+        <div class="hub-card-desc">Archetyp, atrybuty głosu, hierarchia przekazów, do's & don'ts.</div>
+        <div class="hub-card-meta">Ton · Podział głosu BW vs sub-brandy</div>
+        <div class="hub-card-arrow">→</div>
+      </a>
 
+    </div>
   </div>
 
   <!-- 03 DAILYFRUITS -->
-  <div class="hub-section-label">03 · DailyFruits</div>
-  <div class="hub-grid">
+  <div class="hub-section hub-section--df">
+    <div class="hub-section-label">03 · DailyFruits</div>
+    <div class="hub-grid">
 
-    <a class="hub-card" href="https://dailyfruits.vercel.app" target="_blank">
-      <div class="hub-card-badge">WWW</div>
-      <div class="hub-card-title">WWW sprzedażowe</div>
-      <div class="hub-card-desc">Strona sprzedażowa — owoce, przekąski i zdrowe nawyki w biurze.</div>
-      <div class="hub-card-meta">Propozycja nowej strony</div>
-      <div class="hub-card-arrow">→</div>
-    </a>
+      <a class="hub-card" href="https://dailyfruits.vercel.app" target="_blank">
+        <div class="hub-card-badge">WWW</div>
+        <div class="hub-card-title">WWW sprzedażowe</div>
+        <div class="hub-card-desc">Strona sprzedażowa — owoce, przekąski i zdrowe nawyki w biurze.</div>
+        <div class="hub-card-meta">Propozycja nowej strony</div>
+        <div class="hub-card-arrow">→</div>
+      </a>
 
-    <a class="hub-card" href="df-brand-voice.html">
-      <div class="hub-card-badge">Brand</div>
-      <div class="hub-card-title">Brand Voice Guide</div>
-      <div class="hub-card-desc">Tone of voice, kolory, typografia, do's & don'ts dla DF.</div>
-      <div class="hub-card-meta">Osobowość · Atrybuty · Adaptacje</div>
-      <div class="hub-card-arrow">→</div>
-    </a>
+      <a class="hub-card" href="df-brand-voice.html">
+        <div class="hub-card-badge">Brand</div>
+        <div class="hub-card-title">Brand Voice Guide</div>
+        <div class="hub-card-desc">Tone of voice, kolory, typografia, do's & don'ts dla DF.</div>
+        <div class="hub-card-meta">Osobowość · Atrybuty · Adaptacje</div>
+        <div class="hub-card-arrow">→</div>
+      </a>
 
-    <a class="hub-card" href="df-seo-raport.html">
-      <div class="hub-card-badge">SEO</div>
-      <div class="hub-card-title">Raport SEO & Performance</div>
-      <div class="hub-card-desc">29 stron, 200 redirectów, 6 schema, 13 city pages, 80 FAQ.</div>
-      <div class="hub-card-meta">SEO tech · Schema · AEO</div>
-      <div class="hub-card-arrow">→</div>
-    </a>
+      <a class="hub-card" href="df-seo-raport.html">
+        <div class="hub-card-badge">SEO</div>
+        <div class="hub-card-title">Raport SEO & Performance</div>
+        <div class="hub-card-desc">29 stron, 200 redirectów, 6 schema, 13 city pages, 80 FAQ.</div>
+        <div class="hub-card-meta">SEO tech · Schema · AEO</div>
+        <div class="hub-card-arrow">→</div>
+      </a>
 
+    </div>
   </div>
 
   <!-- 04 TEAMBUDGET -->
-  <div class="hub-section-label">04 · TeamBudget</div>
-  <div class="hub-grid">
+  <div class="hub-section hub-section--tb">
+    <div class="hub-section-label">04 · TeamBudget</div>
+    <div class="hub-grid">
 
-    <a class="hub-card" href="tb-strategia.html">
-      <div class="hub-card-badge">Strategia & Brand</div>
-      <div class="hub-card-title">Strategia & Branding TB</div>
-      <div class="hub-card-desc">Branding, pozycjonowanie w ekosystemie, insighty strategiczne i roadmapa wdrożenia.</div>
-      <div class="hub-card-meta">Brand book · Insighty · Roadmapa</div>
-      <div class="hub-card-arrow">→</div>
-    </a>
+      <a class="hub-card" href="tb-strategia.html">
+        <div class="hub-card-badge">Strategia & Brand</div>
+        <div class="hub-card-title">Strategia & Branding TB</div>
+        <div class="hub-card-desc">Branding, pozycjonowanie w ekosystemie, insighty strategiczne i roadmapa wdrożenia.</div>
+        <div class="hub-card-meta">Brand book · Insighty · Roadmapa</div>
+        <div class="hub-card-arrow">→</div>
+      </a>
 
+    </div>
   </div>
 
   <div class="hub-footer">

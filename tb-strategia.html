@@ -17,213 +17,305 @@
   --muted: #8a7e7c;
   --dim: #b5aaa8;
   --border: #e8ddd9;
-  --border2: #d4c9c5;
   --card: #f5ede8;
+  --max: 960px;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
 body {
   font-family:'DM Sans',system-ui,sans-serif;
   background:var(--pale-white); color:var(--pale-black);
   line-height:1.65; -webkit-font-smoothing:antialiased;
+  letter-spacing:-0.01em;
+}
+
+/* ═══ SMOOTH REVEAL ═══ */
+[data-reveal] {
+  opacity:0; transform:translateY(28px);
+  transition: opacity .9s cubic-bezier(0.22,1,0.36,1), transform .9s cubic-bezier(0.22,1,0.36,1);
+  will-change:opacity,transform;
+}
+[data-reveal].is-visible { opacity:1; transform:translateY(0); }
+[data-reveal-stagger] > * {
+  opacity:0; transform:translateY(20px);
+  transition: opacity .7s cubic-bezier(0.22,1,0.36,1), transform .7s cubic-bezier(0.22,1,0.36,1);
+  will-change:opacity,transform;
+}
+[data-reveal-stagger].is-visible > * { opacity:1; transform:translateY(0); }
+[data-reveal-stagger].is-visible > *:nth-child(1) { transition-delay:0ms; }
+[data-reveal-stagger].is-visible > *:nth-child(2) { transition-delay:80ms; }
+[data-reveal-stagger].is-visible > *:nth-child(3) { transition-delay:160ms; }
+[data-reveal-stagger].is-visible > *:nth-child(4) { transition-delay:240ms; }
+[data-reveal-stagger].is-visible > *:nth-child(5) { transition-delay:320ms; }
+[data-reveal-stagger].is-visible > *:nth-child(6) { transition-delay:400ms; }
+[data-reveal-stagger].is-visible > *:nth-child(7) { transition-delay:480ms; }
+[data-reveal-stagger].is-visible > *:nth-child(8) { transition-delay:560ms; }
+@media (prefers-reduced-motion:reduce) {
+  [data-reveal],[data-reveal-stagger] > * { opacity:1!important; transform:none!important; transition:none!important; }
 }
 
 /* NAV */
 .back-nav {
   display:inline-flex; align-items:center; gap:6px;
-  padding:14px 28px; font-size:12px; font-weight:500;
+  padding:16px 32px; font-size:13px; font-weight:500;
   color:var(--blue); text-decoration:none;
-  letter-spacing:0.3px;
+  letter-spacing:0.02em;
+  transition:color .15s;
 }
-.back-nav:hover { text-decoration:underline; }
+.back-nav:hover { color:var(--orange); }
 
 /* HERO */
 .hero {
-  background:var(--blue); color:var(--pale-white);
-  padding:80px 40px 60px; position:relative; overflow:hidden;
+  background:linear-gradient(135deg, #3358D4 0%, #4375FF 40%, #5A8FFF 100%);
+  color:var(--pale-white);
+  padding:140px 0 100px;
+  position:relative; overflow:hidden;
 }
-.hero-inner { max-width:900px; margin:0 auto; position:relative; z-index:1; }
-.hero-eyebrow {
-  font-family:'DM Mono',monospace; font-size:11px;
-  letter-spacing:3px; text-transform:uppercase;
-  opacity:0.6; margin-bottom:16px;
+.hero .orbital {
+  position:absolute; border-radius:50%;
+  border:1px solid rgba(255,255,255,0.15);
+  pointer-events:none;
 }
+.hero .o1 { width:800px; height:800px; right:-260px; top:-200px; opacity:0.3; }
+.hero .o2 { width:500px; height:500px; right:-80px; top:60px; opacity:0.2; }
+.hero .o3 { width:240px; height:240px; right:100px; top:200px; opacity:0.4; border-width:1.5px; }
+.hero .ghost {
+  position:absolute;
+  font-size:clamp(200px,30vw,420px);
+  font-weight:800; letter-spacing:-0.06em;
+  color:rgba(255,255,255,0.04);
+  line-height:0.85; top:10%; right:-2%;
+  pointer-events:none;
+}
+.hero .wrap { max-width:var(--max); margin:0 auto; padding:0 32px; position:relative; z-index:1; }
+.hero .eyebrow {
+  display:inline-flex; align-items:center; gap:10px;
+  font-size:12px; font-weight:500; letter-spacing:0.06em;
+  text-transform:uppercase; color:rgba(255,255,255,0.6);
+  margin-bottom:28px;
+}
+.hero .eyebrow::before { content:''; width:28px; height:1px; background:rgba(255,255,255,0.3); }
 .hero h1 {
-  font-size:48px; font-weight:800; letter-spacing:-1.5px;
-  line-height:1.1; margin-bottom:16px;
+  font-size:clamp(36px,6vw,64px);
+  font-weight:800; letter-spacing:-0.04em;
+  line-height:1.05; margin-bottom:20px;
+  max-width:700px;
 }
 .hero h1 span { color:var(--orange); }
-.hero-sub {
-  font-size:16px; opacity:0.8; max-width:560px; line-height:1.6;
+.hero .sub {
+  font-size:17px; font-weight:400;
+  color:rgba(255,255,255,0.75);
+  max-width:560px; line-height:1.65;
+  margin-bottom:48px;
 }
-.hero-signet {
-  position:absolute; right:-40px; top:50%; transform:translateY(-50%);
-  width:300px; height:300px; opacity:0.08;
+.hero .meta-bar {
+  display:flex; gap:48px; padding-top:28px;
+  border-top:1px solid rgba(255,255,255,0.12);
+  flex-wrap:wrap;
 }
-.hero-signet svg { width:100%; height:100%; }
-
-/* CONTENT */
-.content { max-width:900px; margin:0 auto; padding:0 40px; }
+.meta-stat .num {
+  font-size:32px; font-weight:800;
+  letter-spacing:-0.03em; line-height:1;
+}
+.meta-stat .lbl {
+  font-size:11px; font-weight:500;
+  color:rgba(255,255,255,0.5);
+  letter-spacing:0.02em; margin-top:4px;
+}
 
 /* SECTIONS */
-.section { padding:48px 0 0; }
+.section { padding:100px 0 0; }
+.wrap { max-width:var(--max); margin:0 auto; padding:0 32px; }
+.section-head { margin-bottom:48px; }
 .section-eyebrow {
-  font-family:'DM Mono',monospace; font-size:10px;
-  letter-spacing:3px; text-transform:uppercase;
-  color:var(--blue); margin-bottom:10px; font-weight:500;
+  font-family:'DM Mono',monospace; font-size:11px;
+  letter-spacing:0.08em; text-transform:uppercase;
+  color:var(--blue); margin-bottom:12px; font-weight:500;
 }
-.section h2 {
-  font-size:28px; font-weight:800; letter-spacing:-0.5px;
-  margin-bottom:8px; line-height:1.2;
+.section-head h2 {
+  font-size:clamp(28px,4vw,44px);
+  font-weight:800; letter-spacing:-0.03em;
+  line-height:1.1; margin-bottom:12px;
 }
+.section-head h2 em { font-style:normal; color:var(--blue); }
 .section-desc {
-  font-size:14px; color:var(--muted); line-height:1.7;
-  margin-bottom:24px; max-width:640px;
+  font-size:16px; color:var(--muted); line-height:1.7;
+  max-width:600px;
 }
-.divider {
-  border:none; border-top:1px solid var(--border);
-  margin:48px 0 0;
-}
+
+.divider { border:none; border-top:1px solid var(--border); margin-top:100px; }
+
+/* GRIDS */
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+.grid-4 { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:12px; }
+.grid-5 { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; }
 
 /* CARDS */
-.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px; }
-.grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:12px; }
-.grid-4 { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:12px; margin-bottom:12px; }
-
 .card {
-  background:var(--card); border:1px solid var(--border);
-  padding:20px; position:relative;
+  background:var(--card); border-radius:12px;
+  padding:24px; position:relative;
+  transition:transform .2s, box-shadow .2s;
 }
+.card:hover { transform:translateY(-3px); box-shadow:0 12px 40px rgba(71,58,57,0.08); }
 .card-label {
-  font-family:'DM Mono',monospace; font-size:9px;
-  letter-spacing:2px; text-transform:uppercase;
-  margin-bottom:8px; font-weight:500;
+  font-family:'DM Mono',monospace; font-size:10px;
+  letter-spacing:0.06em; text-transform:uppercase;
+  margin-bottom:10px; font-weight:500;
 }
 .card h3 {
-  font-size:16px; font-weight:700; letter-spacing:-0.2px;
-  margin-bottom:6px; line-height:1.3;
+  font-size:17px; font-weight:700; letter-spacing:-0.02em;
+  margin-bottom:8px; line-height:1.25;
 }
-.card p {
-  font-size:13px; color:var(--muted); line-height:1.6;
-}
-
-/* COLOR SWATCHES */
-.swatch {
-  aspect-ratio:1; border-radius:0; display:flex;
-  flex-direction:column; justify-content:flex-end;
-  padding:12px; position:relative;
-}
-.swatch-name {
-  font-family:'DM Mono',monospace; font-size:9px;
-  letter-spacing:1.5px; text-transform:uppercase;
-  margin-bottom:2px;
-}
-.swatch-hex { font-family:'DM Mono',monospace; font-size:11px; }
+.card p { font-size:14px; color:var(--muted); line-height:1.6; }
 
 /* ECOSYSTEM MAP */
 .eco-card {
-  background:var(--card); border:1px solid var(--border);
-  padding:16px; text-align:center;
+  background:var(--card); border-radius:10px;
+  padding:18px 12px; text-align:center;
+  transition:transform .2s, box-shadow .2s;
 }
+.eco-card:hover { transform:translateY(-2px); }
 .eco-card.active {
   border:2px solid var(--blue); background:rgba(67,117,255,0.06);
+  box-shadow:0 8px 32px rgba(67,117,255,0.12);
 }
 .eco-label {
-  font-family:'DM Mono',monospace; font-size:8px;
-  letter-spacing:2px; text-transform:uppercase;
-  margin-bottom:6px;
+  font-family:'DM Mono',monospace; font-size:9px;
+  letter-spacing:0.08em; text-transform:uppercase;
+  margin-bottom:6px; color:var(--muted);
 }
-.eco-name { font-size:15px; font-weight:700; margin-bottom:4px; }
+.eco-name { font-size:18px; font-weight:800; margin-bottom:3px; letter-spacing:-0.02em; }
 .eco-role { font-size:11px; color:var(--muted); }
+
+/* HIGHLIGHT BAND */
+.highlight {
+  background:var(--orange); color:var(--pale-white);
+  border-radius:16px; padding:40px 36px; margin:32px 0;
+  position:relative; overflow:hidden;
+}
+.highlight::after {
+  content:''; position:absolute;
+  width:300px; height:300px; border-radius:50%;
+  border:1.5px solid rgba(255,255,255,0.15);
+  right:-80px; bottom:-80px;
+}
+.highlight h3 {
+  font-size:22px; font-weight:800; letter-spacing:-0.02em;
+  margin-bottom:10px; position:relative; z-index:1;
+}
+.highlight p { font-size:15px; opacity:0.88; line-height:1.65; position:relative; z-index:1; max-width:640px; }
+
+/* PERCEPTION */
+.perception {
+  background:var(--card); border-radius:10px;
+  padding:20px 24px; margin-bottom:10px;
+  transition:transform .2s;
+}
+.perception:hover { transform:translateX(4px); }
+.perc-from { font-size:13px; color:var(--dim); text-decoration:line-through; }
+.perc-arrow { font-size:12px; color:var(--blue); margin:3px 0; }
+.perc-to { font-size:15px; font-weight:700; }
+
+/* COLOR SWATCHES */
+.swatch {
+  aspect-ratio:1.2; border-radius:10px;
+  display:flex; flex-direction:column;
+  justify-content:flex-end; padding:14px;
+  transition:transform .2s;
+}
+.swatch:hover { transform:scale(1.04); }
+.swatch-name {
+  font-family:'DM Mono',monospace; font-size:9px;
+  letter-spacing:0.06em; text-transform:uppercase;
+  margin-bottom:2px;
+}
+.swatch-hex { font-family:'DM Mono',monospace; font-size:12px; font-weight:500; }
 
 /* INSIGHT BLOCKS */
 .insight {
   border-left:3px solid var(--blue);
-  padding:16px 20px; background:rgba(67,117,255,0.04);
-  margin-bottom:12px;
+  border-radius:0 12px 12px 0;
+  padding:20px 24px; background:rgba(67,117,255,0.04);
+  margin-bottom:14px;
+  transition:transform .2s;
 }
+.insight:hover { transform:translateX(4px); }
 .insight-label {
-  font-family:'DM Mono',monospace; font-size:9px;
-  letter-spacing:2px; text-transform:uppercase;
+  font-family:'DM Mono',monospace; font-size:10px;
+  letter-spacing:0.06em; text-transform:uppercase;
   color:var(--blue); margin-bottom:6px;
 }
-.insight h3 {
-  font-size:15px; font-weight:700; margin-bottom:4px;
-}
-.insight p { font-size:13px; color:var(--muted); line-height:1.6; }
-
-/* PERCEPTION */
-.perception {
-  background:var(--card); border:1px solid var(--border);
-  padding:16px 20px; margin-bottom:10px;
-}
-.perc-from {
-  font-size:12px; color:var(--muted); margin-bottom:2px;
-  text-decoration:line-through; opacity:0.6;
-}
-.perc-to {
-  font-size:14px; font-weight:700; color:var(--pale-black);
-}
-.perc-arrow {
-  font-size:12px; color:var(--blue); margin:4px 0;
-}
+.insight h3 { font-size:16px; font-weight:700; margin-bottom:5px; letter-spacing:-0.01em; }
+.insight p { font-size:14px; color:var(--muted); line-height:1.6; }
 
 /* TODO LIST */
 .todo-item {
-  display:flex; align-items:flex-start; gap:12px;
-  padding:14px 18px; background:var(--card);
-  border:1px solid var(--border); margin-bottom:6px;
+  display:flex; align-items:flex-start; gap:14px;
+  padding:18px 22px; background:var(--card);
+  border-radius:10px; margin-bottom:8px;
+  transition:transform .2s, box-shadow .2s;
+  cursor:default;
 }
+.todo-item:hover { transform:translateX(4px); box-shadow:0 4px 20px rgba(71,58,57,0.06); }
 .todo-check {
-  width:20px; height:20px; border:2px solid var(--border2);
-  flex-shrink:0; margin-top:2px;
+  width:22px; height:22px; border:2px solid var(--border);
+  border-radius:6px; flex-shrink:0; margin-top:2px;
 }
-.todo-title { font-size:14px; font-weight:600; margin-bottom:2px; }
-.todo-desc { font-size:12px; color:var(--muted); line-height:1.5; }
+.todo-title { font-size:15px; font-weight:700; margin-bottom:3px; letter-spacing:-0.01em; }
+.todo-desc { font-size:13px; color:var(--muted); line-height:1.55; }
 
-/* HIGHLIGHT BAR */
-.highlight {
-  background:var(--orange); color:var(--pale-white);
-  padding:28px 32px; margin:32px 0;
+/* QUESTIONS */
+.question-card {
+  background:var(--card); border-radius:12px;
+  padding:24px 28px; margin-bottom:10px;
+  border-left:3px solid var(--orange);
+  transition:transform .2s, box-shadow .2s;
 }
-.highlight h3 {
-  font-size:20px; font-weight:800; letter-spacing:-0.3px;
-  margin-bottom:8px;
+.question-card:hover { transform:translateX(4px); box-shadow:0 8px 32px rgba(254,105,43,0.08); }
+.question-num {
+  font-family:'DM Mono',monospace; font-size:10px;
+  letter-spacing:0.06em; text-transform:uppercase;
+  color:var(--orange); margin-bottom:6px;
 }
-.highlight p { font-size:14px; opacity:0.9; line-height:1.6; }
+.question-card h3 { font-size:16px; font-weight:700; margin-bottom:6px; }
+.question-card p { font-size:13px; color:var(--muted); line-height:1.6; }
 
-/* TYPOGRAPHY SHOWCASE */
-.type-row {
-  display:flex; align-items:baseline; gap:20px;
-  padding:16px 0; border-bottom:1px solid var(--border);
+/* KAFETERIA BOX */
+.callout-box {
+  background:var(--card); border-radius:12px;
+  padding:28px 32px; margin-top:24px;
+  border:1px solid var(--border);
 }
-.type-label {
-  font-family:'DM Mono',monospace; font-size:9px;
-  letter-spacing:2px; text-transform:uppercase;
-  color:var(--muted); width:120px; flex-shrink:0;
+.callout-box .tag {
+  font-family:'DM Mono',monospace; font-size:10px;
+  letter-spacing:0.06em; text-transform:uppercase;
+  color:var(--orange); margin-bottom:8px;
 }
-.type-sample { flex:1; }
+.callout-box h3 { font-size:18px; font-weight:800; margin-bottom:8px; letter-spacing:-0.02em; }
+.callout-box p { font-size:14px; color:var(--muted); line-height:1.7; }
 
 /* FOOTER */
 .footer {
-  padding:32px 0; margin-top:48px;
+  padding:40px 0; margin-top:100px;
   border-top:1px solid var(--border);
-  font-size:11px; color:var(--dim);
+  font-size:12px; color:var(--dim);
   display:flex; justify-content:space-between;
   align-items:center;
 }
 .footer-badge {
-  font-family:'DM Mono',monospace; font-size:9px;
-  letter-spacing:2px; text-transform:uppercase;
+  font-family:'DM Mono',monospace; font-size:10px;
+  letter-spacing:0.06em; text-transform:uppercase;
   color:var(--blue);
 }
 
-@media (max-width:700px) {
-  .hero { padding:48px 24px 40px; }
+@media (max-width:768px) {
+  .hero { padding:80px 0 60px; }
   .hero h1 { font-size:32px; }
-  .content { padding:0 24px; }
-  .grid-2, .grid-3, .grid-4 { grid-template-columns:1fr; }
-  .type-row { flex-direction:column; gap:6px; }
-  .type-label { width:auto; }
+  .hero .meta-bar { gap:24px; }
+  .section { padding:60px 0 0; }
+  .grid-2,.grid-3,.grid-4,.grid-5 { grid-template-columns:1fr; }
+  .divider { margin-top:60px; }
 }
 </style>
 </head>
@@ -231,49 +323,61 @@ body {
 
 <a class="back-nav" href="index.html">← Panel klienta</a>
 
-<!-- HERO -->
+<!-- ═══ HERO ═══ -->
 <div class="hero">
-  <div class="hero-inner">
-    <div class="hero-eyebrow">TeamBudget · Strategia 2026</div>
-    <h1>Benefity, które ładują energię zespołu<br>i wzmacniają <span>team vibe.</span></h1>
-    <div class="hero-sub">Platforma zarządzania benefitami pracowniczymi — trzeci filar ekosystemu BetterWorkplace. Branding, pozycjonowanie strategiczne i roadmapa wdrożenia.</div>
-  </div>
-  <div class="hero-signet">
-    <svg viewBox="0 0 200 200" fill="white" xmlns="http://www.w3.org/2000/svg">
-      <path d="M100 90c0-40 0-80 0-80C55 10 20 45 10 85c0 2 0 5 0 5h80c5 0 10-5 10-10z" opacity="0.9"/>
-      <path d="M110 90c0-40 0-80 0-80c45 0 80 35 90 75 0 2 0 5 0 5h-80c-5 0-10-5-10-10z" opacity="0.7"/>
-      <path d="M100 110c0 40 0 80 0 80C55 190 20 155 10 115c0-2 0-5 0-5h80c5 0 10 5 10 10z" opacity="0.8"/>
-      <path d="M110 110c0 40 0 80 0 80c45 0 80-35 90-75 0-2 0-5 0-5h-80c-5 0-10 5-10 10z" opacity="0.6"/>
-    </svg>
+  <div class="orbital o1"></div>
+  <div class="orbital o2"></div>
+  <div class="orbital o3"></div>
+  <div class="ghost">TB</div>
+  <div class="wrap">
+    <div class="eyebrow" data-reveal>TeamBudget · Strategia 2026</div>
+    <h1 data-reveal>Benefity, które ładują energię zespołu i wzmacniają <span>team vibe.</span></h1>
+    <div class="sub" data-reveal>Platforma zarządzania benefitami pracowniczymi — trzeci filar ekosystemu BetterWorkplace. Pozycjonowanie strategiczne, branding i roadmapa wdrożenia.</div>
+    <div class="meta-bar" data-reveal>
+      <div class="meta-stat">
+        <div class="num">SaaS</div>
+        <div class="lbl">Model produktowy</div>
+      </div>
+      <div class="meta-stat">
+        <div class="num">HR + CFO</div>
+        <div class="lbl">Target audience</div>
+      </div>
+      <div class="meta-stat">
+        <div class="num">Faza 2</div>
+        <div class="lbl">Scope wdrożenia</div>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="content">
+<div class="wrap">
 
   <!-- ═══ 01. POZYCJA W EKOSYSTEMIE ═══ -->
   <div class="section">
-    <div class="section-eyebrow">01 · Pozycja w ekosystemie</div>
-    <h2>TeamBudget w architekturze BetterWorkplace</h2>
-    <div class="section-desc">TeamBudget to marka produktowa — platforma SaaS, która scala wszystkie usługi ekosystemu BW w jedno narzędzie do zarządzania benefitami. Warstwa utrzymania klienta i lock-in layer.</div>
+    <div class="section-head" data-reveal>
+      <div class="section-eyebrow">01 · Pozycja w ekosystemie</div>
+      <h2>TeamBudget w architekturze <em>BetterWorkplace</em></h2>
+      <div class="section-desc">Marka produktowa — platforma SaaS, która scala wszystkie usługi ekosystemu BW w jedno narzędzie do zarządzania benefitami. Warstwa utrzymania klienta i lock-in layer.</div>
+    </div>
 
-    <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr 1fr; gap:8px; margin-bottom:20px;">
+    <div class="grid-5" data-reveal-stagger>
       <div class="eco-card">
-        <div class="eco-label" style="color:var(--pale-green);">Master</div>
+        <div class="eco-label">Master</div>
         <div class="eco-name">BW</div>
         <div class="eco-role">Parasol narracyjny</div>
       </div>
       <div class="eco-card">
-        <div class="eco-label" style="color:var(--pale-green);">Endorsed</div>
+        <div class="eco-label">Endorsed</div>
         <div class="eco-name">DF</div>
         <div class="eco-role">Owoce & przekąski</div>
       </div>
       <div class="eco-card">
-        <div class="eco-label" style="color:var(--pale-green);">Endorsed</div>
+        <div class="eco-label">Endorsed</div>
         <div class="eco-name">DFo</div>
         <div class="eco-role">Kawa & lunche</div>
       </div>
       <div class="eco-card">
-        <div class="eco-label" style="color:var(--pale-green);">Endorsed</div>
+        <div class="eco-label">Endorsed</div>
         <div class="eco-name">BO</div>
         <div class="eco-role">Kuchnia biurowa</div>
       </div>
@@ -284,7 +388,7 @@ body {
       </div>
     </div>
 
-    <div class="grid-2">
+    <div class="grid-2" data-reveal-stagger style="margin-top:20px;">
       <div class="card">
         <div class="card-label" style="color:var(--blue);">Rola strategiczna</div>
         <h3>Lock-in layer ekosystemu</h3>
@@ -297,22 +401,24 @@ body {
       </div>
     </div>
 
-    <div class="highlight">
-      <h3>TeamBudget rozwiązuje problem, którego klient jeszcze nie nazwał.</h3>
-      <p>Każdy klient BW z 2+ produktami już zarządza nimi ręcznie — osobne faktury, osobne zamówienia, osobny kontakt z każdym bytem. Narracja „jedna platforma do wszystkiego" buduje oczekiwanie zanim produkt wejdzie na rynek.</p>
+    <div data-reveal>
+      <div class="highlight">
+        <h3>TeamBudget rozwiązuje problem, którego klient jeszcze nie nazwał.</h3>
+        <p>Każdy klient BW z 2+ produktami już zarządza nimi ręcznie — osobne faktury, osobne zamówienia, osobny kontakt z każdym bytem. Narracja „jedna platforma do wszystkiego" buduje oczekiwanie zanim produkt wejdzie na rynek.</p>
+      </div>
     </div>
 
-    <!-- Perception shift -->
-    <div class="section-eyebrow" style="margin-top:32px;">Zmiana percepcji</div>
-    <div class="perception">
-      <div class="perc-from">"Nieznany produkt"</div>
-      <div class="perc-arrow">↓</div>
-      <div class="perc-to">"Platforma zarządzania budżetem benefitów"</div>
-    </div>
-    <div class="perception">
-      <div class="perc-from">"Dostawca owoców i kawy"</div>
-      <div class="perc-arrow">↓</div>
-      <div class="perc-to">"Partner technologiczny do zarządzania benefitami"</div>
+    <div data-reveal-stagger style="margin-top:24px;">
+      <div class="perception">
+        <div class="perc-from">"Nieznany produkt"</div>
+        <div class="perc-arrow">↓</div>
+        <div class="perc-to">"Platforma zarządzania budżetem benefitów"</div>
+      </div>
+      <div class="perception">
+        <div class="perc-from">"Dostawca owoców i kawy"</div>
+        <div class="perc-arrow">↓</div>
+        <div class="perc-to">"Partner technologiczny do zarządzania benefitami"</div>
+      </div>
     </div>
   </div>
 
@@ -320,13 +426,13 @@ body {
 
   <!-- ═══ 02. BRANDING ═══ -->
   <div class="section">
-    <div class="section-eyebrow">02 · Identyfikacja wizualna</div>
-    <h2>System brandingowy TeamBudget</h2>
-    <div class="section-desc">Brand Identity zbudowany na okręgu podzielonym na segmenty — symbolizuje wykres kołowy (budżet), zespół (jednostki łączące się w grupę) i przeciętą pomarańczę (DNA ekosystemu BetterWorkplace).</div>
+    <div class="section-head" data-reveal>
+      <div class="section-eyebrow">02 · Identyfikacja wizualna</div>
+      <h2>System brandingowy <em>TeamBudget</em></h2>
+      <div class="section-desc">Brand zbudowany na okręgu podzielonym na segmenty — wykres kołowy (budżet), zespół (jednostki w grupę) i przecięta pomarańcza (DNA ekosystemu BW).</div>
+    </div>
 
-    <!-- Colors -->
-    <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:12px;">Paleta kolorów</div>
-    <div class="grid-4">
+    <div class="grid-4" data-reveal-stagger>
       <div class="swatch" style="background:#FFFBF4; border:1px solid var(--border);">
         <div class="swatch-name" style="color:var(--pale-black);">Pale White</div>
         <div class="swatch-hex" style="color:var(--pale-black);">#FFFBF4</div>
@@ -345,70 +451,65 @@ body {
       </div>
     </div>
 
-    <!-- Typography -->
-    <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin:24px 0 10px;">Typografia</div>
-    <div style="font-size:13px; color:var(--muted); line-height:1.7;">
+    <div data-reveal style="margin-top:20px; font-size:14px; color:var(--muted); line-height:1.7;">
       <strong style="color:var(--pale-black);">Pangram Sans</strong> — nagłówki, headery, lead text. <strong style="color:var(--pale-black);">DM Sans</strong> — body, podpisy. <strong style="color:var(--pale-black);">DM Mono</strong> — uppercase, teksty techniczne, etykiety.
     </div>
   </div>
 
   <hr class="divider">
 
-  <!-- ═══ 03. STRATEGICZNE INSIGHTY ═══ -->
+  <!-- ═══ 03. INSIGHTY ═══ -->
   <div class="section">
-    <div class="section-eyebrow">03 · Strategiczne insighty</div>
-    <h2>Co wiemy z dotychczasowej strategii</h2>
-    <div class="section-desc">Kluczowe wnioski z Fazy 1 strategii BetterWorkplace, które definiują pozycjonowanie i messaging TeamBudget.</div>
-
-    <div class="insight">
-      <div class="insight-label">Insight 1</div>
-      <h3>TeamBudget mówi "kontrola"</h3>
-      <p>Platforma, automatyzacja, jedna faktura. Język tech/utility — do CFO i HR. Pre-launch: messaging idzie przez BW, żeby budować świadomość zanim produkt wejdzie na rynek.</p>
+    <div class="section-head" data-reveal>
+      <div class="section-eyebrow">03 · Strategiczne insighty</div>
+      <h2>Co wiemy z dotychczasowej <em>strategii</em></h2>
+      <div class="section-desc">Kluczowe wnioski z Fazy 1 strategii BetterWorkplace, które definiują pozycjonowanie i messaging TeamBudget.</div>
     </div>
 
-    <div class="insight" style="border-color:var(--orange);">
-      <div class="insight-label" style="color:var(--orange);">Insight 2</div>
-      <h3>Pre-positioning przez narrację BW</h3>
-      <p>BW mówi o „jednym miejscu do zarządzania" już teraz — TB wchodzi na przygotowany grunt. Klient ma już oczekiwanie zanim produkt istnieje.</p>
+    <div data-reveal-stagger>
+      <div class="insight">
+        <div class="insight-label">Insight 1</div>
+        <h3>TeamBudget mówi "kontrola"</h3>
+        <p>Platforma, automatyzacja, jedna faktura. Język tech/utility — do CFO i HR. Pre-launch: messaging idzie przez BW, żeby budować świadomość zanim produkt wejdzie na rynek.</p>
+      </div>
+      <div class="insight" style="border-color:var(--orange);">
+        <div class="insight-label" style="color:var(--orange);">Insight 2</div>
+        <h3>Pre-positioning przez narrację BW</h3>
+        <p>BW mówi o „jednym miejscu do zarządzania" już teraz — TB wchodzi na przygotowany grunt. Klient ma już oczekiwanie zanim produkt istnieje.</p>
+      </div>
+      <div class="insight" style="border-color:var(--pale-green);">
+        <div class="insight-label" style="color:var(--pale-green);">Insight 3</div>
+        <h3>Warstwa utrzymania klienta</h3>
+        <p>Im więcej produktów klient ma w ekosystemie, tym trudniej odejść. TB jest klejem, który scala wszystkie usługi. To zmienia relację z „dostawca" na „partner technologiczny".</p>
+      </div>
+      <div class="insight" style="border-color:var(--deep-yellow);">
+        <div class="insight-label" style="color:var(--deep-yellow);">Insight 4</div>
+        <h3>Obietnica: „Jedna platforma do zarządzania benefitami"</h3>
+        <p>Jasna obietnica funkcjonalna — „budżet zespołu". Brzmi jak narzędzie, pasuje do pozycjonowania SaaS. Terytorium: kontrola budżetu, automatyzacja, 1 faktura.</p>
+      </div>
     </div>
 
-    <div class="insight" style="border-color:var(--pale-green);">
-      <div class="insight-label" style="color:var(--pale-green);">Insight 3</div>
-      <h3>Warstwa utrzymania klienta</h3>
-      <p>Im więcej produktów klient ma w ekosystemie, tym trudniej odejść. TB jest klejem, który scala wszystkie usługi. To zmienia relację z „dostawca" na „partner technologiczny".</p>
-    </div>
-
-    <div class="insight" style="border-color:var(--deep-yellow);">
-      <div class="insight-label" style="color:var(--deep-yellow);">Insight 4</div>
-      <h3>Obietnica marki: „Jedna platforma do zarządzania benefitami"</h3>
-      <p>Jasna obietnica funkcjonalna — „budżet zespołu". Brzmi jak narzędzie, co pasuje do pozycjonowania SaaS. Łatwe do zapamiętania. Terytorium: kontrola budżetu, automatyzacja, 1 faktura.</p>
-    </div>
-
-    <div class="grid-3" style="margin-top:20px;">
-      <div class="card" style="border-top:3px solid var(--blue);">
+    <div class="grid-3" data-reveal-stagger style="margin-top:24px;">
+      <div class="card" style="border-top:3px solid var(--blue); border-radius:0 0 12px 12px;">
         <div class="card-label" style="color:var(--blue);">Pre-positioning</div>
         <p>BW mówi o „jednym miejscu do zarządzania" już teraz — TB wchodzi na przygotowany grunt</p>
       </div>
-      <div class="card" style="border-top:3px solid var(--pale-green);">
+      <div class="card" style="border-top:3px solid var(--pale-green); border-radius:0 0 12px 12px;">
         <div class="card-label" style="color:var(--pale-green);">Warstwa retencji</div>
         <p>Im więcej produktów w ekosystemie, tym wyższy lock-in — TB jest klejem który to scala</p>
       </div>
-      <div class="card" style="border-top:3px solid var(--orange);">
+      <div class="card" style="border-top:3px solid var(--orange); border-radius:0 0 12px 12px;">
         <div class="card-label" style="color:var(--orange);">Zmiana rozmowy</div>
-        <p>Z „dostawca owoców i kawy" na „partner technologiczny do zarządzania benefitami"</p>
+        <p>Z „dostawca owoców" na „partner technologiczny do zarządzania benefitami"</p>
       </div>
     </div>
 
-    <!-- Scope note -->
-    <div style="padding:14px 18px; border:1px dashed rgba(67,117,255,0.3); background:rgba(67,117,255,0.03); margin-top:16px;">
-      <div style="font-size:12px; color:var(--muted); line-height:1.6;"><strong style="color:var(--blue);">Scope note:</strong> TeamBudget jest celowo zarysowany na poziomie koncepcji. Szczegółowa analiza produktowa, roadmapa i strategia go-to-market wchodzą w Fazę 2, po walidacji architektury marek i modelu cross-sell z Fazy 1.</div>
-    </div>
-
-    <!-- Kafeteria insight -->
-    <div style="background:var(--card); border:1px solid var(--border); padding:20px; margin-top:20px;">
-      <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--orange); margin-bottom:8px;">Pozycjonowanie vs. Kafeteria</div>
-      <div style="font-size:14px; font-weight:700; margin-bottom:6px;">BW to nie kafeteria — to dostawca z platformą.</div>
-      <div style="font-size:13px; color:var(--muted); line-height:1.7;">Kafeterie nie mają produktu, BW ma. To fundamentalna różnica: BW kontroluje jakość doświadczenia, kafeteria tylko przekleja oferty. TeamBudget może docelowo stać się „kafeterią żywieniową" — ale z własnymi produktami jako rdzeniem. Centralizacja wydatków biurowych w jednym narzędziu to mechanizm, który z dostawcy robi partnera.</div>
+    <div data-reveal>
+      <div class="callout-box">
+        <div class="tag">Pozycjonowanie vs. Kafeteria</div>
+        <h3>BW to nie kafeteria — to dostawca z platformą.</h3>
+        <p>Kafeterie nie mają produktu, BW ma. To fundamentalna różnica: BW kontroluje jakość doświadczenia, kafeteria tylko przekleja oferty. TeamBudget może docelowo stać się „kafeterią żywieniową" — ale z własnymi produktami jako rdzeniem.</p>
+      </div>
     </div>
   </div>
 
@@ -416,75 +517,150 @@ body {
 
   <!-- ═══ 04. DO ZROBIENIA ═══ -->
   <div class="section">
-    <div class="section-eyebrow">04 · Roadmapa</div>
-    <h2>Do zrobienia</h2>
-    <div class="section-desc">Lista kroków strategicznych do opracowania przed launche'm TeamBudget. Każdy punkt to osobny deliverable wymagający dedykowanego workshopu lub analizy.</div>
+    <div class="section-head" data-reveal>
+      <div class="section-eyebrow">04 · Roadmapa</div>
+      <h2>Do zrobienia</h2>
+      <div class="section-desc">Lista kroków strategicznych do opracowania przed launche'm TeamBudget. Każdy punkt to osobny deliverable.</div>
+    </div>
 
-    <div class="todo-item">
-      <div class="todo-check"></div>
-      <div>
-        <div class="todo-title">Pozycjonowanie w ekosystemie</div>
-        <div class="todo-desc">Relacja TB ↔ BW ↔ DF — jak marka wchodzi w istniejącą architekturę, zasady endorsementu, hierarchia komunikacji</div>
+    <div data-reveal-stagger>
+      <div class="todo-item">
+        <div class="todo-check"></div>
+        <div>
+          <div class="todo-title">Pozycjonowanie w ekosystemie</div>
+          <div class="todo-desc">Relacja TB ↔ BW ↔ DF — zasady endorsementu, hierarchia komunikacji</div>
+        </div>
+      </div>
+      <div class="todo-item">
+        <div class="todo-check"></div>
+        <div>
+          <div class="todo-title">Strategia GTM</div>
+          <div class="todo-desc">Kiedy, komu, jak wchodzimy — timeline, priorytety rynkowe, kanały launchu</div>
+        </div>
+      </div>
+      <div class="todo-item">
+        <div class="todo-check"></div>
+        <div>
+          <div class="todo-title">Definicja MVP</div>
+          <div class="todo-desc">Co TB robi w wersji 1.0 — scope funkcjonalności, integracje</div>
+        </div>
+      </div>
+      <div class="todo-item">
+        <div class="todo-check"></div>
+        <div>
+          <div class="todo-title">Pricing / model biznesowy</div>
+          <div class="todo-desc">SaaS, prowizja, bundle? Model monetyzacji ekosystemu BW</div>
+        </div>
+      </div>
+      <div class="todo-item">
+        <div class="todo-check"></div>
+        <div>
+          <div class="todo-title">Endorsement BW</div>
+          <div class="todo-desc">Jak widocznie BW wspiera TB — co-branding, „powered by BetterWorkplace"</div>
+        </div>
+      </div>
+      <div class="todo-item">
+        <div class="todo-check"></div>
+        <div>
+          <div class="todo-title">Content strategy</div>
+          <div class="todo-desc">Blog, LinkedIn, sales materials — awareness przed launche'm</div>
+        </div>
+      </div>
+      <div class="todo-item">
+        <div class="todo-check"></div>
+        <div>
+          <div class="todo-title">Onboarding flow</div>
+          <div class="todo-desc">Ścieżka aktywacji — od pierwszego logowania do pełnej adopcji</div>
+        </div>
+      </div>
+      <div class="todo-item">
+        <div class="todo-check"></div>
+        <div>
+          <div class="todo-title">Matryca komunikacji TB</div>
+          <div class="todo-desc">Persona → przekaz → kanał — dedykowana matryca analogiczna do BW</div>
+        </div>
       </div>
     </div>
-    <div class="todo-item">
-      <div class="todo-check"></div>
-      <div>
-        <div class="todo-title">Strategia GTM</div>
-        <div class="todo-desc">Kiedy, komu, jak wchodzimy na rynek — timeline, priorytety rynkowe, kanały launchu</div>
-      </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ═══ 05. KLUCZOWE PYTANIA ═══ -->
+  <div class="section">
+    <div class="section-head" data-reveal>
+      <div class="section-eyebrow">05 · Kluczowe pytania</div>
+      <h2>5 pytań do <em>następnego kroku</em></h2>
+      <div class="section-desc">Odpowiedzi na te pytania odblokują kolejną fazę — bez nich strategia TB pozostaje koncepcją na papierze.</div>
     </div>
-    <div class="todo-item">
-      <div class="todo-check"></div>
-      <div>
-        <div class="todo-title">Definicja MVP</div>
-        <div class="todo-desc">Co TB robi w wersji 1.0 — scope funkcjonalności, integracje z istniejącymi systemami BW</div>
+
+    <div data-reveal-stagger>
+      <div class="question-card">
+        <div class="question-num">Pytanie 01</div>
+        <h3>Jaki jest realny timeline MVP TeamBudget?</h3>
+        <p>Czy mówimy o Q3 2026, Q4, czy 2027? Od tego zależy cała strategia pre-launch — kiedy zaczynamy budować narrację, kiedy uruchamiamy content, kiedy idziemy do pierwszych klientów. Bez daty nie ma planu.</p>
       </div>
-    </div>
-    <div class="todo-item">
-      <div class="todo-check"></div>
-      <div>
-        <div class="todo-title">Pricing / model biznesowy</div>
-        <div class="todo-desc">SaaS, prowizja, bundle? Jaki model monetyzacji najlepiej pasuje do ekosystemu BW</div>
+      <div class="question-card">
+        <div class="question-num">Pytanie 02</div>
+        <h3>Który model monetyzacji: SaaS fee, prowizja od transakcji, czy bundle z produktami?</h3>
+        <p>To definiuje cały messaging. SaaS = „narzędzie do kontroli". Prowizja = „bez opłat, zarabiamy razem". Bundle = „wszystko w jednej cenie". Każdy model zmienia sposób, w jaki rozmawiamy z klientem i jak pozycjonujemy wartość.</p>
       </div>
-    </div>
-    <div class="todo-item">
-      <div class="todo-check"></div>
-      <div>
-        <div class="todo-title">Endorsement BW</div>
-        <div class="todo-desc">Jak widocznie BW wspiera TB — logo, komunikacja, co-branding, „powered by BetterWorkplace"</div>
+      <div class="question-card">
+        <div class="question-num">Pytanie 03</div>
+        <h3>Czy TB startuje jako narzędzie wewnętrzne (dla obecnych klientów BW) czy jako produkt na rynek?</h3>
+        <p>Wariant A: TB jako „upgrade" dla klientów BW z 2+ produktami — niskie ryzyko, szybka walidacja. Wariant B: TB jako samodzielna platforma kafeteryjna — większy rynek, ale potrzebny osobny GTM i branding. To fundamentalnie różne strategie.</p>
       </div>
-    </div>
-    <div class="todo-item">
-      <div class="todo-check"></div>
-      <div>
-        <div class="todo-title">Content strategy</div>
-        <div class="todo-desc">Blog, LinkedIn, sales materials — plan treści budujących awareness przed launche'm</div>
+      <div class="question-card">
+        <div class="question-num">Pytanie 04</div>
+        <h3>Jak wygląda MVP scope — co TB robi, a czego celowo nie robi w wersji 1.0?</h3>
+        <p>Dashboard z zamówieniami? Automatyczne faktury? Raportowanie budżetowe? Selfservice zamawianie? Każda funkcja to miesiące developmentu. Musimy zdecydować co jest „must have day 1" vs. „nice to have later" żeby nie budować rok zanim pokażemy cokolwiek.</p>
       </div>
-    </div>
-    <div class="todo-item">
-      <div class="todo-check"></div>
-      <div>
-        <div class="todo-title">Onboarding flow</div>
-        <div class="todo-desc">Ścieżka aktywacji klienta w platformie — od pierwszego logowania do pełnej adopcji</div>
-      </div>
-    </div>
-    <div class="todo-item">
-      <div class="todo-check"></div>
-      <div>
-        <div class="todo-title">Matryca komunikacji TB</div>
-        <div class="todo-desc">Persona → przekaz → kanał — dedykowana matryca dla TeamBudget analogiczna do matrycy BW</div>
+      <div class="question-card">
+        <div class="question-num">Pytanie 05</div>
+        <h3>Kto jest wewnętrznym ownerem TB i jaki ma budżet na pierwsze 6 miesięcy?</h3>
+        <p>Strategia bez właściciela to dokument na półce. TB potrzebuje osoby odpowiedzialnej za product development, GTM i relację z pierwszymi 5-10 klientami pilotażowymi. Bez tego — piękna koncepcja, zero execution.</p>
       </div>
     </div>
   </div>
 
   <!-- FOOTER -->
-  <div class="footer">
+  <div class="footer" data-reveal>
     <div>TeamBudget · Dokument poufny · Nie udostępniaj osobom nieuprawnionym</div>
     <div class="footer-badge">BetterWorkplace Ecosystem · 2026</div>
   </div>
 
 </div>
+
+<!-- ═══ SCRIPTS ═══ -->
+<script>
+// Lenis smooth scroll
+(function(){
+  var s = document.createElement('script');
+  s.src = 'https://unpkg.com/lenis@1.3.17/dist/lenis.min.js';
+  s.onload = function(){
+    var lenis = new Lenis({ duration:1.6, easing:function(t){ return Math.min(1,1.001-Math.pow(2,-10*t)); } });
+    function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+  };
+  document.head.appendChild(s);
+})();
+
+// Reveal animations via IntersectionObserver
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal],[data-reveal-stagger]').forEach(function(el){ el.classList.add('is-visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin:'0px 0px -8% 0px', threshold:0.08 });
+  document.querySelectorAll('[data-reveal],[data-reveal-stagger]').forEach(function(el){ io.observe(el); });
+})();
+</script>
 
 </body>
 </html>
