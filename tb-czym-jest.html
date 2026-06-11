@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Czym jest TeamBudget</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pale-white: #FFFBF4;
+  --pale-black: #473A39;
+  --blue: #4375FF;
+  --orange: #FE692B;
+  --sunny: #FEF3DE;
+  --deep-yellow: #FDA33C;
+  --pale-green: #15A477;
+  --muted: #8a7e7c;
+  --dim: #b5aaa8;
+  --border: #e8ddd9;
+  --card: #f5ede8;
+  --max: 960px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family:'DM Sans',system-ui,sans-serif;
+  background:var(--pale-white); color:var(--pale-black);
+  line-height:1.65; -webkit-font-smoothing:antialiased;
+  letter-spacing:-0.01em;
+}
+
+/* ═══ SMOOTH REVEAL ═══ */
+[data-reveal] {
+  opacity:0; transform:translateY(28px);
+  transition: opacity .9s cubic-bezier(0.22,1,0.36,1), transform .9s cubic-bezier(0.22,1,0.36,1);
+  will-change:opacity,transform;
+}
+[data-reveal].is-visible { opacity:1; transform:translateY(0); }
+[data-reveal-stagger] > * {
+  opacity:0; transform:translateY(20px);
+  transition: opacity .7s cubic-bezier(0.22,1,0.36,1), transform .7s cubic-bezier(0.22,1,0.36,1);
+  will-change:opacity,transform;
+}
+[data-reveal-stagger].is-visible > * { opacity:1; transform:translateY(0); }
+[data-reveal-stagger].is-visible > *:nth-child(1) { transition-delay:0ms; }
+[data-reveal-stagger].is-visible > *:nth-child(2) { transition-delay:80ms; }
+[data-reveal-stagger].is-visible > *:nth-child(3) { transition-delay:160ms; }
+[data-reveal-stagger].is-visible > *:nth-child(4) { transition-delay:240ms; }
+[data-reveal-stagger].is-visible > *:nth-child(5) { transition-delay:320ms; }
+[data-reveal-stagger].is-visible > *:nth-child(6) { transition-delay:400ms; }
+[data-reveal-stagger].is-visible > *:nth-child(7) { transition-delay:480ms; }
+[data-reveal-stagger].is-visible > *:nth-child(8) { transition-delay:560ms; }
+@media (prefers-reduced-motion:reduce) {
+  [data-reveal],[data-reveal-stagger] > * { opacity:1!important; transform:none!important; transition:none!important; }
+}
+
+/* NAV */
+.back-nav {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:16px 32px; font-size:13px; font-weight:500;
+  color:var(--blue); text-decoration:none;
+  letter-spacing:0.02em; transition:color .15s;
+}
+.back-nav:hover { color:var(--orange); }
+.nav-row { display:flex; justify-content:space-between; align-items:center; }
+
+/* HERO */
+.hero {
+  background:linear-gradient(135deg, #1A1A2E 0%, #16213E 40%, #0F3460 100%);
+  color:var(--pale-white);
+  padding:140px 0 100px;
+  position:relative; overflow:hidden;
+}
+.hero .orbital {
+  position:absolute; border-radius:50%;
+  border:1px solid rgba(67,117,255,0.2);
+  pointer-events:none;
+}
+.hero .o1 { width:800px; height:800px; right:-260px; top:-200px; opacity:0.3; }
+.hero .o2 { width:500px; height:500px; right:-80px; top:60px; opacity:0.2; }
+.hero .o3 { width:240px; height:240px; right:100px; top:200px; opacity:0.4; border-color:var(--orange); }
+.hero .ghost {
+  position:absolute;
+  font-size:clamp(140px,22vw,300px);
+  font-weight:800; letter-spacing:-0.06em;
+  color:rgba(67,117,255,0.06);
+  line-height:0.85; top:15%; right:-2%;
+  pointer-events:none;
+}
+.hero .wrap { max-width:var(--max); margin:0 auto; padding:0 32px; position:relative; z-index:1; }
+.hero .eyebrow {
+  display:inline-flex; align-items:center; gap:10px;
+  font-size:12px; font-weight:500; letter-spacing:0.06em;
+  text-transform:uppercase; color:rgba(255,255,255,0.5);
+  margin-bottom:28px;
+}
+.hero .eyebrow::before { content:''; width:28px; height:1px; background:rgba(255,255,255,0.3); }
+.hero h1 {
+  font-size:clamp(36px,6vw,64px);
+  font-weight:800; letter-spacing:-0.04em;
+  line-height:1.05; margin-bottom:20px;
+  max-width:700px;
+}
+.hero h1 span { color:var(--orange); }
+.hero .sub {
+  font-size:17px; font-weight:400;
+  color:rgba(255,255,255,0.7);
+  max-width:560px; line-height:1.65;
+  margin-bottom:48px;
+}
+.hero .meta-bar {
+  display:flex; gap:48px; padding-top:28px;
+  border-top:1px solid rgba(255,255,255,0.1);
+  flex-wrap:wrap;
+}
+.meta-stat .num {
+  font-size:32px; font-weight:800;
+  letter-spacing:-0.03em; line-height:1;
+  color:var(--orange);
+}
+.meta-stat .lbl {
+  font-size:11px; font-weight:500;
+  color:rgba(255,255,255,0.45);
+  letter-spacing:0.02em; margin-top:4px;
+}
+
+/* SECTIONS */
+.section { padding:100px 0 0; }
+.wrap { max-width:var(--max); margin:0 auto; padding:0 32px; }
+.section-head { margin-bottom:48px; }
+.section-eyebrow {
+  font-family:'DM Mono',monospace; font-size:11px;
+  letter-spacing:0.08em; text-transform:uppercase;
+  color:var(--blue); margin-bottom:12px; font-weight:500;
+}
+.section-head h2 {
+  font-size:clamp(28px,4vw,44px);
+  font-weight:800; letter-spacing:-0.03em;
+  line-height:1.1; margin-bottom:12px;
+}
+.section-head h2 em { font-style:normal; color:var(--blue); }
+.section-head h2 .orange { color:var(--orange); }
+.section-desc {
+  font-size:16px; color:var(--muted); line-height:1.7;
+  max-width:600px;
+}
+.divider { border:none; border-top:1px solid var(--border); margin-top:100px; }
+
+/* GRIDS */
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+.grid-4 { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:12px; }
+
+/* CARDS */
+.card {
+  background:var(--card); border-radius:12px;
+  padding:24px; position:relative;
+  transition:transform .2s, box-shadow .2s;
+}
+.card:hover { transform:translateY(-3px); box-shadow:0 12px 40px rgba(71,58,57,0.08); }
+.card-label {
+  font-family:'DM Mono',monospace; font-size:10px;
+  letter-spacing:0.06em; text-transform:uppercase;
+  margin-bottom:10px; font-weight:500;
+}
+.card h3 {
+  font-size:17px; font-weight:700; letter-spacing:-0.02em;
+  margin-bottom:8px; line-height:1.25;
+}
+.card p { font-size:14px; color:var(--muted); line-height:1.6; }
+
+/* HIGHLIGHT BAND */
+.highlight {
+  background:var(--orange); color:var(--pale-white);
+  border-radius:16px; padding:40px 36px; margin:32px 0;
+  position:relative; overflow:hidden;
+}
+.highlight::after {
+  content:''; position:absolute;
+  width:300px; height:300px; border-radius:50%;
+  border:1.5px solid rgba(255,255,255,0.15);
+  right:-80px; bottom:-80px;
+}
+.highlight h3 {
+  font-size:22px; font-weight:800; letter-spacing:-0.02em;
+  margin-bottom:10px; position:relative; z-index:1;
+}
+.highlight p { font-size:15px; opacity:0.88; line-height:1.65; position:relative; z-index:1; max-width:640px; }
+
+.highlight--blue {
+  background:linear-gradient(135deg, #3358D4 0%, #4375FF 100%);
+}
+
+/* PROBLEM STAT */
+.stat-card {
+  background:var(--card); border-radius:12px;
+  padding:28px 24px; text-align:center;
+  transition:transform .2s;
+}
+.stat-card:hover { transform:translateY(-3px); }
+.stat-num {
+  font-size:42px; font-weight:800; letter-spacing:-0.03em;
+  line-height:1; margin-bottom:6px;
+  color:var(--orange);
+}
+.stat-label {
+  font-size:11px; font-weight:600; letter-spacing:0.04em;
+  text-transform:uppercase; color:var(--muted); margin-bottom:8px;
+}
+.stat-desc { font-size:13px; color:var(--muted); line-height:1.5; }
+
+/* COMPARISON TABLE */
+.comp-table {
+  width:100%; border-collapse:separate; border-spacing:0;
+  border-radius:12px; overflow:hidden;
+  background:var(--card);
+}
+.comp-table th {
+  font-family:'DM Mono',monospace; font-size:11px;
+  letter-spacing:0.04em; text-transform:uppercase;
+  padding:16px 18px; text-align:left;
+  background:var(--pale-black); color:var(--pale-white);
+  font-weight:600;
+}
+.comp-table th.tb-col {
+  background:var(--orange); color:#fff;
+}
+.comp-table td {
+  padding:14px 18px; font-size:14px;
+  border-bottom:1px solid var(--border);
+  vertical-align:top;
+}
+.comp-table td.tb-col {
+  background:rgba(67,117,255,0.04);
+  font-weight:600; color:var(--blue);
+}
+.comp-table tr:last-child td { border-bottom:none; }
+.comp-table td:first-child {
+  font-weight:700; font-size:13px;
+  color:var(--pale-black);
+}
+
+/* SOLUTION BLOCKS */
+.solution-card {
+  background:var(--card); border-radius:12px;
+  padding:22px 20px; text-align:center;
+  border-top:3px solid var(--blue);
+  transition:transform .2s;
+}
+.solution-card:hover { transform:translateY(-3px); }
+.solution-card .icon { font-size:28px; margin-bottom:10px; }
+.solution-card h4 {
+  font-size:15px; font-weight:700; margin-bottom:6px;
+  letter-spacing:-0.01em;
+}
+.solution-card p { font-size:12px; color:var(--muted); line-height:1.5; }
+
+/* PILLAR BLOCKS */
+.pillar {
+  background:var(--card); border-radius:12px;
+  padding:28px 24px;
+  border-left:4px solid var(--blue);
+  transition:transform .2s, box-shadow .2s;
+}
+.pillar:hover { transform:translateX(4px); box-shadow:0 8px 32px rgba(67,117,255,0.08); }
+.pillar-num {
+  font-family:'DM Mono',monospace; font-size:10px;
+  letter-spacing:0.06em; text-transform:uppercase;
+  color:var(--blue); margin-bottom:8px; font-weight:500;
+}
+.pillar h3 { font-size:18px; font-weight:800; margin-bottom:8px; letter-spacing:-0.02em; }
+.pillar p { font-size:14px; color:var(--muted); line-height:1.6; }
+.pillar ul {
+  list-style:none; margin-top:12px;
+}
+.pillar ul li {
+  font-size:13px; color:var(--muted); padding:4px 0 4px 16px;
+  position:relative;
+}
+.pillar ul li::before {
+  content:''; width:5px; height:5px; border-radius:50%;
+  background:var(--orange); position:absolute; left:0; top:11px;
+}
+
+/* TIMELINE */
+.timeline { position:relative; padding-left:36px; }
+.timeline::before {
+  content:''; position:absolute; left:12px; top:0; bottom:0;
+  width:2px; background:linear-gradient(to bottom, var(--blue), var(--orange));
+}
+.tl-item {
+  position:relative; margin-bottom:28px;
+  padding:20px 24px; background:var(--card);
+  border-radius:12px; transition:transform .2s;
+}
+.tl-item:hover { transform:translateX(4px); }
+.tl-item::before {
+  content:''; position:absolute; left:-30px; top:24px;
+  width:12px; height:12px; border-radius:50%;
+  background:var(--blue); border:3px solid var(--pale-white);
+}
+.tl-item:last-child::before { background:var(--orange); }
+.tl-month {
+  font-family:'DM Mono',monospace; font-size:10px;
+  letter-spacing:0.06em; text-transform:uppercase;
+  color:var(--blue); margin-bottom:4px; font-weight:500;
+}
+.tl-item:last-child .tl-month { color:var(--orange); }
+.tl-item h4 { font-size:16px; font-weight:700; margin-bottom:4px; letter-spacing:-0.01em; }
+.tl-item p { font-size:13px; color:var(--muted); line-height:1.6; }
+
+/* LOOP DIAGRAM */
+.loop-wrap {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:16px; margin-top:24px;
+}
+.loop-card {
+  background:var(--card); border-radius:12px;
+  padding:22px 20px; transition:transform .2s;
+}
+.loop-card:hover { transform:translateY(-3px); }
+.loop-label {
+  font-family:'DM Mono',monospace; font-size:9px;
+  letter-spacing:0.06em; text-transform:uppercase;
+  color:var(--orange); margin-bottom:6px; font-weight:500;
+}
+.loop-card h4 { font-size:15px; font-weight:700; margin-bottom:4px; letter-spacing:-0.01em; }
+.loop-card p { font-size:13px; color:var(--muted); line-height:1.5; }
+
+/* FOOTER */
+.footer {
+  padding:40px 0; margin-top:100px;
+  border-top:1px solid var(--border);
+  font-size:12px; color:var(--dim);
+  display:flex; justify-content:space-between;
+  align-items:center;
+}
+.footer-badge {
+  font-family:'DM Mono',monospace; font-size:10px;
+  letter-spacing:0.06em; text-transform:uppercase;
+  color:var(--blue);
+}
+
+@media (max-width:768px) {
+  .hero { padding:80px 0 60px; }
+  .hero h1 { font-size:32px; }
+  .hero .meta-bar { gap:24px; }
+  .section { padding:60px 0 0; }
+  .grid-2,.grid-3,.grid-4 { grid-template-columns:1fr; }
+  .loop-wrap { grid-template-columns:1fr; }
+  .comp-table { font-size:12px; }
+  .comp-table th, .comp-table td { padding:10px 12px; }
+  .divider { margin-top:60px; }
+  .nav-row { flex-direction:column; align-items:flex-start; }
+}
+</style>
+</head>
+<body>
+
+<div class="nav-row">
+  <a href="index.html" class="back-nav">&larr; Panel klienta</a>
+  <a href="tb-strategia.html" class="back-nav">Strategia TB &rarr;</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="orbital o1"></div>
+  <div class="orbital o2"></div>
+  <div class="orbital o3"></div>
+  <div class="ghost">TB</div>
+  <div class="wrap">
+    <div class="eyebrow" data-reveal>BetterWorkplace Ecosystem</div>
+    <h1 data-reveal>Czym jest <span>TeamBudget</span></h1>
+    <p class="sub" data-reveal>Elastyczny budżet benefitowy na pracownika, który zastępuje indywidualne, fasadowe benefity realnym narzędziem budowania kultury zespołowej w biurze.</p>
+    <div class="meta-bar" data-reveal-stagger>
+      <div class="meta-stat">
+        <div class="num">~90%</div>
+        <div class="lbl">Poziom wykorzystania</div>
+      </div>
+      <div class="meta-stat">
+        <div class="num">100%</div>
+        <div class="lbl">Inkluzywność</div>
+      </div>
+      <div class="meta-stat">
+        <div class="num">1</div>
+        <div class="lbl">Faktura zbiorcza</div>
+      </div>
+      <div class="meta-stat">
+        <div class="num">od 100 zł</div>
+        <div class="lbl">Budżet / pracownika</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ═══ 01 PROBLEM ═══ -->
+  <div class="section" data-reveal>
+    <div class="section-head">
+      <div class="section-eyebrow">01 &mdash; Problem</div>
+      <h2>Koniec ery benefitów <em>fasadowych</em></h2>
+      <p class="section-desc">Prawdziwym problemem nie jest brak benefitów, ale ich chroniczne niedopasowanie do psychologii grupy. Firmy płacą za 100% załogi, a realną wartość otrzymuje garstka.</p>
+    </div>
+  </div>
+
+  <div class="grid-3" data-reveal-stagger>
+    <div class="stat-card">
+      <div class="stat-num">85%</div>
+      <div class="stat-label">Zatrzymanie rotacji</div>
+      <div class="stat-desc">Koszt utraty pracownika to wielokrotność jego pensji.</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">90%</div>
+      <div class="stat-label">Powrót do biur</div>
+      <div class="stat-desc">Potrzeba realnych, magnetycznych powodów do pracy stacjonarnej.</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">92%</div>
+      <div class="stat-label">Budowa kultury</div>
+      <div class="stat-desc">Izolacja niszczy dynamikę grupową i efektywność komunikacji.</div>
+    </div>
+  </div>
+
+  <div class="highlight" data-reveal style="margin-top:32px;">
+    <h3>Mit karty Multisport</h3>
+    <p>2 000 000 wydanych kart w Polsce. Aktywni użytkownicy: ~100 000. Używalność na poziomie 15%. Płacisz za 100% załogi, realną wartość otrzymuje garstka. Siłownia po pracy nie buduje więzi w biurze. Karta Multisport stała się pozycją obowiązkową w ogłoszeniach, ale przestała być narzędziem budowania zaangażowania.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ═══ 02 ROZWIĄZANIE ═══ -->
+  <div class="section" data-reveal>
+    <div class="section-head">
+      <div class="section-eyebrow">02 &mdash; Rozwiązanie</div>
+      <h2>TeamBudget jako <em>fundament</em> Better Workplace</h2>
+      <p class="section-desc">Elastyczny budżet 100-300 PLN na pracownika. Nie sprzedajemy jedzenia do biura. Sprzedajemy zautomatyzowane rozwiązanie problemów rotacji, komunikacji i kultury.</p>
+    </div>
+  </div>
+
+  <div class="grid-4" data-reveal-stagger>
+    <div class="solution-card">
+      <div class="icon">🍳</div>
+      <h4>Śniadania firmowe</h4>
+      <p>Wspólne poranki budują rytuały zespołowe.</p>
+    </div>
+    <div class="solution-card">
+      <div class="icon">🍎</div>
+      <h4>Owoce i kanapki</h4>
+      <p>Codzienne dostawy z ekosystemu DailyFruits.</p>
+    </div>
+    <div class="solution-card">
+      <div class="icon">🧘</div>
+      <h4>Integracja i Wellness</h4>
+      <p>Eventy on-site, warsztaty, wspólne aktywności.</p>
+    </div>
+    <div class="solution-card">
+      <div class="icon">🎉</div>
+      <h4>Raz w miesiącu fajrant</h4>
+      <p>Zaplanowane wydarzenia team-buildingowe.</p>
+    </div>
+  </div>
+
+  <div class="grid-3" data-reveal-stagger style="margin-top:16px;">
+    <div class="card">
+      <div class="card-label" style="color:var(--pale-green);">Wartość</div>
+      <h3>Pełna inkluzywność</h3>
+      <p>Każdy korzysta, niezależnie od wieku, wagi, zdrowia. Brak wykluczenia.</p>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--pale-green);">Wartość</div>
+      <h3>Integracja on-site</h3>
+      <p>Wzmocnienie struktur komunikacyjnych w biurze. Benefit, który żyje w firmie.</p>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--pale-green);">Wartość</div>
+      <h3>Zero administracji</h3>
+      <p>Rozliczenie zbiorcze — 1 faktura w miesiącu. Koniec z mikrozarządzaniem.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ═══ 03 PORÓWNANIE ═══ -->
+  <div class="section" data-reveal>
+    <div class="section-head">
+      <div class="section-eyebrow">03 &mdash; Matryca porównawcza</div>
+      <h2>Zderzenie <em>modeli</em></h2>
+      <p class="section-desc">Pakiety medyczne łatają lukę zdrowotną. TeamBudget łata krytyczną lukę kulturową i społeczną w organizacji.</p>
+    </div>
+  </div>
+
+  <div data-reveal>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Multisport</th>
+          <th>Medicover</th>
+          <th class="tb-col">TeamBudget</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Poziom wykorzystania</td>
+          <td>~15%</td>
+          <td>Wysoki</td>
+          <td class="tb-col">~90%</td>
+        </tr>
+        <tr>
+          <td>Wpływ na zespół</td>
+          <td>Izolacja (aktywność indywidualna)</td>
+          <td>Izolacja (indywidualne wizyty)</td>
+          <td class="tb-col">Głęboka integracja</td>
+        </tr>
+        <tr>
+          <td>Retencja / Magnes do biura</td>
+          <td>Brak wpływu na biuro</td>
+          <td>Brak wpływu na biuro</td>
+          <td class="tb-col">Silne przyciąganie (wydarzenia on-site)</td>
+        </tr>
+        <tr>
+          <td>Inkluzywność i dostępność</td>
+          <td>Wysokie wykluczenie fizyczne</td>
+          <td>Powszechny</td>
+          <td class="tb-col">100% (dla każdego)</td>
+        </tr>
+        <tr>
+          <td>Ciężar administracyjny</td>
+          <td>Wysoki (zarządzanie kartami)</td>
+          <td>Średni</td>
+          <td class="tb-col">Minimalny (1 zbiorcza faktura)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ═══ 04 ARCHITEKTURA GTM ═══ -->
+  <div class="section" data-reveal>
+    <div class="section-head">
+      <div class="section-eyebrow">04 &mdash; Architektura GTM</div>
+      <h2>E-commerce <span class="orange">engine</span></h2>
+      <p class="section-desc">Przechodzimy ze sprzedaży z teczki na zautomatyzowane dostarczanie wartości pod drzwi biura. Cała organizacja musi nadążyć za silnikiem e-commerce.</p>
+    </div>
+  </div>
+
+  <div class="grid-3" data-reveal-stagger>
+    <div class="card">
+      <div class="card-label" style="color:var(--blue);">Dostępność</div>
+      <h3>Platforma 24/7</h3>
+      <p>Zautomatyzowana rejestracja e-commerce. Samoobsługowe zakupy bez pośredników.</p>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--blue);">Logistyka</div>
+      <h3>Standard MediaMarkt</h3>
+      <p>Zamówienie rano — dostawa rano. Błyskawiczna logistyka pod drzwi biura.</p>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--blue);">Onboarding</div>
+      <h3>Od hand-holding do self-service</h3>
+      <p>Początkowe wsparcie handlowca przechodzi w pełną automatyzację i samoobsługę.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ═══ 05 STRATEGIA KULI ŚNIEGOWEJ ═══ -->
+  <div class="section" data-reveal>
+    <div class="section-head">
+      <div class="section-eyebrow">05 &mdash; Efekt motyla GTM</div>
+      <h2>Strategia kuli <em>śniegowej</em></h2>
+      <p class="section-desc">Pojedyncze trzepotanie skrzydeł (auto pod biurem) wywołuje burzę (masowe rejestracje). Ekosystem musi działać synchronicznie.</p>
+    </div>
+  </div>
+
+  <div class="loop-wrap" data-reveal-stagger>
+    <div class="loop-card">
+      <div class="loop-label">Filar I</div>
+      <h4>Bezpośrednie uderzenie</h4>
+      <p>4 konferencje październikowe. Kampania direct do bazy 2k klientów B2B. Partnerstwo High Week.</p>
+    </div>
+    <div class="loop-card">
+      <div class="loop-label">Filar II</div>
+      <h4>Flota jako nośnik (Guerilla HR)</h4>
+      <p>Obrandowane auta pod biurowcami. Widoczne z okien, mijane w lobby. Brand zapada w pamięć.</p>
+    </div>
+    <div class="loop-card">
+      <div class="loop-label">Filar III</div>
+      <h4>Ekosystem cyfrowy</h4>
+      <p>LinkedIn buzz + AdWords + AI search + remarketing. Influencerki HR (np. Nicole) tłumaczą mechanikę.</p>
+    </div>
+    <div class="loop-card">
+      <div class="loop-label">The Loop</div>
+      <h4>Efekt kuli śniegowej</h4>
+      <p>Zadowolone zespoły zaczynają rozmawiać → presja na HR → powrót do punktu 1. Cykl się powtarza.</p>
+    </div>
+  </div>
+
+  <div class="highlight highlight--blue" data-reveal style="margin-top:32px;">
+    <h3>Matryca narracyjna</h3>
+    <p>Cztery filary przekazu: Psychologia Grupy (budowanie leadershipu przez wspólne doświadczenia), Pełna Inkluzywność (benefit dla każdego), Magnes na Biuro (realny powód do przyjścia), Ulga dla HR (1 faktura, zero mikrozarządzania).</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ═══ 06 3 FILARY PROMOCJI ═══ -->
+  <div class="section" data-reveal>
+    <div class="section-head">
+      <div class="section-eyebrow">06 &mdash; Strategia promocji</div>
+      <h2>Trzy filary <em>wejścia</em> na rynek</h2>
+    </div>
+  </div>
+
+  <div data-reveal-stagger>
+    <div class="pillar" style="margin-bottom:14px;">
+      <div class="pillar-num">Filar I &mdash; Bezpośrednia aktywacja</div>
+      <h3>Konferencje i kampania direct</h3>
+      <p>Osobiste zaszczepienie idei BetterWorkplace. Wdrożenie z asystą handlowca (login, hasła, ramy umów).</p>
+      <ul>
+        <li>4 konferencje październikowe (top 100 klientów)</li>
+        <li>Kampania direct do bazy 2 000 obecnych klientów B2B</li>
+        <li>Partnerstwo strategiczne High Week — platynowy partner</li>
+      </ul>
+    </div>
+
+    <div class="pillar" style="margin-bottom:14px; border-left-color:var(--orange);">
+      <div class="pillar-num" style="color:var(--orange);">Filar II &mdash; Guerilla HR</div>
+      <h3>Flota logistyczna jako nośnik reklamowy</h3>
+      <p>Pani z HR wchodzi do biura. Widzi obrandowany samochód TB pod drzwiami. 2h później widzi landing page lub post na LinkedIn. Kropki się łączą.</p>
+      <ul>
+        <li>Wielki branding: TEAM BUDGET — Nowy benefit w Twojej firmie</li>
+        <li>Ekspozycja pod biurami klientów i prospektów</li>
+        <li>Efekt kontekstowy: auto widoczne z okien biurowców</li>
+      </ul>
+    </div>
+
+    <div class="pillar" style="margin-bottom:14px; border-left-color:var(--pale-green);">
+      <div class="pillar-num" style="color:var(--pale-green);">Filar III &mdash; Ekosystem cyfrowy</div>
+      <h3>Digital marketing i influencerzy HR</h3>
+      <p>Płynne przejście z Top of Mind wykreowanego przez flotę i influencerów do natychmiastowej konwersji przez landing page.</p>
+      <ul>
+        <li>Top Funnel: LinkedIn buzz, AdWords, AI-driven search, remarketing</li>
+        <li>Mid Funnel: Ekspertki HR (np. Nicole) — social proof</li>
+        <li>Bottom Funnel: Landing page → półautomatyczna rejestracja</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ═══ 07 HARMONOGRAM ═══ -->
+  <div class="section" data-reveal>
+    <div class="section-head">
+      <div class="section-eyebrow">07 &mdash; Harmonogram</div>
+      <h2>Oś czasu: <em>Q3</em> &rarr; <span class="orange">Q1</span></h2>
+      <p class="section-desc">Działania z Q4 mają kluczowe znaczenie psychologiczne, by zaabsorbować budżety otwierające się po Nowym Roku.</p>
+    </div>
+  </div>
+
+  <div class="timeline" data-reveal-stagger>
+    <div class="tl-item">
+      <div class="tl-month">Wrzesień — Koncepcja</div>
+      <h4>Budowa założeń strategicznych</h4>
+      <p>Landing page, brandbook, produkcja floty. Efekt Audi Q9 — pracujemy nad tym, dostępne w październiku.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-month">Październik — Pierwsza krew</div>
+      <h4>4x konferencje, onboarding klientów</h4>
+      <p>Zasiewanie ziarna przed zimą. Onboarding mniejszych i większych klientów z asystą handlowca.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-month">Listopad–Grudzień — Rozgrzewka e-commerce</div>
+      <h4>Skalowanie logistyki i automatyzacji</h4>
+      <p>Dopracowanie automatyzacji 24/7. Przygotowanie na falę styczniowych budżetów HR.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-month" style="color:var(--orange);">Styczeń — Żniwa</div>
+      <h4>Nowe budżety HR zostają odblokowane</h4>
+      <p>Masowe skalowanie używalności w zarejestrowanych firmach. Pik sprzedażowy — nowe budżety roczne.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ═══ 08 WIZJA ═══ -->
+  <div class="section" data-reveal>
+    <div class="section-head">
+      <div class="section-eyebrow">08 &mdash; Wizja docelowa</div>
+      <h2>Nowy standard <span class="orange">rynkowy</span></h2>
+      <p class="section-desc">Za 5 lat TeamBudget stoi na równi z Multisport jako standardowy benefit. Zmieniamy nie tylko to, co firmy dają pracownikom, ale jak to dowożą.</p>
+    </div>
+  </div>
+
+  <div class="grid-3" data-reveal-stagger>
+    <div class="card">
+      <div class="card-label" style="color:var(--orange);">Wskaźnik sukcesu</div>
+      <h3>100% wykorzystanie</h3>
+      <p>Pełne wykorzystanie elastycznych budżetów przez firmy — zero przepalania.</p>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--orange);">Wskaźnik sukcesu</div>
+      <h3>Plug-and-play</h3>
+      <p>Status usługi wspieranej w pełni zautomatyzowanym e-commerce. Samoobsługa od A do Z.</p>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--orange);">Wskaźnik sukcesu</div>
+      <h3>Logo TB pod każdym biurowcem</h3>
+      <p>Trwała obecność marki TeamBudget na każdym biurowcu w Polsce.</p>
+    </div>
+  </div>
+
+  <div class="highlight" data-reveal style="margin-top:32px;">
+    <h3>Core message</h3>
+    <p>Nie sprzedajemy jedzenia do biura. Sprzedajemy zautomatyzowane rozwiązanie problemów rotacji, komunikacji i kultury. Czas na TeamBudget.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer" data-reveal>
+    <div>TeamBudget · Dokument poufny · Nie udostępniaj osobom nieuprawnionym</div>
+    <div class="footer-badge">BetterWorkplace Ecosystem &middot; 2026</div>
+  </div>
+
+</div>
+
+<!-- ═══ SCRIPTS ═══ -->
+<script>
+// Lenis smooth scroll
+(function(){
+  var s = document.createElement('script');
+  s.src = 'https://unpkg.com/lenis@1.3.17/dist/lenis.min.js';
+  s.onload = function(){
+    var lenis = new Lenis({ duration:1.6, easing:function(t){ return Math.min(1,1.001-Math.pow(2,-10*t)); } });
+    function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+  };
+  document.head.appendChild(s);
+})();
+
+// Reveal animations via IntersectionObserver
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal],[data-reveal-stagger]').forEach(function(el){ el.classList.add('is-visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin:'0px 0px -8% 0px', threshold:0.08 });
+  document.querySelectorAll('[data-reveal],[data-reveal-stagger]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>
