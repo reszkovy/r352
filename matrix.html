@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BetterWorkplace – Macierz deliverables</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFAF7;
+  --bg-warm: #F5F3EE;
+  --card: #FFFFFF;
+  --border: #E8E4DE;
+  --border-light: #F0EDE8;
+  --shadow: rgba(0,0,0,0.05);
+  --text: #2A2A2A;
+  --text-secondary: #555555;
+  --text-muted: #888888;
+  --text-dim: #B0A99F;
+
+  --bw: #22c55e;
+  --df: #FF6B35;
+  --dfo: #a855f7;
+  --tb: #4375FF;
+  --bo: #0ea5e9;
+  --sg: #ec4899;
+  --fz: #14b8a6;
+
+  --done: #e3f2d0;
+  --done-text: #3B6D11;
+  --wip: #fef0cd;
+  --wip-text: #854F0B;
+  --plan: #F0EDE8;
+  --plan-text: #888888;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { height:100%; }
+body {
+  font-family:'DM Sans',system-ui,-apple-system,sans-serif;
+  background:var(--bg); color:var(--text);
+  line-height:1.65; -webkit-font-smoothing:antialiased;
+}
+
+/* ══ PASSWORD ══ */
+#pw-screen {
+  display:flex; align-items:center; justify-content:center;
+  flex-direction:column; gap:24px;
+  width:100%; min-height:100vh; background:var(--bg);
+}
+#pw-screen.hidden { display:none; }
+#pw-box {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:16px; padding:52px 44px 44px;
+  text-align:center; max-width:400px; width:90%;
+  box-shadow:0 4px 24px rgba(0,0,0,0.04);
+}
+#pw-box .pw-icon { font-size:36px; margin-bottom:20px; display:inline-block; }
+#pw-box h2 { font-size:18px; font-weight:700; letter-spacing:-0.3px; margin-bottom:8px; }
+#pw-box p { font-size:13px; color:var(--text-muted); margin-bottom:28px; line-height:1.6; }
+#pw-input {
+  width:100%; padding:13px 18px; border-radius:10px;
+  border:1px solid var(--border); background:var(--bg-warm);
+  color:var(--text); font-family:inherit; font-size:14px;
+  outline:none; transition:border-color .2s, box-shadow .2s;
+}
+#pw-input:focus { border-color:#22c55e; box-shadow:0 0 0 3px rgba(34,197,94,0.1); }
+#pw-input.pw-error { border-color:#ef4444; animation:shake .4s ease; }
+#pw-input::placeholder { color:var(--text-dim); }
+#pw-btn {
+  margin-top:14px; width:100%; padding:13px;
+  background:#2A2A2A; color:#FFFFFF; border:none;
+  border-radius:10px; font-family:inherit; font-size:14px;
+  font-weight:600; cursor:pointer; transition:all .2s ease;
+}
+#pw-btn:hover { background:#1a1a1a; transform:translateY(-1px); box-shadow:0 4px 12px rgba(0,0,0,0.15); }
+#pw-error-msg { font-size:12px; color:#ef4444; margin-top:12px; min-height:16px; }
+@keyframes shake { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-6px)} 40%,80%{transform:translateX(6px)} }
+
+/* ══ MAIN ══ */
+#main {
+  display:none; flex-direction:column; align-items:flex-start;
+  width:100%; min-height:100vh;
+  padding:48px 40px 64px;
+  max-width:1200px; margin:0 auto;
+}
+#main.visible { display:flex; }
+
+.top-nav {
+  font-size:12px; font-weight:500; color:var(--text-dim);
+  text-decoration:none; margin-bottom:28px;
+  transition:color .2s;
+}
+.top-nav:hover { color:var(--text); }
+
+.page-eyebrow {
+  font-size:10px; letter-spacing:3.5px; text-transform:uppercase;
+  color:var(--text-dim); margin-bottom:10px; font-weight:600;
+}
+.page-title {
+  font-size:28px; font-weight:800; letter-spacing:-0.6px;
+  margin-bottom:6px; color:var(--text);
+}
+.page-title span {
+  background:linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.page-sub {
+  font-size:14px; color:var(--text-muted); margin-bottom:12px;
+  line-height:1.6; max-width:640px;
+}
+
+/* ── Legend ── */
+.legend {
+  display:flex; gap:20px; margin:20px 0 28px; flex-wrap:wrap;
+  font-size:12px; color:var(--text-secondary);
+}
+.legend span { display:flex; align-items:center; gap:7px; }
+.legend .dot {
+  width:14px; height:14px; border-radius:6px; display:inline-block;
+  font-size:10px; text-align:center; line-height:14px; font-weight:700;
+}
+
+/* ── Progress bar ── */
+.progress-wrap {
+  width:100%; margin-bottom:32px;
+}
+.progress-stats {
+  display:flex; justify-content:space-between; align-items:baseline;
+  margin-bottom:8px;
+}
+.progress-label { font-size:12px; color:var(--text-muted); }
+.progress-pct { font-size:22px; font-weight:800; color:var(--text); letter-spacing:-0.5px; }
+.progress-bar {
+  width:100%; height:8px; border-radius:4px;
+  background:var(--border-light); overflow:hidden;
+}
+.progress-fill {
+  height:100%; border-radius:4px;
+  background:linear-gradient(90deg, #22c55e, #16a34a);
+  transition:width .5s cubic-bezier(0.22,1,0.36,1);
+}
+
+/* ── Table ── */
+.table-wrap {
+  width:100%; overflow-x:auto;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  box-shadow:0 1px 4px var(--shadow);
+}
+.mx {
+  width:100%; border-collapse:collapse; font-size:13px;
+}
+.mx th, .mx td {
+  padding:14px 14px; text-align:center; vertical-align:middle;
+}
+.mx thead th {
+  font-size:10px; font-weight:700; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--text-dim);
+  background:var(--bg-warm);
+  border-bottom:1px solid var(--border);
+  white-space:nowrap; position:sticky; top:0; z-index:2;
+}
+.mx thead th:first-child {
+  text-align:left; min-width:170px; border-radius:16px 0 0 0;
+}
+.mx thead th:last-child { border-radius:0 16px 0 0; }
+.mx tbody td { border-bottom:1px solid var(--border-light); }
+.mx tbody tr:last-child td { border-bottom:none; }
+.mx tbody td:first-child { text-align:left; }
+
+/* Brand cell */
+.brand-cell { display:flex; align-items:center; gap:10px; }
+.brand-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.brand-info {}
+.brand-name { font-weight:700; font-size:14px; }
+.brand-desc { font-size:11px; color:var(--text-dim); margin-top:1px; }
+
+/* Status pill */
+.cell {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:36px; height:36px; border-radius:10px;
+  font-size:16px; cursor:pointer;
+  transition:all .2s ease; user-select:none;
+  position:relative;
+}
+.cell:hover { transform:scale(1.15); }
+.cell:active { transform:scale(0.95); }
+.cell[data-st="done"] { background:var(--done); color:var(--done-text); }
+.cell[data-st="wip"] { background:var(--wip); color:var(--wip-text); }
+.cell[data-st="plan"] { background:var(--plan); color:var(--plan-text); }
+.cell[data-st="empty"] { background:transparent; border:1.5px dashed var(--border); color:var(--text-dim); }
+
+/* Shared badge */
+.shared-badge {
+  position:absolute; bottom:-2px; right:-2px;
+  font-size:7px; font-weight:700; letter-spacing:.5px;
+  color:var(--text-dim); background:var(--bg-warm);
+  padding:1px 3px; border-radius:3px; line-height:1;
+}
+
+/* Section separator */
+.sep td { padding:0; height:4px; background:var(--bg); border:none; }
+
+/* ── Tooltip ── */
+.tooltip {
+  position:fixed; z-index:100;
+  background:#2A2A2A; color:#fff;
+  padding:8px 14px; border-radius:8px;
+  font-size:12px; font-weight:500;
+  pointer-events:none; opacity:0;
+  transition:opacity .15s;
+  white-space:nowrap;
+  box-shadow:0 4px 16px rgba(0,0,0,0.2);
+}
+.tooltip.show { opacity:1; }
+
+/* ── Footer ── */
+.page-footer {
+  margin-top:40px; font-size:11px; color:var(--text-dim);
+  line-height:1.7; width:100%; text-align:center;
+  padding-top:24px; border-top:1px solid var(--border-light);
+}
+
+/* ── Responsive ── */
+@media (max-width:800px) {
+  #main { padding:28px 16px 48px; }
+  .mx th, .mx td { padding:10px 8px; }
+  .brand-name { font-size:13px; }
+  .cell { width:32px; height:32px; font-size:14px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ PASSWORD ══ -->
+<div id="pw-screen">
+  <div id="pw-box">
+    <div class="pw-icon">🔒</div>
+    <h2>Dokument chroniony</h2>
+    <p>Ten dokument jest poufny. Wprowadź hasło, aby uzyskać dostęp.</p>
+    <form onsubmit="return checkPw()">
+      <input type="password" id="pw-input" placeholder="Hasło dostępu" autocomplete="off" autofocus>
+      <button type="submit" id="pw-btn">Odblokuj</button>
+    </form>
+    <div id="pw-error-msg"></div>
+  </div>
+</div>
+
+<!-- ══ MAIN ══ -->
+<div id="main">
+
+  <a class="top-nav" href="index.html">← Panel klienta</a>
+
+  <div class="page-eyebrow">Ekosystem BetterWorkplace</div>
+  <div class="page-title">Macierz <span>deliverables</span></div>
+  <div class="page-sub">Status realizacji dla każdej marki w ekosystemie. Kliknij komórkę, aby zmienić status — zmiany zapisują się automatycznie.</div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <span><span class="dot" style="background:var(--done);color:var(--done-text)">✓</span> Gotowe</span>
+    <span><span class="dot" style="background:var(--wip);color:var(--wip-text)">✎</span> W trakcie</span>
+    <span><span class="dot" style="background:var(--plan);color:var(--plan-text)">—</span> Zaplanowane</span>
+    <span><span class="dot" style="border:1.5px dashed var(--border);background:transparent">···</span> Do ustalenia</span>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-wrap">
+    <div class="progress-stats">
+      <span class="progress-label">Postęp ekosystemu</span>
+      <span class="progress-pct" id="pct">0%</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="bar" style="width:0%"></div>
+    </div>
+  </div>
+
+  <!-- Matrix table -->
+  <div class="table-wrap">
+  <table class="mx" id="matrix">
+  <thead>
+    <tr>
+      <th>Marka</th>
+      <th>Strategia</th>
+      <th>Branding</th>
+      <th>WWW</th>
+      <th>Brand Voice</th>
+      <th>SEO</th>
+      <th>Performance</th>
+      <th>Social</th>
+    </tr>
+  </thead>
+  <tbody id="tbody"></tbody>
+  </table>
+  </div>
+
+  <div class="page-footer">
+    BetterWorkplace · Macierz deliverables · Dokumenty poufne<br>
+    Nie udostępniaj linku osobom nieuprawnionym
+  </div>
+
+</div>
+
+<!-- ══ TOOLTIP ══ -->
+<div class="tooltip" id="tip"></div>
+
+<script>
+/* ── Password ── */
+function checkPw() {
+  var input = document.getElementById('pw-input');
+  var hash = 0, str = input.value;
+  for (var i = 0; i < str.length; i++) {
+    hash = ((hash << 5) - hash) + str.charCodeAt(i);
+    hash |= 0;
+  }
+  if (hash === -1422286391) {
+    document.getElementById('pw-screen').classList.add('hidden');
+    document.getElementById('main').classList.add('visible');
+    sessionStorage.setItem('bw_auth', '1');
+    return false;
+  }
+  input.classList.add('pw-error');
+  document.getElementById('pw-error-msg').textContent = 'Nieprawidłowe hasło. Spróbuj ponownie.';
+  setTimeout(function(){ input.classList.remove('pw-error'); }, 400);
+  return false;
+}
+if (sessionStorage.getItem('bw_auth') === '1') {
+  document.getElementById('pw-screen').classList.add('hidden');
+  document.getElementById('main').classList.add('visible');
+}
+
+/* ── Data ── */
+var COLS = ['strategia','branding','www','voice','seo','perfo','social'];
+var COL_LABELS = {
+  strategia:'Strategia', branding:'Branding', www:'WWW',
+  voice:'Brand Voice', seo:'SEO', perfo:'Performance', social:'Social'
+};
+
+var BRANDS = [
+  { id:'bw', name:'BetterWorkplace', desc:'Master brand · parasol', color:'#22c55e',
+    defaults:{ strategia:'done', branding:'done', www:'done', voice:'done', seo:'plan', perfo:'wip', social:'plan' }},
+  { id:'df', name:'DailyFruits', desc:'Sub-brand · owoce & snacki', color:'#FF6B35',
+    defaults:{ strategia:'done', branding:'done', www:'done', voice:'done', seo:'done', perfo:'wip', social:'plan' }},
+  { id:'dfo', name:'DailyFoods', desc:'Sub-brand · kawa, lunche · = DF', color:'#a855f7', shared:'DF',
+    defaults:{ strategia:'done', branding:'done', www:'done', voice:'done', seo:'done', perfo:'plan', social:'plan' }},
+  { id:'tb', name:'TeamBudget', desc:'Sub-brand · SaaS benefitowa', color:'#4375FF',
+    defaults:{ strategia:'plan', branding:'done', www:'plan', voice:'plan', seo:'empty', perfo:'plan', social:'plan' }},
+  { id:'sep' },
+  { id:'bo', name:'BetterOffice', desc:'Sub-brand · kuchnia & zaopatrzenie', color:'#0ea5e9',
+    defaults:{ strategia:'wip', branding:'empty', www:'empty', voice:'empty', seo:'empty', perfo:'empty', social:'empty' }},
+  { id:'sg', name:'SendGift', desc:'Sub-brand · paczki & gifting', color:'#ec4899',
+    defaults:{ strategia:'empty', branding:'empty', www:'empty', voice:'empty', seo:'empty', perfo:'empty', social:'empty' }},
+  { id:'fz', name:'Fizjoterapia', desc:'Sub-brand · fizjoterapia biurowa', color:'#14b8a6',
+    defaults:{ strategia:'empty', branding:'empty', www:'empty', voice:'empty', seo:'empty', perfo:'empty', social:'empty' }}
+];
+
+var STATES = ['done','wip','plan','empty'];
+var ICONS  = { done:'✓', wip:'✎', plan:'—', empty:'···' };
+var LABELS = { done:'Gotowe', wip:'W trakcie', plan:'Zaplanowane', empty:'Do ustalenia' };
+
+/* ── State ── */
+var STORE_KEY = 'bw_matrix_v1';
+var state = {};
+
+function loadState() {
+  try {
+    var saved = localStorage.getItem(STORE_KEY);
+    if (saved) { state = JSON.parse(saved); return; }
+  } catch(e) {}
+  // Init from defaults
+  state = {};
+  BRANDS.forEach(function(b) {
+    if (b.id === 'sep') return;
+    state[b.id] = {};
+    COLS.forEach(function(c) { state[b.id][c] = b.defaults[c]; });
+  });
+  saveState();
+}
+
+function saveState() {
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch(e) {}
+}
+
+/* ── Render ── */
+function render() {
+  var tbody = document.getElementById('tbody');
+  tbody.innerHTML = '';
+
+  BRANDS.forEach(function(b) {
+    if (b.id === 'sep') {
+      var sep = document.createElement('tr');
+      sep.className = 'sep';
+      sep.innerHTML = '<td colspan="8"></td>';
+      tbody.appendChild(sep);
+      return;
+    }
+
+    var tr = document.createElement('tr');
+
+    // Brand cell
+    var td0 = document.createElement('td');
+    td0.innerHTML =
+      '<div class="brand-cell">' +
+        '<span class="brand-dot" style="background:' + b.color + '"></span>' +
+        '<div class="brand-info">' +
+          '<div class="brand-name">' + b.name + '</div>' +
+          '<div class="brand-desc">' + b.desc + '</div>' +
+        '</div>' +
+      '</div>';
+    tr.appendChild(td0);
+
+    // Status cells
+    COLS.forEach(function(col) {
+      var td = document.createElement('td');
+      var st = state[b.id][col];
+      var cell = document.createElement('span');
+      cell.className = 'cell';
+      cell.setAttribute('data-st', st);
+      cell.setAttribute('data-brand', b.id);
+      cell.setAttribute('data-col', col);
+      cell.textContent = ICONS[st];
+
+      // Shared badge for DailyFoods
+      if (b.shared && b.defaults[col] === 'done' && st === 'done') {
+        var badge = document.createElement('span');
+        badge.className = 'shared-badge';
+        badge.textContent = '= ' + b.shared;
+        cell.appendChild(badge);
+      }
+
+      cell.addEventListener('click', function() {
+        var curr = state[b.id][col];
+        var idx = STATES.indexOf(curr);
+        var next = STATES[(idx + 1) % STATES.length];
+        state[b.id][col] = next;
+        saveState();
+        render();
+      });
+
+      cell.addEventListener('mouseenter', function(e) {
+        var tip = document.getElementById('tip');
+        tip.textContent = b.name + ' → ' + COL_LABELS[col] + ': ' + LABELS[state[b.id][col]];
+        tip.classList.add('show');
+        var rect = cell.getBoundingClientRect();
+        tip.style.left = rect.left + rect.width/2 - tip.offsetWidth/2 + 'px';
+        tip.style.top = rect.top - tip.offsetHeight - 8 + 'px';
+      });
+      cell.addEventListener('mouseleave', function() {
+        document.getElementById('tip').classList.remove('show');
+      });
+
+      td.appendChild(cell);
+      tr.appendChild(td);
+    });
+
+    tbody.appendChild(tr);
+  });
+
+  updateProgress();
+}
+
+function updateProgress() {
+  var total = 0, done = 0;
+  BRANDS.forEach(function(b) {
+    if (b.id === 'sep') return;
+    COLS.forEach(function(c) {
+      total++;
+      if (state[b.id][c] === 'done') done++;
+    });
+  });
+  var pct = Math.round(done / total * 100);
+  document.getElementById('pct').textContent = done + '/' + total + ' · ' + pct + '%';
+  document.getElementById('bar').style.width = pct + '%';
+}
+
+/* ── Init ── */
+loadState();
+render();
+</script>
+
+</body>
+</html>
