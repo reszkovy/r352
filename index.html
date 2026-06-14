@@ -68,21 +68,12 @@ body {
   box-shadow:0 4px 24px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.03);
 }
 #pw-box .pw-logo {
-  height:28px; margin-bottom:22px; opacity:.85;
-}
-#pw-box .pw-name {
-  font-size:22px; font-weight:800; letter-spacing:-0.5px;
-  margin-bottom:4px; color:var(--text);
-}
-#pw-box .pw-name span {
-  background:linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  background-clip:text;
+  max-width:220px; height:auto; margin-bottom:20px;
 }
 #pw-box h2 {
-  font-size:13px; font-weight:500; letter-spacing:0.5px;
+  font-size:12px; font-weight:500; letter-spacing:1px;
   text-transform:uppercase; color:var(--text-dim);
-  margin-bottom:18px;
+  margin-bottom:20px;
 }
 #pw-box p {
   font-size:13px; color:var(--text-muted);
@@ -132,6 +123,9 @@ body {
 #hub.visible { display:flex; }
 
 /* ── Header ── */
+.hub-logo {
+  height:36px; margin-bottom:14px;
+}
 .hub-eyebrow {
   font-size:10px; letter-spacing:3.5px; text-transform:uppercase;
   color:var(--text-dim); margin-bottom:10px; font-weight:600;
@@ -354,8 +348,7 @@ body {
 <!-- ══ PASSWORD ══ -->
 <div id="pw-screen">
   <div id="pw-box">
-    <img class="pw-logo" src="betterWorkplace.svg" alt="BetterWorkplace">
-    <div class="pw-name">better<span>guide</span></div>
+    <img class="pw-logo" src="betterguide_logo.svg" alt="betterguide">
     <h2>Przewodnik po ekosystemie</h2>
     <p>Strategie, brand guide'y, design systemy i dokumentacja marek BetterWorkplace. Dostęp wymaga hasła.</p>
     <form onsubmit="return checkPw()">
@@ -368,9 +361,8 @@ body {
 
 <!-- ══ HUB ══ -->
 <div id="hub">
-  <div class="hub-eyebrow">BetterWorkplace</div>
-  <div class="hub-title">Panel <span>klienta</span></div>
-  <div class="hub-sub">Wybierz dokument, z którym chcesz się zapoznać.</div>
+  <img class="hub-logo" src="betterguide_logo.svg" alt="betterguide">
+  <div class="hub-sub">Przewodnik po ekosystemie brandów BetterWorkplace. Wybierz dokument.</div>
 
   <!-- 00 HERO GRID — Strategia + Macierz -->
   <div class="hub-hero-grid">
