@@ -285,6 +285,7 @@ body {
       <th>Marka</th>
       <th>Strategia</th>
       <th>Branding</th>
+      <th>Design System</th>
       <th>WWW</th>
       <th>Brand Voice</th>
       <th>SEO</th>
@@ -332,28 +333,31 @@ if (sessionStorage.getItem('bw_auth') === '1') {
 }
 
 /* ── Data ── */
-var COLS = ['strategia','branding','www','voice','seo','perfo','social'];
+var COLS = ['strategia','branding','ds','www','voice','seo','perfo','social'];
 var COL_LABELS = {
-  strategia:'Strategia', branding:'Branding', www:'WWW',
+  strategia:'Strategia', branding:'Branding', ds:'Design System', www:'WWW',
   voice:'Brand Voice', seo:'SEO', perfo:'Performance', social:'Social'
+};
+var COL_LINKS = {
+  'df-ds': 'https://www.figma.com/design/hyx6OGEBwsX6fGhDZKa9hR/DailyFruits-%E2%80%94-Design-System--Brand-Voice-v1.0-?node-id=105-91'
 };
 
 var BRANDS = [
   { id:'bw', name:'BetterWorkplace', desc:'Master brand · parasol', color:'#22c55e',
-    defaults:{ strategia:'done', branding:'done', www:'done', voice:'done', seo:'plan', perfo:'wip', social:'plan' }},
+    defaults:{ strategia:'done', branding:'done', ds:'empty', www:'done', voice:'done', seo:'plan', perfo:'wip', social:'plan' }},
   { id:'df', name:'DailyFruits', desc:'Sub-brand · owoce & snacki', color:'#FF6B35',
-    defaults:{ strategia:'done', branding:'done', www:'done', voice:'done', seo:'done', perfo:'wip', social:'plan' }},
+    defaults:{ strategia:'done', branding:'done', ds:'done', www:'done', voice:'done', seo:'done', perfo:'wip', social:'plan' }},
   { id:'dfo', name:'DailyFoods', desc:'Sub-brand · kawa, lunche · = DF', color:'#a855f7', shared:'DF',
-    defaults:{ strategia:'done', branding:'done', www:'done', voice:'done', seo:'done', perfo:'plan', social:'plan' }},
+    defaults:{ strategia:'done', branding:'done', ds:'done', www:'done', voice:'done', seo:'done', perfo:'plan', social:'plan' }},
   { id:'tb', name:'TeamBudget', desc:'Sub-brand · SaaS benefitowa', color:'#4375FF',
-    defaults:{ strategia:'plan', branding:'done', www:'plan', voice:'plan', seo:'empty', perfo:'plan', social:'plan' }},
+    defaults:{ strategia:'plan', branding:'done', ds:'empty', www:'plan', voice:'plan', seo:'empty', perfo:'plan', social:'plan' }},
   { id:'sep' },
   { id:'bo', name:'BetterOffice', desc:'Sub-brand · kuchnia & zaopatrzenie', color:'#0ea5e9',
-    defaults:{ strategia:'wip', branding:'empty', www:'empty', voice:'empty', seo:'empty', perfo:'empty', social:'empty' }},
+    defaults:{ strategia:'wip', branding:'empty', ds:'empty', www:'empty', voice:'empty', seo:'empty', perfo:'empty', social:'empty' }},
   { id:'sg', name:'SendGift', desc:'Sub-brand · paczki & gifting', color:'#ec4899',
-    defaults:{ strategia:'empty', branding:'empty', www:'empty', voice:'empty', seo:'empty', perfo:'empty', social:'empty' }},
+    defaults:{ strategia:'empty', branding:'empty', ds:'empty', www:'empty', voice:'empty', seo:'empty', perfo:'empty', social:'empty' }},
   { id:'fz', name:'Fizjoterapia', desc:'Sub-brand · fizjoterapia biurowa', color:'#14b8a6',
-    defaults:{ strategia:'empty', branding:'empty', www:'empty', voice:'empty', seo:'empty', perfo:'empty', social:'empty' }}
+    defaults:{ strategia:'empty', branding:'empty', ds:'empty', www:'empty', voice:'empty', seo:'empty', perfo:'empty', social:'empty' }}
 ];
 
 var STATES = ['done','wip','plan','empty'];
@@ -367,7 +371,19 @@ var state = {};
 function loadState() {
   try {
     var saved = localStorage.getItem(STORE_KEY);
-    if (saved) { state = JSON.parse(saved); return; }
+    if (saved) {
+      state = JSON.parse(saved);
+      // Backfill new columns for existing saved states
+      BRANDS.forEach(function(b) {
+        if (b.id === 'sep') return;
+        if (!state[b.id]) state[b.id] = {};
+        COLS.forEach(function(c) {
+          if (!(c in state[b.id])) state[b.id][c] = b.defaults[c];
+        });
+      });
+      saveState();
+      return;
+    }
   } catch(e) {}
   // Init from defaults
   state = {};
@@ -392,7 +408,7 @@ function render() {
     if (b.id === 'sep') {
       var sep = document.createElement('tr');
       sep.className = 'sep';
-      sep.innerHTML = '<td colspan="8"></td>';
+      sep.innerHTML = '<td colspan="9"></td>';
       tbody.appendChild(sep);
       return;
     }
@@ -430,14 +446,28 @@ function render() {
         cell.appendChild(badge);
       }
 
-      cell.addEventListener('click', function() {
-        var curr = state[b.id][col];
-        var idx = STATES.indexOf(curr);
-        var next = STATES[(idx + 1) % STATES.length];
-        state[b.id][col] = next;
-        saveState();
-        render();
-      });
+      var linkKey = b.id + '-' + col;
+      if (COL_LINKS[linkKey]) {
+        cell.style.cursor = 'pointer';
+        cell.style.position = 'relative';
+        cell.title = 'Otwórz w Figmie';
+        var linkIcon = document.createElement('span');
+        linkIcon.textContent = '↗';
+        linkIcon.style.cssText = 'position:absolute;top:1px;right:2px;font-size:9px;opacity:.5;';
+        cell.appendChild(linkIcon);
+        cell.addEventListener('click', function() {
+          window.open(COL_LINKS[linkKey], '_blank');
+        });
+      } else {
+        cell.addEventListener('click', function() {
+          var curr = state[b.id][col];
+          var idx = STATES.indexOf(curr);
+          var next = STATES[(idx + 1) % STATES.length];
+          state[b.id][col] = next;
+          saveState();
+          render();
+        });
+      }
 
       cell.addEventListener('mouseenter', function(e) {
         var tip = document.getElementById('tip');
