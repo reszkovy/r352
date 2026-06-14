@@ -208,6 +208,12 @@ h3.block::before{content:'';width:18px;height:3px;border-radius:3px;background:v
 .photo-rule h5{font-size:13px;font-weight:600;margin-bottom:4px;}
 .photo-rule p{font-size:13px;color:var(--muted);line-height:1.7;}
 
+/* scroll reveal */
+[data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(0.22,1,0.36,1),transform .9s cubic-bezier(0.22,1,0.36,1);will-change:opacity,transform;}
+[data-reveal].is-visible{opacity:1;transform:translateY(0);}
+[data-reveal-stagger]>*{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(0.22,1,0.36,1),transform .7s cubic-bezier(0.22,1,0.36,1);will-change:opacity,transform;}
+[data-reveal-stagger].is-visible>*{opacity:1;transform:translateY(0);}
+
 @media(max-width:880px){
   .shell{grid-template-columns:1fr;}
   aside{position:static;height:auto;border-right:none;border-bottom:1px solid var(--line);padding:24px;}
@@ -266,7 +272,7 @@ h3.block::before{content:'';width:18px;height:3px;border-radius:3px;background:v
   <main>
 
     <!-- HERO -->
-    <section class="ds-hero" style="border:none;">
+    <section class="ds-hero" data-reveal style="border:none;">
       <div class="kicker">ekosystem benefitow. jeden partner.</div>
       <h1>Brand <span class="o">Guide</span></h1>
       <p>Jeden spojny jezyk marki BetterWorkplace — osobowosc, glos, kolory, typografia i zasady wizualne. Wedlug tego budujemy kazdy komunikat i material.</p>
@@ -274,20 +280,20 @@ h3.block::before{content:'';width:18px;height:3px;border-radius:3px;background:v
     </section>
 
     <!-- 01 — KOLORY -->
-    <section id="kolory">
+    <section id="kolory" data-reveal>
       <div class="kicker">01 — Fundamenty</div>
       <h2 class="sec">Kolory</h2>
       <p class="sub">Paleta BetterWorkplace jest ciepla i organiczna — oparta na glebokim brazu, pomaranczowym akcencie i neonowej zieleni.</p>
 
       <h3 class="block">Kolory glowne</h3>
-      <div class="swatches">
+      <div class="swatches" data-reveal-stagger>
         <div class="sw"><div class="chip" style="background:#1F0B09"></div><div class="smeta"><div class="name">Dark Brown</div><div class="role">Naglowki, tekst glowny, CTA, nav</div><div class="hex">#1F0B09</div><span class="tag lead">wiodacy</span></div></div>
         <div class="sw"><div class="chip" style="background:#FF6921"></div><div class="smeta"><div class="name">Orange</div><div class="role">Akcent, eyebrow, logo, ikony</div><div class="hex">#FF6921</div><span class="tag accent">akcent</span></div></div>
         <div class="sw"><div class="chip" style="background:#B2FF0D"></div><div class="smeta"><div class="name">Lime Green</div><div class="role">Checkmarks, wyroznienia, energia</div><div class="hex">#B2FF0D</div><span class="tag energy">energia</span></div></div>
       </div>
 
       <h3 class="block">Neutralne i pomocnicze</h3>
-      <div class="swatches s4">
+      <div class="swatches s4" data-reveal-stagger>
         <div class="sw"><div class="chip" style="background:#FFFFFF;border-bottom:1px solid var(--line)"></div><div class="smeta"><div class="name">White</div><div class="role">Tlo glowne, karty, sekcje</div><div class="hex">#FFFFFF</div><span class="tag bg">tlo</span></div></div>
         <div class="sw"><div class="chip" style="background:#E9E7E7"></div><div class="smeta"><div class="name">Warm Gray</div><div class="role">Bordery, separatory, disabled</div><div class="hex">#E9E7E7</div><span class="tag bg">neutralny</span></div></div>
         <div class="sw"><div class="chip" style="background:#665F5E"></div><div class="smeta"><div class="name">Neutral 60</div><div class="role">Tekst body, opisy, paragrafy</div><div class="hex">#665F5E</div><span class="tag bg">body</span></div></div>
@@ -317,7 +323,7 @@ h3.block::before{content:'';width:18px;height:3px;border-radius:3px;background:v
     </section>
 
     <!-- 02 — TYPOGRAFIA -->
-    <section id="typografia">
+    <section id="typografia" data-reveal>
       <div class="kicker">02 — Fundamenty</div>
       <h2 class="sec">Typografia</h2>
       <p class="sub">Dwa fonty, dwie role. DM Sans na naglowkach — geometryczny, pewny siebie. Nunito Sans na body — ciepiy, czytelny, przyjazny.</p>
@@ -349,7 +355,7 @@ h3.block::before{content:'';width:18px;height:3px;border-radius:3px;background:v
     </section>
 
     <!-- 03 — OSOBOWOSC -->
-    <section id="osobowosc">
+    <section id="osobowosc" data-reveal>
       <div class="kicker">03 — Marka</div>
       <h2 class="sec">Osobowosc marki</h2>
       <p class="sub">Kim jest BetterWorkplace jako marka — misja, archetyp, obietnica i terytorium.</p>
@@ -384,12 +390,12 @@ h3.block::before{content:'';width:18px;height:3px;border-radius:3px;background:v
     </section>
 
     <!-- 04 — GLOS MARKI -->
-    <section id="glos">
+    <section id="glos" data-reveal>
       <div class="kicker">04 — Marka</div>
       <h2 class="sec">Glos marki</h2>
       <p class="sub">Cztery atrybuty definiujace sposob, w jaki BetterWorkplace sie komunikuje.</p>
 
-      <div class="v-grid">
+      <div class="v-grid" data-reveal-stagger>
         <div class="v-card">
           <h3>Strategiczny</h3>
           <div class="desc">Mowi &bdquo;dlaczego&rdquo;, nie &bdquo;co&rdquo;. Nie sprzedaje produktow — buduje kategorie. Jezyk: partnerstwo, ROI, retencja, employer branding.</div>
@@ -425,7 +431,7 @@ h3.block::before{content:'';width:18px;height:3px;border-radius:3px;background:v
     </section>
 
     <!-- 05 — HIERARCHIA PRZEKAZOW -->
-    <section id="hierarchia">
+    <section id="hierarchia" data-reveal>
       <div class="kicker">05 — Marka</div>
       <h2 class="sec">Hierarchia przekazow</h2>
       <p class="sub">BetterWorkplace nie mowi o owocach, kawie ani kanapkach. To robia sub-brandy. BW mowi o kategorii, ekosystemie i strategii.</p>
@@ -450,7 +456,7 @@ h3.block::before{content:'';width:18px;height:3px;border-radius:3px;background:v
     </section>
 
     <!-- 06 — SLOWNIK -->
-    <section id="slownik">
+    <section id="slownik" data-reveal>
       <div class="kicker">06 — Komunikacja</div>
       <h2 class="sec">Slownik marki</h2>
       <p class="sub">Konkretne zamienniki — co BetterWorkplace mowi, a czego nigdy nie powie.</p>
@@ -470,12 +476,12 @@ h3.block::before{content:'';width:18px;height:3px;border-radius:3px;background:v
     </section>
 
     <!-- 07 — ODBIORCY -->
-    <section id="odbiorcy">
+    <section id="odbiorcy" data-reveal>
       <div class="kicker">07 — Komunikacja</div>
       <h2 class="sec">Odbiorcy i adaptacja tonu</h2>
       <p class="sub">BetterWorkplace mowi glownie do decydentow strategicznych. Ton sie lekko przesuwa w zaleznosci od rozmowcy, ale nigdy nie schodzi na poziom produktowy.</p>
 
-      <div class="aud-grid">
+      <div class="aud-grid" data-reveal-stagger>
         <div class="aud-card">
           <div class="role">Glowny odbiorca</div>
           <h3>HR Director / CHRO</h3>
@@ -508,7 +514,7 @@ h3.block::before{content:'';width:18px;height:3px;border-radius:3px;background:v
     </section>
 
     <!-- 08 — BW VS SUB-BRANDY -->
-    <section id="versus">
+    <section id="versus" data-reveal>
       <div class="kicker">08 — Komunikacja</div>
       <h2 class="sec">BW vs. Sub-brandy</h2>
       <p class="sub">Jasna granica: co mowi BetterWorkplace, a co mowia poszczegolne marki w ekosystemie.</p>
@@ -548,7 +554,7 @@ h3.block::before{content:'';width:18px;height:3px;border-radius:3px;background:v
     </section>
 
     <!-- 09 — STYL FOTOGRAFII -->
-    <section id="fotografia">
+    <section id="fotografia" data-reveal>
       <div class="kicker">09 — Wizualne</div>
       <h2 class="sec">Styl fotografii</h2>
       <p class="sub">Ilustracje brandowe BetterWorkplace lacza fotografie z abstrakcyjnymi ksztaltami kolorowymi. Dwa warianty — dynamiczny cutout i zamknieta forma okragla.</p>
@@ -600,7 +606,7 @@ h3.block::before{content:'';width:18px;height:3px;border-radius:3px;background:v
     </section>
 
     <!-- 10 — DO & DON'T -->
-    <section id="zasady" style="border-bottom:none;">
+    <section id="zasady" data-reveal style="border-bottom:none;">
       <div class="kicker">10 — Wizualne</div>
       <h2 class="sec">Do &amp; Don't</h2>
       <p class="sub">Zasady komunikacji marki BetterWorkplace — co robimy, a czego unikamy.</p>
@@ -657,6 +663,30 @@ if(sessionStorage.getItem('bw_auth')==='1'){
   document.getElementById('pw-screen').classList.add('hidden');
   document.getElementById('main-content').style.display='block';
 }
+</script>
+<script>
+(function(){
+  var s=document.createElement('script');
+  s.src='https://unpkg.com/lenis@1.3.17/dist/lenis.min.js';
+  s.onload=function(){
+    var lenis=new Lenis({duration:1.6,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}});
+    function raf(time){lenis.raf(time);requestAnimationFrame(raf);}
+    requestAnimationFrame(raf);
+  };
+  document.head.appendChild(s);
+})();
+(function(){
+  if(!('IntersectionObserver' in window)){
+    document.querySelectorAll('[data-reveal],[data-reveal-stagger]').forEach(function(el){el.classList.add('is-visible');});
+    return;
+  }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){entry.target.classList.add('is-visible');io.unobserve(entry.target);}
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.08});
+  document.querySelectorAll('[data-reveal],[data-reveal-stagger]').forEach(function(el){io.observe(el);});
+})();
 </script>
 </body>
 </html>

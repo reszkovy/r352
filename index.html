@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BetterWorkplace – Panel klienta</title>
+<title>betterguide — Przewodnik po ekosystemie BetterWorkplace</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -67,13 +67,22 @@ body {
   max-width:400px; width:90%;
   box-shadow:0 4px 24px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.03);
 }
-#pw-box .pw-icon {
-  font-size:36px; margin-bottom:20px;
-  display:inline-block;
+#pw-box .pw-logo {
+  height:28px; margin-bottom:22px; opacity:.85;
+}
+#pw-box .pw-name {
+  font-size:22px; font-weight:800; letter-spacing:-0.5px;
+  margin-bottom:4px; color:var(--text);
+}
+#pw-box .pw-name span {
+  background:linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text;
 }
 #pw-box h2 {
-  font-size:18px; font-weight:700; letter-spacing:-0.3px;
-  margin-bottom:8px; color:var(--text);
+  font-size:13px; font-weight:500; letter-spacing:0.5px;
+  text-transform:uppercase; color:var(--text-dim);
+  margin-bottom:18px;
 }
 #pw-box p {
   font-size:13px; color:var(--text-muted);
@@ -141,11 +150,17 @@ body {
   line-height:1.6;
 }
 
+/* ── Hero grid ── */
+.hub-hero-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:14px; width:100%; margin-top:8px;
+}
+
 /* ── Hero card ── */
 .hub-hero-card {
   display:flex; align-items:center; justify-content:space-between;
-  width:100%; margin-top:8px;
-  padding:32px 36px;
+  width:100%;
+  padding:28px 30px;
   background:linear-gradient(135deg, #2A2A2A 0%, #3D3D3D 100%);
   border-radius:16px;
   text-decoration:none; color:#fff;
@@ -154,9 +169,9 @@ body {
 }
 .hub-hero-card::before {
   content:'STRATEGIA'; position:absolute;
-  font-size:clamp(80px,14vw,140px); font-weight:900;
+  font-size:clamp(60px,10vw,100px); font-weight:900;
   letter-spacing:-0.04em; color:rgba(255,255,255,0.03);
-  right:20px; top:50%; transform:translateY(-50%);
+  right:12px; top:50%; transform:translateY(-50%);
   pointer-events:none; line-height:1;
 }
 .hub-hero-card::after {
@@ -175,16 +190,16 @@ body {
   margin-bottom:10px;
 }
 .hub-hero-card .hero-title {
-  font-size:22px; font-weight:800; letter-spacing:-0.5px;
-  margin-bottom:8px;
+  font-size:18px; font-weight:800; letter-spacing:-0.4px;
+  margin-bottom:6px;
 }
 .hub-hero-card .hero-desc {
-  font-size:13px; color:rgba(255,255,255,0.6); line-height:1.6;
+  font-size:12px; color:rgba(255,255,255,0.55); line-height:1.55;
   max-width:560px;
 }
 .hub-hero-card .hero-arrow {
-  font-size:32px; font-weight:300; opacity:0.4;
-  transition:all .25s; flex-shrink:0; margin-left:32px;
+  font-size:26px; font-weight:300; opacity:0.4;
+  transition:all .25s; flex-shrink:0; margin-left:20px;
 }
 .hub-hero-card:hover .hero-arrow { opacity:1; transform:translateX(4px); }
 
@@ -318,12 +333,14 @@ body {
 /* ── Responsive ── */
 @media (max-width:800px) {
   #hub { padding:28px 20px 48px; }
+  .hub-hero-grid { grid-template-columns:1fr 1fr; }
   .hub-grid { grid-template-columns:1fr 1fr; }
   .hub-section { padding:22px 20px 20px; margin-top:28px; }
-  .hub-hero-card { padding:24px 28px; }
-  .hub-hero-card .hero-title { font-size:18px; }
+  .hub-hero-card { padding:22px 24px; }
+  .hub-hero-card .hero-title { font-size:16px; }
 }
 @media (max-width:500px) {
+  .hub-hero-grid { grid-template-columns:1fr; }
   .hub-grid { grid-template-columns:1fr; }
   .hub-title { font-size:22px; }
   .hub-section { padding:18px 16px 16px; margin-top:24px; }
@@ -337,9 +354,10 @@ body {
 <!-- ══ PASSWORD ══ -->
 <div id="pw-screen">
   <div id="pw-box">
-    <div class="pw-icon">🔒</div>
-    <h2>Dokument chroniony</h2>
-    <p>Ten dokument jest poufny. Wprowadź hasło, aby uzyskać dostęp.</p>
+    <img class="pw-logo" src="betterWorkplace.svg" alt="BetterWorkplace">
+    <div class="pw-name">better<span>guide</span></div>
+    <h2>Przewodnik po ekosystemie</h2>
+    <p>Strategie, brand guide'y, design systemy i dokumentacja marek BetterWorkplace. Dostęp wymaga hasła.</p>
     <form onsubmit="return checkPw()">
       <input type="password" id="pw-input" placeholder="Hasło dostępu" autocomplete="off" autofocus>
       <button type="submit" id="pw-btn">Odblokuj</button>
@@ -354,25 +372,26 @@ body {
   <div class="hub-title">Panel <span>klienta</span></div>
   <div class="hub-sub">Wybierz dokument, z którym chcesz się zapoznać.</div>
 
-  <!-- 00 STRATEGIA GŁÓWNA — hero -->
-  <a class="hub-hero-card" href="strategia.html">
-    <div>
-      <div class="hero-eyebrow">Strategia główna</div>
-      <div class="hero-title">Strategia ekosystemu BetterWorkplace 2026</div>
-      <div class="hero-desc">Architektura marek, narracja, matryca komunikacji, mapa ścieżek i governance całego ekosystemu.</div>
-    </div>
-    <div class="hero-arrow">→</div>
-  </a>
+  <!-- 00 HERO GRID — Strategia + Macierz -->
+  <div class="hub-hero-grid">
+    <a class="hub-hero-card" href="strategia.html">
+      <div>
+        <div class="hero-eyebrow">Strategia główna</div>
+        <div class="hero-title">Strategia ekosystemu BetterWorkplace 2026</div>
+        <div class="hero-desc">Architektura marek, narracja, matryca komunikacji, mapa ścieżek i governance całego ekosystemu.</div>
+      </div>
+      <div class="hero-arrow">→</div>
+    </a>
 
-  <!-- 00B MACIERZ DELIVERABLES -->
-  <a class="hub-hero-card" href="matrix.html" style="margin-top:14px; background:linear-gradient(135deg, #16a34a 0%, #22c55e 50%, #4ade80 100%);">
-    <div>
-      <div class="hero-eyebrow">Tracker</div>
-      <div class="hero-title">Macierz deliverables ekosystemu</div>
-      <div class="hero-desc">7 marek, 7 kategorii — interaktywny status realizacji. Klikaj komórki, aby aktualizować postęp.</div>
-    </div>
-    <div class="hero-arrow">→</div>
-  </a>
+    <a class="hub-hero-card" href="matrix.html" style="background:linear-gradient(135deg, #16a34a 0%, #22c55e 50%, #4ade80 100%);">
+      <div>
+        <div class="hero-eyebrow">Tracker</div>
+        <div class="hero-title">Macierz deliverables ekosystemu</div>
+        <div class="hero-desc">7 marek, 7 kategorii — interaktywny status realizacji. Klikaj komórki, aby aktualizować postęp.</div>
+      </div>
+      <div class="hero-arrow">→</div>
+    </a>
+  </div>
 
   <!-- 01 BETTERWORKPLACE -->
   <div class="hub-section hub-section--bw">
