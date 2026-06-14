@@ -301,6 +301,27 @@ body {
   font-size:10px; color:var(--text-dim); line-height:1.4;
   font-weight:500;
 }
+
+/* ── Draft / WIP card ── */
+.hub-card--draft {
+  opacity:.45;
+  filter:saturate(0);
+  border-left-color:var(--border) !important;
+}
+.hub-card--draft:hover {
+  opacity:.7;
+  filter:saturate(.3);
+}
+.hub-card-ddl {
+  display:inline-block;
+  font-size:9px; font-weight:700; letter-spacing:1px;
+  text-transform:uppercase;
+  color:#fff; background:#ef4444;
+  padding:3px 9px; border-radius:100px;
+  margin-left:6px;
+  vertical-align:middle;
+  line-height:1.3;
+}
 .hub-card-arrow {
   position:absolute; top:22px; right:20px;
   font-size:16px;
@@ -579,8 +600,8 @@ body {
         <div class="hub-card-arrow">→</div>
       </a>
 
-      <a class="hub-card" href="tb-landing-v1.html">
-        <div class="hub-card-badge">Landing Page · hipoteza</div>
+      <a class="hub-card hub-card--draft" href="tb-landing-v1.html">
+        <div class="hub-card-badge">Landing Page · hipoteza <span class="hub-card-ddl">DDL: Środa</span></div>
         <div class="hub-card-title">TB Landing Page (hipoteza)</div>
         <div class="hub-card-desc">Platform-forward koncept landingu — dashboard, matryca porównawcza, flow onboardingu. Koncepcja V2.</div>
         <div class="hub-card-meta">Landing · Koncept · Pure CSS</div>
