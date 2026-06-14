@@ -314,6 +314,58 @@ body {
 .hub-section--exec .hub-card-arrow { color:var(--accent-exec); }
 .hub-section--know .hub-card-arrow { color:var(--accent-know); }
 
+/* ── Resources (light utility section) ── */
+.hub-resources {
+  width:100%;
+  margin-top:36px;
+  padding-top:20px;
+  border-top:1px solid var(--border-light);
+}
+.hub-resources-label {
+  font-size:10px; font-weight:600; letter-spacing:2px;
+  text-transform:uppercase; color:var(--text-dim);
+  margin-bottom:10px;
+}
+.hub-resources-list {
+  display:flex; flex-direction:column; gap:6px;
+}
+.hub-res-link {
+  display:flex; align-items:center; gap:10px;
+  padding:10px 14px;
+  background:var(--bg-warm);
+  border:1px solid var(--border-light);
+  border-radius:8px;
+  text-decoration:none;
+  color:var(--text);
+  font-size:13px; font-weight:500;
+  transition:all .2s ease;
+}
+.hub-res-link:hover {
+  background:var(--card);
+  border-color:var(--border);
+  box-shadow:0 2px 8px var(--shadow);
+}
+.hub-res-tag {
+  font-size:9px; font-weight:700; letter-spacing:1px;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  background:rgba(0,0,0,0.04);
+  padding:2px 7px; border-radius:4px;
+  flex-shrink:0;
+}
+.hub-res-arrow {
+  margin-left:auto;
+  color:var(--text-dim);
+  font-size:13px;
+  opacity:0;
+  transform:translateX(-4px);
+  transition:all .2s ease;
+}
+.hub-res-link:hover .hub-res-arrow {
+  opacity:1;
+  transform:translateX(0);
+}
+
 /* ── Footer ── */
 .hub-footer {
   margin-top:48px; font-size:11px; color:var(--text-dim);
@@ -523,26 +575,18 @@ body {
   </div>
 
   <!-- 04 ŹRÓDŁA WIEDZY -->
-  <div class="hub-section hub-section--know">
-    <div class="hub-section-label">04 · Źródła wiedzy</div>
-    <div class="hub-grid">
-
-      <a class="hub-card" href="https://miro.com/app/board/uXjVIPApGDg=/?share_link_id=141818092651" target="_blank">
-        <div class="hub-card-badge">Miro</div>
-        <div class="hub-card-title">Warsztat ze sprzedażą</div>
-        <div class="hub-card-desc">Tablica z warsztatu sprzedażowego — insighty, obiekcje, ścieżki klientów i wnioski zespołu.</div>
-        <div class="hub-card-meta">Miro · Warsztat · Sprzedaż</div>
-        <div class="hub-card-arrow">→</div>
+  <div class="hub-resources">
+    <div class="hub-resources-label">Źródła wiedzy</div>
+    <div class="hub-resources-list">
+      <a class="hub-res-link" href="https://miro.com/app/board/uXjVIPApGDg=/?share_link_id=141818092651" target="_blank">
+        <span class="hub-res-tag">Miro</span>Warsztat ze sprzedażą<span class="hub-res-arrow">→</span>
       </a>
-
-      <a class="hub-card" href="https://www.dropbox.com/scl/fo/hvkrkaprueke9xxufgeih/AFBwRzZQxsrqgKfAbJx-hls?rlkey=z67zn5dxkjzz8xuzy6stcfwjl&st=wpet7mmo&dl=0" target="_blank">
-        <div class="hub-card-badge">Dropbox</div>
-        <div class="hub-card-title">TeamBudget — podsumowanie rozmowy z zarządem</div>
-        <div class="hub-card-desc">Kluczowe ustalenia, decyzje i next steps z rozmowy z zarządem dotyczącej TeamBudget.</div>
-        <div class="hub-card-meta">Dropbox · TeamBudget · Zarząd</div>
-        <div class="hub-card-arrow">→</div>
+      <a class="hub-res-link" href="https://www.dropbox.com/scl/fo/hvkrkaprueke9xxufgeih/AFBwRzZQxsrqgKfAbJx-hls?rlkey=z67zn5dxkjzz8xuzy6stcfwjl&st=wpet7mmo&dl=0" target="_blank">
+        <span class="hub-res-tag">Dropbox</span>TeamBudget — podsumowanie rozmowy z zarządem<span class="hub-res-arrow">→</span>
       </a>
-
+      <a class="hub-res-link" href="https://drive.google.com/drive/folders/1svk9xywEtUWs0Z2ykHGPe--VcEIx49qw" target="_blank">
+        <span class="hub-res-tag">Google Drive</span>Dysk marketingowy — Julka<span class="hub-res-arrow">→</span>
+      </a>
     </div>
   </div>
 
