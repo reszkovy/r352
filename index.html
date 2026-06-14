@@ -39,6 +39,10 @@
   --accent-exec: #8B5CF6;
   --accent-exec-bg: #F5F3FF;
   --accent-exec-light: rgba(139,92,246,0.07);
+
+  --accent-know: #B45309;
+  --accent-know-bg: #FFFBF2;
+  --accent-know-light: rgba(180,83,9,0.07);
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -198,6 +202,7 @@ body {
 .hub-section--df { background:var(--accent-df-bg); }
 .hub-section--tb { background:var(--accent-tb-bg); }
 .hub-section--exec { background:var(--accent-exec-bg); }
+.hub-section--know { background:var(--accent-know-bg); }
 
 /* ── Section label ── */
 .hub-section-label {
@@ -227,6 +232,9 @@ body {
 .hub-section--exec .hub-section-label { color:var(--accent-exec); }
 .hub-section--exec .hub-section-label::after { background:rgba(139,92,246,0.15); }
 
+.hub-section--know .hub-section-label { color:var(--accent-know); }
+.hub-section--know .hub-section-label::after { background:rgba(180,83,9,0.15); }
+
 /* ── Grid ── */
 .hub-grid {
   display:grid; grid-template-columns:repeat(3,1fr);
@@ -253,6 +261,7 @@ body {
 .hub-section--df .hub-card { border-left-color:var(--accent-df); }
 .hub-section--tb .hub-card { border-left-color:var(--accent-tb); }
 .hub-section--exec .hub-card { border-left-color:var(--accent-exec); }
+.hub-section--know .hub-card { border-left-color:var(--accent-know); }
 
 .hub-card:hover {
   transform:translateY(-2px);
@@ -263,6 +272,7 @@ body {
 .hub-section--df .hub-card:hover { border-color:var(--accent-df); }
 .hub-section--tb .hub-card:hover { border-color:var(--accent-tb); }
 .hub-section--exec .hub-card:hover { border-color:var(--accent-exec); }
+.hub-section--know .hub-card:hover { border-color:var(--accent-know); }
 
 .hub-card:hover .hub-card-arrow { opacity:1; transform:translateX(0); }
 
@@ -277,6 +287,7 @@ body {
 .hub-section--df .hub-card-badge { color:var(--accent-df); background:var(--accent-df-light); }
 .hub-section--tb .hub-card-badge { color:var(--accent-tb); background:var(--accent-tb-light); }
 .hub-section--exec .hub-card-badge { color:var(--accent-exec); background:var(--accent-exec-light); }
+.hub-section--know .hub-card-badge { color:var(--accent-know); background:var(--accent-know-light); }
 
 .hub-card-title {
   font-size:15px; font-weight:700; letter-spacing:-0.2px;
@@ -301,6 +312,7 @@ body {
 .hub-section--df .hub-card-arrow { color:var(--accent-df); }
 .hub-section--tb .hub-card-arrow { color:var(--accent-tb); }
 .hub-section--exec .hub-card-arrow { color:var(--accent-exec); }
+.hub-section--know .hub-card-arrow { color:var(--accent-know); }
 
 /* ── Footer ── */
 .hub-footer {
@@ -504,6 +516,30 @@ body {
         <div class="hub-card-title">Design System & Branding TB</div>
         <div class="hub-card-desc">Kolory, typografia, logo, naklejki, kształty, komponenty UI — pełny system wizualny.</div>
         <div class="hub-card-meta">Tokeny · Komponenty · Do & Don't</div>
+        <div class="hub-card-arrow">→</div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- 04 ŹRÓDŁA WIEDZY -->
+  <div class="hub-section hub-section--know">
+    <div class="hub-section-label">04 · Źródła wiedzy</div>
+    <div class="hub-grid">
+
+      <a class="hub-card" href="https://miro.com/app/board/uXjVIPApGDg=/?share_link_id=141818092651" target="_blank">
+        <div class="hub-card-badge">Miro</div>
+        <div class="hub-card-title">Board strategiczny</div>
+        <div class="hub-card-desc">Wspólna tablica pracy — mapy myśli, warsztaty, notatki strategiczne i research wizualny.</div>
+        <div class="hub-card-meta">Miro · Współpraca · Research</div>
+        <div class="hub-card-arrow">→</div>
+      </a>
+
+      <a class="hub-card" href="https://www.dropbox.com/scl/fo/hvkrkaprueke9xxufgeih/AFBwRzZQxsrqgKfAbJx-hls?rlkey=z67zn5dxkjzz8xuzy6stcfwjl&st=wpet7mmo&dl=0" target="_blank">
+        <div class="hub-card-badge">Dropbox</div>
+        <div class="hub-card-title">Baza wiedzy (Dropbox)</div>
+        <div class="hub-card-desc">Dokumenty źródłowe, researche, materiały referencyjne i inspiracje projektowe.</div>
+        <div class="hub-card-meta">Dropbox · Dokumenty · Referencje</div>
         <div class="hub-card-arrow">→</div>
       </a>
 
