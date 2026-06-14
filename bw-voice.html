@@ -40,7 +40,8 @@ a{color:inherit;text-decoration:none;}
 #pw-screen.hidden{display:none;}
 #pw-box{background:#fff;border:1px solid var(--line);border-radius:16px;padding:52px 44px 44px;text-align:center;max-width:400px;width:90%;box-shadow:0 4px 24px rgba(0,0,0,.04);}
 #pw-box .pw-icon{font-size:36px;margin-bottom:20px;display:inline-block;}
-#pw-box h2{font-family:var(--font-head);font-size:18px;font-weight:700;letter-spacing:-.3px;margin-bottom:8px;color:var(--text);}
+#pw-box .pw-logo{max-width:220px;height:auto;margin-bottom:20px;}
+#pw-box h2{font-family:var(--font-head);font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--dim);margin-bottom:20px;}
 #pw-box p{font-size:13px;color:var(--muted);margin-bottom:28px;line-height:1.6;}
 #pw-input{width:100%;padding:13px 18px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--text);font-family:inherit;font-size:14px;outline:none;transition:border-color .2s,box-shadow .2s;}
 #pw-input:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(34,197,94,.12);}
@@ -51,21 +52,23 @@ a{color:inherit;text-decoration:none;}
 #pw-error-msg{font-size:12px;color:#ef4444;margin-top:12px;min-height:16px;}
 @keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
 
-.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--green);text-decoration:none;padding:16px 0 0 24px;letter-spacing:.02em;transition:color .15s;}
-.back-link:hover{color:var(--orange);}
-
 h1,h2,h3,h4{font-family:var(--font-head);}
 
 .shell{display:grid;grid-template-columns:248px 1fr;max-width:1400px;margin:0 auto;}
 
 /* sidebar */
-aside{position:sticky;top:0;align-self:start;height:100vh;padding:34px 24px;border-right:1px solid var(--line);background:var(--bg);overflow-y:auto;}
+aside{position:sticky;top:0;align-self:start;height:100vh;padding:0;border-right:1px solid var(--line);background:var(--bg);overflow-y:auto;display:flex;flex-direction:column;}
+aside .back-link{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;letter-spacing:.03em;color:var(--green);text-decoration:none;padding:18px 24px 14px;border-bottom:1px solid var(--line-soft);transition:color .15s;flex-shrink:0;}
+aside .back-link:hover{color:var(--orange);}
+aside .back-link svg{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none;}
+aside .sidebar-inner{padding:22px 24px 34px;flex:1;overflow-y:auto;}
 aside .brand{display:flex;align-items:center;gap:10px;margin-bottom:6px;font-family:var(--font-head);font-weight:700;font-size:16px;color:var(--text);letter-spacing:-.3px;}
 aside .brand img{height:32px;}
 aside .ver{font-family:var(--font-head);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:28px;}
-aside nav a{display:block;font-size:14px;color:var(--muted);padding:8px 0;font-weight:500;transition:color var(--motion-fast),padding-left var(--motion-fast);}
-aside nav a:hover{color:var(--green);padding-left:5px;}
-aside nav .grp{font-family:var(--font-head);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin:22px 0 6px;}
+aside nav a{display:block;font-size:13px;color:var(--muted);padding:7px 0 7px 12px;font-weight:500;border-left:2px solid transparent;transition:color .2s,border-color .2s,padding-left .2s;}
+aside nav a:hover{color:var(--green);padding-left:16px;}
+aside nav a.active{color:var(--green);border-left-color:var(--green);font-weight:600;padding-left:16px;}
+aside nav .grp{font-family:var(--font-head);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin:22px 0 6px;padding-left:12px;}
 
 /* content */
 main{padding:64px 56px 120px;max-width:980px;}
@@ -209,14 +212,11 @@ h3.block::before{content:'';width:18px;height:3px;border-radius:3px;background:v
 .photo-rule p{font-size:13px;color:var(--muted);line-height:1.7;}
 
 /* scroll reveal */
-[data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(0.22,1,0.36,1),transform .9s cubic-bezier(0.22,1,0.36,1);will-change:opacity,transform;}
-[data-reveal].is-visible{opacity:1;transform:translateY(0);}
-[data-reveal-stagger]>*{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(0.22,1,0.36,1),transform .7s cubic-bezier(0.22,1,0.36,1);will-change:opacity,transform;}
-[data-reveal-stagger].is-visible>*{opacity:1;transform:translateY(0);}
-
 @media(max-width:880px){
   .shell{grid-template-columns:1fr;}
-  aside{position:static;height:auto;border-right:none;border-bottom:1px solid var(--line);padding:24px;}
+  aside{position:static;height:auto;border-right:none;border-bottom:1px solid var(--line);flex-direction:row;flex-wrap:wrap;}
+  aside .back-link{border-bottom:none;border-right:1px solid var(--line-soft);padding:14px 20px;}
+  aside .sidebar-inner{padding:14px 20px;flex:1;overflow:visible;}
   aside nav{columns:2;}
   main{padding:40px 24px 90px;}
 }
@@ -233,9 +233,9 @@ h3.block::before{content:'';width:18px;height:3px;border-radius:3px;background:v
 <!-- PASSWORD -->
 <div id="pw-screen">
   <div id="pw-box">
-    <div class="pw-icon">&#128274;</div>
-    <h2>Dokument chroniony</h2>
-    <p>Ten dokument jest poufny. Wprowadz haslo, aby uzyskac dostep.</p>
+    <img class="pw-logo" src="betterguide_logo.svg" alt="betterguide">
+    <h2>Przewodnik po ekosystemie</h2>
+    <p>Strategie, brand guide'y, design systemy i dokumentacja marek BetterWorkplace. Dostęp wymaga hasła.</p>
     <form onsubmit="return checkPw()">
       <input type="password" id="pw-input" placeholder="Haslo dostepu" autocomplete="off" autofocus>
       <button type="submit" id="pw-btn">Odblokuj</button>
@@ -245,28 +245,29 @@ h3.block::before{content:'';width:18px;height:3px;border-radius:3px;background:v
 </div>
 
 <div id="main-content" style="display:none;">
-<a class="back-link" href="index.html">&larr; Panel klienta</a>
-
 <div class="shell">
   <aside>
-    <div class="brand"><img src="betterWorkplace.svg" alt="BetterWorkplace"></div>
-    <div class="ver">Brand Guide &middot; v1 &middot; 2026</div>
-    <nav>
-      <div class="grp">Fundamenty</div>
-      <a href="#kolory">Kolory</a>
-      <a href="#typografia">Typografia</a>
-      <div class="grp">Marka</div>
-      <a href="#osobowosc">Osobowosc</a>
-      <a href="#glos">Glos marki</a>
-      <a href="#hierarchia">Hierarchia przekazow</a>
-      <div class="grp">Komunikacja</div>
-      <a href="#slownik">Slownik</a>
-      <a href="#odbiorcy">Odbiorcy</a>
-      <a href="#versus">BW vs Sub-brandy</a>
-      <div class="grp">Wizualne</div>
-      <a href="#fotografia">Styl fotografii</a>
-      <a href="#zasady">Do &amp; Don't</a>
-    </nav>
+    <a class="back-link" href="index.html"><svg viewBox="0 0 16 16"><polyline points="10 3 5 8 10 13"/></svg>Panel klienta</a>
+    <div class="sidebar-inner">
+      <div class="brand"><img src="betterWorkplace.svg" alt="BetterWorkplace"></div>
+      <div class="ver">Brand Guide &middot; v1 &middot; 2026</div>
+      <nav>
+        <div class="grp">Fundamenty</div>
+        <a href="#kolory">Kolory</a>
+        <a href="#typografia">Typografia</a>
+        <div class="grp">Marka</div>
+        <a href="#osobowosc">Osobowosc</a>
+        <a href="#glos">Glos marki</a>
+        <a href="#hierarchia">Hierarchia przekazow</a>
+        <div class="grp">Komunikacja</div>
+        <a href="#slownik">Slownik</a>
+        <a href="#odbiorcy">Odbiorcy</a>
+        <a href="#versus">BW vs Sub-brandy</a>
+        <div class="grp">Wizualne</div>
+        <a href="#fotografia">Styl fotografii</a>
+        <a href="#zasady">Do &amp; Don't</a>
+      </nav>
+    </div>
   </aside>
 
   <main>
@@ -664,28 +665,28 @@ if(sessionStorage.getItem('bw_auth')==='1'){
   document.getElementById('main-content').style.display='block';
 }
 </script>
+<script src="anim.js"></script>
 <script>
 (function(){
-  var s=document.createElement('script');
-  s.src='https://unpkg.com/lenis@1.3.17/dist/lenis.min.js';
-  s.onload=function(){
-    var lenis=new Lenis({duration:1.6,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}});
-    function raf(time){lenis.raf(time);requestAnimationFrame(raf);}
-    requestAnimationFrame(raf);
-  };
-  document.head.appendChild(s);
-})();
-(function(){
-  if(!('IntersectionObserver' in window)){
-    document.querySelectorAll('[data-reveal],[data-reveal-stagger]').forEach(function(el){el.classList.add('is-visible');});
-    return;
-  }
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){entry.target.classList.add('is-visible');io.unobserve(entry.target);}
+  var links=document.querySelectorAll('aside nav a[href^="#"]');
+  if(!links.length) return;
+  var sections=[];
+  links.forEach(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var sec=document.getElementById(id);
+    if(sec) sections.push({el:sec,link:a});
+  });
+  function update(){
+    var scrollY=window.scrollY||document.documentElement.scrollTop;
+    var current=null;
+    sections.forEach(function(s){
+      if(s.el.offsetTop-180<=scrollY) current=s;
     });
-  },{rootMargin:'0px 0px -8% 0px',threshold:0.08});
-  document.querySelectorAll('[data-reveal],[data-reveal-stagger]').forEach(function(el){io.observe(el);});
+    links.forEach(function(a){a.classList.remove('active')});
+    if(current) current.link.classList.add('active');
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  update();
 })();
 </script>
 </body>

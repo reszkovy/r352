@@ -56,7 +56,8 @@ body {
   box-shadow:0 4px 24px rgba(0,0,0,0.04);
 }
 #pw-box .pw-icon { font-size:36px; margin-bottom:20px; display:inline-block; }
-#pw-box h2 { font-size:18px; font-weight:700; letter-spacing:-0.3px; margin-bottom:8px; }
+#pw-box .pw-logo { max-width:220px; height:auto; margin-bottom:20px; }
+#pw-box h2 { font-size:12px; font-weight:500; letter-spacing:1px; text-transform:uppercase; color:var(--text-muted); margin-bottom:20px; }
 #pw-box p { font-size:13px; color:var(--text-muted); margin-bottom:28px; line-height:1.6; }
 #pw-input {
   width:100%; padding:13px 18px; border-radius:10px;
@@ -238,9 +239,9 @@ body {
 <!-- ══ PASSWORD ══ -->
 <div id="pw-screen">
   <div id="pw-box">
-    <div class="pw-icon">🔒</div>
-    <h2>Dokument chroniony</h2>
-    <p>Ten dokument jest poufny. Wprowadź hasło, aby uzyskać dostęp.</p>
+    <img class="pw-logo" src="betterguide_logo.svg" alt="betterguide">
+    <h2>Przewodnik po ekosystemie</h2>
+    <p>Strategie, brand guide'y, design systemy i dokumentacja marek BetterWorkplace. Dostęp wymaga hasła.</p>
     <form onsubmit="return checkPw()">
       <input type="password" id="pw-input" placeholder="Hasło dostępu" autocomplete="off" autofocus>
       <button type="submit" id="pw-btn">Odblokuj</button>
