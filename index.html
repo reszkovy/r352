@@ -146,7 +146,7 @@ body {
 
 /* ── Hero grid ── */
 .hub-hero-grid {
-  display:grid; grid-template-columns:1fr 1fr;
+  display:grid; grid-template-columns:repeat(3,1fr);
   gap:14px; width:100%; margin-top:8px;
 }
 
@@ -324,17 +324,18 @@ body {
   border-top:1px solid var(--border-light);
 }
 
+
 /* ── Responsive ── */
 @media (max-width:800px) {
   #hub { padding:28px 20px 48px; }
-  .hub-hero-grid { grid-template-columns:1fr 1fr; }
+  .hub-hero-grid { grid-template-columns:1fr 1fr 1fr; }
   .hub-grid { grid-template-columns:1fr 1fr; }
   .hub-section { padding:22px 20px 20px; margin-top:28px; }
   .hub-hero-card { padding:22px 24px; }
   .hub-hero-card .hero-title { font-size:16px; }
 }
 @media (max-width:500px) {
-  .hub-hero-grid { grid-template-columns:1fr; }
+  .hub-hero-grid { grid-template-columns:1fr 1fr; }
   .hub-grid { grid-template-columns:1fr; }
   .hub-title { font-size:22px; }
   .hub-section { padding:18px 16px 16px; margin-top:24px; }
@@ -361,12 +362,12 @@ body {
 
 <!-- ══ HUB ══ -->
 <div id="hub">
-  <img class="hub-logo" src="betterguide_logo.svg" alt="betterguide" data-anim="fade-up">
-  <div class="hub-sub" data-anim="blur-in">Przewodnik po ekosystemie brandów BetterWorkplace. Wybierz dokument.</div>
+  <img class="hub-logo" src="betterguide_logo.svg" alt="betterguide">
+  <div class="hub-sub">Przewodnik po ekosystemie brandów BetterWorkplace. Wybierz dokument.</div>
 
-  <!-- 00 HERO GRID — Strategia + Macierz -->
-  <div class="hub-hero-grid" data-anim="stagger">
-    <a class="hub-hero-card" href="strategia.html" data-tilt="4">
+  <!-- 00 HERO GRID — Strategia + Macierz + Print -->
+  <div class="hub-hero-grid">
+    <a class="hub-hero-card" href="strategia.html">
       <div>
         <div class="hero-eyebrow">Strategia główna</div>
         <div class="hero-title">Strategia ekosystemu BetterWorkplace 2026</div>
@@ -375,7 +376,7 @@ body {
       <div class="hero-arrow">→</div>
     </a>
 
-    <a class="hub-hero-card" href="matrix.html" data-tilt="4" style="background:linear-gradient(135deg, #16a34a 0%, #22c55e 50%, #4ade80 100%);">
+    <a class="hub-hero-card" href="matrix.html" style="background:linear-gradient(135deg, #16a34a 0%, #22c55e 50%, #4ade80 100%);">
       <div>
         <div class="hero-eyebrow">Tracker</div>
         <div class="hero-title">Macierz deliverables ekosystemu</div>
@@ -383,12 +384,21 @@ body {
       </div>
       <div class="hero-arrow">→</div>
     </a>
+
+    <a class="hub-hero-card" href="https://www.dropbox.com/scl/fo/80ggxcmx4k9kz9ftqyc40/APDCDi-n0NqEDZ90d_POzrI?rlkey=rxmsm16719x8qqx8svyt5sp0k&st=xi4jqg7r&dl=0" target="_blank" style="background:linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);">
+      <div>
+        <div class="hero-eyebrow">Produkcja</div>
+        <div class="hero-title">Pliki produkcyjne (Dropbox)</div>
+        <div class="hero-desc">Print-ready materiały, logotypy, pliki źródłowe i zasoby graficzne wszystkich marek ekosystemu.</div>
+      </div>
+      <div class="hero-arrow">→</div>
+    </a>
   </div>
 
   <!-- 01 BETTERWORKPLACE -->
-  <div class="hub-section hub-section--bw" data-anim="fade-up">
+  <div class="hub-section hub-section--bw">
     <div class="hub-section-label">01 · BetterWorkplace</div>
-    <div class="hub-grid" data-anim="stagger">
+    <div class="hub-grid">
 
       <a class="hub-card" href="https://better-workplace-corposite.webflow.io/" target="_blank">
         <div class="hub-card-badge">WWW</div>
@@ -434,9 +444,9 @@ body {
   </div>
 
   <!-- 02 DAILYFRUITS -->
-  <div class="hub-section hub-section--df" data-anim="fade-up">
+  <div class="hub-section hub-section--df">
     <div class="hub-section-label">02 · DailyFruits</div>
-    <div class="hub-grid" data-anim="stagger">
+    <div class="hub-grid">
 
       <a class="hub-card" href="https://dailyfruits.vercel.app" target="_blank">
         <div class="hub-card-badge">WWW</div>
@@ -482,9 +492,9 @@ body {
   </div>
 
   <!-- 03 TEAMBUDGET -->
-  <div class="hub-section hub-section--tb" data-anim="fade-up">
+  <div class="hub-section hub-section--tb">
     <div class="hub-section-label">03 · TeamBudget</div>
-    <div class="hub-grid" data-anim="stagger">
+    <div class="hub-grid">
 
       <a class="hub-card" href="tb-czym-jest.html">
         <div class="hub-card-badge">GTM Playbook</div>
@@ -531,7 +541,6 @@ function checkPw() {
     document.getElementById('pw-screen').classList.add('hidden');
     document.getElementById('hub').classList.add('visible');
     sessionStorage.setItem('bw_auth', '1');
-    setTimeout(function(){if(typeof ScrollTrigger!=='undefined')ScrollTrigger.refresh()},200);
     return false;
   }
   input.classList.add('pw-error');
@@ -542,10 +551,8 @@ function checkPw() {
 if (sessionStorage.getItem('bw_auth') === '1') {
   document.getElementById('pw-screen').classList.add('hidden');
   document.getElementById('hub').classList.add('visible');
-  setTimeout(function(){if(typeof ScrollTrigger!=='undefined')ScrollTrigger.refresh()},200);
 }
 </script>
-<script src="anim.js"></script>
 
 </body>
 </html>
