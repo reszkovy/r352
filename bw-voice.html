@@ -3,843 +3,660 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BetterWorkplace – Brand Voice Guide</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,900;1,9..40,400&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<title>BetterWorkplace — Brand Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,400;9..40,500;9..40,600;9..40,700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #ffffff;
-  --bg2: #f7f7f5;
-  --card: #ffffff;
-  --card2: #f7f7f5;
-  --border: #e9e7e7;
-  --border2: #ddd;
-  --green: #2d6a4f;
-  --green-light: #40916c;
-  --green-dim: rgba(45,106,79,0.06);
-  --green-accent: #52b788;
-  --orange: #ff6921;
-  --orange-dim: rgba(255,105,33,0.06);
-  --red: #d64045;
-  --red-dim: rgba(214,64,69,0.05);
-  --text: #1f0b09;
-  --text-muted: #665f5e;
-  --text-dim: #989898;
+:root{
+  --font-head:'DM Sans',system-ui,sans-serif;
+  --font-body:'Nunito Sans','DM Sans',system-ui,sans-serif;
+  --font-mono:'DM Sans',monospace;
+  --bg:#FFFFFF;
+  --card:#FFFFFF;
+  --card2:#f7f7f5;
+  --text:#1F0B09;
+  --muted:#665F5E;
+  --dim:#989898;
+  --green:#22c55e;
+  --green-deep:#16a34a;
+  --orange:#FF6921;
+  --lime:#B2FF0D;
+  --yellow:#FFFB0D;
+  --warm-gray:#E9E7E7;
+  --line:#E9E7E7;
+  --line-soft:rgba(233,231,231,.6);
+  --r:14px;
+  --r-sm:10px;
+  --motion-fast:.15s ease;
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-  font-family:'DM Sans',system-ui,sans-serif;
-  background:var(--bg); color:var(--text);
-  line-height:1.7; -webkit-font-smoothing:antialiased;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
 
-/* ══ BACK NAV ══ */
-.back-nav {
-  position:fixed; top:16px; right:20px; z-index:9999;
-  font-size:11px; font-weight:600; color:#fff;
-  text-decoration:none; letter-spacing:0.3px;
-  background:#1F0B09; padding:8px 18px; border-radius:8px;
-  transition:all .2s;
-}
-.back-nav:hover { background:#FF6921; }
+/* PASSWORD */
+#pw-screen{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;width:100%;min-height:100vh;background:var(--bg);}
+#pw-screen.hidden{display:none;}
+#pw-box{background:#fff;border:1px solid var(--line);border-radius:16px;padding:52px 44px 44px;text-align:center;max-width:400px;width:90%;box-shadow:0 4px 24px rgba(0,0,0,.04);}
+#pw-box .pw-icon{font-size:36px;margin-bottom:20px;display:inline-block;}
+#pw-box h2{font-family:var(--font-head);font-size:18px;font-weight:700;letter-spacing:-.3px;margin-bottom:8px;color:var(--text);}
+#pw-box p{font-size:13px;color:var(--muted);margin-bottom:28px;line-height:1.6;}
+#pw-input{width:100%;padding:13px 18px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--text);font-family:inherit;font-size:14px;outline:none;transition:border-color .2s,box-shadow .2s;}
+#pw-input:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(34,197,94,.12);}
+#pw-input.pw-error{border-color:#ef4444;animation:shake .4s ease;}
+#pw-input::placeholder{color:var(--dim);}
+#pw-btn{margin-top:14px;width:100%;padding:13px;background:var(--text);color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s ease;}
+#pw-btn:hover{background:#2a2a2a;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.15);}
+#pw-error-msg{font-size:12px;color:#ef4444;margin-top:12px;min-height:16px;}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
 
-.wrap { max-width:800px; margin:0 auto; padding:60px 20px 80px; }
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--green);text-decoration:none;padding:16px 0 0 24px;letter-spacing:.02em;transition:color .15s;}
+.back-link:hover{color:var(--orange);}
 
-/* ══ HEADER ══ */
-.header { margin-bottom:56px; }
-.header-eyebrow {
-  font-size:9px; font-weight:700; letter-spacing:3px;
-  text-transform:uppercase; color:var(--text-dim); margin-bottom:16px;
-}
-.header h1 {
-  font-size:38px; font-weight:900; letter-spacing:-1.2px;
-  line-height:1.1; margin-bottom:12px; color:var(--text);
-}
-.header h1 span { color:var(--green); }
-.header-sub {
-  font-size:14px; color:var(--text-muted); line-height:1.7; max-width:540px;
-}
-.header-meta {
-  font-size:11px; color:var(--text-dim); margin-top:10px;
-}
+h1,h2,h3,h4{font-family:var(--font-head);}
 
-/* ══ SECTIONS ══ */
-.section { margin-bottom:56px; }
-.sec-label {
-  font-size:9px; font-weight:700; letter-spacing:2.5px;
-  text-transform:uppercase; color:var(--green); margin-bottom:20px;
-}
+.shell{display:grid;grid-template-columns:248px 1fr;max-width:1400px;margin:0 auto;}
 
-/* ══ CARDS ══ */
-.card {
-  background:var(--card); border:1px solid var(--border);
-  border-radius:12px; padding:28px; margin-bottom:12px;
-  box-shadow:0 1px 3px rgba(0,0,0,0.04);
-}
-.card-sm {
-  background:var(--card2); border-radius:8px; padding:16px 18px;
-}
-.label {
-  font-size:9px; font-weight:700; letter-spacing:1.5px;
-  text-transform:uppercase; color:var(--text-dim); margin-bottom:6px;
-}
-.val { font-size:13px; color:var(--text-muted); line-height:1.7; }
+/* sidebar */
+aside{position:sticky;top:0;align-self:start;height:100vh;padding:34px 24px;border-right:1px solid var(--line);background:var(--bg);overflow-y:auto;}
+aside .brand{display:flex;align-items:center;gap:10px;margin-bottom:6px;font-family:var(--font-head);font-weight:700;font-size:16px;color:var(--text);letter-spacing:-.3px;}
+aside .brand img{height:32px;}
+aside .ver{font-family:var(--font-head);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:28px;}
+aside nav a{display:block;font-size:14px;color:var(--muted);padding:8px 0;font-weight:500;transition:color var(--motion-fast),padding-left var(--motion-fast);}
+aside nav a:hover{color:var(--green);padding-left:5px;}
+aside nav .grp{font-family:var(--font-head);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin:22px 0 6px;}
 
-.g2 { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-.g4 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+/* content */
+main{padding:64px 56px 120px;max-width:980px;}
+section{padding:46px 0;border-bottom:1px solid var(--line-soft);}
+section:first-child{padding-top:0;}
+.kicker{font-family:var(--font-head);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);font-weight:600;}
+h2.sec{font-size:clamp(26px,3vw,36px);letter-spacing:-.03em;font-weight:700;margin:12px 0 8px;}
+.sub{color:var(--muted);font-size:16px;max-width:640px;margin-bottom:30px;font-family:var(--font-body);}
+h3.block{font-family:var(--font-head);font-weight:600;font-size:16px;margin:30px 0 14px;display:flex;align-items:center;gap:10px;}
+h3.block::before{content:'';width:18px;height:3px;border-radius:3px;background:var(--green);}
 
-/* ══ VOICE ATTR ══ */
-.voice-card {
-  background:var(--card); border:1px solid var(--border);
-  border-top:3px solid var(--green); border-radius:12px;
-  padding:24px;
-  box-shadow:0 1px 3px rgba(0,0,0,0.04);
-}
-.voice-card h3 {
-  font-size:17px; font-weight:700; margin-bottom:8px; color:var(--text);
-}
-.voice-card .desc {
-  font-size:13px; color:var(--text-muted); line-height:1.7; margin-bottom:12px;
-}
-.voice-card .not {
-  font-size:11px; color:var(--text-dim); margin-bottom:14px;
-}
-.example {
-  font-size:12px; color:var(--green); padding:8px 12px;
-  background:var(--green-dim); border-radius:6px; margin-bottom:6px;
-  line-height:1.5;
-}
-.anti-example {
-  font-size:12px; color:var(--red); padding:8px 12px;
-  background:var(--red-dim); border-radius:6px;
-  line-height:1.5;
-}
+/* hero */
+.ds-hero{padding:70px 0 40px;}
+.ds-hero .kicker{margin-bottom:16px;}
+.ds-hero h1{font-size:clamp(40px,6vw,72px);letter-spacing:-.04em;line-height:.98;font-weight:700;color:var(--text);}
+.ds-hero h1 .o{color:var(--orange);}
+.ds-hero p{font-size:18px;color:var(--text);max-width:560px;margin-top:18px;font-family:var(--font-head);font-weight:500;}
+.ds-hero .meta{font-family:var(--font-head);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:22px;}
 
-/* ══ DO/DONT ══ */
-.dd-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-.do-card, .dont-card {
-  border-radius:12px; padding:24px;
-}
-.do-card {
-  background:var(--green-dim); border:1px solid rgba(45,106,79,0.12);
-}
-.dont-card {
-  background:var(--red-dim); border:1px solid rgba(214,64,69,0.1);
-}
-.do-card h3 { color:var(--green); font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-bottom:14px; }
-.dont-card h3 { color:var(--red); font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-bottom:14px; }
-.dd-item {
-  font-size:13px; color:var(--text-muted); line-height:1.6;
-  padding:8px 0; border-bottom:1px solid rgba(0,0,0,0.05);
-}
-.dd-item:last-child { border-bottom:none; }
+/* color swatches */
+.swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.swatches.s4{grid-template-columns:repeat(4,1fr);}
+.sw{border:1px solid var(--line);border-radius:var(--r-sm);overflow:hidden;background:var(--card);}
+.sw .chip{height:104px;display:flex;align-items:flex-end;padding:12px;}
+.sw .smeta{padding:13px 14px 15px;}
+.sw .name{font-family:var(--font-head);font-weight:600;font-size:14px;}
+.sw .role{font-family:var(--font-head);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:3px 0 9px;min-height:24px;}
+.sw .hex{font-family:var(--font-head);font-size:11px;color:var(--text);}
+.tag{display:inline-block;font-family:var(--font-head);font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;border-radius:6px;margin-top:8px;}
+.tag.lead{background:rgba(34,197,94,.12);color:var(--green-deep);}
+.tag.accent{background:rgba(255,105,33,.14);color:#c43c12;}
+.tag.bg{background:rgba(31,11,9,.08);color:var(--muted);}
+.tag.energy{background:rgba(178,255,13,.18);color:#4a6600;}
 
-/* ══ VOCAB ══ */
-.vocab-row {
-  display:grid; grid-template-columns:1fr 1fr; gap:0;
-  border-bottom:1px solid var(--border);
-  padding:12px 0;
-  font-size:13px;
-}
-.vocab-row:first-child { border-top:1px solid var(--border); }
-.vocab-no { color:var(--red); text-decoration:line-through; opacity:0.6; }
-.vocab-yes { color:var(--green); font-weight:600; }
+/* callout */
+.callout{background:#f0fdf4;border-radius:var(--r);padding:22px 24px;margin-top:24px;display:flex;gap:16px;align-items:flex-start;}
+.callout .b{width:34px;height:34px;border-radius:50%;background:var(--green);color:#fff;flex:none;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:700;font-size:14px;}
+.callout p{font-size:14.5px;color:var(--text);}
+.callout b{color:var(--green-deep);}
 
-/* ══ AUDIENCE ══ */
-.aud-card {
-  background:var(--card); border:1px solid var(--border);
-  border-radius:12px; padding:24px;
-  box-shadow:0 1px 3px rgba(0,0,0,0.04);
-}
-.aud-card h3 { font-size:15px; font-weight:700; margin-bottom:6px; color:var(--text); }
-.aud-card .role { font-size:11px; color:var(--green); font-weight:600; margin-bottom:10px; }
-.aud-card p { font-size:13px; color:var(--text-muted); line-height:1.7; }
+/* usage bar */
+.usage-bar{display:flex;height:14px;border-radius:7px;overflow:hidden;margin:24px 0 8px;}
+.usage-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--dim);}
 
-/* ══ SPECTRUM ══ */
-.spectrum {
-  display:flex; height:8px; border-radius:4px; overflow:hidden;
-  margin:16px 0 8px;
-}
-.spectrum div { height:100%; }
-.spectrum-labels {
-  display:flex; justify-content:space-between;
-  font-size:10px; color:var(--text-dim);
-}
+/* spec boxes (typography) */
+.spec{border:1px solid var(--line);border-radius:var(--r);padding:26px 28px;margin-bottom:14px;background:var(--card);}
+.spec .lbl{font-family:var(--font-head);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;justify-content:space-between;}
 
-/* ══ TABLE ══ */
-.voice-table {
-  display:grid; grid-template-columns:1fr; gap:1px;
-  background:var(--border); border-radius:12px; overflow:hidden;
-  box-shadow:0 1px 3px rgba(0,0,0,0.04);
-}
-.voice-table-row {
-  display:grid; grid-template-columns:160px 1fr 1fr;
-  background:var(--card); padding:14px 18px;
-}
-.voice-table-header {
-  display:grid; grid-template-columns:160px 1fr 1fr;
-  background:var(--card2); padding:14px 18px;
-}
+/* personality card */
+.pers-card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--green);border-radius:var(--r);padding:28px;margin-bottom:16px;}
+.pers-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;}
+.pers-cell{background:var(--card2);border-radius:8px;padding:16px 18px;}
+.pers-cell .lbl{font-family:var(--font-head);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin-bottom:6px;}
+.pers-cell .val{font-size:13px;color:var(--muted);line-height:1.7;}
 
-/* ══ FOOTER ══ */
-.footer {
-  margin-top:56px; padding-top:28px; border-top:1px solid var(--border);
-  font-size:10px; color:var(--text-dim); text-align:center; line-height:1.6;
-}
+/* claim banner */
+.claim{background:var(--text);border-radius:var(--r);padding:36px 32px;margin-top:24px;text-align:center;}
+.claim .txt{font-family:var(--font-head);font-size:26px;font-weight:900;color:#fff;letter-spacing:-.5px;line-height:1.3;}
+.claim .lab{font-family:var(--font-head);font-size:11px;color:rgba(255,255,255,.5);margin-top:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;}
 
-/* ══ SMOOTH REVEAL ══ */
-[data-reveal] {
-  opacity:0; transform:translateY(28px);
-  transition: opacity .9s cubic-bezier(0.22,1,0.36,1), transform .9s cubic-bezier(0.22,1,0.36,1);
-  will-change:opacity,transform;
-}
-[data-reveal].is-visible { opacity:1; transform:translateY(0); }
-[data-reveal-stagger] > * {
-  opacity:0; transform:translateY(20px);
-  transition: opacity .7s cubic-bezier(0.22,1,0.36,1), transform .7s cubic-bezier(0.22,1,0.36,1);
-  will-change:opacity,transform;
-}
-[data-reveal-stagger].is-visible > * { opacity:1; transform:translateY(0); }
-[data-reveal-stagger].is-visible > *:nth-child(1) { transition-delay:0ms; }
-[data-reveal-stagger].is-visible > *:nth-child(2) { transition-delay:80ms; }
-[data-reveal-stagger].is-visible > *:nth-child(3) { transition-delay:160ms; }
-[data-reveal-stagger].is-visible > *:nth-child(4) { transition-delay:240ms; }
-[data-reveal-stagger].is-visible > *:nth-child(5) { transition-delay:320ms; }
-[data-reveal-stagger].is-visible > *:nth-child(6) { transition-delay:400ms; }
-[data-reveal-stagger].is-visible > *:nth-child(7) { transition-delay:480ms; }
-[data-reveal-stagger].is-visible > *:nth-child(8) { transition-delay:560ms; }
-@media (prefers-reduced-motion:reduce) {
-  [data-reveal],[data-reveal-stagger] > * { opacity:1!important; transform:none!important; transition:none!important; }
-}
+/* voice cards */
+.v-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.v-card{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--green);border-radius:var(--r);padding:24px;}
+.v-card h3{font-size:17px;font-weight:700;margin-bottom:8px;color:var(--text);}
+.v-card .desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:12px;}
+.v-card .not{font-size:11px;color:var(--dim);margin-bottom:14px;font-style:italic;}
+.v-ex{font-size:12px;color:var(--green-deep);padding:8px 12px;background:rgba(34,197,94,.06);border-radius:6px;margin-bottom:6px;line-height:1.5;}
+.v-anti{font-size:12px;color:#c43c12;padding:8px 12px;background:rgba(255,105,33,.06);border-radius:6px;line-height:1.5;}
 
-@media (max-width:600px) {
-  .g2, .g4, .dd-grid { grid-template-columns:1fr; }
-  .header h1 { font-size:28px; }
-  .vocab-row { grid-template-columns:1fr 1fr; }
-  .voice-table-row, .voice-table-header { grid-template-columns:100px 1fr 1fr; }
+/* hierarchy cards */
+.h-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;margin-bottom:10px;}
+.h-card .h-kicker{font-family:var(--font-head);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+.h-card h3{font-size:17px;font-weight:700;margin-bottom:8px;}
+.h-card p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+/* vocab table */
+.vocab{margin-top:8px;}
+.vocab-row{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid var(--line);padding:12px 0;font-size:13px;}
+.vocab-row:first-child{border-top:1px solid var(--line);}
+.vocab-no{color:#c43c12;text-decoration:line-through;opacity:.6;}
+.vocab-yes{color:var(--green-deep);font-weight:600;}
+
+/* audience cards */
+.aud-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.aud-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;}
+.aud-card .role{font-family:var(--font-head);font-size:11px;color:var(--green);font-weight:600;margin-bottom:6px;}
+.aud-card h3{font-size:15px;font-weight:700;margin-bottom:8px;}
+.aud-card p{font-size:13px;color:var(--muted);line-height:1.7;}
+.spectrum{display:flex;height:8px;border-radius:4px;overflow:hidden;margin:16px 0 8px;}
+.spectrum div{height:100%;}
+.spectrum-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--dim);}
+
+/* versus table */
+.vs-table{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);}
+.vs-header,.vs-row{display:grid;grid-template-columns:140px 1fr 1fr;padding:14px 18px;}
+.vs-header{background:var(--card2);}
+.vs-header div{font-family:var(--font-head);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.vs-row{background:var(--card);border-top:1px solid var(--line);}
+.vs-row .topic{font-size:12px;font-weight:600;}
+.vs-row .cell{font-size:12px;color:var(--muted);}
+
+/* photo grid */
+.photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.photo-cell{border:1px solid var(--line);border-radius:var(--r);padding:20px;display:flex;align-items:center;justify-content:center;min-height:220px;background:#fff;}
+.photo-cell img{max-height:200px;max-width:100%;object-fit:contain;}
+.photo-grid4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px;margin-bottom:16px;}
+.photo-cell-sm{background:var(--warm-gray);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:170px;}
+.photo-cell-sm img{max-height:130px;max-width:100%;object-fit:contain;}
+.photo-cell-sm .cap{font-size:9px;color:var(--dim);margin-top:10px;}
+
+/* do/dont */
+.dd{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.dd .col{border-radius:var(--r);padding:22px 24px;}
+.dd .do{background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.25);}
+.dd .dont{background:rgba(255,105,33,.06);border:1px solid rgba(255,105,33,.25);}
+.dd h4{font-family:var(--font-head);font-weight:700;font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.dd .do h4{color:var(--green-deep);}
+.dd .dont h4{color:#c43c12;}
+.dd ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.dd li{font-size:13.5px;color:var(--text);padding-left:18px;position:relative;}
+.dd li::before{position:absolute;left:0;top:0;}
+.dd .do li::before{content:'\2713';color:var(--green);}
+.dd .dont li::before{content:'\2715';color:var(--orange);}
+
+/* rule card */
+.rule-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;margin-top:20px;}
+.rule-card .lbl{font-family:var(--font-head);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin-bottom:6px;}
+.rule-card h4{font-size:15px;font-weight:700;margin-bottom:8px;}
+.rule-card p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+/* photo usage callout */
+.usage-note{margin-top:14px;padding:14px 18px;border-radius:10px;font-size:12px;line-height:1.6;color:var(--muted);}
+.usage-note strong{color:var(--text);}
+.usage-note.green{background:rgba(34,197,94,.06);}
+.usage-note.orange{background:rgba(255,105,33,.06);}
+
+/* photo rules grid */
+.photo-rules{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;}
+.photo-rule{background:var(--card2);border-radius:8px;padding:16px 18px;}
+.photo-rule h5{font-size:13px;font-weight:600;margin-bottom:4px;}
+.photo-rule p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+@media(max-width:880px){
+  .shell{grid-template-columns:1fr;}
+  aside{position:static;height:auto;border-right:none;border-bottom:1px solid var(--line);padding:24px;}
+  aside nav{columns:2;}
+  main{padding:40px 24px 90px;}
+}
+@media(max-width:720px){
+  .swatches,.swatches.s4{grid-template-columns:repeat(2,1fr);}
+  .v-grid,.aud-grid,.dd,.pers-grid,.photo-grid,.photo-rules{grid-template-columns:1fr;}
+  .photo-grid4{grid-template-columns:1fr 1fr;}
+  .vs-header,.vs-row{grid-template-columns:100px 1fr 1fr;}
 }
 </style>
 </head>
 <body>
 
-<a class="back-nav" href="index.html">← Panel klienta</a>
-
-<div class="wrap">
-
-  <!-- HEADER -->
-  <div class="header" data-reveal>
-    <div class="header-eyebrow">BetterWorkplace</div>
-    <h1>Brand Voice <span>Guide</span></h1>
-    <div class="header-sub">Jak BetterWorkplace mówi jako marka nadrzędna — ton, osobowość, hierarchia przekazów, zasady komunikacji. Bez warstwy wizualnej — czysty merytoryczny layer.</div>
-    <div class="header-meta">Wersja 1.0 · Kwiecień 2026</div>
+<!-- PASSWORD -->
+<div id="pw-screen">
+  <div id="pw-box">
+    <div class="pw-icon">&#128274;</div>
+    <h2>Dokument chroniony</h2>
+    <p>Ten dokument jest poufny. Wprowadz haslo, aby uzyskac dostep.</p>
+    <form onsubmit="return checkPw()">
+      <input type="password" id="pw-input" placeholder="Haslo dostepu" autocomplete="off" autofocus>
+      <button type="submit" id="pw-btn">Odblokuj</button>
+    </form>
+    <div id="pw-error-msg"></div>
   </div>
-
-  <!-- CLAIM -->
-  <div data-reveal style="background:#1F0B09; border-radius:12px; padding:36px 32px; margin-bottom:48px; text-align:center;">
-    <div style="font-size:26px; font-weight:900; color:#fff; letter-spacing:-0.5px; line-height:1.3;">Ekosystem benefitów.<br>Jeden partner. Lepsze miejsce pracy.</div>
-    <div style="font-size:11px; color:rgba(255,255,255,0.5); margin-top:10px; letter-spacing:1.5px; text-transform:uppercase; font-weight:600;">Claim marki</div>
-  </div>
-
-  <!-- 01: OSOBOWOŚĆ -->
-  <div class="section">
-    <div class="sec-label" data-reveal>01 · Osobowość marki</div>
-    <div class="card" data-reveal style="border-left:3px solid var(--green);">
-      <div style="font-size:15px; color:var(--text); line-height:1.8; margin-bottom:22px;">
-        Gdyby BetterWorkplace był osobą, byłby <strong>doświadczonym partnerem strategicznym</strong>, który rozmawia z zarządem, nie z recepcją. Nie sprzedaje owoców — pokazuje, dlaczego wellbeing żywieniowy jest <em style="color:var(--green);">trzecim filarem benefitów pracowniczych</em>, obok Multisportu i Medicoveru. Mówi językiem ROI, retencji i employer brandingu. Jest pewny siebie, bo tworzy kategorię, której nikt inny nie zajął.
-      </div>
-      <div class="g2" data-reveal-stagger>
-        <div class="card-sm">
-          <div class="label">Misja</div>
-          <div class="val">Zmieniamy postrzeganie żywienia w biurze — z kosztu operacyjnego na strategiczny benefit pracowniczy z mierzalnym ROI.</div>
-        </div>
-        <div class="card-sm">
-          <div class="label">Archetyp</div>
-          <div class="val"><strong>Mędrzec</strong> (Sage) + <strong>Władca</strong> (Ruler). Definiuje nową kategorię i zarządza ekosystemem z pozycji wiedzy, danych i doświadczenia. Nie prosi — proponuje na poziomie strategii.</div>
-        </div>
-      </div>
-      <div class="g2" data-reveal-stagger style="margin-top:10px;">
-        <div class="card-sm">
-          <div class="label">Obietnica</div>
-          <div class="val">Jeden partner do całego wellbeingu żywieniowego w firmie.</div>
-        </div>
-        <div class="card-sm">
-          <div class="label">Terytorium</div>
-          <div class="val">Trzeci filar benefitów pracowniczych. Retencja, employer branding, ROI wellbeingu, category creation.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 02: ATRYBUTY GŁOSU -->
-  <div class="section">
-    <div class="sec-label" data-reveal>02 · Atrybuty głosu</div>
-    <div class="g4" data-reveal-stagger>
-
-      <div class="voice-card">
-        <h3>Strategiczny</h3>
-        <div class="desc">Mówi „dlaczego", nie „co". Nie sprzedaje produktów — buduje kategorię. Język: partnerstwo, ROI, retencja, employer branding.</div>
-        <div class="not">Nie jesteśmy: abstrakcyjni. Każda strategiczna teza ma konkretny dowód.</div>
-        <div class="example">✓ „Wellbeing żywieniowy to strategia retencji, nie gadżet."</div>
-        <div class="anti-example">✗ „Oferujemy szeroki asortyment produktów do biura."</div>
-      </div>
-
-      <div class="voice-card">
-        <h3>Partnerski</h3>
-        <div class="desc">Rozmawiamy jak równy z równym — z HR Directorem i C-levelem. Nie jesteśmy dostawcą do odwołania. Jesteśmy partnerem, którego się wybiera.</div>
-        <div class="not">Nie jesteśmy: służalczy. Nie zabiegamy — proponujemy.</div>
-        <div class="example">✓ „Razem zbudujemy program, który Wasz HR pokaże na boardzie."</div>
-        <div class="anti-example">✗ „Mamy nadzieję, że nasza oferta spełni Państwa oczekiwania."</div>
-      </div>
-
-      <div class="voice-card">
-        <h3>Pewny siebie</h3>
-        <div class="desc">Tworzymy kategorię, której nikt inny nie zajął. 10+ lat, ekosystem 5 marek, ogólnopolska skala. To nie jest startup z pomysłem — to lider z infrastrukturą.</div>
-        <div class="not">Nie jesteśmy: aroganccy. Pewność z wyników, nie z ego.</div>
-        <div class="example">✓ „Definiujemy trzeci filar benefitów. Pierwszy i jedyny na polskim rynku."</div>
-        <div class="anti-example">✗ „Jesteśmy najlepszą firmą na rynku."</div>
-      </div>
-
-      <div class="voice-card">
-        <h3>Precyzyjny</h3>
-        <div class="desc">Każdy argument oparty na danych. ROI, retencja, NPS, koszty churnu. Język, który CFO zrozumie i HR weźmie na board meeting.</div>
-        <div class="not">Nie jesteśmy: sucho-korporacyjni. Dane podajemy w kontekście biznesowym, nie w tabelkach.</div>
-        <div class="example">✓ „Benefit wpisany w politykę HR jest 5-10x trudniejszy do usunięcia niż dostawca do odwołania."</div>
-        <div class="anti-example">✗ „Nasze rozwiązania przynoszą wieloaspektowe korzyści."</div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- 03: HIERARCHIA PRZEKAZÓW -->
-  <div class="section">
-    <div class="sec-label" data-reveal>03 · Hierarchia przekazów</div>
-    <div style="font-size:13px; color:var(--text-muted); margin-bottom:20px; line-height:1.7;">BetterWorkplace nie mówi o owocach, kawie ani kanapkach. To robią sub-brandy. BW mówi o kategorii, ekosystemie i strategii.</div>
-
-    <div class="card" data-reveal style="border-left:3px solid var(--green); margin-bottom:10px;">
-      <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green); margin-bottom:6px;">Warstwa 1 · Master</div>
-      <div style="font-size:17px; font-weight:700; margin-bottom:8px;">BW mówi „dlaczego"</div>
-      <div class="val">Buduje kategorię „trzeciego filaru". Język strategii i ROI. Rozmówca: HR Director, C-level. Nie sprzedaje produktów — pozycjonuje ekosystem.</div>
-    </div>
-
-    <div class="card" data-reveal style="border-left:3px solid var(--green-accent); margin-bottom:10px;">
-      <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green-accent); margin-bottom:6px;">Warstwa 2 · Endorsed</div>
-      <div style="font-size:17px; font-weight:700; margin-bottom:8px;">Sub-brandy mówią „co" i „jak"</div>
-      <div class="val">DailyFruits, DailyFoods, BetterOffice — każdy ma własny ton i audience. Mówią o produktach, rytuałach, wygodzie. BW jest endorserem w tle: „by BetterWorkplace".</div>
-    </div>
-
-    <div class="card" data-reveal style="border-left:3px solid var(--text-dim);">
-      <div style="font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:6px;">Warstwa 3 · Product</div>
-      <div style="font-size:17px; font-weight:700; margin-bottom:8px;">TeamBudget mówi „kontrola"</div>
-      <div class="val">Platforma, automatyzacja, jedna faktura. Język tech/utility. Do CFO i HR. Pre-launch: messaging idzie przez BW, żeby budować świadomość zanim produkt wejdzie na rynek.</div>
-    </div>
-  </div>
-
-  <!-- 04: DO'S & DON'TS -->
-  <div class="section">
-    <div class="sec-label" data-reveal>04 · Do's & Don'ts</div>
-    <div class="dd-grid" data-reveal-stagger>
-      <div class="do-card">
-        <h3>Do's</h3>
-        <div class="dd-item">Mów językiem C-level: ROI, retencja, employer branding, strategia</div>
-        <div class="dd-item">Pozycjonuj jako „trzeci filar" — nie jako alternatywa dla kogokolwiek</div>
-        <div class="dd-item">Używaj „partner", nie „dostawca" — zawsze</div>
-        <div class="dd-item">Pokazuj ekosystem: DailyFruits, DailyFoods, BetterOffice, TeamBudget jako spójną całość</div>
-        <div class="dd-item">Argumentuj danymi: ile firm, ile miast, jaki wpływ na wellbeing</div>
-        <div class="dd-item">Mów „dlaczego" zanim powiesz „co" — buduj kategorię, potem pokaż produkt</div>
-        <div class="dd-item">Traktuj rozmówcę jak partnera — na równi, nie z pozycji dostawcy</div>
-      </div>
-      <div class="dont-card">
-        <h3>Don'ts</h3>
-        <div class="dd-item">Nie mów o owocach, kawie, kanapkach — to język sub-brandów</div>
-        <div class="dd-item">Nie używaj „oferta", „asortyment", „katalog" — to język hurtowni</div>
-        <div class="dd-item">Nie zabiegaj — BW proponuje, nie prosi</div>
-        <div class="dd-item">Nie używaj „Państwo" ani formalnego dystansu — partnerzy mówią na „Wy"</div>
-        <div class="dd-item">Nie porównuj się bezpośrednio z Multisportem/Medicoverem — BW to uzupełnienie, nie zamiennik</div>
-        <div class="dd-item">Nie obiecuj bez danych — każde twierdzenie musi mieć dowód</div>
-        <div class="dd-item">Nie mieszaj warstw — BW nie mówi o cenach, gramaturach, smakach</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 05: SŁOWNIK -->
-  <div class="section">
-    <div class="sec-label" data-reveal>05 · Słownik marki</div>
-    <div data-reveal style="font-size:13px; color:var(--text-muted); margin-bottom:16px; line-height:1.7;">Konkretne zamienniki — co BetterWorkplace mówi, a czego nigdy nie powie.</div>
-    <div data-reveal>
-    <div class="vocab-row"><div class="vocab-no">dostawca owoców</div><div class="vocab-yes">partner wellbeingowy</div></div>
-    <div class="vocab-row"><div class="vocab-no">oferta / asortyment</div><div class="vocab-yes">ekosystem / program</div></div>
-    <div class="vocab-row"><div class="vocab-no">klient</div><div class="vocab-yes">partner / firma</div></div>
-    <div class="vocab-row"><div class="vocab-no">sprzedaż</div><div class="vocab-yes">partnerstwo / współpraca</div></div>
-    <div class="vocab-row"><div class="vocab-no">koszt kuchni</div><div class="vocab-yes">inwestycja w wellbeing</div></div>
-    <div class="vocab-row"><div class="vocab-no">zamówienie</div><div class="vocab-yes">program / konfiguracja</div></div>
-    <div class="vocab-row"><div class="vocab-no">gadżet / benefit z listy</div><div class="vocab-yes">trzeci filar benefitów</div></div>
-    <div class="vocab-row"><div class="vocab-no">tani / budżetowy</div><div class="vocab-yes">efektywny / mierzalny</div></div>
-    <div class="vocab-row"><div class="vocab-no">obsługujemy firmy</div><div class="vocab-yes">współpracujemy z firmami</div></div>
-    <div class="vocab-row"><div class="vocab-no">najlepsza firma na rynku</div><div class="vocab-yes">tworzymy nową kategorię</div></div>
-    </div>
-  </div>
-
-  <!-- 06: ODBIORCY -->
-  <div class="section">
-    <div class="sec-label" data-reveal>06 · Odbiorcy i adaptacja tonu</div>
-    <div style="font-size:13px; color:var(--text-muted); margin-bottom:20px; line-height:1.7;">BetterWorkplace mówi głównie do decydentów strategicznych. Ton się lekko przesuwa w zależności od rozmówcy, ale nigdy nie schodzi na poziom produktowy.</div>
-
-    <div class="g2" data-reveal-stagger style="gap:12px;">
-      <div class="aud-card">
-        <div class="role">Główny odbiorca</div>
-        <h3>HR Director / CHRO</h3>
-        <p>Język: retencja, employee experience, employer branding, ROI wellbeingu. BW jako strategiczny element polityki HR. Ton: partnerski, pewny, oparty na danych.</p>
-        <div class="spectrum" style="margin-top:14px;">
-          <div style="width:10%; background:var(--border2);"></div>
-          <div style="width:70%; background:var(--green);"></div>
-          <div style="width:20%; background:var(--border2);"></div>
-        </div>
-        <div class="spectrum-labels"><span>Formalny</span><span>← Partnerski →</span><span>Swobodny</span></div>
-      </div>
-      <div class="aud-card">
-        <div class="role">Decydent budżetowy</div>
-        <h3>C-level / CFO</h3>
-        <p>Język: koszt vs. inwestycja, pricing power benefitu, lock-in, LTV. BW jako partner z mierzalnym zwrotem. Ton: precyzyjny, zwięzły, zero fluffu.</p>
-        <div class="spectrum" style="margin-top:14px;">
-          <div style="width:25%; background:var(--green);"></div>
-          <div style="width:55%; background:var(--border2);"></div>
-          <div style="width:20%; background:var(--border2);"></div>
-        </div>
-        <div class="spectrum-labels"><span>Formalny</span><span>← Precyzyjny →</span><span>Swobodny</span></div>
-      </div>
-    </div>
-
-    <div style="margin-top:20px;">
-      <div class="card">
-        <div class="label">Zasada nadrzędna</div>
-        <div style="font-size:15px; font-weight:700; margin-bottom:8px;">BW nigdy nie schodzi na poziom produktowy</div>
-        <div class="val">Kiedy rozmowa schodzi na owoce, kawę, kanapki — przekazujemy pałeczkę odpowiedniemu sub-brandowi. BW mówi o ekosystemie, kategorii i strategii. Zawsze.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 07: BW vs SUB-BRANDS -->
-  <div class="section">
-    <div class="sec-label" data-reveal>07 · BW vs. Sub-brandy — podział głosu</div>
-    <div style="font-size:13px; color:var(--text-muted); margin-bottom:20px; line-height:1.7;">Jasna granica: co mówi BetterWorkplace, a co mówią poszczególne marki w ekosystemie.</div>
-
-    <div class="voice-table" data-reveal>
-
-      <div class="voice-table-header">
-        <div style="font-size:10px; font-weight:700; color:var(--text-dim); letter-spacing:1px; text-transform:uppercase;">Temat</div>
-        <div style="font-size:10px; font-weight:700; color:var(--green); letter-spacing:1px; text-transform:uppercase;">BW mówi</div>
-        <div style="font-size:10px; font-weight:700; color:var(--green-accent); letter-spacing:1px; text-transform:uppercase;">Sub-brand mówi</div>
-      </div>
-
-      <div class="voice-table-row">
-        <div style="font-size:12px; font-weight:600;">Wellbeing</div>
-        <div style="font-size:12px; color:var(--text-muted);">„Trzeci filar benefitów — ROI retencji"</div>
-        <div style="font-size:12px; color:var(--text-muted);">„81% poprawy wellbeingu po 3 miesiącach" (DF)</div>
-      </div>
-
-      <div class="voice-table-row">
-        <div style="font-size:12px; font-weight:600;">Produkt</div>
-        <div style="font-size:12px; color:var(--text-muted);">„Ekosystem 5 marek pod jednym parasolem"</div>
-        <div style="font-size:12px; color:var(--text-muted);">„Świeże owoce, dostawa next-day, 60s zamówienie" (DF)</div>
-      </div>
-
-      <div class="voice-table-row">
-        <div style="font-size:12px; font-weight:600;">Skala</div>
-        <div style="font-size:12px; color:var(--text-muted);">„Ogólnopolski partner z infrastrukturą w 13 miastach"</div>
-        <div style="font-size:12px; color:var(--text-muted);">„Wielolokalizacyjna dostawa, jeden panel" (BO)</div>
-      </div>
-
-      <div class="voice-table-row">
-        <div style="font-size:12px; font-weight:600;">Cena</div>
-        <div style="font-size:12px; color:var(--text-muted);">„Inwestycja z mierzalnym zwrotem, nie koszt"</div>
-        <div style="font-size:12px; color:var(--text-muted);">„Od X PLN/os/msc, bez zobowiązań" (DF/DFo)</div>
-      </div>
-
-      <div class="voice-table-row">
-        <div style="font-size:12px; font-weight:600;">Tech</div>
-        <div style="font-size:12px; color:var(--text-muted);">„Platforma zarządzania benefitami" (pre-TB)</div>
-        <div style="font-size:12px; color:var(--text-muted);">„Jedna faktura, jeden dashboard, pełna kontrola" (TB)</div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- 08: SYSTEM KOLORÓW -->
-  <div class="section">
-    <div class="sec-label" data-reveal>08 · System kolorów</div>
-    <div style="font-size:13px; color:var(--text-muted); margin-bottom:24px; line-height:1.7;">Paleta BetterWorkplace jest ciepła i organiczna — oparta na głębokim brązie, pomarańczowym akcencie i neonowej zieleni. Warm neutrals budują profesjonalizm, a kolory brandowe dodają energii i rozpoznawalności.</div>
-
-    <!-- Kolory główne -->
-    <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;">Kolory główne</div>
-    <div data-reveal-stagger style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:28px;">
-
-      <div class="card" style="padding:0; overflow:hidden;">
-        <div style="height:80px; background:#1F0B09;"></div>
-        <div style="padding:16px;">
-          <div style="font-size:13px; font-weight:700; margin-bottom:4px;">Dark Brown</div>
-          <div style="font-size:11px; color:var(--text-muted);">#1F0B09</div>
-          <div style="font-size:11px; color:var(--text-dim); margin-top:4px;">Nagłówki, tekst główny, CTA, nav</div>
-        </div>
-      </div>
-
-      <div class="card" style="padding:0; overflow:hidden;">
-        <div style="height:80px; background:#FF6921;"></div>
-        <div style="padding:16px;">
-          <div style="font-size:13px; font-weight:700; margin-bottom:4px;">Orange</div>
-          <div style="font-size:11px; color:var(--text-muted);">#FF6921</div>
-          <div style="font-size:11px; color:var(--text-dim); margin-top:4px;">Akcent, eyebrow, logo, ikony</div>
-        </div>
-      </div>
-
-      <div class="card" style="padding:0; overflow:hidden;">
-        <div style="height:80px; background:#B2FF0D;"></div>
-        <div style="padding:16px;">
-          <div style="font-size:13px; font-weight:700; margin-bottom:4px;">Lime Green</div>
-          <div style="font-size:11px; color:var(--text-muted);">#B2FF0D</div>
-          <div style="font-size:11px; color:var(--text-dim); margin-top:4px;">Checkmarks, wyróżnienia, energia</div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Kolory pomocnicze -->
-    <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;">Neutralne i pomocnicze</div>
-    <div data-reveal-stagger style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:12px; margin-bottom:28px;">
-
-      <div class="card" style="padding:0; overflow:hidden;">
-        <div style="height:60px; background:#FFFFFF; border-bottom:1px solid var(--border);"></div>
-        <div style="padding:14px;">
-          <div style="font-size:12px; font-weight:700; margin-bottom:2px;">White</div>
-          <div style="font-size:11px; color:var(--text-muted);">#FFFFFF</div>
-          <div style="font-size:10px; color:var(--text-dim); margin-top:3px;">Tło główne, karty, sekcje</div>
-        </div>
-      </div>
-
-      <div class="card" style="padding:0; overflow:hidden;">
-        <div style="height:60px; background:#E9E7E7;"></div>
-        <div style="padding:14px;">
-          <div style="font-size:12px; font-weight:700; margin-bottom:2px;">Warm Gray</div>
-          <div style="font-size:11px; color:var(--text-muted);">#E9E7E7</div>
-          <div style="font-size:10px; color:var(--text-dim); margin-top:3px;">Bordery, separatory, disabled</div>
-        </div>
-      </div>
-
-      <div class="card" style="padding:0; overflow:hidden;">
-        <div style="height:60px; background:#665F5E;"></div>
-        <div style="padding:14px;">
-          <div style="font-size:12px; font-weight:700; margin-bottom:2px;">Neutral 60</div>
-          <div style="font-size:11px; color:var(--text-muted);">#665F5E</div>
-          <div style="font-size:10px; color:var(--text-dim); margin-top:3px;">Tekst body, opisy, paragrafy</div>
-        </div>
-      </div>
-
-      <div class="card" style="padding:0; overflow:hidden;">
-        <div style="height:60px; background:#FFFB0D;"></div>
-        <div style="padding:14px;">
-          <div style="font-size:12px; font-weight:700; margin-bottom:2px;">Yellow</div>
-          <div style="font-size:11px; color:var(--text-muted);">#FFFB0D</div>
-          <div style="font-size:10px; color:var(--text-dim); margin-top:3px;">Akcent sezonowy, highlight</div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Proporcje -->
-    <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:12px;">Proporcje użycia</div>
-    <div style="display:flex; height:14px; border-radius:7px; overflow:hidden; margin-bottom:8px;">
-      <div style="width:45%; background:#FFFFFF; border:1px solid var(--border); border-radius:7px 0 0 7px;"></div>
-      <div style="width:20%; background:#E9E7E7;"></div>
-      <div style="width:15%; background:#1F0B09;"></div>
-      <div style="width:10%; background:#FF6921;"></div>
-      <div style="width:10%; background:#B2FF0D; border-radius:0 7px 7px 0;"></div>
-    </div>
-    <div style="display:flex; justify-content:space-between; font-size:10px; color:var(--text-dim);">
-      <span>White 45%</span>
-      <span>Warm Gray 20%</span>
-      <span>Dark Brown 15%</span>
-      <span>Orange 10%</span>
-      <span>Lime 10%</span>
-    </div>
-
-    <!-- Zasady -->
-    <div class="card" data-reveal style="margin-top:20px;">
-      <div class="label">Zasady kolorystyczne</div>
-      <div class="g2" style="margin-top:10px;">
-        <div class="card-sm">
-          <div style="font-size:13px; font-weight:600; margin-bottom:4px;">Dark Brown = fundament</div>
-          <div class="val">#1F0B09 to kolor tekstu, nagłówków i CTA. Ciepły brąz zamiast zimnej czerni — buduje profesjonalizm z ludzkim charakterem.</div>
-        </div>
-        <div class="card-sm">
-          <div style="font-size:13px; font-weight:600; margin-bottom:4px;">Orange = akcent i kierunek</div>
-          <div class="val">#FF6921 na eyebrow, ikonach i logo. Przyciąga uwagę bez dominowania. Nigdy jako tło dla dużych powierzchni.</div>
-        </div>
-      </div>
-      <div class="g2" style="margin-top:10px;">
-        <div class="card-sm">
-          <div style="font-size:13px; font-weight:600; margin-bottom:4px;">Lime Green = energia i potwierdzenie</div>
-          <div class="val">#B2FF0D na checkmarkach, wyróżnieniach i hover states. Daje świeżość i nowoczesność. Sparingly — max 10% powierzchni.</div>
-        </div>
-        <div class="card-sm">
-          <div style="font-size:13px; font-weight:600; margin-bottom:4px;">White + Warm Gray = przestrzeń</div>
-          <div class="val">65% strony to białe/szare tło. Ciepłe odcienie szarości (#E9E7E7) zamiast zimnych — spójne z organicznym tonem brandu.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 09: TYPOGRAFIA -->
-  <div class="section">
-    <div class="sec-label" data-reveal>09 · Typografia</div>
-    <div style="font-size:13px; color:var(--text-muted); margin-bottom:24px; line-height:1.7;">Dwa fonty, czytelny podział ról. DM Sans na nagłówkach — geometryczny, pewny siebie. Nunito Sans na body — ciepły, czytelny, przyjazny. Razem budują profesjonalny, ale ludzki ton BetterWorkplace.</div>
-
-    <!-- DM Sans — Headings -->
-    <div class="card" data-reveal style="border-left:3px solid #FF6921; padding:32px; margin-bottom:12px;">
-      <div style="font-size:11px; color:var(--text-dim); letter-spacing:2px; text-transform:uppercase; font-weight:700; margin-bottom:20px;">DM Sans · Nagłówki i display</div>
-
-      <!-- Display / H2 -->
-      <div style="margin-bottom:28px;">
-        <div style="font-size:72px; font-weight:700; letter-spacing:-2.5px; line-height:1.2; color:#1F0B09;">Ekosystem benefitów.</div>
-        <div style="display:flex; gap:16px; margin-top:8px;">
-          <div style="font-size:10px; color:var(--text-dim); background:var(--card2); padding:4px 10px; border-radius:4px;">Display · 72px · Bold (700)</div>
-          <div style="font-size:10px; color:var(--text-dim); background:var(--card2); padding:4px 10px; border-radius:4px;">Hero sekcje, statement</div>
-        </div>
-      </div>
-
-      <!-- H1 -->
-      <div style="margin-bottom:28px;">
-        <div style="font-size:36px; font-weight:200; letter-spacing:normal; line-height:1.2; color:#1F0B09;">14 lat pomagamy firmom budować lepsze miejsca pracy.</div>
-        <div style="display:flex; gap:16px; margin-top:8px;">
-          <div style="font-size:10px; color:var(--text-dim); background:var(--card2); padding:4px 10px; border-radius:4px;">H1 · 36px · Light (200)</div>
-          <div style="font-size:10px; color:var(--text-dim); background:var(--card2); padding:4px 10px; border-radius:4px;">Tytuły stron, hero subtitle</div>
-        </div>
-      </div>
-
-      <!-- H3 -->
-      <div style="margin-bottom:28px;">
-        <div style="font-size:24px; font-weight:600; letter-spacing:-0.4px; line-height:1.3; color:#1F0B09;">Jeden dostawca, jedna faktura, zero chaosu</div>
-        <div style="display:flex; gap:16px; margin-top:8px;">
-          <div style="font-size:10px; color:var(--text-dim); background:var(--card2); padding:4px 10px; border-radius:4px;">H3 · 24px · SemiBold (600)</div>
-          <div style="font-size:10px; color:var(--text-dim); background:var(--card2); padding:4px 10px; border-radius:4px;">Nagłówki sekcji, karty</div>
-        </div>
-      </div>
-
-      <!-- Eyebrow -->
-      <div>
-        <div style="font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#FF6921;">Dla nowoczesnych firm</div>
-        <div style="display:flex; gap:16px; margin-top:8px;">
-          <div style="font-size:10px; color:var(--text-dim); background:var(--card2); padding:4px 10px; border-radius:4px;">Eyebrow · 12px · Bold (700) · Uppercase</div>
-          <div style="font-size:10px; color:var(--text-dim); background:var(--card2); padding:4px 10px; border-radius:4px;">Etykiety, badże, sekcje · kolor Orange</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Nunito Sans — Body -->
-    <div class="card" data-reveal style="border-left:3px solid #665F5E; padding:32px;">
-      <div style="font-size:11px; color:var(--text-dim); letter-spacing:2px; text-transform:uppercase; font-weight:700; margin-bottom:20px;">Nunito Sans · Treść i opisy</div>
-
-      <!-- Body -->
-      <div style="margin-bottom:28px;">
-        <div style="font-size:16px; font-weight:400; line-height:1.6; color:#665F5E; font-family:'Nunito Sans',sans-serif;">Owoce, kawa, przekąski, prezenty, serwis, edukacja. Wszystko, czego potrzebuje nowoczesne miejsce pracy.</div>
-        <div style="display:flex; gap:16px; margin-top:8px;">
-          <div style="font-size:10px; color:var(--text-dim); background:var(--card2); padding:4px 10px; border-radius:4px;">Body · 16px · Regular (400)</div>
-          <div style="font-size:10px; color:var(--text-dim); background:var(--card2); padding:4px 10px; border-radius:4px;">Treść główna, opisy, paragrafy</div>
-        </div>
-      </div>
-
-      <!-- Small / Button -->
-      <div>
-        <div style="font-size:14px; font-weight:400; line-height:1.6; color:#665F5E; font-family:'Nunito Sans',sans-serif;">Im dłużej z nami, tym więcej korzyści i rabatów. Dedykowany opiekun, jedna faktura.</div>
-        <div style="display:flex; gap:16px; margin-top:8px;">
-          <div style="font-size:10px; color:var(--text-dim); background:var(--card2); padding:4px 10px; border-radius:4px;">Small · 14px · Regular (400)</div>
-          <div style="font-size:10px; color:var(--text-dim); background:var(--card2); padding:4px 10px; border-radius:4px;">Meta, opisy kart, buttony (18px bold)</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Zasady typograficzne -->
-    <div class="card" data-reveal style="margin-top:12px;">
-      <div class="label">Zasady typograficzne</div>
-      <div class="g2" style="margin-top:10px;">
-        <div class="card-sm">
-          <div style="font-size:13px; font-weight:600; margin-bottom:4px;">DM Sans = nagłówki, Nunito Sans = body</div>
-          <div class="val">Nigdy odwrotnie. DM Sans daje geometryczny charakter headlinom. Nunito Sans zapewnia czytelność na długich tekstach.</div>
-        </div>
-        <div class="card-sm">
-          <div style="font-size:13px; font-weight:600; margin-bottom:4px;">Kontrast wag buduje hierarchię</div>
-          <div class="val">Display: Bold (700). H1: Light (200) — kontrast wagi tworzy wyrafinowany efekt. Body: Regular (400).</div>
-        </div>
-      </div>
-      <div class="g2" style="margin-top:10px;">
-        <div class="card-sm">
-          <div style="font-size:13px; font-weight:600; margin-bottom:4px;">Negatywny letter-spacing na display</div>
-          <div class="val">72px display: -2.5px spacing. H3 (24px): -0.4px. Body i mniejsze: normalny spacing. Im większy font, tym ciasniej.</div>
-        </div>
-        <div class="card-sm">
-          <div style="font-size:13px; font-weight:600; margin-bottom:4px;">Orange tylko na eyebrow</div>
-          <div class="val">Kolor #FF6921 wyłącznie na uppercase etykietach i ikonach. Nigdy w nagłówkach ani body text.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 10: ELEMENTY WIZUALNE -->
-  <div class="section">
-    <div class="sec-label" data-reveal>10 · Elementy wizualne — wyróżniki</div>
-    <div style="font-size:13px; color:var(--text-muted); margin-bottom:24px; line-height:1.7;">Ilustracje brandowe BetterWorkplace łączą fotografię z abstrakcyjnymi kształtami kolorowymi. Dwa warianty odpowiadają dwóm kontekstom użycia — dynamiczny cutout i zamknięta forma okrągła. Razem budują spójny, rozpoznawalny język wizualny.</div>
-
-    <!-- WARIANT A: CUTOUT -->
-    <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;">Wariant A · Cutout na białym tle</div>
-    <div class="card" data-reveal style="padding:32px; margin-bottom:24px;">
-      <div data-reveal-stagger style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:24px;">
-        <div style="background:#ffffff; border:1px solid var(--border); border-radius:16px; padding:20px; display:flex; align-items:center; justify-content:center; min-height:220px;">
-          <img src="bw-cutout-woman.png" alt="Kobieta machająca · Yellow blob" style="max-height:200px; max-width:100%; object-fit:contain;">
-        </div>
-        <div style="background:#ffffff; border:1px solid var(--border); border-radius:16px; padding:20px; display:flex; align-items:center; justify-content:center; min-height:220px;">
-          <img src="bw-cutout-highfive.png" alt="High-five · Purple blob" style="max-height:200px; max-width:100%; object-fit:contain;">
-        </div>
-      </div>
-      <div data-reveal-stagger style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:24px;">
-        <div style="background:#ffffff; border:1px solid var(--border); border-radius:16px; padding:20px; display:flex; align-items:center; justify-content:center; min-height:220px;">
-          <img src="bw-cutout-heart.png" alt="Serce w dłoni · Yellow blob" style="max-height:200px; max-width:100%; object-fit:contain;">
-        </div>
-        <div style="background:#ffffff; border:1px solid var(--border); border-radius:16px; padding:20px; display:flex; align-items:center; justify-content:center; min-height:220px;">
-          <img src="bw-cutout-building.png" alt="Biurowiec · Purple blob" style="max-height:200px; max-width:100%; object-fit:contain;">
-        </div>
-      </div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-        <div class="card-sm">
-          <div style="font-size:13px; font-weight:600; margin-bottom:4px;">Białe tło, kształt wystaje</div>
-          <div class="val">Obiekt (osoba, dłonie, serce, budynek) jest wykadrowany — może wystawać poza krawędź bloba. Tło zawsze białe (#FFFFFF). Efekt: dynamiczny, energetyczny, przyciąga wzrok.</div>
-        </div>
-        <div class="card-sm">
-          <div style="font-size:13px; font-weight:600; margin-bottom:4px;">Kolorowe bloby organiczne</div>
-          <div class="val">Za obiektem — organiczny, nieregularny kształt w jednym z kolorów brandowych (Yellow #FFFB0D, Orange #FF6921, Purple/Fiolet). Blob nigdy nie jest idealnie okrągły — ma „amebowy" charakter.</div>
-        </div>
-      </div>
-      <div style="margin-top:14px; padding:14px 18px; background:var(--orange-dim); border-radius:10px; font-size:12px; line-height:1.6; color:var(--text-muted);">
-        <strong style="color:var(--text);">Użycie:</strong> Hero sekcje, landing page, kampanie brandowe BW, social media — wszędzie, gdzie potrzebujemy dynamiki i wyróżnienia. Idealne dla ludzi (zespół, dłonie, emocje) i symboli (serce, ikona).
-      </div>
-    </div>
-
-    <!-- WARIANT B: OKRĄG NA SZARYM -->
-    <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;">Wariant B · Okrąg na szarym tle</div>
-    <div class="card" data-reveal style="padding:32px; margin-bottom:24px;">
-      <div data-reveal-stagger style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:16px; margin-bottom:24px;">
-        <div style="background:#E9E7E7; border-radius:16px; padding:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:170px;">
-          <img src="bw-circle-fruits.png" alt="Skrzynia owoców · Yellow" style="max-height:130px; max-width:100%; object-fit:contain;">
-          <div style="font-size:9px; color:var(--text-dim); margin-top:10px;">Owoce · Yellow</div>
-        </div>
-        <div style="background:#E9E7E7; border-radius:16px; padding:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:170px;">
-          <img src="bw-circle-tree.png" alt="Drzewo owocowe · Lime" style="max-height:130px; max-width:100%; object-fit:contain;">
-          <div style="font-size:9px; color:var(--text-dim); margin-top:10px;">Drzewo · Lime</div>
-        </div>
-        <div style="background:#E9E7E7; border-radius:16px; padding:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:170px;">
-          <img src="bw-circle-warehouse.png" alt="Magazyn · Peach" style="max-height:130px; max-width:100%; object-fit:contain;">
-          <div style="font-size:9px; color:var(--text-dim); margin-top:10px;">Magazyn · Peach</div>
-        </div>
-        <div style="background:#E9E7E7; border-radius:16px; padding:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:170px;">
-          <img src="bw-circle-city.png" alt="Miasto · Blue" style="max-height:130px; max-width:100%; object-fit:contain;">
-          <div style="font-size:9px; color:var(--text-dim); margin-top:10px;">Miasto · Blue</div>
-        </div>
-      </div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-        <div class="card-sm">
-          <div style="font-size:13px; font-weight:600; margin-bottom:4px;">Szare tło, idealny okrąg</div>
-          <div class="val">Obiekt zamknięty w idealnym kole. Tło karty zawsze Warm Gray (#E9E7E7). Obiekt nie wystaje — jest przycięty do krawędzi okręgu. Efekt: uporządkowany, systemowy, katalogowy.</div>
-        </div>
-        <div class="card-sm">
-          <div style="font-size:13px; font-weight:600; margin-bottom:4px;">Monochromatyczny okrąg</div>
-          <div class="val">Koło w jednym pastelowym kolorze (Yellow, Lime, Peach, Blue). Fotografia wewnątrz lekko stonowana. Idealne do prezentowania kategorii produktów, lokalizacji, usług.</div>
-        </div>
-      </div>
-      <div style="margin-top:14px; padding:14px 18px; background:var(--green-dim); border-radius:10px; font-size:12px; line-height:1.6; color:var(--text-muted);">
-        <strong style="color:var(--text);">Użycie:</strong> Strony produktowe, karty kategorii, ikony usług, siatki ofertowe, infografiki. Wariant B jest bardziej „katalogowy" — idealny do DailyFruits i sekcji operacyjnych BW.
-      </div>
-    </div>
-
-    <!-- ZASADY ŁĄCZENIA -->
-    <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px;">Zasady stosowania</div>
-    <div class="card" data-reveal style="margin-bottom:12px;">
-      <div class="g2" style="margin-top:0;">
-        <div class="card-sm">
-          <div style="font-size:13px; font-weight:600; margin-bottom:4px;">Cutout = emocja i dynamika</div>
-          <div class="val">Wariant A (białe tło, blob) stosujemy tam, gdzie chcemy przyciągnąć uwagę, wzbudzić emocję — hero, kampanie, social. Ludzie, dłonie, symbole.</div>
-        </div>
-        <div class="card-sm">
-          <div style="font-size:13px; font-weight:600; margin-bottom:4px;">Okrąg = system i katalog</div>
-          <div class="val">Wariant B (szare tło, koło) stosujemy w kontekście produktowym i informacyjnym — karty kategorii, grid ofertowy, prezentacja usług.</div>
-        </div>
-      </div>
-      <div class="g2" style="margin-top:10px;">
-        <div class="card-sm">
-          <div style="font-size:13px; font-weight:600; margin-bottom:4px;">Nie mieszaj wariantów w jednej siatce</div>
-          <div class="val">Jeśli sekcja używa cutoutów — wszystkie elementy w niej to cutouty. Jeśli okręgi — wszystkie okręgi. Nigdy nie miksujemy w jednym wierszu.</div>
-        </div>
-        <div class="card-sm">
-          <div style="font-size:13px; font-weight:600; margin-bottom:4px;">Max 1 kolor bloba na element</div>
-          <div class="val">Każda ilustracja ma dokładnie jeden kolor tła/bloba. Nigdy gradienty, nigdy wielokolorowe. Kontrast budujemy przez zestawienie obok siebie.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- DO'S & DON'TS -->
-    <div class="card" data-reveal>
-      <div class="label">Do's & Don'ts</div>
-      <div class="g2" style="margin-top:10px;">
-        <div class="card-sm" style="border-left:3px solid #2d6a4f;">
-          <div style="font-size:11px; font-weight:700; color:#2d6a4f; margin-bottom:8px;">✓ TAK</div>
-          <div class="val">Cutout na białym tle z organicznym blobem</div>
-          <div class="val">Okręgi na szarym tle (#E9E7E7)</div>
-          <div class="val">Jeden kolor na element</div>
-          <div class="val">Fotografia realistyczna, ciepły ton</div>
-          <div class="val">Konsekwentny wariant w ramach sekcji</div>
-        </div>
-        <div class="card-sm" style="border-left:3px solid var(--red);">
-          <div style="font-size:11px; font-weight:700; color:var(--red); margin-bottom:8px;">✗ NIE</div>
-          <div class="val">Cutout na kolorowym / ciemnym tle</div>
-          <div class="val">Okrąg na białym tle (tylko szare)</div>
-          <div class="val">Gradient lub wiele kolorów w jednym blobie</div>
-          <div class="val">Stock-photo'wy styl (uśmiechnięci ludzie z laptopami)</div>
-          <div class="val">Mieszanie wariantów A i B w jednym wierszu</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer" data-reveal>
-    BetterWorkplace · Brand Voice Guide · v1.0<br>
-    Dokument poufny · Kwiecień 2026
-  </div>
-
 </div>
 
-<script>
-(function(){
-  var s = document.createElement('script');
-  s.src = 'https://unpkg.com/lenis@1.3.17/dist/lenis.min.js';
-  s.onload = function(){
-    var lenis = new Lenis({ duration:1.6, easing:function(t){ return Math.min(1,1.001-Math.pow(2,-10*t)); } });
-    function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
-    requestAnimationFrame(raf);
-  };
-  document.head.appendChild(s);
-})();
-(function(){
-  if (!('IntersectionObserver' in window)) {
-    document.querySelectorAll('[data-reveal],[data-reveal-stagger]').forEach(function(el){ el.classList.add('is-visible'); });
-    return;
-  }
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { rootMargin:'0px 0px -8% 0px', threshold:0.08 });
-  document.querySelectorAll('[data-reveal],[data-reveal-stagger]').forEach(function(el){ io.observe(el); });
-})();
-</script>
+<div id="main-content" style="display:none;">
+<a class="back-link" href="index.html">&larr; Panel klienta</a>
 
+<div class="shell">
+  <aside>
+    <div class="brand"><img src="betterWorkplace.svg" alt="BetterWorkplace"></div>
+    <div class="ver">Brand Guide &middot; v1 &middot; 2026</div>
+    <nav>
+      <div class="grp">Fundamenty</div>
+      <a href="#kolory">Kolory</a>
+      <a href="#typografia">Typografia</a>
+      <div class="grp">Marka</div>
+      <a href="#osobowosc">Osobowosc</a>
+      <a href="#glos">Glos marki</a>
+      <a href="#hierarchia">Hierarchia przekazow</a>
+      <div class="grp">Komunikacja</div>
+      <a href="#slownik">Slownik</a>
+      <a href="#odbiorcy">Odbiorcy</a>
+      <a href="#versus">BW vs Sub-brandy</a>
+      <div class="grp">Wizualne</div>
+      <a href="#fotografia">Styl fotografii</a>
+      <a href="#zasady">Do &amp; Don't</a>
+    </nav>
+  </aside>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="ds-hero" style="border:none;">
+      <div class="kicker">ekosystem benefitow. jeden partner.</div>
+      <h1>Brand <span class="o">Guide</span></h1>
+      <p>Jeden spojny jezyk marki BetterWorkplace — osobowosc, glos, kolory, typografia i zasady wizualne. Wedlug tego budujemy kazdy komunikat i material.</p>
+      <div class="meta">Zrodlo: Brand Strategy 2026 &middot; by BetterWorkplace</div>
+    </section>
+
+    <!-- 01 — KOLORY -->
+    <section id="kolory">
+      <div class="kicker">01 — Fundamenty</div>
+      <h2 class="sec">Kolory</h2>
+      <p class="sub">Paleta BetterWorkplace jest ciepla i organiczna — oparta na glebokim brazu, pomaranczowym akcencie i neonowej zieleni.</p>
+
+      <h3 class="block">Kolory glowne</h3>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#1F0B09"></div><div class="smeta"><div class="name">Dark Brown</div><div class="role">Naglowki, tekst glowny, CTA, nav</div><div class="hex">#1F0B09</div><span class="tag lead">wiodacy</span></div></div>
+        <div class="sw"><div class="chip" style="background:#FF6921"></div><div class="smeta"><div class="name">Orange</div><div class="role">Akcent, eyebrow, logo, ikony</div><div class="hex">#FF6921</div><span class="tag accent">akcent</span></div></div>
+        <div class="sw"><div class="chip" style="background:#B2FF0D"></div><div class="smeta"><div class="name">Lime Green</div><div class="role">Checkmarks, wyroznienia, energia</div><div class="hex">#B2FF0D</div><span class="tag energy">energia</span></div></div>
+      </div>
+
+      <h3 class="block">Neutralne i pomocnicze</h3>
+      <div class="swatches s4">
+        <div class="sw"><div class="chip" style="background:#FFFFFF;border-bottom:1px solid var(--line)"></div><div class="smeta"><div class="name">White</div><div class="role">Tlo glowne, karty, sekcje</div><div class="hex">#FFFFFF</div><span class="tag bg">tlo</span></div></div>
+        <div class="sw"><div class="chip" style="background:#E9E7E7"></div><div class="smeta"><div class="name">Warm Gray</div><div class="role">Bordery, separatory, disabled</div><div class="hex">#E9E7E7</div><span class="tag bg">neutralny</span></div></div>
+        <div class="sw"><div class="chip" style="background:#665F5E"></div><div class="smeta"><div class="name">Neutral 60</div><div class="role">Tekst body, opisy, paragrafy</div><div class="hex">#665F5E</div><span class="tag bg">body</span></div></div>
+        <div class="sw"><div class="chip" style="background:#FFFB0D"></div><div class="smeta"><div class="name">Yellow</div><div class="role">Akcent sezonowy, highlight</div><div class="hex">#FFFB0D</div><span class="tag accent">sezonowy</span></div></div>
+      </div>
+
+      <h3 class="block">Proporcje uzycia</h3>
+      <div class="usage-bar">
+        <div style="width:45%;background:#FFFFFF;border:1px solid var(--line);border-radius:7px 0 0 7px;"></div>
+        <div style="width:20%;background:#E9E7E7;"></div>
+        <div style="width:15%;background:#1F0B09;"></div>
+        <div style="width:10%;background:#FF6921;"></div>
+        <div style="width:10%;background:#B2FF0D;border-radius:0 7px 7px 0;"></div>
+      </div>
+      <div class="usage-labels">
+        <span>White 45%</span>
+        <span>Warm Gray 20%</span>
+        <span>Dark Brown 15%</span>
+        <span>Orange 10%</span>
+        <span>Lime 10%</span>
+      </div>
+
+      <div class="callout">
+        <div class="b">!</div>
+        <p><b>Dark Brown jest kolorem wiodacym</b> — dla typografii i CTA. <b>Orange to akcent</b> na eyebrow i ikonach. <b>Lime Green wylacznie na checkmarkach i wyroznieniach</b> (max 10%).</p>
+      </div>
+    </section>
+
+    <!-- 02 — TYPOGRAFIA -->
+    <section id="typografia">
+      <div class="kicker">02 — Fundamenty</div>
+      <h2 class="sec">Typografia</h2>
+      <p class="sub">Dwa fonty, dwie role. DM Sans na naglowkach — geometryczny, pewny siebie. Nunito Sans na body — ciepiy, czytelny, przyjazny.</p>
+
+      <div class="spec">
+        <div class="lbl"><span>DM Sans &middot; Bold (700)</span><span>Display / Hero &mdash; 72px</span></div>
+        <div style="font-family:var(--font-head);font-weight:700;font-size:clamp(30px,4vw,72px);letter-spacing:-2.5px;line-height:1.02;color:var(--text);">Ekosystem benefitow.</div>
+      </div>
+
+      <div class="spec">
+        <div class="lbl"><span>DM Sans &middot; Light (200)</span><span>H1 &mdash; 36px</span></div>
+        <div style="font-family:var(--font-head);font-weight:200;font-size:clamp(24px,3vw,36px);letter-spacing:normal;line-height:1.2;color:var(--text);">14 lat pomagamy firmom budowac lepsze miejsca pracy.</div>
+      </div>
+
+      <div class="spec">
+        <div class="lbl"><span>DM Sans &middot; SemiBold (600)</span><span>H3 &mdash; 24px</span></div>
+        <div style="font-family:var(--font-head);font-weight:600;font-size:clamp(18px,2.5vw,24px);letter-spacing:-.4px;line-height:1.3;color:var(--text);">Jeden dostawca, jedna faktura, zero chaosu</div>
+      </div>
+
+      <div class="spec">
+        <div class="lbl"><span>DM Sans &middot; Bold (700) &middot; Uppercase</span><span>Eyebrow &mdash; 12px</span></div>
+        <div style="font-family:var(--font-head);font-weight:700;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);">DLA NOWOCZESNYCH FIRM</div>
+      </div>
+
+      <div class="spec">
+        <div class="lbl"><span>Nunito Sans &middot; Regular (400)</span><span>Body &mdash; 16px</span></div>
+        <div style="font-family:var(--font-body);font-weight:400;font-size:16px;line-height:1.65;color:var(--muted);">Owoce, kawa, przekaski, prezenty, serwis, edukacja. Wszystko, czego potrzebuje nowoczesne miejsce pracy.</div>
+      </div>
+    </section>
+
+    <!-- 03 — OSOBOWOSC -->
+    <section id="osobowosc">
+      <div class="kicker">03 — Marka</div>
+      <h2 class="sec">Osobowosc marki</h2>
+      <p class="sub">Kim jest BetterWorkplace jako marka — misja, archetyp, obietnica i terytorium.</p>
+
+      <div class="pers-card">
+        <p style="font-size:15px;color:var(--text);line-height:1.8;margin-bottom:4px;">Gdyby BetterWorkplace byl osoba, bylby <strong>doswiadczonym partnerem strategicznym</strong>, ktory rozmawia z zarzadem, nie z recepcja. Nie sprzedaje owocow — pokazuje, dlaczego wellbeing zywieniowy jest <em style="color:var(--green);">trzecim filarem benefitow pracowniczych</em>, obok Multisportu i Medicoveru. Mowi jezykiem ROI, retencji i employer brandingu. Jest pewny siebie, bo tworzy kategorie, ktorej nikt inny nie zajal.</p>
+
+        <div class="pers-grid">
+          <div class="pers-cell">
+            <div class="lbl">Misja</div>
+            <div class="val">Zmieniamy postrzeganie zywienia w biurze — z kosztu operacyjnego na strategiczny benefit pracowniczy z mierzalnym ROI.</div>
+          </div>
+          <div class="pers-cell">
+            <div class="lbl">Archetyp</div>
+            <div class="val"><strong>Medrzec</strong> (Sage) + <strong>Wladca</strong> (Ruler). Definiuje nowa kategorie i zarzadza ekosystemem z pozycji wiedzy, danych i doswiadczenia.</div>
+          </div>
+          <div class="pers-cell">
+            <div class="lbl">Obietnica</div>
+            <div class="val">Jeden partner do calego wellbeingu zywieniowego w firmie.</div>
+          </div>
+          <div class="pers-cell">
+            <div class="lbl">Terytorium</div>
+            <div class="val">Trzeci filar benefitow pracowniczych. Retencja, employer branding, ROI wellbeingu, category creation.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="claim">
+        <div class="txt">Ekosystem benefitow.<br>Jeden partner. Lepsze miejsce pracy.</div>
+        <div class="lab">Claim marki</div>
+      </div>
+    </section>
+
+    <!-- 04 — GLOS MARKI -->
+    <section id="glos">
+      <div class="kicker">04 — Marka</div>
+      <h2 class="sec">Glos marki</h2>
+      <p class="sub">Cztery atrybuty definiujace sposob, w jaki BetterWorkplace sie komunikuje.</p>
+
+      <div class="v-grid">
+        <div class="v-card">
+          <h3>Strategiczny</h3>
+          <div class="desc">Mowi &bdquo;dlaczego&rdquo;, nie &bdquo;co&rdquo;. Nie sprzedaje produktow — buduje kategorie. Jezyk: partnerstwo, ROI, retencja, employer branding.</div>
+          <div class="not">Nie jestesmy: abstrakcyjni. Kazda strategiczna teza ma konkretny dowod.</div>
+          <div class="v-ex">&#10003; &bdquo;Wellbeing zywieniowy to strategia retencji, nie gadzet.&rdquo;</div>
+          <div class="v-anti">&#10007; &bdquo;Oferujemy szeroki asortyment produktow do biura.&rdquo;</div>
+        </div>
+
+        <div class="v-card">
+          <h3>Partnerski</h3>
+          <div class="desc">Rozmawiamy jak rowny z rownym — z HR Directorem i C-levelem. Nie jestesmy dostawca do odwolania. Jestesmy partnerem, ktorego sie wybiera.</div>
+          <div class="not">Nie jestesmy: sluzalczy. Nie zabiegamy — proponujemy.</div>
+          <div class="v-ex">&#10003; &bdquo;Razem zbudujemy program, ktory Wasz HR pokaze na boardzie.&rdquo;</div>
+          <div class="v-anti">&#10007; &bdquo;Mamy nadzieje, ze nasza oferta spelni Panstwa oczekiwania.&rdquo;</div>
+        </div>
+
+        <div class="v-card">
+          <h3>Pewny siebie</h3>
+          <div class="desc">Tworzymy kategorie, ktorej nikt inny nie zajal. 10+ lat, ekosystem 5 marek, ogolnopolska skala. To nie jest startup z pomyslem — to lider z infrastruktura.</div>
+          <div class="not">Nie jestesmy: aroganccy. Pewnosc z wynikow, nie z ego.</div>
+          <div class="v-ex">&#10003; &bdquo;Definiujemy trzeci filar benefitow. Pierwszy i jedyny na polskim rynku.&rdquo;</div>
+          <div class="v-anti">&#10007; &bdquo;Jestesmy najlepsza firma na rynku.&rdquo;</div>
+        </div>
+
+        <div class="v-card">
+          <h3>Precyzyjny</h3>
+          <div class="desc">Kazdy argument oparty na danych. ROI, retencja, NPS, koszty churnu. Jezyk, ktory CFO zrozumie i HR wezmie na board meeting.</div>
+          <div class="not">Nie jestesmy: sucho-korporacyjni. Dane podajemy w kontekscie biznesowym, nie w tabelkach.</div>
+          <div class="v-ex">&#10003; &bdquo;Benefit wpisany w polityke HR jest 5-10x trudniejszy do usuniecia niz dostawca do odwolania.&rdquo;</div>
+          <div class="v-anti">&#10007; &bdquo;Nasze rozwiazania przynosza wieloaspektowe korzysci.&rdquo;</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 — HIERARCHIA PRZEKAZOW -->
+    <section id="hierarchia">
+      <div class="kicker">05 — Marka</div>
+      <h2 class="sec">Hierarchia przekazow</h2>
+      <p class="sub">BetterWorkplace nie mowi o owocach, kawie ani kanapkach. To robia sub-brandy. BW mowi o kategorii, ekosystemie i strategii.</p>
+
+      <div class="h-card" style="border-left:4px solid var(--green);">
+        <div class="h-kicker" style="color:var(--green);">Warstwa 1 &middot; Master</div>
+        <h3>BW mowi &bdquo;dlaczego&rdquo;</h3>
+        <p>Buduje kategorie &bdquo;trzeciego filaru&rdquo;. Jezyk strategii i ROI. Rozmowca: HR Director, C-level. Nie sprzedaje produktow — pozycjonuje ekosystem.</p>
+      </div>
+
+      <div class="h-card" style="border-left:4px solid #86efac;">
+        <div class="h-kicker" style="color:#16a34a;">Warstwa 2 &middot; Endorsed</div>
+        <h3>Sub-brandy mowia &bdquo;co&rdquo; i &bdquo;jak&rdquo;</h3>
+        <p>DailyFruits, DailyFoods, BetterOffice — kazdy ma wlasny ton i audience. Mowia o produktach, rytualach, wygodzie. BW jest endorserem w tle: &bdquo;by BetterWorkplace&rdquo;.</p>
+      </div>
+
+      <div class="h-card" style="border-left:4px solid var(--dim);">
+        <div class="h-kicker" style="color:var(--dim);">Warstwa 3 &middot; Product</div>
+        <h3>TeamBudget mowi &bdquo;kontrola&rdquo;</h3>
+        <p>Platforma, automatyzacja, jedna faktura. Jezyk tech/utility. Do CFO i HR. Pre-launch: messaging idzie przez BW, zeby budowac swiadomosc zanim produkt wejdzie na rynek.</p>
+      </div>
+    </section>
+
+    <!-- 06 — SLOWNIK -->
+    <section id="slownik">
+      <div class="kicker">06 — Komunikacja</div>
+      <h2 class="sec">Slownik marki</h2>
+      <p class="sub">Konkretne zamienniki — co BetterWorkplace mowi, a czego nigdy nie powie.</p>
+
+      <div class="vocab">
+        <div class="vocab-row"><div class="vocab-no">dostawca owocow</div><div class="vocab-yes">partner wellbeingowy</div></div>
+        <div class="vocab-row"><div class="vocab-no">oferta / asortyment</div><div class="vocab-yes">ekosystem / program</div></div>
+        <div class="vocab-row"><div class="vocab-no">klient</div><div class="vocab-yes">partner / firma</div></div>
+        <div class="vocab-row"><div class="vocab-no">sprzedaz</div><div class="vocab-yes">partnerstwo / wspolpraca</div></div>
+        <div class="vocab-row"><div class="vocab-no">koszt kuchni</div><div class="vocab-yes">inwestycja w wellbeing</div></div>
+        <div class="vocab-row"><div class="vocab-no">zamowienie</div><div class="vocab-yes">program / konfiguracja</div></div>
+        <div class="vocab-row"><div class="vocab-no">gadzet / benefit z listy</div><div class="vocab-yes">trzeci filar benefitow</div></div>
+        <div class="vocab-row"><div class="vocab-no">tani / budzetowy</div><div class="vocab-yes">efektywny / mierzalny</div></div>
+        <div class="vocab-row"><div class="vocab-no">obslugujemy firmy</div><div class="vocab-yes">wspolpracujemy z firmami</div></div>
+        <div class="vocab-row"><div class="vocab-no">najlepsza firma na rynku</div><div class="vocab-yes">tworzymy nowa kategorie</div></div>
+      </div>
+    </section>
+
+    <!-- 07 — ODBIORCY -->
+    <section id="odbiorcy">
+      <div class="kicker">07 — Komunikacja</div>
+      <h2 class="sec">Odbiorcy i adaptacja tonu</h2>
+      <p class="sub">BetterWorkplace mowi glownie do decydentow strategicznych. Ton sie lekko przesuwa w zaleznosci od rozmowcy, ale nigdy nie schodzi na poziom produktowy.</p>
+
+      <div class="aud-grid">
+        <div class="aud-card">
+          <div class="role">Glowny odbiorca</div>
+          <h3>HR Director / CHRO</h3>
+          <p>Jezyk: retencja, employee experience, employer branding, ROI wellbeingu. BW jako strategiczny element polityki HR. Ton: partnerski, pewny, oparty na danych.</p>
+          <div class="spectrum">
+            <div style="width:10%;background:var(--warm-gray);"></div>
+            <div style="width:70%;background:var(--green);"></div>
+            <div style="width:20%;background:var(--warm-gray);"></div>
+          </div>
+          <div class="spectrum-labels"><span>Formalny</span><span>&larr; Partnerski &rarr;</span><span>Swobodny</span></div>
+        </div>
+        <div class="aud-card">
+          <div class="role">Decydent budzetowy</div>
+          <h3>C-level / CFO</h3>
+          <p>Jezyk: koszt vs. inwestycja, pricing power benefitu, lock-in, LTV. BW jako partner z mierzalnym zwrotem. Ton: precyzyjny, zwiezly, zero fluffu.</p>
+          <div class="spectrum">
+            <div style="width:25%;background:var(--green);"></div>
+            <div style="width:55%;background:var(--warm-gray);"></div>
+            <div style="width:20%;background:var(--warm-gray);"></div>
+          </div>
+          <div class="spectrum-labels"><span>Formalny</span><span>&larr; Precyzyjny &rarr;</span><span>Swobodny</span></div>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="lbl">Zasada nadrzedna</div>
+        <h4>BW nigdy nie schodzi na poziom produktowy</h4>
+        <p>Kiedy rozmowa schodzi na owoce, kawe, kanapki — przekazujemy paleczke odpowiedniemu sub-brandowi. BW mowi o ekosystemie, kategorii i strategii. Zawsze.</p>
+      </div>
+    </section>
+
+    <!-- 08 — BW VS SUB-BRANDY -->
+    <section id="versus">
+      <div class="kicker">08 — Komunikacja</div>
+      <h2 class="sec">BW vs. Sub-brandy</h2>
+      <p class="sub">Jasna granica: co mowi BetterWorkplace, a co mowia poszczegolne marki w ekosystemie.</p>
+
+      <div class="vs-table">
+        <div class="vs-header">
+          <div style="color:var(--dim);">Temat</div>
+          <div style="color:var(--green);">BW mowi</div>
+          <div style="color:var(--orange);">Sub-brand mowi</div>
+        </div>
+        <div class="vs-row">
+          <div class="topic">Wellbeing</div>
+          <div class="cell">&bdquo;Trzeci filar benefitow — ROI retencji&rdquo;</div>
+          <div class="cell">&bdquo;81% poprawy wellbeingu po 3 miesiacach&rdquo; (DF)</div>
+        </div>
+        <div class="vs-row">
+          <div class="topic">Produkt</div>
+          <div class="cell">&bdquo;Ekosystem 5 marek pod jednym parasolem&rdquo;</div>
+          <div class="cell">&bdquo;Swieże owoce, dostawa next-day, 60s zamowienie&rdquo; (DF)</div>
+        </div>
+        <div class="vs-row">
+          <div class="topic">Skala</div>
+          <div class="cell">&bdquo;Ogolnopolski partner z infrastruktura w 13 miastach&rdquo;</div>
+          <div class="cell">&bdquo;Wielolokalizacyjna dostawa, jeden panel&rdquo; (BO)</div>
+        </div>
+        <div class="vs-row">
+          <div class="topic">Cena</div>
+          <div class="cell">&bdquo;Inwestycja z mierzalnym zwrotem, nie koszt&rdquo;</div>
+          <div class="cell">&bdquo;Od X PLN/os/msc, bez zobowiazan&rdquo; (DF/DFo)</div>
+        </div>
+        <div class="vs-row">
+          <div class="topic">Tech</div>
+          <div class="cell">&bdquo;Platforma zarzadzania benefitami&rdquo; (pre-TB)</div>
+          <div class="cell">&bdquo;Jedna faktura, jeden dashboard, pelna kontrola&rdquo; (TB)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 — STYL FOTOGRAFII -->
+    <section id="fotografia">
+      <div class="kicker">09 — Wizualne</div>
+      <h2 class="sec">Styl fotografii</h2>
+      <p class="sub">Ilustracje brandowe BetterWorkplace lacza fotografie z abstrakcyjnymi ksztaltami kolorowymi. Dwa warianty — dynamiczny cutout i zamknieta forma okragla.</p>
+
+      <h3 class="block">Wariant A &middot; Cutout na bialym tle</h3>
+      <div class="photo-grid">
+        <div class="photo-cell"><img src="bw-cutout-woman.png" alt="Kobieta machajaca"></div>
+        <div class="photo-cell"><img src="bw-cutout-highfive.png" alt="High-five"></div>
+      </div>
+      <div class="photo-grid">
+        <div class="photo-cell"><img src="bw-cutout-heart.png" alt="Serce w dloni"></div>
+        <div class="photo-cell"><img src="bw-cutout-building.png" alt="Biurowiec"></div>
+      </div>
+      <div class="photo-rules">
+        <div class="photo-rule">
+          <h5>Biale tlo, ksztalt wystaje</h5>
+          <p>Obiekt jest wykadrowany — moze wystawac poza krawedz bloba. Tlo zawsze biale (#FFFFFF). Efekt: dynamiczny, energetyczny.</p>
+        </div>
+        <div class="photo-rule">
+          <h5>Kolorowe bloby organiczne</h5>
+          <p>Za obiektem — organiczny, nieregularny ksztalt w jednym z kolorow brandowych. Blob nigdy nie jest idealnie okragly.</p>
+        </div>
+      </div>
+      <div class="usage-note orange"><strong>Uzycie:</strong> Hero sekcje, landing page, kampanie brandowe BW, social media — wszedzie, gdzie potrzebujemy dynamiki i wyroznienia.</div>
+
+      <h3 class="block">Wariant B &middot; Okrag na szarym tle</h3>
+      <div class="photo-grid4">
+        <div class="photo-cell-sm"><img src="bw-circle-fruits.png" alt="Owoce"><div class="cap">Owoce &middot; Yellow</div></div>
+        <div class="photo-cell-sm"><img src="bw-circle-tree.png" alt="Drzewo"><div class="cap">Drzewo &middot; Lime</div></div>
+        <div class="photo-cell-sm"><img src="bw-circle-warehouse.png" alt="Magazyn"><div class="cap">Magazyn &middot; Peach</div></div>
+        <div class="photo-cell-sm"><img src="bw-circle-city.png" alt="Miasto"><div class="cap">Miasto &middot; Blue</div></div>
+      </div>
+      <div class="photo-rules">
+        <div class="photo-rule">
+          <h5>Szare tlo, idealny okrag</h5>
+          <p>Obiekt zamkniety w idealnym kole. Tlo karty zawsze Warm Gray (#E9E7E7). Efekt: uporzadkowany, systemowy, katalogowy.</p>
+        </div>
+        <div class="photo-rule">
+          <h5>Monochromatyczny okrag</h5>
+          <p>Kolo w jednym pastelowym kolorze. Fotografia wewnatrz lekko stonowana. Idealne do prezentowania kategorii produktow.</p>
+        </div>
+      </div>
+      <div class="usage-note green"><strong>Uzycie:</strong> Strony produktowe, karty kategorii, ikony uslug, siatki ofertowe, infografiki. Wariant B jest bardziej &bdquo;katalogowy&rdquo;.</div>
+
+      <div class="callout" style="margin-top:24px;">
+        <div class="b">!</div>
+        <p>Nie mieszaj wariantow A i B w jednej siatce. Max 1 kolor bloba na element. Kazda ilustracja ma dokladnie jeden kolor tla — nigdy gradienty.</p>
+      </div>
+    </section>
+
+    <!-- 10 — DO & DON'T -->
+    <section id="zasady" style="border-bottom:none;">
+      <div class="kicker">10 — Wizualne</div>
+      <h2 class="sec">Do &amp; Don't</h2>
+      <p class="sub">Zasady komunikacji marki BetterWorkplace — co robimy, a czego unikamy.</p>
+
+      <div class="dd">
+        <div class="col do">
+          <h4>&#10003; Rob</h4>
+          <ul>
+            <li>Mow jezykiem C-level: ROI, retencja, employer branding</li>
+            <li>Pozycjonuj jako &bdquo;trzeci filar&rdquo;</li>
+            <li>Uzywaj &bdquo;partner&rdquo;, nie &bdquo;dostawca&rdquo;</li>
+            <li>Pokazuj ekosystem jako spojna calosc</li>
+            <li>Argumentuj danymi</li>
+            <li>Mow &bdquo;dlaczego&rdquo; zanim powiesz &bdquo;co&rdquo;</li>
+            <li>Traktuj rozmowce jak partnera</li>
+          </ul>
+        </div>
+        <div class="col dont">
+          <h4>&#10007; Nie rob</h4>
+          <ul>
+            <li>Nie mow o owocach, kawie, kanapkach</li>
+            <li>Nie uzywaj &bdquo;oferta&rdquo;, &bdquo;asortyment&rdquo;, &bdquo;katalog&rdquo;</li>
+            <li>Nie zabiegaj — BW proponuje, nie prosi</li>
+            <li>Nie uzywaj &bdquo;Panstwo&rdquo; — partnerzy mowia na &bdquo;Wy&rdquo;</li>
+            <li>Nie porownuj sie z Multisportem/Medicoverem</li>
+            <li>Nie obiecuj bez danych</li>
+            <li>Nie mieszaj warstw — BW nie mowi o cenach</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+</div><!-- /main-content -->
+
+<script>
+function checkPw(){
+  var input=document.getElementById('pw-input');
+  var hash=0,str=input.value;
+  for(var i=0;i<str.length;i++){hash=((hash<<5)-hash)+str.charCodeAt(i);hash|=0;}
+  if(hash===-1422286391){
+    document.getElementById('pw-screen').classList.add('hidden');
+    document.getElementById('main-content').style.display='block';
+    sessionStorage.setItem('bw_auth','1');
+    return false;
+  }
+  input.classList.add('pw-error');
+  document.getElementById('pw-error-msg').textContent='Nieprawidlowe haslo. Sprobuj ponownie.';
+  setTimeout(function(){input.classList.remove('pw-error');},400);
+  return false;
+}
+if(sessionStorage.getItem('bw_auth')==='1'){
+  document.getElementById('pw-screen').classList.add('hidden');
+  document.getElementById('main-content').style.display='block';
+}
+</script>
 </body>
 </html>

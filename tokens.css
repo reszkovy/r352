@@ -1,0 +1,115 @@
+/* ============================================================================
+   TeamBudget — DESIGN TOKENS  ·  źródło prawdy
+   Wyprowadzone 1:1 z „Brand Book TeamBudget 2026" (Agnieszka Wawro)
+   Strony: 9–10 (kolory), 14–16 (typografia), 2–7 (logo), 17 (key visual)
+   ----------------------------------------------------------------------------
+   ZASADA NACZELNA KOLORU (BB s.9):
+   • Pale White = tło      • Pale Black / Blue = typografia (na przemian)
+   • BLUE = kolor WIODĄCY dla elementów dekoracyjnych i typografii
+   • ORANGE = wyłącznie DODATEK / akcent
+   • Deep Yellow + Pale Green = WYŁĄCZNIE naklejki (system naklejkowy)
+   • Sunny White = tła pod key visual / social
+   ============================================================================ */
+:root{
+  /* ───────── KOLORY — paleta podstawowa (BB s.9) ───────── */
+  --tb-pale-white:#FFFBF4;   /* white 000 c — tła */
+  --tb-pale-black:#473A39;   /* Black 2 c — typografia */
+  --tb-blue:#4375FF;         /* 2935 C — WIODĄCY: dekoracja + typografia */
+  --tb-orange:#FE692B;       /* 1505 CV — DODATEK / akcent */
+
+  /* ───────── KOLORY — paleta dodatkowa (BB s.10) ───────── */
+  --tb-sunny:#FEF3DE;        /* Sunny White — tła pod key visual */
+  --tb-deep-yellow:#FDA33C;  /* Deep Yellow — TYLKO naklejki */
+  --tb-green:#15A477;        /* Pale Green — TYLKO naklejki */
+
+  /* ───────── KOLORY naklejek (gotowe assety die-cut) ───────── */
+  --tb-badge-blue:#3D71BC;   /* dobrostan */
+  --tb-badge-green:#31AC78;  /* sprawczość */
+  --tb-badge-yellow:#FFA92D; /* relacje */
+  --tb-badge-orange:#FF652E; /* dobra energia */
+
+  /* ───────── KOLORY robocze / neutralne (pochodne, do UI) ───────── */
+  --tb-blue-deep:#2F59D6;    /* hover/active dla blue */
+  --tb-muted:#8a7e7c;        /* tekst drugorzędny */
+  --tb-dim:#b5aaa8;          /* tekst wygaszony */
+  --tb-line:#e7ddd6;         /* hairline */
+  --tb-line-soft:#efe7e0;    /* hairline lekki */
+  --tb-white:#FFFFFF;        /* czysta biel kart */
+
+  /* ───────── ALIASY (używane w kodzie site'u — kompatybilność) ───────── */
+  --pale-white:var(--tb-pale-white); --pale-black:var(--tb-pale-black);
+  --blue:var(--tb-blue); --blue-deep:var(--tb-blue-deep); --orange:var(--tb-orange);
+  --sunny:var(--tb-sunny); --deep-yellow:var(--tb-deep-yellow); --green:var(--tb-green);
+  --muted:var(--tb-muted); --dim:var(--tb-dim);
+  --line:var(--tb-line); --line-soft:var(--tb-line-soft); --card:var(--tb-white);
+
+  /* ───────── TYPOGRAFIA (BB s.14–16) ─────────
+     Pangram Sans (Bold/Semibold/Medium) — nagłówki + lead
+     DM Sans (Regular)                    — body, caption
+     DM Mono (Regular, UPPERCASE)         — technical, eyebrow nad nagłówkiem */
+  --font-head:'Pangram Sans','DM Sans',system-ui,-apple-system,sans-serif;
+  --font-body:'DM Sans',system-ui,-apple-system,sans-serif;
+  --font-mono:'DM Mono',ui-monospace,SFMono-Regular,monospace;
+
+  /* skala typograficzna (płynna) */
+  --fs-display:clamp(34px,5vw,58px);   /* H1 / hero — Pangram Bold */
+  --fs-h2:clamp(27px,3.5vw,40px);      /* sekcje — Pangram Bold */
+  --fs-h3:20px;                        /* karty — Pangram Semibold */
+  --fs-lead:clamp(15px,2vw,18px);      /* lead — Pangram Medium */
+  --fs-body:16px;                      /* DM Sans */
+  --fs-small:14px;
+  --fs-eyebrow:11px;                   /* DM Mono uppercase */
+  --lh-tight:1.04; --lh-snug:1.2; --lh-body:1.6;
+  --tracking-tight:-.03em; --tracking-eyebrow:.16em; --tracking-mono:.06em;
+
+  /* ───────── PRZESTRZEŃ / RYTM (skala 4px) ───────── */
+  --space-1:4px;  --space-2:8px;  --space-3:12px; --space-4:16px;
+  --space-5:24px; --space-6:32px; --space-7:48px; --space-8:64px; --space-9:92px;
+  --max:1120px;
+
+  /* ───────── PROMIENIE ───────── */
+  --r-sm:12px; --r:18px; --r-lg:24px; --r-xl:30px; --r-pill:100px;
+
+  /* ───────── CIENIE (subtelne, editorial) ───────── */
+  --shadow-1:0 2px 16px rgba(71,58,57,.05);
+  --shadow-2:0 18px 46px rgba(71,58,57,.11);
+
+  /* ───────── RUCH (jeden język ruchu) ───────── */
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --ease-inout:cubic-bezier(.4,0,.2,1);
+  --motion-fast:200ms; --motion-base:400ms; --motion-slow:760ms;
+
+  /* ───────── WARSTWY ───────── */
+  --z-decor:0; --z-content:2; --z-nav:100; --z-top:200;
+}
+
+/* ============================================================================
+   FONTY MARKI — Pangram Sans (licencjonowany; pliki .otf w repo)
+   DM Sans + DM Mono ładowane z Google Fonts w <head> dokumentu.
+   ============================================================================ */
+@font-face{font-family:'Pangram Sans';src:url('PPPangramSans-Bold.otf') format('opentype');font-weight:700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Pangram Sans';src:url('PPPangramSans-Semibold.otf') format('opentype');font-weight:600;font-style:normal;font-display:swap;}
+@font-face{font-family:'Pangram Sans';src:url('PPPangramSans-Medium.otf') format('opentype');font-weight:500;font-style:normal;font-display:swap;}
+
+/* ============================================================================
+   PRYMITYWY / KLASY POMOCNICZE (opcjonalne — wspólny język komponentów)
+   ============================================================================ */
+.tb-eyebrow{font-family:var(--font-mono);font-size:var(--fs-eyebrow);letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--blue);font-weight:500;}
+.tb-h1{font-family:var(--font-head);font-weight:700;font-size:var(--fs-display);line-height:var(--lh-tight);letter-spacing:var(--tracking-tight);color:var(--blue);}
+.tb-h2{font-family:var(--font-head);font-weight:700;font-size:var(--fs-h2);line-height:1.08;letter-spacing:var(--tracking-tight);color:var(--pale-black);}
+.tb-h3{font-family:var(--font-head);font-weight:600;font-size:var(--fs-h3);letter-spacing:-.02em;color:var(--pale-black);}
+.tb-lead{font-family:var(--font-head);font-weight:500;font-size:var(--fs-lead);line-height:1.5;color:var(--pale-black);}
+.tb-body{font-family:var(--font-body);font-size:var(--fs-body);line-height:var(--lh-body);color:var(--pale-black);}
+.tb-mono{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:var(--tracking-mono);}
+
+.tb-btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-body);font-weight:600;font-size:15px;border-radius:var(--r-pill);padding:13px 24px;min-height:46px;cursor:pointer;border:none;transition:background var(--motion-fast) var(--ease-inout),box-shadow var(--motion-base) var(--ease-out),transform var(--motion-base) var(--ease-out);}
+.tb-btn--blue{background:var(--blue);color:#fff;box-shadow:0 4px 16px rgba(67,117,255,.28);}
+.tb-btn--blue:hover{background:var(--blue-deep);box-shadow:0 10px 30px rgba(67,117,255,.40);}
+.tb-btn--ghost{background:transparent;color:var(--pale-black);border:1.5px solid var(--line);}
+.tb-btn--ghost:hover{border-color:var(--pale-black);}
+
+.tb-chip{display:inline-flex;align-items:center;gap:7px;padding:5px 13px;border-radius:var(--r-pill);border:1px solid var(--line);font-family:var(--font-mono);font-size:var(--fs-eyebrow);letter-spacing:var(--tracking-mono);text-transform:uppercase;color:var(--muted);}
+.tb-chip--lead{border-color:var(--blue);color:var(--blue-deep);}
+
+.tb-card{background:var(--card);border:none;border-radius:var(--r);box-shadow:var(--shadow-1);transition:transform var(--motion-base) var(--ease-out),box-shadow var(--motion-base) var(--ease-out);}
+.tb-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-2);}

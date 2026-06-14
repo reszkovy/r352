@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DailyFruits – Brand Voice & Visual Identity Guide</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,900;1,9..40,400&display=swap" rel="stylesheet">
+<title>DailyFruits — Brand Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,400;9..40,500;9..40,600;9..40,700;9..40,900&display=swap" rel="stylesheet">
 <style>
 @font-face {
   font-family: 'Achiko';
@@ -13,613 +15,639 @@
   font-style: normal;
   font-display: swap;
 }
-:root {
-  --green-dark: #1B5E3A;
-  --green-mid: #347550;
-  --lime: #8DC63F;
-  --lime-light: #A4C348;
-  --lime-pale: #D5E8A0;
-  --red: #E43020;
-  --yellow: #FFF200;
-  --cream: #FFF9E0;
-  --white: #FFFFFF;
-  --text: #1B5E3A;
-  --text-muted: #4a7a5c;
-  --text-dim: #8aab96;
-  --border: #d5e0c8;
-  --border2: #c4d4b2;
-  --card: #FFFFFF;
-  --card2: rgba(255,255,255,0.7);
+:root{
+  --font-head:'DM Sans',system-ui,sans-serif;
+  --font-body:'DM Sans',system-ui,sans-serif;
+  --font-mono:'DM Sans',monospace;
+  --green-dark:#1B5E3A;
+  --green-mid:#347550;
+  --lime:#8DC63F;
+  --lime-light:#A4C348;
+  --lime-pale:#D5E8A0;
+  --red:#E43020;
+  --yellow:#FFF200;
+  --cream:#FFF9E0;
+  --bg:#FFF9E0;
+  --card:#FFFFFF;
+  --card2:#f7f5ec;
+  --text:#1B5E3A;
+  --muted:#4a7a5c;
+  --dim:#8aab96;
+  --line:#d5e0c8;
+  --line-soft:rgba(213,224,200,.6);
+  --r:14px;
+  --r-sm:10px;
+  --motion-fast:.15s ease;
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-  font-family:'DM Sans',system-ui,sans-serif;
-  background:var(--cream); color:var(--text);
-  line-height:1.7; -webkit-font-smoothing:antialiased;
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+
+/* PASSWORD */
+#pw-screen{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;width:100%;min-height:100vh;background:var(--bg);}
+#pw-screen.hidden{display:none;}
+#pw-box{background:#fff;border:1px solid var(--line);border-radius:16px;padding:52px 44px 44px;text-align:center;max-width:400px;width:90%;box-shadow:0 4px 24px rgba(0,0,0,.04);}
+#pw-box .pw-icon{font-size:36px;margin-bottom:20px;display:inline-block;}
+#pw-box h2{font-family:var(--font-head);font-size:18px;font-weight:700;letter-spacing:-.3px;margin-bottom:8px;color:var(--text);}
+#pw-box p{font-size:13px;color:var(--muted);margin-bottom:28px;line-height:1.6;}
+#pw-input{width:100%;padding:13px 18px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--text);font-family:inherit;font-size:14px;outline:none;transition:border-color .2s,box-shadow .2s;}
+#pw-input:focus{border-color:var(--lime);box-shadow:0 0 0 3px rgba(141,198,63,.12);}
+#pw-input.pw-error{border-color:#ef4444;animation:shake .4s ease;}
+#pw-input::placeholder{color:var(--dim);}
+#pw-btn{margin-top:14px;width:100%;padding:13px;background:var(--text);color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s ease;}
+#pw-btn:hover{background:var(--green-mid);transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.15);}
+#pw-error-msg{font-size:12px;color:#ef4444;margin-top:12px;min-height:16px;}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--lime);text-decoration:none;padding:16px 0 0 24px;letter-spacing:.02em;transition:color .15s;}
+.back-link:hover{color:var(--red);}
+
+h1,h2,h3,h4{font-family:var(--font-head);}
+
+.shell{display:grid;grid-template-columns:248px 1fr;max-width:1400px;margin:0 auto;}
+
+/* sidebar */
+aside{position:sticky;top:0;align-self:start;height:100vh;padding:34px 24px;border-right:1px solid var(--line);background:var(--bg);overflow-y:auto;}
+aside .brand{display:flex;align-items:center;gap:10px;margin-bottom:6px;font-family:var(--font-head);font-weight:700;font-size:16px;color:var(--text);letter-spacing:-.3px;}
+aside .brand img{height:40px;}
+aside .ver{font-family:var(--font-head);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:28px;}
+aside nav a{display:block;font-size:14px;color:var(--muted);padding:8px 0;font-weight:500;transition:color var(--motion-fast),padding-left var(--motion-fast);}
+aside nav a:hover{color:var(--lime);padding-left:5px;}
+aside nav .grp{font-family:var(--font-head);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin:22px 0 6px;}
+
+/* content */
+main{padding:64px 56px 120px;max-width:980px;}
+section{padding:46px 0;border-bottom:1px solid var(--line-soft);}
+section:first-child{padding-top:0;}
+.kicker{font-family:var(--font-head);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--lime);font-weight:600;}
+h2.sec{font-size:clamp(26px,3vw,36px);letter-spacing:-.03em;font-weight:700;margin:12px 0 8px;}
+.sub{color:var(--muted);font-size:16px;max-width:640px;margin-bottom:30px;font-family:var(--font-body);}
+h3.block{font-family:var(--font-head);font-weight:600;font-size:16px;margin:30px 0 14px;display:flex;align-items:center;gap:10px;}
+h3.block::before{content:'';width:18px;height:3px;border-radius:3px;background:var(--lime);}
+
+/* hero */
+.ds-hero{padding:70px 0 40px;}
+.ds-hero .kicker{margin-bottom:16px;}
+.ds-hero h1{font-size:clamp(40px,6vw,72px);letter-spacing:-.04em;line-height:.98;font-weight:700;color:var(--text);}
+.ds-hero h1 .o{color:var(--lime);}
+.ds-hero p{font-size:18px;color:var(--text);max-width:560px;margin-top:18px;font-family:var(--font-head);font-weight:500;}
+.ds-hero .meta{font-family:var(--font-head);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:22px;}
+
+/* color swatches */
+.swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.swatches.s4{grid-template-columns:repeat(4,1fr);}
+.sw{border:1px solid var(--line);border-radius:var(--r-sm);overflow:hidden;background:var(--card);}
+.sw .chip{height:104px;display:flex;align-items:flex-end;padding:12px;}
+.sw .smeta{padding:13px 14px 15px;}
+.sw .name{font-family:var(--font-head);font-weight:600;font-size:14px;}
+.sw .role{font-family:var(--font-head);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:3px 0 9px;min-height:24px;}
+.sw .hex{font-family:var(--font-head);font-size:11px;color:var(--text);}
+.tag{display:inline-block;font-family:var(--font-head);font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;border-radius:6px;margin-top:8px;}
+.tag.lead{background:rgba(141,198,63,.12);color:var(--green-dark);}
+.tag.accent{background:rgba(141,198,63,.18);color:#4a6600;}
+.tag.cta{background:rgba(228,48,32,.12);color:#b82318;}
+.tag.bg{background:rgba(27,94,58,.08);color:var(--muted);}
+.tag.energy{background:rgba(255,242,0,.25);color:#8a7a00;}
+
+/* callout */
+.callout{background:rgba(141,198,63,.08);border-radius:var(--r);padding:22px 24px;margin-top:24px;display:flex;gap:16px;align-items:flex-start;}
+.callout .b{width:34px;height:34px;border-radius:50%;background:var(--lime);color:#fff;flex:none;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:700;font-size:14px;}
+.callout p{font-size:14.5px;color:var(--text);}
+.callout b{color:var(--green-dark);}
+
+/* usage bar */
+.usage-bar{display:flex;height:14px;border-radius:7px;overflow:hidden;margin:24px 0 8px;}
+.usage-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--dim);}
+
+/* spec boxes (typography) */
+.spec{border:1px solid var(--line);border-radius:var(--r);padding:26px 28px;margin-bottom:14px;background:var(--card);}
+.spec .lbl{font-family:var(--font-head);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;justify-content:space-between;}
+
+/* personality card */
+.pers-card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--lime);border-radius:var(--r);padding:28px;margin-bottom:16px;}
+.pers-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;}
+.pers-cell{background:var(--card2);border-radius:8px;padding:16px 18px;}
+.pers-cell .lbl{font-family:var(--font-head);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin-bottom:6px;}
+.pers-cell .val{font-size:13px;color:var(--muted);line-height:1.7;}
+
+/* claim banner */
+.claim{background:var(--green-dark);border-radius:var(--r);padding:36px 32px;margin-top:24px;text-align:center;}
+.claim .txt{font-family:'Achiko',cursive;font-size:26px;font-weight:400;color:#fff;letter-spacing:-.5px;line-height:1.3;}
+.claim .lab{font-family:var(--font-head);font-size:11px;color:rgba(255,255,255,.5);margin-top:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;}
+
+/* voice cards */
+.v-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.v-card{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--lime);border-radius:var(--r);padding:24px;}
+.v-card h3{font-size:17px;font-weight:700;margin-bottom:8px;color:var(--text);}
+.v-card .desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:12px;}
+.v-card .not{font-size:11px;color:var(--dim);margin-bottom:14px;font-style:italic;}
+.v-ex{font-size:12px;color:var(--green-dark);padding:8px 12px;background:rgba(141,198,63,.06);border-radius:6px;margin-bottom:6px;line-height:1.5;}
+.v-anti{font-size:12px;color:#b82318;padding:8px 12px;background:rgba(228,48,32,.06);border-radius:6px;line-height:1.5;}
+
+/* typography hierarchy table */
+.typo-table{width:100%;border-collapse:collapse;font-size:13px;}
+.typo-table th{text-align:left;padding:14px 16px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--dim);border-bottom:2px solid var(--lime);}
+.typo-table td{padding:14px 16px;border-bottom:1px solid var(--line);color:var(--muted);line-height:1.6;}
+.typo-table td:first-child{font-weight:700;color:var(--green-dark);}
+
+/* vocab table */
+.vocab{margin-top:8px;}
+.vocab-row{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid var(--line);padding:12px 0;font-size:13px;}
+.vocab-row:first-child{border-top:1px solid var(--line);}
+.vocab-no{color:#b82318;text-decoration:line-through;opacity:.6;}
+.vocab-yes{color:var(--green-dark);font-weight:600;}
+
+/* audience cards */
+.aud-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.aud-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;}
+.aud-card .role{font-family:var(--font-head);font-size:11px;color:var(--lime);font-weight:600;margin-bottom:6px;}
+.aud-card h3{font-size:15px;font-weight:700;margin-bottom:8px;}
+.aud-card p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+/* tone table */
+.tone-table{width:100%;border-collapse:collapse;font-size:13px;}
+.tone-table th{text-align:left;padding:14px 16px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--dim);border-bottom:2px solid var(--lime);}
+.tone-table td{padding:14px 16px;border-bottom:1px solid var(--line);color:var(--muted);line-height:1.6;}
+.tone-table td:first-child{font-weight:700;color:var(--green-dark);}
+
+/* photo grid */
+.photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.photo-cell{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#fff;}
+.photo-cell img{width:100%;display:block;object-fit:contain;}
+.photo-cell .cap{padding:14px 16px;}
+.photo-cell .cap-title{font-size:12px;font-weight:700;color:var(--green-dark);}
+.photo-cell .cap-desc{font-size:11px;color:var(--dim);margin-top:2px;}
+
+.photo-grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px;}
+.photo-full{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#fff;margin-bottom:16px;}
+.photo-full img{width:100%;display:block;object-fit:contain;}
+.photo-full .cap{padding:14px 20px;}
+.photo-full .cap-title{font-size:12px;font-weight:700;color:var(--green-dark);}
+.photo-full .cap-desc{font-size:11px;color:var(--dim);margin-top:2px;}
+
+.icon-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+.icon-cell{text-align:center;}
+.icon-cell img{width:80px;height:80px;object-fit:contain;border-radius:8px;}
+.icon-cell .ic-label{font-size:10px;color:var(--dim);margin-top:6px;}
+
+/* do/dont */
+.dd{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.dd .col{border-radius:var(--r);padding:22px 24px;}
+.dd .do{background:rgba(141,198,63,.06);border:1px solid rgba(141,198,63,.25);}
+.dd .dont{background:rgba(228,48,32,.06);border:1px solid rgba(228,48,32,.25);}
+.dd h4{font-family:var(--font-head);font-weight:700;font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.dd .do h4{color:var(--green-dark);}
+.dd .dont h4{color:#b82318;}
+.dd ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.dd li{font-size:13.5px;color:var(--text);padding-left:18px;position:relative;}
+.dd li::before{position:absolute;left:0;top:0;}
+.dd .do li::before{content:'\2713';color:var(--lime);}
+.dd .dont li::before{content:'\2715';color:var(--red);}
+
+@media(max-width:880px){
+  .shell{grid-template-columns:1fr;}
+  aside{position:static;height:auto;border-right:none;border-bottom:1px solid var(--line);padding:24px;}
+  aside nav{columns:2;}
+  main{padding:40px 24px 90px;}
 }
-
-/* ══ BACK NAV ══ */
-.back-nav {
-  position:fixed; top:16px; right:20px; z-index:9999;
-  font-size:11px; font-weight:600; color:#0d0d0d;
-  text-decoration:none; letter-spacing:0.3px;
-  background:#fff; padding:8px 18px; border-radius:8px;
-  box-shadow:0 2px 8px rgba(0,0,0,0.1);
-  transition:all .2s;
-}
-.back-nav:hover { background:var(--lime); }
-
-/* Top bar */
-.topbar {
-  background:var(--green-dark); padding:14px 40px;
-  display:flex; align-items:center; justify-content:space-between;
-}
-.topbar-logo { font-size:15px; font-weight:700; color:#fff; letter-spacing:-0.3px; }
-.topbar-logo span { color:var(--lime); }
-.topbar-meta { font-size:10px; color:rgba(255,255,255,0.5); letter-spacing:1px; text-transform:uppercase; }
-
-.wrap { max-width:920px; margin:0 auto; padding:48px 20px 60px; }
-
-/* Header */
-.header { margin-bottom:56px; text-align:center; }
-.header-badge {
-  display:inline-block; font-size:9px; font-weight:700; letter-spacing:3px;
-  text-transform:uppercase; color:var(--white); background:var(--lime);
-  padding:5px 14px; border-radius:20px; margin-bottom:20px;
-}
-.header h1 { font-size:36px; font-weight:900; letter-spacing:-1px; margin-bottom:8px; color:var(--green-dark); line-height:1.15; }
-.header h1 span { color:var(--lime); }
-.header-sub { font-size:14px; color:var(--text-muted); margin-bottom:8px; }
-.header-meta { font-size:11px; color:var(--text-dim); }
-
-/* Sections */
-.section { margin-bottom:48px; }
-.sec-label {
-  font-size:9px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase;
-  color:var(--lime); margin-bottom:18px;
-  display:flex; align-items:center; gap:12px;
-}
-.sec-label::after { content:''; flex:1; height:1px; background:var(--border); }
-
-/* Cards */
-.card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:24px; margin-bottom:14px; box-shadow:0 1px 3px rgba(27,94,58,0.04); }
-.card-sm { background:var(--cream); border:1px solid var(--border); border-radius:8px; padding:16px; }
-
-/* Grid */
-.g2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-.g3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
-.g4 { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:12px; }
-
-/* Labels */
-.label { font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:6px; }
-.val { font-size:14px; color:var(--text-muted); line-height:1.7; }
-.val strong { color:var(--green-dark); }
-.example { font-size:12px; color:var(--green-mid); margin-top:8px; font-style:italic; line-height:1.5; background:rgba(141,198,63,0.1); padding:8px 12px; border-radius:6px; }
-.anti-example { font-size:12px; color:var(--red); margin-top:6px; font-style:italic; line-height:1.5; background:rgba(228,48,32,0.06); padding:8px 12px; border-radius:6px; }
-
-/* Swatch */
-.swatch { width:40px; height:40px; border-radius:8px; flex-shrink:0; box-shadow:0 1px 4px rgba(0,0,0,0.1); }
-.color-row { display:flex; align-items:center; gap:14px; padding:14px 0; border-bottom:1px solid var(--border); }
-.color-row:last-child { border-bottom:none; }
-.color-name { font-size:14px; font-weight:600; color:var(--green-dark); min-width:100px; }
-.color-hex { font-size:12px; color:var(--text-dim); font-family:'DM Sans',monospace; min-width:80px; background:var(--cream); padding:2px 8px; border-radius:4px; }
-.color-role { font-size:13px; color:var(--text-muted); }
-
-/* Tables */
-.vocab-table { width:100%; border-collapse:collapse; font-size:14px; }
-.vocab-table th { text-align:left; padding:14px 16px; font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--text-dim); border-bottom:2px solid var(--lime); }
-.vocab-table td { padding:14px 16px; border-bottom:1px solid var(--border); }
-.vocab-table td:first-child { color:var(--red); text-decoration:line-through; opacity:0.8; }
-.vocab-table td:last-child { color:var(--green-dark); font-weight:600; }
-
-.tone-table { width:100%; border-collapse:collapse; font-size:13px; }
-.tone-table th { text-align:left; padding:14px 16px; font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--text-dim); border-bottom:2px solid var(--lime); }
-.tone-table td { padding:14px 16px; border-bottom:1px solid var(--border); color:var(--text-muted); line-height:1.6; }
-
-/* Accent bar for claim */
-.claim-bar {
-  background:var(--green-dark); color:var(--white); padding:28px 32px;
-  border-radius:12px; text-align:center; margin-bottom:14px;
-}
-.claim-bar .claim-text { font-size:26px; font-weight:900; letter-spacing:-0.5px; }
-.claim-bar .claim-sub { font-size:12px; color:rgba(255,255,255,0.6); margin-top:6px; text-transform:uppercase; letter-spacing:2px; }
-
-/* ══ SMOOTH REVEAL ══ */
-[data-reveal] {
-  opacity:0; transform:translateY(28px);
-  transition: opacity .9s cubic-bezier(0.22,1,0.36,1), transform .9s cubic-bezier(0.22,1,0.36,1);
-  will-change:opacity,transform;
-}
-[data-reveal].is-visible { opacity:1; transform:translateY(0); }
-[data-reveal-stagger] > * {
-  opacity:0; transform:translateY(20px);
-  transition: opacity .7s cubic-bezier(0.22,1,0.36,1), transform .7s cubic-bezier(0.22,1,0.36,1);
-  will-change:opacity,transform;
-}
-[data-reveal-stagger].is-visible > * { opacity:1; transform:translateY(0); }
-[data-reveal-stagger].is-visible > *:nth-child(1) { transition-delay:0ms; }
-[data-reveal-stagger].is-visible > *:nth-child(2) { transition-delay:80ms; }
-[data-reveal-stagger].is-visible > *:nth-child(3) { transition-delay:160ms; }
-[data-reveal-stagger].is-visible > *:nth-child(4) { transition-delay:240ms; }
-[data-reveal-stagger].is-visible > *:nth-child(5) { transition-delay:320ms; }
-[data-reveal-stagger].is-visible > *:nth-child(6) { transition-delay:400ms; }
-[data-reveal-stagger].is-visible > *:nth-child(7) { transition-delay:480ms; }
-[data-reveal-stagger].is-visible > *:nth-child(8) { transition-delay:560ms; }
-@media (prefers-reduced-motion:reduce) {
-  [data-reveal],[data-reveal-stagger] > * { opacity:1!important; transform:none!important; transition:none!important; }
-}
-
-@media (max-width:700px) {
-  .g4 { grid-template-columns:1fr 1fr; }
-  .g3 { grid-template-columns:1fr; }
-  .g2 { grid-template-columns:1fr; }
-  .header h1 { font-size:26px; }
-  .topbar { padding:12px 20px; }
-}
-
-@media print {
-  .topbar { background:#1B5E3A !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-  body { background:#fff; }
+@media(max-width:720px){
+  .swatches,.swatches.s4{grid-template-columns:repeat(2,1fr);}
+  .v-grid,.dd,.pers-grid,.photo-grid{grid-template-columns:1fr;}
+  .aud-grid,.photo-grid3{grid-template-columns:1fr;}
 }
 </style>
 </head>
 <body>
 
-<a class="back-nav" href="index.html">← Panel klienta</a>
-
-<div class="wrap" style="padding-top:0;">
-
-  <!-- HERO BANNER -->
-  <div data-reveal style="margin:0 -20px 0; overflow:hidden;">
-    <img src="df-banner.webp" alt="DailyFruits brand banner" style="width:100%; display:block; object-fit:contain;">
+<!-- PASSWORD -->
+<div id="pw-screen">
+  <div id="pw-box">
+    <div class="pw-icon">&#128274;</div>
+    <h2>Dokument chroniony</h2>
+    <p>Ten dokument jest poufny. Wprowadz haslo, aby uzyskac dostep.</p>
+    <form onsubmit="return checkPw()">
+      <input type="password" id="pw-input" placeholder="Haslo dostepu" autocomplete="off" autofocus>
+      <button type="submit" id="pw-btn">Odblokuj</button>
+    </form>
+    <div id="pw-error-msg"></div>
   </div>
-
-  <!-- HEADER -->
-  <div class="header" data-reveal style="margin-top:32px;">
-    <div class="header-badge">by BetterWorkplace</div>
-    <h1>Brand Voice &<br><span style="font-family:'Achiko',cursive; font-weight:400;">Visual Identity</span> Guide</h1>
-    <div class="header-sub">Tone of Voice · Kolory · Typografia · Do's & Don'ts</div>
-    <div class="header-meta">Wersja 1.0 · Kwiecień 2026</div>
-  </div>
-
-  <!-- CLAIM -->
-  <div class="claim-bar" data-reveal>
-    <div class="claim-text" style="font-family:'Achiko',cursive;">Zdrowsze jedzenie, lepsza praca.</div>
-    <div class="claim-sub">Claim marki</div>
-  </div>
-
-  <!-- 1. OSOBOWOŚĆ MARKI -->
-  <div class="section">
-    <div class="sec-label" data-reveal>01 · Osobowość marki</div>
-    <div class="card" data-reveal style="border-left:4px solid var(--lime);">
-      <div style="font-size:15px; color:var(--green-dark); line-height:1.8; margin-bottom:22px;">
-        Gdyby DailyFruits był osobą, byłby <strong>kompetentnym doradcą HR</strong>, który wie, że wellbeing zaczyna się od kuchni. Nie moralizuje — po prostu stawia skrzynkę świeżych owoców i mówi: <em style="color:var(--green-mid);">„To działa. Sprawdziliśmy w 2000 firmach."</em> Jest ciepły, ale konkretny. Nigdy nie przesadza z entuzjazmem, bo jego siłą są twarde dane, nie hasła.
-      </div>
-      <div class="g2" data-reveal-stagger>
-        <div class="card-sm">
-          <div class="label">Misja</div>
-          <div class="val">Nie jesteśmy dostawcą owoców. Budujemy kulturę zdrowia w Twojej firmie — zaczynając od kuchni.</div>
-        </div>
-        <div class="card-sm">
-          <div class="label">Archetyp</div>
-          <div class="val"><strong>Opiekun</strong> (Caregiver) + <strong>Mędrzec</strong> (Sage). Dba o ludzi, ale na bazie danych i procesów, nie emocji. Praktyczny wellbeing, nie korporacyjny wellness-washing.</div>
-        </div>
-      </div>
-      <div class="g2" data-reveal-stagger style="margin-top:10px;">
-        <div class="card-sm">
-          <div class="label">Obietnica</div>
-          <div class="val">Zdrowsze jedzenie, lepsza praca. Jeden dostawca, zero komplikacji, mierzalny wpływ na zespół.</div>
-        </div>
-        <div class="card-sm">
-          <div class="label">Terytorium</div>
-          <div class="val">Rytuały biurowe (Owocowe Czwartki), kultura zdrowia w firmie, wellbeing żywieniowy oparty na danych — 2000+ firm, 13 miast, 81% poprawa wellbeingu.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 2. ATRYBUTY GŁOSU -->
-  <div class="section">
-    <div class="sec-label" data-reveal>02 · Atrybuty głosu</div>
-    <div class="g4" data-reveal-stagger style="margin-bottom:14px;">
-
-      <div class="card" style="border-top:4px solid var(--lime); padding:20px;">
-        <div style="font-size:16px; font-weight:700; color:var(--green-dark); margin-bottom:10px;">Konkretny</div>
-        <div class="val" style="font-size:13px;">Precyzyjny, mierzalny, oparty na danych. Każdy argument ma liczbę.</div>
-        <div style="font-size:11px; color:var(--text-dim); margin-top:10px;">Nie jesteśmy: sucho-korporacyjni. Dane podajemy z ciepłem.</div>
-        <div class="example">✓ „81% pracowników potwierdza poprawę wellbeingu po 3 miesiącach."</div>
-        <div class="anti-example">✗ „Nasi pracownicy są szczęśliwsi!"</div>
-      </div>
-
-      <div class="card" style="border-top:4px solid var(--lime); padding:20px;">
-        <div style="font-size:16px; font-weight:700; color:var(--green-dark); margin-bottom:10px;">Ciepły</div>
-        <div class="val" style="font-size:13px;">Przyjaźni, bezpośredni. „Twój zespół", nie „Państwa organizacja".</div>
-        <div style="font-size:11px; color:var(--text-dim); margin-top:10px;">Nie jesteśmy: infantylni, nie używamy emoji w B2B.</div>
-        <div class="example">✓ „Powiedz nam ile macie osób i czego potrzebujecie."</div>
-        <div class="anti-example">✗ „Hej! Napiszcie do nas, ogarniemy to!"</div>
-      </div>
-
-      <div class="card" style="border-top:4px solid var(--lime); padding:20px;">
-        <div style="font-size:16px; font-weight:700; color:var(--green-dark); margin-bottom:10px;">Pewny siebie</div>
-        <div class="val" style="font-size:13px;">Lider kategorii: 10+ lat, 2000+ firm, 13 miast. Pewność z wyników.</div>
-        <div style="font-size:11px; color:var(--text-dim); margin-top:10px;">Nie jesteśmy: aroganccy. Nie deprecjonujemy konkurencji.</div>
-        <div class="example">✓ „Jeden partner zamiast trzech dostawców."</div>
-        <div class="anti-example">✗ „Jesteśmy najlepsi na rynku!"</div>
-      </div>
-
-      <div class="card" style="border-top:4px solid var(--lime); padding:20px;">
-        <div style="font-size:16px; font-weight:700; color:var(--green-dark); margin-bottom:10px;">Praktyczny</div>
-        <div class="val" style="font-size:13px;">Zorientowani na rozwiązania. Nie owoce — benefit pracowniczy.</div>
-        <div style="font-size:11px; color:var(--text-dim); margin-top:10px;">Nie jesteśmy: idealistyczni, aspiracyjni. Zero „zmień świat".</div>
-        <div class="example">✓ „24h czas dostawy. 13 miast. 2000+ firm nam zaufało."</div>
-        <div class="anti-example">✗ „Wspólnie budujemy zdrowszą przyszłość dla pokoleń."</div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- 3. DO'S & DON'TS -->
-  <div class="section">
-    <div class="sec-label" data-reveal>03 · Do's & Don'ts</div>
-    <div class="g2" data-reveal-stagger style="margin-bottom:16px;">
-
-      <div class="card" style="border-left:4px solid var(--lime);">
-        <div style="font-size:11px; font-weight:700; color:var(--lime); margin-bottom:14px; letter-spacing:1.5px;">DO — TAK PISZEMY</div>
-        <div class="val" style="font-size:13px; line-height:2.1;">
-          Używaj „Ty/Twój" zamiast „Państwo" w copy marketingowym<br>
-          Zaczynaj od korzyści, nie od produktu (<em>„Zmniejsz absencję"</em> > <em>„Kup owoce"</em>)<br>
-          Podawaj twarde liczby: 2000+ firm, 13 miast, 24h dostawa, 81%<br>
-          Używaj krótkich zdań (max 20 słów)<br>
-          Nazywaj rytuały: Owocowe Czwartki, Kanapkowe Wtorki<br>
-          Aktywne czasowniki: „Zamów", „Sprawdź", „Zacznij"<br>
-          Claim fontem Achiko, body fontem DM Sans<br>
-          Podkreślaj ekosystem: DF + DFo + BW<br>
-          Mów o „kulturze zdrowia", „rytuałach"
-        </div>
-      </div>
-
-      <div class="card" style="border-left:4px solid var(--red);">
-        <div style="font-size:11px; font-weight:700; color:var(--red); margin-bottom:14px; letter-spacing:1.5px;">DON'T — TEGO UNIKAMY</div>
-        <div class="val" style="font-size:13px; line-height:2.1;">
-          „innovative", „synergia", „holistyczny", „complex solution"<br>
-          WIELKIE LITERY (SUPER OFERTA!)<br>
-          Emoji w komunikacji B2B (LinkedIn, email, strona)<br>
-          Obietnice bez pokrycia („najlepsze owoce na świecie")<br>
-          „tani/najtaniej" — mów „opłacalny", „inwestycja w zespół"<br>
-          Deprecjonowanie konkurencji wprost<br>
-          Stockowe zdjęcia ludzi — packshoty produktowe<br>
-          Słowo „dostawca" na określenie DailyFruits<br>
-          Mieszanie języków (polsko-angielskie zdania)
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Słownik -->
-    <div class="card" data-reveal>
-      <div style="font-size:11px; font-weight:700; color:var(--text-dim); margin-bottom:14px; letter-spacing:1.5px;">SŁOWA ZAKAZANE VS. PREFEROWANE</div>
-      <table class="vocab-table">
-        <thead><tr><th>Nie używaj</th><th>Używaj zamiast</th></tr></thead>
-        <tbody>
-          <tr><td>dostawca owoców</td><td>partner wellbeingowy / ekosystem zdrowia</td></tr>
-          <tr><td>tani / najtaniej</td><td>opłacalny / inwestycja w zespół</td></tr>
-          <tr><td>kupować owoce</td><td>zamawiać / zadbać o zespół</td></tr>
-          <tr><td>klient</td><td>partner / firma</td></tr>
-          <tr><td>innowacyjny / nowoczesny</td><td>sprawdzony / mierzalny</td></tr>
-          <tr><td>wellness</td><td>wellbeing żywieniowy / kultura zdrowia</td></tr>
-          <tr><td>paczka owoców</td><td>skrzynka / zestaw / abonament</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- BRAND ADAPTACJE -->
-  <div class="section">
-    <div class="sec-label" data-reveal>Adaptacje brandingowe — materiały referencyjne</div>
-
-    <!-- Packaging duo -->
-    <div data-reveal style="background:var(--white); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:14px;">
-      <img src="df-boxy-duo.webp" alt="DailyFruits + DailyFoods boxy" style="width:100%; object-fit:contain; display:block;">
-      <div style="padding:16px 20px;">
-        <div style="font-size:13px; font-weight:700; color:var(--green-dark);">Packaging — DailyFruits + DailyFoods</div>
-        <div style="font-size:12px; color:var(--text-dim);">Spójna rodzina opakowań Daily*. Zielony DF, żółty DFo. Ten sam system graficzny, dwa kolory.</div>
-      </div>
-    </div>
-
-    <!-- Social kreacje -->
-    <div class="g3" data-reveal-stagger style="margin-bottom:14px;">
-      <div style="background:var(--white); border:1px solid var(--border); border-radius:12px; overflow:hidden;">
-        <img src="df-branding-full.webp" alt="Owocowa skrzynia — kreacja social" style="width:100%; object-fit:contain;">
-        <div style="padding:12px 16px;">
-          <div style="font-size:11px; font-weight:700; color:var(--green-dark);">Kreacja social — Owocowe Czwartki</div>
-          <div style="font-size:10px; color:var(--text-dim);">Font Achiko + packshot + claims</div>
-        </div>
-      </div>
-      <div style="background:var(--white); border:1px solid var(--border); border-radius:12px; overflow:hidden;">
-        <img src="df-social-post.webp" alt="Kanapka prawem nie towarem" style="width:100%; object-fit:contain;">
-        <div style="padding:12px 16px;">
-          <div style="font-size:11px; font-weight:700; color:var(--green-dark);">Kreacja social — DailyFoods</div>
-          <div style="font-size:10px; color:var(--text-dim);">Green Dark bg + Yellow akcenty + packshot</div>
-        </div>
-      </div>
-      <div style="background:var(--white); border:1px solid var(--border); border-radius:12px; overflow:hidden;">
-        <img src="df-branding-elements.webp" alt="Lody sezonowe" style="width:100%; object-fit:contain;">
-        <div style="padding:12px 16px;">
-          <div style="font-size:11px; font-weight:700; color:var(--green-dark);">Kreacja sezonowa — lody</div>
-          <div style="font-size:10px; color:var(--text-dim);">Achiko + product photography + logo badge</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Van + ikony -->
-    <div class="g2" data-reveal-stagger style="margin-bottom:14px;">
-      <div style="background:var(--white); border:1px solid var(--border); border-radius:12px; overflow:hidden;">
-        <img src="df-van.webp" alt="DailyFruits van" style="width:100%; object-fit:contain;">
-        <div style="padding:14px 16px;">
-          <div style="font-size:12px; font-weight:700; color:var(--green-dark);">Fleet branding</div>
-          <div style="font-size:11px; color:var(--text-dim);">Pełny branding na flotę dostawczą. Logo + jabłko + by betterworkplace.</div>
-        </div>
-      </div>
-      <div style="background:var(--white); border:1px solid var(--border); border-radius:12px; overflow:hidden; padding:20px;">
-        <div style="font-size:12px; font-weight:700; color:var(--green-dark); margin-bottom:14px;">Ikony ilustracyjne</div>
-        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px;">
-          <div style="text-align:center;">
-            <img src="df-icon-puchar.webp" alt="Puchar" style="width:80px; height:80px; object-fit:contain; border-radius:8px;">
-            <div style="font-size:10px; color:var(--text-dim); margin-top:6px;">Lider kategorii</div>
-          </div>
-          <div style="text-align:center;">
-            <img src="df-icon-recykling.webp" alt="Recykling" style="width:80px; height:80px; object-fit:contain; border-radius:8px;">
-            <div style="font-size:10px; color:var(--text-dim); margin-top:6px;">Abonament</div>
-          </div>
-          <div style="text-align:center;">
-            <img src="df-icon-handshake.webp" alt="Handshake" style="width:80px; height:80px; object-fit:contain; border-radius:8px;">
-            <div style="font-size:10px; color:var(--text-dim); margin-top:6px;">Partnerstwo</div>
-          </div>
-        </div>
-        <div style="font-size:10px; color:var(--text-dim); margin-top:12px; line-height:1.6;">Styl: hand-drawn, brand colors (Lime bg, Yellow bg, Red bg). Spójny z tonem marki — ciepły, ludzki, nie-korporacyjny.</div>
-      </div>
-    </div>
-
-    <!-- DailyFoods banner -->
-    <div data-reveal style="background:var(--white); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:14px;">
-      <img src="df-dailyfoods-banner.webp" alt="DailyFoods banner" style="width:100%; object-fit:contain; display:block;">
-      <div style="padding:14px 20px;">
-        <div style="font-size:12px; font-weight:700; color:var(--green-dark);">Alternatywna wersja komunikacji — paczki mieszane (nie tylko owoce)</div>
-        <div style="font-size:11px; color:var(--text-dim);">Yellow background dla produktów spoza core'u owocowego (kanapki, śniadania, kawa, lody). Ten sam system elementów: jabłko, logo DF badge, ikony produktowe.</div>
-      </div>
-    </div>
-
-    <!-- WWW screenshot -->
-    <div data-reveal style="background:var(--white); border:1px solid var(--border); border-radius:12px; overflow:hidden;">
-      <img src="df-www-screenshot.webp" alt="DailyFruits strona www" style="width:100%; display:block;">
-      <div style="padding:14px 20px;">
-        <div style="font-size:12px; font-weight:700; color:var(--green-dark);">Strona www — dailyfruits.pl</div>
-        <div style="font-size:11px; color:var(--text-dim);">Claim Achiko + DM Sans body. Cream tło, Green Dark tekst, Red CTA. Packshot boxa jako hero. Twarde dane w nagłówku (24h, 13 miast, 2000+).</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 4. SYSTEM KOLORÓW -->
-  <div class="section">
-    <div class="sec-label" data-reveal>04 · System kolorów</div>
-
-    <div class="card" data-reveal style="margin-bottom:14px;">
-      <div style="font-size:11px; font-weight:700; color:var(--text-dim); margin-bottom:18px; letter-spacing:1.5px;">KOLORY GŁÓWNE</div>
-      <div class="color-row">
-        <div class="swatch" style="background:#1B5E3A;"></div>
-        <div class="color-name">Green Dark</div>
-        <div class="color-hex">#1B5E3A</div>
-        <div class="color-role">Kolor główny. Nagłówki, footer, nawigacja. Świeżość i zaufanie.</div>
-      </div>
-      <div class="color-row">
-        <div class="swatch" style="background:#8DC63F;"></div>
-        <div class="color-name">Lime</div>
-        <div class="color-hex">#8DC63F</div>
-        <div class="color-role">Akcent #1. Przyciski hover, ikony benefitów, aktywne taby.</div>
-      </div>
-      <div class="color-row">
-        <div class="swatch" style="background:#E43020;"></div>
-        <div class="color-name">Red</div>
-        <div class="color-hex">#E43020</div>
-        <div class="color-role">CTA i urgency. Przyciski konwersji. Nigdy na tle.</div>
-      </div>
-      <div class="color-row">
-        <div class="swatch" style="background:#FFF200; border:1px solid #e0d88a;"></div>
-        <div class="color-name">Yellow</div>
-        <div class="color-hex">#FFF200</div>
-        <div class="color-role">Wywoławczy. Stickery, ikony info. Ostrożnie na jasnych tłach.</div>
-      </div>
-      <div class="color-row">
-        <div class="swatch" style="background:#FFF9E0; border:1px solid #e0d8b0;"></div>
-        <div class="color-name">Cream</div>
-        <div class="color-hex">#FFF9E0</div>
-        <div class="color-role">Tło strony i kart. Ciepły, naturalny, organiczny charakter.</div>
-      </div>
-    </div>
-
-    <div class="card" data-reveal style="margin-bottom:14px;">
-      <div style="font-size:11px; font-weight:700; color:var(--text-dim); margin-bottom:18px; letter-spacing:1.5px;">KOLORY POMOCNICZE</div>
-      <div class="color-row">
-        <div class="swatch" style="background:#347550;"></div>
-        <div class="color-name">Green Mid</div>
-        <div class="color-hex">#347550</div>
-        <div class="color-role">Linki, pod-nagłówki, bordery aktywnych tabów.</div>
-      </div>
-      <div class="color-row">
-        <div class="swatch" style="background:#A4C348;"></div>
-        <div class="color-name">Lime Light</div>
-        <div class="color-hex">#A4C348</div>
-        <div class="color-role">Hover states, delikatne gradienty, secondary akcenty.</div>
-      </div>
-      <div class="color-row">
-        <div class="swatch" style="background:#D5E8A0;"></div>
-        <div class="color-name">Lime Pale</div>
-        <div class="color-hex">#D5E8A0</div>
-        <div class="color-role">Tła kart benefitów, separatory. Subtelny, nie dominuje.</div>
-      </div>
-      <div class="color-row">
-        <div class="swatch" style="background:#F06878;"></div>
-        <div class="color-name">Coral</div>
-        <div class="color-hex">#F06878</div>
-        <div class="color-role">Zarezerwowany. Potencjalnie DailyFoods lub kampanie sezonowe.</div>
-      </div>
-    </div>
-
-    <div class="card" data-reveal>
-      <div style="font-size:11px; font-weight:700; color:var(--text-dim); margin-bottom:14px; letter-spacing:1.5px;">ZASADY UŻYCIA</div>
-      <div class="val" style="font-size:13px; line-height:2.1;">
-        Green Dark to ZAWSZE kolor tekstu na jasnym tle (nie czarny, nie szary)<br>
-        Red TYLKO na CTA i akcentach — nigdy jako tło sekcji<br>
-        Yellow nigdy jako kolor tekstu — za słaby kontrast. Tylko na ciemnym tle<br>
-        Cream jest domyślnym tłem — biały (#FFF) punktowo (karty, inputy)
-      </div>
-      <div style="margin-top:16px; display:flex; gap:4px; align-items:center;">
-        <div style="flex:60; height:32px; background:#FFF9E0; border:1px solid #d5d0a8; border-radius:6px;"></div>
-        <div style="flex:25; height:32px; background:#1B5E3A; border-radius:6px;"></div>
-        <div style="flex:10; height:32px; background:#8DC63F; border-radius:6px;"></div>
-        <div style="flex:5; height:32px; background:#E43020; border-radius:6px;"></div>
-      </div>
-      <div style="display:flex; gap:4px; margin-top:6px; font-size:10px; color:var(--text-dim);">
-        <div style="flex:60; text-align:center;">~60% Cream</div>
-        <div style="flex:25; text-align:center;">~25% Green</div>
-        <div style="flex:10; text-align:center;">~10% Lime</div>
-        <div style="flex:5; text-align:center;">~5%</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 5. TYPOGRAFIA -->
-  <div class="section">
-    <div class="sec-label" data-reveal>05 · Typografia</div>
-
-    <div class="g2" data-reveal-stagger style="margin-bottom:14px;">
-      <div class="card" style="border-left:4px solid var(--lime);">
-        <div style="font-size:20px; font-weight:900; color:var(--green-dark); margin-bottom:10px;">DM Sans</div>
-        <div style="font-size:10px; color:var(--lime); margin-bottom:12px; letter-spacing:1px; font-weight:700;">FONT GŁÓWNY · GOOGLE FONTS · OPEN SOURCE</div>
-        <div class="val" style="font-size:13px; line-height:2;">
-          Body: 400 (regular), 15-16px<br>
-          Nagłówki: 700 (bold) i 900 (black)<br>
-          Labele: 500 (medium), 13-14px<br>
-          Pełne wsparcie polskich znaków<br>
-          Użycie: strona, emaile, dokumenty, prezentacje
-        </div>
-      </div>
-      <div class="card" style="border-left:4px solid var(--text-dim);">
-        <div style="font-family:'Achiko',cursive; font-size:28px; font-weight:400; color:var(--green-dark); margin-bottom:10px;">Achiko</div>
-        <div style="font-size:10px; color:var(--text-dim); margin-bottom:12px; letter-spacing:1px; font-weight:700;">FONT DISPLAY · CUSTOM · WOFF2 + TTF</div>
-        <div class="val" style="font-size:13px; line-height:2;">
-          Użycie: hero claim, stickery sekcji, dekoracje<br>
-          Waga: 400 (regular) — jedyna dostępna<br>
-          <strong style="color:var(--red);">UWAGA:</strong> Brak pełnego polskiego zestawu<br>
-          Obsługuje tylko ł i ó (brak ą, ę, ć, ś, ź, ż)<br>
-          W Achiko TYLKO słowa bez polskich diakrytyków
-        </div>
-      </div>
-    </div>
-
-    <div class="card" data-reveal>
-      <div style="font-size:11px; font-weight:700; color:var(--text-dim); margin-bottom:14px; letter-spacing:1.5px;">HIERARCHIA TYPOGRAFICZNA</div>
-      <table class="tone-table">
-        <thead><tr><th>Element</th><th>Font</th><th>Waga</th><th>Rozmiar</th><th>Kolor</th></tr></thead>
-        <tbody>
-          <tr><td style="font-weight:700; color:var(--green-dark);">H1 Hero</td><td>DM Sans + Achiko</td><td>900 / 400</td><td>38-68px (clamp)</td><td>Green Dark + Lime</td></tr>
-          <tr><td style="font-weight:700; color:var(--green-dark);">H2 Sekcje</td><td>DM Sans</td><td>900</td><td>28-36px</td><td>Green Dark</td></tr>
-          <tr><td style="font-weight:700; color:var(--green-dark);">H3 Karty</td><td>DM Sans</td><td>700</td><td>18-22px</td><td>Green Dark</td></tr>
-          <tr><td style="font-weight:700; color:var(--green-dark);">Body</td><td>DM Sans</td><td>400</td><td>15-16px</td><td>Green Dark</td></tr>
-          <tr><td style="font-weight:700; color:var(--green-dark);">Label</td><td>DM Sans</td><td>700</td><td>13-14px</td><td>Green Dark 50%</td></tr>
-          <tr><td style="font-weight:700; color:var(--green-dark);">CTA Button</td><td>DM Sans</td><td>900</td><td>15-16px</td><td>White na Red/Green</td></tr>
-          <tr><td style="font-weight:700; color:var(--green-dark);">Sticker</td><td>Achiko</td><td>400</td><td>16-24px</td><td>Green Dark / Lime</td></tr>
-        </tbody>
-      </table>
-      <div style="margin-top:16px; padding:14px 16px; background:var(--cream); border:1px solid var(--border); border-radius:8px;">
-        <div style="font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px; letter-spacing:1px;">ZASADY</div>
-        <div class="val" style="font-size:12px; line-height:1.8;">
-          Letter-spacing H1: -0.03em (tight) · Line-height body: 1.7 · Line-height nagłówków: 1.08-1.2<br>
-          Sentence case w nagłówkach (nie Title Case) · Nigdy ALL CAPS w body · Max długość linii: 65-75 znaków
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 6. ODBIORCY I TON -->
-  <div class="section">
-    <div class="sec-label" data-reveal>06 · Odbiorcy i spektrum tonu</div>
-
-    <div class="card" data-reveal style="margin-bottom:14px;">
-      <div style="font-size:11px; font-weight:700; color:var(--text-dim); margin-bottom:16px; letter-spacing:1.5px;">GRUPA DOCELOWA</div>
-      <div class="g3" data-reveal-stagger>
-        <div class="card-sm" style="border-top:4px solid var(--lime);">
-          <div style="font-size:10px; font-weight:700; color:var(--lime); margin-bottom:6px;">PRIMARY</div>
-          <div style="font-size:15px; font-weight:700; color:var(--green-dark); margin-bottom:8px;">Office Manager / HR</div>
-          <div class="val" style="font-size:12px;">Decydent operacyjny. Szuka benefitu łatwego do wdrożenia i rozliczenia, który realnie docenią pracownicy.</div>
-        </div>
-        <div class="card-sm" style="border-top:4px solid var(--green-mid);">
-          <div style="font-size:10px; font-weight:700; color:var(--green-mid); margin-bottom:6px;">SECONDARY</div>
-          <div style="font-size:15px; font-weight:700; color:var(--green-dark); margin-bottom:8px;">CEO / CFO</div>
-          <div class="val" style="font-size:12px;">Decydent budżetowy. Chce ROI: mniej absencji, lepsza retencja, niski koszt per pracownik.</div>
-        </div>
-        <div class="card-sm" style="border-top:4px solid var(--text-dim);">
-          <div style="font-size:10px; font-weight:700; color:var(--text-dim); margin-bottom:6px;">TERTIARY</div>
-          <div style="font-size:15px; font-weight:700; color:var(--green-dark); margin-bottom:8px;">Pracownicy</div>
-          <div class="val" style="font-size:12px;">Beneficjenci końcowi. Nie decydują o zakupie, ale ich zadowolenie decyduje o kontynuacji.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" data-reveal>
-      <div style="font-size:11px; font-weight:700; color:var(--text-dim); margin-bottom:16px; letter-spacing:1.5px;">TON W ZALEŻNOŚCI OD KANAŁU</div>
-      <table class="tone-table">
-        <thead><tr><th>Kanał</th><th>Ton</th><th>Przykład</th></tr></thead>
-        <tbody>
-          <tr><td style="font-weight:700; color:var(--green-dark);">Strona www</td><td>Pewny, ciepły, konkretny</td><td style="font-style:italic;">Nie jesteśmy dostawcą owoców. Budujemy kulturę zdrowia.</td></tr>
-          <tr><td style="font-weight:700; color:var(--green-dark);">LinkedIn</td><td>Ekspercki, inspirujący</td><td style="font-style:italic;">81% firm, które wdrożyły program owocowy, notuje wzrost satysfakcji.</td></tr>
-          <tr><td style="font-weight:700; color:var(--green-dark);">Email B2B</td><td>Bezpośredni, pomocny</td><td style="font-style:italic;">Przygotowaliśmy propozycję dopasowaną do Waszego biura.</td></tr>
-          <tr><td style="font-weight:700; color:var(--green-dark);">Formularz</td><td>Prosty, bez tarcia</td><td style="font-style:italic;">Powiedz nam ile macie osób — reszta po naszej stronie.</td></tr>
-          <tr><td style="font-weight:700; color:var(--green-dark);">Social</td><td>Lekki, wizualny</td><td style="font-style:italic;">Owocowy Czwartek w [firma]. Kto ma tak samo?</td></tr>
-          <tr><td style="font-weight:700; color:var(--green-dark);">Oferta / PDF</td><td>Profesjonalny, szczegółowy</td><td style="font-style:italic;">Abonament obejmuje cotygodniową dostawę 12 kg owoców premium.</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <div data-reveal style="margin-top:56px; padding:24px 32px; background:var(--green-dark); border-radius:12px; text-align:center;">
-    <div style="font-family:'Achiko',cursive; font-size:18px; font-weight:400; color:#fff; margin-bottom:6px; text-transform:lowercase;">daily<span style="color:var(--lime);">fruits</span></div>
-    <div style="font-size:10px; color:rgba(255,255,255,0.4); letter-spacing:2px; text-transform:uppercase; margin-bottom:6px;">by BetterWorkplace</div>
-    <div style="font-size:11px; color:rgba(255,255,255,0.5); line-height:1.8;">
-      Brand Voice & Visual Identity Guide · v1.0 · Kwiecień 2026<br>
-      Dokument poufny — nie udostępniaj osobom nieuprawnionym
-    </div>
-  </div>
-
 </div>
 
+<div id="main-content" style="display:none;">
+<a class="back-link" href="index.html">&larr; Panel klienta</a>
+
+<div class="shell">
+  <aside>
+    <div class="brand"><img src="dailyfruits-logo.svg" alt="DailyFruits"></div>
+    <div class="ver">Brand Guide &middot; v1 &middot; 2026</div>
+    <nav>
+      <div class="grp">Fundamenty</div>
+      <a href="#kolory">Kolory</a>
+      <a href="#typografia">Typografia</a>
+      <div class="grp">Marka</div>
+      <a href="#osobowosc">Osobowosc marki</a>
+      <a href="#glos">Atrybuty glosu</a>
+      <div class="grp">Komunikacja</div>
+      <a href="#slownik">Slownik</a>
+      <a href="#odbiorcy">Odbiorcy i ton</a>
+      <div class="grp">Wizualne</div>
+      <a href="#adaptacje">Brand adaptacje</a>
+      <a href="#zasady">Do &amp; Don't</a>
+    </nav>
+  </aside>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="ds-hero" style="border:none;">
+      <div class="kicker">by betterworkplace &middot; sub-brand</div>
+      <h1>Brand <span class="o">Guide</span></h1>
+      <p>Spojny jezyk marki DailyFruits — osobowosc, glos, kolory, typografia i zasady wizualne. Wedlug tego budujemy kazdy komunikat i material.</p>
+      <div class="meta">Zrodlo: Brand Strategy 2026 &middot; by DailyFruits</div>
+    </section>
+
+    <!-- 01 — KOLORY -->
+    <section id="kolory">
+      <div class="kicker">01 — Fundamenty</div>
+      <h2 class="sec">Kolory</h2>
+      <p class="sub">Paleta DailyFruits jest naturalna i ciepla — oparta na glebokim zielonym, limonkowym akcencie i czerwonym CTA.</p>
+
+      <h3 class="block">Kolory glowne</h3>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#1B5E3A"></div><div class="smeta"><div class="name">Green Dark</div><div class="role">Naglowki, tekst glowny, footer, nawigacja</div><div class="hex">#1B5E3A</div><span class="tag lead">wiodacy</span></div></div>
+        <div class="sw"><div class="chip" style="background:#8DC63F"></div><div class="smeta"><div class="name">Lime</div><div class="role">Akcent #1, przyciski hover, ikony, aktywne taby</div><div class="hex">#8DC63F</div><span class="tag accent">akcent</span></div></div>
+        <div class="sw"><div class="chip" style="background:#E43020"></div><div class="smeta"><div class="name">Red</div><div class="role">CTA i urgency, przyciski konwersji</div><div class="hex">#E43020</div><span class="tag cta">CTA</span></div></div>
+      </div>
+
+      <div class="swatches" style="margin-top:16px;">
+        <div class="sw"><div class="chip" style="background:#FFF200;border-bottom:1px solid #e0d88a"></div><div class="smeta"><div class="name">Yellow</div><div class="role">Wywolawczy, stickery, ikony info</div><div class="hex">#FFF200</div><span class="tag energy">wywolawczy</span></div></div>
+        <div class="sw"><div class="chip" style="background:#FFF9E0;border-bottom:1px solid #e0d8b0"></div><div class="smeta"><div class="name">Cream</div><div class="role">Tlo strony i kart, cieplo organiczne</div><div class="hex">#FFF9E0</div><span class="tag bg">tlo</span></div></div>
+      </div>
+
+      <h3 class="block">Kolory pomocnicze</h3>
+      <div class="swatches s4">
+        <div class="sw"><div class="chip" style="background:#347550"></div><div class="smeta"><div class="name">Green Mid</div><div class="role">Linki, pod-naglowki, bordery</div><div class="hex">#347550</div><span class="tag bg">pomocniczy</span></div></div>
+        <div class="sw"><div class="chip" style="background:#A4C348"></div><div class="smeta"><div class="name">Lime Light</div><div class="role">Hover states, secondary akcenty</div><div class="hex">#A4C348</div><span class="tag bg">hover</span></div></div>
+        <div class="sw"><div class="chip" style="background:#D5E8A0"></div><div class="smeta"><div class="name">Lime Pale</div><div class="role">Tla kart benefitow, separatory</div><div class="hex">#D5E8A0</div><span class="tag bg">subtelny</span></div></div>
+        <div class="sw"><div class="chip" style="background:#F06878"></div><div class="smeta"><div class="name">Coral</div><div class="role">Zarezerwowany, kampanie sezonowe</div><div class="hex">#F06878</div><span class="tag bg">sezonowy</span></div></div>
+      </div>
+
+      <h3 class="block">Proporcje uzycia</h3>
+      <div class="usage-bar">
+        <div style="width:60%;background:#FFF9E0;border:1px solid #d5d0a8;border-radius:7px 0 0 7px;"></div>
+        <div style="width:25%;background:#1B5E3A;"></div>
+        <div style="width:10%;background:#8DC63F;"></div>
+        <div style="width:5%;background:#E43020;border-radius:0 7px 7px 0;"></div>
+      </div>
+      <div class="usage-labels">
+        <span>Cream ~60%</span>
+        <span>Green ~25%</span>
+        <span>Lime ~10%</span>
+        <span>Red ~5%</span>
+      </div>
+
+      <div class="callout">
+        <div class="b">!</div>
+        <p><b>Green Dark to ZAWSZE kolor tekstu</b> na jasnym tle (nie czarny, nie szary). <b>Red TYLKO na CTA i akcentach</b> — nigdy jako tlo sekcji. <b>Yellow nigdy jako kolor tekstu</b> — za slaby kontrast, tylko na ciemnym tle. <b>Cream jest domyslnym tlem</b> — bialy (#FFF) punktowo (karty, inputy).</p>
+      </div>
+    </section>
+
+    <!-- 02 — TYPOGRAFIA -->
+    <section id="typografia">
+      <div class="kicker">02 — Fundamenty</div>
+      <h2 class="sec">Typografia</h2>
+      <p class="sub">Dwa fonty, dwie role. DM Sans na body i naglowkach — geometryczny, pewny siebie. Achiko na claimach i stickerach — charakterowy, display.</p>
+
+      <div class="spec">
+        <div class="lbl"><span>DM Sans &middot; Black (900)</span><span>Display / Hero &mdash; 38-68px</span></div>
+        <div style="font-family:var(--font-head);font-weight:900;font-size:clamp(30px,4vw,68px);letter-spacing:-2.5px;line-height:1.02;color:var(--text);">Zdrowsze jedzenie.</div>
+      </div>
+
+      <div class="spec">
+        <div class="lbl"><span>DM Sans &middot; Bold (700)</span><span>H2 Sekcje &mdash; 28-36px</span></div>
+        <div style="font-family:var(--font-head);font-weight:700;font-size:clamp(24px,3vw,36px);letter-spacing:-.4px;line-height:1.2;color:var(--text);">Budujemy kulture zdrowia w Twojej firmie.</div>
+      </div>
+
+      <div class="spec">
+        <div class="lbl"><span>DM Sans &middot; Regular (400)</span><span>Body &mdash; 15-16px</span></div>
+        <div style="font-family:var(--font-body);font-weight:400;font-size:16px;line-height:1.65;color:var(--muted);">Owoce, kanapki, sniadania, kawa. Wszystko, czego potrzebuje nowoczesne miejsce pracy — od jednego partnera.</div>
+      </div>
+
+      <div class="spec">
+        <div class="lbl"><span>Achiko &middot; Regular (400)</span><span>Claim / Sticker &mdash; 16-26px</span></div>
+        <div style="font-family:'Achiko',cursive;font-weight:400;font-size:clamp(20px,3vw,28px);line-height:1.3;color:var(--text);">Zdrowsze jedzenie, lepsza praca.</div>
+        <div style="margin-top:10px;padding:10px 14px;background:rgba(228,48,32,.06);border-radius:8px;font-size:12px;color:#b82318;line-height:1.6;"><strong>UWAGA:</strong> Achiko brak pelnego polskiego zestawu — obsluguje tylko l i o z kreska. Brak a, e, c, s, z, z z ogonkiem/kropka. W Achiko TYLKO slowa bez polskich diakrytykow (poza l i o).</div>
+      </div>
+
+      <h3 class="block">Hierarchia typograficzna</h3>
+      <div style="border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--card);">
+        <table class="typo-table">
+          <thead><tr><th>Element</th><th>Font</th><th>Waga</th><th>Rozmiar</th><th>Kolor</th></tr></thead>
+          <tbody>
+            <tr><td>H1 Hero</td><td>DM Sans + Achiko</td><td>900 / 400</td><td>38-68px (clamp)</td><td>Green Dark + Lime</td></tr>
+            <tr><td>H2 Sekcje</td><td>DM Sans</td><td>900</td><td>28-36px</td><td>Green Dark</td></tr>
+            <tr><td>H3 Karty</td><td>DM Sans</td><td>700</td><td>18-22px</td><td>Green Dark</td></tr>
+            <tr><td>Body</td><td>DM Sans</td><td>400</td><td>15-16px</td><td>Green Dark</td></tr>
+            <tr><td>Label</td><td>DM Sans</td><td>700</td><td>13-14px</td><td>Green Dark 50%</td></tr>
+            <tr><td>CTA Button</td><td>DM Sans</td><td>900</td><td>15-16px</td><td>White na Red/Green</td></tr>
+            <tr><td>Sticker</td><td>Achiko</td><td>400</td><td>16-24px</td><td>Green Dark / Lime</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 03 — OSOBOWOSC MARKI -->
+    <section id="osobowosc">
+      <div class="kicker">03 — Marka</div>
+      <h2 class="sec">Osobowosc marki</h2>
+      <p class="sub">Kim jest DailyFruits jako marka — misja, archetyp, obietnica i terytorium.</p>
+
+      <div class="pers-card">
+        <p style="font-size:15px;color:var(--text);line-height:1.8;margin-bottom:4px;">Gdyby DailyFruits byl osoba, bylby <strong>kompetentnym doradca HR</strong>, ktory wie, ze wellbeing zaczyna sie od kuchni. Nie moralizuje — po prostu stawia skrzynke swiezych owocow i mowi: <em style="color:var(--green-mid);">&bdquo;To dziala. Sprawdzilismy w 2000 firmach.&rdquo;</em> Jest ciepiy, ale konkretny. Nigdy nie przesadza z entuzjazmem, bo jego sila sa twarde dane, nie hasla.</p>
+
+        <div class="pers-grid">
+          <div class="pers-cell">
+            <div class="lbl">Misja</div>
+            <div class="val">Nie jestesmy dostawca owocow. Budujemy kulture zdrowia w Twojej firmie — zaczynajac od kuchni.</div>
+          </div>
+          <div class="pers-cell">
+            <div class="lbl">Archetyp</div>
+            <div class="val"><strong>Opiekun</strong> (Caregiver) + <strong>Medrzec</strong> (Sage). Dba o ludzi, ale na bazie danych i procesow, nie emocji. Praktyczny wellbeing, nie korporacyjny wellness-washing.</div>
+          </div>
+          <div class="pers-cell">
+            <div class="lbl">Obietnica</div>
+            <div class="val">Zdrowsze jedzenie, lepsza praca. Jeden dostawca, zero komplikacji, mierzalny wplyw na zespol.</div>
+          </div>
+          <div class="pers-cell">
+            <div class="lbl">Terytorium</div>
+            <div class="val">Rytualy biurowe (Owocowe Czwartki), kultura zdrowia w firmie, wellbeing zywieniowy oparty na danych — 2000+ firm, 13 miast, 81% poprawa wellbeingu.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="claim">
+        <div class="txt">Zdrowsze jedzenie, lepsza praca.</div>
+        <div class="lab">Claim marki</div>
+      </div>
+    </section>
+
+    <!-- 04 — ATRYBUTY GLOSU -->
+    <section id="glos">
+      <div class="kicker">04 — Marka</div>
+      <h2 class="sec">Atrybuty glosu</h2>
+      <p class="sub">Cztery atrybuty definiujace sposob, w jaki DailyFruits sie komunikuje.</p>
+
+      <div class="v-grid">
+        <div class="v-card">
+          <h3>Konkretny</h3>
+          <div class="desc">Precyzyjny, mierzalny, oparty na danych. Kazdy argument ma liczbe.</div>
+          <div class="not">Nie jestesmy: sucho-korporacyjni. Dane podajemy z cieplem.</div>
+          <div class="v-ex">&#10003; &bdquo;81% pracownikow potwierdza poprawe wellbeingu po 3 miesiacach.&rdquo;</div>
+          <div class="v-anti">&#10007; &bdquo;Nasi pracownicy sa szczesliwsi!&rdquo;</div>
+        </div>
+
+        <div class="v-card">
+          <h3>Ciepiy</h3>
+          <div class="desc">Przyjazni, bezposredni. &bdquo;Twoj zespol&rdquo;, nie &bdquo;Panstwa organizacja&rdquo;.</div>
+          <div class="not">Nie jestesmy: infantylni, nie uzywamy emoji w B2B.</div>
+          <div class="v-ex">&#10003; &bdquo;Powiedz nam ile macie osob i czego potrzebujecie.&rdquo;</div>
+          <div class="v-anti">&#10007; &bdquo;Hej! Napiszcie do nas, ogarniemy to!&rdquo;</div>
+        </div>
+
+        <div class="v-card">
+          <h3>Pewny siebie</h3>
+          <div class="desc">Lider kategorii: 10+ lat, 2000+ firm, 13 miast. Pewnosc z wynikow.</div>
+          <div class="not">Nie jestesmy: aroganccy. Nie deprecjonujemy konkurencji.</div>
+          <div class="v-ex">&#10003; &bdquo;Jeden partner zamiast trzech dostawcow.&rdquo;</div>
+          <div class="v-anti">&#10007; &bdquo;Jestesmy najlepsi na rynku!&rdquo;</div>
+        </div>
+
+        <div class="v-card">
+          <h3>Praktyczny</h3>
+          <div class="desc">Zorientowani na rozwiazania. Nie owoce — benefit pracowniczy.</div>
+          <div class="not">Nie jestesmy: idealistyczni, aspiracyjni. Zero &bdquo;zmien swiat&rdquo;.</div>
+          <div class="v-ex">&#10003; &bdquo;24h czas dostawy. 13 miast. 2000+ firm nam zaufalo.&rdquo;</div>
+          <div class="v-anti">&#10007; &bdquo;Wspolnie budujemy zdrowsza przyszlosc dla pokolen.&rdquo;</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 — SLOWNIK -->
+    <section id="slownik">
+      <div class="kicker">05 — Komunikacja</div>
+      <h2 class="sec">Slownik marki</h2>
+      <p class="sub">Konkretne zamienniki — co DailyFruits mowi, a czego nigdy nie powie.</p>
+
+      <div class="vocab">
+        <div class="vocab-row"><div class="vocab-no">dostawca owocow</div><div class="vocab-yes">partner wellbeingowy / ekosystem zdrowia</div></div>
+        <div class="vocab-row"><div class="vocab-no">tani / najtaniej</div><div class="vocab-yes">oplacalny / inwestycja w zespol</div></div>
+        <div class="vocab-row"><div class="vocab-no">kupowac owoce</div><div class="vocab-yes">zamawiac / zadbac o zespol</div></div>
+        <div class="vocab-row"><div class="vocab-no">klient</div><div class="vocab-yes">partner / firma</div></div>
+        <div class="vocab-row"><div class="vocab-no">innowacyjny / nowoczesny</div><div class="vocab-yes">sprawdzony / mierzalny</div></div>
+        <div class="vocab-row"><div class="vocab-no">wellness</div><div class="vocab-yes">wellbeing zywieniowy / kultura zdrowia</div></div>
+        <div class="vocab-row"><div class="vocab-no">paczka owocow</div><div class="vocab-yes">skrzynka / zestaw / abonament</div></div>
+      </div>
+    </section>
+
+    <!-- 06 — ODBIORCY I TON -->
+    <section id="odbiorcy">
+      <div class="kicker">06 — Komunikacja</div>
+      <h2 class="sec">Odbiorcy i ton</h2>
+      <p class="sub">DailyFruits mowi glownie do decydentow operacyjnych i budzetowych. Ton sie lekko przesuwa w zaleznosci od rozmowcy.</p>
+
+      <h3 class="block">Grupa docelowa</h3>
+      <div class="aud-grid">
+        <div class="aud-card" style="border-top:3px solid var(--lime);">
+          <div class="role">Primary</div>
+          <h3>Office Manager / HR</h3>
+          <p>Decydent operacyjny. Szuka benefitu latwego do wdrozenia i rozliczenia, ktory realnie docenia pracownicy.</p>
+        </div>
+        <div class="aud-card" style="border-top:3px solid var(--green-mid);">
+          <div class="role" style="color:var(--green-mid);">Secondary</div>
+          <h3>CEO / CFO</h3>
+          <p>Decydent budzetowy. Chce ROI: mniej absencji, lepsza retencja, niski koszt per pracownik.</p>
+        </div>
+        <div class="aud-card" style="border-top:3px solid var(--dim);">
+          <div class="role" style="color:var(--dim);">Tertiary</div>
+          <h3>Pracownicy</h3>
+          <p>Beneficjenci koncowi. Nie decyduja o zakupie, ale ich zadowolenie decyduje o kontynuacji.</p>
+        </div>
+      </div>
+
+      <h3 class="block">Ton w zaleznosci od kanalu</h3>
+      <div style="border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--card);">
+        <table class="tone-table">
+          <thead><tr><th>Kanal</th><th>Ton</th><th>Przyklad</th></tr></thead>
+          <tbody>
+            <tr><td>Strona www</td><td>Pewny, ciepiy, konkretny</td><td style="font-style:italic;">Nie jestesmy dostawca owocow. Budujemy kulture zdrowia.</td></tr>
+            <tr><td>LinkedIn</td><td>Ekspercki, inspirujacy</td><td style="font-style:italic;">81% firm, ktore wdrozyly program owocowy, notuje wzrost satysfakcji.</td></tr>
+            <tr><td>Email B2B</td><td>Bezposredni, pomocny</td><td style="font-style:italic;">Przygotowalismy propozycje dopasowana do Waszego biura.</td></tr>
+            <tr><td>Formularz</td><td>Prosty, bez tarcia</td><td style="font-style:italic;">Powiedz nam ile macie osob — reszta po naszej stronie.</td></tr>
+            <tr><td>Social</td><td>Lekki, wizualny</td><td style="font-style:italic;">Owocowy Czwartek w [firma]. Kto ma tak samo?</td></tr>
+            <tr><td>Oferta / PDF</td><td>Profesjonalny, szczegolowy</td><td style="font-style:italic;">Abonament obejmuje cotygodniowa dostawe 12 kg owocow premium.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 07 — BRAND ADAPTACJE -->
+    <section id="adaptacje">
+      <div class="kicker">07 — Wizualne</div>
+      <h2 class="sec">Brand adaptacje</h2>
+      <p class="sub">Materialy referencyjne — packaging, kreacje social, fleet branding, ikony i strona www.</p>
+
+      <h3 class="block">Hero banner</h3>
+      <div class="photo-full">
+        <img src="df-banner.webp" alt="DailyFruits brand banner">
+      </div>
+
+      <h3 class="block">Packaging</h3>
+      <div class="photo-full">
+        <img src="df-boxy-duo.webp" alt="DailyFruits + DailyFoods boxy">
+        <div class="cap">
+          <div class="cap-title">Packaging — DailyFruits + DailyFoods</div>
+          <div class="cap-desc">Spojna rodzina opakowan Daily*. Zielony DF, zolty DFo. Ten sam system graficzny, dwa kolory.</div>
+        </div>
+      </div>
+
+      <h3 class="block">Kreacje social</h3>
+      <div class="photo-grid3">
+        <div class="photo-cell">
+          <img src="df-branding-full.webp" alt="Owocowa skrzynia — kreacja social">
+          <div class="cap">
+            <div class="cap-title">Owocowe Czwartki</div>
+            <div class="cap-desc">Font Achiko + packshot + claims</div>
+          </div>
+        </div>
+        <div class="photo-cell">
+          <img src="df-social-post.webp" alt="Kanapka prawem nie towarem">
+          <div class="cap">
+            <div class="cap-title">Kreacja — DailyFoods</div>
+            <div class="cap-desc">Green Dark bg + Yellow akcenty</div>
+          </div>
+        </div>
+        <div class="photo-cell">
+          <img src="df-branding-elements.webp" alt="Lody sezonowe">
+          <div class="cap">
+            <div class="cap-title">Kreacja sezonowa — lody</div>
+            <div class="cap-desc">Achiko + product photography</div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="block">Fleet &amp; ikony</h3>
+      <div class="photo-grid">
+        <div class="photo-cell">
+          <img src="df-van.webp" alt="DailyFruits van">
+          <div class="cap">
+            <div class="cap-title">Fleet branding</div>
+            <div class="cap-desc">Pelny branding na flote dostawcza. Logo + jablko + by betterworkplace.</div>
+          </div>
+        </div>
+        <div class="photo-cell" style="padding:20px;">
+          <div>
+            <div style="font-size:12px;font-weight:700;color:var(--green-dark);margin-bottom:14px;">Ikony ilustracyjne</div>
+            <div class="icon-grid">
+              <div class="icon-cell">
+                <img src="df-icon-puchar.webp" alt="Puchar">
+                <div class="ic-label">Lider kategorii</div>
+              </div>
+              <div class="icon-cell">
+                <img src="df-icon-recykling.webp" alt="Recykling">
+                <div class="ic-label">Abonament</div>
+              </div>
+              <div class="icon-cell">
+                <img src="df-icon-handshake.webp" alt="Handshake">
+                <div class="ic-label">Partnerstwo</div>
+              </div>
+            </div>
+            <div style="font-size:10px;color:var(--dim);margin-top:12px;line-height:1.6;">Styl: hand-drawn, brand colors (Lime bg, Yellow bg, Red bg). Spojny z tonem marki — ciepiy, ludzki, nie-korporacyjny.</div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="block">DailyFoods banner</h3>
+      <div class="photo-full">
+        <img src="df-dailyfoods-banner.webp" alt="DailyFoods banner">
+        <div class="cap">
+          <div class="cap-title">Alternatywna wersja komunikacji — paczki mieszane</div>
+          <div class="cap-desc">Yellow background dla produktow spoza core'u owocowego (kanapki, sniadania, kawa, lody). Ten sam system elementow: jablko, logo DF badge, ikony produktowe.</div>
+        </div>
+      </div>
+
+      <h3 class="block">Strona www</h3>
+      <div class="photo-full">
+        <img src="df-www-screenshot.webp" alt="DailyFruits strona www">
+        <div class="cap">
+          <div class="cap-title">Strona www — dailyfruits.pl</div>
+          <div class="cap-desc">Claim Achiko + DM Sans body. Cream tlo, Green Dark tekst, Red CTA. Packshot boxa jako hero. Twarde dane w naglowku (24h, 13 miast, 2000+).</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 — DO & DON'T -->
+    <section id="zasady" style="border-bottom:none;">
+      <div class="kicker">08 — Wizualne</div>
+      <h2 class="sec">Do &amp; Don't</h2>
+      <p class="sub">Zasady komunikacji marki DailyFruits — co robimy, a czego unikamy.</p>
+
+      <div class="dd">
+        <div class="col do">
+          <h4>&#10003; Rob</h4>
+          <ul>
+            <li>Uzywaj &bdquo;Ty/Twoj&rdquo; zamiast &bdquo;Panstwo&rdquo; w copy marketingowym</li>
+            <li>Zaczynaj od korzysci, nie od produktu (&bdquo;Zmniejsz absencje&rdquo; > &bdquo;Kup owoce&rdquo;)</li>
+            <li>Podawaj twarde liczby: 2000+ firm, 13 miast, 24h dostawa, 81%</li>
+            <li>Uzywaj krotkich zdan (max 20 slow)</li>
+            <li>Nazywaj rytualy: Owocowe Czwartki, Kanapkowe Wtorki</li>
+            <li>Aktywne czasowniki: &bdquo;Zamow&rdquo;, &bdquo;Sprawdz&rdquo;, &bdquo;Zacznij&rdquo;</li>
+            <li>Claim fontem Achiko, body fontem DM Sans</li>
+            <li>Podkreslaj ekosystem: DF + DFo + BW</li>
+            <li>Mow o &bdquo;kulturze zdrowia&rdquo;, &bdquo;rytualach&rdquo;</li>
+          </ul>
+        </div>
+        <div class="col dont">
+          <h4>&#10007; Nie rob</h4>
+          <ul>
+            <li>&bdquo;innovative&rdquo;, &bdquo;synergia&rdquo;, &bdquo;holistyczny&rdquo;, &bdquo;complex solution&rdquo;</li>
+            <li>WIELKIE LITERY (SUPER OFERTA!)</li>
+            <li>Emoji w komunikacji B2B (LinkedIn, email, strona)</li>
+            <li>Obietnice bez pokrycia (&bdquo;najlepsze owoce na swiecie&rdquo;)</li>
+            <li>&bdquo;tani/najtaniej&rdquo; — mow &bdquo;oplacalny&rdquo;, &bdquo;inwestycja w zespol&rdquo;</li>
+            <li>Deprecjonowanie konkurencji wprost</li>
+            <li>Stockowe zdjecia ludzi — packshoty produktowe</li>
+            <li>Slowo &bdquo;dostawca&rdquo; na okreslenie DailyFruits</li>
+            <li>Mieszanie jezykow (polsko-angielskie zdania)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+</div><!-- /main-content -->
+
 <script>
-(function(){
-  var s = document.createElement('script');
-  s.src = 'https://unpkg.com/lenis@1.3.17/dist/lenis.min.js';
-  s.onload = function(){
-    var lenis = new Lenis({ duration:1.6, easing:function(t){ return Math.min(1,1.001-Math.pow(2,-10*t)); } });
-    function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
-    requestAnimationFrame(raf);
-  };
-  document.head.appendChild(s);
-})();
-(function(){
-  if (!('IntersectionObserver' in window)) {
-    document.querySelectorAll('[data-reveal],[data-reveal-stagger]').forEach(function(el){ el.classList.add('is-visible'); });
-    return;
+function checkPw(){
+  var input=document.getElementById('pw-input');
+  var hash=0,str=input.value;
+  for(var i=0;i<str.length;i++){hash=((hash<<5)-hash)+str.charCodeAt(i);hash|=0;}
+  if(hash===-1422286391){
+    document.getElementById('pw-screen').classList.add('hidden');
+    document.getElementById('main-content').style.display='block';
+    sessionStorage.setItem('bw_auth','1');
+    return false;
   }
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { rootMargin:'0px 0px -8% 0px', threshold:0.08 });
-  document.querySelectorAll('[data-reveal],[data-reveal-stagger]').forEach(function(el){ io.observe(el); });
-})();
+  input.classList.add('pw-error');
+  document.getElementById('pw-error-msg').textContent='Nieprawidlowe haslo. Sprobuj ponownie.';
+  setTimeout(function(){input.classList.remove('pw-error');},400);
+  return false;
+}
+if(sessionStorage.getItem('bw_auth')==='1'){
+  document.getElementById('pw-screen').classList.add('hidden');
+  document.getElementById('main-content').style.display='block';
+}
 </script>
 </body>
 </html>

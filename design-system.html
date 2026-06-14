@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TeamBudget — Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--pale-white);color:var(--pale-black);line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+/* PASSWORD */
+#pw-screen{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;width:100%;min-height:100vh;background:var(--pale-white);}
+#pw-screen.hidden{display:none;}
+#pw-box{background:#fff;border:1px solid var(--line);border-radius:16px;padding:52px 44px 44px;text-align:center;max-width:400px;width:90%;box-shadow:0 4px 24px rgba(0,0,0,.04);}
+#pw-box .pw-icon{font-size:36px;margin-bottom:20px;display:inline-block;}
+#pw-box h2{font-size:18px;font-weight:700;letter-spacing:-.3px;margin-bottom:8px;color:var(--pale-black);}
+#pw-box p{font-size:13px;color:var(--muted);margin-bottom:28px;line-height:1.6;}
+#pw-input{width:100%;padding:13px 18px;border-radius:10px;border:1px solid var(--line);background:var(--pale-white);color:var(--pale-black);font-family:inherit;font-size:14px;outline:none;transition:border-color .2s,box-shadow .2s;}
+#pw-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(67,117,255,.1);}
+#pw-input.pw-error{border-color:#ef4444;animation:shake .4s ease;}
+#pw-input::placeholder{color:var(--dim);}
+#pw-btn{margin-top:14px;width:100%;padding:13px;background:var(--pale-black);color:var(--pale-white);border:none;border-radius:10px;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s ease;}
+#pw-btn:hover{background:#2a2a2a;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.15);}
+#pw-error-msg{font-size:12px;color:#ef4444;margin-top:12px;min-height:16px;}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--blue);text-decoration:none;padding:16px 0 0 24px;letter-spacing:.02em;transition:color .15s;}
+.back-link:hover{color:var(--orange);}
+h1,h2,h3,h4{font-family:var(--font-head);}
+.shell{display:grid;grid-template-columns:248px 1fr;max-width:1400px;margin:0 auto;}
+
+/* sidebar */
+aside{position:sticky;top:0;align-self:start;height:100vh;padding:34px 24px;border-right:1px solid var(--line);background:var(--pale-white);overflow-y:auto;}
+aside .brand{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+aside .brand img{height:30px;}
+aside .ver{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:28px;}
+aside nav a{display:block;font-size:14px;color:var(--muted);padding:8px 0;font-weight:500;transition:color var(--motion-fast),padding-left var(--motion-fast);}
+aside nav a:hover{color:var(--blue);padding-left:5px;}
+aside nav .grp{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin:22px 0 6px;}
+
+/* content */
+main{padding:64px 56px 120px;max-width:980px;}
+section{padding:46px 0;border-bottom:1px solid var(--line-soft);}
+section:first-child{padding-top:0;}
+.kicker{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);font-weight:500;}
+h2.sec{font-size:clamp(26px,3vw,36px);letter-spacing:-.03em;font-weight:700;margin:12px 0 8px;}
+.sub{color:var(--muted);font-size:16px;max-width:640px;margin-bottom:30px;}
+h3.block{font-family:var(--font-head);font-weight:600;font-size:16px;margin:30px 0 14px;display:flex;align-items:center;gap:10px;}
+h3.block::before{content:'';width:18px;height:3px;border-radius:3px;background:var(--blue);}
+
+/* hero of DS */
+.ds-hero{padding:70px 0 40px;}
+.ds-hero h1{font-size:clamp(40px,6vw,72px);letter-spacing:-.04em;line-height:.98;font-weight:700;color:var(--blue);}
+.ds-hero h1 .o{color:var(--orange);}
+.ds-hero p{font-size:18px;color:var(--pale-black);max-width:560px;margin-top:18px;font-family:var(--font-head);font-weight:500;}
+.ds-hero .meta{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:22px;}
+
+/* color swatches */
+.swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.sw{border:1px solid var(--line);border-radius:var(--r-sm);overflow:hidden;background:var(--card);}
+.sw .chip{height:104px;display:flex;align-items:flex-end;padding:12px;}
+.sw .meta{padding:13px 14px 15px;}
+.sw .name{font-family:var(--font-head);font-weight:600;font-size:14px;}
+.sw .role{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:3px 0 9px;min-height:24px;}
+.sw .hex{font-family:var(--font-mono);font-size:11px;color:var(--pale-black);}
+.sw .pan{font-family:var(--font-mono);font-size:10px;color:var(--dim);margin-top:2px;}
+.tag{display:inline-block;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;border-radius:6px;margin-top:8px;}
+.tag.lead{background:rgba(67,117,255,.12);color:var(--blue-deep);}
+.tag.add{background:rgba(254,105,43,.14);color:#c43c12;}
+.tag.bg{background:rgba(71,58,57,.08);color:var(--muted);}
+.tag.sticker{background:rgba(21,164,119,.14);color:#0c7a57;}
+@media(max-width:880px){.swatches{grid-template-columns:repeat(2,1fr);}}
+
+/* rule callout */
+.callout{background:var(--sunny);border-radius:var(--r);padding:22px 24px;margin-top:24px;display:flex;gap:16px;align-items:flex-start;}
+.callout .b{width:34px;height:34px;border-radius:50%;background:var(--blue);color:#fff;flex:none;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:700;}
+.callout p{font-size:14.5px;color:var(--pale-black);}
+.callout b{color:var(--blue-deep);}
+
+/* logo board */
+.logo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.logo-cell{border:1px solid var(--line);border-radius:var(--r-sm);height:130px;display:flex;align-items:center;justify-content:center;padding:18px;}
+.logo-cell img,.logo-cell svg{max-width:100%;max-height:100%;}
+.logo-cell.on-blue{background:var(--blue);}
+.logo-cell.on-orange{background:var(--orange);}
+.logo-cell.on-black{background:var(--pale-black);}
+.logo-cell.on-sunny{background:var(--sunny);}
+.cap{font-family:var(--font-mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-top:8px;text-align:center;}
+@media(max-width:720px){.logo-grid{grid-template-columns:repeat(2,1fr);}}
+
+/* type specimen */
+.spec{border:1px solid var(--line);border-radius:var(--r);padding:26px 28px;margin-bottom:14px;background:var(--card);}
+.spec .lbl{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;justify-content:space-between;}
+.t-display{font-family:var(--font-head);font-weight:700;font-size:clamp(30px,4vw,48px);letter-spacing:-.035em;line-height:1.02;color:var(--blue);}
+.t-h2{font-family:var(--font-head);font-weight:700;font-size:clamp(24px,3vw,34px);letter-spacing:-.03em;color:var(--pale-black);}
+.t-lead{font-family:var(--font-head);font-weight:500;font-size:20px;color:var(--pale-black);}
+.t-body{font-family:var(--font-body);font-size:16px;color:var(--pale-black);line-height:1.65;}
+.t-mono{font-family:var(--font-mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);}
+
+/* stickers */
+.sticker-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;}
+.sticker-row img{height:48px;width:auto;filter:drop-shadow(0 6px 14px rgba(71,58,57,.14));}
+
+/* shapes */
+.shape-row{display:flex;gap:26px;flex-wrap:wrap;align-items:center;margin-bottom:8px;}
+.shape-row svg{height:84px;width:auto;}
+.blob-row{display:flex;gap:20px;flex-wrap:wrap;}
+.blob-row svg{width:120px;height:120px;}
+.motif{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px;}
+.motif div{border:1px solid var(--line);border-radius:var(--r-sm);padding:16px;font-size:13px;color:var(--muted);}
+.motif b{display:block;font-family:var(--font-head);font-weight:600;color:var(--pale-black);font-size:14px;margin-bottom:4px;}
+@media(max-width:720px){.motif{grid-template-columns:1fr;}}
+
+/* components */
+.comp{border:1px solid var(--line);border-radius:var(--r);padding:26px;margin-bottom:16px;background:var(--card);}
+.comp .row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+.dsinput{width:100%;max-width:320px;padding:13px 14px;border-radius:11px;border:1px solid var(--line);background:var(--pale-white);font-family:var(--font-body);font-size:14px;outline:none;}
+.dsinput:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(67,117,255,.2);}
+.stat-demo{display:flex;gap:0;border-top:1px solid var(--line);max-width:360px;}
+.stat-demo .s{padding:14px 16px 4px 0;}
+.stat-demo .s+.s{padding-left:18px;border-left:1px solid var(--line);}
+.stat-demo .n{font-family:var(--font-head);font-weight:700;font-size:26px;color:var(--blue);letter-spacing:-.03em;}
+.stat-demo .l{font-family:var(--font-mono);font-size:9px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-top:7px;}
+
+/* motion */
+.motion-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.motion-grid div{border:1px solid var(--line);border-radius:var(--r-sm);padding:16px 18px;font-family:var(--font-mono);font-size:12px;color:var(--pale-black);}
+.motion-grid span{color:var(--muted);}
+@media(max-width:720px){.motion-grid{grid-template-columns:1fr;}}
+
+/* do/dont */
+.dd{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.dd .col{border-radius:var(--r);padding:22px 24px;}
+.dd .do{background:rgba(21,164,119,.08);border:1px solid rgba(21,164,119,.25);}
+.dd .dont{background:rgba(254,105,43,.07);border:1px solid rgba(254,105,43,.25);}
+.dd h4{font-family:var(--font-head);font-weight:700;font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.dd .do h4{color:#0c7a57;} .dd .dont h4{color:#c43c12;}
+.dd ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.dd li{font-size:13.5px;color:var(--pale-black);padding-left:18px;position:relative;}
+.dd li::before{position:absolute;left:0;top:0;}
+.dd .do li::before{content:'✓';color:var(--green);}
+.dd .dont li::before{content:'✕';color:var(--orange);}
+@media(max-width:720px){.dd{grid-template-columns:1fr;}}
+
+@media(max-width:880px){.shell{grid-template-columns:1fr;}aside{position:static;height:auto;border-right:none;border-bottom:1px solid var(--line);}aside nav{columns:2;}main{padding:40px 24px 90px;}}
+</style>
+</head>
+<body>
+<!-- PASSWORD -->
+<div id="pw-screen">
+  <div id="pw-box">
+    <div class="pw-icon">🔒</div>
+    <h2>Dokument chroniony</h2>
+    <p>Ten dokument jest poufny. Wprowadź hasło, aby uzyskać dostęp.</p>
+    <form onsubmit="return checkPw()">
+      <input type="password" id="pw-input" placeholder="Hasło dostępu" autocomplete="off" autofocus>
+      <button type="submit" id="pw-btn">Odblokuj</button>
+    </form>
+    <div id="pw-error-msg"></div>
+  </div>
+</div>
+<div id="main-content" style="display:none;">
+<a class="back-link" href="index.html">← Panel klienta</a>
+<div class="shell">
+  <aside>
+    <div class="brand"><img src="Logo.svg" alt="TeamBudget"></div>
+    <div class="ver">Design System · v1 · 2026</div>
+    <nav>
+      <div class="grp">Fundamenty</div>
+      <a href="#zasada">Zasada koloru</a>
+      <a href="#kolory">Kolory</a>
+      <a href="#typografia">Typografia</a>
+      <div class="grp">Marka</div>
+      <a href="#logo">Logo & sygnet</a>
+      <a href="#naklejki">System naklejkowy</a>
+      <a href="#ksztalty">Kształty & Key Visual</a>
+      <div class="grp">Interfejs</div>
+      <a href="#komponenty">Komponenty</a>
+      <a href="#ruch">Ruch</a>
+      <a href="#zasady">Do & Don't</a>
+    </nav>
+  </aside>
+
+  <main>
+    <!-- HERO -->
+    <section class="ds-hero" style="border:none;">
+      <div class="kicker">benefity. team. balance.</div>
+      <h1>Design <span class="o">System</span></h1>
+      <p>Jeden spójny język wizualny TeamBudget — kolory, typografia, logo, kształty i komponenty wyprowadzone 1:1 z Brand Booka. Według tego budujemy stronę i każdy kolejny materiał.</p>
+      <div class="meta">Źródło: Brand Book TeamBudget 2026 · by BetterWorkplace</div>
+    </section>
+
+    <!-- ZASADA KOLORU -->
+    <section id="zasada">
+      <div class="kicker">01 — Fundament</div>
+      <h2 class="sec">Zasada koloru</h2>
+      <p class="sub">Hierarchia kolorów nie jest dowolna. Każdy kolor ma przypisaną rolę — i tylko w tej roli się go używa.</p>
+      <div class="callout"><div class="b">!</div><p><b>Niebieski jest kolorem wiodącym</b> — dla dekoracji i typografii. <b>Pomarańczowy to wyłącznie dodatek / akcent.</b> Biel (Pale White) to tło, czerń i niebieski pełnią na przemian funkcję typografii. <b>Żółty i zielony stosujemy WYŁĄCZNIE na naklejkach.</b> Sunny White służy jako tło pod key visual.</p></div>
+    </section>
+
+    <!-- KOLORY -->
+    <section id="kolory">
+      <div class="kicker">02 — Fundament</div>
+      <h2 class="sec">Kolory</h2>
+      <p class="sub">Paleta podstawowa (4) + dodatkowa (3). Wartości HEX i Pantone z Brand Booka (s. 9–10).</p>
+
+      <h3 class="block">Paleta podstawowa</h3>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#FFFBF4;border-bottom:1px solid var(--line)"></div><div class="meta"><div class="name">Pale White</div><div class="role">Tła</div><div class="hex">#FFFBF4</div><div class="pan">PANTONE white 000 c</div><span class="tag bg">tło</span></div></div>
+        <div class="sw"><div class="chip" style="background:#473A39"></div><div class="meta"><div class="name">Pale Black</div><div class="role">Typografia</div><div class="hex">#473A39</div><div class="pan">PANTONE Black 2 c</div><span class="tag bg">typografia</span></div></div>
+        <div class="sw"><div class="chip" style="background:#4375FF"></div><div class="meta"><div class="name">Blue Sky</div><div class="role">Dekoracja + typografia</div><div class="hex">#4375FF</div><div class="pan">PANTONE 2935 C</div><span class="tag lead">wiodący</span></div></div>
+        <div class="sw"><div class="chip" style="background:#FE692B"></div><div class="meta"><div class="name">Orange</div><div class="role">Akcent</div><div class="hex">#FE692B</div><div class="pan">PANTONE 1505 CV</div><span class="tag add">dodatek</span></div></div>
+      </div>
+
+      <h3 class="block">Paleta dodatkowa</h3>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#FEF3DE;border-bottom:1px solid var(--line)"></div><div class="meta"><div class="name">Sunny White</div><div class="role">Tła pod key visual</div><div class="hex">#FEF3DE</div><div class="pan">PANTONE white 000 c</div><span class="tag bg">tło KV</span></div></div>
+        <div class="sw"><div class="chip" style="background:#FDA33C"></div><div class="meta"><div class="name">Deep Yellow</div><div class="role">Tylko naklejki</div><div class="hex">#FDA33C</div><div class="pan">PANTONE white 000 c</div><span class="tag sticker">naklejki</span></div></div>
+        <div class="sw"><div class="chip" style="background:#15A477"></div><div class="meta"><div class="name">Pale Green</div><div class="role">Tylko naklejki</div><div class="hex">#15A477</div><div class="pan">PANTONE white 000 c</div><span class="tag sticker">naklejki</span></div></div>
+        <div class="sw"><div class="chip" style="background:linear-gradient(135deg,#4375FF 0 50%,#FE692B 50% 100%)"></div><div class="meta"><div class="name">Para wiodąca</div><div class="role">Blue + Orange w logo/typografii</div><div class="hex">#4375FF · #FE692B</div><div class="pan">&nbsp;</div><span class="tag lead">duet</span></div></div>
+      </div>
+    </section>
+
+    <!-- TYPOGRAFIA -->
+    <section id="typografia">
+      <div class="kicker">03 — Fundament</div>
+      <h2 class="sec">Typografia</h2>
+      <p class="sub">Trzy kroje, trzy role. Pangram Sans buduje głos marki w nagłówkach, DM Sans niesie treść, DM Mono oznacza warstwę techniczną.</p>
+
+      <div class="spec"><div class="lbl"><span>Pangram Sans · Bold</span><span>Nagłówek / Hero — H1</span></div><div class="t-display">Benefity, które ładują energię zespołu i&nbsp;wzmacniają team vibe.</div></div>
+      <div class="spec"><div class="lbl"><span>Pangram Sans · Bold/Semibold</span><span>Nagłówek sekcji — H2</span></div><div class="t-h2">Sprzedajemy kulturę zespołu.</div></div>
+      <div class="spec"><div class="lbl"><span>Pangram Sans · Medium</span><span>Lead text</span></div><div class="t-lead">Elastyczny budżet benefitowy 100–300 zł na pracownika, który zastępuje fasadowe karty realnym narzędziem.</div></div>
+      <div class="spec"><div class="lbl"><span>DM Sans · Regular</span><span>Body / caption</span></div><div class="t-body">Dbamy o benefity, które wspierają nie tylko komfort pracy, ale i współpracę oraz zaangażowanie. Dobrze dobrane rozwiązania pomagają budować środowisko, w którym ludzie chcą pracować i działać skutecznie razem.</div></div>
+      <div class="spec"><div class="lbl"><span>DM Mono · Regular · UPPERCASE</span><span>Technical / eyebrow</span></div><div class="t-mono">benefity. team. balance.</div></div>
+    </section>
+
+    <!-- LOGO -->
+    <section id="logo">
+      <div class="kicker">04 — Marka</div>
+      <h2 class="sec">Logo & sygnet</h2>
+      <p class="sub">Sygnet = przecięty okrąg (wykres kołowy budżetu + zespół jednostek + przecięta pomarańcza). Logo łączy sygnet z wordmarkiem „TeamBudget". Pole ochronne = ¼ wysokości sygnetu.</p>
+      <div class="logo-grid">
+        <div class="logo-cell on-sunny"><img src="Logo.svg" alt="Logo na Sunny White"></div>
+        <div class="logo-cell on-blue"><img src="sygnet.svg" alt="Sygnet" style="filter:brightness(0) invert(1)"></div>
+        <div class="logo-cell on-orange"><img src="sygnet.svg" alt="Sygnet" style="filter:brightness(0) invert(1)"></div>
+        <div class="logo-cell on-black"><img src="sygnet.svg" alt="Sygnet" style="filter:brightness(0) invert(1)"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px;">
+        <div class="cap">Logo / Sunny</div><div class="cap">Sygnet / Blue</div><div class="cap">Sygnet / Orange</div><div class="cap">Sygnet / Black</div>
+      </div>
+      <div class="callout" style="margin-top:24px;"><div class="b">◍</div><p>Logo stosujemy przede wszystkim w <b>Blue Sky</b> i <b>Orange</b> (gdy typografia jest w tych kolorach), oraz w <b>Pale Black</b> / <b>Pale White</b>. Zawsze zachowujemy wystarczający kontrast logo do tła.</p></div>
+    </section>
+
+    <!-- NAKLEJKI -->
+    <section id="naklejki">
+      <div class="kicker">05 — Marka</div>
+      <h2 class="sec">System naklejkowy</h2>
+      <p class="sub">Sygnaturowy element marki — cztery wymiary dobrostanu zespołu jako die-cut naklejki o stałych kolorach. Pływają wokół fotografii cutout i kluczowych komunikatów.</p>
+      <div class="sticker-row">
+        <img src="badge4.svg" alt="dobra energia">
+        <img src="badge3.svg" alt="relacje">
+        <img src="badge.svg" alt="dobrostan">
+        <img src="badge2.svg" alt="sprawczość">
+      </div>
+      <div class="motif" style="margin-top:24px;">
+        <div><b>dobra energia</b> Orange · kształt „energetyczny" (zygzak)</div>
+        <div><b>relacje</b> Deep Yellow · chmurka</div>
+        <div><b>dobrostan</b> Blue · chmurka</div>
+        <div><b>sprawczość</b> Pale Green · chmurka</div>
+      </div>
+    </section>
+
+    <!-- KSZTALTY -->
+    <section id="ksztalty">
+      <div class="kicker">06 — Marka</div>
+      <h2 class="sec">Kształty & Key Visual</h2>
+      <p class="sub">Motywy graficzne oscylują wokół sygnetu. Sylwetki naklejek (chmurka, zygzak) i organiczne bloby działają jako tło; cutout-fotografia i typografia jako pierwszy plan.</p>
+
+      <h3 class="block">Sylwetki kształtów</h3>
+      <div class="shape-row">
+        <svg viewBox="0 0 631 287" aria-hidden="true"><path fill="#4375FF" d="M550.209 3.18518e-05C594.57 3.18518e-05 630.497 35.9272 630.497 80.2881V206.792C630.497 251.069 594.57 286.996 550.209 286.996C527.017 286.996 506.101 277.213 491.427 261.442C476.837 277.213 455.921 286.996 432.729 286.996C409.537 286.996 388.621 277.213 373.947 261.442C359.272 277.213 338.441 286.996 315.249 286.996C292.056 286.996 271.141 277.213 256.466 261.442C241.876 277.213 220.961 286.996 197.768 286.996C174.576 286.996 153.661 277.213 138.986 261.442C124.312 277.213 103.481 286.996 80.2881 286.996C35.9272 286.996 0 251.069 0 206.792V80.2881C0 35.9272 35.9272 3.18518e-05 80.2881 3.18518e-05C103.481 3.18518e-05 124.312 9.86736 138.986 25.5539C153.661 9.86736 174.576 3.18518e-05 197.768 3.18518e-05C220.961 3.18518e-05 241.876 9.86736 256.466 25.5539C271.141 9.86736 292.056 3.18518e-05 315.249 3.18518e-05C338.441 3.18518e-05 359.272 9.86736 373.947 25.5539C388.621 9.86736 409.537 3.18518e-05 432.729 3.18518e-05C455.921 3.18518e-05 476.837 9.86736 491.427 25.5539C506.101 9.86736 527.017 3.18518e-05 550.209 3.18518e-05Z"/></svg>
+        <svg viewBox="0 0 781 300" aria-hidden="true"><path fill="#FE692B" d="M618.921 20.3039C627.186 -6.76804 665.559 -6.76804 673.824 20.3039L682.342 48.3035C686.812 62.725 701.57 71.2429 716.245 67.8695L744.75 61.2913C772.328 54.8817 791.557 88.1102 772.244 108.857L752.256 130.194C741.967 141.242 741.967 158.362 752.256 169.326L772.244 190.747C791.557 211.494 772.328 244.638 744.75 238.313L716.245 231.735C701.57 228.361 686.812 236.879 682.342 251.301L673.824 279.3C665.559 306.372 627.186 306.372 618.921 279.3L610.319 251.301C607.873 243.289 602.222 237.048 595.054 233.759C587.97 237.048 582.319 243.289 579.873 251.301L571.271 279.3C563.006 306.372 524.633 306.372 516.368 279.3L507.85 251.301C505.404 243.289 499.67 237.048 492.585 233.759C485.501 237.048 479.766 243.289 477.32 251.301L468.718 279.3C460.453 306.372 422.165 306.372 413.815 279.3L405.297 251.301C402.852 243.289 397.117 237.048 390.033 233.759C382.948 237.048 377.213 243.289 374.768 251.301L366.25 279.3C357.9 306.372 319.612 306.372 311.347 279.3L302.745 251.301C300.299 243.289 294.564 237.048 287.48 233.759C280.395 237.048 274.745 243.289 272.215 251.301L263.697 279.3C255.432 306.372 217.059 306.372 208.794 279.3L200.192 251.301C197.746 243.289 192.095 237.048 184.927 233.759C177.843 237.048 172.192 243.289 169.746 251.301L161.144 279.3C152.879 306.372 114.506 306.372 106.241 279.3L97.7233 251.301C93.2535 236.879 78.4946 228.361 63.8202 231.735L35.3145 238.313C7.73657 244.638 -11.4921 211.494 7.82094 190.747L27.8086 169.326C38.0976 158.362 38.0976 141.242 27.8086 130.194L7.82094 108.857C-11.4921 88.1102 7.73657 54.8817 35.3145 61.2913L63.8202 67.8695C78.4946 71.2429 93.2535 62.725 97.7233 48.3035L106.241 20.3039C114.506 -6.76804 152.879 -6.76804 161.144 20.3039L169.746 48.3035C172.192 56.3154 177.843 62.5563 184.927 65.8454C192.095 62.5563 197.746 56.3154 200.192 48.3035L208.794 20.3039C217.059 -6.76804 255.432 -6.76804 263.697 20.3039L272.215 48.3035C274.745 56.3154 280.395 62.5563 287.48 65.8454C294.564 62.5563 300.299 56.3154 302.745 48.3035L311.347 20.3039C319.612 -6.76804 357.9 -6.76804 366.25 20.3039L374.768 48.3035C377.213 56.3154 382.948 62.5563 390.033 65.8454C397.117 62.5563 402.852 56.3154 405.297 48.3035L413.815 20.3039C422.165 -6.76804 460.453 -6.76804 468.718 20.3039L477.32 48.3035C479.766 56.3154 485.501 62.5563 492.585 65.8454C499.67 62.5563 505.404 56.3154 507.85 48.3035L516.368 20.3039C524.633 -6.76804 563.006 -6.76804 571.271 20.3039L579.873 48.3035C582.319 56.3154 587.97 62.5563 595.054 65.8454C602.222 62.5563 607.873 56.3154 610.319 48.3035L618.921 20.3039Z"/></svg>
+        <img src="sygnet.svg" alt="sygnet" style="height:84px;">
+      </div>
+
+      <h3 class="block">Organiczne bloby (tło pod cutout)</h3>
+      <div class="blob-row">
+        <svg viewBox="0 0 200 200" aria-hidden="true"><path fill="#FE692B" d="M44 -55C57 -45 67 -29 70 -11C73 7 69 27 58 41C47 55 29 63 9 67C-11 71 -33 70 -49 60C-65 50 -75 30 -76 10C-77 -10 -69 -31 -55 -45C-41 -59 -21 -66 -1 -65C18 -64 31 -65 44 -55Z" transform="translate(100 100)"/></svg>
+        <svg viewBox="0 0 200 200" aria-hidden="true"><path fill="#4375FF" d="M40 -52C53 -42 64 -27 67 -10C70 7 65 26 54 39C43 52 26 59 7 63C-12 67 -33 68 -47 58C-61 48 -68 28 -69 8C-70 -12 -64 -32 -51 -45C-38 -58 -19 -64 -1 -63C17 -62 27 -62 40 -52Z" transform="translate(100 100)"/></svg>
+      </div>
+
+      <h3 class="block">Fotografia (cutout na blobach)</h3>
+      <img src="img/kv-all.webp" alt="Cutout zespołu na organicznych blobach" style="width:100%;border-radius:var(--r);display:block;border:1px solid var(--line);">
+
+      <h3 class="block">Motywy graficzne (BB s.17)</h3>
+      <div class="motif">
+        <div><b>Typografia</b> Wielkie nagłówki Pangram w niebieskim.</div>
+        <div><b>Fotografia</b> Cutout ludzi (owoce, soki) na blobach.</div>
+        <div><b>Pattern</b> Subtelny wzór z sygnetu.</div>
+        <div><b>Kształty z sygnetu</b> Połowa / segmenty znaku.</div>
+        <div><b>Sygnet w użyciu</b> Jako element dekoracyjny.</div>
+        <div><b>System naklejkowy</b> Etykiety wokół cutoutów.</div>
+      </div>
+    </section>
+
+    <!-- KOMPONENTY -->
+    <section id="komponenty">
+      <div class="kicker">07 — Interfejs</div>
+      <h2 class="sec">Komponenty</h2>
+      <p class="sub">Bazowe elementy UI zbudowane na tokenach. Te same prymitywy napędzają landing.</p>
+
+      <h3 class="block">Przyciski</h3>
+      <div class="comp"><div class="row">
+        <button class="tb-btn tb-btn--blue">Umów demo →</button>
+        <button class="tb-btn tb-btn--ghost">Zobacz porównanie</button>
+      </div></div>
+
+      <h3 class="block">Chipy / etykiety</h3>
+      <div class="comp"><div class="row">
+        <span class="tb-chip"><span style="width:8px;height:8px;border-radius:3px;background:#FE692B;display:inline-block"></span> DailyFruits</span>
+        <span class="tb-chip"><span style="width:8px;height:8px;border-radius:3px;background:#FDA33C;display:inline-block"></span> DailyFoods</span>
+        <span class="tb-chip tb-chip--lead"><span style="width:8px;height:8px;border-radius:3px;background:#4375FF;display:inline-block"></span> TeamBudget</span>
+      </div></div>
+
+      <h3 class="block">Karta</h3>
+      <div class="comp"><div class="tb-card" style="padding:24px;max-width:320px;"><h3 style="font-family:var(--font-head);font-weight:600;font-size:17px;">Magnes do biura</h3><p style="color:var(--muted);font-size:14px;margin-top:8px;">Realny powód, by przychodzić — wspólne śniadania i eventy on-site.</p></div></div>
+
+      <h3 class="block">Statystyka (hairline)</h3>
+      <div class="comp"><div class="stat-demo"><div class="s"><div class="n">~90%</div><div class="l">Wykorzystanie</div></div><div class="s"><div class="n">100%</div><div class="l">Inkluzywność</div></div><div class="s"><div class="n" style="color:var(--orange)">1</div><div class="l">Faktura</div></div></div></div>
+
+      <h3 class="block">Pole formularza</h3>
+      <div class="comp"><input class="dsinput" placeholder="anna@firma.pl"></div>
+    </section>
+
+    <!-- RUCH -->
+    <section id="ruch">
+      <div class="kicker">08 — Interfejs</div>
+      <h2 class="sec">Ruch</h2>
+      <p class="sub">Jeden język ruchu (Lenis + GSAP). Bez bouncy-easingu na warstwie B2B; reveal z budżetem; reduced-motion przez crossfade.</p>
+      <div class="motion-grid">
+        <div>--ease-out<br><span>cubic-bezier(.16,1,.3,1)</span></div>
+        <div>--ease-inout<br><span>cubic-bezier(.4,0,.2,1)</span></div>
+        <div>--motion-fast · 200ms<br><span>hover, focus, kolor</span></div>
+        <div>--motion-base · 400ms<br><span>reveal, transformy</span></div>
+        <div>--motion-slow · 760ms<br><span>line-reveal, składanie sygnetu</span></div>
+        <div>scrub parallax<br><span>kształty tła, sygnet w hero</span></div>
+      </div>
+    </section>
+
+    <!-- ZASADY -->
+    <section id="zasady" style="border-bottom:none;">
+      <div class="kicker">09 — Zasady</div>
+      <h2 class="sec">Do & Don't</h2>
+      <div class="dd">
+        <div class="col do">
+          <h4>✓ Rób</h4>
+          <ul>
+            <li>Niebieski jako wiodący kolor dekoracji i nagłówków.</li>
+            <li>Pomarańcz jako akcent — punktowo.</li>
+            <li>Żółty i zielony tylko na naklejkach.</li>
+            <li>Pangram w nagłówkach, DM Sans w treści, DM Mono w etykietach.</li>
+            <li>Sunny White jako tło pod key visual / cutout.</li>
+            <li>Zachowuj pole ochronne logo (¼ sygnetu).</li>
+          </ul>
+        </div>
+        <div class="col dont">
+          <h4>✕ Nie rób</h4>
+          <ul>
+            <li>Nie rób pomarańczu kolorem dominującym.</li>
+            <li>Nie używaj żółtego/zielonego poza naklejkami.</li>
+            <li>Nie mieszaj gradientów blue→orange w typografii.</li>
+            <li>Nie zmieniaj kolorów ani proporcji naklejek.</li>
+            <li>Nie stosuj logo na tle o niskim kontraście.</li>
+            <li>Nie dodawaj krojów spoza systemu.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</div><!-- /main-content -->
+<script>
+function checkPw(){
+  var input=document.getElementById('pw-input');
+  var hash=0,str=input.value;
+  for(var i=0;i<str.length;i++){hash=((hash<<5)-hash)+str.charCodeAt(i);hash|=0;}
+  if(hash===-1422286391){
+    document.getElementById('pw-screen').classList.add('hidden');
+    document.getElementById('main-content').style.display='block';
+    sessionStorage.setItem('bw_auth','1');
+    return false;
+  }
+  input.classList.add('pw-error');
+  document.getElementById('pw-error-msg').textContent='Nieprawidłowe hasło. Spróbuj ponownie.';
+  setTimeout(function(){input.classList.remove('pw-error');},400);
+  return false;
+}
+if(sessionStorage.getItem('bw_auth')==='1'){
+  document.getElementById('pw-screen').classList.add('hidden');
+  document.getElementById('main-content').style.display='block';
+}
+</script>
+</body>
+</html>
