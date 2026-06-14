@@ -398,6 +398,7 @@ function checkPw(){
     document.getElementById('pw-screen').classList.add('hidden');
     document.getElementById('main-content').style.display='block';
     sessionStorage.setItem('bw_auth','1');
+    setTimeout(function(){if(typeof ScrollTrigger!=='undefined')ScrollTrigger.refresh()},200);
     return false;
   }
   input.classList.add('pw-error');
@@ -408,6 +409,7 @@ function checkPw(){
 if(sessionStorage.getItem('bw_auth')==='1'){
   document.getElementById('pw-screen').classList.add('hidden');
   document.getElementById('main-content').style.display='block';
+  setTimeout(function(){if(typeof ScrollTrigger!=='undefined')ScrollTrigger.refresh()},200);
 }
 </script>
 <script src="anim.js"></script>
