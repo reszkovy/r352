@@ -308,13 +308,26 @@ body {
   filter:saturate(0);
   border-left-color:var(--border) !important;
 }
-.hub-card--draft {
-  cursor:default;
-  pointer-events:none;
-}
 .hub-card--draft:hover {
   transform:none;
   box-shadow:0 1px 4px var(--shadow);
+}
+.hub-card-links {
+  display:flex; gap:8px; margin-top:4px;
+}
+.hub-card-link {
+  display:inline-flex; align-items:center; gap:4px;
+  font-size:11px; font-weight:600;
+  color:var(--accent-tb);
+  text-decoration:none;
+  padding:5px 12px;
+  border-radius:6px;
+  background:rgba(67,117,255,0.08);
+  transition:all .2s ease;
+  pointer-events:auto;
+}
+.hub-card-link:hover {
+  background:rgba(67,117,255,0.16);
 }
 .hub-card-ddl {
   display:inline-block;
@@ -607,8 +620,11 @@ body {
       <div class="hub-card hub-card--draft">
         <div class="hub-card-badge">Landing Page · hipoteza <span class="hub-card-ddl">DDL: Środa</span></div>
         <div class="hub-card-title">TB Landing Page (hipoteza)</div>
-        <div class="hub-card-desc">Platform-forward koncept landingu — dashboard, matryca porównawcza, flow onboardingu. Koncepcja V2.</div>
-        <div class="hub-card-meta">Landing · Koncept · Pure CSS</div>
+        <div class="hub-card-desc">Dwa koncepty landingu do porównania — food-forward (V0) vs platform-forward (V1).</div>
+        <div class="hub-card-links">
+          <a class="hub-card-link" href="tb-landing-v0.html">V0 · Food-forward →</a>
+          <a class="hub-card-link" href="tb-landing-v1.html">V1 · Platform-forward →</a>
+        </div>
       </div>
 
     </div>
