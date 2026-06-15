@@ -308,9 +308,13 @@ body {
   filter:saturate(0);
   border-left-color:var(--border) !important;
 }
+.hub-card--draft {
+  cursor:default;
+  pointer-events:none;
+}
 .hub-card--draft:hover {
-  opacity:.7;
-  filter:saturate(.3);
+  transform:none;
+  box-shadow:0 1px 4px var(--shadow);
 }
 .hub-card-ddl {
   display:inline-block;
@@ -600,13 +604,12 @@ body {
         <div class="hub-card-arrow">→</div>
       </a>
 
-      <a class="hub-card hub-card--draft" href="tb-landing-v1.html">
+      <div class="hub-card hub-card--draft">
         <div class="hub-card-badge">Landing Page · hipoteza <span class="hub-card-ddl">DDL: Środa</span></div>
         <div class="hub-card-title">TB Landing Page (hipoteza)</div>
         <div class="hub-card-desc">Platform-forward koncept landingu — dashboard, matryca porównawcza, flow onboardingu. Koncepcja V2.</div>
         <div class="hub-card-meta">Landing · Koncept · Pure CSS</div>
-        <div class="hub-card-arrow">→</div>
-      </a>
+      </div>
 
     </div>
   </div>
