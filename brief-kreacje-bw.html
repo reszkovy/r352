@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brief kreacji — Better Workplace × Team Budget | Rozwój oferty 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFAF7;
+  --bg-warm: #F5F3EE;
+  --card: #FFFFFF;
+  --border: #E8E4DE;
+  --border-light: #F0EDE8;
+  --shadow: rgba(0,0,0,0.04);
+  --text: #2A2A2A;
+  --text-sec: #555555;
+  --text-muted: #888888;
+  --text-dim: #B0A99F;
+  --bw: #FF6921;
+  --bw-bg: #FFF6F0;
+  --bw-light: rgba(255,105,33,0.07);
+  --tb: #4375FF;
+  --tb-bg: #F2F5FF;
+  --tb-light: rgba(67,117,255,0.07);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased}
+
+/* ═══ HEADER ═══ */
+.header{padding:48px 40px 20px;max-width:1240px;margin:0 auto}
+.header-eyebrow{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+.badge{padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#fff}
+.badge--bw{background:var(--bw)}.badge--tb{background:var(--tb)}.badge--dark{background:var(--text)}
+.header h1{font-size:28px;font-weight:800;letter-spacing:-.5px}
+.header-sub{font-size:14px;color:var(--text-muted);margin-top:4px;max-width:720px}
+
+/* ═══ OBJECTIVE ═══ */
+.objective{max-width:1240px;margin:0 auto;padding:0 40px}
+.objective-box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin-bottom:28px}
+.objective-box h3{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-dim);margin-bottom:8px}
+.objective-box p{font-size:14px;color:var(--text-sec);line-height:1.7}
+
+/* ═══ FORMAT SPECS ═══ */
+.formats-bar{max-width:1240px;margin:0 auto 24px;padding:0 40px;display:flex;gap:10px;flex-wrap:wrap}
+.fmt{display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;background:var(--bg-warm);border:1px solid var(--border-light);font-size:12px;color:var(--text-muted);font-weight:500}
+.fmt b{color:var(--text);font-weight:700}
+.fmt .dim{font-size:11px;color:var(--text-dim);font-weight:600}
+
+/* ═══ VERSION TABS ═══ */
+.tabs{max-width:1240px;margin:0 auto 32px;padding:0 40px;display:flex;gap:8px}
+.tab{padding:10px 22px;border-radius:10px;border:1px solid var(--border);background:var(--card);font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;color:var(--text-sec)}
+.tab:hover{border-color:#ccc}
+.tab.active{background:var(--text);color:#fff;border-color:var(--text)}
+.tab .tab-sub{font-size:11px;font-weight:400;opacity:.7;margin-left:4px}
+
+/* ═══ VERSION SECTION ═══ */
+.version{max-width:1240px;margin:0 auto 48px;padding:0 40px;display:none}
+.version.visible{display:block}
+.version-header{margin-bottom:24px;padding-bottom:18px;border-bottom:2px solid var(--border-light)}
+.version-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.version-label--bw{color:var(--bw)}.version-label--tb{color:var(--tb)}
+.version-header h2{font-size:20px;font-weight:800;margin-bottom:6px}
+.version-header .v-desc{font-size:14px;color:var(--text-sec);line-height:1.7;max-width:800px}
+.version-header .v-headline{display:inline-block;margin-top:10px;padding:6px 16px;border-radius:8px;font-size:14px;font-weight:700}
+.v-headline--bw{background:var(--bw-bg);color:var(--bw)}
+.v-headline--tb{background:var(--tb-bg);color:var(--tb)}
+
+/* ═══ BRIEF BOX ═══ */
+.brief-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:12px}
+.brief-box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 22px}
+.brief-box h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-dim);margin-bottom:8px}
+.brief-box p,.brief-box ul{font-size:13px;color:var(--text-sec);line-height:1.7}
+.brief-box ul{list-style:none}
+.brief-box ul li::before{content:'→ ';color:var(--text-dim);font-weight:600}
+
+/* ═══ FORMAT CARD ═══ */
+.format-card{background:var(--card);border:1px solid var(--border);border-radius:14px;margin-bottom:16px;overflow:hidden;transition:box-shadow .2s}
+.format-card:hover{box-shadow:0 6px 28px var(--shadow)}
+.format-top{display:flex;align-items:center;gap:14px;padding:20px 24px;border-bottom:1px solid var(--border-light)}
+.format-icon{width:48px;height:32px;border-radius:6px;border:1px solid var(--border-light);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--text-dim);background:var(--bg-warm);flex-shrink:0;position:relative;overflow:hidden}
+.format-icon .ratio-viz{position:absolute;inset:3px;border:1.5px solid var(--text-dim);border-radius:2px;opacity:.3}
+.format-info{flex:1}
+.format-name{font-size:14px;font-weight:700}
+.format-dim{font-size:12px;color:var(--text-muted);font-weight:500}
+.format-badge{padding:3px 10px;border-radius:6px;font-size:11px;font-weight:600;background:var(--bg-warm);color:var(--text-sec)}
+
+/* ═══ PROMPT AREA ═══ */
+.prompt-area{padding:20px 24px;background:var(--bg-warm)}
+.prompt-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-dim);margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.prompt-label .ai{padding:2px 7px;border-radius:4px;font-size:9px;background:var(--text);color:#fff;letter-spacing:0;text-transform:none;font-weight:600}
+.prompt-block{position:relative;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-top:8px;cursor:pointer;transition:all .2s}
+.prompt-block:hover{border-color:#bbb;box-shadow:0 2px 10px var(--shadow)}
+.prompt-block.copied{border-color:#22c55e}
+.prompt-text{font-size:12.5px;color:var(--text-sec);line-height:1.7;font-style:italic}
+.copy-float{position:absolute;top:10px;right:12px;font-size:10px;font-weight:600;color:var(--text-dim);opacity:0;transition:opacity .2s}
+.prompt-block:hover .copy-float{opacity:1}
+
+/* ═══ NOTES ═══ */
+.notes{max-width:1240px;margin:0 auto;padding:0 40px 48px}
+.notes-box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px 28px}
+.notes-box h3{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-dim);margin-bottom:12px}
+.notes-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.note{padding:14px 18px;border-radius:10px;background:var(--bg-warm);border:1px solid var(--border-light)}
+.note h5{font-size:12px;font-weight:700;margin-bottom:4px}
+.note p{font-size:12px;color:var(--text-muted);line-height:1.6}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);padding:10px 24px;border-radius:10px;background:var(--text);color:#fff;font-size:13px;font-weight:600;opacity:0;transition:all .3s;pointer-events:none;z-index:999}
+.toast.visible{opacity:1;transform:translateX(-50%) translateY(0)}
+
+.footer{text-align:center;padding:20px 40px 48px;font-size:12px;color:var(--text-dim)}
+
+@media(max-width:768px){
+  .header,.objective,.formats-bar,.tabs,.version,.notes{padding-left:20px;padding-right:20px}
+  .brief-grid,.notes-grid{grid-template-columns:1fr}
+}
+@media print{.tabs,.toast{display:none}.version{display:block!important}.format-card{break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-eyebrow">
+    <span class="badge badge--bw">Better Workplace</span>
+    <span class="badge badge--tb">Team Budget</span>
+    <span class="badge badge--dark">Brief kreacji</span>
+  </div>
+  <h1>Rozwój oferty — linia graficzna 2026</h1>
+  <p class="header-sub">3 wersje kreacji × 4 formaty. Spójna komunikacja: większy wybór produktów, zachowana jakość, nowoczesny wizerunek. Prompty AI do generowania obrazów.</p>
+</div>
+
+<div class="objective">
+  <div class="objective-box">
+    <h3>Cel komunikacji</h3>
+    <p>Przygotowanie spójnej linii graficznej komunikującej rozwój oferty Better Workplace — większy wybór produktów przy zachowaniu dotychczasowej jakości i standardu. Materiały podkreślają bogatszy asortyment, świeżość produktów oraz nowoczesny, atrakcyjny wizerunek marki.</p>
+  </div>
+</div>
+
+<div class="formats-bar">
+  <div class="fmt"><b>LinkedIn</b> tło profilu <span class="dim">1584×396</span></div>
+  <div class="fmt"><b>Post SM</b> kwadrat <span class="dim">1000×1000</span></div>
+  <div class="fmt"><b>Facebook</b> cover firmowy <span class="dim">1640×624</span></div>
+  <div class="fmt"><b>Stopka mail</b> sygnatura <span class="dim">640×244</span></div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showV('v1',this)">V1 <span class="tab-sub">Packshoty zestawów</span></button>
+  <button class="tab" onclick="showV('v21',this)">V2.1 <span class="tab-sub">Logo z kafelkami</span></button>
+  <button class="tab" onclick="showV('v22',this)">V2.2 <span class="tab-sub">Logo z ludźmi</span></button>
+</div>
+
+<div id="v1" class="version visible"></div>
+<div id="v21" class="version"></div>
+<div id="v22" class="version"></div>
+
+<div class="notes">
+  <div class="notes-box">
+    <h3>Wytyczne produkcyjne</h3>
+    <div class="notes-grid">
+      <div class="note">
+        <h5>Kolory brandowe</h5>
+        <p>BW Orange: #FF6921 · TB Blue: #4375FF · Tło: #FAFAF7 / #F5F3EE · Tekst: #2A2A2A · Zieleń świeżości: #22c55e (akcent produktowy)</p>
+      </div>
+      <div class="note">
+        <h5>Typografia</h5>
+        <p>DM Sans 700/800 — nagłówki · DM Sans 400/500 — body. Nie używać więcej niż 2 rozmiarów na jednym formacie.</p>
+      </div>
+      <div class="note">
+        <h5>Styl fotograficzny</h5>
+        <p>Editorial food photography. Naturalne światło dzienne, ciepłe tony. Brak przetworzonych filtrów. Produkty mają wyglądać świeżo i apetycznie, nie „stockowo".</p>
+      </div>
+      <div class="note">
+        <h5>Logo placement</h5>
+        <p>Logo BW lub TB zawsze w bezpiecznej strefie. LinkedIn/FB cover: prawy dolny róg. Post SM: dolny pas. Stopka: lewy górny.</p>
+      </div>
+      <div class="note">
+        <h5>Safe zones</h5>
+        <p>LinkedIn tło: centralnych 60% widoczne na mobile. FB cover: unikać tekstu w lewym dolnym (avatar). Stopka: kompletna informacja w 640×244.</p>
+      </div>
+      <div class="note">
+        <h5>Kategorie produktowe</h5>
+        <p>5 kategorii: Owoce i warzywa · Śniadania · Kanapki do pracy · Finger foods · Napoje. Zawsze pokazywać min. 3 z 5.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">Better Workplace × Team Budget · Brief kreacji · Q3 2026</div>
+<div class="toast" id="toast"></div>
+
+<script>
+var DATA = {
+  v1: {
+    label: 'Wersja 1',
+    labelClass: 'bw',
+    title: 'Ulepszone packshoty zestawów „na co dzień"',
+    desc: 'Zestawy jako bardziej atrakcyjne, bogatsze i premium. Pudełka pełniejsze, bardziej różnorodne, obfite i świeże, estetycznie ułożone. Większy wybór przy zachowaniu codziennego, praktycznego charakteru.',
+    headline: '„Większy wybór – sprawdzony standard"',
+    headlineClass: 'bw',
+    assumptions: [
+      'Pudełka premium — pełne, obfite, różnorodne',
+      'Produkty wyglądają na świeże i naturalne',
+      'Zachowany codzienny, praktyczny charakter zestawów',
+      'Eksponowanie różnorodności — min. 8-12 produktów widocznych',
+      'Spójność z identyfikacją wizualną Better Workplace (#FF6921)'
+    ],
+    visualComm: [
+      'Eksponowanie różnorodności produktów w zestawach',
+      'Świeże kolory i naturalny wygląd — brak sztucznych filtrów',
+      'Premium, ale nadal przystępny charakter',
+      'Warm tones: #FAFAF7 tła, naturalne drewno, lekkie cienie',
+      'Kompozycja sugerująca obfitość bez chaosu'
+    ],
+    formats: [
+      {
+        name: 'LinkedIn — tło profilu prywatnego',
+        dim: '1584 × 396 px',
+        badge: 'Panoramiczny',
+        prompt: 'Ultra-wide panoramic food photography, three premium subscription boxes arranged in a flowing diagonal line from left to right, each kraft paper box overflowing with fresh colorful products — seasonal fruits (strawberries, blueberries, grapes, kiwi), artisan sandwiches wrapped in paper, glass bottles of cold-pressed juice, granola cups. Boxes progressively more filled from left to right suggesting abundance and growth. Warm natural side lighting creating soft shadows, light wooden surface, warm off-white background (#FAFAF7). Clean negative space in center-right area for text overlay. Editorial food styling, Kinfolk magazine aesthetic. Shot at eye level with shallow depth of field. Orange (#FF6921) subtle branded ribbon on each box. Aspect ratio 4:1 panoramic, no text on image.'
+      },
+      {
+        name: 'Post Social Media — kwadrat',
+        dim: '1000 × 1000 px',
+        badge: '1:1',
+        prompt: 'Overhead flat lay food photography of a single premium Better Workplace subscription box, lid removed and placed beside it at 45-degree angle, revealing beautifully arranged contents: fresh mixed berries in biodegradable cup, two artisan wraps cut diagonally showing colorful filling, a small mason jar of overnight oats with chia seeds, sliced seasonal fruit fanned artistically, a cold-pressed green juice bottle, and finger food bites. Everything arranged with deliberate negative space between items on warm off-white (#FAFAF7) background. Soft top-down natural daylight, minimal shadows. Orange (#FF6921) branded sticker visible on box corner. One small green plant sprig as garnish accent. Clean, appetizing, Instagram-worthy composition. Premium but approachable. No text. Square format 1:1.'
+      },
+      {
+        name: 'Facebook firmowy — zdjęcie w tle',
+        dim: '1640 × 624 px',
+        badge: 'Szeroki',
+        prompt: 'Wide-format editorial food scene: a long modern office kitchen counter with three different Better Workplace daily sets spread across it — breakfast set (granola, yogurt, fresh berries, croissant), lunch set (artisan sandwiches, salad bowl, fruit), and snack set (finger foods, nuts, dried fruit, juice bottles). Products arranged in loose groups with breathing room between them, suggesting variety and daily routine. Warm morning light streaming from left, casting soft golden highlights on food. Counter is light marble or light wood. Background softly blurred showing modern office kitchen with plants. Orange (#FF6921) branded elements: small menu cards beside each set. Warm tones (#F5F3EE ambient). Composition weighted to right third, leaving left third cleaner for avatar overlay. 2.6:1 ratio, no text.'
+      },
+      {
+        name: 'Grafika do stopki mailowej',
+        dim: '640 × 244 px',
+        badge: 'Kompaktowy',
+        prompt: 'Compact wide banner: close-up of the top edge of an open Better Workplace subscription box, shot from slight angle, showing just the upper layer of beautifully arranged fresh products peeking out — tops of strawberries, edge of a wrapped sandwich, corner of a juice bottle cap, all suggesting fullness and variety without showing entire items. Cropped tight for 2.6:1 ratio. Warm soft-focus background fading to clean off-white (#FAFAF7). Left third completely clean for logo placement. Orange (#FF6921) box edge visible. Appetizing, professional, minimal. Studio lighting, no harsh shadows. No text on image. 640x244 pixel dimensions.'
+      }
+    ]
+  },
+  v21: {
+    label: 'Wersja 2.1',
+    labelClass: 'tb',
+    title: 'Logo Team Budget z kafelkami produktowymi',
+    desc: 'Logo Team Budget zbudowane z kafelków, gdzie każdy kafelek prezentuje inną kategorię produktową w formie packshotów. 5 kategorii: owoce i warzywa, śniadania, kanapki do pracy, finger foods, napoje.',
+    headline: '„Jeszcze więcej świeżych produktów w abonamencie"',
+    headlineClass: 'tb',
+    assumptions: [
+      'Logo TB rozpoznawalne mimo kafelkowej formy',
+      'Każdy kafelek = inna kategoria produktowa',
+      '5 kategorii: owoce/warzywa, śniadania, kanapki, finger foods, napoje',
+      'Packshoty wysokiej jakości — editorial food photography',
+      'Nowoczesny, gridowy układ'
+    ],
+    visualComm: [
+      'Nowoczesny układ kafelkowy tworzący kształt logo TB',
+      'Czytelne logo Team Budget mimo kompozycji z kafelków',
+      'Wysokiej jakości packshoty w każdym kafelku',
+      'Poczucie różnorodności i bogatej oferty',
+      'Świeże, apetyczne zdjęcia — naturalne światło'
+    ],
+    formats: [
+      {
+        name: 'LinkedIn — tło profilu prywatnego',
+        dim: '1584 × 396 px',
+        badge: 'Panoramiczny',
+        prompt: 'Ultra-wide panoramic graphic design composition: the letters "TB" (Team Budget logotype) constructed as a mosaic grid of square tiles, each tile containing a different high-quality food product photograph. Tile categories distributed across the letters: fresh fruits and vegetables (strawberries, avocado, cherry tomatoes, peppers), breakfast items (granola bowls, yogurt parfait, fresh pastries), artisan sandwiches (wraps, baguettes showing fillings), finger foods (bruschetta, mini quiche, cheese boards), and beverages (cold-pressed juice bottles, smoothies, flavored water). Each tile has thin white (#FFFFFF) 2px borders creating clean grid lines. Tiles are arranged in 5-6 rows, fitting the panoramic ratio. Background: warm off-white (#FAFAF7) with subtle geometric pattern. Blue (#4375FF) accent glow around letter edges. Letters clearly readable as "TB" from normal viewing distance. Professional food photography quality within each tile. No additional text. 4:1 panoramic ratio.'
+      },
+      {
+        name: 'Post Social Media — kwadrat',
+        dim: '1000 × 1000 px',
+        badge: '1:1',
+        prompt: 'Square format graphic design: "Team Budget" logotype constructed entirely from a grid of rounded-corner square tiles (approximately 8×8 grid), where the letter shapes are formed by food-filled tiles and the negative space is clean off-white (#FAFAF7). Each food tile contains one beautifully lit product photograph: FRUITS tiles (whole strawberry, sliced kiwi, blueberry cluster, grape bunch, orange slice), BREAKFAST tiles (granola top-down, yogurt swirl, croissant cross-section), SANDWICH tiles (wrap cut showing layers, baguette sandwich), FINGER FOOD tiles (bruschetta, sushi pieces, mini tartlet), BEVERAGE tiles (green juice bottle, smoothie from above, sparkling water). Tiles have 3px white gaps between them. Blue (#4375FF) subtle shadow under the letter-forming tiles for depth. Clean geometric composition. Bottom 15% reserved as clean space for tagline placement. Professional packshot quality per tile. 1:1 square. No text in image.'
+      },
+      {
+        name: 'Facebook firmowy — zdjęcie w tle',
+        dim: '1640 × 624 px',
+        badge: 'Szeroki',
+        prompt: 'Wide-format mosaic composition: "TEAM BUDGET" spelled out across the banner width using a tile-grid system. Each letter built from 4-6 rectangular and square tiles of varying sizes (not uniform — some tiles larger to feature hero products, some smaller for texture). Tile contents by category: OWOCE (vibrant dragon fruit, mango slice, berry medley), ŚNIADANIA (acai bowl overhead, avocado toast), KANAPKI (club sandwich cross-section, tortilla wrap), FINGER FOODS (caprese skewers, hummus board), NAPOJE (cold brew, fruit-infused water pitcher). White tile borders (3px) creating modern grid aesthetic. Background tiles outside letters are subtle translucent versions of the same foods at 10% opacity. Blue (#4375FF) thin line border around each letter grouping. Warm off-white (#FAFAF7) base. Text clearly legible as "TEAM BUDGET" at small sizes. Composition accounts for left avatar overlap. 2.6:1 ratio. No additional text.'
+      },
+      {
+        name: 'Grafika do stopki mailowej',
+        dim: '640 × 244 px',
+        badge: 'Kompaktowy',
+        prompt: 'Compact banner: simplified "TB" monogram constructed from a 4×2 grid of rounded tiles on the right side of the composition. Each tile contains one crisp product close-up: strawberry, granola bowl, wrapped sandwich, cold juice, finger food bite, and mixed salad. White tile borders (2px), clean and minimal. Left 40% of banner is clean off-white (#FAFAF7) space for logo and text placement. Subtle blue (#4375FF) horizontal line at bottom. Warm studio lighting on food items. Professional, compact, email-signature appropriate. No text on image. 2.6:1 ratio. 640x244 dimensions.'
+      }
+    ]
+  },
+  v22: {
+    label: 'Wersja 2.2',
+    labelClass: 'tb',
+    title: 'Logo Team Budget z ludźmi i produktami',
+    desc: 'Logo Team Budget z kafelków, ale zamiast samych produktów pojawiają się również ludzie korzystający z produktów lub prezentujący poszczególne kategorie. Budowanie skojarzeń z codziennością i wygodą.',
+    headline: '„Jeszcze więcej świeżych produktów w abonamencie"',
+    headlineClass: 'tb',
+    assumptions: [
+      'Mix: kafelki z ludźmi + kafelki z produktami',
+      'Proporcja: ~40% ludzie, ~60% produkty',
+      'Ludzie: autentyczni, różnorodni, w kontekście biurowym',
+      'Emocje: radość, satysfakcja, codzienność',
+      'Ciepły, autentyczny i nowoczesny charakter'
+    ],
+    visualComm: [
+      'Budowanie skojarzeń z codziennością i wygodą',
+      'Oferta skierowana do ludzi — odpowiada na ich potrzeby',
+      'Ciepły, autentyczny i nowoczesny charakter',
+      'Połączenie emocji (ludzie) i produktu (jedzenie)',
+      'Konsumenci jako bohaterowie — nie modele'
+    ],
+    formats: [
+      {
+        name: 'LinkedIn — tło profilu prywatnego',
+        dim: '1584 × 396 px',
+        badge: 'Panoramiczny',
+        prompt: 'Ultra-wide panoramic mosaic: "TB" letters constructed from a grid of tiles combining people and food photography. PEOPLE tiles (40%): a woman biting into a fresh apple at her desk with a smile, a man pouring juice from Team Budget bottle at office kitchen, two colleagues sharing a fruit bowl laughing, hands reaching into a snack box during a meeting, a person unwrapping a sandwich at their workstation. PRODUCT tiles (60%): overhead colorful fruit arrangement, stacked sandwich halves, breakfast granola in jar, finger food platter, sparkling drinks. All people tiles show genuine, candid expressions — not posed stock photos. Diverse ages, ethnicities. Warm natural office lighting in people tiles. Consistent warm color grading across all tiles. White tile borders (2px). Blue (#4375FF) subtle glow on letter edges. Off-white (#FAFAF7) background. Letters clearly readable. 4:1 panoramic. No text.'
+      },
+      {
+        name: 'Post Social Media — kwadrat',
+        dim: '1000 × 1000 px',
+        badge: '1:1',
+        prompt: 'Square mosaic composition: "Team Budget" logotype formed by a 7×7 grid of tiles mixing lifestyle and food photography. Lifestyle tiles feature: a young professional mid-bite enjoying a colorful wrap at her desk (genuine delight expression), colleagues gathered around an open Team Budget box in the kitchen (discovery moment), a person selecting fruit from a beautifully arranged office fruit station, hands opening a fresh juice bottle at a standing desk, someone arranging finger foods on a plate for a team meeting. Food tiles feature: close-up of ripe strawberries, artisan sandwich cross-section, granola parfait layers, cold-pressed juice bottles lined up, caprese skewer. People and food tiles alternate to create rhythm. All people are real-looking, diverse, wearing casual office attire. Warm golden hour office lighting. Each tile has thin white border. Blue (#4375FF) shadow under letter shapes. Off-white (#FAFAF7) negative space tiles. Bottom 12% clean for tagline. 1:1 square. No text.'
+      },
+      {
+        name: 'Facebook firmowy — zdjęcie w tle',
+        dim: '1640 × 624 px',
+        badge: 'Szeroki',
+        prompt: 'Wide cover banner: "TEAM BUDGET" text built from a mixed-size tile grid spanning the full width. Larger hero tiles feature people: center-left shows a smiling team of 4 diverse colleagues eating fresh food together at a modern office kitchen island (candid, warm), center-right shows a delivery person in green apron handing over a Team Budget box to a receptionist (exchange moment). Smaller surrounding tiles contain product close-ups: berry medley, avocado toast, juice bottles, finger foods, wrapped sandwiches. The human tiles are 2-3× larger than product tiles, making people the heroes. Consistent warm morning lighting across all tiles. White grid lines (3px). Blue (#4375FF) thin accent border on outer edge. Some tiles at the edges fade to off-white (#FAFAF7) creating a vignette effect. People look authentic — genuine smiles, casual business wear, real office environments. Composition protects left zone from avatar overlap. 2.6:1 ratio. No text.'
+      },
+      {
+        name: 'Grafika do stopki mailowej',
+        dim: '640 × 244 px',
+        badge: 'Kompaktowy',
+        prompt: 'Compact email signature banner: right side shows a small 3×2 tile grid forming a simplified "TB" shape. Two tiles contain people: close-up of smiling woman holding a green apple (approachable, warm), and hands of colleagues reaching for items from a shared snack box (community moment). Four tiles contain food: fresh fruit arrangement, wrapped sandwich, juice bottle, breakfast bowl. Tiles have thin white borders, warm consistent lighting. Left 45% is clean off-white (#FAFAF7) space for text/logo overlay. Subtle blue (#4375FF) line accent at bottom. Real, authentic feel — not stock photography. Compact and professional for email context. No text on image. 640x244 dimensions.'
+      }
+    ]
+  }
+};
+
+function renderVersion(key) {
+  var d = DATA[key];
+  var el = document.getElementById(key);
+  var h = '';
+
+  // Header
+  h += '<div class="version-header">';
+  h += '<div class="version-label version-label--' + d.labelClass + '">' + d.label + '</div>';
+  h += '<h2>' + d.title + '</h2>';
+  h += '<p class="v-desc">' + d.desc + '</p>';
+  h += '<span class="v-headline v-headline--' + d.headlineClass + '">' + d.headline + '</span>';
+  h += '</div>';
+
+  // Brief boxes
+  h += '<div class="brief-grid">';
+  h += '<div class="brief-box"><h4>Założenia</h4><ul>';
+  d.assumptions.forEach(function(a) { h += '<li>' + a + '</li>'; });
+  h += '</ul></div>';
+  h += '<div class="brief-box"><h4>Komunikacja wizualna</h4><ul>';
+  d.visualComm.forEach(function(v) { h += '<li>' + v + '</li>'; });
+  h += '</ul></div>';
+  h += '</div>';
+
+  // Format cards
+  d.formats.forEach(function(f, i) {
+    h += '<div class="format-card">';
+    h += '<div class="format-top">';
+    h += '<div class="format-icon"><div class="ratio-viz"></div>' + f.dim.split('×')[0].trim().slice(-3) + '</div>';
+    h += '<div class="format-info"><div class="format-name">' + f.name + '</div>';
+    h += '<div class="format-dim">' + f.dim + '</div></div>';
+    h += '<span class="format-badge">' + f.badge + '</span>';
+    h += '</div>';
+    h += '<div class="prompt-area">';
+    h += '<div class="prompt-label">Prompt do obrazu <span class="ai">AI Gen</span></div>';
+    h += '<div class="prompt-block" onclick="copyP(this,\'' + key + '\',' + i + ')">';
+    h += '<span class="copy-float">kliknij → kopiuj</span>';
+    h += '<div class="prompt-text">' + f.prompt + '</div>';
+    h += '</div>';
+    h += '</div>';
+    h += '</div>';
+  });
+
+  el.innerHTML = h;
+}
+
+function copyP(el, key, idx) {
+  var text = DATA[key].formats[idx].prompt;
+  navigator.clipboard.writeText(text).then(function() {
+    el.classList.add('copied');
+    showToast('Prompt skopiowany do schowka');
+    setTimeout(function() { el.classList.remove('copied'); }, 1500);
+  });
+}
+
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('visible');
+  setTimeout(function() { t.classList.remove('visible'); }, 2500);
+}
+
+function showV(key, btn) {
+  document.querySelectorAll('.tab').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.querySelectorAll('.version').forEach(function(v) { v.classList.remove('visible'); });
+  document.getElementById(key).classList.add('visible');
+}
+
+// Init
+renderVersion('v1');
+renderVersion('v21');
+renderVersion('v22');
+</script>
+</body>
+</html>

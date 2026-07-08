@@ -404,6 +404,25 @@ body {
   transform:translateX(0);
 }
 
+/* ── Social chips ── */
+.hub-social-chips {
+  display:flex; flex-wrap:wrap; gap:6px;
+  margin-bottom:14px;
+}
+.hub-social-chip {
+  font-size:10px; font-weight:600;
+  padding:3px 10px; border-radius:100px;
+  background:rgba(0,0,0,0.04);
+  color:var(--text-muted);
+  text-decoration:none;
+  transition:all .2s ease;
+  line-height:1.5;
+}
+.hub-social-chip:hover {
+  background:rgba(0,0,0,0.09);
+  color:var(--text-secondary);
+}
+
 /* ── Footer ── */
 .hub-footer {
   margin-top:48px; font-size:11px; color:var(--text-dim);
@@ -487,6 +506,12 @@ body {
   <!-- 01 BETTERWORKPLACE -->
   <div class="hub-section hub-section--bw">
     <div class="hub-section-label">01 · BetterWorkplace</div>
+    <div class="hub-social-chips">
+      <a class="hub-social-chip" href="https://www.instagram.com/betterworkplace.pl/" target="_blank" rel="noopener">Instagram</a>
+      <a class="hub-social-chip" href="https://www.linkedin.com/company/betterworkplace-pl/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="hub-social-chip" href="https://www.facebook.com/p/BetterWorkplacepl-100083828132808/" target="_blank" rel="noopener">Facebook</a>
+      <a class="hub-social-chip" href="https://www.youtube.com/@BetterHR" target="_blank" rel="noopener">YouTube</a>
+    </div>
     <div class="hub-grid">
 
       <a class="hub-card" href="https://better-workplace-corposite.webflow.io/" target="_blank">
@@ -543,6 +568,13 @@ body {
   <!-- 02 DAILYFRUITS -->
   <div class="hub-section hub-section--df">
     <div class="hub-section-label">02 · DailyFruits</div>
+    <div class="hub-social-chips">
+      <a class="hub-social-chip" href="https://www.facebook.com/dailyfruitspl/" target="_blank" rel="noopener">Facebook</a>
+      <a class="hub-social-chip" href="https://www.linkedin.com/company/daily-fruits/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="hub-social-chip" href="https://www.instagram.com/dailyfruitspl/" target="_blank" rel="noopener">Instagram</a>
+      <a class="hub-social-chip" href="https://www.youtube.com/@dailyfruits5244" target="_blank" rel="noopener">YouTube</a>
+      <a class="hub-social-chip" href="https://x.com/dailyfruitspl" target="_blank" rel="noopener">X</a>
+    </div>
     <div class="hub-grid">
 
       <a class="hub-card" href="https://dailyfruits.vercel.app" target="_blank">

@@ -1,5 +1,23 @@
 {
   "version": 2,
   "name": "r352",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/admin", "destination": "/cms", "statusCode": 301 }
+  ],
+  "headers": [
+    {
+      "source": "/cms",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
+        { "key": "Cache-Control", "value": "no-store, no-cache, must-revalidate, max-age=0" }
+      ]
+    },
+    {
+      "source": "/api/cms-:path*",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, no-cache, must-revalidate, max-age=0" }
+      ]
+    }
+  ]
 }

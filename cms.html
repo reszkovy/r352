@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BetterGuide CMS</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+:root {
+    --blue: #4375FF; --blue-dark: #2B5CD9; --blue-light: #EBF0FF;
+    --orange: #FF6921; --green: #22c55e;
+    --bg: #FAFAF7; --white: #FFFFFF; --gray: #6B7280; --light: #F3F4F6;
+    --red: #E43020; --border: #E5E7EB;
+    --radius: 12px; --font: 'DM Sans', -apple-system, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font); background: var(--bg); min-height: 100vh; color: #1F2937; }
+button { font-family: var(--font); cursor: pointer; }
+input, textarea, select { font-family: var(--font); font-size: 15px; }
+
+/* ─── LOGIN ─── */
+.login-wrap { display: none; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; }
+.login-box { background: var(--white); padding: 48px; border-radius: var(--radius); box-shadow: 0 4px 24px rgba(0,0,0,0.08); max-width: 400px; width: 100%; text-align: center; }
+.login-box h1 { font-size: 28px; font-weight: 900; color: var(--blue); margin-bottom: 4px; }
+.login-box .sub { color: var(--gray); font-size: 13px; margin-bottom: 24px; }
+.login-box .brand-dots { display: flex; gap: 6px; justify-content: center; margin-bottom: 20px; }
+.login-box .brand-dots span { width: 10px; height: 10px; border-radius: 50%; }
+.login-box input { width: 100%; padding: 12px 16px; border: 2px solid var(--border); border-radius: 8px; outline: none; transition: border 0.2s; }
+.login-box input:focus { border-color: var(--blue); }
+.login-box button { width: 100%; padding: 12px; background: var(--blue); color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: 700; margin-top: 16px; transition: background 0.2s; }
+.login-box button:hover { background: var(--blue-dark); }
+.login-error { color: var(--red); font-size: 13px; margin-top: 12px; display: none; }
+
+/* ─── DASHBOARD ─── */
+.dashboard { display: none; }
+.topbar { background: var(--blue); color: white; padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+.topbar h1 { font-size: 20px; font-weight: 900; letter-spacing: -0.3px; }
+.topbar h1 .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-left: 6px; vertical-align: middle; }
+.topbar-actions { display: flex; gap: 10px; align-items: center; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 700; border: none; transition: all 0.2s; text-decoration: none; }
+.btn-sm { padding: 8px 14px; font-size: 13px; }
+.btn-blue { background: var(--blue); color: white; }
+.btn-blue:hover { background: var(--blue-dark); }
+.btn-ghost { background: rgba(255,255,255,0.15); color: white; }
+.btn-ghost:hover { background: rgba(255,255,255,0.25); }
+.btn-outline { background: transparent; border: 2px solid var(--border); color: #374151; }
+.btn-outline:hover { border-color: var(--blue); }
+.btn[disabled] { opacity: 0.55; cursor: wait; }
+.pub-status { font-size: 13px; font-weight: 700; padding: 7px 14px; border-radius: 100px; display: none; }
+.pub-status.pending { display: inline-block; background: rgba(255,242,0,0.18); color: #FFF566; animation: pubPulse 1.4s ease-in-out infinite; }
+.pub-status.success { display: inline-block; background: rgba(67,117,255,0.25); color: #B3CCFF; }
+@keyframes pubPulse { 50% { opacity: 0.55; } }
+
+/* ─── WRAP & CARDS ─── */
+.wrap { max-width: 980px; margin: 0 auto; padding: 28px 20px 80px; }
+.card { background: var(--white); border-radius: var(--radius); box-shadow: 0 1px 4px rgba(0,0,0,0.05); padding: 22px; margin-bottom: 18px; }
+.card h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--blue); margin-bottom: 16px; }
+
+/* ─── PAGE SELECT ─── */
+.page-select { width: 100%; padding: 11px 14px; border: 2px solid var(--border); border-radius: 8px; background: var(--white); font-weight: 700; font-size: 15px; }
+.page-select:focus { border-color: var(--blue); outline: none; }
+
+/* ─── VIEW TOGGLE ─── */
+.view-toggle { display: inline-flex; gap: 4px; background: var(--light); border-radius: 100px; padding: 4px; margin-top: 12px; }
+.vt-btn { padding: 8px 18px; border: none; border-radius: 100px; background: transparent; font-size: 13px; font-weight: 700; color: var(--gray); cursor: pointer; }
+.vt-btn.active { background: var(--blue); color: white; }
+
+/* ─── FIELD SEARCH ─── */
+.field-search { width: 100%; margin-top: 12px; padding: 10px 14px; border: 2px solid var(--border); border-radius: 8px; outline: none; display: none; }
+.field-search:focus { border-color: var(--blue); }
+
+/* ─── FIELDS ─── */
+.section-title { font-size: 13px; font-weight: 700; color: var(--blue); background: var(--blue-light); padding: 8px 14px; border-radius: 8px; margin: 22px 0 10px; }
+.tfield { margin-bottom: 12px; }
+.tfield .tmeta { display: flex; gap: 8px; align-items: center; margin-bottom: 4px; }
+.tag-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 2px 8px; border-radius: 100px; background: var(--light); color: var(--gray); }
+.tag-badge.h { background: var(--blue); color: white; }
+.tag-badge.seo { background: #FEF3C7; color: #92400E; }
+.tfield textarea { width: 100%; padding: 9px 12px; border: 2px solid var(--border); border-radius: 8px; outline: none; resize: none; overflow: hidden; line-height: 1.5; font-size: 15px; }
+.tfield textarea:focus { border-color: var(--blue); }
+.tfield.changed textarea { border-color: var(--blue); background: var(--blue-light); }
+.tfield.flash { animation: tfFlash 1.6s ease; }
+@keyframes tfFlash { 0%, 60% { background: var(--blue-light); box-shadow: 0 0 0 3px var(--blue); border-radius: 8px; } 100% { background: transparent; box-shadow: none; } }
+
+.img-field { display: flex; gap: 12px; align-items: center; padding: 8px 0; }
+.img-field img { height: 52px; max-width: 90px; object-fit: contain; border-radius: 6px; background: var(--light); }
+.img-field .fname { flex: 1; font-size: 12.5px; color: var(--gray); font-family: ui-monospace, monospace; word-break: break-all; }
+
+.field-help { font-size: 12px; color: var(--gray); margin-top: 5px; }
+.loading { padding: 48px; text-align: center; color: var(--gray); font-size: 14px; }
+.spinner { width: 26px; height: 26px; border: 3px solid var(--border); border-top-color: var(--blue); border-radius: 50%; margin: 0 auto 12px; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─── VISUAL FRAME ─── */
+#visualWrap { display: none; }
+#visualFrame { width: 100%; height: calc(100vh - 320px); min-height: 520px; border: 2px solid var(--border); border-radius: 12px; background: #fff; }
+
+/* ─── BOTTOM BAR ─── */
+.action-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); border-top: 1px solid var(--border); padding: 12px 28px; display: none; align-items: center; gap: 12px; z-index: 90; box-shadow: 0 -4px 16px rgba(0,0,0,0.05); }
+.action-bar .grow { flex: 1; }
+.deploy-note { font-size: 12.5px; color: var(--gray); }
+
+/* ─── TOAST ─── */
+.toast { position: fixed; bottom: 84px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--blue); color: white; padding: 12px 24px; border-radius: 100px; font-size: 14px; font-weight: 700; opacity: 0; pointer-events: none; transition: all 0.3s; z-index: 300; max-width: 90vw; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.toast.error { background: var(--red); }
+
+/* ─── URL BAR ─── */
+.url-bar { max-width: 980px; margin: 18px auto -8px; padding: 0 20px; display: flex; gap: 10px; }
+.url-bar input { flex: 1; padding: 11px 16px; border: 2px solid var(--border); border-radius: 100px; outline: none; background: var(--white); font-size: 14px; }
+.url-bar input:focus { border-color: var(--blue); }
+
+@media (max-width: 640px) {
+    .wrap { padding: 20px 14px 120px; }
+    .action-bar { flex-wrap: wrap; padding: 10px 14px; }
+}
+    </style>
+</head>
+<body>
+
+<!-- ─── LOGIN ─── -->
+<div class="login-wrap" id="loginView">
+    <div class="login-box">
+        <div class="brand-dots">
+            <span style="background:#FF6921;"></span>
+            <span style="background:#4375FF;"></span>
+            <span style="background:#22c55e;"></span>
+        </div>
+        <h1>BetterGuide CMS</h1>
+        <p class="sub">Panel zarządzania treścią stron</p>
+        <input type="password" id="passwordInput" placeholder="Hasło" autocomplete="current-password">
+        <button onclick="doLogin()">Zaloguj się</button>
+        <div class="login-error" id="loginError">Nieprawidłowe hasło</div>
+    </div>
+</div>
+
+<!-- ─── DASHBOARD ─── -->
+<div class="dashboard" id="dashboardView">
+    <div class="topbar">
+        <h1>BetterGuide CMS <span class="dot" style="background:#FF6921;"></span><span class="dot" style="background:#22c55e;"></span></h1>
+        <div class="topbar-actions">
+            <span class="pub-status" id="pubStatus"></span>
+            <button class="btn btn-sm btn-ghost" onclick="doLogout()">Wyloguj</button>
+        </div>
+    </div>
+
+    <div class="url-bar">
+        <input type="text" id="globalUrlInput" placeholder="Wklej link do strony, którą chcesz edytować — np. betterguide.pl/tb-landing-v1" onkeydown="if(event.key==='Enter')openByUrl()" onpaste="setTimeout(openByUrl,60)">
+        <button class="btn btn-blue btn-sm" onclick="openByUrl()">Edytuj</button>
+    </div>
+
+    <div class="wrap" id="pagesView">
+        <div class="card">
+            <h2>Wybierz stronę do edycji</h2>
+            <div style="display:flex;gap:10px;align-items:center;">
+                <select class="page-select" id="pageSelect" onchange="loadPageTexts()" style="flex:1;"></select>
+                <a class="btn btn-outline btn-sm" id="viewPageBtn" href="/" target="_blank" rel="noopener" style="display:none;white-space:nowrap;">Pokaż stronę ↗</a>
+            </div>
+            <div class="view-toggle" id="viewToggle" style="display:none;">
+                <button class="vt-btn active" id="vtVisual" onclick="setPagesMode('visual')">Edycja na stronie</button>
+                <button class="vt-btn" id="vtList" onclick="setPagesMode('list')">Lista pól</button>
+            </div>
+            <input type="search" class="field-search" id="fieldSearch" placeholder="Szukaj w polach tej strony..." oninput="filterFields()">
+            <div class="field-help" style="margin-top:8px;" id="pagesHint">Edytujesz treść — układ i styl strony pozostają nietknięte. Zmienione pola podświetlają się na niebiesko.</div>
+        </div>
+
+        <!-- Visual editor -->
+        <div id="visualWrap">
+            <div class="field-help" style="margin:0 0 8px;">Kliknij dowolny tekst na stronie i pisz. Kliknij zdjęcie, żeby je podmienić. SEO i opisy zdjęć znajdziesz w widoku „Lista pól".</div>
+            <iframe id="visualFrame" title="Edycja na stronie"></iframe>
+        </div>
+
+        <!-- List editor -->
+        <div id="pageFields"></div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="action-bar" id="pagesBar">
+        <button class="btn btn-sm btn-outline" id="undoBtn" onclick="undoPage()" disabled title="Cofnij ostatnią zmianę">↶ Cofnij</button>
+        <span class="deploy-note" id="pagesChanged">Brak zmian</span>
+        <div class="grow"></div>
+        <span class="deploy-note" id="pagesNote"></span>
+        <button class="btn btn-outline" id="restoreBtn" onclick="restoreSession()" disabled title="Przywróć wszystkie pola do stanu z początku sesji">Cofnij wszystko</button>
+        <button class="btn btn-blue" id="pagesSaveBtn" onclick="savePageTexts()" disabled>Zapisz zmiany</button>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const API = '/api';
+let token = localStorage.getItem('cms_token') || '';
+const $ = id => document.getElementById(id);
+
+// ─── AUTH ───
+async function doLogin() {
+    try {
+        const res = await fetch(`${API}/cms-auth`, { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ password: $('passwordInput').value }) });
+        const data = await res.json();
+        if (data.ok) { token = data.token; localStorage.setItem('cms_token', token); showDashboard(); }
+        else $('loginError').style.display = 'block';
+    } catch (e) { $('loginError').style.display = 'block'; }
+}
+function doLogout() {
+    token = ''; localStorage.removeItem('cms_token');
+    $('dashboardView').style.display = 'none';
+    $('loginView').style.display = 'flex';
+}
+$('passwordInput').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+
+// ─── DASHBOARD ───
+async function showDashboard() {
+    $('loginView').style.display = 'none';
+    $('dashboardView').style.display = 'block';
+    await loadPages();
+}
+
+let allPages = [];
+async function loadPages() {
+    try {
+        const res = await fetch(`${API}/cms-content?action=pages`, { headers: {'X-CMS-Token': token} });
+        if (res.status === 401) { doLogout(); return; }
+        const data = await res.json();
+        allPages = data.pages || [];
+        const groups = {};
+        allPages.forEach(p => { (groups[p.group] = groups[p.group] || []).push(p); });
+        $('pageSelect').innerHTML = '<option value="">— wybierz stronę —</option>' +
+            Object.entries(groups).map(([g, ps]) =>
+                `<optgroup label="${esc(g)}">` + ps.map(p => `<option value="${esc(p.path)}">${esc(pageName(p.path))} (${p.path})</option>`).join('') + '</optgroup>'
+            ).join('');
+    } catch (e) { toast('Błąd ładowania stron', true); }
+}
+
+const PAGE_NAMES = {
+    'tb-landing-v1.html': 'TB Landing Page v1',
+    'tb-landing-v0.html': 'TB Landing Page v0',
+    'tb-czym-jest.html': 'TB Czym jest TeamBudget',
+    'tb-kierunek.html': 'TB Kierunek Strategiczny',
+    'tb-strategia.html': 'TB Strategia',
+    'design-system.html': 'Design System',
+    'bw-messaging.html': 'BW Messaging',
+    'bw-voice.html': 'BW Brand Voice',
+    'df-brand-voice.html': 'DF Brand Voice',
+    'df-messaging.html': 'DF Messaging',
+    'df-seo-raport.html': 'DF SEO Raport',
+};
+function pageName(p) {
+    if (PAGE_NAMES[p]) return PAGE_NAMES[p];
+    return p.replace('.html','').replace(/-/g,' ').replace(/^./,c=>c.toUpperCase());
+}
+
+// ─── URL BAR ───
+function openByUrl() {
+    const raw = $('globalUrlInput').value.trim();
+    if (!raw) return;
+    let path;
+    try { path = /^https?:\/\//i.test(raw) ? new URL(raw).pathname : raw; } catch(e){ return; }
+    path = path.replace(/^\/+|\/+$/g,'').replace(/\.html$/,'');
+    const file = (path === '' ? 'index.html' : path + '.html');
+    const hit = allPages.find(p => p.path === file);
+    if (hit) {
+        $('globalUrlInput').value = '';
+        $('pageSelect').value = hit.path;
+        loadPageTexts();
+        toast('Otwieram: ' + pageName(hit.path));
+    } else {
+        toast('Nie znaleziono strony dla tego linka', true);
+    }
+}
+
+// ─── PAGE TEXTS ───
+let pageSha = null, pageItems = [], pageValues = {}, pageRawHtml = '';
+let pagesMode = localStorage.getItem('cms_pages_mode') || 'visual';
+let undoStack = [], originalValues = {};
+let dirty = false;
+
+async function loadPageTexts() {
+    const page = $('pageSelect').value;
+    if (!page) { $('pageFields').innerHTML = ''; $('visualWrap').style.display = 'none'; $('viewToggle').style.display = 'none'; $('pagesBar').style.display = 'none'; return; }
+
+    $('pageFields').innerHTML = '<div class="loading"><div class="spinner"></div>Ładowanie strony...</div>';
+    try {
+        const res = await fetch(`${API}/cms-content?action=texts&page=${encodeURIComponent(page)}&raw=1`, { headers: {'X-CMS-Token': token} });
+        if (res.status === 401) { doLogout(); return; }
+        const data = await res.json();
+        if (!res.ok) { toast(data.error || 'Błąd', true); return; }
+
+        pageSha = data.sha;
+        pageItems = data.items || [];
+        pageRawHtml = data.html || '';
+        pageValues = {};
+        undoStack = [];
+        originalValues = {};
+        pageItems.forEach(i => { originalValues[i.id] = i.text; });
+
+        $('viewToggle').style.display = pageRawHtml ? 'inline-flex' : 'none';
+        renderActiveView();
+        $('pagesBar').style.display = 'flex';
+        $('viewPageBtn').style.display = '';
+        $('viewPageBtn').href = '/' + page.replace(/\.html$/,'');
+        $('fieldSearch').value = '';
+        dirty = false;
+        updatePagesBar();
+    } catch (e) { toast('Błąd: ' + e.message, true); }
+}
+
+function setPagesMode(mode) {
+    pagesMode = mode;
+    localStorage.setItem('cms_pages_mode', mode);
+    renderActiveView();
+}
+
+function renderActiveView() {
+    const visual = pagesMode === 'visual' && pageRawHtml;
+    $('vtVisual').classList.toggle('active', visual);
+    $('vtList').classList.toggle('active', !visual);
+    $('fieldSearch').style.display = visual ? 'none' : '';
+    $('visualWrap').style.display = visual ? 'block' : 'none';
+    $('pageFields').style.display = visual ? 'none' : 'block';
+    if (visual) renderVisual(); else renderPageFields();
+}
+
+function badgeFor(i) {
+    let b = '';
+    if (i.tag === 'title' || i.tag === 'meta') b = '<span class="tag-badge seo">SEO</span>';
+    else if (/^h[1-3]$/.test(i.tag)) b = '<span class="tag-badge h">Nagłówek</span>';
+    else if (i.tag === 'img-alt') b = '<span class="tag-badge">Opis zdjęcia</span>';
+    else if (i.tag === 'a' || i.tag === 'button') b = '<span class="tag-badge">Przycisk / link</span>';
+    return b;
+}
+
+function getFieldValue(id) {
+    return id in pageValues ? pageValues[id] : (pageItems.find(x => x.id === id) || {}).text || '';
+}
+
+function renderPageFields() {
+    let html = '', lastSection = null;
+    pageItems.forEach(i => {
+        const val = getFieldValue(i.id);
+        const chg = val !== i.text ? ' changed' : '';
+        if (i.section !== lastSection) { html += `<div class="section-title">${esc(i.section)}</div>`; lastSection = i.section; }
+        if (i.kind === 'img-src') {
+            html += `<div class="tfield${chg}" id="tf-${i.id}"><div class="img-field"><img src="/${esc(val)}" alt="" loading="lazy"><span class="fname">${esc(val)}</span><button class="btn btn-sm btn-outline" onclick="changePageImage(${i.id})">Zmień zdjęcie</button></div></div>`;
+        } else {
+            html += `<div class="tfield${chg}" id="tf-${i.id}"><div class="tmeta">${badgeFor(i)}</div><textarea data-id="${i.id}" rows="1">${esc(val)}</textarea></div>`;
+        }
+    });
+    $('pageFields').innerHTML = `<div class="card">${html}</div>`;
+    $('pageFields').querySelectorAll('textarea').forEach(t => {
+        autosize(t);
+        t.addEventListener('focus', () => { t.dataset.startVal = t.value; });
+        t.addEventListener('change', () => {
+            if (t.dataset.startVal !== undefined && t.value !== t.dataset.startVal) {
+                pushUndo({ id: Number(t.dataset.id), prev: t.dataset.startVal, next: t.value });
+                t.dataset.startVal = t.value;
+            }
+        });
+        t.addEventListener('input', () => {
+            autosize(t);
+            const id = Number(t.dataset.id);
+            const item = pageItems.find(x => x.id === id);
+            if (t.value === item.text) delete pageValues[id]; else pageValues[id] = t.value;
+            t.closest('.tfield').classList.toggle('changed', t.value !== item.text);
+            markDirty();
+            updatePagesBar();
+        });
+    });
+}
+
+function autosize(el) {
+    el.style.height = 'auto';
+    el.style.height = el.scrollHeight + 'px';
+}
+
+function filterFields() {
+    const q = ($('fieldSearch').value || '').toLowerCase();
+    $('pageFields').querySelectorAll('.tfield').forEach(f => {
+        const ta = f.querySelector('textarea');
+        const txt = ta ? ta.value.toLowerCase() : '';
+        f.style.display = (!q || txt.includes(q)) ? '' : 'none';
+    });
+    $('pageFields').querySelectorAll('.section-title').forEach(s => {
+        let next = s.nextElementSibling;
+        let anyVisible = false;
+        while (next && !next.classList.contains('section-title')) {
+            if (next.style.display !== 'none') anyVisible = true;
+            next = next.nextElementSibling;
+        }
+        s.style.display = anyVisible ? '' : 'none';
+    });
+}
+
+// ─── VISUAL EDITOR ───
+const VISUAL_CSS = `
+[class*="reveal"],[class*="scale-in"],[class*="slide-"]{opacity:1!important;transform:none!important;animation:none!important;transition:none!important;visibility:visible!important}
+[data-cms]{outline:2px dashed transparent;outline-offset:2px;cursor:text;transition:outline .15s}
+[data-cms]:hover{outline-color:#4375FF44}
+[data-cms]:focus{outline-color:#4375FF;outline-style:solid;background:rgba(67,117,255,0.06)}
+[data-cms-img]{cursor:pointer;position:relative}
+[data-cms-img]:hover{outline:2px solid #4375FF;outline-offset:2px}
+`;
+
+function renderVisual() {
+    const frame = $('visualFrame');
+    const doc = frame.contentDocument || frame.contentWindow.document;
+    // Podmien wartosci ktore user juz zedytowal
+    let html = pageRawHtml;
+    const textItems = pageItems.filter(i => i.kind === 'node' || i.kind === 'attr');
+    textItems.forEach(i => {
+        const val = getFieldValue(i.id);
+        if (val !== i.text) {
+            // zastosuj zmiane w HTML
+        }
+    });
+
+    doc.open();
+    doc.write(html);
+    doc.close();
+
+    // Wstaw styl edytora
+    const style = doc.createElement('style');
+    style.textContent = VISUAL_CSS;
+    doc.head.appendChild(style);
+
+    // Oznacz edytowalne pola
+    pageItems.forEach(i => {
+        if (i.kind === 'node') {
+            // Szukamy wezla po tekscie
+            const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT, null, false);
+            let node;
+            while (node = walker.nextNode()) {
+                if (node.textContent.trim() === i.text && !node.parentElement.hasAttribute('data-cms')) {
+                    const el = node.parentElement;
+                    el.setAttribute('data-cms', i.id);
+                    el.setAttribute('contenteditable', 'true');
+                    el.addEventListener('input', () => {
+                        const newText = el.textContent.trim();
+                        if (newText === i.text) delete pageValues[i.id];
+                        else pageValues[i.id] = newText;
+                        markDirty();
+                        updatePagesBar();
+                    });
+                    break;
+                }
+            }
+        }
+    });
+}
+
+// ─── IMAGE CHANGE ───
+async function changePageImage(id) {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.webp,.jpg,.jpeg,.png,.avif,.svg';
+    input.onchange = async () => {
+        if (!input.files[0]) return;
+        toast('Wysyłanie obrazu...');
+        try {
+            const file = input.files[0];
+            const b64 = await new Promise((ok, err) => {
+                const r = new FileReader(); r.onload = () => ok(r.result.split(',')[1]); r.onerror = err; r.readAsDataURL(file);
+            });
+            const res = await fetch(`${API}/cms-content?action=upload`, {
+                method: 'POST', headers: {'Content-Type':'application/json','X-CMS-Token': token},
+                body: JSON.stringify({ filename: file.name, contentBase64: b64 })
+            });
+            const data = await res.json();
+            if (!data.ok) { toast(data.error || 'Błąd uploadu', true); return; }
+            pageValues[id] = data.path;
+            markDirty();
+            updatePagesBar();
+            renderPageFields();
+            toast('Obraz wgrany ✓');
+        } catch (e) { toast(e.message, true); }
+    };
+    input.click();
+}
+
+// ─── UNDO ───
+function pushUndo(entry) { undoStack.push(entry); }
+function undoPage() {
+    if (!undoStack.length) return;
+    const entry = undoStack.pop();
+    pageValues[entry.id] = entry.prev;
+    const item = pageItems.find(x => x.id === entry.id);
+    if (item && entry.prev === item.text) delete pageValues[entry.id];
+    renderPageFields();
+    updatePagesBar();
+}
+function restoreSession() {
+    if (!confirm('Przywrócić wszystkie pola do stanu z początku sesji?')) return;
+    pageValues = {};
+    undoStack = [];
+    dirty = false;
+    renderPageFields();
+    updatePagesBar();
+    toast('Przywrócono');
+}
+
+// ─── SAVE ───
+async function savePageTexts() {
+    const page = $('pageSelect').value;
+    if (!page) return;
+
+    const edits = [];
+    for (const [idStr, val] of Object.entries(pageValues)) {
+        const id = Number(idStr);
+        const item = pageItems.find(x => x.id === id);
+        if (!item || val === item.text) continue;
+        edits.push({ start: item.start, end: item.end, old: item.text, text: val, kind: item.kind });
+    }
+    if (!edits.length) { toast('Brak zmian do zapisania'); return; }
+
+    const btn = $('pagesSaveBtn');
+    btn.disabled = true; btn.textContent = 'Zapisywanie...';
+    try {
+        const res = await fetch(`${API}/cms-content?action=texts&page=${encodeURIComponent(page)}`, {
+            method: 'PUT',
+            headers: {'Content-Type':'application/json','X-CMS-Token': token},
+            body: JSON.stringify({ sha: pageSha, edits })
+        });
+        const data = await res.json();
+        if (!data.ok) { toast(data.error || 'Błąd zapisu', true); return; }
+        dirty = false;
+        pageValues = {};
+        undoStack = [];
+        trackDeploy(data.commit);
+        toast('Zapisano ✓ — aktualizacja strony może zająć do minuty');
+        // Przeladuj dane
+        loadPageTexts();
+    } catch (e) { toast('Błąd: ' + e.message, true); }
+    finally { btn.disabled = false; btn.textContent = 'Zapisz zmiany'; }
+}
+
+// ─── DEPLOY STATUS ───
+let pubTimer = null, pubCountdown = null;
+function stopPubTimers() { clearInterval(pubTimer); clearInterval(pubCountdown); }
+function trackDeploy(commit) {
+    if (!commit) return;
+    const el = $('pubStatus');
+    stopPubTimers();
+    el.className = 'pub-status pending';
+    let secondsLeft = 60;
+    el.textContent = `⏳ Publikowanie… ${secondsLeft} s`;
+    pubCountdown = setInterval(() => {
+        secondsLeft--;
+        el.textContent = secondsLeft > 0
+            ? `⏳ Publikowanie… ${secondsLeft} s`
+            : '⏳ Trwa dłużej niż zwykle…';
+    }, 1000);
+    // Auto-clear po 90s
+    pubTimer = setTimeout(() => {
+        stopPubTimers();
+        el.className = 'pub-status success';
+        el.textContent = '✓ Opublikowano';
+        setTimeout(() => { el.className = 'pub-status'; }, 15000);
+    }, 90000);
+}
+
+// ─── HELPERS ───
+function markDirty() { dirty = true; }
+function updatePagesBar() {
+    const changes = Object.keys(pageValues).filter(id => {
+        const item = pageItems.find(x => x.id === Number(id));
+        return item && pageValues[id] !== item.text;
+    }).length;
+    $('pagesChanged').textContent = changes ? `${changes} zmian${changes === 1 ? 'a' : changes < 5 ? 'y' : ''}` : 'Brak zmian';
+    $('pagesSaveBtn').disabled = !changes;
+    $('restoreBtn').disabled = !changes;
+    $('undoBtn').disabled = !undoStack.length;
+}
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function toast(msg, isError) {
+    const t = $('toast');
+    t.textContent = msg;
+    t.className = 'toast show' + (isError ? ' error' : '');
+    setTimeout(() => t.className = 'toast', 3500);
+}
+window.addEventListener('beforeunload', e => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
+
+// ─── INIT ───
+if (token) showDashboard(); else $('loginView').style.display = 'flex';
+</script>
+</body>
+</html>

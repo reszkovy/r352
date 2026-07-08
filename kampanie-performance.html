@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Performance Campaigns — BW & DF | 2026 Q3</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFAF7;
+  --bg-warm: #F5F3EE;
+  --card: #FFFFFF;
+  --border: #E8E4DE;
+  --border-light: #F0EDE8;
+  --shadow: rgba(0,0,0,0.04);
+  --text: #2A2A2A;
+  --text-secondary: #555555;
+  --text-muted: #888888;
+  --text-dim: #B0A99F;
+  --accent-bw: #FF6921;
+  --accent-bw-bg: #FFF6F0;
+  --accent-bw-light: rgba(255,105,33,0.07);
+  --accent-bw-dark: #E55A15;
+  --accent-df: #22c55e;
+  --accent-df-bg: #F2FAF5;
+  --accent-df-light: rgba(34,197,94,0.07);
+  --accent-df-dark: #16a34a;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'DM Sans',system-ui,-apple-system,sans-serif;
+  background:var(--bg); color:var(--text);
+  line-height:1.65; -webkit-font-smoothing:antialiased;
+}
+
+/* ═══ HEADER ═══ */
+.header {
+  padding:48px 40px 32px;
+  max-width:1200px; margin:0 auto;
+}
+.header-top {
+  display:flex; align-items:center; gap:12px; margin-bottom:8px;
+}
+.header-badge {
+  padding:4px 10px; border-radius:6px; font-size:11px;
+  font-weight:700; letter-spacing:0.5px; text-transform:uppercase;
+  background:var(--text); color:#fff;
+}
+.header h1 {
+  font-size:28px; font-weight:800; letter-spacing:-0.5px;
+}
+.header-sub {
+  font-size:14px; color:var(--text-muted); margin-top:4px;
+}
+
+/* ═══ STATS BAR ═══ */
+.stats-bar {
+  display:flex; gap:10px; flex-wrap:wrap;
+  padding:0 40px; max-width:1200px; margin:0 auto 24px;
+}
+.stat {
+  display:flex; align-items:center; gap:6px;
+  padding:6px 14px; border-radius:8px;
+  background:var(--bg-warm); border:1px solid var(--border-light);
+  font-size:12px; color:var(--text-muted); font-weight:500;
+}
+.stat b { color:var(--text); font-size:13px; font-weight:700; }
+.stat--bw b { color:var(--accent-bw); }
+.stat--df b { color:var(--accent-df); }
+
+/* ═══ TABS ═══ */
+.tabs-wrap {
+  padding:0 40px; max-width:1200px; margin:0 auto 28px;
+  display:flex; gap:8px;
+}
+.tab-btn {
+  padding:8px 20px; border-radius:10px; border:1px solid var(--border);
+  background:var(--card); font-family:inherit; font-size:13px;
+  font-weight:600; cursor:pointer; transition:all .2s;
+  color:var(--text-secondary);
+}
+.tab-btn:hover { border-color:#ccc; }
+.tab-btn.active--bw { background:var(--accent-bw); color:#fff; border-color:var(--accent-bw); }
+.tab-btn.active--df { background:var(--accent-df); color:#fff; border-color:var(--accent-df); }
+.tab-btn.active--all { background:var(--text); color:#fff; border-color:var(--text); }
+
+/* ═══ BRAND SECTION ═══ */
+.brand-section {
+  max-width:1200px; margin:0 auto 48px;
+  padding:0 40px;
+}
+.brand-header {
+  display:flex; align-items:center; gap:12px;
+  margin-bottom:24px; padding-bottom:16px;
+  border-bottom:2px solid var(--border-light);
+}
+.brand-dot {
+  width:12px; height:12px; border-radius:50%;
+}
+.brand-dot--bw { background:var(--accent-bw); }
+.brand-dot--df { background:var(--accent-df); }
+.brand-header h2 {
+  font-size:18px; font-weight:700;
+}
+.brand-header .brand-count {
+  font-size:12px; color:var(--text-muted); font-weight:500;
+  padding:3px 10px; background:var(--bg-warm); border-radius:6px;
+}
+
+/* ═══ CAMPAIGN CARD ═══ */
+.campaign {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:16px; margin-bottom:20px;
+  overflow:hidden; transition:box-shadow .2s;
+}
+.campaign:hover { box-shadow:0 8px 32px var(--shadow); }
+
+.campaign-top {
+  padding:24px 28px 20px;
+  display:flex; align-items:flex-start; gap:16px;
+}
+.campaign-num {
+  width:44px; height:44px; border-radius:12px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px; font-weight:800; color:#fff; flex-shrink:0;
+}
+.campaign-num--bw { background:var(--accent-bw); }
+.campaign-num--df { background:var(--accent-df); }
+
+.campaign-info { flex:1; min-width:0; }
+.campaign-channel {
+  font-size:11px; font-weight:700; text-transform:uppercase;
+  letter-spacing:0.8px; margin-bottom:4px;
+}
+.campaign-channel--bw { color:var(--accent-bw); }
+.campaign-channel--df { color:var(--accent-df); }
+
+.campaign-title {
+  font-size:17px; font-weight:700; margin-bottom:6px;
+}
+.campaign-desc {
+  font-size:13px; color:var(--text-secondary); line-height:1.6;
+}
+
+.campaign-kpis {
+  display:flex; gap:8px; flex-shrink:0; align-self:center;
+}
+.kpi-chip {
+  padding:4px 10px; border-radius:6px; font-size:11px;
+  font-weight:600; background:var(--bg-warm); color:var(--text-secondary);
+  white-space:nowrap;
+}
+
+/* ═══ CAMPAIGN GRID: targeting + copy ═══ */
+.campaign-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  border-top:1px solid var(--border-light);
+}
+.campaign-cell {
+  padding:20px 28px;
+}
+.campaign-cell + .campaign-cell {
+  border-left:1px solid var(--border-light);
+}
+.campaign-cell h4 {
+  font-size:11px; font-weight:700; text-transform:uppercase;
+  letter-spacing:0.8px; color:var(--text-dim); margin-bottom:8px;
+}
+.campaign-cell p, .campaign-cell ul {
+  font-size:13px; color:var(--text-secondary); line-height:1.7;
+}
+.campaign-cell ul { list-style:none; }
+.campaign-cell ul li::before {
+  content:'→ '; color:var(--text-dim); font-weight:600;
+}
+.cta-tag {
+  display:inline-block; margin-top:8px;
+  padding:4px 12px; border-radius:6px;
+  font-size:12px; font-weight:600;
+}
+.cta-tag--bw { background:var(--accent-bw-bg); color:var(--accent-bw); }
+.cta-tag--df { background:var(--accent-df-bg); color:var(--accent-df); }
+
+/* ═══ IMAGE PROMPTS ═══ */
+.prompts-section {
+  border-top:1px solid var(--border-light);
+  padding:20px 28px 24px;
+  background:var(--bg-warm);
+}
+.prompts-section h4 {
+  font-size:11px; font-weight:700; text-transform:uppercase;
+  letter-spacing:0.8px; color:var(--text-dim); margin-bottom:14px;
+  display:flex; align-items:center; gap:8px;
+}
+.prompts-section h4 .ai-badge {
+  padding:2px 8px; border-radius:4px; font-size:10px;
+  background:var(--text); color:#fff; letter-spacing:0;
+  text-transform:none; font-weight:600;
+}
+.prompt-cards {
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
+  gap:12px;
+}
+.prompt-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:10px; padding:14px 16px;
+  cursor:pointer; transition:all .2s; position:relative;
+}
+.prompt-card:hover {
+  border-color:#ccc; box-shadow:0 2px 12px var(--shadow);
+}
+.prompt-card.copied {
+  border-color:var(--accent-df);
+}
+.prompt-format {
+  font-size:10px; font-weight:700; text-transform:uppercase;
+  letter-spacing:0.6px; color:var(--text-dim); margin-bottom:6px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.prompt-format .copy-hint {
+  font-size:10px; font-weight:500; color:var(--text-dim);
+  text-transform:none; letter-spacing:0; opacity:0;
+  transition:opacity .2s;
+}
+.prompt-card:hover .copy-hint { opacity:1; }
+.prompt-text {
+  font-size:12px; color:var(--text-secondary); line-height:1.65;
+  font-style:italic;
+}
+.prompt-ratio {
+  display:inline-block; margin-top:6px;
+  padding:2px 8px; border-radius:4px;
+  font-size:10px; font-weight:600; font-style:normal;
+  background:var(--bg-warm); color:var(--text-muted);
+}
+.toast {
+  position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(20px);
+  padding:10px 24px; border-radius:10px;
+  background:var(--text); color:#fff; font-size:13px; font-weight:600;
+  opacity:0; transition:all .3s ease; pointer-events:none; z-index:999;
+}
+.toast.visible { opacity:1; transform:translateX(-50%) translateY(0); }
+
+/* ═══ FOOTER ═══ */
+.footer {
+  text-align:center; padding:32px 40px 48px;
+  font-size:12px; color:var(--text-dim);
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:768px) {
+  .header, .stats-bar, .tabs-wrap, .brand-section { padding-left:20px; padding-right:20px; }
+  .campaign-grid { grid-template-columns:1fr; }
+  .campaign-cell + .campaign-cell { border-left:none; border-top:1px solid var(--border-light); }
+  .campaign-top { flex-direction:column; }
+  .prompt-cards { grid-template-columns:1fr; }
+}
+
+@media print {
+  .tabs-wrap, .toast { display:none; }
+  .campaign { break-inside:avoid; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <span class="header-badge">Performance Q3 2026</span>
+  </div>
+  <h1>Kampanie Performance — BW & DF</h1>
+  <p class="header-sub">7 kampanii lead gen · Meta + Google + LinkedIn · Image prompts dopasowane do strategii brandowej</p>
+</div>
+
+<div class="stats-bar">
+  <div class="stat stat--bw"><b>4</b> kampanie BW</div>
+  <div class="stat stat--df"><b>3</b> kampanie DF</div>
+  <div class="stat"><b>Meta</b> + <b>Google</b> + <b>LinkedIn</b></div>
+  <div class="stat"><b>21</b> promptów obrazów</div>
+</div>
+
+<div class="tabs-wrap">
+  <button class="tab-btn active--all" onclick="showAll(this)">Wszystkie (7)</button>
+  <button class="tab-btn" onclick="showBrand('bw',this)" data-brand="bw">BetterWorkplace (4)</button>
+  <button class="tab-btn" onclick="showBrand('df',this)" data-brand="df">DailyFruits (3)</button>
+</div>
+
+<div id="content"></div>
+
+<div class="footer">BetterWorkplace × DailyFruits · Performance Campaign Briefs · Q3 2026</div>
+<div class="toast" id="toast"></div>
+
+<script>
+var CAMPAIGNS = [
+  // ═══════════════════ BW ═══════════════════
+  {
+    brand: 'bw',
+    num: 1,
+    channel: 'LinkedIn Ads',
+    title: 'Decision Maker Outreach',
+    desc: 'Dotarcie do C-level i Head of Marketing w dużych organizacjach multi-lokalizacyjnych. Generowanie MQL przez content o redukcji chaosu operacyjnego.',
+    targeting: [
+      'CMO / COO / Head of Marketing / Operations Director',
+      'Firmy 50+ pracowników, multi-lokalizacyjne',
+      'Branże: fitness, wellness, retail, health, gastro',
+      'Geo: Polska + DACH (ekspansja)',
+      'Wykluczenie: freelancerzy, <10 pracowników'
+    ],
+    copy: 'Twój zespół traci 12h/tydzień na chaotyczne briefy. Jeden system to zmienia.',
+    cta: 'Pobierz case study / Umów 30-min audyt',
+    kpis: ['CPL < 80 PLN', 'CTR > 0.8%'],
+    formats: ['Single Image 1200×628', 'Document Ad (carousel PDF)', 'Message Ad'],
+    prompts: [
+      {
+        format: 'Single Image · LinkedIn Feed',
+        ratio: '1200×628',
+        prompt: 'Minimalist corporate photography, bird-eye view of a modern open-plan office with warm lighting, multiple screens showing unified dashboard with orange (#FF6921) accent highlights, people collaborating across desks, blurred background, clean DM Sans typography overlay space on the right third, neutral warm tones (#FAFAF7 background), professional business atmosphere, no text on image, shallow depth of field, editorial quality'
+      },
+      {
+        format: 'Document Ad · Cover Slide',
+        ratio: '1080×1080',
+        prompt: 'Abstract geometric pattern made of interconnected nodes and lines forming a network topology, orange (#FF6921) gradient nodes on warm off-white (#FAFAF7) background, suggesting multi-location connectivity and system architecture, clean minimalist style, subtle grid in background, corporate but modern feel, no people, vector-like clean edges, generous white space for text overlay at bottom'
+      },
+      {
+        format: 'Document Ad · Inner Slides',
+        ratio: '1080×1080',
+        prompt: 'Flat lay photography of organized workspace: tablet showing analytics dashboard with orange highlights, neat notebook, branded pen, coffee cup — everything precisely arranged on light wood desk, top-down perspective, warm studio lighting, suggests order from chaos, editorial styling, Instagram-worthy composition with plenty of negative space'
+      }
+    ]
+  },
+  {
+    brand: 'bw',
+    num: 2,
+    channel: 'Google Search',
+    title: 'Intent Capture — Workflow & Briefy',
+    desc: 'Przechwycenie wysokiego intentu od firm szukających rozwiązań na chaos procesowy w marketingu. SQL-e z dużym prawdopodobieństwem konwersji.',
+    targeting: [
+      'Keywords: "standaryzacja procesów marketingowych"',
+      '"workflow marketing wielooddziałowy"',
+      '"chaos operacyjny marketing", "system briefów"',
+      '"zarządzanie marką multi-lokalizacja"',
+      'Match types: phrase + exact, neg: "praca", "kurs"'
+    ],
+    copy: 'Koniec z chaosem w briefach — system, który skaluje. 50+ lokalizacji, jeden standard.',
+    cta: 'Bezpłatny audyt workflow',
+    kpis: ['CPL < 50 PLN', 'CVR > 4%'],
+    formats: ['Responsive Search Ads', 'Sitelink extensions', 'Dedykowany LP'],
+    prompts: [
+      {
+        format: 'Landing Page · Hero',
+        ratio: '1440×600',
+        prompt: 'Wide panoramic photo of two professionals reviewing a large screen displaying a clean project management workflow board, orange (#FF6921) accent UI elements visible on screen, modern glass-walled meeting room, warm daylight streaming in, shallow depth of field on the screen content, corporate but approachable atmosphere, warm off-white walls (#F5F3EE tones), no stock photo feel — authentic editorial quality'
+      },
+      {
+        format: 'Display Remarketing · Responsive',
+        ratio: '1200×628 / 300×250',
+        prompt: 'Split composition: left side shows chaotic scattered papers, sticky notes and tangled wires (desaturated, slightly blurred) — right side shows clean organized digital dashboard on tablet with orange (#FF6921) accents, everything neat and minimal. Visual metaphor: chaos → order. Clean dividing line between halves, warm neutral background, professional photography, no people necessary'
+      },
+      {
+        format: 'Landing Page · Social Proof Section',
+        ratio: '1440×400',
+        prompt: 'Architectural photography of a modern multi-location business HQ — glass facade showing multiple floors with warm interior lighting, evening blue hour, orange accent lighting in lobby area, suggesting scale and professional operations, ultra-clean composition, no people visible, editorial real estate photography style, warm tones'
+      }
+    ]
+  },
+  {
+    brand: 'bw',
+    num: 3,
+    channel: 'Meta Ads',
+    title: 'Lookalike + Retargeting',
+    desc: 'Nurture i konwersja odwiedzających betterguide.pl oraz LAL audiences. Social proof i case study jako główne kreacje.',
+    targeting: [
+      'Lookalike 1-3% z betterguide.pl visitors',
+      'Retargeting: 30d website, 90d engaged',
+      'Custom: uploaded client list (CRM)',
+      'Interest stack: business management, HR software',
+      'Wykluczenie: converted, competitors'
+    ],
+    copy: 'Jak [klient] zredukował 60% powtarzalnych zadań w 3 tygodnie. Zobacz system, który to umożliwił.',
+    cta: 'Zobacz jak to działa → LP z bookowaniem',
+    kpis: ['CPL < 40 PLN (retarg.)', 'CPL < 70 PLN (LAL)'],
+    formats: ['Carousel (problem→rozwiązanie→efekt)', 'Video testimonial 15s', 'Single image'],
+    prompts: [
+      {
+        format: 'Carousel · Slide 1 — Problem',
+        ratio: '1080×1080',
+        prompt: 'Overhead view of overwhelmed desk: crumpled papers, multiple phone screens with different apps, scattered sticky notes with conflicting messages, dim fluorescent lighting creating stressed atmosphere — desaturated warm tones, intentionally slightly chaotic composition, editorial documentary style, no people but suggesting human frustration through mess'
+      },
+      {
+        format: 'Carousel · Slide 2 — Rozwiązanie',
+        ratio: '1080×1080',
+        prompt: 'Clean minimal desk setup: single large monitor showing a beautifully organized kanban board with orange (#FF6921) category headers, wireless keyboard, single plant, warm morning light from window, everything in perfect alignment — warm off-white (#FAFAF7) desk surface, zen-like calm composition, editorial lifestyle photography, Apple-ad level production quality'
+      },
+      {
+        format: 'Carousel · Slide 3 — Efekt / Dane',
+        ratio: '1080×1080',
+        prompt: 'Abstract data visualization art: flowing curves and bar charts rendered as 3D orange (#FF6921) glass sculptures on warm cream background, showing upward trend, numbers floating subtly (60%, 3 weeks), artistic interpretation of business metrics, clean modernist aesthetic, generous negative space for text overlay, cinema 4D render quality'
+      },
+      {
+        format: 'Stories / Reels · Video Thumbnail',
+        ratio: '1080×1920',
+        prompt: 'Vertical format: confident business professional standing in modern office, looking directly at camera with slight smile, orange-tinted glass partition behind them reflecting organized workspace, warm natural lighting, upper body framing, authentic and approachable (not stock), blurred background with subtle orange (#FF6921) accents, editorial portrait style, space for text overlay at top and bottom thirds'
+      }
+    ]
+  },
+  {
+    brand: 'bw',
+    num: 4,
+    channel: 'Google Display + YouTube',
+    title: 'Awareness → Remarketing Funnel',
+    desc: 'Top-of-funnel awareness budujący pulę retargetingową. Custom intent + in-market audiences. YouTube bumper 6s + responsive display.',
+    targeting: [
+      'Custom Intent: "automatyzacja marketingu"',
+      '"zarządzanie siecią lokalizacji"',
+      'In-market: business services, SaaS, HR tools',
+      'Affinity: business decision makers',
+      'YouTube: skip-resistant 6s bumper + 15s'
+    ],
+    copy: 'Jedno źródło prawdy dla 50+ lokalizacji. BetterWorkplace — system, nie narzędzie.',
+    cta: 'Sprawdź BetterWorkplace',
+    kpis: ['CPM < 15 PLN', 'View rate > 25% (YT)'],
+    formats: ['Responsive Display', 'YouTube Bumper 6s', 'YouTube In-stream 15s'],
+    prompts: [
+      {
+        format: 'Display Banner · Responsive',
+        ratio: '1200×628 / 300×250 / 728×90',
+        prompt: 'Isometric illustration of interconnected office buildings (5-6 buildings) linked by glowing orange (#FF6921) data streams, each building has small dashboard icons visible through windows, warm off-white (#FAFAF7) background, clean vector-style but with subtle 3D depth, playful yet professional, suggesting multi-location network connected by single system, no people, generous margins'
+      },
+      {
+        format: 'YouTube Thumbnail · Bumper',
+        ratio: '1920×1080',
+        prompt: 'Cinematic wide shot of modern office command center: large wall-mounted screens showing real-time dashboards with orange (#FF6921) data visualizations, one person silhouetted against screens from behind, moody atmospheric lighting with warm orange accents, movie-poster composition, dramatic but professional, suggesting control and oversight of complex operations'
+      },
+      {
+        format: 'YouTube End Screen',
+        ratio: '1920×1080',
+        prompt: 'Clean minimal scene: floating 3D orange (#FF6921) geometric shapes (cubes, spheres, connecting lines) arranged in a loose network pattern on warm gradient background (cream to light peach), plenty of negative space on right side for end-screen elements and CTA button, modern tech-brand aesthetic, subtle glass material on shapes, soft studio lighting'
+      }
+    ]
+  },
+  // ═══════════════════ DF ═══════════════════
+  {
+    brand: 'df',
+    num: 1,
+    channel: 'Meta Ads',
+    title: 'Lead Gen Forms — Owoce do biura',
+    desc: 'Instant lead gen forms na Facebooku/Instagramie. Targetowanie HR i Office Managerów z prostym 3-polowym formularzem i ofertą darmowej degustacji.',
+    targeting: [
+      'Job titles: HR Manager, Office Manager, Employer Branding',
+      'Firmy 20-500 pracowników',
+      'Geo: Warszawa, Kraków, Wrocław, Poznań, Trójmiasto',
+      'Interests: employee wellbeing, corporate benefits',
+      'Wykluczenie: existing clients (CRM upload)'
+    ],
+    copy: 'Twoi ludzie zasługują na coś lepszego niż automat z batonikami. Owoce od jutra.',
+    cta: 'Zamów darmową degustację',
+    kpis: ['CPL < 25 PLN', 'Form completion > 35%'],
+    formats: ['Lead Gen Form (instant)', 'Single Image Feed', 'Stories carousel'],
+    prompts: [
+      {
+        format: 'Feed · Hero Image',
+        ratio: '1080×1080',
+        prompt: 'Stunning food photography: overflowing fruit basket with seasonal fruits (strawberries, blueberries, peaches, grapes, kiwi) on a clean white office desk, soft natural window light creating gentle shadows, a laptop and coffee cup slightly blurred in background, vibrant greens and reds contrasting with minimal office setting, editorial food styling, Kinfolk magazine aesthetic, subtle green (#22c55e) accent in a small branded element, fresh and appetizing'
+      },
+      {
+        format: 'Stories · Carousel Slide 1',
+        ratio: '1080×1920',
+        prompt: 'Vertical format: close-up of hands reaching for fresh fruits from a beautifully arranged office fruit station, diverse hands suggesting community, bright natural lighting, fruits arranged on a minimal green-accented (#22c55e) serving board, blurred happy office background with plants, lifestyle photography with warm joyful energy, shallow depth of field on the fruits, Instagram-stories optimized with clear space top and bottom'
+      },
+      {
+        format: 'Stories · Carousel Slide 2 — Social proof',
+        ratio: '1080×1920',
+        prompt: 'Vertical: modern office kitchen or breakroom with a branded DailyFruits delivery box just opened, colorful fruits spilling out onto marble counter, green (#22c55e) branded elements visible on packaging, coworkers in background smiling and pointing, candid authentic moment, warm overhead lighting, the "unboxing" moment captured perfectly, lifestyle brand photography, no posed feeling'
+      }
+    ]
+  },
+  {
+    brand: 'df',
+    num: 2,
+    channel: 'Google Search',
+    title: 'High Intent — Dostawca owoców',
+    desc: 'Przechwycenie firm aktywnie szukających dostawcy owoców do biura. Najwyższy intent w lejku — bezpośrednie SQL-e.',
+    targeting: [
+      'Keywords: "owoce do biura", "catering owocowy firma"',
+      '"dostawy owoców do firmy [miasto]"',
+      '"kosze owocowe dla pracowników"',
+      '"zdrowe przekąski biuro", "fruit box office"',
+      'Rozszerzenia: lokalizacja, cena, opinie, callout'
+    ],
+    copy: 'Świeże owoce w biurze od 3,50 PLN/os. Dostawa następnego dnia. 500+ zadowolonych firm.',
+    cta: 'Zamów próbną dostawę',
+    kpis: ['CPL < 30 PLN', 'CVR > 6%'],
+    formats: ['Responsive Search Ads', 'Dedykowany LP', 'Display remarketing'],
+    prompts: [
+      {
+        format: 'Landing Page · Above the fold',
+        ratio: '1440×700',
+        prompt: 'Wide hero shot: beautiful wooden crate of assorted fresh fruits being placed on a modern reception desk by delivery person (seen from chest down only, wearing clean branded green apron), receptionist hands reaching to accept, bright airy modern lobby with plants, natural daylight flooding in, lifestyle commercial photography, warm and welcoming, green (#22c55e) brand color in apron and subtle accents, clean and professional, not a farmers market — premium B2B service feel'
+      },
+      {
+        format: 'Display Remarketing · Banner',
+        ratio: '300×250 / 728×90',
+        prompt: 'Clean product shot on pure white background: a premium kraft paper box with green (#22c55e) ribbon, slightly open to reveal perfectly arranged colorful fruits inside, a few berries artfully scattered beside box, studio lighting with soft shadows, e-commerce product photography quality, suggests gift-like premium experience, minimal and appetizing'
+      },
+      {
+        format: 'Landing Page · Trust Section',
+        ratio: '1440×400',
+        prompt: 'Panoramic photo of a bright modern office during lunch break: group of diverse colleagues gathered around a kitchen island with fruit bowls, laughing and snacking, large windows with city view, plants everywhere, warm golden hour light, lifestyle brand photography suggesting healthy corporate culture, candid and authentic, green accents in decor, suggesting "this could be your office"'
+      }
+    ]
+  },
+  {
+    brand: 'df',
+    num: 3,
+    channel: 'LinkedIn Ads',
+    title: 'Corporate Wellness Angle',
+    desc: 'Targetowanie HR Directorów z budżetem benefitowym. Pozycjonowanie owoców jako benefit zdrowotny + mini-raport Wellbeing@Work jako lead magnet.',
+    targeting: [
+      'HR Directors, People & Culture, Wellbeing Manager',
+      'Firmy 100+ pracowników',
+      'Industries: tech, finance, consulting, pharma',
+      'Interests: employee wellbeing, employer branding',
+      'Geo: Polska, priorytet: Warszawa, Kraków'
+    ],
+    copy: '87% pracowników uważa owoce za benefit, którego brakuje. Dane z raportu Wellbeing@Work 2026.',
+    cta: 'Pobierz raport + wycenę',
+    kpis: ['CPL < 60 PLN', 'CTR > 0.7%'],
+    formats: ['Sponsored Content', 'Document Ad (mini-raport)', 'Message Ad'],
+    prompts: [
+      {
+        format: 'Sponsored Content · Feed',
+        ratio: '1200×628',
+        prompt: 'Editorial business photography: two HR professionals reviewing a wellbeing report on a tablet, one pointing at a chart showing positive trend, in a modern glass-walled office, a bowl of fresh fruit deliberately placed on the table between them, natural lighting creating professional atmosphere, green (#22c55e) subtle accent visible on tablet screen chart, authentic corporate setting, not overly staged, Harvard Business Review visual standard'
+      },
+      {
+        format: 'Document Ad · Report Cover',
+        ratio: '1080×1080',
+        prompt: 'Elegant report cover design background: abstract organic shapes (leaf silhouettes, gentle curves) in varying shades of green (#22c55e, #16a34a, #4ade80) layered with transparency on warm off-white (#FAFAF7) background, subtle dot grid pattern, modern editorial publication design, clean negative space in center for title text, premium whitepaper aesthetic, no photography — pure graphic design, suggesting health + data + professionalism'
+      },
+      {
+        format: 'Document Ad · Data Visualization Page',
+        ratio: '1080×1080',
+        prompt: 'Infographic-style illustration: circular/donut chart showing 87% in bold green (#22c55e), surrounded by small isometric illustrations of office wellness elements (fruit bowl, standing desk, water bottle, plant), warm cream background (#FAFAF7), clean flat design with subtle shadows, data-driven but friendly, presentation-slide quality, generous spacing, modern corporate infographic style'
+      }
+    ]
+  }
+];
+
+// ═══ RENDER ═══
+function render(filter) {
+  var filtered = filter ? CAMPAIGNS.filter(function(c){ return c.brand === filter; }) : CAMPAIGNS;
+  var html = '';
+  var brands = {};
+  filtered.forEach(function(c) {
+    if (!brands[c.brand]) brands[c.brand] = [];
+    brands[c.brand].push(c);
+  });
+
+  Object.keys(brands).forEach(function(brand) {
+    var label = brand === 'bw' ? 'BetterWorkplace' : 'DailyFruits';
+    var count = brands[brand].length;
+    html += '<div class="brand-section" data-brand="' + brand + '">';
+    html += '<div class="brand-header"><div class="brand-dot brand-dot--' + brand + '"></div>';
+    html += '<h2>' + label + '</h2>';
+    html += '<span class="brand-count">' + count + ' kampani' + (count === 1 ? 'a' : count < 5 ? 'e' : 'i') + '</span>';
+    html += '</div>';
+
+    brands[brand].forEach(function(c) {
+      html += '<div class="campaign">';
+      // TOP
+      html += '<div class="campaign-top">';
+      html += '<div class="campaign-num campaign-num--' + c.brand + '">' + c.num + '</div>';
+      html += '<div class="campaign-info">';
+      html += '<div class="campaign-channel campaign-channel--' + c.brand + '">' + c.channel + '</div>';
+      html += '<div class="campaign-title">' + c.title + '</div>';
+      html += '<div class="campaign-desc">' + c.desc + '</div>';
+      html += '</div>';
+      html += '<div class="campaign-kpis">';
+      c.kpis.forEach(function(k) { html += '<span class="kpi-chip">' + k + '</span>'; });
+      html += '</div></div>';
+      // GRID
+      html += '<div class="campaign-grid">';
+      // Targeting
+      html += '<div class="campaign-cell"><h4>Targeting</h4><ul>';
+      c.targeting.forEach(function(t) { html += '<li>' + t + '</li>'; });
+      html += '</ul></div>';
+      // Copy + CTA
+      html += '<div class="campaign-cell"><h4>Copy Direction</h4>';
+      html += '<p style="font-weight:600;margin-bottom:8px">"' + c.copy + '"</p>';
+      html += '<p style="font-size:12px;color:var(--text-muted);margin-bottom:4px">Formaty: ' + c.formats.join(', ') + '</p>';
+      html += '<span class="cta-tag cta-tag--' + c.brand + '">CTA: ' + c.cta + '</span>';
+      html += '</div></div>';
+      // PROMPTS
+      html += '<div class="prompts-section">';
+      html += '<h4>Prompty do obrazów <span class="ai-badge">AI Gen</span></h4>';
+      html += '<div class="prompt-cards">';
+      c.prompts.forEach(function(p, i) {
+        html += '<div class="prompt-card" onclick="copyPrompt(this, ' + CAMPAIGNS.indexOf(c) + ', ' + i + ')">';
+        html += '<div class="prompt-format">' + p.format + ' <span class="copy-hint">kliknij → kopiuj</span></div>';
+        html += '<div class="prompt-text">' + p.prompt + '</div>';
+        html += '<span class="prompt-ratio">' + p.ratio + '</span>';
+        html += '</div>';
+      });
+      html += '</div></div>';
+      html += '</div>'; // /campaign
+    });
+
+    html += '</div>'; // /brand-section
+  });
+
+  document.getElementById('content').innerHTML = html;
+}
+
+function copyPrompt(el, ci, pi) {
+  var text = CAMPAIGNS[ci].prompts[pi].prompt;
+  navigator.clipboard.writeText(text).then(function() {
+    el.classList.add('copied');
+    showToast('Prompt skopiowany');
+    setTimeout(function(){ el.classList.remove('copied'); }, 1500);
+  });
+}
+
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('visible');
+  setTimeout(function(){ t.classList.remove('visible'); }, 2500);
+}
+
+function showAll(btn) {
+  document.querySelectorAll('.tab-btn').forEach(function(b){ b.className = 'tab-btn'; });
+  btn.classList.add('active--all');
+  render(null);
+}
+
+function showBrand(brand, btn) {
+  document.querySelectorAll('.tab-btn').forEach(function(b){ b.className = 'tab-btn'; });
+  btn.classList.add('active--' + brand);
+  render(brand);
+}
+
+// Init
+render(null);
+</script>
+</body>
+</html>

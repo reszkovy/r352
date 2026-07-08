@@ -42,50 +42,13 @@ body {
   line-height:1.65; -webkit-font-smoothing:antialiased;
 }
 
-/* ══ PASSWORD ══ */
-#pw-screen {
-  display:flex; align-items:center; justify-content:center;
-  flex-direction:column; gap:24px;
-  width:100%; min-height:100vh; background:var(--bg);
-}
-#pw-screen.hidden { display:none; }
-#pw-box {
-  background:var(--card); border:1px solid var(--border);
-  border-radius:16px; padding:52px 44px 44px;
-  text-align:center; max-width:400px; width:90%;
-  box-shadow:0 4px 24px rgba(0,0,0,0.04);
-}
-#pw-box .pw-icon { font-size:36px; margin-bottom:20px; display:inline-block; }
-#pw-box .pw-logo { max-width:220px; height:auto; margin-bottom:20px; }
-#pw-box h2 { font-size:12px; font-weight:500; letter-spacing:1px; text-transform:uppercase; color:var(--text-muted); margin-bottom:20px; }
-#pw-box p { font-size:13px; color:var(--text-muted); margin-bottom:28px; line-height:1.6; }
-#pw-input {
-  width:100%; padding:13px 18px; border-radius:10px;
-  border:1px solid var(--border); background:var(--bg-warm);
-  color:var(--text); font-family:inherit; font-size:14px;
-  outline:none; transition:border-color .2s, box-shadow .2s;
-}
-#pw-input:focus { border-color:#22c55e; box-shadow:0 0 0 3px rgba(34,197,94,0.1); }
-#pw-input.pw-error { border-color:#ef4444; animation:shake .4s ease; }
-#pw-input::placeholder { color:var(--text-dim); }
-#pw-btn {
-  margin-top:14px; width:100%; padding:13px;
-  background:#2A2A2A; color:#FFFFFF; border:none;
-  border-radius:10px; font-family:inherit; font-size:14px;
-  font-weight:600; cursor:pointer; transition:all .2s ease;
-}
-#pw-btn:hover { background:#1a1a1a; transform:translateY(-1px); box-shadow:0 4px 12px rgba(0,0,0,0.15); }
-#pw-error-msg { font-size:12px; color:#ef4444; margin-top:12px; min-height:16px; }
-@keyframes shake { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-6px)} 40%,80%{transform:translateX(6px)} }
-
 /* ══ MAIN ══ */
 #main {
-  display:none; flex-direction:column; align-items:flex-start;
+  display:flex; flex-direction:column; align-items:flex-start;
   width:100%; min-height:100vh;
   padding:48px 40px 64px;
   max-width:1200px; margin:0 auto;
 }
-#main.visible { display:flex; }
 
 .top-nav {
   font-size:12px; font-weight:500; color:var(--text-dim);
@@ -236,20 +199,6 @@ body {
 </head>
 <body>
 
-<!-- ══ PASSWORD ══ -->
-<div id="pw-screen">
-  <div id="pw-box">
-    <img class="pw-logo" src="betterguide_logo.svg" alt="betterguide">
-    <h2>Przewodnik po ekosystemie</h2>
-    <p>Strategie, brand guide'y, design systemy i dokumentacja marek BetterWorkplace. Dostęp wymaga hasła.</p>
-    <form onsubmit="return checkPw()">
-      <input type="password" id="pw-input" placeholder="Hasło dostępu" autocomplete="off" autofocus>
-      <button type="submit" id="pw-btn">Odblokuj</button>
-    </form>
-    <div id="pw-error-msg"></div>
-  </div>
-</div>
-
 <!-- ══ MAIN ══ -->
 <div id="main">
 
@@ -309,30 +258,6 @@ body {
 <div class="tooltip" id="tip"></div>
 
 <script>
-/* ── Password ── */
-function checkPw() {
-  var input = document.getElementById('pw-input');
-  var hash = 0, str = input.value;
-  for (var i = 0; i < str.length; i++) {
-    hash = ((hash << 5) - hash) + str.charCodeAt(i);
-    hash |= 0;
-  }
-  if (hash === -1422286391) {
-    document.getElementById('pw-screen').classList.add('hidden');
-    document.getElementById('main').classList.add('visible');
-    sessionStorage.setItem('bw_auth', '1');
-    return false;
-  }
-  input.classList.add('pw-error');
-  document.getElementById('pw-error-msg').textContent = 'Nieprawidłowe hasło. Spróbuj ponownie.';
-  setTimeout(function(){ input.classList.remove('pw-error'); }, 400);
-  return false;
-}
-if (sessionStorage.getItem('bw_auth') === '1') {
-  document.getElementById('pw-screen').classList.add('hidden');
-  document.getElementById('main').classList.add('visible');
-}
-
 /* ── Data ── */
 var COLS = ['strategia','branding','ds','www','voice','seo','perfo','social'];
 var COL_LABELS = {

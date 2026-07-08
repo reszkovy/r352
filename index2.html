@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>betterguide — Przewodnik po ekosystemie BetterWorkplace</title>
+<link rel="icon" type="image/svg+xml" href="betterguide_logo.svg">
+<meta property="og:title" content="betterguide — BetterWorkplace Ecosystem">
+<meta property="og:description" content="Strategie, brand guide'y, design systemy i dokumentacja marek BetterWorkplace.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFAF7;
+  --bg-warm: #F5F3EE;
+  --card: #FFFFFF;
+  --border: #E8E4DE;
+  --border-light: #F0EDE8;
+  --shadow: rgba(0,0,0,0.05);
+  --shadow-hover: rgba(0,0,0,0.1);
+  --text: #2A2A2A;
+  --text-secondary: #555555;
+  --text-muted: #888888;
+  --text-dim: #B0A99F;
+  --accent-bw: #FF6921;
+  --accent-bw-bg: #FFF6F0;
+  --accent-bw-light: rgba(255,105,33,0.07);
+  --accent-df: #22c55e;
+  --accent-df-bg: #F2FAF5;
+  --accent-df-light: rgba(34,197,94,0.07);
+  --accent-tb: #4375FF;
+  --accent-tb-bg: #F2F5FF;
+  --accent-tb-light: rgba(67,117,255,0.07);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { height:100%; }
+body {
+  font-family:'DM Sans',system-ui,-apple-system,sans-serif;
+  background:var(--bg); color:var(--text);
+  line-height:1.65; -webkit-font-smoothing:antialiased;
+}
+
+/* ══════════════════════ PASSWORD ══════════════════════ */
+#pw-screen {
+  display:flex; align-items:center; justify-content:center;
+  flex-direction:column; gap:24px;
+  width:100%; min-height:100vh; background:var(--bg);
+}
+#pw-screen.hidden { display:none; }
+#pw-box {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:16px; padding:52px 44px 44px;
+  text-align:center; max-width:400px; width:90%;
+  box-shadow:0 4px 24px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.03);
+}
+#pw-box .pw-logo { max-width:220px; height:auto; margin-bottom:20px; }
+#pw-box h2 {
+  font-size:12px; font-weight:500; letter-spacing:1px;
+  text-transform:uppercase; color:var(--text-dim); margin-bottom:20px;
+}
+#pw-box p { font-size:13px; color:var(--text-muted); margin-bottom:28px; line-height:1.6; }
+#pw-input {
+  width:100%; padding:13px 18px; border-radius:10px;
+  border:1px solid var(--border); background:var(--bg-warm);
+  color:var(--text); font-family:inherit; font-size:14px;
+  outline:none; transition:border-color .2s, box-shadow .2s;
+}
+#pw-input:focus { border-color:#22c55e; box-shadow:0 0 0 3px rgba(34,197,94,0.1); }
+#pw-input.pw-error { border-color:#ef4444; animation:shake .4s ease; }
+#pw-input::placeholder { color:var(--text-dim); }
+#pw-btn {
+  margin-top:14px; width:100%; padding:13px;
+  background:#2A2A2A; color:#FFFFFF; border:none;
+  border-radius:10px; font-family:inherit; font-size:14px;
+  font-weight:600; cursor:pointer; transition:all .2s ease;
+}
+#pw-btn:hover { background:#1a1a1a; transform:translateY(-1px); box-shadow:0 4px 12px rgba(0,0,0,0.15); }
+#pw-error-msg { font-size:12px; color:#ef4444; margin-top:12px; min-height:16px; }
+@keyframes shake {
+  0%,100% { transform:translateX(0); }
+  20%,60% { transform:translateX(-6px); }
+  40%,80% { transform:translateX(6px); }
+}
+
+/* ══════════════════════ HUB ══════════════════════ */
+#hub {
+  display:none; flex-direction:column; align-items:flex-start;
+  width:100%; min-height:100vh;
+  padding:48px 40px 120px;
+  max-width:1100px; margin:0 auto;
+}
+#hub.visible { display:flex; }
+.hub-logo { height:36px; margin-bottom:14px; }
+.hub-sub { font-size:14px; color:var(--text-muted); margin-bottom:16px; line-height:1.6; }
+
+/* ── Stats bar ── */
+.stats-bar { display:flex; gap:10px; width:100%; margin-bottom:20px; flex-wrap:wrap; }
+.stat-chip {
+  display:flex; align-items:center; gap:6px;
+  padding:6px 14px; border-radius:8px;
+  background:var(--bg-warm); border:1px solid var(--border-light);
+  font-size:12px; color:var(--text-muted); font-weight:500;
+}
+.stat-chip .stat-num { font-weight:700; color:var(--text); font-size:13px; }
+.stat-chip--live .stat-num { color:#16a34a; }
+.stat-chip--wip .stat-num { color:#f59e0b; }
+.stat-chip--feedback .stat-num { color:#ef4444; }
+
+/* ── Search ── */
+.search-wrap { width:100%; position:relative; margin-bottom:12px; }
+.search-input {
+  width:100%; padding:12px 18px 12px 42px; border-radius:12px;
+  border:1px solid var(--border); background:var(--card);
+  color:var(--text); font-family:inherit; font-size:14px;
+  outline:none; transition:all .2s;
+}
+.search-input:focus { border-color:#22c55e; box-shadow:0 0 0 3px rgba(34,197,94,0.08); }
+.search-input::placeholder { color:var(--text-dim); }
+.search-icon {
+  position:absolute; left:14px; top:50%; transform:translateY(-50%);
+  font-size:16px; color:var(--text-dim); pointer-events:none;
+}
+.search-shortcut {
+  position:absolute; right:14px; top:50%; transform:translateY(-50%);
+  font-size:10px; color:var(--text-dim); background:var(--bg-warm);
+  padding:2px 7px; border-radius:4px; border:1px solid var(--border-light);
+  font-weight:600; pointer-events:none;
+}
+.search-clear {
+  position:absolute; right:14px; top:50%; transform:translateY(-50%);
+  font-size:16px; color:var(--text-muted); background:none; border:none;
+  cursor:pointer; display:none; font-family:inherit;
+}
+
+/* ── Filters ── */
+.filter-bar { display:flex; gap:6px; width:100%; margin-bottom:20px; flex-wrap:wrap; }
+.filter-chip {
+  padding:5px 14px; border-radius:100px;
+  border:1px solid var(--border); background:var(--card);
+  font-size:12px; font-weight:500; color:var(--text-muted);
+  cursor:pointer; transition:all .2s; font-family:inherit;
+}
+.filter-chip:hover { border-color:var(--text-dim); color:var(--text-secondary); }
+.filter-chip.active { background:var(--text); color:#fff; border-color:var(--text); }
+
+/* ── Pinned ── */
+.pinned-section { width:100%; margin-bottom:20px; display:none; }
+.pinned-section.has-pins { display:block; }
+.pinned-label {
+  font-size:10px; font-weight:600; letter-spacing:2px;
+  text-transform:uppercase; color:var(--text-dim);
+  margin-bottom:10px; display:flex; align-items:center; gap:6px;
+}
+.pinned-grid { display:flex; gap:10px; flex-wrap:wrap; }
+.pinned-chip {
+  display:flex; align-items:center; gap:6px;
+  padding:8px 14px; border-radius:8px;
+  background:var(--card); border:1px solid var(--border-light);
+  font-size:12px; font-weight:500; color:var(--text);
+  text-decoration:none; transition:all .2s; cursor:pointer;
+}
+.pinned-chip:hover { border-color:var(--border); box-shadow:0 2px 8px var(--shadow); }
+.pinned-chip .pin-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+.pinned-chip .pin-remove {
+  font-size:11px; color:var(--text-dim); cursor:pointer;
+  margin-left:2px; background:none; border:none; font-family:inherit;
+}
+.pinned-chip .pin-remove:hover { color:var(--text); }
+
+/* ── Recently viewed ── */
+.recent-section { width:100%; margin-bottom:20px; display:none; }
+.recent-section.has-recent { display:block; }
+.recent-grid { display:flex; gap:8px; flex-wrap:wrap; }
+.recent-chip {
+  display:flex; align-items:center; gap:5px;
+  padding:6px 12px; border-radius:6px;
+  background:var(--bg-warm); border:1px solid var(--border-light);
+  font-size:11px; font-weight:500; color:var(--text-secondary);
+  text-decoration:none; transition:all .2s;
+}
+.recent-chip:hover { background:var(--card); border-color:var(--border); }
+.recent-chip .rc-dot { width:5px; height:5px; border-radius:50%; flex-shrink:0; opacity:0.6; }
+.recent-chip .rc-time { font-size:10px; color:var(--text-dim); margin-left:4px; }
+
+/* ── Changelog ── */
+.changelog-bar { width:100%; margin-bottom:20px; display:none; }
+.changelog-bar.has-news { display:block; }
+.changelog-toggle {
+  display:flex; align-items:center; gap:8px;
+  padding:10px 16px; border-radius:10px;
+  background:rgba(34,197,94,0.06); border:1px solid rgba(34,197,94,0.15);
+  cursor:pointer; width:100%; font-family:inherit;
+  font-size:13px; font-weight:500; color:#16a34a; transition:all .2s;
+}
+.changelog-toggle:hover { background:rgba(34,197,94,0.1); }
+.changelog-toggle .cl-badge {
+  background:#16a34a; color:#fff; font-size:10px; font-weight:700;
+  padding:2px 8px; border-radius:100px;
+}
+.changelog-toggle .cl-arrow { margin-left:auto; transition:transform .2s; }
+.changelog-toggle.open .cl-arrow { transform:rotate(180deg); }
+.changelog-list { max-height:0; overflow:hidden; transition:max-height .3s ease; }
+.changelog-list.open { max-height:400px; }
+.changelog-item {
+  display:flex; gap:10px; padding:10px 16px;
+  font-size:12px; color:var(--text-secondary); line-height:1.5;
+  border-bottom:1px solid var(--border-light);
+}
+.changelog-item:last-child { border-bottom:none; }
+.changelog-date { font-size:11px; color:var(--text-dim); font-weight:500; flex-shrink:0; width:70px; }
+
+/* ── Hero ── */
+.hub-hero-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; width:100%; margin-top:8px; }
+.hub-hero-card {
+  display:flex; align-items:center; justify-content:space-between;
+  width:100%; padding:28px 30px;
+  border-radius:16px; text-decoration:none; color:#fff;
+  transition:all .3s ease; position:relative; overflow:hidden;
+}
+.hub-hero-card:hover { transform:translateY(-2px); box-shadow:0 16px 48px rgba(0,0,0,0.2); }
+.hub-hero-card .hero-eyebrow {
+  font-size:10px; font-weight:700; letter-spacing:2.5px;
+  text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:10px;
+}
+.hub-hero-card .hero-title { font-size:18px; font-weight:800; letter-spacing:-0.4px; margin-bottom:6px; }
+.hub-hero-card .hero-desc { font-size:12px; color:rgba(255,255,255,0.55); line-height:1.55; max-width:560px; }
+.hub-hero-card .hero-arrow {
+  font-size:26px; font-weight:300; opacity:0.4;
+  transition:all .25s; flex-shrink:0; margin-left:20px;
+}
+.hub-hero-card:hover .hero-arrow { opacity:1; transform:translateX(4px); }
+
+/* ── Sections ── */
+.hub-section { width:100%; margin-top:32px; padding:28px 28px 24px; border-radius:16px; position:relative; transition:all .3s; }
+.hub-section[data-accent="bw"] { background:var(--accent-bw-bg); }
+.hub-section[data-accent="df"] { background:var(--accent-df-bg); }
+.hub-section[data-accent="tb"] { background:var(--accent-tb-bg); }
+.hub-section.collapsed { padding-bottom:28px; }
+.hub-section.collapsed .hub-grid { display:none; }
+.hub-section.collapsed .section-social { display:none; }
+
+.hub-section-header {
+  display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;
+  cursor:pointer; user-select:none;
+}
+.hub-section.collapsed .hub-section-header { margin-bottom:0; }
+.hub-section-label {
+  font-size:11px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; display:flex; align-items:center; gap:12px; flex:1;
+}
+.hub-section[data-accent="bw"] .hub-section-label { color:var(--accent-bw); }
+.hub-section[data-accent="df"] .hub-section-label { color:var(--accent-df); }
+.hub-section[data-accent="tb"] .hub-section-label { color:var(--accent-tb); }
+.hub-section-label::after { content:''; flex:1; height:1px; }
+.hub-section[data-accent="bw"] .hub-section-label::after { background:rgba(255,105,33,0.15); }
+.hub-section[data-accent="df"] .hub-section-label::after { background:rgba(34,197,94,0.15); }
+.hub-section[data-accent="tb"] .hub-section-label::after { background:rgba(67,117,255,0.15); }
+
+.section-collapse-btn {
+  background:none; border:none; cursor:pointer; font-size:14px;
+  color:var(--text-dim); padding:4px 8px; border-radius:6px;
+  transition:all .2s; font-family:inherit; display:flex; align-items:center; gap:6px;
+  font-size:10px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+}
+.section-collapse-btn:hover { background:rgba(0,0,0,0.05); color:var(--text-secondary); }
+.section-collapse-btn .collapse-icon { font-size:14px; transition:transform .2s; }
+.hub-section.collapsed .collapse-icon { transform:rotate(-90deg); }
+
+.section-card-count {
+  font-size:10px; font-weight:600; color:var(--text-dim);
+  padding:2px 8px; border-radius:100px; background:rgba(0,0,0,0.04);
+  margin-left:8px;
+}
+
+/* ── Social chips ── */
+.section-social { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:4px; }
+.social-chip {
+  display:inline-flex; align-items:center; gap:4px;
+  font-size:10px; font-weight:600; color:var(--text-muted);
+  padding:3px 10px; border-radius:100px;
+  background:rgba(0,0,0,0.04); text-decoration:none;
+  transition:all .2s; border:1px solid transparent;
+}
+.social-chip:hover { background:rgba(0,0,0,0.08); border-color:var(--border); color:var(--text-secondary); }
+
+/* ── Grid ── */
+.hub-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; width:100%; }
+
+/* ── Cards ── */
+.hub-card {
+  background:var(--card); border:1px solid var(--border-light);
+  border-radius:12px; padding:22px 24px 20px;
+  text-decoration:none; color:var(--text);
+  transition:all .25s ease; position:relative; overflow:hidden;
+  cursor:pointer; display:flex; flex-direction:column;
+  box-shadow:0 1px 4px var(--shadow);
+  border-left:3px solid transparent;
+}
+.hub-section[data-accent="bw"] .hub-card { border-left-color:var(--accent-bw); }
+.hub-section[data-accent="df"] .hub-card { border-left-color:var(--accent-df); }
+.hub-section[data-accent="tb"] .hub-card { border-left-color:var(--accent-tb); }
+.hub-card:hover {
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px var(--shadow-hover), 0 2px 8px var(--shadow);
+}
+.hub-card:hover .hub-card-arrow { opacity:1; transform:translateX(0); }
+.hub-card:hover .hub-card-pin { opacity:1; }
+.hub-card.focused { outline:2px solid var(--accent-df); outline-offset:2px; }
+.hub-card.deep-link-highlight {
+  animation:highlightPulse 2s ease;
+}
+@keyframes highlightPulse {
+  0% { box-shadow:0 0 0 4px rgba(34,197,94,0.4); }
+  100% { box-shadow:0 1px 4px var(--shadow); }
+}
+
+.hub-card-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
+.hub-card-badge {
+  font-size:9px; font-weight:700; letter-spacing:1.5px;
+  text-transform:uppercase; display:inline-block;
+  padding:3px 8px; border-radius:4px;
+}
+.hub-section[data-accent="bw"] .hub-card-badge { color:var(--accent-bw); background:var(--accent-bw-light); }
+.hub-section[data-accent="df"] .hub-card-badge { color:var(--accent-df); background:var(--accent-df-light); }
+.hub-section[data-accent="tb"] .hub-card-badge { color:var(--accent-tb); background:var(--accent-tb-light); }
+
+.hub-card-actions { display:flex; gap:4px; align-items:center; }
+.hub-card-pin {
+  background:none; border:none; cursor:pointer;
+  font-size:14px; color:var(--text-dim);
+  opacity:0; transition:all .2s; padding:2px;
+}
+.hub-card-pin.pinned { opacity:1; color:#f59e0b; }
+.hub-card-pin:hover { color:#f59e0b; }
+.hub-card-share {
+  background:none; border:none; cursor:pointer;
+  font-size:12px; color:var(--text-dim);
+  opacity:0; transition:all .2s; padding:2px;
+}
+.hub-card:hover .hub-card-share { opacity:1; }
+.hub-card-share:hover { color:var(--text-secondary); }
+.hub-card-share.copied { color:#16a34a; }
+
+.hub-card-title { font-size:15px; font-weight:700; letter-spacing:-0.2px; margin-bottom:8px; line-height:1.35; }
+.hub-card-desc { font-size:12px; color:var(--text-secondary); line-height:1.6; margin-bottom:12px; flex:1; }
+.hub-card-footer { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.hub-card-meta { font-size:10px; color:var(--text-dim); line-height:1.4; font-weight:500; }
+.hub-card-date { font-size:10px; color:var(--text-dim); font-weight:500; white-space:nowrap; }
+.hub-card-arrow {
+  position:absolute; top:22px; right:20px; font-size:16px;
+  opacity:0; transform:translateX(-4px); transition:all .25s ease;
+}
+.hub-section[data-accent="bw"] .hub-card-arrow { color:var(--accent-bw); }
+.hub-section[data-accent="df"] .hub-card-arrow { color:var(--accent-df); }
+.hub-section[data-accent="tb"] .hub-card-arrow { color:var(--accent-tb); }
+
+.hub-card-ddl {
+  display:inline-block; font-size:9px; font-weight:700;
+  letter-spacing:1px; text-transform:uppercase;
+  color:#fff; padding:3px 9px; border-radius:100px;
+  margin-left:6px; vertical-align:middle; line-height:1.3;
+}
+.hub-card-ddl--wip { background:#f59e0b; }
+.hub-card-ddl--feedback { background:#ef4444; }
+.hub-card-ddl--new { background:#16a34a; }
+
+.hub-card-tags { display:flex; gap:4px; flex-wrap:wrap; margin-top:6px; }
+.hub-card-tag {
+  font-size:9px; font-weight:600; color:var(--text-dim);
+  padding:2px 6px; border-radius:3px; background:rgba(0,0,0,0.03);
+}
+
+.hub-card-links { display:flex; gap:8px; margin-top:4px; }
+.hub-card-link {
+  display:inline-flex; align-items:center; gap:4px;
+  font-size:11px; font-weight:600; color:var(--accent-tb);
+  text-decoration:none; padding:5px 12px; border-radius:6px;
+  background:rgba(67,117,255,0.08); transition:all .2s ease;
+}
+.hub-card-link:hover { background:rgba(67,117,255,0.16); }
+
+mark { background:rgba(34,197,94,0.2); color:inherit; border-radius:2px; padding:0 1px; }
+
+/* ── Resources ── */
+.hub-resources { width:100%; margin-top:36px; padding-top:20px; border-top:1px solid var(--border-light); }
+.hub-resources-label {
+  font-size:10px; font-weight:600; letter-spacing:2px;
+  text-transform:uppercase; color:var(--text-dim); margin-bottom:10px;
+}
+.hub-resources-list { display:flex; flex-direction:column; gap:6px; }
+.hub-res-link {
+  display:flex; align-items:center; gap:10px;
+  padding:10px 14px; background:var(--bg-warm);
+  border:1px solid var(--border-light); border-radius:8px;
+  text-decoration:none; color:var(--text);
+  font-size:13px; font-weight:500; transition:all .2s ease;
+}
+.hub-res-link:hover { background:var(--card); border-color:var(--border); box-shadow:0 2px 8px var(--shadow); }
+.hub-res-tag {
+  font-size:9px; font-weight:700; letter-spacing:1px; text-transform:uppercase;
+  color:var(--text-muted); background:rgba(0,0,0,0.04);
+  padding:2px 7px; border-radius:4px; flex-shrink:0;
+}
+.hub-res-arrow {
+  margin-left:auto; color:var(--text-dim); font-size:13px;
+  opacity:0; transform:translateX(-4px); transition:all .2s ease;
+}
+.hub-res-link:hover .hub-res-arrow { opacity:1; transform:translateX(0); }
+
+.hub-footer {
+  margin-top:48px; font-size:11px; color:var(--text-dim);
+  line-height:1.7; width:100%; text-align:center;
+  padding-top:24px; border-top:1px solid var(--border-light);
+}
+
+.no-results { width:100%; padding:48px 20px; text-align:center; color:var(--text-dim); font-size:14px; display:none; }
+.no-results.visible { display:block; }
+
+/* ═══════════════════ CHAT MODULE ═══════════════════ */
+.chat-fab {
+  position:fixed; bottom:24px; right:24px; z-index:90;
+  display:flex; align-items:center; gap:8px;
+  padding:14px 22px; border-radius:100px;
+  background:#2A2A2A; color:#fff; border:none;
+  font-family:inherit; font-size:13px; font-weight:600;
+  cursor:pointer; transition:all .3s ease;
+  box-shadow:0 4px 20px rgba(0,0,0,0.2), 0 2px 8px rgba(0,0,0,0.1);
+}
+.chat-fab:hover { transform:translateY(-2px); box-shadow:0 8px 32px rgba(0,0,0,0.25); background:#1a1a1a; }
+.chat-fab .fab-pulse {
+  width:8px; height:8px; border-radius:50%; background:#22c55e;
+  animation:fabPulse 2s ease-in-out infinite;
+}
+@keyframes fabPulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50% { opacity:0.5; transform:scale(1.3); }
+}
+.chat-fab.hidden { display:none; }
+
+.chat-panel {
+  position:fixed; bottom:0; right:24px; z-index:100;
+  width:420px; height:0; max-height:65vh;
+  background:var(--card); border:1px solid var(--border);
+  border-bottom:none; border-radius:16px 16px 0 0;
+  box-shadow:0 -4px 32px rgba(0,0,0,0.1), 0 -1px 4px rgba(0,0,0,0.04);
+  display:flex; flex-direction:column;
+  overflow:hidden; transition:height .35s cubic-bezier(.4,0,.2,1);
+  opacity:0; pointer-events:none;
+}
+.chat-panel.open {
+  height:520px; opacity:1; pointer-events:auto;
+}
+
+.chat-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 18px; border-bottom:1px solid var(--border-light);
+  flex-shrink:0; cursor:default;
+}
+.chat-header-left { display:flex; align-items:center; gap:8px; }
+.chat-header-icon { font-size:16px; }
+.chat-header-title { font-size:13px; font-weight:700; color:var(--text); letter-spacing:-0.2px; }
+.chat-header-badge {
+  font-size:9px; font-weight:600; color:var(--text-dim);
+  background:var(--bg-warm); padding:2px 7px; border-radius:4px;
+}
+.chat-header-right { display:flex; gap:4px; }
+.chat-hdr-btn {
+  background:none; border:none; cursor:pointer;
+  font-size:14px; color:var(--text-dim); padding:4px 8px;
+  border-radius:6px; transition:all .2s; font-family:inherit;
+  display:flex; align-items:center; justify-content:center;
+}
+.chat-hdr-btn:hover { background:var(--bg-warm); color:var(--text); }
+
+.chat-ctx-bar {
+  display:flex; gap:4px; padding:10px 18px 8px;
+  border-bottom:1px solid var(--border-light); flex-shrink:0;
+}
+.chat-ctx-chip {
+  padding:4px 12px; border-radius:100px;
+  border:1px solid var(--border-light); background:var(--bg-warm);
+  font-size:11px; font-weight:600; color:var(--text-muted);
+  cursor:pointer; transition:all .2s; font-family:inherit;
+}
+.chat-ctx-chip:hover { border-color:var(--border); color:var(--text-secondary); }
+.chat-ctx-chip.active { background:var(--text); color:#fff; border-color:var(--text); }
+.chat-ctx-chip[data-ctx="bw"].active { background:var(--accent-bw); border-color:var(--accent-bw); }
+.chat-ctx-chip[data-ctx="df"].active { background:var(--accent-df); border-color:var(--accent-df); }
+.chat-ctx-chip[data-ctx="tb"].active { background:var(--accent-tb); border-color:var(--accent-tb); }
+
+.chat-messages {
+  flex:1; overflow-y:auto; padding:16px 18px;
+  display:flex; flex-direction:column; gap:12px;
+  scroll-behavior:smooth;
+}
+.chat-messages::-webkit-scrollbar { width:4px; }
+.chat-messages::-webkit-scrollbar-thumb { background:var(--border); border-radius:4px; }
+
+.chat-welcome-text {
+  font-size:13px; color:var(--text-secondary); line-height:1.6;
+  padding:12px 16px; background:var(--bg-warm); border-radius:12px;
+  border:1px solid var(--border-light);
+}
+.chat-suggestions {
+  display:flex; flex-wrap:wrap; gap:6px; margin-top:12px;
+}
+.chat-sug-btn {
+  padding:6px 14px; border-radius:8px;
+  border:1px solid var(--border); background:var(--card);
+  font-size:11px; font-weight:500; color:var(--text-secondary);
+  cursor:pointer; transition:all .2s; font-family:inherit;
+  text-align:left; line-height:1.4;
+}
+.chat-sug-btn:hover { border-color:var(--accent-df); color:var(--accent-df); background:var(--accent-df-light); }
+
+.chat-msg {
+  max-width:88%; padding:10px 14px; border-radius:12px;
+  font-size:13px; line-height:1.6; animation:msgIn .25s ease;
+}
+@keyframes msgIn {
+  from { opacity:0; transform:translateY(8px); }
+  to { opacity:1; transform:translateY(0); }
+}
+.chat-msg--user {
+  align-self:flex-end; background:var(--text); color:#fff;
+  border-bottom-right-radius:4px;
+}
+.chat-msg--ai {
+  align-self:flex-start; background:var(--bg-warm);
+  border:1px solid var(--border-light); color:var(--text);
+  border-bottom-left-radius:4px;
+}
+.chat-msg--ai strong { font-weight:700; }
+.chat-msg--ai code { font-size:12px; background:rgba(0,0,0,0.06); padding:1px 4px; border-radius:3px; font-family:monospace; }
+.chat-msg--ai a { color:var(--accent-tb); text-decoration:none; font-weight:600; }
+.chat-msg--ai a:hover { text-decoration:underline; }
+.chat-msg--error {
+  align-self:center; background:rgba(239,68,68,0.08);
+  border:1px solid rgba(239,68,68,0.2); color:#dc2626;
+  font-size:12px; padding:8px 14px; border-radius:8px;
+}
+
+.chat-typing {
+  align-self:flex-start; display:none; padding:10px 18px;
+  background:var(--bg-warm); border:1px solid var(--border-light);
+  border-radius:12px; border-bottom-left-radius:4px;
+}
+.chat-typing.visible { display:flex; gap:4px; align-items:center; }
+.chat-typing span {
+  width:6px; height:6px; border-radius:50%; background:var(--text-dim);
+  animation:typDot 1.4s ease-in-out infinite;
+}
+.chat-typing span:nth-child(2) { animation-delay:.2s; }
+.chat-typing span:nth-child(3) { animation-delay:.4s; }
+@keyframes typDot {
+  0%,60%,100% { opacity:.3; transform:scale(.8); }
+  30% { opacity:1; transform:scale(1.1); }
+}
+
+.chat-input-bar {
+  display:flex; gap:8px; padding:12px 14px; border-top:1px solid var(--border-light);
+  flex-shrink:0; background:var(--card);
+}
+.chat-input {
+  flex:1; padding:10px 14px; border-radius:10px;
+  border:1px solid var(--border); background:var(--bg);
+  color:var(--text); font-family:inherit; font-size:13px;
+  outline:none; transition:border-color .2s;
+}
+.chat-input:focus { border-color:var(--accent-df); }
+.chat-input::placeholder { color:var(--text-dim); }
+.chat-send {
+  width:38px; height:38px; border-radius:10px;
+  background:var(--text); color:#fff; border:none;
+  cursor:pointer; transition:all .2s; display:flex;
+  align-items:center; justify-content:center; flex-shrink:0;
+}
+.chat-send:hover { background:#1a1a1a; transform:scale(1.05); }
+.chat-send:disabled { opacity:0.4; cursor:not-allowed; transform:none; }
+
+/* ── Toast ── */
+.toast {
+  position:fixed; bottom:80px; left:50%; transform:translateX(-50%) translateY(20px);
+  background:var(--text); color:#fff; font-size:12px; font-weight:500;
+  padding:8px 16px; border-radius:8px; opacity:0; transition:all .3s ease;
+  z-index:200; pointer-events:none;
+}
+.toast.visible { opacity:1; transform:translateX(-50%) translateY(0); }
+
+/* ═══════════════════ RESPONSIVE ═══════════════════ */
+@media (max-width:800px) {
+  #hub { padding:28px 20px 120px; }
+  .hub-hero-grid { grid-template-columns:1fr 1fr 1fr; }
+  .hub-grid { grid-template-columns:1fr 1fr; }
+  .hub-section { padding:22px 20px 20px; margin-top:28px; }
+  .hub-hero-card { padding:22px 24px; }
+  .hub-hero-card .hero-title { font-size:16px; }
+  .chat-panel { width:100%; right:0; border-radius:16px 16px 0 0; max-height:70vh; }
+  .chat-fab { right:16px; bottom:16px; }
+}
+@media (max-width:500px) {
+  .hub-hero-grid { grid-template-columns:1fr 1fr; }
+  .hub-grid { grid-template-columns:1fr; }
+  .hub-section { padding:18px 16px 16px; margin-top:24px; }
+  .hub-hero-card { flex-direction:column; align-items:flex-start; }
+  .hub-hero-card .hero-arrow { margin:12px 0 0; }
+  .stats-bar { flex-wrap:wrap; }
+  .chat-panel.open { height:75vh; }
+}
+
+/* ═══════════════════ PRINT ═══════════════════ */
+@media print {
+  #pw-screen, .chat-fab, .chat-panel, .search-wrap, .filter-bar,
+  .changelog-bar, .pinned-section, .recent-section, .toast,
+  .hub-card-pin, .hub-card-share, .section-collapse-btn { display:none !important; }
+  #hub { padding:20px; max-width:100%; }
+  .hub-section { break-inside:avoid; page-break-inside:avoid; }
+  .hub-card { box-shadow:none; border:1px solid #ddd; }
+  .hub-hero-card { color:#333 !important; background:#f5f5f5 !important; }
+  .hub-hero-card .hero-desc, .hub-hero-card .hero-eyebrow { color:#666 !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════ PASSWORD ══════════════════════ -->
+<div id="pw-screen">
+  <div id="pw-box">
+    <img class="pw-logo" src="betterguide_logo.svg" alt="betterguide">
+    <h2>Przewodnik po ekosystemie</h2>
+    <p>Strategie, brand guide'y, design systemy i dokumentacja marek BetterWorkplace. Dostęp wymaga hasła.</p>
+    <form onsubmit="return checkPw()">
+      <input type="password" id="pw-input" placeholder="Hasło dostępu" autocomplete="off" autofocus>
+      <button type="submit" id="pw-btn">Odblokuj</button>
+    </form>
+    <div id="pw-error-msg"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════ HUB ══════════════════════ -->
+<div id="hub">
+  <img class="hub-logo" src="betterguide_logo.svg" alt="betterguide">
+  <div class="hub-sub">Przewodnik po ekosystemie brandów BetterWorkplace. Wybierz dokument.</div>
+  <div class="stats-bar" id="stats-bar"></div>
+  <div class="search-wrap">
+    <span class="search-icon">&#x2315;</span>
+    <input class="search-input" id="search" type="text" placeholder="Szukaj w dokumentach... (tag:, status:, brand:)" autocomplete="off">
+    <span class="search-shortcut" id="search-shortcut">&#x2318;K</span>
+    <button class="search-clear" id="search-clear" onclick="clearSearch()">&#x2715;</button>
+  </div>
+  <div class="filter-bar" id="filter-bar"></div>
+  <div class="changelog-bar" id="changelog-bar"></div>
+  <div class="pinned-section" id="pinned-section">
+    <div class="pinned-label">&#9733; Przypięte</div>
+    <div class="pinned-grid" id="pinned-grid"></div>
+  </div>
+  <div class="recent-section" id="recent-section">
+    <div class="pinned-label">&#128340; Ostatnio otwierane</div>
+    <div class="recent-grid" id="recent-grid"></div>
+  </div>
+  <div class="hub-hero-grid" id="hero-grid"></div>
+  <div id="sections-container"></div>
+  <div class="no-results" id="no-results">Brak wyników dla tego zapytania.</div>
+  <div class="hub-resources" id="resources-container"></div>
+  <div class="hub-footer" id="hub-footer"></div>
+</div>
+
+<!-- ══════════════════════ CHAT FAB ══════════════════════ -->
+<button class="chat-fab" id="chat-fab" onclick="toggleChat()">
+  <span class="fab-pulse"></span>
+  betterguide AI
+</button>
+
+<!-- ══════════════════════ CHAT PANEL ══════════════════════ -->
+<div class="chat-panel" id="chat-panel">
+  <div class="chat-header">
+    <div class="chat-header-left">
+      <span class="chat-header-icon">&#x1F4AC;</span>
+      <span class="chat-header-title">betterguide AI</span>
+      <span class="chat-header-badge">Claude</span>
+    </div>
+    <div class="chat-header-right">
+      <button class="chat-hdr-btn" onclick="newChatSession()" title="Nowa rozmowa">&#x21BB;</button>
+      <button class="chat-hdr-btn" onclick="toggleChat()" title="Zwiń">&#x2715;</button>
+    </div>
+  </div>
+  <div class="chat-ctx-bar" id="chat-ctx-bar"></div>
+  <div class="chat-messages" id="chat-messages">
+    <div id="chat-welcome">
+      <div class="chat-welcome-text">Cześć! Jestem asystentem betterguide. Pomogę Ci nawigować ekosystem, analizować strategię i odpowiadać na pytania o marki BetterWorkplace, DailyFruits i TeamBudget.</div>
+      <div class="chat-suggestions" id="chat-suggestions"></div>
+    </div>
+    <div class="chat-typing" id="chat-typing"><span></span><span></span><span></span></div>
+  </div>
+  <div class="chat-input-bar">
+    <input type="text" id="chat-input" class="chat-input" placeholder="Zapytaj o ekosystem..." autocomplete="off">
+    <button class="chat-send" id="chat-send" onclick="sendChatMessage()">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 8L2 14V9L8 8L2 7V2L14 8Z" fill="currentColor"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ── Toast ── -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   CONFIG — Single source of truth for the entire hub
+   To externalize: replace this block with:
+   fetch('config.json').then(r=>r.json()).then(c=>{CONFIG=c;init();})
+   ═══════════════════════════════════════════════════════════ */
+var CONFIG = {
+  brand: {
+    name: 'BetterWorkplace',
+    logo: 'betterguide_logo.svg',
+    passwordHash: -1422286391,
+    footer: 'BetterWorkplace &middot; Dokumenty poufne'
+  },
+  chat: {
+    endpoint: '/api/chat',
+    enabled: true
+  },
+  hero: [
+    {
+      title: 'Strategia ekosystemu BetterWorkplace 2026',
+      eyebrow: 'Strategia główna',
+      desc: 'Architektura marek, narracja, matryca komunikacji, mapa ścieżek i governance całego ekosystemu.',
+      url: 'strategia.html',
+      gradient: 'linear-gradient(135deg, #2A2A2A 0%, #3D3D3D 100%)'
+    },
+    {
+      title: 'Macierz deliverables ekosystemu',
+      eyebrow: 'Tracker',
+      desc: '7 marek, 7 kategorii — interaktywny status realizacji.',
+      url: 'matrix.html',
+      gradient: 'linear-gradient(135deg, #16a34a 0%, #22c55e 50%, #4ade80 100%)'
+    },
+    {
+      title: 'Pliki produkcyjne (Dropbox)',
+      eyebrow: 'Produkcja',
+      desc: 'Print-ready materiały, logotypy, pliki źródłowe i zasoby graficzne.',
+      url: 'https://www.dropbox.com/scl/fo/80ggxcmx4k9kz9ftqyc40/APDCDi-n0NqEDZ90d_POzrI?rlkey=rxmsm16719x8qqx8svyt5sp0k&st=xi4jqg7r&dl=0',
+      external: true,
+      gradient: 'linear-gradient(135deg, #0f2547 0%, #1e3a6e 50%, #2b4a8a 100%)'
+    }
+  ],
+  sections: [
+    {
+      id: 'bw', label: '01 · BetterWorkplace', accent: 'bw',
+      social: [
+        { platform: 'IG', url: 'https://www.instagram.com/betterworkplace.pl/', handle: '@betterworkplace.pl' },
+        { platform: 'LI', url: 'https://www.linkedin.com/company/betterworkplace-pl/', handle: '~209' },
+        { platform: 'FB', url: 'https://www.facebook.com/p/BetterWorkplacepl-100083828132808/', handle: 'BetterWorkplace' },
+        { platform: 'YT', url: 'https://www.youtube.com/@BetterHR', handle: '@BetterHR' }
+      ],
+      cards: [
+        { id:'bw-www', badge:'WWW', title:'WWW korporacyjne', desc:'Pozycjonowanie, ekosystem marek, oferta dla firm.', meta:'Propozycja nowej strony', url:'https://better-workplace-corposite.webflow.io/', external:true, status:'live', tags:['www','webflow'], updatedAt:'2026-04-15' },
+        { id:'bw-www-figma', badge:'WWW — Projekt', title:'Projekt WWW korporacyjnego', desc:'Makiety i design strony Corporate BetterWorkplace w Figmie.', meta:'Figma · UI/UX · Corporate', url:'https://www.figma.com/design/rlrYX4QNf9RVNV7E8Z9HLR/Corporate---Better-Workplace?node-id=2457-17782&t=cNR5vd7iAFvcas9e-1', external:true, status:'live', tags:['figma','design'], updatedAt:'2026-03-20' },
+        { id:'bw-brand', badge:'Brand Guide', title:'Brand Guide BetterWorkplace', desc:'Archetyp, atrybuty głosu, kolory, typografia, hierarchia przekazów, do\'s & don\'ts.', meta:'Branding · Ton · Komunikacja', url:'bw-voice.html', status:'live', tags:['brand','voice'], updatedAt:'2026-04-15' },
+        { id:'bw-strategia', badge:'Strategia', title:'Strategia ekosystemu', desc:'Architektura marek, SALT framework, narracja, matryca komunikacji i ścieżki cross-sell.', meta:'Ekosystem · Narracja · Governance', url:'strategia.html', status:'live', tags:['strategia','salt'], updatedAt:'2026-04-13' },
+        { id:'bw-katalog', badge:'Katalog', title:'Katalog produktowy', desc:'Katalog abonamentowy 2026 — pełna oferta ekosystemu BW w formacie print-ready.', meta:'Figma · Print · Abonament 2026', url:'https://www.figma.com/design/RNndWTxWufB7ClWgst1nky/Katalog-abonamentowy-2026?node-id=0-1', external:true, status:'wip', tags:['katalog','print'], updatedAt:'2026-05-20' },
+        { id:'bw-katalog-digital', badge:'Katalog digital', title:'Katalog produktów online', desc:'Interaktywny katalog produktów DailyFruits na stronie sprzedażowej.', meta:'Hasło: Katalog2026', url:'https://dailyfruits.vercel.app/katalog-produktow', external:true, status:'wip', tags:['katalog','digital'], updatedAt:'2026-05-10' }
+      ]
+    },
+    {
+      id: 'df', label: '02 · DailyFruits', accent: 'df',
+      social: [
+        { platform: 'FB', url: 'https://www.facebook.com/dailyfruitspl/', handle: '~5.4k' },
+        { platform: 'LI', url: 'https://www.linkedin.com/company/daily-fruits/', handle: '~730' },
+        { platform: 'IG', url: 'https://www.instagram.com/dailyfruitspl/', handle: '@dailyfruitspl' },
+        { platform: 'YT', url: 'https://www.youtube.com/@dailyfruits5244', handle: '@dailyfruits' },
+        { platform: 'X', url: 'https://x.com/dailyfruitspl', handle: 'dormant' }
+      ],
+      cards: [
+        { id:'df-www', badge:'WWW', title:'WWW sprzedażowe', desc:'Strona sprzedażowa — owoce, przekąski i zdrowe nawyki w biurze.', meta:'Propozycja nowej strony', url:'https://dailyfruits.vercel.app', external:true, status:'wip', tags:['www','vercel'], updatedAt:'2026-06-01' },
+        { id:'df-seo', badge:'SEO', title:'Raport SEO & Performance', desc:'29 stron, 200 redirectów, 6 schema, 13 city pages, 80 FAQ.', meta:'SEO tech · Schema · AEO', url:'df-seo-raport.html', status:'live', tags:['seo','performance'], updatedAt:'2026-04-10' },
+        { id:'df-brand', badge:'Brand Guide', title:'Brand Guide DailyFruits', desc:'Tone of voice, kolory, typografia, do\'s & don\'ts dla DailyFruits.', meta:'Branding · Ton · Komunikacja', url:'df-brand-voice.html', status:'live', tags:['brand','voice'], updatedAt:'2026-04-15' },
+        { id:'df-strategia', badge:'Strategia', title:'Strategia w ekosystemie', desc:'Pozycjonowanie DF w ekosystemie BW, narracja, cross-sell i ścieżki konwersji.', meta:'Ekosystem · Narracja · Governance', url:'strategia.html', status:'live', tags:['strategia','ekosystem'], updatedAt:'2026-04-13' },
+        { id:'df-ds', badge:'Design System', title:'Design System & Komponenty', desc:'Buttony, stickery, taby, karty produktów, ikony owocowe, hero sekcje, formularze, FAQ.', meta:'Figma · Komponenty · UI Kit', url:'https://www.figma.com/design/hyx6OGEBwsX6fGhDZKa9hR/DailyFruits-%E2%80%94-Design-System--Brand-Voice-v1.0-?node-id=105-91', external:true, status:'live', tags:['design-system','figma'], updatedAt:'2026-03-28' }
+      ]
+    },
+    {
+      id: 'tb', label: '03 · TeamBudget', accent: 'tb',
+      social: [],
+      cards: [
+        { id:'tb-gtm', badge:'GTM Playbook', title:'Czym jest TeamBudget', desc:'Produkt, problem, matryca porównawcza, strategia kuli śniegowej i harmonogram wdrożenia.', meta:'Benefit · GTM · Harmonogram', url:'tb-czym-jest.html', status:'live', tags:['gtm','playbook'], updatedAt:'2026-04-05' },
+        { id:'tb-strategia', badge:'Brand Exploration', title:'Założenia strategiczne TB', desc:'Pozycjonowanie w ekosystemie, insighty strategiczne, persony i roadmapa wdrożenia.', meta:'Strategia · Insighty · Roadmapa', url:'tb-strategia.html', status:'feedback', statusLabel:'Hipoteza', tags:['strategia','persony'], updatedAt:'2026-05-15' },
+        { id:'tb-ds', badge:'Design System', title:'Design System & Branding TB', desc:'Kolory, typografia, logo, naklejki, kształty, komponenty UI — pełny system wizualny.', meta:'Tokeny · Komponenty · Do & Don\'t', url:'design-system.html', status:'live', tags:['design-system','branding'], updatedAt:'2026-04-12' },
+        { id:'tb-landing', badge:'Landing Page · hipoteza', title:'TB Landing Page (hipoteza)', desc:'Dwa koncepty landingu do porównania — food-forward (V0) vs platform-forward (V1).', status:'feedback', statusLabel:'Feedback', links:[{label:'V0 · Food-forward',url:'tb-landing-v0.html'},{label:'V1 · Platform-forward',url:'tb-landing-v1.html'}], tags:['landing','feedback'], updatedAt:'2026-06-10' }
+      ]
+    }
+  ],
+  sources: [
+    { tag:'Miro', label:'Warsztat ze sprzedażą', url:'https://miro.com/app/board/uXjVIPApGDg=/?share_link_id=141818092651' },
+    { tag:'Dropbox', label:'TeamBudget — podsumowanie rozmowy z zarządem', url:'https://www.dropbox.com/scl/fo/hvkrkaprueke9xxufgeih/AFBwRzZQxsrqgKfAbJx-hls?rlkey=z67zn5dxkjzz8xuzy6stcfwjl&st=wpet7mmo&dl=0' },
+    { tag:'Google Drive', label:'Dysk marketingowy — Julka', url:'https://drive.google.com/drive/folders/1svk9xywEtUWs0Z2ykHGPe--VcEIx49qw' },
+    { tag:'Figma', label:'Brand Design tablica — Przemek', url:'https://www.figma.com/design/cmesDIPi8I1DcJHpkHjB7c/BW---DF---TB-_Brand-Design?node-id=2005-3319&t=8xl2ELTqB661vFjW-1' }
+  ],
+  changelog: [
+    { date:'2026-06-15', text:'Dodano betterguide AI + social media BW i DF' },
+    { date:'2026-06-14', text:'Aktualizacja strategii klient v2' },
+    { date:'2026-06-10', text:'TB Landing V0/V1 — status: Feedback' },
+    { date:'2026-06-09', text:'Ecosystem Strategy Audit' },
+    { date:'2026-06-08', text:'Competitive Awareness Matrix + 5 kierunków komunikacji' },
+    { date:'2026-05-20', text:'Katalog abonamentowy 2026 — WIP w Figmie' },
+    { date:'2026-05-15', text:'Założenia strategiczne TB — status: Hipoteza' }
+  ]
+};
+
+/* ═══════════════════════════════════════════════════════════
+   STATE
+   ═══════════════════════════════════════════════════════════ */
+var state = {
+  filter: 'all',
+  search: '',
+  pins: JSON.parse(localStorage.getItem('bg_pins') || '[]'),
+  lastVisit: localStorage.getItem('bg_last_visit') || null,
+  collapsed: JSON.parse(localStorage.getItem('bg_collapsed') || '[]'),
+  recent: JSON.parse(localStorage.getItem('bg_recent') || '[]'),
+  chatOpen: false,
+  chatCtx: 'all',
+  chatMessages: JSON.parse(localStorage.getItem('bg_chat') || '[]'),
+  chatBusy: false,
+  focusIdx: -1
+};
+function savePins(){ localStorage.setItem('bg_pins', JSON.stringify(state.pins)); }
+function saveLastVisit(){ localStorage.setItem('bg_last_visit', new Date().toISOString().slice(0,10)); }
+function saveCollapsed(){ localStorage.setItem('bg_collapsed', JSON.stringify(state.collapsed)); }
+function saveRecent(){ localStorage.setItem('bg_recent', JSON.stringify(state.recent.slice(0,8))); }
+function saveChatMessages(){ localStorage.setItem('bg_chat', JSON.stringify(state.chatMessages.slice(-30))); }
+
+/* ═══════════════════════════════════════════════════════════
+   UTILS
+   ═══════════════════════════════════════════════════════════ */
+function relDate(d){
+  if(!d) return '';
+  var diff = Math.floor((new Date()-new Date(d))/(864e5));
+  if(diff===0) return 'dzisiaj';
+  if(diff===1) return 'wczoraj';
+  if(diff<7) return diff+' dni temu';
+  if(diff<30) return Math.floor(diff/7)+' tyg. temu';
+  if(diff<365) return Math.floor(diff/30)+' mies. temu';
+  return '1+ rok temu';
+}
+function isNew(d){ return state.lastVisit && d && d > state.lastVisit; }
+function hashStr(s){
+  var h=0;
+  for(var i=0;i<s.length;i++){ h=((h<<5)-h)+s.charCodeAt(i); h|=0; }
+  return h;
+}
+function hl(t,q){
+  if(!q) return t;
+  return t.replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'),'<mark>$1</mark>');
+}
+function allCards(){
+  var r=[];
+  CONFIG.sections.forEach(function(s){ s.cards.forEach(function(c){ r.push(Object.assign({},c,{sectionId:s.id,accent:s.accent})); }); });
+  return r;
+}
+function fuzzyMatch(text, query){
+  var t=text.toLowerCase(), q=query.toLowerCase();
+  if(t.indexOf(q)!==-1) return true;
+  // Fuzzy: all query chars appear in order
+  var qi=0;
+  for(var ti=0; ti<t.length && qi<q.length; ti++){
+    if(t[ti]===q[qi]) qi++;
+  }
+  return qi===q.length;
+}
+function showToast(msg){
+  var t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('visible');
+  setTimeout(function(){ t.classList.remove('visible'); }, 2500);
+}
+function md(s){
+  if(!s) return '';
+  return s
+    .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g,'<em>$1</em>')
+    .replace(/`(.*?)`/g,'<code>$1</code>')
+    .replace(/\n/g,'<br>');
+}
+function addRecent(id){
+  state.recent = state.recent.filter(function(r){return r.id!==id});
+  state.recent.unshift({id:id, ts:Date.now()});
+  state.recent = state.recent.slice(0,8);
+  saveRecent();
+}
+function copyCardLink(id){
+  var url = location.origin + location.pathname + '#card-' + id;
+  if(location.protocol === 'file:') url = location.href.split('#')[0] + '#card-' + id;
+  navigator.clipboard.writeText(url).then(function(){
+    showToast('Link skopiowany');
+    var btn = document.querySelector('.hub-card-share[data-id="'+id+'"]');
+    if(btn){ btn.classList.add('copied'); setTimeout(function(){ btn.classList.remove('copied'); }, 1500); }
+  });
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RENDER ENGINE
+   ═══════════════════════════════════════════════════════════ */
+function renderStats(){
+  var a=allCards(), l=a.filter(function(c){return c.status==='live'}).length,
+  w=a.filter(function(c){return c.status==='wip'}).length,
+  f=a.filter(function(c){return c.status==='feedback'}).length;
+  document.getElementById('stats-bar').innerHTML=
+    '<div class="stat-chip"><span class="stat-num">'+a.length+'</span> dokumentów</div>'+
+    '<div class="stat-chip stat-chip--live"><span class="stat-num">'+l+'</span> live</div>'+
+    '<div class="stat-chip stat-chip--wip"><span class="stat-num">'+w+'</span> WIP</div>'+
+    '<div class="stat-chip stat-chip--feedback"><span class="stat-num">'+f+'</span> feedback</div>';
+}
+
+function renderFilters(){
+  var fs=[{k:'all',l:'Wszystko'},{k:'live',l:'Live'},{k:'wip',l:'WIP'},{k:'feedback',l:'Feedback'}];
+  // Add brand filters
+  CONFIG.sections.forEach(function(s){ fs.push({k:'brand:'+s.id, l:s.id.toUpperCase()}); });
+  var h='';
+  fs.forEach(function(f){
+    h+='<button class="filter-chip'+(state.filter===f.k?' active':'')+'" onclick="setFilter(\''+f.k+'\')">'+f.l+'</button>';
+  });
+  document.getElementById('filter-bar').innerHTML=h;
+}
+
+function renderHero(){
+  var h='';
+  CONFIG.hero.forEach(function(c){
+    var t=c.external?' target="_blank" rel="noopener"':'';
+    h+='<a class="hub-hero-card" href="'+c.url+'"'+t+' style="background:'+c.gradient+'"><div><div class="hero-eyebrow">'+c.eyebrow+'</div><div class="hero-title">'+c.title+'</div><div class="hero-desc">'+c.desc+'</div></div><div class="hero-arrow">&rarr;</div></a>';
+  });
+  document.getElementById('hero-grid').innerHTML=h;
+}
+
+function renderCard(c, sectionAccent){
+  var pin=state.pins.indexOf(c.id)!==-1;
+  var nb=isNew(c.updatedAt)?'<span class="hub-card-ddl hub-card-ddl--new">NEW</span>':'';
+  var sb='';
+  if(c.status==='wip') sb='<span class="hub-card-ddl hub-card-ddl--wip">WIP</span>';
+  if(c.status==='feedback') sb='<span class="hub-card-ddl hub-card-ddl--feedback">'+(c.statusLabel||'Feedback')+'</span>';
+  var tt=state.search?hl(c.title,state.search):c.title;
+  var dd=state.search?hl(c.desc,state.search):c.desc;
+  var dt=relDate(c.updatedAt);
+  var pinBtn='<button class="hub-card-pin'+(pin?' pinned':'')+'" onclick="event.preventDefault();event.stopPropagation();togglePin(\''+c.id+'\')" title="Przypnij">&#9733;</button>';
+  var shareBtn='<button class="hub-card-share" data-id="'+c.id+'" onclick="event.preventDefault();event.stopPropagation();copyCardLink(\''+c.id+'\')" title="Kopiuj link">&#128279;</button>';
+  var tagsHtml='';
+  if(c.tags&&c.tags.length){
+    tagsHtml='<div class="hub-card-tags">';
+    c.tags.forEach(function(t){ tagsHtml+='<span class="hub-card-tag">'+t+'</span>'; });
+    tagsHtml+='</div>';
+  }
+
+  if(c.links){
+    var lh='<div class="hub-card-links">';
+    c.links.forEach(function(l){ lh+='<a class="hub-card-link" href="'+l.url+'">'+l.label+' &rarr;</a>'; });
+    lh+='</div>';
+    return '<div class="hub-card" data-id="'+c.id+'" data-status="'+c.status+'" id="card-'+c.id+'"><div class="hub-card-top"><div class="hub-card-badge">'+c.badge+' '+sb+nb+'</div><div class="hub-card-actions">'+shareBtn+pinBtn+'</div></div><div class="hub-card-title">'+tt+'</div><div class="hub-card-desc">'+dd+'</div>'+lh+tagsHtml+'<div class="hub-card-footer"><div class="hub-card-meta">'+(c.meta||'')+'</div><div class="hub-card-date">'+dt+'</div></div></div>';
+  }
+  var tg=c.external?' target="_blank" rel="noopener"':'';
+  return '<a class="hub-card" href="'+(c.url||'#')+'"'+tg+' data-id="'+c.id+'" data-status="'+c.status+'" id="card-'+c.id+'" onclick="addRecent(\''+c.id+'\')"><div class="hub-card-top"><div class="hub-card-badge">'+c.badge+' '+sb+nb+'</div><div class="hub-card-actions">'+shareBtn+pinBtn+'</div></div><div class="hub-card-title">'+tt+'</div><div class="hub-card-desc">'+dd+'</div>'+tagsHtml+'<div class="hub-card-footer"><div class="hub-card-meta">'+(c.meta||'')+'</div><div class="hub-card-date">'+dt+'</div></div><div class="hub-card-arrow">&rarr;</div></a>';
+}
+
+function matchesFilter(c, sectionId){
+  // Status filter
+  if(state.filter.startsWith('brand:')){
+    var brand=state.filter.split(':')[1];
+    if(sectionId!==brand) return false;
+  } else if(state.filter!=='all'&&c.status!==state.filter){
+    return false;
+  }
+  // Search with prefix support
+  if(state.search){
+    var q=state.search.toLowerCase();
+    // Prefix search: tag:xxx, status:xxx, brand:xxx
+    var prefixMatch = q.match(/^(tag|status|brand):(\S+)/);
+    if(prefixMatch){
+      var pk=prefixMatch[1], pv=prefixMatch[2];
+      if(pk==='tag') return (c.tags||[]).some(function(t){return t.indexOf(pv)!==-1});
+      if(pk==='status') return c.status===pv;
+      if(pk==='brand') return sectionId===pv;
+    }
+    var txt=(c.title+' '+c.desc+' '+c.badge+' '+(c.meta||'')+' '+(c.tags||[]).join(' ')+' '+c.id).toLowerCase();
+    if(!fuzzyMatch(txt,q)) return false;
+  }
+  return true;
+}
+
+function renderSections(){
+  var ct=document.getElementById('sections-container'), h='', any=false;
+  CONFIG.sections.forEach(function(s){
+    var vis=s.cards.filter(function(c){ return matchesFilter(c, s.id); });
+    if(vis.length===0&&(state.search||state.filter!=='all')) return;
+    any=true;
+    var isCollapsed = state.collapsed.indexOf(s.id)!==-1 && !state.search;
+    var sh='';
+    if(s.social&&s.social.length){
+      sh='<div class="section-social">';
+      s.social.forEach(function(x){ sh+='<a class="social-chip" href="'+x.url+'" target="_blank" rel="noopener" title="'+x.handle+'">'+x.platform+' <span style="opacity:.5">'+x.handle+'</span></a>'; });
+      sh+='</div>';
+    }
+    var countBadge='<span class="section-card-count">'+vis.length+'</span>';
+    var collapseBtn='<button class="section-collapse-btn" onclick="event.stopPropagation();toggleSection(\''+s.id+'\')"><span class="collapse-icon">&#9660;</span></button>';
+    h+='<div class="hub-section'+(isCollapsed?' collapsed':'')+'" data-accent="'+s.accent+'" data-section="'+s.id+'" id="section-'+s.id+'">';
+    h+='<div class="hub-section-header" onclick="toggleSection(\''+s.id+'\')"><div class="hub-section-label">'+s.label+countBadge+'</div>'+sh+collapseBtn+'</div>';
+    h+='<div class="hub-grid">';
+    vis.forEach(function(c){ h+=renderCard(c, s.accent); });
+    h+='</div></div>';
+  });
+  ct.innerHTML=h;
+  var nr=document.getElementById('no-results');
+  if(!any&&(state.search||state.filter!=='all')) nr.classList.add('visible'); else nr.classList.remove('visible');
+}
+
+function renderPinned(){
+  var sec=document.getElementById('pinned-section'), grid=document.getElementById('pinned-grid');
+  if(!state.pins.length){ sec.classList.remove('has-pins'); return; }
+  sec.classList.add('has-pins');
+  var ac=allCards(), h='';
+  state.pins.forEach(function(pid){
+    var c=ac.find(function(x){return x.id===pid});
+    if(!c) return;
+    var cm={bw:'var(--accent-bw)',df:'var(--accent-df)',tb:'var(--accent-tb)'};
+    var tg=c.external?' target="_blank" rel="noopener"':'';
+    h+='<a class="pinned-chip" href="'+(c.url||'#')+'"'+tg+'><span class="pin-dot" style="background:'+(cm[c.accent]||'var(--text-dim)')+'"></span>'+c.title+'<button class="pin-remove" onclick="event.preventDefault();event.stopPropagation();togglePin(\''+pid+'\')" title="Odepnij">&times;</button></a>';
+  });
+  grid.innerHTML=h;
+}
+
+function renderRecent(){
+  var sec=document.getElementById('recent-section'), grid=document.getElementById('recent-grid');
+  var valid = state.recent.filter(function(r){
+    return allCards().some(function(c){return c.id===r.id});
+  });
+  if(!valid.length){ sec.classList.remove('has-recent'); return; }
+  sec.classList.add('has-recent');
+  var ac=allCards(), h='';
+  valid.slice(0,5).forEach(function(r){
+    var c=ac.find(function(x){return x.id===r.id});
+    if(!c) return;
+    var cm={bw:'var(--accent-bw)',df:'var(--accent-df)',tb:'var(--accent-tb)'};
+    var tg=c.external?' target="_blank" rel="noopener"':'';
+    var ago = r.ts ? relDate(new Date(r.ts).toISOString().slice(0,10)) : '';
+    h+='<a class="recent-chip" href="'+(c.url||'#card-'+c.id)+'"'+tg+'><span class="rc-dot" style="background:'+(cm[c.accent]||'var(--text-dim)')+'"></span>'+c.title+'<span class="rc-time">'+ago+'</span></a>';
+  });
+  grid.innerHTML=h;
+}
+
+function renderChangelog(){
+  var bar=document.getElementById('changelog-bar');
+  var ni=CONFIG.changelog.filter(function(c){return isNew(c.date)});
+  if(!ni.length){ bar.classList.remove('has-news'); return; }
+  bar.classList.add('has-news');
+  var h='<button class="changelog-toggle" onclick="toggleChangelog()" id="cl-toggle"><span class="cl-badge">'+ni.length+'</span> Zmiany od ostatniej wizyty<span class="cl-arrow">&#9662;</span></button><div class="changelog-list" id="cl-list">';
+  ni.forEach(function(c){ h+='<div class="changelog-item"><span class="changelog-date">'+c.date+'</span>'+c.text+'</div>'; });
+  h+='</div>';
+  bar.innerHTML=h;
+}
+
+function renderSources(){
+  var h='<div class="hub-resources-label">Źródła wiedzy</div><div class="hub-resources-list">';
+  CONFIG.sources.forEach(function(s){
+    h+='<a class="hub-res-link" href="'+s.url+'" target="_blank" rel="noopener"><span class="hub-res-tag">'+s.tag+'</span>'+s.label+'<span class="hub-res-arrow">&rarr;</span></a>';
+  });
+  h+='</div>';
+  document.getElementById('resources-container').innerHTML=h;
+}
+
+function renderFooter(){
+  document.getElementById('hub-footer').innerHTML=CONFIG.brand.footer+'<br>Nie udostępniaj linku osobom nieuprawnionym';
+}
+
+function renderAll(){
+  renderStats(); renderFilters(); renderHero(); renderChangelog(); renderPinned(); renderRecent(); renderSections(); renderSources(); renderFooter();
+  handleDeepLink();
+}
+
+/* ═══════════════════════════════════════════════════════════
+   INTERACTIONS
+   ═══════════════════════════════════════════════════════════ */
+function setFilter(k){ state.filter=k; renderFilters(); renderSections(); }
+function togglePin(id){
+  var i=state.pins.indexOf(id);
+  if(i===-1) state.pins.push(id); else state.pins.splice(i,1);
+  savePins(); renderPinned(); renderSections();
+}
+function toggleSection(id){
+  var i=state.collapsed.indexOf(id);
+  if(i===-1) state.collapsed.push(id); else state.collapsed.splice(i,1);
+  saveCollapsed(); renderSections();
+}
+function toggleChangelog(){
+  var t=document.getElementById('cl-toggle'), l=document.getElementById('cl-list');
+  if(t&&l){ t.classList.toggle('open'); l.classList.toggle('open'); }
+}
+function clearSearch(){
+  var inp=document.getElementById('search');
+  inp.value=''; state.search=''; state.focusIdx=-1;
+  document.getElementById('search-clear').style.display='none';
+  document.getElementById('search-shortcut').style.display='';
+  renderSections();
+}
+
+/* ═══════════════════════════════════════════════════════════
+   DEEP LINKING
+   ═══════════════════════════════════════════════════════════ */
+function handleDeepLink(){
+  var hash = location.hash;
+  if(!hash) return;
+  var id = hash.replace('#','');
+  setTimeout(function(){
+    var el = document.getElementById(id);
+    if(el){
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+      el.classList.add('deep-link-highlight');
+      // If it's a section, uncollapse it
+      if(id.startsWith('section-')){
+        var sid = id.replace('section-','');
+        var ci = state.collapsed.indexOf(sid);
+        if(ci!==-1){ state.collapsed.splice(ci,1); saveCollapsed(); renderSections(); }
+      }
+    }
+  }, 300);
+}
+window.addEventListener('hashchange', handleDeepLink);
+
+/* ═══════════════════════════════════════════════════════════
+   SEARCH + KEYBOARD NAVIGATION
+   ═══════════════════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded',function(){
+  var si=document.getElementById('search'), sc=document.getElementById('search-clear'), ss=document.getElementById('search-shortcut');
+  si.addEventListener('input',function(){
+    state.search=this.value.trim();
+    state.focusIdx=-1;
+    sc.style.display=state.search?'block':'none';
+    ss.style.display=state.search?'none':'';
+    renderSections();
+  });
+  document.addEventListener('keydown',function(e){
+    // Cmd+K → focus search
+    if((e.metaKey||e.ctrlKey)&&e.key==='k'){ e.preventDefault(); si.focus(); si.select(); return; }
+    // Cmd+J → toggle chat
+    if((e.metaKey||e.ctrlKey)&&e.key==='j'){ e.preventDefault(); toggleChat(); return; }
+    // Escape → close chat or clear search
+    if(e.key==='Escape'){
+      if(state.chatOpen){ toggleChat(); return; }
+      if(document.activeElement===si){ clearSearch(); si.blur(); return; }
+    }
+    // Arrow keys in search → navigate cards
+    if(state.search && (e.key==='ArrowDown'||e.key==='ArrowUp'||e.key==='Enter')){
+      var cards = document.querySelectorAll('#sections-container .hub-card');
+      if(!cards.length) return;
+      if(e.key==='ArrowDown'){
+        e.preventDefault();
+        state.focusIdx = Math.min(state.focusIdx+1, cards.length-1);
+      } else if(e.key==='ArrowUp'){
+        e.preventDefault();
+        state.focusIdx = Math.max(state.focusIdx-1, 0);
+      } else if(e.key==='Enter' && state.focusIdx>=0){
+        e.preventDefault();
+        cards[state.focusIdx].click();
+        return;
+      }
+      cards.forEach(function(c,i){
+        if(i===state.focusIdx){ c.classList.add('focused'); c.scrollIntoView({block:'nearest'}); }
+        else c.classList.remove('focused');
+      });
+    }
+  });
+});
+
+/* ═══════════════════════════════════════════════════════════
+   CHAT ENGINE
+   ═══════════════════════════════════════════════════════════ */
+var CHAT_SUGGESTIONS = {
+  all: [
+    'Co wymaga feedbacku?',
+    'Porównaj social media BW vs DF',
+    'Jaki jest ogólny status dokumentacji?',
+    'Które dokumenty były ostatnio aktualizowane?'
+  ],
+  bw: [
+    'Status katalogu abonamentowego',
+    'Jak pozycjonować BW w komunikacji?',
+    'Co nowego w BetterWorkplace?'
+  ],
+  df: [
+    'Status redesignu strony DF',
+    'Social media DF — liczby i kanały',
+    'Brand Guide DF — kluczowe elementy'
+  ],
+  tb: [
+    'Czym jest TeamBudget?',
+    'Status landing page TB',
+    'Roadmapa wdrożenia TB'
+  ]
+};
+
+function buildSystemPrompt(ctx){
+  var sections = ctx==='all' ? CONFIG.sections : CONFIG.sections.filter(function(s){return s.id===ctx});
+  var docs=[];
+  sections.forEach(function(s){
+    s.cards.forEach(function(c){
+      docs.push('- ['+c.status.toUpperCase()+'] '+c.title+' ('+c.badge+') — '+c.desc+(c.meta?' | '+c.meta:''));
+    });
+  });
+  var social=[];
+  sections.forEach(function(s){
+    if(s.social&&s.social.length){
+      social.push(s.label.split(' · ')[1]+': '+s.social.map(function(x){return x.platform+' '+x.handle}).join(', '));
+    }
+  });
+  var changes = CONFIG.changelog.slice(0,5).map(function(c){return c.date+' — '+c.text}).join('\n');
+  return 'Jesteś betterguide AI — inteligentny asystent wbudowany w hub dokumentacyjny ekosystemu BetterWorkplace.\n\n'+
+    'EKOSYSTEM MAREK:\n'+
+    '• BetterWorkplace (BW) — marka master/parasolowa (#FF6921), korporacyjne pozycjonowanie, usługi B2B dla biur\n'+
+    '• DailyFruits (DF) — marka endorsed (#22c55e), dostawy owoców i przekąsek, zdrowe nawyki w biurze\n'+
+    '• TeamBudget (TB) — produkt SaaS (#4375FF), narzędzie budżetowe jako benefit pracowniczy\n\n'+
+    'RELACJE: BW jest parasolem. DF to endorsed brand z własną tożsamością ale wspólną narracją "lepsze miejsce pracy". TB to produkt SaaS budowany jako element ekosystemu benefitowego.\n\n'+
+    'DOKUMENTY W HUBIE ('+docs.length+'):\n'+docs.join('\n')+'\n\n'+
+    (social.length ? 'SOCIAL MEDIA:\n'+social.join('\n')+'\n\n' : '')+
+    'OSTATNIE ZMIANY:\n'+changes+'\n\n'+
+    'ZASADY:\n'+
+    '1. Odpowiadaj po polsku, zwięźle i merytorycznie\n'+
+    '2. Odwołuj się do konkretnych dokumentów z huba gdy to możliwe\n'+
+    '3. Pomagaj nawigować, analizować strategię i podejmować decyzje\n'+
+    '4. Jeśli nie znasz odpowiedzi, zasugeruj które dokumenty mogą pomóc\n'+
+    '5. Używaj **pogrubienia** dla kluczowych terminów\n'+
+    '6. Bądź bezpośredni — użytkownik to strateg, nie potrzebuje watty';
+}
+
+function localFallback(msg){
+  var q = msg.toLowerCase();
+  var cards = allCards();
+  // Help
+  if(q.match(/^(help|pomoc|co umiesz|komendy|co mogę|jak)$/)){
+    return '**betterguide AI — dostępne pytania:**\n'+
+      '- "ile dokumentów?" — przegląd statusów\n'+
+      '- "co wymaga feedbacku?" — lista do przeglądu\n'+
+      '- "social media" — kanały i liczby\n'+
+      '- "porównaj BW vs DF" — porównanie marek\n'+
+      '- "ostatnie zmiany" — changelog\n'+
+      '- "czym jest TeamBudget?" — opis produktu\n'+
+      '- "skróty klawiszowe" — nawigacja po hubie\n\n'+
+      '*Dla pełnych odpowiedzi AI, skonfiguruj ANTHROPIC_API_KEY w Vercel.*';
+  }
+  // Keyboard shortcuts
+  if(q.match(/skróty|shortcut|klawisze|nawigacja/)){
+    return '**Skróty klawiszowe:**\n'+
+      '- `Cmd+K` / `Ctrl+K` — szukaj\n'+
+      '- `Escape` — zamknij wyszukiwanie/chat\n'+
+      '- `↑↓` — nawiguj po wynikach\n'+
+      '- `Enter` — otwórz wybrany dokument\n'+
+      '- Kliknij nagłówek sekcji — zwiń/rozwiń\n'+
+      '- Kliknij ★ — przypnij dokument\n'+
+      '- Kliknij 🔗 — kopiuj link do dokumentu';
+  }
+  // Status overview
+  if(q.match(/status|ile|liczba|dokumenty|overview|przegląd/)){
+    var live=cards.filter(function(c){return c.status==='live'}).length;
+    var wip=cards.filter(function(c){return c.status==='wip'}).length;
+    var fb=cards.filter(function(c){return c.status==='feedback'}).length;
+    return 'W hubie jest **'+cards.length+'** dokumentów:\n- **'+live+'** live (gotowych)\n- **'+wip+'** WIP (w trakcie)\n- **'+fb+'** wymaga feedbacku';
+  }
+  // Feedback items
+  if(q.match(/feedback|wymaga|do poprawy/)){
+    var fbs=cards.filter(function(c){return c.status==='feedback'});
+    if(!fbs.length) return 'Brak dokumentów wymagających feedbacku.';
+    return '**Dokumenty wymagające feedbacku:**\n'+fbs.map(function(c){return '- '+c.title+' ('+(c.statusLabel||'Feedback')+')'}).join('\n');
+  }
+  // WIP items
+  if(q.match(/wip|w trakcie|w budowie/)){
+    var wips=cards.filter(function(c){return c.status==='wip'});
+    if(!wips.length) return 'Brak dokumentów WIP.';
+    return '**Dokumenty WIP:**\n'+wips.map(function(c){return '- '+c.title}).join('\n');
+  }
+  // Compare brands
+  if(q.match(/porównaj|compare|vs|versus/)){
+    var bwCards=CONFIG.sections.find(function(s){return s.id==='bw'});
+    var dfCards=CONFIG.sections.find(function(s){return s.id==='df'});
+    var bwSocial=bwCards&&bwCards.social?bwCards.social.length:0;
+    var dfSocial=dfCards&&dfCards.social?dfCards.social.length:0;
+    return '**BetterWorkplace vs DailyFruits:**\n\n'+
+      '**Dokumenty:** BW '+bwCards.cards.length+' | DF '+dfCards.cards.length+'\n'+
+      '**Kanały SM:** BW '+bwSocial+' | DF '+dfSocial+'\n'+
+      '**Pozycjonowanie:** BW = marka parasolowa (B2B) | DF = endorsed brand (B2C/B2B)\n'+
+      '**Status:** BW ma '+bwCards.cards.filter(function(c){return c.status==='live'}).length+' live | DF ma '+dfCards.cards.filter(function(c){return c.status==='live'}).length+' live\n\n'+
+      '*Insight:* DF ma większy footprint social media (~5.4k FB) mimo statusu endorsed brand. BW jako marka master wymaga wzmocnienia obecności online.';
+  }
+  // Social media
+  if(q.match(/social|instagram|facebook|linkedin|some|media/)){
+    var sm='';
+    CONFIG.sections.forEach(function(s){
+      if(s.social&&s.social.length){
+        sm+='**'+s.label.split(' · ')[1]+':** '+s.social.map(function(x){return x.platform+' ('+x.handle+')'}).join(', ')+'\n';
+      }
+    });
+    if(!sm) return 'Brak danych o social media.';
+    return sm + '\n*Insight:* DailyFruits ma większą bazę (FB ~5.4k) niż BW master brand (LI ~209). TB nie ma jeszcze kanałów SM.';
+  }
+  // Specific card lookup
+  var found = cards.filter(function(c){
+    var cTitle = c.title.toLowerCase();
+    return q.split(' ').some(function(w){ return w.length>3 && cTitle.indexOf(w)!==-1; }) || (c.tags||[]).some(function(t){return q.includes(t)});
+  });
+  if(found.length>=1 && found.length<=3){
+    return found.map(function(c){
+      return '**'+c.title+'** ['+c.status.toUpperCase()+']\n'+c.desc+(c.meta?'\n*'+c.meta+'*':'');
+    }).join('\n\n---\n\n');
+  }
+  // Changelog
+  if(q.match(/zmian|changelog|nowości|ostatnio|aktualizac/)){
+    return '**Ostatnie zmiany:**\n'+CONFIG.changelog.slice(0,5).map(function(c){return '- '+c.date+': '+c.text}).join('\n');
+  }
+  // TeamBudget
+  if(q.match(/teambudget|czym jest tb/)){
+    return '**TeamBudget** to produkt SaaS w ekosystemie BW — narzędzie budżetowe jako benefit pracowniczy. Strategia opiera się na modelu "kuli śniegowej": wejście przez DailyFruits → cross-sell do TB. Aktualnie w fazie Brand Exploration z dwoma konceptami landingu do porównania.';
+  }
+  // DailyFruits
+  if(q.match(/dailyfruits|daily fruits|czym jest df|df to/)){
+    return '**DailyFruits** to endorsed brand w ekosystemie BW — dostawy owoców, przekąsek i zdrowych nawyków do biur. Własna tożsamość wizualna (zielony #22c55e), ale wspólna narracja "lepsze miejsce pracy" z BW. Największa baza social media w ekosystemie (FB ~5.4k).';
+  }
+  // BetterWorkplace
+  if(q.match(/betterworkplace|better workplace|czym jest bw|bw to/)){
+    return '**BetterWorkplace** to marka master/parasolowa ekosystemu (#FF6921). Korporacyjne pozycjonowanie B2B, usługi dla biur. Pod parasolem BW funkcjonują DailyFruits (endorsed) i TeamBudget (SaaS). Strategia budowana na SALT framework.';
+  }
+  return null; // No local match — needs API
+}
+
+function renderChatCtx(){
+  var chips=[{k:'all',l:'Cały ekosystem'},{k:'bw',l:'BW'},{k:'df',l:'DF'},{k:'tb',l:'TB'}];
+  var h='';
+  chips.forEach(function(c){
+    h+='<button class="chat-ctx-chip'+(state.chatCtx===c.k?' active':'')+'" data-ctx="'+c.k+'" onclick="setChatCtx(\''+c.k+'\')">'+c.l+'</button>';
+  });
+  document.getElementById('chat-ctx-bar').innerHTML=h;
+}
+
+function renderChatSuggestions(){
+  var sugs = CHAT_SUGGESTIONS[state.chatCtx] || CHAT_SUGGESTIONS.all;
+  var h='';
+  sugs.forEach(function(s){
+    h+='<button class="chat-sug-btn" onclick="sendSuggestion(this.textContent)">'+s+'</button>';
+  });
+  document.getElementById('chat-suggestions').innerHTML=h;
+}
+
+function renderChatMessages(){
+  var container = document.getElementById('chat-messages');
+  var welcome = document.getElementById('chat-welcome');
+  var typing = document.getElementById('chat-typing');
+  if(!state.chatMessages.length){
+    welcome.style.display='';
+    renderChatSuggestions();
+  } else {
+    welcome.style.display='none';
+  }
+  // Remove old messages (not welcome, not typing)
+  var old = container.querySelectorAll('.chat-msg');
+  old.forEach(function(el){ el.remove(); });
+  // Render messages before typing indicator
+  state.chatMessages.forEach(function(m){
+    var div = document.createElement('div');
+    div.className = 'chat-msg chat-msg--' + m.role.replace('assistant','ai').replace('user','user');
+    if(m.role==='error') div.className='chat-msg chat-msg--error';
+    div.innerHTML = m.role==='assistant' ? md(m.content) : m.content;
+    container.insertBefore(div, typing);
+  });
+  container.scrollTop = container.scrollHeight;
+}
+
+function toggleChat(){
+  state.chatOpen = !state.chatOpen;
+  var panel = document.getElementById('chat-panel');
+  var fab = document.getElementById('chat-fab');
+  if(state.chatOpen){
+    panel.classList.add('open');
+    fab.classList.add('hidden');
+    renderChatCtx();
+    renderChatMessages();
+    setTimeout(function(){ document.getElementById('chat-input').focus(); }, 400);
+  } else {
+    panel.classList.remove('open');
+    fab.classList.remove('hidden');
+  }
+}
+
+function setChatCtx(ctx){
+  state.chatCtx = ctx;
+  renderChatCtx();
+  renderChatSuggestions();
+}
+
+function newChatSession(){
+  state.chatMessages = [];
+  saveChatMessages();
+  renderChatMessages();
+  document.getElementById('chat-welcome').style.display='';
+  renderChatSuggestions();
+}
+
+function sendSuggestion(text){
+  document.getElementById('chat-input').value = text;
+  sendChatMessage();
+}
+
+function sendChatMessage(){
+  var input = document.getElementById('chat-input');
+  var msg = input.value.trim();
+  if(!msg || state.chatBusy) return;
+  input.value='';
+  // Add user message
+  state.chatMessages.push({role:'user', content:msg});
+  saveChatMessages();
+  renderChatMessages();
+  state.chatBusy = true;
+  document.getElementById('chat-send').disabled = true;
+  document.getElementById('chat-typing').classList.add('visible');
+  document.getElementById('chat-messages').scrollTop = document.getElementById('chat-messages').scrollHeight;
+
+  // Try API first, fallback to local
+  var apiMessages = state.chatMessages.filter(function(m){return m.role!=='error'}).map(function(m){
+    return {role:m.role, content:m.content};
+  });
+  var system = buildSystemPrompt(state.chatCtx);
+
+  fetch(CONFIG.chat.endpoint, {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({messages:apiMessages, system:system})
+  })
+  .then(function(r){
+    if(!r.ok) throw new Error('API '+r.status);
+    return r.json();
+  })
+  .then(function(data){
+    var text = data.content && data.content[0] ? data.content[0].text : 'Brak odpowiedzi.';
+    state.chatMessages.push({role:'assistant', content:text});
+    saveChatMessages();
+    finishChat();
+  })
+  .catch(function(err){
+    // Try local fallback
+    var local = localFallback(msg);
+    if(local){
+      state.chatMessages.push({role:'assistant', content:local + '\n\n*— odpowiedź lokalna (API niedostępne)*'});
+    } else {
+      state.chatMessages.push({role:'assistant', content:'Nie mogę teraz połączyć się z API. Spróbuj prostszego pytania (np. "ile dokumentów?", "co wymaga feedbacku?", "social media") lub skonfiguruj **ANTHROPIC_API_KEY** w Vercel Environment Variables.'});
+    }
+    saveChatMessages();
+    finishChat();
+  });
+}
+
+function finishChat(){
+  state.chatBusy = false;
+  document.getElementById('chat-send').disabled = false;
+  document.getElementById('chat-typing').classList.remove('visible');
+  renderChatMessages();
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CHAT INPUT HANDLERS
+   ═══════════════════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', function(){
+  var chatInput = document.getElementById('chat-input');
+  if(chatInput){
+    chatInput.addEventListener('keydown', function(e){
+      if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); sendChatMessage(); }
+    });
+  }
+});
+
+/* ═══════════════════════════════════════════════════════════
+   PASSWORD
+   ═══════════════════════════════════════════════════════════ */
+function checkPw(){
+  var inp=document.getElementById('pw-input');
+  if(hashStr(inp.value)===CONFIG.brand.passwordHash){
+    document.getElementById('pw-screen').classList.add('hidden');
+    document.getElementById('hub').classList.add('visible');
+    sessionStorage.setItem('bw_auth','1');
+    saveLastVisit();
+    renderAll();
+    return false;
+  }
+  inp.classList.add('pw-error');
+  document.getElementById('pw-error-msg').textContent='Nieprawidłowe hasło. Spróbuj ponownie.';
+  setTimeout(function(){inp.classList.remove('pw-error')},400);
+  return false;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   INIT
+   ═══════════════════════════════════════════════════════════ */
+if(sessionStorage.getItem('bw_auth')==='1'){
+  document.getElementById('pw-screen').classList.add('hidden');
+  document.getElementById('hub').classList.add('visible');
+  renderAll();
+}
+</script>
+</body>
+</html>
