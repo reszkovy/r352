@@ -245,6 +245,21 @@ nav .wip{font-size:.48rem;padding:1px 6px;margin-left:4px}
 .kv{display:grid;grid-template-columns:150px 1fr;gap:8px 20px;font-size:.9rem}
 .kv dt{font-family:var(--mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.12em;color:var(--ink40);padding-top:4px}
 .kv dd{line-height:1.55}
+/* 09 reklama — ad mix */
+.admix-split{display:flex;height:32px;border-radius:8px;overflow:hidden;margin:4px 0 6px}
+.admix-seg{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;color:#fff;font-weight:600;min-width:0}
+.admix-auth{background:var(--green)}
+.admix-paid{background:var(--blue)}
+.admix-event{background:#b06a12}
+.admix-lbl{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink40);margin-bottom:20px}
+.admix-legend{display:flex;gap:20px;flex-wrap:wrap;margin:18px 0 4px}
+.admix-leg{display:flex;align-items:center;gap:7px;font-size:.78rem;color:var(--ink60)}
+.admix-dot{width:11px;height:11px;border-radius:3px;flex-shrink:0}
+.admix-chs{list-style:none;padding:0;margin:16px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:8px 20px}
+.admix-chs li{font-size:.86rem;color:var(--ink);padding:6px 0;display:flex;gap:10px;align-items:baseline;line-height:1.4;border-bottom:1px solid var(--line)}
+.admix-ch-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0;transform:translateY(1px)}
+.admix-ch-role{margin-left:auto;font-family:var(--mono);font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink40);white-space:nowrap}
+@media(max-width:640px){.admix-chs{grid-template-columns:1fr}}
 
 /* lejki */
 .core-arr{color:var(--orange);font-size:1.2rem;align-self:center}
@@ -423,6 +438,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   <a href="#lejki"><span class="n">06</span>Lejki<span class="wip">WIP</span></a>
   <a href="#pilotaz"><span class="n">07</span>Pilotaż<span class="wip">WIP</span></a>
   <a href="#kampania"><span class="n">08</span>Kampania</a>
+  <a href="#reklama"><span class="n">09</span>Reklama<span class="wip">WIP</span></a>
   <!-- WYLACZONE: <a href="#codalej"><span class="n">09</span>Co dalej</a> -->
   <!-- WYLACZONE: <a href="#ryzyka"><span class="n">11</span>Ryzyka</a> -->
   <!-- WYLACZONE: <a href="#plan"><span class="n">12</span>Plan &amp; decyzje</a> -->
@@ -634,6 +650,26 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
     AI da każdemu z nas coraz więcej. Ale „razem” trzeba budować po staremu: regularnie, przy jednym stole.</p>
     <div class="sig-line">TeamBudget. Pierwszy budżet, którego nie dostaje pracownik. Dostaje go zespół.</div>
   </div>
+</div></section>
+
+<!-- 09 REKLAMA -->
+<section class="block" id="reklama"><div class="wrap">
+  <div class="eyebrow">09 · Budżet reklamowy <span class="wip">WIP</span></div>
+  <h2>Nie jeden miks, tylko trzy</h2>
+  <p class="lede">Budżet reklamowy nie jest statyczną tabelką — zmienia się w czasie, zgrany z fazami wejścia na rynek z sekcji 05. <b>Autorytet buduje kategorię, zanim jest co sprzedawać; media płatne ruszają dopiero z danymi z pilotażu jako amunicją</b>. To rozwiązuje trzy problemy naraz: słabe wyniki LinkedIn (bo teraz to nie jego faza), ryzyko mocy produkcyjnych (content front-loaded, gdy jest czas) i marnowanie budżetu (w Fazie 1 każda złotówka buduje trwały asset). Kliknij fazę.</p>
+  <div class="phases" id="adPhaseBtns"></div>
+  <div class="phase-detail">
+    <div class="admix-split" id="adSplit"></div>
+    <div class="admix-lbl" id="adSplitLbl"></div>
+    <ul class="admix-chs" id="adChannels"></ul>
+    <div class="admix-legend">
+      <span class="admix-leg"><i class="admix-dot admix-auth"></i>Autorytet / organic</span>
+      <span class="admix-leg"><i class="admix-dot admix-paid"></i>Media płatne</span>
+      <span class="admix-leg"><i class="admix-dot admix-event"></i>Wydarzenia</span>
+    </div>
+    <dl class="kv" id="adKv" style="margin-top:20px"></dl>
+  </div>
+  <p style="font-size:.8rem;color:var(--ink40);margin:16px 0 0">Proporcje to hipoteza kierunkowa — konkretne kwoty, CPL i cele konwersji prowadzi zespół performance. Rozdzielamy też LinkedIn: słabe wyniki dotyczą <b>Ads</b> (płatny zasięg), nie organic thought leadership, który zostaje jako kanał HR/CFO.</p>
 </div></section>
 
 <!-- 11 RYZYKA -->
@@ -1165,6 +1201,39 @@ PHASES.forEach((p,i)=>{
   b.onclick=()=>setPhase(i); pb.appendChild(b);
 });
 setPhase(0);
+
+/* 09 reklama — fazowy budżet */
+const AD_PHASES = [
+{n:"Faza 1",d:"VIII–X 2026",t:"Zbieranie amunicji",s:"Zero paid. Budujemy asset i dane z pilotaży.",
+ split:[["auth",80,"autorytet 80%"],["event",20,"20%"]],
+ lbl:"produkcja treści · 0% media buy",
+ ch:[["auth","Podcasty — goście","autorytet"],["auth","YouTube — kanał własny, pierwsze case'y","autorytet"],["event","Przygotowanie pod Better Minds HR","scena"]],
+ kv:[["Rola","Każda złotówka idzie w treść, która będzie pracować przez rok. Nie kupujemy zasięgu — budujemy prawo do sceny."],["Dlaczego zero paid","Sekcja 05: Faza 1 to walidacja. Nie ma jeszcze dowodu ani kategorii — paid teraz to palenie budżetu."],["Wynik","Biblioteka treści opartej o dane z 60 zespołów, gotowa na premierę w październiku."]]},
+{n:"Faza 2",d:"X 2026 – III 2027",t:"Premiera z dowodem",s:"Paid rusza ostrożnie — ciepły retargeting i Google intent.",
+ split:[["auth",45,"autorytet 45%"],["paid",35,"paid 35%"],["event",20,"20%"]],
+ lbl:"autorytet dominuje · paid celowany",
+ ch:[["event","Better Minds HR — prelekcja z danymi","scena"],["auth","Podcast + YouTube — rytm treści","autorytet"],["paid","Google intent — łapie popyt","intent"],["paid","Retargeting — domyka ciepłych","retargeting"]],
+ kv:[["Rola","Premiera kategorii na Better Minds HR z danymi z 60 zespołów. Paid nie tworzy kategorii — tylko domyka tych, których dane już rozgrzały."],["Czemu ostrożnie","Zimny zasięg wciąż nie działa bez powtarzalnego playbooka. Wchodzimy tam, gdzie jest intencja (Google) i ciepło (retargeting)."],["Wynik","Kategoria ogłoszona wynikami, nie wizją. Pierwsza konwersja w oknie budżetowym XI–I."]]},
+{n:"Faza 3",d:"IV–VII 2027",t:"Skala na dowodach",s:"Performance skaluje to, co działa. LinkedIn/Meta pełną parą.",
+ split:[["paid",60,"paid 60%"],["auth",30,"autorytet 30%"],["event",10,"10%"]],
+ lbl:"paid dominuje · autorytet jako fundament",
+ ch:[["paid","LinkedIn — HR + CFO, pełna skala","HR · CFO"],["paid","Meta — pull od Team Leaderów","Team Leader"],["paid","Google + YouTube Ads","intent"],["auth","Podcast + YouTube — dalej pracują","fundament"]],
+ kv:[["Rola","Kategoria już ogłoszona. Performance skaluje dowody, nie tworzy kategorii. LinkedIn i Meta ruszają pełną parą — bo jest dowód i referencje."],["Czemu teraz LinkedIn","Słabe wyniki LinkedIn w 2026 to kwestia timingu, nie kanału: brakowało dowodu. W Fazie 3 kreacja opiera się o twarde case'y."],["Wynik","Przewidywalne szanse spoza bazy, fraza „budżet zespołowy” w języku branży."]]}
+];
+const apb = $('#adPhaseBtns');
+function setAdPhase(i){
+  apb.querySelectorAll('.phase').forEach((b,j)=>b.classList.toggle('on',j===i));
+  const P = AD_PHASES[i];
+  $('#adSplit').innerHTML = P.split.map(s=>`<div class="admix-seg admix-${s[0]}" style="width:${s[1]}%">${s[2]}</div>`).join('');
+  $('#adSplitLbl').textContent = P.lbl;
+  $('#adChannels').innerHTML = P.ch.map(c=>`<li><span class="admix-ch-dot admix-${c[0]}"></span>${c[1]}<span class="admix-ch-role">${c[2]}</span></li>`).join('');
+  $('#adKv').innerHTML = P.kv.map(r=>`<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join('');
+}
+AD_PHASES.forEach((p,i)=>{
+  const b = el('button','phase',`<span class="mono">${p.n} · ${p.d}</span><h3>${p.t}</h3><p>${p.s}</p>`);
+  b.onclick=()=>setAdPhase(i); apb.appendChild(b);
+});
+setAdPhase(0);
 
 /* 08 lejki */
 const lb = $('#lejekBtns');
