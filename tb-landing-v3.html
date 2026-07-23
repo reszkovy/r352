@@ -680,7 +680,7 @@ window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scro
 function countTo(el){
   if(el.dataset.done)return;el.dataset.done='1';
   const t=parseFloat(el.dataset.count),suf=el.dataset.suffix||'',pre=el.dataset.prefix||'';
-  if(HAS_GSAP&&!REDUCE){const o={v:0};gsap.to(o,{v:t,duration:1.2,ease:'power2.out',onUpdate:()=>el.textContent=pre+Math.round(o.v).toLocaleString('pl-PL')+suf});}
+  if(HAS_GSAP&&!REDUCE&&!document.hidden){const o={v:0};gsap.to(o,{v:t,duration:1.2,ease:'power2.out',onUpdate:()=>el.textContent=pre+Math.round(o.v).toLocaleString('pl-PL')+suf});}
   else el.textContent=pre+t.toLocaleString('pl-PL')+suf;
 }
 
