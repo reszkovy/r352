@@ -736,14 +736,22 @@ if(HAS_GSAP){
   if(window.Lenis&&!REDUCE){lenis=new Lenis({lerp:.1,smoothWheel:true});lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);}
   document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const id=a.getAttribute('href');if(id.length>1){const t=document.querySelector(id);if(t){e.preventDefault();lenis?lenis.scrollTo(t,{offset:-72}):t.scrollIntoView({behavior:'smooth'});}}});});
 
-  const tl=gsap.timeline({defaults:{ease:'power3.out'}});
-  tl.from('.hero .micro',{y:14,opacity:0,duration:.5})
-    .from('.hero-h1 .line-in',{yPercent:118,duration:.9,stagger:.1,ease:'power4.out'},'-=.15')
-    .from('.hero .lead',{y:18,opacity:0,duration:.6},'-=.45')
-    .from('.hero-cta',{y:16,opacity:0,duration:.5},'-=.4')
-    .from('.hero-proof .hp',{y:14,opacity:0,stagger:.08,duration:.45,onStart:()=>document.querySelectorAll('.hero-proof [data-count]').forEach(countTo)},'-=.3')
-    .from('.dash-mock',{y:34,opacity:0,duration:.9},'-=.85')
-    .from('.hero-sticker',{scale:.4,opacity:0,stagger:.09,duration:.5,ease:'back.out(1.5)'},'-=.45');
+  function heroIntro(){
+    const tl=gsap.timeline({defaults:{ease:'power3.out'}});
+    tl.from('.hero .micro',{y:14,opacity:0,duration:.5})
+      .from('.hero-h1 .line-in',{yPercent:118,duration:.9,stagger:.1,ease:'power4.out'},'-=.15')
+      .from('.hero .lead',{y:18,opacity:0,duration:.6},'-=.45')
+      .from('.hero-cta',{y:16,opacity:0,duration:.5},'-=.4')
+      .from('.hero-proof .hp',{y:14,opacity:0,stagger:.08,duration:.45,onStart:()=>document.querySelectorAll('.hero-proof [data-count]').forEach(countTo)},'-=.3')
+      .from('.dash-mock',{y:34,opacity:0,duration:.9},'-=.85')
+      .from('.hero-sticker',{scale:.4,opacity:0,stagger:.09,duration:.5,ease:'back.out(1.5)'},'-=.45');
+  }
+  /* uruchom intro tylko gdy karta jest widoczna — inaczej treść zostaje widoczna od razu (rAF pauzuje w tle) */
+  if(document.visibilityState==='visible'){ heroIntro(); }
+  else {
+    document.querySelectorAll('.hero-proof [data-count]').forEach(countTo);
+    document.addEventListener('visibilitychange',function _h(){ if(document.visibilityState==='visible'){ heroIntro(); document.removeEventListener('visibilitychange',_h); } });
+  }
 
   if(!REDUCE){gsap.utils.toArray('.hero-sticker').forEach((s,i)=>{gsap.to(s,{y:'+=12',rotation:'+=2',duration:3+i*.4,ease:'sine.inOut',yoyo:true,repeat:-1,delay:1+i*.25});});}
 
