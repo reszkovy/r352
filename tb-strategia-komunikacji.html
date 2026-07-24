@@ -567,7 +567,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 <!-- 07 GTM -->
 <section class="block" id="gtm"><div class="wrap">
   <div class="eyebrow">05 · Wejście na rynek — trzy fazy <span class="wip">WIP</span></div>
-  <h2>12 miesięcy w trzech fazach</h2>
+  <h2>Sześć miesięcy w trzech fazach</h2>
   <p class="lede">Kalendarz wynika z faktów: Better Minds HR jest w październiku, więc <b>premiera kategorii odbywa się z danymi z 60 zespołów, nie z obietnicami</b>. Konwersja wdrożeń celuje w okno budżetowe XI–I.</p>
   <div class="phases" id="phaseBtns"></div>
   <div class="phase-detail"><dl class="kv" id="phaseKv"></dl></div>
@@ -892,7 +892,7 @@ const COMMITTEE = [
 ];
 
 const PHASES = [
-{n:"Faza 1",d:"VIII–X 2026",t:"Walidacja i pilotaże",s:"15–20 pilotaży z bazy BW, zero mediów płatnych",kv:[
+{n:"Faza 1",d:"VIII–IX 2026",t:"Walidacja i pilotaże",s:"15–20 pilotaży z bazy BW, zero mediów płatnych",kv:[
 ["Cel","15–20 pilotaży (60–80 zespołów) u obecnych klientów; dane na premierę; 3 zgody na historia wdrożenia z nazwą (warunek w umowie)"],
 ["Target","Segment A bazy: 1000+ pracowników, ≥2 usługi BW, HR znany z imienia, hybrydowo (~30–60 firm, do weryfikacji w CRM)"],
 ["Oferta","Pilotaż bezpłatny platformowo, prowadzony przez BW, z raportem końcowym dla zarządu"],
@@ -901,7 +901,7 @@ const PHASES = [
 ["KPI","≥15 pilotaży · aktywacja ≥70% w 2 tyg. · ≥2 doświadczenia/zespół/mies."],
 ["Bramka","≥10 pilotaży z kompletem danych + ≥1 publiczne historia wdrożenia"],
 ["Ryzyka","Sierpień = urlopy HR → kontraktować w VIII, aktywować od IX · przeciążenie operacji → twardy limit"]]},
-{n:"Faza 2",d:"X 2026 – III 2027",t:"Stworzenie kategorii",s:"Premiera na Better Minds HR z danymi, konwersja w oknie budżetowym",kv:[
+{n:"Faza 2",d:"X–XI 2026",t:"Stworzenie kategorii",s:"Premiera na Better Minds HR z danymi, konwersja w oknie budżetowym",kv:[
 ["Cel","Premiera kategorii na Better Minds HR z danymi z pilotaży · konwersja wdrożeń w oknie budżetowym (cele liczbowe: zespół sprzedaży)"],
 ["Kanały","Better Minds HR (4 miasta) · raport flagowy + PR · LinkedIn prowadzone przez założyciela · webinary · e-mail do bazy"],
 ["Komunikat","„Dane z 15 firm i 60 zespołów: co się dzieje, kiedy budżet dostaje zespół, a nie jednostka.” Kategoria ogłaszana wynikami, nie wizją"],
@@ -909,7 +909,7 @@ const PHASES = [
 ["KPI","Jakość sali (udział decydentów z firm 200+) · deklaracje pilotażu na miejscu · cele konwersji prowadzi zespół sprzedaży"],
 ["Bramka","≥10 płacących klientów + powtarzalny playbook sprzedaży"],
 ["Ryzyka","Event wizerunkowy zamiast sprzedażowego → pełna ścieżka obowiązkowa · słabe dane relacyjne → premierę oprzeć na wykorzystaniu i frekwencji"]]},
-{n:"Faza 3",d:"IV–VII 2027",t:"Skalowanie",s:"Reklama płatna, dotarcie celowane do 50–100 firm, partnerstwa — za bramkami",kv:[
+{n:"Faza 3",d:"XII 2026 – I 2027",t:"Skalowanie",s:"Reklama płatna, dotarcie celowane do 50–100 firm, partnerstwa — za bramkami",kv:[
 ["Cel","Przewidywalne szanse sprzedażowe spoza bazy · 50–100 wybranych firm · średnio ≥8 zespołów/klient"],
 ["Kanały","LinkedIn Ads (problem→raport, solution→kalkulator, product→demo) · Google Search (frazy problemowe + brand) · dotarcie celowane do wybranych firm: raporty personalizowane i kameralne spotkania · partnerstwa: badanie zaangażowania + deweloper biurowy · program poleceń"],
 ["Komunikat","„Kategoria już istnieje — oto porównanie. Gdzie na nim jest wasza firma?”"],
@@ -1209,17 +1209,17 @@ setPhase(0);
 
 /* 09 reklama — fazowy budżet */
 const AD_PHASES = [
-{n:"Faza 1",d:"VIII–X 2026",t:"Zbieranie amunicji",s:"Zero paid. Budujemy asset i dane z pilotaży.",
+{n:"Faza 1",d:"VIII–IX 2026",t:"Zbieranie amunicji",s:"Zero paid. Budujemy asset i dane z pilotaży.",
  split:[["auth",80,"autorytet 80%"],["event",20,"20%"]],
  lbl:"produkcja treści · 0% media buy",
  ch:[["auth","Podcasty — gościnne wystąpienia","autorytet"],["auth","Explainer video — kilka sztuk, produkcja raz","asset"],["event","Przygotowanie pod Better Minds HR","scena"]],
  kv:[["Rola","Każda złotówka idzie w treść, która będzie pracować przez rok. Nie kupujemy zasięgu — budujemy prawo do sceny."],["Dlaczego zero paid","Sekcja 05: Faza 1 to walidacja. Nie ma jeszcze dowodu ani kategorii — paid teraz to palenie budżetu."],["Wynik","Biblioteka treści opartej o dane z 60 zespołów, gotowa na premierę w październiku."]]},
-{n:"Faza 2",d:"X 2026 – III 2027",t:"Premiera z dowodem",s:"Paid rusza ostrożnie — ciepły retargeting i Google intent.",
+{n:"Faza 2",d:"X–XI 2026",t:"Premiera z dowodem",s:"Paid rusza ostrożnie — ciepły retargeting i Google intent.",
  split:[["auth",45,"autorytet 45%"],["paid",35,"paid 35%"],["event",20,"20%"]],
  lbl:"autorytet dominuje · paid celowany",
  ch:[["event","Better Minds HR — prelekcja z danymi","scena"],["auth","Podcasty — rytm gościnnych wystąpień","autorytet"],["paid","Google intent — łapie popyt","intent"],["paid","Retargeting — domyka ciepłych","retargeting"],["paid","Portale branżowe HR (DV360) — kontekst wokół premiery","zasięg HR"]],
  kv:[["Rola","Premiera kategorii na Better Minds HR z danymi z 60 zespołów. Paid nie tworzy kategorii — tylko domyka tych, których dane już rozgrzały."],["Czemu ostrożnie","Zimny zasięg wciąż nie działa bez powtarzalnego playbooka. Wchodzimy tam, gdzie jest intencja (Google) i ciepło (retargeting)."],["Wynik","Kategoria ogłoszona wynikami, nie wizją. Pierwsza konwersja w oknie budżetowym XI–I."]]},
-{n:"Faza 3",d:"IV–VII 2027",t:"Skala na dowodach",s:"Performance skaluje to, co działa. LinkedIn/Meta pełną parą.",
+{n:"Faza 3",d:"XII 2026 – I 2027",t:"Skala na dowodach",s:"Performance skaluje to, co działa. LinkedIn/Meta pełną parą.",
  split:[["paid",60,"paid 60%"],["auth",30,"autorytet 30%"],["event",10,"10%"]],
  lbl:"paid dominuje · autorytet jako fundament",
  ch:[["paid","LinkedIn — HR + CFO, pełna skala","HR · CFO"],["paid","Meta — pull od Team Leaderów","Team Leader"],["paid","Google + YouTube Ads — explainery jako kreacje","intent"],["paid","Portale branżowe HR (DV360) — programmatic do decydentów","zasięg HR"],["auth","Podcasty + explainery — dalej pracują","fundament"]],
