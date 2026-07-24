@@ -474,6 +474,11 @@ nav .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
 .rail a .sdot.ok{background:var(--green)}
 .rail a .sdot.prog{background:#d9a441}
 .rail a.on .sdot.prog{background:#ffd98a}
+.acc-toggle{float:right;display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:5px 12px;border-radius:100px;border:1px solid var(--line);background:#fff;color:var(--ink40);cursor:pointer;transition:all .18s;margin:2px 0 0 12px}
+.acc-toggle:hover{border-color:var(--ink40);color:var(--ink)}
+.acc-toggle .acc-ic{width:13px;height:13px;border-radius:50%;border:1.5px solid currentColor;flex:none;display:flex;align-items:center;justify-content:center;font-size:8px;line-height:1}
+.acc-toggle.on{background:rgba(21,164,119,.1);border-color:rgba(21,164,119,.4);color:var(--green)}
+.acc-toggle.on .acc-ic{background:var(--green);border-color:var(--green);color:#fff}
 </style>
 
 <div class="shell">
@@ -483,13 +488,12 @@ nav .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
   </div>
   <div class="railsub">Strategia komunikacji · 2026</div>
   <div class="rail-acc">
-    <div class="rail-acc-bar"><span style="width:17%"></span></div>
-    <div class="rail-acc-txt">Zaakceptowane <b>2</b> / 12</div>
+    <div class="rail-acc-bar"><span style="width:18%"></span></div>
+    <div class="rail-acc-txt">Zaakceptowane <b>2</b> / 11</div>
   </div>
   <!-- WYLACZONE: <a href="#exec"><span class="n">01</span>Rozstrzygnięcia</a> -->
   <!-- WYLACZONE: <a href="#diagnoza"><span class="n">02</span>Diagnoza</a> -->
   <a href="#hipoteza" class="on"><span class="sdot ok"></span><span class="n">00</span>Hipoteza</a>
-  <a href="#salt"><span class="sdot prog"></span><span class="n">·</span>W skrócie</a>
   <a href="#pozycjonowanie"><span class="sdot ok"></span><span class="n">01</span>Pozycjonowanie</a>
   <a href="#insight"><span class="sdot prog"></span><span class="n">02</span>Insight</a>
   <a href="#message"><span class="sdot prog"></span><span class="n">03</span>Message house</a>
@@ -1458,4 +1462,42 @@ const spy = new IntersectionObserver(es=>{
   });
 },{rootMargin:'-30% 0px -60% 0px'});
 sections.forEach(s=>s&&spy.observe(s));
+</script>
+
+<script>
+(function(){
+  var AREAS=['hipoteza','pozycjonowanie','insight','message','persony','gtm','lejki','pilotaz','kampania','budzet-media','deliverables'];
+  var DEF=['hipoteza','pozycjonowanie'];
+  function load(){try{var v=JSON.parse(localStorage.getItem('tb_acc'));if(Array.isArray(v))return v;}catch(e){}return DEF.slice();}
+  var acc=new Set(load());
+  function save(){try{localStorage.setItem('tb_acc',JSON.stringify(Array.from(acc)));}catch(e){}}
+  function upd(){
+    AREAS.forEach(function(id){
+      var on=acc.has(id);
+      var dot=document.querySelector('.rail a[href="#'+id+'"] .sdot');
+      if(dot){dot.classList.toggle('ok',on);dot.classList.toggle('prog',!on);}
+      var sec=document.getElementById(id);
+      if(sec)sec.classList.toggle('accepted',on);
+      var btn=sec&&sec.querySelector('.acc-toggle');
+      if(btn){btn.classList.toggle('on',on);btn.setAttribute('aria-pressed',on);
+        btn.querySelector('.acc-label').textContent=on?'Zaakceptowane':'Do akceptacji';
+        btn.querySelector('.acc-ic').textContent=on?'\u2713':'';}
+    });
+    var n=AREAS.filter(function(id){return acc.has(id);}).length;
+    var cnt=document.querySelector('.rail-acc-txt');
+    if(cnt)cnt.innerHTML='Zaakceptowane <b>'+n+'</b> / '+AREAS.length;
+    var bar=document.querySelector('.rail-acc-bar span');
+    if(bar)bar.style.width=Math.round(n/AREAS.length*100)+'%';
+  }
+  AREAS.forEach(function(id){
+    var sec=document.getElementById(id); if(!sec)return;
+    var wrap=sec.querySelector('.wrap'); if(!wrap)return;
+    var btn=document.createElement('button');
+    btn.className='acc-toggle'; btn.type='button';
+    btn.innerHTML='<span class="acc-ic"></span><span class="acc-label"></span>';
+    btn.addEventListener('click',function(){ if(acc.has(id)){acc.delete(id);}else{acc.add(id);} save(); upd(); });
+    wrap.insertBefore(btn, wrap.firstChild);
+  });
+  upd();
+})();
 </script>
