@@ -180,6 +180,19 @@ section.block{padding:92px 0;position:relative;}
 .sol-card p{font-size:14px;color:var(--muted);line-height:1.55;}
 @media(max-width:760px){.sol-grid{grid-template-columns:1fr;}}
 
+/* RYTM / RYTUAŁY */
+.block.ritm-sec{background:var(--pale-white);}
+.ritm-loop{display:flex;align-items:stretch;gap:12px;flex-wrap:wrap;justify-content:center;}
+.ritm-card{flex:1;min-width:210px;background:#fff;border-radius:16px;padding:26px 24px;box-shadow:0 2px 18px rgba(71,58,57,.06);border-top:3px solid var(--orange);}
+.ritm-freq{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);font-weight:500;}
+.ritm-card h3{font-size:17px;font-weight:700;margin:8px 0 6px;}
+.ritm-card p{font-size:13.5px;color:var(--muted);line-height:1.5;}
+.ritm-arr{display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:22px;flex:none;}
+.ritm-foot{text-align:center;font-size:15px;color:var(--muted);margin-top:28px;line-height:1.6;}
+.ritm-foot b{color:var(--pale-black);font-weight:600;}
+.ritm-loopword{display:inline-flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);background:rgba(67,117,255,.08);padding:5px 13px;border-radius:100px;}
+@media(max-width:760px){.ritm-arr{transform:rotate(90deg);}}
+
 /* HOW — 4 kroki */
 .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-radius:var(--r-lg);overflow:hidden;background:var(--card);box-shadow:0 2px 20px rgba(71,58,57,.06);}
 .flow-step{padding:32px 24px;transition:background .4s var(--ease-out);position:relative;}
@@ -316,6 +329,7 @@ footer{padding:46px 0 56px;color:var(--muted);}
     <nav class="nav-links">
       <a href="#problem">Problem</a>
       <a href="#rozwiazanie">Rozwiązanie</a>
+      <a href="#rytm">Rytm</a>
       <a href="#jak">Jak działa</a>
       <a href="#kto">Dla kogo</a>
       <a href="#obiekcje">Pytania</a>
@@ -479,6 +493,25 @@ footer{padding:46px 0 56px;color:var(--muted);}
     <p class="reg-lead" id="regLead">HR: mierzalny wpływ na relacje, frekwencję i kulturę — nie hasło na plakacie.</p>
 
     <div class="sol-grid" id="regGrid"></div>
+  </div>
+</section>
+
+<!-- RYTM / RYTUAŁY -->
+<section class="block ritm-sec" id="rytm">
+  <div class="wrap">
+    <div class="sec-head" style="max-width:680px;">
+      <span class="num-tag" style="color:var(--orange)">Mechanizm</span>
+      <h2>Rytuał to nie event. <span class="blue">To rytm.</span></h2>
+      <p>Kultura nie powstaje na integracji raz w roku — powstaje w powtarzalnych sytuacjach, w których zespół po prostu siada razem. TeamBudget zamienia budżet w kalendarz rytuałów, które wracają. Nie organizujesz eventu; ustawiasz rytm.</p>
+    </div>
+    <div class="ritm-loop">
+      <div class="ritm-card"><span class="ritm-freq">Co 2 tygodnie</span><h3>Wspólne śniadanie</h3><p>Bazowy rytuał zespołu. Niski próg wejścia, wysoka regularność — zaczyna się od stołu.</p></div>
+      <span class="ritm-arr" aria-hidden="true">&#8635;</span>
+      <div class="ritm-card"><span class="ritm-freq">Raz w miesiącu</span><h3>Doświadczenie z wyboru</h3><p>Zespół głosuje i wybiera z katalogu. Sprawczość zamiast narzucania z góry.</p></div>
+      <span class="ritm-arr" aria-hidden="true">&#8635;</span>
+      <div class="ritm-card"><span class="ritm-freq">Kwartalnie</span><h3>Większe wyjście</h3><p>Moment, na który zespół czeka. Spina kwartał i buduje wspólną historię.</p></div>
+    </div>
+    <div class="ritm-foot"><span class="ritm-loopword">&#8635; i tak w kółko</span><br><b>To „w kółko" jest całą tajemnicą.</b> Tak — zwykłym narzędziem do budżetu — realnie buduje się kulturę organizacji: nie deklaracją na plakacie, ale rytmem, który się utrzymuje. Dlatego mierzymy regularność, nie jednorazowy zryw.</div>
   </div>
 </section>
 
@@ -758,7 +791,7 @@ if(HAS_GSAP){
   const rev=(sel)=>gsap.utils.toArray(sel).forEach(el=>gsap.from(el,{y:26,opacity:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 86%',once:true}}));
   const stg=(sel)=>gsap.utils.toArray(sel).forEach(g=>gsap.from(g.children,{y:26,opacity:0,duration:.7,stagger:.08,ease:'power3.out',scrollTrigger:{trigger:g,start:'top 84%',once:true}}));
   rev('.sec-head');rev('.ui-compare');rev('.flow');rev('.matrix');rev('.cta-card');rev('.insight-in');rev('.manifest');rev('.reg-toggle');
-  stg('.chaos-grid');stg('#regGrid');stg('.who-grid');stg('.measure-grid');stg('.obj-list');stg('.ui-rows');
+  stg('.chaos-grid');stg('#regGrid');stg('.ritm-loop');stg('.who-grid');stg('.measure-grid');stg('.obj-list');stg('.ui-rows');
 
   document.querySelectorAll('[data-count]').forEach(el=>{if(!el.closest('.hero-proof'))ScrollTrigger.create({trigger:el,start:'top 92%',once:true,onEnter:()=>countTo(el)});});
 
