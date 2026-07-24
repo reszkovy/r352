@@ -488,12 +488,11 @@ nav .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
   </div>
   <div class="railsub">Strategia komunikacji · 2026</div>
   <div class="rail-acc">
-    <div class="rail-acc-bar"><span style="width:18%"></span></div>
-    <div class="rail-acc-txt">Zaakceptowane <b>2</b> / 11</div>
+    <div class="rail-acc-bar"><span style="width:10%"></span></div>
+    <div class="rail-acc-txt">Zaakceptowane <b>1</b> / 10</div>
   </div>
   <!-- WYLACZONE: <a href="#exec"><span class="n">01</span>Rozstrzygnięcia</a> -->
   <!-- WYLACZONE: <a href="#diagnoza"><span class="n">02</span>Diagnoza</a> -->
-  <a href="#hipoteza" class="on"><span class="sdot ok"></span><span class="n">00</span>Hipoteza</a>
   <a href="#pozycjonowanie"><span class="sdot ok"></span><span class="n">01</span>Pozycjonowanie</a>
   <a href="#insight"><span class="sdot prog"></span><span class="n">02</span>Insight</a>
   <a href="#message"><span class="sdot prog"></span><span class="n">03</span>Message house</a>
@@ -517,7 +516,7 @@ nav .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
     <h1>Budżet, który buduje <span class="gap">zespół.</span></h1>
     <p class="sub">TeamBudget wchodzi na rynek nie jako kolejny benefit, lecz jako <b>system porządkujący pieniądze, które firmy już wydają na zespoły</b>. Ta strategia łączy emocję, która otwiera rozmowę, z kontrolą, która przekonuje finanse.</p>
     <div class="hero-cta">
-      <a class="btn pri" href="#hipoteza">Zacznij od hipotezy</a>
+      <a class="btn pri" href="#pozycjonowanie">Zacznij</a>
       <a class="btn sec" href="#kampania">Przejdź do kampanii</a>
     </div>
   </div>
@@ -563,7 +562,7 @@ nav .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
 </div></section>
 
 <!-- 00 HIPOTEZA -->
-<section class="block" id="hipoteza"><div class="wrap">
+<section class="block" id="hipoteza" style="display:none" data-wylaczone="1"><div class="wrap">
   <div class="eyebrow">00 · Hipoteza, do rozmowy z zarządem</div>
   <h2>Hipoteza</h2>
   <div class="statement">
@@ -1466,8 +1465,8 @@ sections.forEach(s=>s&&spy.observe(s));
 
 <script>
 (function(){
-  var AREAS=['hipoteza','pozycjonowanie','insight','message','persony','gtm','lejki','pilotaz','kampania','budzet-media','deliverables'];
-  var DEF=['hipoteza','pozycjonowanie'];
+  var AREAS=['pozycjonowanie','insight','message','persony','gtm','lejki','pilotaz','kampania','budzet-media','deliverables'];
+  var DEF=['pozycjonowanie'];
   function load(){try{var v=JSON.parse(localStorage.getItem('tb_acc'));if(Array.isArray(v))return v;}catch(e){}return DEF.slice();}
   var acc=new Set(load());
   function save(){try{localStorage.setItem('tb_acc',JSON.stringify(Array.from(acc)));}catch(e){}}
