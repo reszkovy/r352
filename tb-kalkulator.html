@@ -3,180 +3,162 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TeamBudget — Puls kultury zespołów</title>
-<meta name="description" content="Jak żywa jest kultura Twoich zespołów? Odpowiedz na kilka pytań o rytm, rytuały i wspólne chwile, a zobaczysz żywy sygnet więzi. Abstrakcyjny instrument, nie diagnoza.">
+<title>TeamBudget, Puls kultury zespołów</title>
+<meta name="description" content="Pięć pytań, pięć wymiarów kultury. Zobacz, jak żywa jest więź w Twoich zespołach.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="tokens.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',system-ui,sans-serif;background:var(--pale-white);color:var(--pale-black);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
-h1,h2,h3,.font-head{font-family:'Pangram Sans','DM Sans',sans-serif;}
-::selection{background:rgba(67,117,255,.18);}
-a{color:inherit;text-decoration:none;}
-a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:6px;}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 28px;}
-.eyebrow{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);font-weight:500;}
-.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;border-radius:100px;padding:13px 24px;min-height:46px;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all .3s ease;white-space:nowrap;}
-.btn .arrow{transition:transform .3s ease;}
+html,body{height:100%;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--pale-black);color:var(--pale-white);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+h1,h2,h3{font-family:'Pangram Sans','DM Sans',sans-serif;}
+::selection{background:rgba(67,117,255,.35);}
+button{font-family:'DM Sans',sans-serif;cursor:pointer;}
+button:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:8px;}
+
+.stage{min-height:100vh;min-height:100dvh;display:grid;grid-template-columns:1fr 1fr;max-width:1120px;margin:0 auto;padding:0 32px;gap:40px;align-items:center;}
+@media(max-width:820px){.stage{grid-template-columns:1fr;gap:0;padding:0 22px;align-items:start;}}
+
+/* SYGNET */
+.syg-col{display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;padding:40px 0;}
+@media(max-width:820px){.syg-col{padding:34px 0 6px;}}
+.syg-glow{position:absolute;width:min(420px,80vw);height:min(420px,80vw);border-radius:50%;background:radial-gradient(circle,rgba(67,117,255,.28) 0%,rgba(67,117,255,0) 62%);opacity:0;transition:opacity 1.4s ease;pointer-events:none;}
+.syg-box{width:min(300px,56vw);position:relative;}
+@media(max-width:820px){.syg-box{width:min(200px,48vw);}}
+#syg{width:100%;height:auto;overflow:visible;display:block;}
+#flower{transform-box:fill-box;transform-origin:center;animation:breathe var(--dur,5.4s) ease-in-out infinite;}
+.petal{transition:transform 1.2s cubic-bezier(.22,1,.36,1),opacity 1.2s ease;transform-box:fill-box;}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+@media(prefers-reduced-motion:reduce){#flower{animation:none}.petal{transition:none}}
+.syg-cap{margin-top:26px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,251,244,.4);text-align:center;}
+
+/* PANEL */
+.panel-col{padding:48px 0;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;justify-content:center;}
+@media(max-width:820px){.panel-col{min-height:auto;padding:10px 0 56px;justify-content:flex-start;}}
+.screen{display:none;}
+.screen.on{display:block;animation:rise .55s cubic-bezier(.22,1,.36,1);}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.screen.on{animation:none}}
+
+.k-eyebrow{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);font-weight:500;}
+.intro h1{font-size:clamp(30px,4vw,44px);font-weight:700;letter-spacing:-.03em;line-height:1.08;margin:16px 0 18px;}
+.intro h1 .blue{color:var(--blue);}
+.intro p{color:rgba(255,251,244,.62);font-size:16.5px;max-width:46ch;}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15px;border-radius:100px;padding:14px 28px;border:none;background:var(--blue);color:#fff;box-shadow:0 6px 24px rgba(67,117,255,.35);transition:all .3s ease;margin-top:28px;}
+.btn:hover{background:var(--blue-deep);box-shadow:0 10px 32px rgba(67,117,255,.5);}
+.btn .arrow{transition:transform .3s;}
 .btn:hover .arrow{transform:translateX(5px);}
-.btn-blue{background:var(--blue);color:#fff;box-shadow:0 4px 16px rgba(67,117,255,.28);}
-.btn-blue:hover{background:var(--blue-deep);box-shadow:0 10px 30px rgba(67,117,255,.40);}
+.btn-ghost{background:transparent;color:rgba(255,251,244,.55);box-shadow:none;border:1px solid rgba(255,251,244,.18);}
+.btn-ghost:hover{background:rgba(255,251,244,.06);color:var(--pale-white);box-shadow:none;}
 
-/* NAV */
-header.nav{position:sticky;top:0;z-index:100;background:rgba(255,251,244,.86);backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line-soft);}
-.nav-inner{max-width:var(--max);margin:0 auto;padding:13px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;}
-.brand{display:flex;align-items:center;gap:12px;}
-.brand img{height:26px;width:auto;display:block;}
-.brand small{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-left:4px;}
-.nav-back{font-size:14px;color:var(--muted);font-weight:500;}
-.nav-back:hover{color:var(--pale-black);}
+.q-meta{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+.q-count{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,251,244,.45);}
+.q-dim{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;padding:4px 12px;border-radius:100px;border:1px solid;}
+.q-title{font-family:'Pangram Sans','DM Sans',sans-serif;font-size:clamp(22px,2.8vw,30px);font-weight:700;letter-spacing:-.025em;line-height:1.18;margin-bottom:8px;}
+.q-sub{color:rgba(255,251,244,.5);font-size:14px;margin-bottom:26px;}
+.opts{display:flex;flex-direction:column;gap:10px;}
+.opts button{text-align:left;font-size:15.5px;font-weight:500;color:rgba(255,251,244,.85);background:rgba(255,251,244,.05);border:1px solid rgba(255,251,244,.12);border-radius:14px;padding:15px 20px;transition:all .22s ease;display:flex;align-items:center;gap:14px;}
+.opts button .tick{width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,251,244,.25);flex:none;transition:all .22s;}
+.opts button:hover{background:rgba(67,117,255,.14);border-color:var(--blue);transform:translateX(4px);}
+.opts button:hover .tick{border-color:var(--blue);}
+.opts button.sel{background:rgba(67,117,255,.2);border-color:var(--blue);}
+.opts button.sel .tick{border-color:var(--blue);background:var(--blue);box-shadow:inset 0 0 0 4px var(--pale-black);}
+.q-nav{margin-top:22px;display:flex;align-items:center;gap:16px;}
+.q-back{background:none;border:none;color:rgba(255,251,244,.4);font-size:13.5px;font-weight:500;padding:6px 2px;}
+.q-back:hover{color:var(--pale-white);}
+.q-dots{display:flex;gap:7px;margin-left:auto;}
+.q-dots span{width:7px;height:7px;border-radius:50%;background:rgba(255,251,244,.15);transition:background .3s;}
+.q-dots span.done{background:var(--blue);}
+.q-dots span.cur{background:var(--pale-white);}
 
-/* HEADER */
-.calc-head{background:var(--sunny);padding:60px 0 40px;text-align:center;}
-.calc-head h1{font-size:clamp(28px,4vw,44px);letter-spacing:-.035em;font-weight:700;line-height:1.08;margin-top:14px;}
-.calc-head h1 .blue{color:var(--blue);}
-.calc-head p{color:var(--muted);font-size:17px;max-width:600px;margin:16px auto 0;}
-
-.calc-sec{padding:34px 0 44px;}
-.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start;}
-@media(max-width:860px){.calc-grid{grid-template-columns:1fr;}}
-
-.panel{background:#fff;border-radius:20px;padding:30px 32px;box-shadow:0 4px 24px rgba(71,58,57,.06);}
-.panel h2{font-size:18px;font-weight:700;margin-bottom:4px;}
-.panel .ph-sub{font-size:13px;color:var(--muted);margin-bottom:24px;}
-
-.field{margin-bottom:24px;}
-.field .q{font-size:14.5px;font-weight:600;color:var(--pale-black);margin-bottom:11px;line-height:1.4;}
-.seg{display:flex;flex-wrap:wrap;gap:7px;}
-.seg button{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:9px 15px;border-radius:100px;border:1px solid var(--line);background:var(--sunny);color:var(--muted);cursor:pointer;transition:all .2s;}
-.seg button:hover{border-color:var(--blue);}
-.seg button.on{background:var(--blue);color:#fff;border-color:var(--blue);box-shadow:0 3px 12px rgba(67,117,255,.28);}
-.field .hint{font-size:11.5px;color:var(--dim);margin-top:8px;line-height:1.4;}
-.field .rangelbl{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px;}
-.field .rangelbl .val{font-family:'DM Mono',monospace;font-size:13px;color:var(--blue);font-weight:500;}
-input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:100px;background:var(--sunny);outline:none;cursor:pointer;}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:20px;height:20px;border-radius:50%;background:var(--blue);border:3px solid #fff;box-shadow:0 2px 8px rgba(67,117,255,.35);cursor:pointer;}
-input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--blue);border:3px solid #fff;box-shadow:0 2px 8px rgba(67,117,255,.35);cursor:pointer;}
-
-/* RESULT — sygnet */
-.result{background:var(--pale-black);color:var(--pale-white);border-radius:20px;padding:34px 30px;position:sticky;top:24px;text-align:center;overflow:hidden;}
-.result .r-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,251,244,.5);}
-.syg-wrap{width:min(320px,72vw);margin:14px auto 6px;}
-#syg{width:100%;height:auto;overflow:visible;}
-#flower{transform-box:fill-box;transform-origin:center;animation:breathe var(--dur,4s) ease-in-out infinite;}
-.petal{transition:transform 1.1s cubic-bezier(.22,1,.36,1),opacity 1.1s ease;transform-box:fill-box;}
-@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
-@media(prefers-reduced-motion:reduce){#flower{animation:none}}
-.r-index{font-family:'Pangram Sans',sans-serif;font-size:64px;font-weight:700;letter-spacing:-.03em;line-height:1;margin-top:6px;transition:color .6s;}
-.r-index-lbl{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,251,244,.5);margin-top:6px;}
-.r-read{font-family:'Pangram Sans','DM Sans',sans-serif;font-size:15.5px;font-weight:500;line-height:1.55;color:rgba(255,251,244,.9);max-width:44ch;margin:20px auto 0;min-height:70px;}
-.r-cta{margin-top:22px;}
-.r-cta .btn{width:100%;justify-content:center;}
-.r-note{font-size:11px;color:rgba(255,251,244,.42);margin-top:14px;line-height:1.5;}
-
-.disc{max-width:820px;margin:34px auto 0;font-size:12.5px;color:var(--dim);line-height:1.6;text-align:center;border:1px dashed var(--line);border-radius:14px;padding:16px 20px;}
-.disc b{color:var(--muted);font-weight:600;}
-
-.cta-band{background:var(--sunny);padding:66px 0;text-align:center;}
-.cta-band h2{font-size:clamp(24px,3.2vw,34px);font-weight:700;letter-spacing:-.03em;}
-.cta-band h2 .blue{color:var(--blue);}
-.cta-band p{color:var(--muted);font-size:16px;max-width:560px;margin:14px auto 24px;}
-
-footer{padding:40px 0 52px;color:var(--muted);}
-.foot-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--dim);font-family:'DM Mono',monospace;letter-spacing:.04em;}
-.concept-tag{position:fixed;bottom:24px;right:24px;z-index:200;background:var(--orange);color:#fff;font-family:'DM Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:100px;box-shadow:0 4px 20px rgba(254,105,43,.4);}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;}}
+/* RESULT */
+.res-idx-row{display:flex;align-items:baseline;gap:14px;margin:14px 0 4px;}
+.res-idx{font-family:'Pangram Sans','DM Sans',sans-serif;font-size:76px;font-weight:700;letter-spacing:-.04em;line-height:1;}
+.res-idx-max{font-family:'DM Mono',monospace;font-size:14px;color:rgba(255,251,244,.4);}
+.res-verdict{font-family:'Pangram Sans','DM Sans',sans-serif;font-size:17px;font-weight:500;line-height:1.5;color:rgba(255,251,244,.9);max-width:48ch;margin-bottom:24px;}
+.dims{display:flex;flex-direction:column;gap:11px;margin-bottom:24px;}
+.dim{display:grid;grid-template-columns:118px 1fr 34px;align-items:center;gap:12px;}
+.dim .dn{font-size:13px;font-weight:600;color:rgba(255,251,244,.75);display:flex;align-items:center;gap:8px;}
+.dim .dn i{width:8px;height:8px;border-radius:50%;flex:none;}
+.dim .db{height:6px;border-radius:100px;background:rgba(255,251,244,.1);overflow:hidden;}
+.dim .db span{display:block;height:100%;border-radius:100px;width:0;transition:width 1.1s cubic-bezier(.22,1,.36,1);}
+.dim .dv{font-family:'DM Mono',monospace;font-size:12px;color:rgba(255,251,244,.55);text-align:right;}
+.res-reco{background:rgba(255,251,244,.06);border:1px solid rgba(255,251,244,.1);border-left:3px solid var(--orange);border-radius:12px;padding:16px 20px;font-size:14.5px;line-height:1.6;color:rgba(255,251,244,.85);margin-bottom:8px;}
+.res-reco b{color:var(--pale-white);}
+.res-note{font-size:11.5px;color:rgba(255,251,244,.35);line-height:1.5;margin-top:14px;max-width:52ch;}
+.res-nav{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
 </style>
 </head>
 <body>
 
-<section class="calc-sec">
-  <div class="wrap">
-    <div class="calc-grid">
+<div class="stage">
 
-      <!-- INPUTS -->
-      <div class="panel">
-        <h2>Kilka pytań</h2>
-        <p class="ph-sub">Odpowiadaj z brzucha. To nie test, to lustro.</p>
-
-        <div class="field">
-          <div class="q">Jak często cały zespół siada razem poza zadaniami?</div>
-          <div class="seg" data-name="cadence">
-            <button data-v="100">Co tydzień</button>
-            <button data-v="65" class="on">Co 2 tygodnie</button>
-            <button data-v="45">Co miesiąc</button>
-            <button data-v="22">Co kwartał</button>
-            <button data-v="5">Prawie nigdy</button>
-          </div>
-          <div class="hint">Wspólne śniadanie, lunch, wyjście — cokolwiek, gdzie nie chodzi o task.</div>
-        </div>
-
-        <div class="field">
-          <div class="q">Kiedy ostatnio zrobiliście coś całą ekipą?</div>
-          <div class="seg" data-name="recency">
-            <button data-v="100">W tym tygodniu</button>
-            <button data-v="72" class="on">W tym miesiącu</button>
-            <button data-v="30">Kilka miesięcy temu</button>
-            <button data-v="8">Nie pamiętam</button>
-          </div>
-        </div>
-
-        <div class="field">
-          <div class="q">Czy macie jakiś powtarzalny rytuał?</div>
-          <div class="seg" data-name="ritual">
-            <button data-v="100">Tak, stały</button>
-            <button data-v="52" class="on">Czasem coś się dzieje</button>
-            <button data-v="12">Nie ma czegoś takiego</button>
-          </div>
-          <div class="hint">Coś, co wraca samo, bez organizowania za każdym razem od zera.</div>
-        </div>
-
-        <div class="field">
-          <div class="rangelbl"><span class="q" style="margin:0">Ile zespół pracuje zdalnie / hybrydowo?</span><span class="val" id="remoteVal">50%</span></div>
-          <input type="range" id="remote" min="0" max="100" step="5" value="50">
-          <div class="hint">Im więcej rozproszenia, tym trudniej o naturalne okazje do spotkania.</div>
-        </div>
-      </div>
-
-      <!-- RESULT -->
-      <div class="result">
-        <span class="r-eyebrow">Sygnet więzi</span>
-        <div class="syg-wrap">
-          <svg id="syg" viewBox="-30 -30 219 218" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sygnet pokazujący poziom więzi zespołu">
-            <g id="flower"></g>
-          </svg>
-        </div>
-        <div class="r-index" id="rIndex">—</div>
-        <div class="r-index-lbl">Wskaźnik więzi · 0–100</div>
-        <div class="r-read" id="rRead"></div>
-        <div class="r-cta">
-          <a href="tb-landing-v3#audyt" class="btn btn-blue">Porozmawiajmy, co z tego wynika <span class="arrow">&rarr;</span></a>
-        </div>
-        <div class="r-note">To instrument, nie diagnoza. Realny obraz daje pilotaż z danymi z Waszych zespołów.</div>
-      </div>
-
+  <div class="syg-col">
+    <div class="syg-glow" id="glow"></div>
+    <div class="syg-box">
+      <svg id="syg" viewBox="-30 -30 219 218" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sygnet pokazujący poziom więzi zespołu">
+        <g id="flower"></g>
+      </svg>
     </div>
+    <div class="syg-cap" id="cap">Puls kultury</div>
   </div>
-</section>
+
+  <div class="panel-col">
+
+    <!-- INTRO -->
+    <section class="screen intro on" id="s-intro">
+      <span class="k-eyebrow">Puls kultury · 5 pytań</span>
+      <h1>Jak żywa jest kultura <span class="blue">Twoich zespołów?</span></h1>
+      <p>Nie zapytamy o budżet ani o liczbę eventów. Zapytamy o pięć rzeczy, które naprawdę decydują o więzi. Każda odpowiedź ożywia jeden płatek. Zobacz, co z tego wyrośnie.</p>
+      <button class="btn" id="startBtn">Zaczynamy <span class="arrow">&rarr;</span></button>
+    </section>
+
+    <!-- QUESTION -->
+    <section class="screen" id="s-q">
+      <div class="q-meta">
+        <span class="q-count" id="qCount">Pytanie 1 / 5</span>
+        <span class="q-dim" id="qDim"></span>
+      </div>
+      <div class="q-title" id="qTitle"></div>
+      <div class="q-sub" id="qSub"></div>
+      <div class="opts" id="qOpts"></div>
+      <div class="q-nav">
+        <button class="q-back" id="qBack">&larr; Wróć</button>
+        <div class="q-dots" id="qDots"></div>
+      </div>
+    </section>
+
+    <!-- RESULT -->
+    <section class="screen" id="s-res">
+      <span class="k-eyebrow">Wynik</span>
+      <div class="res-idx-row"><span class="res-idx" id="rIdx">0</span><span class="res-idx-max">/ 100 · wskaźnik więzi</span></div>
+      <p class="res-verdict" id="rVerdict"></p>
+      <div class="dims" id="rDims"></div>
+      <div class="res-reco" id="rReco"></div>
+      <div class="res-nav">
+        <a href="tb-landing-v3#audyt"><button class="btn">Porozmawiajmy, co z tego wynika <span class="arrow">&rarr;</span></button></a>
+        <button class="btn btn-ghost" id="againBtn">Jeszcze raz</button>
+      </div>
+      <p class="res-note">To instrument, nie diagnoza. Realny obraz kultury dają dane z pilotażu: regularność rytuałów, frekwencja, feedback zespołów.</p>
+    </section>
+
+  </div>
+</div>
 
 <script>
 var $=function(id){return document.getElementById(id);};
 var TB_PETALS=["M78.63 0C90.06 0 100.92 2.41 110.74 6.75C117.97 9.95 119.64 19.48 114.05 25.08L70.39 68.72C67.56 71.55 62.73 69.54 62.73 65.54V11.49C62.73 5.51 67.38 0.57 73.35 0.18C75.1 0.07 76.86 0.01 78.64 0.01L78.63 0Z","M39.49 10.27C47 6.02 56.32 11.55 56.32 20.19V66.97C56.32 72.17 52.11 76.37 46.92 76.37H8.57C3.28 76.37 -0.74 71.62 0.13 66.4C4.14 42.31 18.98 21.87 39.49 10.27Z","M122.11 25.77C126.48 21.4 133.44 21.57 137.59 26.15C147.62 37.21 154.58 51.12 157.13 66.51C157.99 71.69 153.92 76.38 148.68 76.38H78.1C75.74 76.38 74.56 73.53 76.22 71.85L122.11 25.77Z","M79.17 82.79C81.53 82.79 82.71 85.64 81.05 87.32L35.15 133.41C30.78 137.78 23.82 137.61 19.67 133.03C9.63 121.96 2.66 108.06 0.12 92.66C-0.74 87.48 3.33 82.79 8.57 82.79H79.17Z","M148.67 82.79C153.96 82.79 157.98 87.54 157.11 92.76C153.1 116.85 138.26 137.29 117.75 148.89C110.24 153.14 100.92 147.61 100.92 138.97V92.19C100.92 86.99 105.13 82.79 110.32 82.79H148.66H148.67Z","M86.86 90.44C89.69 87.61 94.52 89.62 94.52 93.61V147.67C94.52 153.65 89.87 158.59 83.9 158.98C82.15 159.09 80.39 159.15 78.61 159.15C67.19 159.15 56.33 156.74 46.51 152.41C39.28 149.22 37.61 139.68 43.2 134.08L86.85 90.43L86.86 90.44Z"];
 var PCOL=['#4375FF','#FE692B','#15A477','#FDA33C','#9B8CFF','#12b5c9'];
-var GRAY=[203,196,184];
-var CX=79,CY=79;
-
+var GRAY=[104,100,96];
 function hex2rgb(h){return [parseInt(h.substr(1,2),16),parseInt(h.substr(3,2),16),parseInt(h.substr(5,2),16)];}
 function lerp(a,b,t){return Math.round(a+(b-a)*t);}
 function mix(hex,t){var c=hex2rgb(hex);return 'rgb('+lerp(GRAY[0],c[0],t)+','+lerp(GRAY[1],c[1],t)+','+lerp(GRAY[2],c[2],t)+')';}
 
-/* build flower */
 var NS='http://www.w3.org/2000/svg';
 var flower=$('flower');
-var petalGroups=[];
+var petals=[];
 TB_PETALS.forEach(function(d,i){
   var g=document.createElementNS(NS,'g');
   g.setAttribute('class','petal');
@@ -185,62 +167,161 @@ TB_PETALS.forEach(function(d,i){
   g.appendChild(p);
   flower.appendChild(g);
   var ang=(-90+i*60)*Math.PI/180;
-  petalGroups.push({g:g,p:p,dx:Math.cos(ang),dy:Math.sin(ang)});
+  petals.push({g:g,p:p,dx:Math.cos(ang),dy:Math.sin(ang)});
 });
-
-var READ=[
-  {min:80,t:'Wasze zespoły żyją. Kultura nie jest hasłem, tylko rytmem. Utrzymanie tego to teraz Wasza przewaga.'},
-  {min:60,t:'Jest tkanka, ale zaczyna się przerzedzać. Bez regularności to, co dziś działa, po cichu wygaśnie.'},
-  {min:40,t:'Relacje trzymają się na resztkach okazji. Jeszcze nie jest źle, ale grawitacja ciągnie w dół.'},
-  {min:20,t:'Zespoły stają się zbiorem awatarów na Teamsie. Nikt nie zdecydował, że przestaje lubić zespół — po prostu nie ma powodu, żeby usiąść razem.'},
-  {min:0,t:'Kultura wygasła. Nie z kłótni, z braku okazji. To najdroższy i najbardziej niewidzialny koszt, jaki firma ponosi.'}
-];
-
-function segVal(name){
-  var el=document.querySelector('.seg[data-name="'+name+'"] button.on');
-  return el?parseFloat(el.getAttribute('data-v')):50;
+function setPetal(i,t){
+  var pg=petals[i];
+  var drift=(1-t)*26;
+  pg.g.setAttribute('transform','translate('+(pg.dx*drift).toFixed(1)+' '+(pg.dy*drift).toFixed(1)+')');
+  pg.g.style.opacity=(0.3+t*0.7).toFixed(2);
+  pg.p.setAttribute('fill',mix(PCOL[i],t));
 }
 
-function calc(){
-  var cad=segVal('cadence'), rec=segVal('recency'), rit=segVal('ritual');
-  var remote=parseFloat($('remote').value);
-  $('remoteVal').textContent=remote+'%';
-  var iso=100-remote*0.55;
-  var score=Math.round(0.28*cad+0.24*rec+0.24*rit+0.24*iso);
-  if(score<0)score=0; if(score>100)score=100;
-  var t=score/100;
+/* WYMIARY: pytania 1-5 = płatki 0-4, płatek 5 = wypadkowa */
+var QS=[
+  {dim:'Rytm', c:'#4375FF',
+   t:'Jak często Twoje zespoły spotykają się poza pracą nad zadaniami?',
+   s:'Wspólne śniadanie, lunch, wyjście. Cokolwiek, gdzie nie chodzi o task.',
+   o:[['Regularnie, co tydzień lub dwa',100],['Mniej więcej raz w miesiącu',62],['Raz na kwartał, przy okazji',28],['Trudno powiedzieć',5]]},
+  {dim:'Świeżość', c:'#FE692B',
+   t:'Kiedy ostatnio zespół zrobił coś razem w pełnym składzie?',
+   s:'Liczy się pełny skład, nie delegacja chętnych.',
+   o:[['W tym miesiącu',100],['W tym kwartale',60],['Na ostatniej imprezie firmowej',25],['Nie pamiętam',5]]},
+  {dim:'Rytuały', c:'#15A477',
+   t:'Czy jest coś, co wraca samo, bez organizowania od zera?',
+   s:'Rytuał różni się od eventu tym, że nikt nie musi go reanimować.',
+   o:[['Tak, mamy stałe rytuały',100],['Coś się dzieje, ale nieregularnie',55],['Wszystko trzeba organizować ręcznie',22],['Nie ma czegoś takiego',5]]},
+  {dim:'Zasięg', c:'#FDA33C',
+   t:'Kto realnie uczestniczy, gdy coś się dzieje?',
+   s:'Kultura, w której bierze udział grupka, jest kulturą grupki.',
+   o:[['Prawie wszyscy',100],['Większość zespołu',68],['Zawsze ta sama grupka',30],['Pojedyncze osoby',8]]},
+  {dim:'Rozproszenie', c:'#9B8CFF',
+   t:'Jak pracują Twoje zespoły na co dzień?',
+   s:'Rozproszenie to nie problem. Problem to rozproszenie bez rytmu.',
+   o:[['Głównie z biura',88],['Hybrydowo, z ustalonym rytmem spotkań',78],['Hybrydowo, bez stałego rytmu',38],['Zdalnie, widujemy się od święta',14]]}
+];
+var W=[0.24,0.18,0.24,0.18,0.16];
 
-  /* petals: drift, opacity, color */
-  var drift=(1-t)*27;
-  petalGroups.forEach(function(pg,i){
-    pg.g.setAttribute('transform','translate('+(pg.dx*drift).toFixed(1)+' '+(pg.dy*drift).toFixed(1)+')');
-    pg.g.style.opacity=(0.28+t*0.72).toFixed(2);
-    pg.p.setAttribute('fill', mix(PCOL[i], t));
+var VERDICTS=[
+  {min:85,t:'Wasze zespoły żyją. Kultura nie jest u Was hasłem na ścianie, tylko rytmem, który wraca. Teraz pytanie brzmi: czy potraficie to utrzymać, gdy urośniecie?'},
+  {min:65,t:'Jest tkanka i jest na czym budować. Ale część więzi trzyma się na osobach, nie na rytmie. Gdy odejdzie jedna „dusza zespołu", zniknie więcej, niż widać w tabelce.'},
+  {min:45,t:'Więź trzyma się na resztkach okazji. Nikt nie podjął decyzji, że kultura wygasa. Po prostu nikt nie podjął decyzji, że ma trwać.'},
+  {min:25,t:'Zespoły zmieniają się w zbiór awatarów na Teamsie. Ludzie nie przestali się lubić. Przestali mieć okazje, żeby to sprawdzić.'},
+  {min:0,t:'Więź wygasła. Nie z konfliktu, z braku okazji. To najbardziej niewidzialny koszt, jaki ponosi organizacja: płacicie go w rotacji, nie na fakturze.'}
+];
+var RECO={
+  0:'<b>Zacznijcie od kalendarza, nie od budżetu.</b> Jeden stały termin w miesiącu zmienia więcej niż duży event raz w roku. Rytm jest tańszy niż rozmach.',
+  1:'<b>Pierwszy krok jest najprostszy:</b> jedna wspólna rzecz w ciągu 30 dni, mała, ale w pełnym składzie. Świeżość więzi liczy się od ostatniego razu, nie od średniej rocznej.',
+  2:'<b>Macie spotkania, nie macie rytuałów.</b> Różnica jest jedna: rytuał wraca sam. Wybierzcie jedną rzecz i powtórzcie ją trzy razy z rzędu. Po trzecim razie przestaje być eventem.',
+  3:'<b>Zasięg to najbardziej niedoceniany wymiar.</b> Gdy budżet i decyzja leżą w rękach zespołu, a nie jednego organizatora, uczestnictwo przestaje być kwestią charyzmy jednej osoby.',
+  4:'<b>W hybrydzie okazje nie zdarzają się same.</b> Trzeba je projektować. Zespoły rozproszone potrzebują bardziej świadomego rytmu niż te, które mijają się w kuchni.'
+};
+
+var answers=[null,null,null,null,null];
+var cur=0;
+
+function show(id){
+  document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('on');});
+  var el=$(id);
+  el.classList.remove('on');
+  void el.offsetWidth;
+  el.classList.add('on');
+}
+
+function renderQ(){
+  var q=QS[cur];
+  $('qCount').textContent='Pytanie '+(cur+1)+' / 5';
+  var dim=$('qDim');
+  dim.textContent=q.dim;
+  dim.style.color=q.c;
+  dim.style.borderColor=q.c;
+  $('qTitle').textContent=q.t;
+  $('qSub').textContent=q.s;
+  var box=$('qOpts');
+  box.innerHTML='';
+  q.o.forEach(function(o){
+    var b=document.createElement('button');
+    b.innerHTML='<span class="tick"></span><span>'+o[0]+'</span>';
+    if(answers[cur]===o[1])b.classList.add('sel');
+    b.addEventListener('click',function(){
+      answers[cur]=o[1];
+      box.querySelectorAll('button').forEach(function(x){x.classList.remove('sel');});
+      b.classList.add('sel');
+      setPetal(cur,o[1]/100);
+      updateAmbient();
+      setTimeout(function(){
+        if(cur<4){cur++;renderQ();show('s-q');}
+        else{renderResult();show('s-res');}
+      },650);
+    });
+    box.appendChild(b);
   });
-  flower.style.setProperty('--dur', (5.6-t*3.6).toFixed(2)+'s');
+  $('qBack').style.visibility=cur===0?'hidden':'visible';
+  var dots=$('qDots');
+  dots.innerHTML='';
+  for(var i=0;i<5;i++){
+    var d=document.createElement('span');
+    if(answers[i]!==null)d.classList.add('done');
+    if(i===cur)d.classList.add('cur');
+    dots.appendChild(d);
+  }
+  $('cap').textContent=q.dim;
+}
 
-  /* index + color */
-  var idx=$('rIndex');
+function avgScore(){
+  var s=0,w=0;
+  for(var i=0;i<5;i++){if(answers[i]!==null){s+=answers[i]*W[i];w+=W[i];}}
+  return w?s/w:0;
+}
+function updateAmbient(){
+  var t=avgScore()/100;
+  var done=answers.filter(function(a){return a!==null;}).length;
+  $('glow').style.opacity=(t*Math.min(1,done/3)).toFixed(2);
+  flower.style.setProperty('--dur',(5.6-t*3.4).toFixed(2)+'s');
+  /* wypadkowa: 6. płatek jako średnia dotychczasowych */
+  if(done>0)setPetal(5,t*Math.min(1,done/5+0.4));
+}
+
+function renderResult(){
+  var score=Math.round(avgScore());
+  setPetal(5,score/100);
+  var t=score/100;
+  $('glow').style.opacity=t.toFixed(2);
+  var idx=$('rIdx');
   idx.textContent=score;
   idx.style.color= t>0.66?'#48c79a' : t>0.4?'#FDA33C' : '#E5484D';
-
-  /* reading */
-  var r=READ.find(function(x){return score>=x.min;});
-  $('rRead').textContent=r?r.t:'';
+  var v=VERDICTS.find(function(x){return score>=x.min;});
+  $('rVerdict').textContent=v?v.t:'';
+  var dimsBox=$('rDims');
+  dimsBox.innerHTML='';
+  var weakest=0;
+  for(var i=1;i<5;i++){if(answers[i]<answers[weakest])weakest=i;}
+  QS.forEach(function(q,i){
+    var row=document.createElement('div');
+    row.className='dim';
+    row.innerHTML='<span class="dn"><i style="background:'+q.c+'"></i>'+q.dim+'</span><span class="db"><span data-w="'+answers[i]+'" style="background:'+q.c+'"></span></span><span class="dv">'+answers[i]+'</span>';
+    dimsBox.appendChild(row);
+  });
+  requestAnimationFrame(function(){requestAnimationFrame(function(){
+    dimsBox.querySelectorAll('.db span').forEach(function(s){s.style.width=s.getAttribute('data-w')+'%';});
+  });});
+  $('rReco').innerHTML=RECO[weakest];
+  $('cap').textContent='Wskaźnik więzi · '+score+' / 100';
 }
 
-/* wire segmented controls */
-document.querySelectorAll('.seg').forEach(function(seg){
-  seg.querySelectorAll('button').forEach(function(b){
-    b.addEventListener('click',function(){
-      seg.querySelectorAll('button').forEach(function(x){x.classList.remove('on');});
-      b.classList.add('on');
-      calc();
-    });
-  });
+$('startBtn').addEventListener('click',function(){cur=0;renderQ();show('s-q');});
+$('qBack').addEventListener('click',function(){if(cur>0){cur--;renderQ();show('s-q');}});
+$('againBtn').addEventListener('click',function(){
+  answers=[null,null,null,null,null];cur=0;
+  petals.forEach(function(_,i){setPetal(i,0);});
+  $('glow').style.opacity=0;
+  flower.style.setProperty('--dur','5.4s');
+  $('cap').textContent='Puls kultury';
+  renderQ();show('s-q');
 });
-$('remote').addEventListener('input',calc);
-calc();
+
+/* stan początkowy: uśpiony sygnet */
+petals.forEach(function(_,i){setPetal(i,0);});
 </script>
 
 </body>
