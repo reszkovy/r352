@@ -326,6 +326,18 @@ nav .wip{font-size:.48rem;padding:1px 6px;margin-left:4px}
 .cmt p{font-size:.77rem;color:var(--ink60);margin-top:4px;line-height:1.45}
 .cmt.on{border-color:var(--blue);box-shadow:0 8px 24px rgba(67,117,255,.14)}
 .cmt.on .mono{color:var(--blue)}
+.cmt-tier{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink40);margin:0 0 10px}
+.cmt-tier b{color:var(--blue);font-weight:700}
+.committee-key{grid-template-columns:repeat(2,1fr)}
+.committee-side{grid-template-columns:repeat(4,1fr)}
+.cmt.key{padding:20px 22px;box-shadow:0 4px 18px rgba(71,58,57,.07)}
+.cmt.side{padding:13px 15px;background:var(--sunny)}
+.cmt.side b{font-size:.86rem}
+.cmt.side p{font-size:.73rem;margin-top:3px}
+.cmt.side .mono{font-size:.56rem}
+.cmt-badge{display:inline-block;font-family:var(--mono);font-size:.5rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);background:var(--blue08);padding:3px 9px;border-radius:100px;margin-bottom:9px}
+@media(max-width:960px) and (min-width:641px){.committee-side{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.committee-key,.committee-side{grid-template-columns:1fr}}
 .blockers{font-size:.8rem;color:var(--ink60);border:1px dashed var(--line);border-radius:12px;padding:12px 16px;margin-bottom:26px}
 .blockers b{color:var(--ink)}
 .langchips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
@@ -532,19 +544,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 <!-- 00 HIPOTEZA -->
 <section class="block" id="hipoteza"><div class="wrap">
   <div class="eyebrow">00 · Hipoteza — do rozmowy z zarządem</div>
-  <h2>Zakład, który testujemy tej jesieni</h2>
-  <p class="lede">Pozycjonowanie, kategoria, insight i drogi dotarcia są już rozstrzygnięte — nie wracamy do nich. Poniżej jest jedno zdanie, które testuje cała komunikacja launchu, oraz to, po czym poznamy wynik.</p>
+  <h2>Hipoteza</h2>
   <div class="statement">
-    Decydenci HR w firmach 200+ nie potrzebują kolejnej reklamy benefitów — potrzebują <b>języka do problemu, który już czują</b>: firma finansuje jednostki, a rozpada się jej „razem”. <span class="hl">Wierzymy, że jeśli damy im ten język („budżet zespołowy”, „nikt nie ma budżetu na «my»”) i poprowadzimy każdą z sześciu dróg dotarcia do jednej, niezobowiązującej rozmowy „Policzmy to razem”</span> — to komunikacja zacznie sama otwierać drzwi, które dziś otwiera wyłącznie handlowiec.
-  </div>
-  <div class="grid3">
-    <div class="card"><span class="tag b">Miara 1 · język</span><p style="margin-top:10px;font-size:.92rem">Fraza „budżet zespołowy” zaczyna wracać do nas z rynku: uczestnicy konferencji, media i zapytania używają jej <b>bez naszej podpowiedzi</b>.</p></div>
-    <div class="card"><span class="tag b">Miara 2 · zasięg w grupie</span><p style="margin-top:10px;font-size:.92rem">Znaczna część imiennej listy decydentów zetknęła się z raportem, stroną lub konferencją. Mierzymy <b>penetrację wąskiej grupy</b>, nie zasięg w internecie.</p></div>
-    <div class="card"><span class="tag b">Miara 3 · drzwi otwarte komunikacją</span><p style="margin-top:10px;font-size:.92rem">Rozmowy „Policzmy to razem” przychodzą z komunikacji — deklaracje na Better Minds HR i zgłoszenia ze strony — a nie wyłącznie z telefonu handlowca.</p></div>
-  </div>
-  <div class="grid2" style="margin-top:14px">
-    <div class="card" style="border-style:dashed"><span class="mono" style="color:var(--ink40)">Czego nie testujemy</span><p style="margin-top:8px;font-size:.9rem">Pozycjonowania, kategorii, insightu ani wyboru dróg dotarcia — to decyzje już podjęte. Nie testujemy też celów sprzedażowych i wycen — prowadzi je zespół sprzedaży.</p></div>
-    <div class="card" style="border-color:var(--orange)"><span class="mono" style="color:var(--orange)">Decyzja po teście</span><p style="margin-top:8px;font-size:.9rem">Punkt kontrolny: styczeń, po konferencji i pierwszej fali rozmów. Hipoteza potwierdzona → skalujemy kampanię wiosną. Niepotwierdzona → poprawiamy język i drogi, zanim wydamy budżet na zasięg.</p></div>
+    Decydenci HR w firmach 200+ nie potrzebują kolejnej reklamy benefitów — potrzebują <b>języka do problemu, który już czują</b>: firma finansuje jednostki, a rozpada się jej „razem”. <span class="hl">Wierzymy, że jeśli damy im ten język („budżet zespołowy”, „nikt nie ma budżetu na «my»”) i poprowadzimy każdą z sześciu dróg dotarcia do jednego prostego działania — kalkulatora, który sam pokazuje ich niewidzialny budżet</span> — to komunikacja zacznie sama otwierać drzwi, które dziś otwiera wyłącznie handlowiec. Pogłębiony audyt zostaje dla tych, którzy już policzyli sami.
   </div>
 </div></section>
 
@@ -589,7 +591,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   <div class="eyebrow">04 · Persony i komitet zakupowy</div>
   <h2>Sześć osób, jedna decyzja</h2>
   <p class="lede">Komunikacja wybiera jednego bohatera (<b>Head of People</b>) i jednego walidatora (<b>CFO</b>). Reszta dostaje materiały, nie kampanię. Zacznij od mapy komitetu — klik na rolę otwiera pełną personę: problem, język, obiekcje z ripostami i miejsce w lejkach.</p>
-  <div class="committee" id="committee"></div>
+  <div class="cmt-tier"><b>2 kluczowe role</b> — bohater i walidator. Całą kampanię piszemy pod nich.</div>
+  <div class="committee committee-key" id="committeeKey"></div>
+  <div class="cmt-tier" style="margin-top:18px">4 role poboczne — dostają materiały, nie kampanię.</div>
+  <div class="committee committee-side" id="committeeSide"></div>
   <div class="pbody" id="pBody" style="border-radius:16px;margin-top:8px"></div>
   <div class="blockers" style="margin-top:18px"><b>Funkcja blokująca — zakupy / IT / security:</b> nie ma własnej persony komunikacyjnej, ale zatrzymuje każdy deal enterprise. Pakiet do przygotowania zawczasu: nota RODO (minimalizacja danych — TB nie musi przetwarzać danych wrażliwych), umowa powierzenia, SSO w roadmapie, wypełniony kwestionariusz vendor assessment. Nakład mały; brak = 2 miesiące poślizgu w każdym procesie.</div>
 </div></section>
@@ -1244,15 +1249,16 @@ HOUSE.forEach((h,i)=>{const b=el('button','',`<span class="mono">${h.n} · ${h.a
 setHouse(1);
 
 /* 04 personas + committee — scalone: karta komitetu = selektor */
-const cm = $('#committee');
-COMMITTEE.forEach(c=>{
-  const b = el('button','cmt',`<span class="mono">${c[0]}</span><b>${c[1]}</b><p>${c[2]}</p>`);
+const cmKey = $('#committeeKey'), cmSide = $('#committeeSide');
+COMMITTEE.forEach((c,idx)=>{
+  const key = idx===0||idx===1;
+  const b = el('button','cmt '+(key?'key':'side'),`${key?'<span class="cmt-badge">Kluczowa rola</span>':''}<span class="mono">${c[0]}</span><b>${c[1]}</b><p>${c[2]}</p>`);
   b.dataset.pi = c[3];
   b.onclick=()=>setPersona(c[3]);
-  cm.appendChild(b);
+  (key?cmKey:cmSide).appendChild(b);
 });
 function setPersona(i){
-  cm.querySelectorAll('.cmt').forEach(b=>b.classList.toggle('on',+b.dataset.pi===i));
+  document.querySelectorAll('#persony .cmt').forEach(b=>b.classList.toggle('on',+b.dataset.pi===i));
   const p = PERSONAS[i];
   const tags = p.role.map(r=>`<span class="tag ${r[0]}">${r[1]}</span>`).join('');
   const fields = p.f.map(f=>`<div class="pf"><span class="mono">${f[0]}</span><div>${f[1]}</div></div>`).join('');
@@ -1283,11 +1289,11 @@ setPhase(0);
 
 /* 09 reklama — fazowy budżet */
 const AD_PHASES = [
-{n:"Faza 1",d:"VIII–IX 2026",t:"Zbieranie amunicji",s:"Zero paid. Budujemy asset i dane z pilotaży.",
- split:[["auth",80,"autorytet 80%"],["event",20,"20%"]],
- lbl:"produkcja treści · 0% media buy",
- ch:[["auth","Podcasty — gościnne wystąpienia","autorytet"],["auth","Explainer video — kilka sztuk, produkcja raz","asset"],["event","Przygotowanie pod Better Minds HR","scena"]],
- kv:[["Rola","Każda złotówka idzie w treść, która będzie pracować przez rok. Nie kupujemy zasięgu — budujemy prawo do sceny."],["Dlaczego zero paid","Sekcja 05: Faza 1 to walidacja. Nie ma jeszcze dowodu ani kategorii — paid teraz to palenie budżetu."],["Wynik","Biblioteka treści opartej o dane z 60 zespołów, gotowa na premierę w październiku."]]},
+{n:"Faza 1",d:"VIII–IX 2026",t:"Wczesna świadomość",s:"Podcasty budują świadomość produktu; równolegle asset i dane z pilotaży.",
+ split:[["auth",60,"autorytet 60%"],["paid",20,"paid 20%"],["event",20,"20%"]],
+ lbl:"produkcja treści + wczesna świadomość w podcastach",
+ ch:[["auth","Podcasty — gościnne wystąpienia","autorytet"],["paid","Reklamy w podcastach — świadomość produktu","świadomość"],["auth","Explainer video — kilka sztuk, produkcja raz","asset"],["event","Przygotowanie pod Better Minds HR","scena"]],
+ kv:[["Rola","Gros budżetu idzie w treść, która będzie pracować przez rok — plus lekki paid w podcastach na wczesne wejście na rynek. Budujemy prawo do sceny i świadomość, nie performance."],["Reklamy w podcastach","Kupujemy świadomość produktu i frazy „budżet zespołowy” jeszcze przed premierą — w tych samych audycjach, w których występujemy gościnnie. To zasianie kategorii, nie konwersja; sprzedaż i tak rusza dopiero w Fazie 2."],["Wynik","Biblioteka treści z danymi z 60 zespołów + rozgrzany rynek, gotowe na premierę w październiku."]]},
 {n:"Faza 2",d:"X–XI 2026",t:"Premiera z dowodem",s:"Paid rusza ostrożnie — ciepły retargeting i Google intent.",
  split:[["auth",45,"autorytet 45%"],["paid",35,"paid 35%"],["event",20,"20%"]],
  lbl:"autorytet dominuje · paid celowany",
