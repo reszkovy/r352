@@ -40,7 +40,7 @@ header.nav{position:sticky;top:0;z-index:100;background:rgba(255,251,244,.86);ba
 .calc-head h1 .blue{color:var(--blue);}
 .calc-head p{color:var(--muted);font-size:17px;max-width:600px;margin:16px auto 0;}
 
-.calc-sec{padding:44px 0 80px;}
+.calc-sec{padding:34px 0 44px;}
 .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start;}
 @media(max-width:860px){.calc-grid{grid-template-columns:1fr;}}
 
@@ -62,7 +62,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;
 input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--blue);border:3px solid #fff;box-shadow:0 2px 8px rgba(67,117,255,.35);cursor:pointer;}
 
 /* RESULT — sygnet */
-.result{background:var(--pale-black);color:var(--pale-white);border-radius:20px;padding:34px 30px;position:sticky;top:80px;text-align:center;overflow:hidden;}
+.result{background:var(--pale-black);color:var(--pale-white);border-radius:20px;padding:34px 30px;position:sticky;top:24px;text-align:center;overflow:hidden;}
 .result .r-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,251,244,.5);}
 .syg-wrap{width:min(320px,72vw);margin:14px auto 6px;}
 #syg{width:100%;height:auto;overflow:visible;}
@@ -92,23 +92,6 @@ footer{padding:40px 0 52px;color:var(--muted);}
 </style>
 </head>
 <body>
-
-<div class="concept-tag">Koncept · puls kultury</div>
-
-<header class="nav">
-  <div class="nav-inner">
-    <a href="tb-landing-v3" class="brand"><img src="Logo.svg" alt="TeamBudget"><small>by BetterWorkplace</small></a>
-    <a href="tb-landing-v3" class="nav-back">&larr; Wróć na stronę</a>
-  </div>
-</header>
-
-<section class="calc-head">
-  <div class="wrap">
-    <span class="eyebrow">Puls kultury · 2 minuty</span>
-    <h1>Jak żywa jest kultura <span class="blue">Twoich zespołów?</span></h1>
-    <p>Nie liczymy tu pieniędzy. Odpowiedz na kilka pytań o rytm, rytuały i wspólne chwile, a zobaczysz, jak wygląda więź w Twojej organizacji. Sygnet po prawej reaguje na żywo.</p>
-  </div>
-</section>
 
 <section class="calc-sec">
   <div class="wrap">
@@ -164,7 +147,6 @@ footer{padding:40px 0 52px;color:var(--muted);}
         <div class="syg-wrap">
           <svg id="syg" viewBox="-30 -30 219 218" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sygnet pokazujący poziom więzi zespołu">
             <g id="flower"></g>
-            <circle id="core" cx="79" cy="79" r="7" fill="#4375FF"></circle>
           </svg>
         </div>
         <div class="r-index" id="rIndex">—</div>
@@ -177,28 +159,8 @@ footer{padding:40px 0 52px;color:var(--muted);}
       </div>
 
     </div>
-
-    <div class="disc">
-      <b>Sygnet reaguje na Twoje odpowiedzi, nie na dane z systemu.</b> Pokazuje kierunek i otwiera rozmowę — „relacje nie kończą się kłótnią, wygasają z braku okazji". Dokładny obraz kultury dają dopiero wskaźniki z pilotażu: regularność, frekwencja, feedback zespołów.
-    </div>
   </div>
 </section>
-
-<section class="cta-band">
-  <div class="wrap">
-    <span class="eyebrow">Następny krok</span>
-    <h2>Kultura nie powstaje na evencie. <span class="blue">Powstaje w rytmie.</span></h2>
-    <p>TeamBudget daje zespołom budżet i kalendarz rytuałów, które wracają — a Wam dane, które pokazują, że to działa. Zacznijmy od rozmowy.</p>
-    <a href="tb-landing-v3#audyt" class="btn btn-blue">Umów rozmowę <span class="arrow">&rarr;</span></a>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap foot-bottom">
-    <span>&copy; 2026 BetterWorkplace &middot; TeamBudget</span>
-    <span>teambudget.com</span>
-  </div>
-</footer>
 
 <script>
 var $=function(id){return document.getElementById(id);};
@@ -255,8 +217,6 @@ function calc(){
     pg.g.style.opacity=(0.28+t*0.72).toFixed(2);
     pg.p.setAttribute('fill', mix(PCOL[i], t));
   });
-  $('core').setAttribute('fill', mix('#4375FF', Math.min(1,t+0.15)));
-  $('core').setAttribute('r', (5+t*3).toFixed(1));
   flower.style.setProperty('--dur', (5.6-t*3.6).toFixed(2)+'s');
 
   /* index + color */
