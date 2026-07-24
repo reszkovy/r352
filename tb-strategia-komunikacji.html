@@ -138,13 +138,13 @@ section.block{padding:88px 0 40px;border-top:1px solid var(--line)}
 .fw-tag.s{background:rgba(21,164,119,.12);color:var(--green)}
 .fw-tag.p{background:var(--blue08);color:var(--blue)}
 .fw-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.fw-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 20px;border-top:3px solid var(--blue)}
+.fw-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 20px}
 .fw-card .fl{font-family:var(--sans);font-weight:900;font-size:2rem;line-height:1;letter-spacing:-.03em}
 .fw-card .fr{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink40);margin:8px 0 4px}
 .fw-card h3{font-size:1rem;margin:0 0 8px}
 .fw-card p{font-size:.83rem;color:var(--ink60);line-height:1.5}
 .fw-rows{display:flex;flex-direction:column;gap:10px}
-.fw-item{display:flex;gap:18px;background:#fff;border:1px solid var(--line);border-left:3px solid var(--blue);border-radius:14px;padding:18px 22px}
+.fw-item{display:flex;gap:18px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 24px}
 .fw-item .fl{font-family:var(--sans);font-weight:900;font-size:1.5rem;line-height:1;min-width:26px}
 .fw-item h3{font-size:1rem;margin:0 0 4px}
 .fw-item p{font-size:.85rem;color:var(--ink60);line-height:1.55}
@@ -219,7 +219,7 @@ nav .wip{font-size:.48rem;padding:1px 6px;margin-left:4px}
 .chip{border:1.5px solid var(--line);border-radius:100px;padding:8px 18px;font-size:.84rem;font-weight:600;color:var(--ink60);transition:all .15s}
 .chip:hover{border-color:var(--blue);color:var(--blue)}
 .chip.on{background:var(--blue);border-color:var(--blue);color:#fff}
-.vp{background:#fff;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:14px;padding:26px 30px;font-size:1.16rem;line-height:1.6;min-height:118px;font-weight:500}
+.vp{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px 30px;font-size:1.16rem;line-height:1.6;min-height:118px;font-weight:500}
 
 /* insight stepper */
 .steps{display:flex;gap:6px;margin-bottom:22px;flex-wrap:wrap}
@@ -465,6 +465,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .frame.rdzen .core-arr{color:var(--blue)}
 .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
 nav .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
+.rail-acc{margin:0 0 22px 0}
+.rail-acc-bar{height:5px;border-radius:100px;background:var(--line);overflow:hidden;margin-bottom:8px}
+.rail-acc-bar span{display:block;height:100%;background:var(--green);border-radius:100px}
+.rail-acc-txt{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink40)}
+.rail-acc-txt b{color:var(--green);font-weight:700}
+.rail a .sdot{width:7px;height:7px;border-radius:50%;flex:none;align-self:center}
+.rail a .sdot.ok{background:var(--green)}
+.rail a .sdot.prog{background:#d9a441}
+.rail a.on .sdot.prog{background:#ffd98a}
 </style>
 
 <div class="shell">
@@ -473,20 +482,24 @@ nav .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
     <img src="Logo.svg" alt="TeamBudget">
   </div>
   <div class="railsub">Strategia komunikacji · 2026</div>
+  <div class="rail-acc">
+    <div class="rail-acc-bar"><span style="width:17%"></span></div>
+    <div class="rail-acc-txt">Zaakceptowane <b>2</b> / 12</div>
+  </div>
   <!-- WYLACZONE: <a href="#exec"><span class="n">01</span>Rozstrzygnięcia</a> -->
   <!-- WYLACZONE: <a href="#diagnoza"><span class="n">02</span>Diagnoza</a> -->
-  <a href="#hipoteza" class="on"><span class="n">00</span>Hipoteza</a>
-  <a href="#salt"><span class="n">·</span>W skrócie</a>
-  <a href="#pozycjonowanie"><span class="n">01</span>Pozycjonowanie</a>
-  <a href="#insight"><span class="n">02</span>Insight</a>
-  <a href="#message"><span class="n">03</span>Message house</a>
-  <a href="#persony"><span class="n">04</span>Persony</a>
-  <a href="#gtm"><span class="n">05</span>Wejście na rynek</a>
-  <a href="#lejki"><span class="n">06</span>Lejki</a>
-  <a href="#pilotaz"><span class="n">07</span>Pilotaż</a>
-  <a href="#kampania"><span class="n">08</span>Kampania</a>
-  <a href="#budzet-media"><span class="n">09</span>Reklama</a>
-  <a href="#deliverables"><span class="n">10</span>Deliverables</a>
+  <a href="#hipoteza" class="on"><span class="sdot ok"></span><span class="n">00</span>Hipoteza</a>
+  <a href="#salt"><span class="sdot prog"></span><span class="n">·</span>W skrócie</a>
+  <a href="#pozycjonowanie"><span class="sdot ok"></span><span class="n">01</span>Pozycjonowanie</a>
+  <a href="#insight"><span class="sdot prog"></span><span class="n">02</span>Insight</a>
+  <a href="#message"><span class="sdot prog"></span><span class="n">03</span>Message house</a>
+  <a href="#persony"><span class="sdot prog"></span><span class="n">04</span>Persony</a>
+  <a href="#gtm"><span class="sdot prog"></span><span class="n">05</span>Wejście na rynek</a>
+  <a href="#lejki"><span class="sdot prog"></span><span class="n">06</span>Lejki</a>
+  <a href="#pilotaz"><span class="sdot prog"></span><span class="n">07</span>Pilotaż</a>
+  <a href="#kampania"><span class="sdot prog"></span><span class="n">08</span>Kampania</a>
+  <a href="#budzet-media"><span class="sdot prog"></span><span class="n">09</span>Reklama</a>
+  <a href="#deliverables"><span class="sdot prog"></span><span class="n">10</span>Deliverables</a>
   <!-- WYLACZONE: <a href="#codalej"><span class="n">09</span>Co dalej</a> -->
   <!-- WYLACZONE: <a href="#ryzyka"><span class="n">11</span>Ryzyka</a> -->
   <!-- WYLACZONE: <a href="#plan"><span class="n">12</span>Plan &amp; decyzje</a> -->
@@ -547,7 +560,7 @@ nav .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
 
 <!-- 00 HIPOTEZA -->
 <section class="block" id="hipoteza"><div class="wrap">
-  <div class="eyebrow">00 · Hipoteza, do rozmowy z zarządem <span class="wip ok">Accept</span></div>
+  <div class="eyebrow">00 · Hipoteza, do rozmowy z zarządem</div>
   <h2>Hipoteza</h2>
   <div class="statement">
     Decydenci HR w firmach 200+ nie potrzebują kolejnej reklamy benefitów, potrzebują <b>języka do problemu, który już czują</b>: firma finansuje jednostki, a rozpada się jej „razem”. <span class="hl">Wierzymy, że jeśli damy im ten język („budżet zespołowy”, „nikt nie ma budżetu na «my»”) i poprowadzimy każdą z sześciu dróg dotarcia do jednego prostego działania, kalkulatora, który sam pokazuje ich niewidzialny budżet</span>, to komunikacja zacznie sama otwierać drzwi, które dziś otwiera wyłącznie handlowiec. Pogłębiony audyt zostaje dla tych, którzy już policzyli sami.
@@ -556,19 +569,19 @@ nav .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
 
 <!-- W SKROCIE (SALT bez etykiety frameworka) -->
 <section class="block" id="salt"><div class="wrap">
-  <div class="eyebrow">W skrócie <span class="wip">In progress</span></div>
+  <div class="eyebrow">W skrócie</div>
   <h2>Kim jest TeamBudget i do kogo mówi</h2>
   <div class="fw-rows" style="margin-top:8px">
-    <div class="fw-item" style="border-left-color:var(--green)"><div><h3>Wydatek, którego nikt nie widzi</h3><p>Firmy już wydają na zespoły całkiem realne pieniądze. Integracje z prywatnej karty lidera, śniadania na fakturę, wyjścia rozliczane po miesiącach. Nikt tego nie pilnuje i nie ma na to jednego budżetu, więc w praktyce te pieniądze są niewidoczne. To nie problem ceny ani produktu, tylko tego, że taka kategoria po prostu jeszcze nie istnieje.</p></div></div>
-    <div class="fw-item" style="border-left-color:var(--blue)"><div><h3>Dwie osoby, które muszą powiedzieć „tak”</h3><p>Decyduje kilka osób, ale liczą się dwie. Head of People, bo to on ciągnie temat i zależy mu, żeby ludzie zostawali. I CFO, bo bez jego zgody nie ma dealu, a jego interesuje kontrola i porządek w wydatkach. Do tego team leaderzy, od których zależy czy ktoś tego w ogóle użyje, i office managerowie, którzy otwierają drzwi do HR. Do HR mówimy emocją, do CFO liczbami.</p></div></div>
-    <div class="fw-item" style="border-left-color:var(--orange)"><div><h3>Dlaczego możemy to wygrać</h3><p>Nikt w Polsce nie zajął jeszcze hasła „budżet zespołowy”, więc mamy okno, żeby wejść tam pierwsi. Karta czy kafeteria tego nie zrobią, bo dają wybór jednej osobie. My dajemy budżet całemu zespołowi: katalog, kalendarz, dashboard i jedną fakturę. Korzysta cały zespół, a nie garstka jak przy karcie sportowej. A na dokładkę mamy BW, które to fizycznie dowozi.</p></div></div>
-    <div class="fw-item" style="border-left-color:#b06a12"><div><h3>Co chcemy zmienić w głowie</h3><p>Chcemy przestawić myślenie z „kolejny benefit, kolejny koszt” na „narzędzie, które porządkuje pieniądze, które i tak wydajecie, a przy okazji buduje zespoły”. Zamiast „nie mamy na to budżetu” ma paść „przecież my ten budżet już wydajemy, tylko po omacku”. To zmiana kategorii, nie nowe logo.</p></div></div>
+    <div class="fw-item"><div><h3>Wydatek, którego nikt nie widzi</h3><p>Firmy już wydają na zespoły całkiem realne pieniądze. Integracje z prywatnej karty lidera, śniadania na fakturę, wyjścia rozliczane po miesiącach. Nikt tego nie pilnuje i nie ma na to jednego budżetu, więc w praktyce te pieniądze są niewidoczne. To nie problem ceny ani produktu, tylko tego, że taka kategoria po prostu jeszcze nie istnieje.</p></div></div>
+    <div class="fw-item"><div><h3>Dwie osoby, które muszą powiedzieć „tak”</h3><p>Decyduje kilka osób, ale liczą się dwie. Head of People, bo to on ciągnie temat i zależy mu, żeby ludzie zostawali. I CFO, bo bez jego zgody nie ma dealu, a jego interesuje kontrola i porządek w wydatkach. Do tego team leaderzy, od których zależy czy ktoś tego w ogóle użyje, i office managerowie, którzy otwierają drzwi do HR. Do HR mówimy emocją, do CFO liczbami.</p></div></div>
+    <div class="fw-item"><div><h3>Dlaczego możemy to wygrać</h3><p>Nikt w Polsce nie zajął jeszcze hasła „budżet zespołowy”, więc mamy okno, żeby wejść tam pierwsi. Karta czy kafeteria tego nie zrobią, bo dają wybór jednej osobie. My dajemy budżet całemu zespołowi: katalog, kalendarz, dashboard i jedną fakturę. Korzysta cały zespół, a nie garstka jak przy karcie sportowej. A na dokładkę mamy BW, które to fizycznie dowozi.</p></div></div>
+    <div class="fw-item"><div><h3>Co chcemy zmienić w głowie</h3><p>Chcemy przestawić myślenie z „kolejny benefit, kolejny koszt” na „narzędzie, które porządkuje pieniądze, które i tak wydajecie, a przy okazji buduje zespoły”. Zamiast „nie mamy na to budżetu” ma paść „przecież my ten budżet już wydajemy, tylko po omacku”. To zmiana kategorii, nie nowe logo.</p></div></div>
   </div>
 </div></section>
 
 <!-- 03 POZYCJONOWANIE -->
 <section class="block" id="pozycjonowanie"><div class="wrap">
-  <div class="eyebrow">01 · Pozycjonowanie <span class="wip ok">Accept</span></div>
+  <div class="eyebrow">01 · Pozycjonowanie</div>
   <h2>Platforma budżetów zespołowych</h2>
   <p class="lede"><b>„rytuały zespołowe” to mechanizm i język kampanii, nie pozycjonowanie</b>. Rytuały nie uzasadniają budżetu w oczach CFO, kontrola nad rozproszonymi wydatkami tak. Fraza kategorii jest w Polsce bezpańska: do przejęcia w 6 miesięcy.</p>
   <div class="statement">
@@ -581,7 +594,7 @@ nav .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
 
 <!-- 04 INSIGHT -->
 <section class="block" id="insight"><div class="wrap">
-  <div class="eyebrow">02 · Kluczowy insight <span class="wip">In progress</span></div>
+  <div class="eyebrow">02 · Kluczowy insight</div>
   <h2>Nikt nie ma budżetu na „my”</h2>
   <div class="insight-core" style="margin:0 0 24px">
     <span class="mono">Insight nadrzędny</span>
@@ -596,7 +609,7 @@ nav .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
 
 <!-- 05 MESSAGE HOUSE -->
 <section class="block" id="message"><div class="wrap">
-  <div class="eyebrow">03 · Message house <span class="wip">In progress</span></div>
+  <div class="eyebrow">03 · Message house</div>
   <h2>Trzy filary, jedna obietnica</h2>
   <p class="lede">Zasada użycia: otwieramy filarem 2 (dlaczego w ogóle), sprzedajemy filarem 3 (dlaczego da się to kupić), utrzymujemy filarem 1 (dlaczego zostajecie). Kliknij filar.</p>
   <div class="house-roof">Budżet, który buduje zespół.</div>
@@ -606,7 +619,7 @@ nav .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
 
 <!-- 06 PERSONY -->
 <section class="block" id="persony"><div class="wrap">
-  <div class="eyebrow">04 · Persony i komitet zakupowy <span class="wip">In progress</span></div>
+  <div class="eyebrow">04 · Persony i komitet zakupowy</div>
   <h2>Sześć osób, jedna decyzja</h2>
   <p class="lede">Komunikacja wybiera jednego bohatera (<b>Head of People</b>) i jednego walidatora (<b>CFO</b>). Reszta dostaje materiały, nie kampanię. Zacznij od mapy komitetu, klik na rolę otwiera pełną personę: problem, język, obiekcje z ripostami i miejsce w lejkach.</p>
   <div class="cmt-tier"><b>2 kluczowe role</b>, bohater i walidator. Całą kampanię piszemy pod nich.</div>
@@ -619,7 +632,7 @@ nav .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
 
 <!-- 07 GTM -->
 <section class="block" id="gtm"><div class="wrap">
-  <div class="eyebrow">05 · Wejście na rynek, trzy fazy <span class="wip">In progress</span></div>
+  <div class="eyebrow">05 · Wejście na rynek, trzy fazy</div>
   <h2>Sześć miesięcy w trzech fazach</h2>
   <p class="lede">Kalendarz wynika z faktów: Better Minds HR jest w październiku, więc <b>premiera kategorii odbywa się z danymi z 60 zespołów, nie z obietnicami</b>. Konwersja wdrożeń celuje w okno budżetowe XI–I.</p>
   <div class="phases" id="phaseBtns"></div>
@@ -629,7 +642,7 @@ nav .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
 
 <!-- 08 LEJKI -->
 <section class="block" id="lejki"><div class="wrap">
-  <div class="eyebrow">06 · Drogi dotarcia, sześć lejków <span class="wip">In progress</span></div>
+  <div class="eyebrow">06 · Drogi dotarcia, sześć lejków</div>
   <h2>Sześć wejść, jeden rdzeń</h2>
   <p class="lede">Wszystkie lejki zbiegają do tego samego rdzenia: <b>audyt → pilotaż → raport → wdrożenie</b>. Różnią się wejściem i temperaturą kontaktu. Wybierz lejek, potem klikaj etapy ścieżki, każdy pokazuje, co się na nim dzieje i jakie dane zbieramy.</p>
   <div class="frame rdzen" style="margin-bottom:22px">
@@ -658,7 +671,7 @@ nav .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
 
 <!-- 08 PILOTAŻ -->
 <section class="block" id="pilotaz"><div class="wrap">
-  <div class="eyebrow">07 · Oferta pilotażowa <span class="wip">In progress</span></div>
+  <div class="eyebrow">07 · Oferta pilotażowa</div>
   <h2>Trzy warianty, jedna konstrukcja</h2>
   <p class="lede">Pilot ma być łatwy do zaakceptowania i twardy w warunkach: baseline obowiązkowy, dane w umowie, decyzja o rolloucie ≤30 dni po raporcie.</p>
   <div class="frame">
@@ -692,7 +705,7 @@ nav .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
 
 <!-- 09 KAMPANIA -->
 <section class="block" id="kampania"><div class="wrap">
-  <div class="eyebrow">08 · Platformy kreatywne <span class="wip">In progress</span></div>
+  <div class="eyebrow">08 · Platformy kreatywne</div>
   <h2>Cztery kierunki, jedna rekomendacja</h2>
   <p class="lede">Po selekcji zostały cztery kierunki: <b>„Między ludźmi” jako główny</b> (masowy, do pracodawców i pracowników), „Niewidzialny budżet” jako sprzedażowy (finanse i wybrane duże firmy) oraz dwa wspierające z własnymi mechanikami, „Ostatni raz” (test i licznik prowadzące ruch na stronę) i „Daj im powód” (powód zamiast przymusu, nie tylko biuro). Jedna strategia w kilku rejestrach; słabsze kierunki odrzuciliśmy.</p>
   <div class="plats" id="platBtns"></div>
@@ -709,7 +722,7 @@ nav .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
 
 <!-- 09 REKLAMA (id budzet-media, „reklama" jest blokowane przez ad-blockery) -->
 <section class="block" id="budzet-media"><div class="wrap">
-  <div class="eyebrow">09 · Budżet reklamowy <span class="wip">In progress</span></div>
+  <div class="eyebrow">09 · Budżet reklamowy</div>
   <h2>Nie jeden miks, tylko trzy</h2>
   <p class="lede">Budżet reklamowy nie jest statyczną tabelką, zmienia się w czasie, zgrany z fazami wejścia na rynek z sekcji 05. <b>Autorytet buduje kategorię, zanim jest co sprzedawać; media płatne ruszają dopiero z danymi z pilotażu jako amunicją</b>. To rozwiązuje trzy problemy naraz: słabe wyniki LinkedIn (bo teraz to nie jego faza), ryzyko mocy produkcyjnych (content front-loaded, gdy jest czas) i marnowanie budżetu (w Fazie 1 każda złotówka buduje trwały asset). Kliknij fazę.</p>
   <div class="blockers" style="margin-bottom:26px"><b>To koncept komunikacyjny i mapa kanałów, do akceptacji, nie wiążący media plan.</b> Pokazuje, którędy i z jakim przekazem docieramy do person na każdym etapie. Dopiero akceptacja tego kierunku uruchamia szczegółowy media plan, konkretne budżety, CPL i cele konwersji, prowadzony przez zespół performance. Najpierw zgoda na kierunek, potem liczby.</div>
@@ -749,14 +762,14 @@ nav .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
 
 <!-- 10 DELIVERABLES -->
 <section class="block" id="deliverables"><div class="wrap">
-  <div class="eyebrow">10 · Deliverables <span class="wip">In progress</span></div>
+  <div class="eyebrow">10 · Deliverables</div>
   <h2>Materiały do dostarczenia</h2>
   <div class="frame" style="margin:0 0 20px;background:var(--blue)">
     <span><b>Landing Page / www</b>miejsce, gdzie prowadzimy cały ruch</span>
     <span style="max-width:60ch;font-family:var(--sans);text-transform:none;letter-spacing:0;font-size:.85rem;opacity:.92">Każdy kanał, paid, autorytet, wydarzenia, w którymś momencie odsyła człowieka na landing. Reklamy pracują dokładnie tak dobrze, jak dobrze strona tłumaczy produkt, liczy oszczędność i umawia rozmowę. Landing nie jest jednym z kanałów, jest miejscem, do którego wszystkie prowadzą. Dlatego to on jest pierwszą inwestycją, nie ostatnią.</span>
   </div>
     <div class="deliv-grid">
-    <div class="deliv-card" style="border-top:3px solid var(--blue)"><span class="src">Serce · wszystkie drogi</span><h4>Landing / strona produktu</h4><p>Wspólny punkt styku sześciu lejków. Tłumaczy produkt, liczy oszczędność, umawia rozmowę. Kluczowa inwestycja na poziomie budowy huba, z którego wszystko wynika.</p></div>
+    <div class="deliv-card"><span class="src">Serce · wszystkie drogi</span><h4>Landing / strona produktu</h4><p>Wspólny punkt styku sześciu lejków. Tłumaczy produkt, liczy oszczędność, umawia rozmowę. Kluczowa inwestycja na poziomie budowy huba, z którego wszystko wynika.</p></div>
     <div class="deliv-card"><span class="src">Wejście · CFO</span><h4>Kalkulator „niewidzialnego budżetu”</h4><p>Automatyczna warstwa audytu: klient sam liczy, ile wydaje na zespoły. Kwalifikuje leada bez handlowca.</p></div>
     <div class="deliv-card"><span class="src">Faza 1 asset · Faza 3 kreacje</span><h4>Explainer video (kilka)</h4><p>Tłumaczą produkt raz, potem pracują dwa razy: jako treść edukacyjna i jako kreacje reklamowe pod YouTube/Meta Ads.</p></div>
     <div class="deliv-card"><span class="src">Event + strona</span><h4>Demo / okrojona wersja aplikacji</h4><p>Klikalny wycinek funkcji: na Better Minds HR uczestnik planuje doświadczenie „na żywym budżecie” w 3 min; na stronie ten sam prototyp pokazuje mechanikę.</p></div>
@@ -776,11 +789,11 @@ nav .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
   <div class="eyebrow">Metodyka · PLATE Framework</div>
   <h2>Jak zaplanujemy komunikację</h2>
   <div class="fw-rows" style="margin-top:8px">
-    <div class="fw-item" style="border-left-color:var(--green)"><div><h3>Przygotuj ścieżkę klienta</h3><p>Rdzeń jednej drogi: audyt → pilotaż → raport → wdrożenie. Wejście przez kalkulator lub audyt 45 min. Sześć lejków zbiega do landingu; każdy etap ma przypisany komunikat i miejsce wyświetlenia.</p></div></div>
-    <div class="fw-item" style="border-left-color:var(--blue)"><div><h3>Znajdź blokady</h3><p>„Kolejny benefit" → macierz jednostka vs zespół. „Nie mamy budżetu" → audyt istniejących wydatków. „Jaki zwrot" → symulacja kosztu obsługi. „Nikt nie użyje" → szablony 1-klik + opiekun wdrożenia. Zakupy/IT/RODO → pakiet gotowy zawczasu.</p></div></div>
-    <div class="fw-item" style="border-left-color:var(--green)"><div><h3>Ustal cele</h3><p>Bramki, nie ogólniki. Faza 1: ≥10–15 pilotaży z danymi. Faza 2: premiera Better Minds HR + ≥10 płacących + powtarzalny playbook. Faza 3: skala paid i penetracja. Zero „zwiększamy rozpoznawalność".</p></div></div>
-    <div class="fw-item" style="border-left-color:var(--orange)"><div><h3>Dopasuj tematy do odbiorców</h3><p>HR → relacje, retencja, mierzalność. CFO → konsolidacja, jedna faktura, dashboard. Team Leader → „budżet dla zespołu, reszta sama". Office Manager → status. CEO → jedna strona: co wydajecie / co dostajecie / czego nie widać.</p></div></div>
-    <div class="fw-item" style="border-left-color:#b06a12"><div><h3>Przygotuj gotowe materiały</h3><p>Landing i kalkulator (żyją), deck pilotażowy, one-pager CFO, explainery (edukacja + kreacje reklamowe), pakiet audytu, manifest „Między ludźmi". Kalendarz mediów fazowy i 90-dniowy plan zgrany z premierą październikową.</p></div></div>
+    <div class="fw-item"><div><h3>Przygotuj ścieżkę klienta</h3><p>Rdzeń jednej drogi: audyt → pilotaż → raport → wdrożenie. Wejście przez kalkulator lub audyt 45 min. Sześć lejków zbiega do landingu; każdy etap ma przypisany komunikat i miejsce wyświetlenia.</p></div></div>
+    <div class="fw-item"><div><h3>Znajdź blokady</h3><p>„Kolejny benefit" → macierz jednostka vs zespół. „Nie mamy budżetu" → audyt istniejących wydatków. „Jaki zwrot" → symulacja kosztu obsługi. „Nikt nie użyje" → szablony 1-klik + opiekun wdrożenia. Zakupy/IT/RODO → pakiet gotowy zawczasu.</p></div></div>
+    <div class="fw-item"><div><h3>Ustal cele</h3><p>Bramki, nie ogólniki. Faza 1: ≥10–15 pilotaży z danymi. Faza 2: premiera Better Minds HR + ≥10 płacących + powtarzalny playbook. Faza 3: skala paid i penetracja. Zero „zwiększamy rozpoznawalność".</p></div></div>
+    <div class="fw-item"><div><h3>Dopasuj tematy do odbiorców</h3><p>HR → relacje, retencja, mierzalność. CFO → konsolidacja, jedna faktura, dashboard. Team Leader → „budżet dla zespołu, reszta sama". Office Manager → status. CEO → jedna strona: co wydajecie / co dostajecie / czego nie widać.</p></div></div>
+    <div class="fw-item"><div><h3>Przygotuj gotowe materiały</h3><p>Landing i kalkulator (żyją), deck pilotażowy, one-pager CFO, explainery (edukacja + kreacje reklamowe), pakiet audytu, manifest „Między ludźmi". Kalendarz mediów fazowy i 90-dniowy plan zgrany z premierą październikową.</p></div></div>
   </div>
 </div></section>
 
