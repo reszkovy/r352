@@ -150,6 +150,15 @@ section.block{padding:88px 0 40px;border-top:1px solid var(--line)}
 .fw-item p{font-size:.85rem;color:var(--ink60);line-height:1.55}
 @media(max-width:820px){.fw-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.fw-grid{grid-template-columns:1fr}}
+/* deliverables */
+.deliv-lbl{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink40);margin:0 0 6px}
+.deliv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.deliv-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.deliv-card .src{font-family:var(--mono);font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:7px}
+.deliv-card h4{font-size:.92rem;margin:0 0 5px;font-family:var(--sans);font-weight:700}
+.deliv-card p{font-size:.8rem;color:var(--ink60);line-height:1.45;margin:0}
+@media(max-width:820px){.deliv-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.deliv-grid{grid-template-columns:1fr}}
 section.block:first-of-type{border-top:none}
 .eyebrow{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.18em;color:var(--blue);display:flex;align-items:center;gap:12px;margin-bottom:18px}
 .eyebrow::before{content:"";width:26px;height:1px;background:var(--blue)}
@@ -459,6 +468,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   <a href="#pilotaz"><span class="n">07</span>Pilotaż<span class="wip">WIP</span></a>
   <a href="#kampania"><span class="n">08</span>Kampania</a>
   <a href="#budzet-media"><span class="n">09</span>Reklama<span class="wip">WIP</span></a>
+  <a href="#deliverables"><span class="n">10</span>Deliverables</a>
   <a href="#salt"><span class="n">S</span>Metodyka SALT</a>
   <a href="#plate"><span class="n">P</span>Metodyka PLATE</a>
   <!-- WYLACZONE: <a href="#codalej"><span class="n">09</span>Co dalej</a> -->
@@ -698,21 +708,34 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   <p style="font-size:.8rem;color:var(--ink40);margin:16px 0 0">Proporcje to hipoteza kierunkowa — konkretne kwoty, CPL i cele konwersji prowadzi zespół performance. Rozdzielamy też LinkedIn: słabe wyniki dotyczą <b>Ads</b> (płatny zasięg), nie organic thought leadership, który zostaje jako kanał HR/CFO.</p>
 </div></section>
 
+<!-- 10 DELIVERABLES -->
+<section class="block" id="deliverables"><div class="wrap">
+  <div class="eyebrow">10 · Deliverables</div>
+  <h2>Wszystko wynika ze strategii</h2>
+  <p class="lede">Landing to serce, ale nie jedyny element. Z tych samych person, faz i dróg dotarcia wynika cała reszta produkcji — każdy deliverable obsługuje konkretną potrzebę, nie jest ozdobą. Wszystko odsyła do landingu albo z niego wychodzi.</p>
+  <div class="deliv-grid">
+    <div class="deliv-card" style="border-top:3px solid var(--blue)"><span class="src">Serce · wszystkie drogi</span><h4>Landing / strona produktu</h4><p>Wspólny punkt styku sześciu lejków. Tłumaczy produkt, liczy oszczędność, umawia rozmowę. Pierwsza inwestycja, nie ostatnia. <b>Żyje (v3).</b></p></div>
+    <div class="deliv-card"><span class="src">Wejście · CFO</span><h4>Kalkulator „niewidzialnego budżetu”</h4><p>Automatyczna warstwa audytu: klient sam liczy, ile wydaje na zespoły. Kwalifikuje leada bez handlowca. <b>Żyje.</b></p></div>
+    <div class="deliv-card"><span class="src">Faza 1 asset · Faza 3 kreacje</span><h4>Explainer video (kilka)</h4><p>Tłumaczą produkt raz — potem pracują dwa razy: jako treść edukacyjna i jako kreacje reklamowe pod YouTube/Meta Ads.</p></div>
+    <div class="deliv-card"><span class="src">Event + strona</span><h4>Demo / okrojona wersja aplikacji</h4><p>Klikalny wycinek funkcji: na Better Minds HR uczestnik planuje doświadczenie „na żywym budżecie” w 3 min; na stronie ten sam prototyp pokazuje mechanikę.</p></div>
+    <div class="deliv-card"><span class="src">Persona CFO · obiekcja „zwrot”</span><h4>One-pager CFO</h4><p>Konsolidacja i koszt per capita vs obecne wydatki — jedna strona do przełożenia na zarząd.</p></div>
+    <div class="deliv-card"><span class="src">Sekcja 07 · Pilotaż</span><h4>Deck pilotażowy (10 slajdów)</h4><p>Oferta pilotażu 3–5 zespołów: konstrukcja, baseline, warunki danych, decyzja ≤30 dni po raporcie.</p></div>
+    <div class="deliv-card"><span class="src">Wejście audytowe</span><h4>Pakiet audytu</h4><p>Skrypt rozmowy + szablon raportu przed/po/co dalej — żeby audyt pogłębiony był powtarzalny, nie za każdym razem od zera.</p></div>
+    <div class="deliv-card"><span class="src">Sekcja 08 · Kampania</span><h4>Manifest „Między ludźmi”</h4><p>Emocjonalny domykacz kategorii — podnosi rozmowę z transakcji na „dlaczego to w ogóle ma znaczenie”.</p></div>
+    <div class="deliv-card"><span class="src">Funkcja blokująca · zakupy/IT</span><h4>Pakiet RODO / vendor</h4><p>Nota RODO, umowa powierzenia, SSO w roadmapie, kwestionariusz vendor — odblokowuje deal enterprise zawczasu.</p></div>
+    <div class="deliv-card"><span class="src">Sekcja 09 · fazy mediów</span><h4>Kalendarz mediów 90 dni</h4><p>Szkielet media planu zgrany z fazami: autorytet → paid → skala. Zamienia strategię w harmonogram publikacji, nie deklaracje.</p></div>
+  </div>
+</div></section>
+
 <!-- SALT -->
 <section class="block" id="salt"><div class="wrap">
   <div class="eyebrow">Metodyka · SALT Framework</div>
   <h2>Kim jest TeamBudget i do kogo mówi</h2>
-  <p class="lede">Ta sama rama, którą stosujemy w BetterWorkplace. Faza 1 nie zaczyna się od kreatywnych pomysłów — zaczyna od zrozumienia problemu. Cztery warstwy, każda buduje na poprzedniej.</p>
-  <div class="fw-conn">
-    <span class="fw-tag s">SALT</span><span>Faza 1 — kim jesteśmy i do kogo mówimy</span>
-    <span style="color:var(--ink40)">→</span>
-    <span class="fw-tag p">PLATE</span><span>Faza 2 — co, gdzie i jak mówimy</span>
-  </div>
-  <div class="fw-grid">
-    <div class="fw-card" style="border-top-color:var(--green)"><div class="fl" style="color:var(--green)">S</div><div class="fr">Sytuacja · Situation</div><h3>Niewidzialny wydatek</h3><p>Firmy już wydają realne pieniądze na zespoły — z kart liderów, faktur ad hoc — chaotycznie, bez właściciela i danych. Problem nie jest produktowy ani cenowy, tylko kategorialny: kategoria „budżet zespołowy" nie istnieje, więc wydatek jest niewidzialny.</p></div>
-    <div class="fw-card" style="border-top-color:var(--blue)"><div class="fl" style="color:var(--blue)">A</div><div class="fr">Odbiorcy · Audience</div><h3>Komitet, dwa rejestry</h3><p>Bohater: Head of People (champion — relacje, retencja). Walidator: CFO (kontrola, konsolidacja). Ryzyko adopcyjne #1: Team Leader. Otwieracz: Office Manager. HR-emocja otwiera, CFO-kontrola domyka.</p></div>
-    <div class="fw-card" style="border-top-color:var(--orange)"><div class="fl" style="color:var(--orange)">L</div><div class="fr">Przewaga · Leverage</div><h3>Bezpańska kategoria + ekosystem</h3><p>Fraza „budżet zespołowy" do przejęcia w 6 miesięcy. Mechanika, której nie ma karta: budżet per zespół, katalog, kalendarz rytuałów, dashboard, jedna faktura. 100% inkluzywności vs ~15% adopcji karty. Ekosystem BW realnie dowozi.</p></div>
-    <div class="fw-card" style="border-top-color:var(--yellow)"><div class="fl" style="color:#b06a12">T</div><div class="fr">Zmiana · Transform</div><h3>Z benefitu w kategorię</h3><p>Z „kolejny benefit / koszt" → system relacji zespołowych i narzędzie kontroli wydatków. Z „nie mamy budżetu" → „porządkujemy budżet, który już wydajecie". To zmiana kategorii, nie logo.</p></div>
+  <div class="fw-grid" style="margin-top:8px">
+    <div class="fw-card" style="border-top-color:var(--green)"><h3>Niewidzialny wydatek</h3><p>Firmy już wydają realne pieniądze na zespoły — z kart liderów, faktur ad hoc — chaotycznie, bez właściciela i danych. Problem nie jest produktowy ani cenowy, tylko kategorialny: kategoria „budżet zespołowy" nie istnieje, więc wydatek jest niewidzialny.</p></div>
+    <div class="fw-card" style="border-top-color:var(--blue)"><h3>Komitet, dwa rejestry</h3><p>Bohater: Head of People (champion — relacje, retencja). Walidator: CFO (kontrola, konsolidacja). Ryzyko adopcyjne #1: Team Leader. Otwieracz: Office Manager. HR-emocja otwiera, CFO-kontrola domyka.</p></div>
+    <div class="fw-card" style="border-top-color:var(--orange)"><h3>Bezpańska kategoria + ekosystem</h3><p>Fraza „budżet zespołowy" do przejęcia w 6 miesięcy. Mechanika, której nie ma karta: budżet per zespół, katalog, kalendarz rytuałów, dashboard, jedna faktura. 100% inkluzywności vs ~15% adopcji karty. Ekosystem BW realnie dowozi.</p></div>
+    <div class="fw-card" style="border-top-color:var(--yellow)"><h3>Z benefitu w kategorię</h3><p>Z „kolejny benefit / koszt" → system relacji zespołowych i narzędzie kontroli wydatków. Z „nie mamy budżetu" → „porządkujemy budżet, który już wydajecie". To zmiana kategorii, nie logo.</p></div>
   </div>
 </div></section>
 
@@ -720,13 +743,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 <section class="block" id="plate"><div class="wrap">
   <div class="eyebrow">Metodyka · PLATE Framework</div>
   <h2>Jak zaplanujemy komunikację</h2>
-  <p class="lede">Wiemy już kim jest marka i do kogo mówi. Teraz konkret: co, gdzie i jak komunikować, żeby dotrzeć do właściwych osób z właściwym przekazem. Pięć kroków — od ścieżki klienta po gotowe materiały.</p>
-  <div class="fw-rows">
-    <div class="fw-item" style="border-left-color:var(--green)"><div class="fl" style="color:var(--green)">P</div><div><h3>Przygotuj ścieżkę klienta</h3><p>Rdzeń jednej drogi: audyt → pilotaż → raport → wdrożenie. Wejście przez kalkulator lub audyt 45 min. Sześć lejków zbiega do landingu; każdy etap ma przypisany komunikat i miejsce wyświetlenia.</p></div></div>
-    <div class="fw-item" style="border-left-color:var(--blue)"><div class="fl" style="color:var(--blue)">L</div><div><h3>Znajdź blokady</h3><p>„Kolejny benefit" → macierz jednostka vs zespół. „Nie mamy budżetu" → audyt istniejących wydatków. „Jaki zwrot" → symulacja kosztu obsługi. „Nikt nie użyje" → szablony 1-klik + opiekun wdrożenia. Zakupy/IT/RODO → pakiet gotowy zawczasu.</p></div></div>
-    <div class="fw-item" style="border-left-color:var(--green)"><div class="fl" style="color:var(--green)">A</div><div><h3>Ustal cele</h3><p>Bramki, nie ogólniki. Faza 1: ≥10–15 pilotaży z danymi. Faza 2: premiera Better Minds HR + ≥10 płacących + powtarzalny playbook. Faza 3: skala paid i penetracja. Zero „zwiększamy rozpoznawalność".</p></div></div>
-    <div class="fw-item" style="border-left-color:var(--orange)"><div class="fl" style="color:var(--orange)">T</div><div><h3>Dopasuj tematy do odbiorców</h3><p>HR → relacje, retencja, mierzalność. CFO → konsolidacja, jedna faktura, dashboard. Team Leader → „budżet dla zespołu, reszta sama". Office Manager → status. CEO → jedna strona: co wydajecie / co dostajecie / czego nie widać.</p></div></div>
-    <div class="fw-item" style="border-left-color:#b06a12"><div class="fl" style="color:#b06a12">E</div><div><h3>Przygotuj gotowe materiały</h3><p>Landing i kalkulator (żyją), deck pilotażowy, one-pager CFO, explainery (edukacja + kreacje reklamowe), pakiet audytu, manifest „Między ludźmi". Kalendarz mediów fazowy i 90-dniowy plan zgrany z premierą październikową.</p></div></div>
+  <div class="fw-rows" style="margin-top:8px">
+    <div class="fw-item" style="border-left-color:var(--green)"><div><h3>Przygotuj ścieżkę klienta</h3><p>Rdzeń jednej drogi: audyt → pilotaż → raport → wdrożenie. Wejście przez kalkulator lub audyt 45 min. Sześć lejków zbiega do landingu; każdy etap ma przypisany komunikat i miejsce wyświetlenia.</p></div></div>
+    <div class="fw-item" style="border-left-color:var(--blue)"><div><h3>Znajdź blokady</h3><p>„Kolejny benefit" → macierz jednostka vs zespół. „Nie mamy budżetu" → audyt istniejących wydatków. „Jaki zwrot" → symulacja kosztu obsługi. „Nikt nie użyje" → szablony 1-klik + opiekun wdrożenia. Zakupy/IT/RODO → pakiet gotowy zawczasu.</p></div></div>
+    <div class="fw-item" style="border-left-color:var(--green)"><div><h3>Ustal cele</h3><p>Bramki, nie ogólniki. Faza 1: ≥10–15 pilotaży z danymi. Faza 2: premiera Better Minds HR + ≥10 płacących + powtarzalny playbook. Faza 3: skala paid i penetracja. Zero „zwiększamy rozpoznawalność".</p></div></div>
+    <div class="fw-item" style="border-left-color:var(--orange)"><div><h3>Dopasuj tematy do odbiorców</h3><p>HR → relacje, retencja, mierzalność. CFO → konsolidacja, jedna faktura, dashboard. Team Leader → „budżet dla zespołu, reszta sama". Office Manager → status. CEO → jedna strona: co wydajecie / co dostajecie / czego nie widać.</p></div></div>
+    <div class="fw-item" style="border-left-color:#b06a12"><div><h3>Przygotuj gotowe materiały</h3><p>Landing i kalkulator (żyją), deck pilotażowy, one-pager CFO, explainery (edukacja + kreacje reklamowe), pakiet audytu, manifest „Między ludźmi". Kalendarz mediów fazowy i 90-dniowy plan zgrany z premierą październikową.</p></div></div>
   </div>
 </div></section>
 
