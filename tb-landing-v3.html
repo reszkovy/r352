@@ -278,6 +278,29 @@ section.block{padding:92px 0;position:relative;}
 @media(max-width:760px){.ritm-arr{transform:rotate(90deg);}}
 
 /* HOW — 4 kroki */
+.tline{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:auto 52px auto;column-gap:30px;margin-top:18px;}
+.tl-card{display:flex;flex-direction:column;gap:4px;}
+.tl-card.c1{grid-column:1;grid-row:1;align-self:end;padding-bottom:10px;}
+.tl-card.c2{grid-column:2;grid-row:3;padding-top:10px;}
+.tl-card.c3{grid-column:3;grid-row:1;align-self:end;padding-bottom:10px;}
+.tl-card.c4{grid-column:4;grid-row:3;padding-top:10px;}
+.tl-num{font-family:'DM Mono',monospace;font-size:12px;color:var(--blue);font-weight:500;}
+.tl-tag{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);}
+.tl-card h3{font-size:17px;font-weight:700;letter-spacing:-.02em;margin-top:4px;}
+.tl-card p{font-size:13.5px;color:var(--muted);line-height:1.55;margin-top:4px;}
+.tl-axis{grid-column:1/-1;grid-row:2;position:relative;display:grid;grid-template-columns:repeat(4,1fr);column-gap:30px;align-items:center;}
+.tl-axis::before{content:'';position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line);}
+.tl-axis i{position:relative;justify-self:center;width:18px;height:18px;background:var(--blue);clip-path:url(#tbPetal);}
+.tl-axis i:nth-child(2){background:var(--orange);}
+.tl-axis i:nth-child(3){background:var(--green);}
+.tl-axis i:nth-child(4){background:var(--pale-black);}
+@media(max-width:820px){
+.tline{display:flex;flex-direction:column;gap:22px;position:relative;padding-left:30px;}
+.tline::before{content:'';position:absolute;left:8px;top:6px;bottom:6px;width:1px;background:var(--line);}
+.tl-axis{display:none;}
+.tl-card{position:relative;padding:0!important;}
+.tl-card::before{content:'';position:absolute;left:-30px;top:2px;width:16px;height:16px;background:var(--blue);clip-path:url(#tbPetal);}
+}
 .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-radius:var(--r-lg);overflow:hidden;background:var(--card);box-shadow:0 2px 20px rgba(71,58,57,.06);}
 .flow-step{padding:32px 24px;transition:background .4s var(--ease-out);position:relative;}
 .flow-step+.flow-step::before{content:'';position:absolute;left:0;top:20%;height:60%;width:1px;background:var(--line-soft);}
@@ -321,6 +344,9 @@ section.block{padding:92px 0;position:relative;}
 
 /* OBIEKCJE */
 .obj-list{max-width:820px;}
+.faq-grid{display:grid;grid-template-columns:5fr 7fr;gap:56px;align-items:start;}
+.faq-left{position:sticky;top:110px;}
+@media(max-width:860px){.faq-grid{grid-template-columns:1fr;gap:24px;}.faq-left{position:static;}}
 .obj-item{background:#fff;border-radius:14px;box-shadow:0 2px 16px rgba(71,58,57,.05);margin-bottom:12px;overflow:hidden;}
 .obj-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;background:none;border:none;cursor:pointer;text-align:left;font-family:'Pangram Sans','DM Sans',sans-serif;font-weight:700;font-size:16px;color:var(--pale-black);}
 .obj-q .plus{font-family:'DM Mono',monospace;font-size:20px;color:var(--blue);transition:transform .3s;flex:none;}
@@ -330,7 +356,7 @@ section.block{padding:92px 0;position:relative;}
 .obj-a-in b{color:var(--blue);font-weight:600;}
 
 /* DOWÓD — co mierzymy */
-.block.measure-sec{background:var(--pale-black);color:var(--pale-white);}
+.block.measure-sec{background:var(--pale-black);color:var(--pale-white);padding-bottom:40px;}
 .report{background:var(--pale-white);color:var(--pale-black);border-radius:14px;max-width:760px;margin:8px auto 0;padding:26px 30px;}
 .rep-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:6px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;}
 .rep-head span:first-child{font-weight:600;}
@@ -356,19 +382,19 @@ section.block{padding:92px 0;position:relative;}
 @media(max-width:480px){.measure-grid{grid-template-columns:1fr;}}
 
 /* MANIFEST */
-.block.manifest-sec{background:var(--sunny);}
+.block.manifest-sec{background:var(--pale-black);color:var(--pale-white);padding-top:20px;}
 .manifest{max-width:760px;margin:0 auto;text-align:center;}
 .manifest .eyebrow{color:var(--blue);}
 .manifest .m-line{display:block;}
-.manifest p{font-family:'Pangram Sans','DM Sans',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:600;line-height:1.35;letter-spacing:-.01em;margin-top:20px;color:var(--pale-black);}
+.manifest p{color:var(--pale-white)!important;font-family:'Pangram Sans','DM Sans',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:600;line-height:1.35;letter-spacing:-.01em;margin-top:20px;color:var(--pale-black);}
 .manifest p b{color:var(--blue);font-weight:700;}
-.manifest .sig{font-family:'Pangram Sans',sans-serif;font-size:clamp(17px,2vw,21px);font-weight:700;letter-spacing:-.02em;margin-top:26px;color:var(--pale-black);}
+.manifest .sig{font-family:'Pangram Sans',sans-serif;font-size:clamp(17px,2vw,21px);font-weight:700;letter-spacing:-.02em;margin-top:26px;color:rgba(255,251,244,.55);}
 
 /* ROI band shell reused nowhere now */
 
 /* CTA */
-.block.cta{padding:24px 0 96px;}
-.cta-card{background:var(--pale-black);color:var(--pale-white);border-radius:var(--r-xl);padding:58px 54px;display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center;position:relative;overflow:hidden;}
+.block.cta{padding:0 0 96px;background:var(--pale-black);}
+.cta-card{background:rgba(255,251,244,.05);border:1px solid rgba(255,251,244,.1);color:var(--pale-white);border-radius:var(--r-xl);padding:58px 54px;display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center;position:relative;overflow:hidden;}
 .cta-card::before{content:'';position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(67,117,255,.32),transparent 70%);left:-130px;bottom:-180px;}
 .cta-copy{position:relative;z-index:1;}
 .cta-copy h2{font-family:'Pangram Sans',sans-serif;font-size:clamp(26px,3.4vw,38px);letter-spacing:-.03em;font-weight:700;line-height:1.06;}
@@ -679,11 +705,12 @@ h1,h2,h3,.manifest p,.res-verdict,.story-cap p,.vs-punch{text-wrap:balance;}
       <h2>Nie kupujesz w ciemno. Zapisujesz zespoły na pilotaż.</h2>
       <p>Zaczynasz od dwuminutowego Pulsu kultury, kończysz decyzją na danych z własnych zespołów. Wszystko po drodze prowadzimy my.</p>
     </div>
-    <div class="flow">
-      <div class="flow-step"><div class="flow-num">01</div><div class="flow-tag">Puls kultury</div><h3>2 minuty, online</h3><p>Sprawdzasz puls kultury swoich zespołów w kalkulatorze. Sam, bez rozmów i bez zobowiązań.</p></div>
-      <div class="flow-step"><div class="flow-num">02</div><div class="flow-tag">Zgłoszenie</div><h3>Zapis na pilotaż</h3><p>Krótki formularz, ograniczona liczba miejsc. Wracamy w 72 godziny z terminem startu.</p></div>
-      <div class="flow-step"><div class="flow-num">03</div><div class="flow-tag">Pilotaż</div><h3>3&ndash;5 zespołów</h3><p>10 tygodni, platforma za 0 zł, baseline na starcie. Prowadzone przez nasz zespół, nie zostawione samo sobie.</p></div>
-      <div class="flow-step"><div class="flow-num">04</div><div class="flow-tag">Decyzja</div><h3>Raport i wdrożenie</h3><p>Przed / po / co dalej: regularność, frekwencja, wykorzystanie. Decyzja do 30 dni po raporcie, wdrożenie od 1 zespołu w górę.</p></div>
+    <div class="tline">
+      <div class="tl-card c1"><span class="tl-num">01</span><span class="tl-tag">Puls kultury</span><h3>2 minuty, online</h3><p>Sprawdzasz puls kultury swoich zespoł&oacute;w w kalkulatorze. Sam, bez rozm&oacute;w i bez zobowiązań.</p></div>
+      <div class="tl-card c2"><span class="tl-num">02</span><span class="tl-tag">Zgłoszenie</span><h3>Zapis na pilotaż</h3><p>Kr&oacute;tki formularz, ograniczona liczba miejsc. Wracamy w 72 godziny z terminem startu.</p></div>
+      <div class="tl-card c3"><span class="tl-num">03</span><span class="tl-tag">Pilotaż</span><h3>3&ndash;5 zespoł&oacute;w</h3><p>10 tygodni, platforma za 0 zł, baseline na starcie. Prowadzone przez nasz zesp&oacute;ł.</p></div>
+      <div class="tl-card c4"><span class="tl-num">04</span><span class="tl-tag">Decyzja</span><h3>Raport i wdrożenie</h3><p>Przed / po / co dalej. Decyzja do 30 dni po raporcie, wdrożenie od 1 zespołu w g&oacute;rę.</p></div>
+      <div class="tl-axis" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
     </div>
   </div>
 </section>
@@ -692,16 +719,19 @@ h1,h2,h3,.manifest p,.res-verdict,.story-cap p,.vs-punch{text-wrap:balance;}
 <!-- OBIEKCJE -->
 <section class="block" id="obiekcje">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="faq-grid">
+    <div class="faq-left">
       <span class="num-tag">05 &mdash; Najczęstsze pytania</span>
-      <h2>Cztery pytania, kt&oacute;re padają najczęściej.</h2>
-      <p>Kliknij, żeby rozwinąć. Odpowiadamy wprost, bez owijania.</p>
+      <h2 style="font-size:clamp(24px,3vw,34px);letter-spacing:-.03em;margin-top:14px;">Cztery pytania, kt&oacute;re padają najczęściej.</h2>
+      <p style="color:var(--muted);margin-top:14px;">Kliknij, żeby rozwinąć. Odpowiadamy wprost, bez owijania.</p>
+      <p style="margin-top:22px;font-size:14px;color:var(--muted);">Nie ma Twojego pytania?<br><a href="mailto:kontakt@betterworkplace.pl" style="color:var(--blue);font-weight:600;">kontakt@betterworkplace.pl</a></p>
     </div>
     <div class="obj-list" id="objList">
       <div class="obj-item"><button class="obj-q" aria-expanded="false">„To po prostu kolejny benefit / mamy już kafeterię"<span class="plus">+</span></button><div class="obj-a"><div class="obj-a-in">Kafeteria odpowiada na pytanie „co dostaje pracownik". TeamBudget odpowiada na inne: „co dostaje zespół". To nie konkurencja dla kafeterii, tylko inna linia budżetowa. Sprawdźcie zresztą adopcję swojej obecnej karty: zwykle realnie korzysta z niej 30&ndash;40% osób. Tutaj korzysta cały zespół, z definicji.</div></div></div>
       <div class="obj-item"><button class="obj-q" aria-expanded="false">„Nie mamy na to dodatkowego budżetu"<span class="plus">+</span></button><div class="obj-a"><div class="obj-a-in">Nie prosimy o nowy budżet. Porządkujemy pieniądze, które już dziś wypływają na zespoły: śniadania na fakturę ad hoc, integracje z karty lidera, zwroty w Excelu. Umów rozmowę, policzymy je wspólnie. Zwykle są większe, niż się wydaje.</div></div></div>
       <div class="obj-item"><button class="obj-q" aria-expanded="false">„Jaki jest zwrot?"<span class="plus">+</span></button><div class="obj-a"><div class="obj-a-in">Pierwszy zwrot jest operacyjny i widać go od pierwszego miesiąca: jedna faktura zamiast kilkudziesięciu, zero rozliczeń po stronie managerów, limity per zespół. Dalej wchodzą wskaźniki kultury: regularność rytuałów, frekwencja i wykorzystanie, które dostajecie w raportach.</div></div></div>
       <div class="obj-item"><button class="obj-q" aria-expanded="false">„To będzie kolejne narzędzie, którego nikt nie używa"<span class="plus">+</span></button><div class="obj-a"><div class="obj-a-in">Ryzyko adopcji bierzemy na siebie. Zespół dostaje gotowe rytuały na jedno kliknięcie i sam wybiera z katalogu, a opiekun wdrożenia reaguje, gdy któryś zespół nie startuje. Wszystko dzieje się w firmie, przy stole, więc próg wejścia jest zerowy: nikt nie musi nigdzie jechać.</div></div></div>
+    </div>
     </div>
   </div>
 </section>
