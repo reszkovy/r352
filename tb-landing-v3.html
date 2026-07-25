@@ -192,6 +192,8 @@ section.block{padding:92px 0;position:relative;}
 .vs-punch .blue{color:var(--blue);}
 
 .ph-slot{position:relative;border-radius:18px;border:1.5px dashed rgba(71,58,57,.22);background:repeating-linear-gradient(-45deg,rgba(71,58,57,.035) 0 12px,transparent 12px 24px),var(--sunny);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.ph-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+.ph-slot.filled{border:none;background:var(--sunny);}
 .ph-slot .ph-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);background:#fff;padding:8px 16px;border-radius:100px;box-shadow:0 2px 10px rgba(71,58,57,.08);text-align:center;max-width:86%;line-height:1.5;}
 .ph-wide{aspect-ratio:21/9;}
 @media(max-width:700px){.ph-wide{aspect-ratio:4/3;}}
@@ -547,7 +549,7 @@ footer{padding:46px 0 56px;color:var(--muted);}
           <li><i class="yes">&#10003;</i> Budżet i decyzja w rękach zespołu</li>
           <li><i class="yes">&#10003;</i> Korzysta 100% zespołu, z definicji</li>
           <li><i class="yes">&#10003;</i> Koszty operacyjne, porządkujemy istniejące wydatki</li>
-          <li><i class="yes">&#10003;</i> Efekt widać w Indeksie Więzi i frekwencji</li>
+          <li><i class="yes">&#10003;</i> Efekt widać w regularności i frekwencji</li>
         </ul>
       </div>
     </div>
@@ -559,7 +561,7 @@ footer{padding:46px 0 56px;color:var(--muted);}
 <!-- STORY BAND -->
 <section class="story-band" aria-label="Kadr z życia zespołu">
   <div class="wrap">
-    <div class="ph-slot ph-wide"><span class="ph-tag">Foto &middot; kadr z g&oacute;ry: zesp&oacute;ł przy jednym stole, wsp&oacute;lne śniadanie w biurze, naturalne światło, bez pozowania</span></div>
+    <div class="ph-slot ph-wide filled"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Dn6zGLHfRzB9SQiaNJTkqEWOHh/hf_20260725_064347_9b052a16-6bf3-42e4-819c-648136330657.png" alt="Zesp&oacute;ł przy wsp&oacute;lnym śniadaniu w biurze, kadr z g&oacute;ry" loading="lazy"></div>
     <div class="story-cap">
       <span class="st-time">Wtorek &middot; 9:12</span>
       <p>Zesp&oacute;ł księgowości, trzeci tydzień z rzędu przy jednym stole. <span class="dim2">Nikt tego nie organizował. Wr&oacute;ciło samo.</span></p>
@@ -576,7 +578,7 @@ footer{padding:46px 0 56px;color:var(--muted);}
       <p>Narzędzie do budżetu skopiuje każdy. Systemu operacyjnego kultury zespołowej nie da się dodać jako moduł.</p>
     </div>
     <div class="sol-grid" style="margin-bottom:56px">
-      <div class="sol-card"><div class="sol-icon" style="background:rgba(67,117,255,.08);color:var(--blue);">01</div><h3>Indeks Więzi</h3><p>Standard pomiaru kultury zespołów: jedna liczba 0&ndash;100, pięć wymiarów, dane z realnych rytuałów, nie z ankiety raz w roku. <a href="tb-kalkulator" style="color:var(--blue);font-weight:600;">Zmierz swój &rarr;</a></p></div>
+      <div class="sol-card"><div class="sol-icon" style="background:rgba(67,117,255,.08);color:var(--blue);">01</div><h3>Pomiar, nie przeczucie</h3><p>Regularność rytuałów, frekwencja i wykorzystanie budżetu per zespół. Dane z realnego życia zespołów, nie z ankiety raz w roku. <a href="tb-kalkulator" style="color:var(--blue);font-weight:600;">Sprawdź puls kultury swoich zespoł&oacute;w &rarr;</a></p></div>
       <div class="sol-card"><div class="sol-icon" style="background:rgba(254,105,43,.10);color:var(--orange);">02</div><h3>Metoda Rytm 2+</h3><p>Minimum dwa wspólne doświadczenia zespołu miesięcznie, dopasowane do jego realiów. Wszystko wewnątrz firmy, z dostawą pod drzwi zespołu. Produkcja zmianowa żyje inaczej niż księgowość, metoda to respektuje.</p></div>
       <div class="sol-card"><div class="sol-icon" style="background:rgba(21,164,119,.10);color:var(--green);">03</div><h3>Ekosystem BetterWorkplace</h3><p>15 lat na rynku, 2500+ firm, własny event branżowy i sieć dostawców doświadczeń. Zaplecze, którego nie kupi się w kwartał.</p></div>
     </div>
@@ -604,11 +606,11 @@ footer{padding:46px 0 56px;color:var(--muted);}
       <p>Kultura nie powstaje na integracji raz w roku — powstaje w powtarzalnych sytuacjach, w których zespół po prostu siada razem. Nazwaliśmy to metodą Rytm 2+: minimum dwa wspólne doświadczenia zespołu miesięcznie, w kalendarzu, który wraca sam. Wszystko dzieje się w firmie: śniadania, przekąski, celebracje, dowożone pod drzwi zespołu. Nie organizujesz eventu; ustawiasz rytm.</p>
     </div>
     <div class="ritm-loop">
-      <div class="ritm-card"><div class="ph-slot ritm-ph"><span class="ph-tag">Foto &middot; śniadanie zespołu, detale stołu</span></div><span class="ritm-freq">Co 2 tygodnie</span><h3>Wspólne śniadanie</h3><p>Bazowy rytuał zespołu. Niski próg wejścia, wysoka regularność — zaczyna się od stołu.</p></div>
+      <div class="ritm-card"><div class="ph-slot ritm-ph filled"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Dn6zGLHfRzB9SQiaNJTkqEWOHh/hf_20260725_064355_76764308-cce6-4f9b-a822-f7d57ce504ad_min.webp" alt="Wsp&oacute;lne śniadanie zespołu, detale stołu" loading="lazy"></div><span class="ritm-freq">Co 2 tygodnie</span><h3>Wspólne śniadanie</h3><p>Bazowy rytuał zespołu. Niski próg wejścia, wysoka regularność — zaczyna się od stołu.</p></div>
       <span class="ritm-arr" aria-hidden="true">&#8635;</span>
-      <div class="ritm-card"><div class="ph-slot ritm-ph"><span class="ph-tag">Foto &middot; zesp&oacute;ł wybiera z katalogu, paczka przekąsek</span></div><span class="ritm-freq">Raz w miesiącu</span><h3>Doświadczenie z wyboru</h3><p>Zespół sam głosuje i wybiera z katalogu doświadczeń dostarczanych do firmy. Sprawczość zamiast narzucania z góry.</p></div>
+      <div class="ritm-card"><div class="ph-slot ritm-ph filled"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Dn6zGLHfRzB9SQiaNJTkqEWOHh/hf_20260725_064404_6cf6d99b-05b7-4677-84cd-d6712621eceb_min.webp" alt="Zesp&oacute;ł wybiera przekąski z dostarczonej paczki" loading="lazy"></div><span class="ritm-freq">Raz w miesiącu</span><h3>Doświadczenie z wyboru</h3><p>Zespół sam głosuje i wybiera z katalogu doświadczeń dostarczanych do firmy. Sprawczość zamiast narzucania z góry.</p></div>
       <span class="ritm-arr" aria-hidden="true">&#8635;</span>
-      <div class="ritm-card"><div class="ph-slot ritm-ph"><span class="ph-tag">Foto &middot; celebracja z cateringiem w biurze</span></div><span class="ritm-freq">Kwartalnie</span><h3>Celebracja w firmie</h3><p>Na bogato, ale u siebie: catering, świętowanie wyników, wspólna historia zespołu. Moment, na który zespół czeka.</p></div>
+      <div class="ritm-card"><div class="ph-slot ritm-ph filled"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Dn6zGLHfRzB9SQiaNJTkqEWOHh/hf_20260725_064417_cecb9d10-4139-4d42-ba89-b2aa705ee541_min.webp" alt="Celebracja zespołu z cateringiem w biurze" loading="lazy"></div><span class="ritm-freq">Kwartalnie</span><h3>Celebracja w firmie</h3><p>Na bogato, ale u siebie: catering, świętowanie wyników, wspólna historia zespołu. Moment, na który zespół czeka.</p></div>
     </div>
     <div class="ritm-foot"><span class="ritm-loopword">&#8635; i tak w kółko</span><br><b>To „w kółko" jest całą tajemnicą.</b> Tak — zwykłym narzędziem do budżetu — realnie buduje się kulturę organizacji: nie deklaracją na plakacie, ale rytmem, który się utrzymuje. Dlatego mierzymy regularność, nie jednorazowy zryw.</div>
   </div>
@@ -623,10 +625,10 @@ footer{padding:46px 0 56px;color:var(--muted);}
       <p>Zaczynasz od dwuminutowego Pulsu kultury, kończysz decyzją na danych z własnych zespołów. Wszystko po drodze prowadzimy my.</p>
     </div>
     <div class="flow">
-      <div class="flow-step"><div class="flow-num">01</div><div class="flow-tag">Puls kultury</div><h3>2 minuty, online</h3><p>Sprawdzasz Indeks Więzi swoich zespołów w kalkulatorze. Sam, bez rozmów i bez zobowiązań.</p></div>
+      <div class="flow-step"><div class="flow-num">01</div><div class="flow-tag">Puls kultury</div><h3>2 minuty, online</h3><p>Sprawdzasz puls kultury swoich zespołów w kalkulatorze. Sam, bez rozmów i bez zobowiązań.</p></div>
       <div class="flow-step"><div class="flow-num">02</div><div class="flow-tag">Zgłoszenie</div><h3>Zapis na pilotaż</h3><p>Krótki formularz, ograniczona liczba miejsc. Wracamy w 72 godziny z terminem startu.</p></div>
       <div class="flow-step"><div class="flow-num">03</div><div class="flow-tag">Pilotaż</div><h3>3&ndash;5 zespołów</h3><p>10 tygodni, platforma za 0 zł, baseline na starcie. Prowadzone przez nasz zespół, nie zostawione samo sobie.</p></div>
-      <div class="flow-step"><div class="flow-num">04</div><div class="flow-tag">Decyzja</div><h3>Raport i wdrożenie</h3><p>Przed / po / co dalej: regularność, frekwencja, Indeks Więzi. Decyzja do 30 dni po raporcie, wdrożenie od 1 zespołu w górę.</p></div>
+      <div class="flow-step"><div class="flow-num">04</div><div class="flow-tag">Decyzja</div><h3>Raport i wdrożenie</h3><p>Przed / po / co dalej: regularność, frekwencja, wykorzystanie. Decyzja do 30 dni po raporcie, wdrożenie od 1 zespołu w górę.</p></div>
     </div>
   </div>
 </section>
@@ -643,7 +645,7 @@ footer{padding:46px 0 56px;color:var(--muted);}
     <div class="obj-list" id="objList">
       <div class="obj-item"><button class="obj-q" aria-expanded="false">„To po prostu kolejny benefit / mamy już kafeterię"<span class="plus">+</span></button><div class="obj-a"><div class="obj-a-in">Kafeteria odpowiada na pytanie „co dostaje pracownik". TeamBudget odpowiada na inne: „co dostaje zespół". To nie konkurencja dla kafeterii, tylko inna linia budżetowa. Sprawdźcie zresztą adopcję swojej obecnej karty: zwykle realnie korzysta z niej 30&ndash;40% osób. Tutaj korzysta cały zespół, z definicji.</div></div></div>
       <div class="obj-item"><button class="obj-q" aria-expanded="false">„Nie mamy na to dodatkowego budżetu"<span class="plus">+</span></button><div class="obj-a"><div class="obj-a-in">Nie prosimy o nowy budżet. Porządkujemy pieniądze, które już dziś wypływają na zespoły: śniadania na fakturę ad hoc, integracje z karty lidera, zwroty w Excelu. Umów rozmowę, policzymy je wspólnie. Zwykle są większe, niż się wydaje.</div></div></div>
-      <div class="obj-item"><button class="obj-q" aria-expanded="false">„Jaki jest zwrot?"<span class="plus">+</span></button><div class="obj-a"><div class="obj-a-in">Pierwszy zwrot jest operacyjny i widać go od pierwszego miesiąca: jedna faktura zamiast kilkudziesięciu, zero rozliczeń po stronie managerów, limity per zespół. Dalej wchodzą wskaźniki kultury: Indeks Więzi, frekwencja i regularność rytuałów, które dostajecie w raportach.</div></div></div>
+      <div class="obj-item"><button class="obj-q" aria-expanded="false">„Jaki jest zwrot?"<span class="plus">+</span></button><div class="obj-a"><div class="obj-a-in">Pierwszy zwrot jest operacyjny i widać go od pierwszego miesiąca: jedna faktura zamiast kilkudziesięciu, zero rozliczeń po stronie managerów, limity per zespół. Dalej wchodzą wskaźniki kultury: regularność rytuałów, frekwencja i wykorzystanie, które dostajecie w raportach.</div></div></div>
       <div class="obj-item"><button class="obj-q" aria-expanded="false">„To będzie kolejne narzędzie, którego nikt nie używa"<span class="plus">+</span></button><div class="obj-a"><div class="obj-a-in">Ryzyko adopcji bierzemy na siebie. Zespół dostaje gotowe rytuały na jedno kliknięcie i sam wybiera z katalogu, a opiekun wdrożenia reaguje, gdy któryś zespół nie startuje. Wszystko dzieje się w firmie, przy stole, więc próg wejścia jest zerowy: nikt nie musi nigdzie jechać.</div></div></div>
     </div>
   </div>
@@ -759,7 +761,7 @@ function countTo(el){
 /* DUAL REGISTER (HR / CFO) */
 const REG={
   hr:{lead:'Head of People: kultura z danymi i gotowa amunicja do rozmowy z finansami.',cards:[
-    {ic:'1',cl:'rgba(67,117,255,.08)',cc:'var(--blue)',h:'Kultura z danymi',p:'Indeks Więzi, frekwencja i wykorzystanie per zespół. Wpływ HR na biznes, który widać w liczbach, nie w haśle na plakacie.'},
+    {ic:'1',cl:'rgba(67,117,255,.08)',cc:'var(--blue)',h:'Kultura z danymi',p:'Regularność rytuałów, frekwencja i wykorzystanie per zespół. Wpływ HR na biznes, który widać w liczbach, nie w haśle na plakacie.'},
     {ic:'2',cl:'rgba(253,163,60,.14)',cc:'#bd6f10',h:'100% inkluzywności',p:'Korzysta cały zespół, nie 30–40% aktywnych karty. Nikt nie jest wykluczony.'},
     {ic:'3',cl:'rgba(254,105,43,.10)',cc:'var(--orange)',h:'Argument dla finansów',p:'To nie nowy koszt, to porządek w istniejącej linii: jedna faktura, limity per zespół, zero zwrotów. CFO dostaje kontrolę, nie wniosek o budżet.'}
   ]},

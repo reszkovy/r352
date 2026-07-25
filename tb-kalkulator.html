@@ -138,7 +138,7 @@ button:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-rad
     <!-- RESULT -->
     <section class="screen" id="s-res">
       <span class="k-eyebrow">Wynik</span>
-      <div class="res-idx-row"><span class="res-idx" id="rIdx">0</span><span class="res-idx-max">/ 100 · Indeks Więzi</span></div>
+      <div class="res-idx-row"><span class="res-idx" id="rIdx">0</span><span class="res-idx-max">/ 100 · puls kultury</span></div>
       <p class="res-verdict" id="rVerdict"></p>
       <div class="dims" id="rDims"></div>
       <div class="res-reco" id="rReco"></div>
@@ -322,7 +322,7 @@ function renderResult(){
   $('rReco').innerHTML=RECO[weakest];
   var cf=CFO.find(function(x){return score>=x.min;});
   $('rCfo').innerHTML=cf?cf.t:'';
-  $('cap').textContent='Indeks Więzi · '+score+' / 100';
+  $('cap').textContent='Puls kultury · '+score+' / 100';
 }
 
 $('startBtn').addEventListener('click',function(){cur=0;renderQ();show('s-q');});
