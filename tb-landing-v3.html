@@ -189,6 +189,18 @@ section.block{padding:92px 0;position:relative;}
 .vs-punch{margin-top:22px;font-family:'Pangram Sans','DM Sans',sans-serif;font-size:17px;font-weight:600;letter-spacing:-.01em;max-width:640px;}
 .vs-punch .blue{color:var(--blue);}
 
+.ph-slot{position:relative;border-radius:18px;border:1.5px dashed rgba(71,58,57,.22);background:repeating-linear-gradient(-45deg,rgba(71,58,57,.035) 0 12px,transparent 12px 24px),var(--sunny);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.ph-slot .ph-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);background:#fff;padding:8px 16px;border-radius:100px;box-shadow:0 2px 10px rgba(71,58,57,.08);text-align:center;max-width:86%;line-height:1.5;}
+.ph-wide{aspect-ratio:21/9;}
+@media(max-width:700px){.ph-wide{aspect-ratio:4/3;}}
+.ritm-ph{aspect-ratio:4/3;border-radius:12px;margin-bottom:16px;}
+.ritm-ph .ph-tag{font-size:9px;padding:6px 12px;}
+.story-band{padding:74px 0 66px;background:var(--pale-white);}
+.story-cap{display:flex;align-items:baseline;gap:16px;margin-top:18px;flex-wrap:wrap;}
+.story-cap .st-time{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);font-weight:500;flex:none;}
+.story-cap p{font-family:'Pangram Sans','DM Sans',sans-serif;font-size:clamp(17px,2.2vw,22px);font-weight:600;letter-spacing:-.015em;color:var(--pale-black);max-width:56ch;}
+.story-cap p .dim2{color:var(--muted);font-weight:500;}
+
 /* SOLUTION + dual register */
 .block.solution{background:var(--sunny);}
 .reg-toggle{display:inline-flex;gap:4px;padding:5px;background:var(--card);border-radius:100px;margin-bottom:28px;box-shadow:0 2px 12px rgba(71,58,57,.06);}
@@ -354,7 +366,6 @@ footer{padding:46px 0 56px;color:var(--muted);}
       <a href="#rozwiazanie">Rozwiązanie</a>
       <a href="#rytm">Rytm</a>
       <a href="#jak">Jak działa</a>
-      <a href="#kto">Dla kogo</a>
       <a href="#obiekcje">Pytania</a>
     </nav>
     <div class="nav-right">
@@ -541,6 +552,18 @@ footer{padding:46px 0 56px;color:var(--muted);}
   </div>
 </section>
 
+
+<!-- STORY BAND -->
+<section class="story-band" aria-label="Kadr z życia zespołu">
+  <div class="wrap">
+    <div class="ph-slot ph-wide"><span class="ph-tag">Foto &middot; kadr z g&oacute;ry: zesp&oacute;ł przy jednym stole, wsp&oacute;lne śniadanie w biurze, naturalne światło, bez pozowania</span></div>
+    <div class="story-cap">
+      <span class="st-time">Wtorek &middot; 9:12</span>
+      <p>Zesp&oacute;ł księgowości, trzeci tydzień z rzędu przy jednym stole. <span class="dim2">Nikt tego nie organizował. Wr&oacute;ciło samo.</span></p>
+    </div>
+  </div>
+</section>
+
 <!-- ROZWIĄZANIE — dual register -->
 <section class="block solution" id="rozwiazanie">
   <div class="wrap">
@@ -578,11 +601,11 @@ footer{padding:46px 0 56px;color:var(--muted);}
       <p>Kultura nie powstaje na integracji raz w roku — powstaje w powtarzalnych sytuacjach, w których zespół po prostu siada razem. Nazwaliśmy to metodą Rytm 2+: minimum dwa wspólne doświadczenia zespołu miesięcznie, w kalendarzu, który wraca sam. Wszystko dzieje się w firmie: śniadania, przekąski, celebracje, dowożone pod drzwi zespołu. Nie organizujesz eventu; ustawiasz rytm.</p>
     </div>
     <div class="ritm-loop">
-      <div class="ritm-card"><span class="ritm-freq">Co 2 tygodnie</span><h3>Wspólne śniadanie</h3><p>Bazowy rytuał zespołu. Niski próg wejścia, wysoka regularność — zaczyna się od stołu.</p></div>
+      <div class="ritm-card"><div class="ph-slot ritm-ph"><span class="ph-tag">Foto &middot; śniadanie zespołu, detale stołu</span></div><span class="ritm-freq">Co 2 tygodnie</span><h3>Wspólne śniadanie</h3><p>Bazowy rytuał zespołu. Niski próg wejścia, wysoka regularność — zaczyna się od stołu.</p></div>
       <span class="ritm-arr" aria-hidden="true">&#8635;</span>
-      <div class="ritm-card"><span class="ritm-freq">Raz w miesiącu</span><h3>Doświadczenie z wyboru</h3><p>Zespół sam głosuje i wybiera z katalogu doświadczeń dostarczanych do firmy. Sprawczość zamiast narzucania z góry.</p></div>
+      <div class="ritm-card"><div class="ph-slot ritm-ph"><span class="ph-tag">Foto &middot; zesp&oacute;ł wybiera z katalogu, paczka przekąsek</span></div><span class="ritm-freq">Raz w miesiącu</span><h3>Doświadczenie z wyboru</h3><p>Zespół sam głosuje i wybiera z katalogu doświadczeń dostarczanych do firmy. Sprawczość zamiast narzucania z góry.</p></div>
       <span class="ritm-arr" aria-hidden="true">&#8635;</span>
-      <div class="ritm-card"><span class="ritm-freq">Kwartalnie</span><h3>Celebracja w firmie</h3><p>Na bogato, ale u siebie: catering, świętowanie wyników, wspólna historia zespołu. Moment, na który zespół czeka.</p></div>
+      <div class="ritm-card"><div class="ph-slot ritm-ph"><span class="ph-tag">Foto &middot; celebracja z cateringiem w biurze</span></div><span class="ritm-freq">Kwartalnie</span><h3>Celebracja w firmie</h3><p>Na bogato, ale u siebie: catering, świętowanie wyników, wspólna historia zespołu. Moment, na który zespół czeka.</p></div>
     </div>
     <div class="ritm-foot"><span class="ritm-loopword">&#8635; i tak w kółko</span><br><b>To „w kółko" jest całą tajemnicą.</b> Tak — zwykłym narzędziem do budżetu — realnie buduje się kulturę organizacji: nie deklaracją na plakacie, ale rytmem, który się utrzymuje. Dlatego mierzymy regularność, nie jednorazowy zryw.</div>
   </div>
@@ -606,71 +629,11 @@ footer{padding:46px 0 56px;color:var(--muted);}
 </section>
 
 <!-- KTO -->
-<section class="block" id="kto">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="num-tag">04 &mdash; Dla kogo</span>
-      <h2>Cztery role, <span class="blue">cztery komunikaty.</span></h2>
-      <p>Decyzję podejmuje komitet, nie jedna osoba. Każdy patrzy na TeamBudget przez inny problem — i każdemu odpowiadamy w jego języku.</p>
-    </div>
-    <div class="who-grid">
-      <div class="who-card hr">
-        <div class="who-role">Bohater</div>
-        <h3>HR / Head of People</h3>
-        <div class="who-pain">Rozproszone benefity, których wpływu na relacje i frekwencję nie widzi. Rotacja i puste biuro.</div>
-        <div class="who-msg"><b>Policz, ile wydajesz na zespoły</b> — i zobacz, co realnie z tego masz.</div>
-      </div>
-      <div class="who-card cfo">
-        <div class="who-role">Walidator</div>
-        <h3>CFO / Finance</h3>
-        <div class="who-pain">Niewidoczne wydatki zespołowe. Benefity o niskiej adopcji płacone za 100% załogi. Brak danych do decyzji.</div>
-        <div class="who-msg"><b>Konsolidacja i kontrola</b> — porządkujemy istniejące wydatki, nie dokładamy nowych.</div>
-      </div>
-      <div class="who-card tl">
-        <div class="who-role">Użytkownik</div>
-        <h3>Team Leader</h3>
-        <div class="who-pain">Czuje, że zespół się rozłazi, ale nie ma ani budżetu, ani czasu. Rozliczenia z prywatnej karty to tarcie.</div>
-        <div class="who-msg"><b>Dostajesz budżet dla zespołu</b> — reszta, rezerwacje i faktury, dzieje się sama.</div>
-      </div>
-      <div class="who-card om">
-        <div class="who-role">Otwieracz</div>
-        <h3>Office Manager</h3>
-        <div class="who-pain">Organizuje życie biura rękami, bez budżetu i mandatu. Frekwencja niska mimo starań.</div>
-        <div class="who-msg"><b>Narzędzie, które podnosi twoją rolę</b> — zostajesz gospodarzem, nie masz nowej papierkologii.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PORÓWNANIE -->
-<section class="block matrix-sec" id="porownanie">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="num-tag">05 &mdash; Porównanie</span>
-      <h2>Budżet jednostki <span class="blue">vs budżet zespołu.</span></h2>
-      <p>Kafeteria i karta odpowiadają na pytanie „co dostaje pracownik". TeamBudget odpowiada na pytanie, na które one nie odpowiedzą nigdy: „co dostaje zespół".</p>
-    </div>
-    <div class="matrix">
-      <div class="mrow head">
-        <div class="mcell">Kryterium</div>
-        <div class="mcell alt">Karta sportowa</div>
-        <div class="mcell alt">Kafeteria</div>
-        <div class="mcell tb">&bull; TeamBudget</div>
-      </div>
-      <div class="mrow"><div class="mcell"><span class="mlabel">Kto korzysta</span></div><div class="mcell alt" data-l="Karta sportowa">~15% aktywnych</div><div class="mcell alt" data-l="Kafeteria">Kto wybierze</div><div class="mcell tb" data-l="TeamBudget"><span class="check">&check;</span> Cały zespół (100%)</div></div>
-      <div class="mrow"><div class="mcell"><span class="mlabel">Poziom działania</span></div><div class="mcell alt" data-l="Karta sportowa">Jednostka</div><div class="mcell alt" data-l="Kafeteria">Jednostka</div><div class="mcell tb" data-l="TeamBudget"><span class="check">&check;</span> Zespół</div></div>
-      <div class="mrow"><div class="mcell"><span class="mlabel">Wpływ na relacje</span></div><div class="mcell alt" data-l="Karta sportowa">Izolacja</div><div class="mcell alt" data-l="Kafeteria">Izolacja</div><div class="mcell tb" data-l="TeamBudget"><span class="check">&check;</span> Wspólne rytuały</div></div>
-      <div class="mrow"><div class="mcell"><span class="mlabel">Właściciel budżetu</span></div><div class="mcell alt" data-l="Karta sportowa">Rozmyty</div><div class="mcell alt" data-l="Kafeteria">Pracownik</div><div class="mcell tb" data-l="TeamBudget"><span class="check">&check;</span> Zespół + lider</div></div>
-      <div class="mrow"><div class="mcell"><span class="mlabel">Widoczność wydatku</span></div><div class="mcell alt" data-l="Karta sportowa">Brak</div><div class="mcell alt" data-l="Kafeteria">Ograniczona</div><div class="mcell tb" data-l="TeamBudget"><span class="check">&check;</span> Dashboard per zespół</div></div>
-    </div>
-  </div>
-</section>
-
 <!-- OBIEKCJE -->
 <section class="block" id="obiekcje">
   <div class="wrap">
     <div class="sec-head">
-      <span class="num-tag">06 &mdash; Najczęstsze pytania</span>
+      <span class="num-tag">05 &mdash; Najczęstsze pytania</span>
       <h2>Cztery pytania, <span class="blue">które padają najczęściej.</span></h2>
       <p>Kliknij, żeby rozwinąć. Odpowiadamy wprost, bez owijania.</p>
     </div>
@@ -687,7 +650,7 @@ footer{padding:46px 0 56px;color:var(--muted);}
 <section class="block measure-sec" id="dowod">
   <div class="wrap">
     <div class="sec-head" style="margin-bottom:24px;">
-      <span class="num-tag" style="color:var(--orange);">07 &mdash; Dowód</span>
+      <span class="num-tag" style="color:var(--orange);">06 &mdash; Dowód</span>
       <h2 style="color:#fff;">Kategorię ogłasza się <span class="blue">wynikami, nie wizją.</span></h2>
       <p style="color:rgba(255,251,244,.62);">Nie obiecujemy retencji — mierzymy wskaźniki wyprzedzające, które pierwsze się ruszają. Pilotaż daje pierwsze dane w 10 tygodni.</p>
     </div>
@@ -706,7 +669,7 @@ footer{padding:46px 0 56px;color:var(--muted);}
     <div class="manifest">
       <span class="eyebrow">Manifest &middot; Między ludźmi</span>
       <p>W twojej firmie każdy ma swój budżet. Na sport. Na zdrowie. Na rozwój. Na lunch. <b>Każdy z osobna.</b> A potem firma pyta, czemu ludzie mijają się w biurze jak na lotnisku. Prawda jest prosta: wszystko, co najważniejsze — zaufanie, tempo, pomysły, kultura — <b>nie powstaje w ludziach. Powstaje między nimi.</b></p>
-      <div class="sig">TeamBudget. Pierwszy budżet, którego nie dostaje pracownik. Dostaje go zespół.</div>
+      <div class="sig">TeamBudget. Kulturę budują zespoły. My dajemy im budżet i rytm.</div>
     </div>
   </div>
 </section>
@@ -863,7 +826,7 @@ if(HAS_GSAP){
 
   const rev=(sel)=>gsap.utils.toArray(sel).forEach(el=>gsap.from(el,{y:26,opacity:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 86%',once:true}}));
   const stg=(sel)=>gsap.utils.toArray(sel).forEach(g=>gsap.from(g.children,{y:26,opacity:0,duration:.7,stagger:.08,ease:'power3.out',scrollTrigger:{trigger:g,start:'top 84%',once:true}}));
-  rev('.sec-head');rev('.ui-compare');rev('.flow');rev('.matrix');rev('.cta-card');rev('.insight-in');rev('.manifest');rev('.reg-toggle');
+  rev('.sec-head');rev('.ui-compare');rev('.flow');rev('.cta-card');rev('.insight-in');rev('.manifest');rev('.reg-toggle');rev('.ph-slot');
   stg('.chaos-grid');stg('#regGrid');stg('.ritm-loop');stg('.who-grid');stg('.measure-grid');stg('.obj-list');stg('.ui-rows');
 
   document.querySelectorAll('[data-count]').forEach(el=>{if(!el.closest('.hero-proof'))ScrollTrigger.create({trigger:el,start:'top 92%',once:true,onEnter:()=>countTo(el)});});
