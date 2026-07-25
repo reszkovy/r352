@@ -378,8 +378,11 @@ section.block{padding:92px 0;position:relative;}
 .obj-a-in b{color:var(--blue);font-weight:600;}
 
 /* DOWÓD — co mierzymy */
-.block.measure-sec{background:var(--pale-black);color:var(--pale-white);padding-top:72px;padding-bottom:24px;}
-.report{background:var(--pale-white);color:var(--pale-black);border-radius:14px;max-width:760px;margin:8px auto 0;padding:26px 30px;}
+.block.measure-sec{background:var(--pale-white);}
+.dow-grid{display:grid;grid-template-columns:5fr 7fr;gap:56px;align-items:start;}
+.dow-left{position:sticky;top:110px;}
+@media(max-width:860px){.dow-grid{grid-template-columns:1fr;gap:26px;}.dow-left{position:static;}}
+.report{background:#fff;color:var(--pale-black);border-radius:14px;margin:0;padding:26px 30px;box-shadow:0 6px 30px rgba(71,58,57,.08);}
 .rep-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:6px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;}
 .rep-head span:first-child{font-weight:600;}
 .rep-tag{color:var(--dim);font-size:9.5px;}
@@ -404,7 +407,7 @@ section.block{padding:92px 0;position:relative;}
 @media(max-width:480px){.measure-grid{grid-template-columns:1fr;}}
 
 /* MANIFEST */
-.block.manifest-sec{background:var(--pale-black);color:var(--pale-white);padding-top:24px;padding-bottom:56px;}
+.block.manifest-sec{background:var(--pale-black);color:var(--pale-white);padding-top:88px;padding-bottom:48px;}
 .manifest{max-width:760px;margin:0 auto;text-align:center;}
 .manifest .eyebrow{color:var(--blue);}
 .manifest .m-line{display:block;}
@@ -781,10 +784,11 @@ h1,h2,h3,.manifest p,.res-verdict,.story-cap p,.vs-punch{text-wrap:balance;}
 <!-- DOWÓD -->
 <section class="block measure-sec" id="dowod">
   <div class="wrap">
-    <div class="sec-head" style="margin-bottom:24px;">
+    <div class="dow-grid">
+    <div class="dow-left">
       <span class="num-tag" style="color:var(--orange);">06 &mdash; Dowód</span>
-      <h2 style="color:#fff;">Kategorię ogłasza się wynikami, nie wizją.</h2>
-      <p style="color:rgba(255,251,244,.62);">Nie obiecujemy retencji — mierzymy wskaźniki wyprzedzające, które pierwsze się ruszają. Pilotaż daje pierwsze dane w 10 tygodni.</p>
+      <h2 style="font-size:clamp(26px,3.2vw,38px);letter-spacing:-.03em;margin-top:14px;">Kategorię ogłasza się wynikami, nie wizją.</h2>
+      <p style="color:var(--muted);margin-top:16px;max-width:38ch;">Nie obiecujemy retencji, mierzymy wskaźniki wyprzedzające, kt&oacute;re pierwsze się ruszają. Pilotaż daje pierwsze dane w 10 tygodni.</p>
     </div>
     <div class="report">
       <div class="rep-head"><span>Raport pilotażu &middot; przed / po</span><span class="rep-tag">przykładowy format &middot; dane poglądowe</span></div>
@@ -794,6 +798,7 @@ h1,h2,h3,.manifest p,.res-verdict,.story-cap p,.vs-punch{text-wrap:balance;}
       <div class="rep-row"><span class="rl">Feedback zespoł&oacute;w</span><span class="rv"><b>4,6 / 5</b> po cyklu</span><span class="rb"><i style="width:0"></i><b style="width:92%"></b></span></div>
       <div class="rep-foot">Każdy pilotaż kończy się takim raportem: przed / po / co dalej, plus jedna strona dla zarządu.</div>
     </div>
+    </div>
   </section>
 
 <!-- MANIFEST -->
@@ -801,7 +806,7 @@ h1,h2,h3,.manifest p,.res-verdict,.story-cap p,.vs-punch{text-wrap:balance;}
   <div class="wrap">
     <div class="manifest">
       <span class="eyebrow">Manifest &middot; Między ludźmi</span>
-      <p><span class="m-line">W twojej firmie każdy ma sw&oacute;j budżet.</span> <span class="m-line">Na sport. Na zdrowie. Na rozw&oacute;j. Na lunch. <b>Każdy z osobna.</b></span> <span class="m-line">A potem firma pyta, czemu ludzie mijają się w biurze jak na lotnisku.</span> <span class="m-line">Prawda jest prosta: wszystko, co najważniejsze, zaufanie, tempo, pomysły, kultura, <b>rodzi się w ludziach, a <span class="blue">rośnie między nimi.</span></b></span></p>
+      <p><span class="m-line">Firma pyta, czemu ludzie mijają się w biurze jak na lotnisku.</span> <span class="m-line">Prawda jest prosta: wszystko, co najważniejsze, zaufanie, tempo, pomysły, kultura, <b>rodzi się w ludziach, a <span class="blue">rośnie między nimi.</span></b></span></p>
       <div class="sig">TeamBudget. Kulturę budują zespoły. My dajemy im budżet i rytm.</div>
     </div>
   </div>
