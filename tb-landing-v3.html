@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TeamBudget — Pierwszy budżet, którego nie dostaje pracownik. Dostaje go zespół.</title>
+<title>TeamBudget — Kulturę budują zespoły</title>
 <meta name="description" content="TeamBudget porządkuje pieniądze, które firma już wydaje na zespoły — chaotycznie, bez właściciela, bez danych. Audyt wydatków zespołowych → pilotaż → raport. Dla HR i CFO.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -89,6 +89,8 @@ header.nav.scrolled::after{opacity:1;}
 .hero-checks{display:flex;gap:26px;flex-wrap:wrap;margin-top:22px;padding-top:20px;border-top:1px solid rgba(71,58,57,.08);}
 .hero-checks span{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:600;color:var(--pale-black);}
 .hero-checks i{font-style:normal;color:var(--orange);font-size:15px;font-weight:700;}
+.hero-madeby{margin-top:16px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.05em;color:var(--dim);}
+.hero-madeby b{color:var(--muted);font-weight:600;}
 .hero-sticker{position:absolute;z-index:5;height:auto;filter:drop-shadow(0 8px 16px rgba(71,58,57,.16));pointer-events:none;}
 .hs-energia{width:120px;top:-26px;left:-30px;}
 .hs-relacje{width:86px;top:52%;left:-38px;}
@@ -170,6 +172,22 @@ section.block{padding:92px 0;position:relative;}
 .insight-in h2{font-family:'Pangram Sans',sans-serif;font-size:clamp(28px,4vw,46px);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin:16px 0 0;}
 .insight-in h2 .blue{color:var(--blue);}
 .insight-in p{color:rgba(255,251,244,.66);font-size:17px;line-height:1.6;margin-top:20px;max-width:600px;margin-left:auto;margin-right:auto;}
+
+.vs-sec{background:var(--pale-white);}
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:8px;}
+@media(max-width:760px){.vs-grid{grid-template-columns:1fr;}}
+.vs-col{background:var(--card);border-radius:18px;padding:28px 30px;box-shadow:0 4px 20px rgba(71,58,57,.05);}
+.vs-col.win{outline:2px solid var(--blue);position:relative;}
+.vs-col .vs-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--dim);}
+.vs-col.win .vs-tag{color:var(--blue);}
+.vs-col h3{font-size:20px;font-weight:700;letter-spacing:-.02em;margin:8px 0 16px;}
+.vs-col ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.vs-col li{font-size:14.5px;color:var(--muted);line-height:1.5;display:flex;gap:10px;}
+.vs-col li i{font-style:normal;flex:none;font-weight:700;}
+.vs-col li i.no{color:#c9522f;}
+.vs-col li i.yes{color:var(--green);}
+.vs-punch{margin-top:22px;font-family:'Pangram Sans','DM Sans',sans-serif;font-size:17px;font-weight:600;letter-spacing:-.01em;max-width:640px;}
+.vs-punch .blue{color:var(--blue);}
 
 /* SOLUTION + dual register */
 .block.solution{background:var(--sunny);}
@@ -356,7 +374,7 @@ footer{padding:46px 0 56px;color:var(--muted);}
         <span class="line"><span class="line-in">budują</span></span>
         <span class="line"><span class="line-in"><span class="accent">zespoły.</span></span></span>
       </h1>
-      <p class="lead"><b>Budżet dla zespołu. Kultura dla firmy.</b> Bo <span class="rot-ex" id="rotEx">zesp&oacute;ł produkcji świętuje między zmianami</span>. TeamBudget daje każdemu zespołowi własny budżet i doświadczenia dopasowane do jego realiów, a firmie jeden system i pełne dane.</p>
+      <p class="lead"><b>Budżet dla zespołu. Kultura dla firmy.</b> Bo <span class="rot-ex" id="rotEx" aria-live="polite">zesp&oacute;ł produkcji świętuje między zmianami</span>. TeamBudget daje każdemu zespołowi własny budżet i doświadczenia dopasowane do jego realiów, a firmie jeden system i pełne dane.</p>
       <div class="hero-cta">
         <a href="tb-kalkulator" class="btn btn-blue">Sprawdź puls kultury zespoł&oacute;w <span class="arrow">&rarr;</span></a>
         <a href="#jak" class="btn btn-ghost">Zobacz, jak to działa <span class="arrow">&rarr;</span></a>
@@ -371,6 +389,7 @@ footer{padding:46px 0 56px;color:var(--muted);}
         <span><i>&#10003;</i> Doświadczenia dopasowane do zespołu</span>
         <span><i>&#10003;</i> Jedna faktura, pełne dane</span>
       </div>
+      <div class="hero-madeby">Od twórców <b>BetterWorkplace</b> &middot; 15 lat doświadczenia &middot; 2500+ firm</div>
     </div>
 
     <!-- DASHBOARD MOCKUP — budżety zespołów -->
@@ -487,13 +506,56 @@ footer{padding:46px 0 56px;color:var(--muted);}
   </div>
 </section>
 
+
+<!-- TO NIE BENEFIT -->
+<section class="block vs-sec" id="niebenefit">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num-tag">02 &mdash; Kategoria</span>
+      <h2>To nie benefit. <span class="blue">To inna linia budżetowa.</span></h2>
+      <p>Nie konkurujemy z kafeterią o ten sam budżet. Otwieramy linię, której system per pracownik nie potrafi obsłużyć.</p>
+    </div>
+    <div class="vs-grid">
+      <div class="vs-col">
+        <span class="vs-tag">Benefit</span>
+        <h3>Per pracownik</h3>
+        <ul>
+          <li><i class="no">&times;</i> Każdy dostaje osobno, zespół nie dostaje nic</li>
+          <li><i class="no">&times;</i> Realnie korzysta 30&ndash;40% uprawnionych</li>
+          <li><i class="no">&times;</i> Logika świadczeń, często ZFŚS</li>
+          <li><i class="no">&times;</i> Nikt nie widzi wpływu na zespół</li>
+        </ul>
+      </div>
+      <div class="vs-col win">
+        <span class="vs-tag">Budżet zespołowy</span>
+        <h3>Per zespół</h3>
+        <ul>
+          <li><i class="yes">&#10003;</i> Budżet i decyzja w rękach zespołu</li>
+          <li><i class="yes">&#10003;</i> Korzysta 100% zespołu, z definicji</li>
+          <li><i class="yes">&#10003;</i> Koszty operacyjne, porządkujemy istniejące wydatki</li>
+          <li><i class="yes">&#10003;</i> Efekt widać w Indeksie Więzi i frekwencji</li>
+        </ul>
+      </div>
+    </div>
+    <p class="vs-punch">Dlatego moduł „budżety zespołowe" w kafeterii to dalej benefit w innym opakowaniu. <span class="blue">Inna linia budżetowa wymaga innego systemu.</span></p>
+  </div>
+</section>
+
 <!-- ROZWIĄZANIE — dual register -->
 <section class="block solution" id="rozwiazanie">
   <div class="wrap">
     <div class="sec-head">
-      <span class="num-tag">02 &mdash; Rozwiązanie</span>
-      <h2>Jeden produkt, <span class="blue">dwa języki.</span></h2>
-      <p>To samo narzędzie tłumaczy się inaczej dla HR i dla CFO. Bo obie strony patrzą na ten sam budżet z innej perspektywy — i obie muszą powiedzieć „tak".</p>
+      <span class="num-tag">03 &mdash; System</span>
+      <h2>Budżet to paliwo. <span class="blue">System to te trzy rzeczy.</span></h2>
+      <p>Narzędzie do budżetu skopiuje każdy. Systemu operacyjnego kultury zespołowej nie da się dodać jako moduł.</p>
+    </div>
+    <div class="sol-grid" style="margin-bottom:56px">
+      <div class="sol-card"><div class="sol-icon" style="background:rgba(67,117,255,.08);color:var(--blue);">01</div><h3>Indeks Więzi</h3><p>Standard pomiaru kultury zespołów: jedna liczba 0&ndash;100, pięć wymiarów, dane z realnych rytuałów, nie z ankiety raz w roku. <a href="tb-kalkulator" style="color:var(--blue);font-weight:600;">Zmierz swój &rarr;</a></p></div>
+      <div class="sol-card"><div class="sol-icon" style="background:rgba(254,105,43,.10);color:var(--orange);">02</div><h3>Metoda Rytm 2+</h3><p>Minimum dwa wspólne doświadczenia zespołu miesięcznie, dopasowane do jego realiów. Produkcja zmianowa żyje inaczej niż księgowość, metoda to respektuje.</p></div>
+      <div class="sol-card"><div class="sol-icon" style="background:rgba(21,164,119,.10);color:var(--green);">03</div><h3>Ekosystem BetterWorkplace</h3><p>15 lat na rynku, 2500+ firm, własny event branżowy i sieć dostawców doświadczeń. Zaplecze, którego nie kupi się w kwartał.</p></div>
+    </div>
+    <div class="sec-head" style="margin-bottom:8px">
+      <h2 style="font-size:clamp(22px,2.6vw,30px)">Ten sam system, <span class="blue">dwa języki.</span></h2>
     </div>
 
     <div class="reg-toggle" role="tablist">
@@ -510,9 +572,9 @@ footer{padding:46px 0 56px;color:var(--muted);}
 <section class="block ritm-sec" id="rytm">
   <div class="wrap">
     <div class="sec-head" style="max-width:680px;">
-      <span class="num-tag" style="color:var(--orange)">Mechanizm</span>
+      <span class="num-tag" style="color:var(--orange)">Metoda &middot; Rytm 2+</span>
       <h2>Rytuał to nie event. <span class="blue">To rytm.</span></h2>
-      <p>Kultura nie powstaje na integracji raz w roku — powstaje w powtarzalnych sytuacjach, w których zespół po prostu siada razem. TeamBudget zamienia budżet w kalendarz rytuałów, które wracają. Nie organizujesz eventu; ustawiasz rytm.</p>
+      <p>Kultura nie powstaje na integracji raz w roku — powstaje w powtarzalnych sytuacjach, w których zespół po prostu siada razem. Nazwaliśmy to metodą Rytm 2+: minimum dwa wspólne doświadczenia zespołu miesięcznie, w kalendarzu, który wraca sam. Nie organizujesz eventu; ustawiasz rytm.</p>
     </div>
     <div class="ritm-loop">
       <div class="ritm-card"><span class="ritm-freq">Co 2 tygodnie</span><h3>Wspólne śniadanie</h3><p>Bazowy rytuał zespołu. Niski próg wejścia, wysoka regularność — zaczyna się od stołu.</p></div>
@@ -529,7 +591,7 @@ footer{padding:46px 0 56px;color:var(--muted);}
 <section class="block" id="jak">
   <div class="wrap">
     <div class="sec-head">
-      <span class="num-tag">03 &mdash; Jak to działa</span>
+      <span class="num-tag">04 &mdash; Jak to działa</span>
       <h2>Wejście przez audyt, <span class="blue">nie przez ryzyko.</span></h2>
       <p>Nie prosimy „przetestuj benefit". Zaczynamy od policzenia pieniędzy, które już wydajesz. Cztery kroki niskiego ryzyka.</p>
     </div>
@@ -734,10 +796,10 @@ const REG={
     {ic:'2',cl:'rgba(67,117,255,.08)',cc:'var(--blue)',h:'Kultura z danymi',p:'Frekwencja, uczestnictwo, feedback zespołów. Wpływ HR na biznes, który widać w liczbach.'},
     {ic:'3',cl:'rgba(253,163,60,.14)',cc:'#bd6f10',h:'100% inkluzywności',p:'Korzysta cały zespół, nie 30–40% aktywnych karty. Nikt nie jest wykluczony.'}
   ]},
-  cfo:{lead:'CFO: kontrola, konsolidacja i dane — bez tworzenia nowego budżetu.',cards:[
-    {ic:'1',cl:'rgba(67,117,255,.08)',cc:'var(--blue)',h:'Jedna faktura',p:'Koniec ze zwrotami, kartami i fakturami ad hoc. Limity per zespół, zero rozliczeń managera.'},
-    {ic:'2',cl:'rgba(21,164,119,.10)',cc:'var(--green)',h:'Pełen dashboard',p:'Wykorzystanie per zespół i miesiąc. Widzisz to, co dziś jest kompletnie niewidoczne.'},
-    {ic:'3',cl:'rgba(254,105,43,.10)',cc:'var(--orange)',h:'Konsolidacja, nie nowy budżet',p:'Porządkujemy wydatki, które już ponosisz. Zero CAPEX, elastyczne limity.'}
+  cfo:{lead:'CFO: to nie nowy koszt. To porządek w linii, która już istnieje.',cards:[
+    {ic:'1',cl:'rgba(254,105,43,.10)',cc:'var(--orange)',h:'Inna linia, nie nowy budżet',p:'To nie benefit i nie ZFŚS. Koszty operacyjne, które firma już ponosi na integracje, tylko wreszcie z właścicielem i limitem.'},
+    {ic:'2',cl:'rgba(67,117,255,.08)',cc:'var(--blue)',h:'Jedna faktura',p:'Koniec ze zwrotami, kartami i fakturami ad hoc. Limity per zespół, zero rozliczeń managera.'},
+    {ic:'3',cl:'rgba(21,164,119,.10)',cc:'var(--green)',h:'Wskaźnik zamiast przeczucia',p:'Indeks Więzi, wykorzystanie i frekwencja per zespół. Wydatek, który pierwszy raz da się ocenić po efekcie.'}
   ]}
 };
 const regGrid=document.getElementById('regGrid');
