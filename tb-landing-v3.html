@@ -555,14 +555,15 @@ footer{padding:46px 0 56px;color:var(--muted);}
       <div class="sol-card"><div class="sol-icon" style="background:rgba(21,164,119,.10);color:var(--green);">03</div><h3>Ekosystem BetterWorkplace</h3><p>15 lat na rynku, 2500+ firm, własny event branżowy i sieć dostawców doświadczeń. Zaplecze, którego nie kupi się w kwartał.</p></div>
     </div>
     <div class="sec-head" style="margin-bottom:8px">
-      <h2 style="font-size:clamp(22px,2.6vw,30px)">Ten sam system, <span class="blue">dwa języki.</span></h2>
+      <h2 style="font-size:clamp(22px,2.6vw,30px)">Ten sam system, <span class="blue">dwie role.</span></h2>
+      <p>Head of People go kupuje, Team Leader z niego żyje. Obie osoby muszą powiedzieć „tak", każda z innego powodu.</p>
     </div>
 
     <div class="reg-toggle" role="tablist">
-      <button class="reg-btn on" data-reg="hr" role="tab">Dla HR</button>
-      <button class="reg-btn" data-reg="cfo" role="tab">Dla CFO</button>
+      <button class="reg-btn on" data-reg="hr" role="tab">Dla Head of People</button>
+      <button class="reg-btn" data-reg="cfo" role="tab">Dla Team Leadera</button>
     </div>
-    <p class="reg-lead" id="regLead">HR: mierzalny wpływ na relacje, frekwencję i kulturę — nie hasło na plakacie.</p>
+    <p class="reg-lead" id="regLead">Head of People: kultura z danymi i gotowa amunicja do rozmowy z finansami.</p>
 
     <div class="sol-grid" id="regGrid"></div>
   </div>
@@ -791,15 +792,15 @@ function countTo(el){
 
 /* DUAL REGISTER (HR / CFO) */
 const REG={
-  hr:{lead:'HR: mierzalny wpływ na relacje, frekwencję i kulturę — nie hasło na plakacie.',cards:[
-    {ic:'1',cl:'rgba(21,164,119,.10)',cc:'var(--green)',h:'Regularność, nie jednorazowość',p:'Kalendarz wspólnych rytuałów zamiast eventu raz w roku. Kultura powstaje z powtarzalności.'},
-    {ic:'2',cl:'rgba(67,117,255,.08)',cc:'var(--blue)',h:'Kultura z danymi',p:'Frekwencja, uczestnictwo, feedback zespołów. Wpływ HR na biznes, który widać w liczbach.'},
-    {ic:'3',cl:'rgba(253,163,60,.14)',cc:'#bd6f10',h:'100% inkluzywności',p:'Korzysta cały zespół, nie 30–40% aktywnych karty. Nikt nie jest wykluczony.'}
+  hr:{lead:'Head of People: kultura z danymi i gotowa amunicja do rozmowy z finansami.',cards:[
+    {ic:'1',cl:'rgba(67,117,255,.08)',cc:'var(--blue)',h:'Kultura z danymi',p:'Indeks Więzi, frekwencja i wykorzystanie per zespół. Wpływ HR na biznes, który widać w liczbach, nie w haśle na plakacie.'},
+    {ic:'2',cl:'rgba(253,163,60,.14)',cc:'#bd6f10',h:'100% inkluzywności',p:'Korzysta cały zespół, nie 30–40% aktywnych karty. Nikt nie jest wykluczony.'},
+    {ic:'3',cl:'rgba(254,105,43,.10)',cc:'var(--orange)',h:'Argument dla finansów',p:'To nie nowy koszt, to porządek w istniejącej linii: jedna faktura, limity per zespół, zero zwrotów. CFO dostaje kontrolę, nie wniosek o budżet.'}
   ]},
-  cfo:{lead:'CFO: to nie nowy koszt. To porządek w linii, która już istnieje.',cards:[
-    {ic:'1',cl:'rgba(254,105,43,.10)',cc:'var(--orange)',h:'Inna linia, nie nowy budżet',p:'To nie benefit i nie ZFŚS. Koszty operacyjne, które firma już ponosi na integracje, tylko wreszcie z właścicielem i limitem.'},
-    {ic:'2',cl:'rgba(67,117,255,.08)',cc:'var(--blue)',h:'Jedna faktura',p:'Koniec ze zwrotami, kartami i fakturami ad hoc. Limity per zespół, zero rozliczeń managera.'},
-    {ic:'3',cl:'rgba(21,164,119,.10)',cc:'var(--green)',h:'Wskaźnik zamiast przeczucia',p:'Indeks Więzi, wykorzystanie i frekwencja per zespół. Wydatek, który pierwszy raz da się ocenić po efekcie.'}
+  cfo:{lead:'Team Leader: zespół dostaje rytm i sprawczość, ty nie zostajesz animatorem.',cards:[
+    {ic:'1',cl:'rgba(21,164,119,.10)',cc:'var(--green)',h:'Zero organizowania',p:'Budżet, katalog i dostawa do firmy są gotowe. Nie zbierasz zamówień i nie rozliczasz zwrotów z własnej karty.'},
+    {ic:'2',cl:'rgba(67,117,255,.08)',cc:'var(--blue)',h:'Zespół decyduje sam',p:'Głosowanie z katalogu zamiast integracji narzuconej z góry. Sprawczość buduje frekwencję.'},
+    {ic:'3',cl:'rgba(254,105,43,.10)',cc:'var(--orange)',h:'Rytm wraca sam',p:'Kalendarz przypomina i domyka. Ty prowadzisz zespół, nie logistykę śniadań.'}
   ]}
 };
 const regGrid=document.getElementById('regGrid');
