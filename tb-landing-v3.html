@@ -196,7 +196,10 @@ section.block{padding:92px 0;position:relative;}
 .sys-grid{display:grid;grid-template-columns:5fr 7fr;gap:56px;align-items:start;}
 .sys-left{position:sticky;top:110px;}
 .sys-right.sol-grid{display:flex;flex-direction:column;gap:16px;}
-.sys-right .sol-card{display:grid;grid-template-columns:56px 1fr;gap:18px;align-items:start;border:1px solid var(--line-soft);box-shadow:none;border-radius:12px;}
+.sys-right .sol-card{display:grid;grid-template-columns:56px 1fr;column-gap:18px;row-gap:8px;align-items:center;border:1px solid var(--line-soft);box-shadow:none;border-radius:12px;}
+.sys-right .sol-card h3{grid-column:2;margin:0;}
+.sys-right .sol-card p{grid-column:2;margin:0;}
+.sys-right .sol-card .sol-icon{grid-row:1;margin:0;}
 @media(max-width:860px){.sys-grid{grid-template-columns:1fr;gap:28px;}.sys-left{position:static;}}
 .vs-sec{background:var(--pale-white);}
 .vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:8px;}
@@ -420,6 +423,10 @@ footer{padding:46px 0 56px;color:var(--muted);}
 .vs-col{box-shadow:none;border:1px solid var(--line-soft);border-radius:14px;}
 .obj-item{box-shadow:none;border:1px solid var(--line-soft);border-radius:12px;}
 .flow{box-shadow:none;border:1px solid var(--line-soft);}
+
+/* typografia: symetryczne lamanie */
+h1,h2,h3,.manifest p,.res-verdict,.story-cap p,.vs-punch{text-wrap:balance;}
+.sec-head p,.lead,.sol-card p,.vs-col li,.obj-a-in{text-wrap:pretty;}
 </style>
 </head>
 <body>
@@ -512,7 +519,7 @@ footer{padding:46px 0 56px;color:var(--muted);}
   <div class="wrap">
     <div class="sec-head">
       <span class="num-tag">01 &mdash; Problem</span>
-      <h2>Pieniądze na zespoły już wypływają.<br>Tylko nikt ich nie widzi.</h2>
+      <h2>Pieniądze na zespoły już&nbsp;wypływają.<br>Tylko nikt ich nie&nbsp;widzi.</h2>
       <p>Integracje z prywatnej karty lidera, śniadania na fakturę ad hoc, wyjścia rozliczane zwrotami. HR widzi silosy i puste biuro. CFO nie widzi kosztu. Wydatek jest realny — właściciela, danych i kontroli brak.</p>
     </div>
 
@@ -560,7 +567,7 @@ footer{padding:46px 0 56px;color:var(--muted);}
   <div class="wrap">
     <div class="insight-in">
       <span class="eyebrow">Insight</span>
-      <h2>Wartość firmy nie powstaje w ludziach.<br><span class="blue">Powstaje między nimi.</span></h2>
+      <h2>Wartość firmy nie powstaje w&nbsp;ludziach.<br><span class="blue">Powstaje między nimi.</span></h2>
       <p>Zaufanie, tempo, pomysły, kultura — wszystko, co w firmie najważniejsze, dzieje się pomiędzy ludźmi. A cały system inwestowania w ludzi zbudowano per osoba. To jedyne miejsce, w które nikt dotąd nie zainwestował ani złotówki z własnym budżetem, właścicielem i kalendarzem.</p>
     </div>
   </div>
@@ -956,6 +963,17 @@ document.getElementById('leadForm').addEventListener('submit',function(ev){
     evs[i].classList.add('live');
     i=(i+1)%evs.length;
   },2200);
+})();
+</script>
+<script>
+(function(){
+  function fix(t){return t.replace(/(^|[\s\u00A0(\u201E>])([wiazouWIAZOU])\s+/g,'$1$2\u00A0');}
+  var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:function(n){
+    var p=n.parentNode&&n.parentNode.nodeName;
+    if(p==='SCRIPT'||p==='STYLE'||p==='TEXTAREA')return NodeFilter.FILTER_REJECT;
+    return NodeFilter.FILTER_ACCEPT;}});
+  var nodes=[];while(w.nextNode())nodes.push(w.currentNode);
+  nodes.forEach(function(n){var v=n.nodeValue;if(v&&/\s[wiazouWIAZOU]\s/.test(' '+v))n.nodeValue=fix(v);});
 })();
 </script>
 </body>
