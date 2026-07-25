@@ -84,7 +84,9 @@ header.nav.scrolled::after{opacity:1;}
 .dash-roll .dr-i{width:18px;height:18px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;flex:none;}
 .dash-roll b{color:var(--green);}
 .dash-badge{position:absolute;top:-14px;right:-14px;background:var(--blue);color:#fff;font-family:'DM Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:6px 14px;border-radius:100px;box-shadow:0 4px 16px rgba(67,117,255,.3);z-index:4;}
+.rot-line{display:block;white-space:nowrap;margin:3px 0;}
 .rot-ex{color:var(--blue);font-weight:600;display:inline-block;transition:opacity .35s ease,transform .35s ease;}
+@media(max-width:560px){.rot-line{font-size:14px;}}
 .rot-ex.out{opacity:0;transform:translateY(6px);}
 .hero-checks{display:flex;gap:26px;flex-wrap:wrap;margin-top:22px;padding-top:20px;border-top:1px solid rgba(71,58,57,.08);}
 .hero-checks span{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:600;color:var(--pale-black);}
@@ -384,7 +386,9 @@ footer{padding:46px 0 56px;color:var(--muted);}
         <span class="line"><span class="line-in">Kulturę budują</span></span>
         <span class="line"><span class="line-in"><span class="accent">zespoły.</span></span></span>
       </h1>
-      <p class="lead"><b>Budżet dla zespołu. Kultura dla firmy.</b> Bo <span class="rot-ex" id="rotEx" aria-live="polite">zesp&oacute;ł produkcji świętuje między zmianami</span>. TeamBudget daje każdemu zespołowi własny budżet i doświadczenia dopasowane do jego realiów, a firmie jeden system i pełne dane.</p>
+      <p class="lead"><b>Budżet dla zespołu. Kultura dla firmy.</b>
+      <span class="rot-line">Bo <span class="rot-ex" id="rotEx" aria-live="polite">zesp&oacute;ł produkcji świętuje między zmianami</span>.</span>
+      TeamBudget daje każdemu zespołowi własny budżet i doświadczenia dopasowane do jego realiów, a firmie jeden system i pełne dane.</p>
       <div class="hero-cta">
         <a href="tb-kalkulator" class="btn btn-blue">Sprawdź puls kultury zespoł&oacute;w <span class="arrow">&rarr;</span></a>
         <a href="#jak" class="btn btn-ghost">Zobacz, jak to działa <span class="arrow">&rarr;</span></a>
@@ -478,7 +482,7 @@ footer{padding:46px 0 56px;color:var(--muted);}
         <div class="ui-rows">
           <div class="ui-row"><span class="d" style="background:#4375FF"></span><span class="nm">Integracja Produkt</span><span class="amt">2 800 zł</span><span class="chip red">Karta lidera</span></div>
           <div class="ui-row"><span class="d" style="background:#FDA33C"></span><span class="nm">Śniadania Sprzedaż</span><span class="amt">2 400 zł</span><span class="chip amber">Faktura ad hoc</span></div>
-          <div class="ui-row"><span class="d" style="background:#15A477"></span><span class="nm">Pizza day Marketing</span><span class="amt">2 200 zł</span><span class="chip red">Zwrot &middot; 3 mies.</span></div>
+          <div class="ui-row"><span class="d" style="background:#15A477"></span><span class="nm">Przekąski Marketing</span><span class="amt">2 200 zł</span><span class="chip red">Zwrot &middot; 3 mies.</span></div>
           <div class="ui-row"><span class="d" style="background:#E5484D"></span><span class="nm">Ops &middot; ???</span><span class="amt">? zł</span><span class="chip red">Brak danych</span></div>
         </div>
         <div class="ui-foot">bez limitów &middot; bez widoczności &middot; koszt obsługi w księgowości</div>
@@ -873,7 +877,7 @@ document.getElementById('leadForm').addEventListener('submit',function(ev){
   var EX=[
     'zespół produkcji świętuje między zmianami',
     'księgowość oddycha po zamknięciu miesiąca',
-    'hybrydowy IT ma wspólne śniadanie w dzień biurowy'
+    'hybrydowy IT je śniadanie w dzień biurowy'
   ];
   var el=document.getElementById('rotEx');
   if(!el)return;
