@@ -218,7 +218,7 @@ section.block{padding:92px 0;position:relative;}
 .sys-grid{display:grid;grid-template-columns:5fr 7fr;gap:56px;align-items:start;}
 .sys-left{position:sticky;top:110px;}
 .sys-right.sol-grid{display:flex;flex-direction:column;gap:16px;}
-.sys-right .sol-card{display:grid;grid-template-columns:56px 1fr;column-gap:18px;row-gap:8px;align-items:center;border:1px solid var(--line-soft);box-shadow:none;border-radius:12px;}
+.sys-right .sol-card{display:grid;grid-template-columns:56px 1fr;column-gap:18px;row-gap:8px;align-items:center;border:none;box-shadow:0 3px 18px rgba(71,58,57,.05);border-radius:12px;}
 .sys-right .sol-card h3{grid-column:2;margin:0;}
 .sys-right .sol-card p{grid-column:2;margin:0;}
 .sys-right .sol-card .sol-icon{grid-row:1;margin:0;}
@@ -467,10 +467,9 @@ footer{padding:46px 0 56px;color:var(--muted);}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
 
 /* detail pass */
-.sol-card{box-shadow:none;border:1px solid var(--line-soft);border-radius:12px;}
-.vs-col{box-shadow:none;border:1px solid var(--line-soft);border-radius:14px;}
-.obj-item{box-shadow:none;border:1px solid var(--line-soft);border-radius:12px;}
-.flow{box-shadow:none;border:1px solid var(--line-soft);}
+.sol-card{box-shadow:0 3px 18px rgba(71,58,57,.05);border:none;border-radius:12px;}
+.vs-col{box-shadow:0 4px 20px rgba(71,58,57,.05);border:none;border-radius:14px;}
+.obj-item{box-shadow:0 3px 18px rgba(71,58,57,.05);border:none;border-radius:12px;}
 
 /* typografia: symetryczne lamanie */
 h1,h2,h3,.manifest p,.res-verdict,.story-cap p,.vs-punch{text-wrap:balance;}
