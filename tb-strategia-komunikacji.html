@@ -368,6 +368,16 @@ nav .wip{font-size:.48rem;padding:1px 6px;margin-left:4px}
 
 /* campaign */
 .plats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.lej-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+@media(max-width:820px){.lej-groups{grid-template-columns:1fr}}
+.lej-group{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 14px 10px}
+.lej-group h4{font-family:var(--monof,'DM Mono',monospace);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink40);margin:0 0 10px;font-weight:500}
+.lej-group button{display:block;width:100%;text-align:left;font-family:inherit;font-size:.86rem;font-weight:600;color:var(--ink);background:transparent;border:1px solid transparent;border-radius:8px;padding:9px 12px;margin-bottom:6px;cursor:pointer;transition:all .18s}
+.lej-group button:hover{border-color:var(--blue);color:var(--blue)}
+.lej-group button.on{background:rgba(67,117,255,.08);border-color:var(--blue);color:var(--blue)}
+.stg-wrap{margin:16px 0 6px;border:1px dashed var(--line);border-radius:10px;padding:0 14px}
+.stg-wrap summary{cursor:pointer;font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink60);padding:12px 0;list-style-position:inside}
+.stg-wrap[open] summary{border-bottom:1px dashed var(--line);margin-bottom:10px}
 .plats button{border:1.5px solid var(--line);border-radius:12px;padding:12px 18px;font-weight:700;font-size:.86rem;color:var(--ink60);position:relative;transition:all .15s}
 .plats button:hover{border-color:var(--blue);color:var(--blue)}
 .plats button.on{background:var(--ink);border-color:var(--ink);color:var(--paper)}
@@ -627,7 +637,7 @@ nav .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
   <div class="eyebrow">03 · Message house</div>
   <h2>Trzy filary, jedna obietnica</h2>
   <p class="lede">Zasada użycia: otwieramy filarem 2 (dlaczego w ogóle), sprzedajemy filarem 3 (dlaczego da się to kupić), utrzymujemy filarem 1 (dlaczego zostajecie). Kliknij filar.</p>
-  <div class="house-roof">Kulturę budują zespoły. Budżet dla zespołu, kultura dla firmy.</div>
+  <div class="house-roof">Kulturę firmy budują zespoły. Budżet dla zespołu, kultura dla firmy.</div>
   <div class="house" id="houseBtns"></div>
   <div class="house-panel" id="housePanel"></div>
 </div></section>
@@ -655,10 +665,10 @@ nav .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
 <!-- 08 LEJKI -->
 <section class="block" id="lejki"><div class="wrap">
   <div class="eyebrow">06 · Drogi dotarcia, sześć lejków</div>
-  <h2>Sześć wejść, jeden rdzeń</h2>
+  <h2>Trzy typy wejść, jeden rdzeń</h2>
   <p class="lede">Wszystkie lejki zbiegają do tego samego rdzenia: <b>zgłoszenie → pilotaż → raport → wdrożenie</b>. Na stronie wejściem jest zapis na pilotaż (formularz, kontakt w 72 h); audyt 45 min pozostaje narzędziem handlowca przy ciepłych kontaktach z bazy BW. Lejki różnią się wejściem i temperaturą kontaktu. Wybierz lejek, potem klikaj etapy ścieżki, każdy pokazuje, co się na nim dzieje i jakie dane zbieramy.</p>
   <div class="frame rdzen" style="margin-bottom:22px">
-    <span><b>Audyt</b>diagnoza wydatków</span>
+    <span><b>Zgłoszenie</b>zapis na pilotaż</span>
     <span aria-hidden="true" class="core-arr">→</span>
     <span><b>Pilotaż</b>3–5 zespołów</span>
     <span aria-hidden="true" class="core-arr">→</span>
@@ -670,12 +680,14 @@ nav .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
     <span><b>Strona produktu</b>wspólny punkt styku wszystkich sześciu dróg</span>
     <span style="max-width:52ch;font-family:var(--sans);text-transform:none;letter-spacing:0;font-size:.85rem;opacity:.92">Każda droga w którymś momencie odsyła człowieka na stronę: handlowiec wysyła, klient sprawdza; z konferencji i kampanii wraca się na stronę; dwie drogi w całości na niej mieszkają. Strona wyjaśnia „jak działa” i prowadzi do jednego celu: zapisu zespołów na pilotaż (formularz, kontakt w 72 h). Kalkulator „puls kultury” żyje poza głównym lejkiem, jako narzędzie kampanijne. Kampanie pracują tak dobrze, jak dobrze strona tłumaczy produkt.</span>
   </div>
-  <div class="plats" id="lejekBtns"></div>
+  <div class="lej-groups" id="lejekBtns"></div>
   <div class="lejek-panel">
     <div class="lejek-head" id="lejekHead"></div>
+    <details class="stg-wrap"><summary>Pełna ścieżka krok po kroku, kliknij, żeby rozwinąć</summary>
     <div class="legend"><span><i style="background:var(--blue)"></i>Marketing prowadzi</span><span><i style="background:var(--orange)"></i>Sprzedaż prowadzi</span><span><i style="background:var(--green)"></i>Customer Success</span></div>
     <div class="stages" id="stageRow"></div>
     <div class="stg-detail" id="stageDetail"></div>
+    </details>
     <p style="font-size:.8rem;color:var(--ink40);margin:14px 0 6px">Liczby konwersji i cele sprzedażowe są celowo poza tym dokumentem, prowadzi je zespół sprzedaży. Tu pracujemy nad komunikacją: do kogo, którędy i z jakim przekazem.</p>
     <dl class="kv lejek-kv" id="lejekKv"></dl>
   </div>
@@ -719,9 +731,9 @@ nav .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
     <span class="mono">Manifest kampanii „Między ludźmi” · 60 s</span>
     <p>W twojej firmie każdy ma swój budżet. Na sport. Na zdrowie. Na rozwój. Na lunch. <b>Każdy z osobna.</b><br><br>
     A potem firma pyta, czemu ludzie mijają się w biurze jak na lotnisku. Czemu projekty grzęzną między działami. Czemu z zespołu, który kiedyś się znał, zostały awatary na Teamsie.<br><br>
-    Prawda jest prosta: wszystko, co w firmie najważniejsze, zaufanie, tempo, pomysły, kultura, <b>nie powstaje w ludziach. Powstaje między nimi.</b> I to jest jedyne miejsce, w które nikt dotąd nie zainwestował ani złotówki.<br><br>
+    Prawda jest prosta: wszystko, co w firmie najważniejsze, zaufanie, tempo, pomysły, kultura, <b>rodzi się w ludziach, a rośnie między nimi.</b> I to jest jedyne miejsce, w które nikt dotąd nie zainwestował ani złotówki. Dlatego TeamBudget przesuwa decyzyjność w dół: zespół sam zarządza swoim budżetem i sam decyduje, jak buduje swoją kulturę.<br><br>
     AI da każdemu z nas coraz więcej. Ale „razem” trzeba budować po staremu: regularnie, przy jednym stole.</p>
-    <div class="sig-line">TeamBudget. Pierwszy budżet, którego nie dostaje pracownik. Dostaje go zespół.</div>
+    <div class="sig-line">TeamBudget. Kulturę firmy budują zespoły. My dajemy im budżet i rytm.</div>
   </div>
 </div></section>
 
@@ -1349,7 +1361,7 @@ function setStage(li, si){
 }
 function setLejek(i){
   curLejek = i;
-  lb.querySelectorAll('button').forEach((b,j)=>b.classList.toggle('on',j===i));
+  lb.querySelectorAll('button').forEach(b=>b.classList.toggle('on',+b.dataset.li===i));
   const L = LEJKI[i];
   $('#lejekHead').innerHTML = `<h3>${L.name}</h3><span class="temp" style="color:${L.temp[0]}">${L.temp[1]}</span><p>${L.sub}</p>`;
   const row = $('#stageRow'); row.innerHTML = '';
@@ -1363,14 +1375,19 @@ function setLejek(i){
   $('#lejekKv').innerHTML = L.kv.filter(r=>r[0]!=='KPI').map(r=>`<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join('');
   setStage(i,0);
 }
-LEJKI.forEach((L,i)=>{const b=el('button','',L.tab);b.onclick=()=>setLejek(i);lb.appendChild(b);});
+const LEJ_GROUPS=[["Ciepłe · relacje BW",[0,4]],["Event · na żywo",[1,5]],["Zimny ruch · kampanie i content",[2,3]]];
+LEJ_GROUPS.forEach(g=>{
+  const box=el('div','lej-group',`<h4>${g[0]}</h4>`);
+  g[1].forEach(i=>{const b=el('button','',LEJKI[i].tab);b.dataset.li=i;b.onclick=()=>setLejek(i);box.appendChild(b);});
+  lb.appendChild(box);
+});
 setLejek(0);
 
 /* 09 platforms */
 const plb = $('#platBtns');
 let barTimer;
 function setPlat(i){
-  plb.querySelectorAll('button').forEach((b,j)=>b.classList.toggle('on',j===i));
+  plb.querySelectorAll('button').forEach(b=>b.classList.toggle('on',+b.dataset.li===i));
   const p = PLATFORMS[i];
   const total = p.scores.reduce((a,b)=>a+b,0);
   const bars = p.scores.map((s,k)=>`<div class="sb"><span class="lbl">${SCORE_LABELS[k]}</span><span class="bar"><i data-w="${s*10}"></i></span><span class="val">${s}</span></div>`).join('');
