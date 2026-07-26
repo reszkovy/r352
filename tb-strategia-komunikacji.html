@@ -686,13 +686,6 @@ nav .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
   <div class="eyebrow">07 · Oferta pilotażowa</div>
   <h2>Trzy warianty, jedna konstrukcja</h2>
   <p class="lede">Pilot ma być łatwy do zaakceptowania i twardy w warunkach: baseline obowiązkowy, dane w umowie, decyzja o rolloucie ≤30 dni po raporcie.</p>
-  <div class="frame">
-    <span><b>10 tyg.</b>długość</span>
-    <span><b>3–5</b>zespołów</span>
-    <span><b>budżet</b>ustala firma</span>
-    <span><b>0 zł</b>platforma w pilocie</span>
-    <span><b>≤14 dni</b>do 1. doświadczenia</span>
-  </div>
   <div class="pilots">
     <div class="pilot">
       <span class="tag b">Aktywacyjny · domyślny</span>
@@ -718,8 +711,8 @@ nav .wip.ok{background:rgba(21,164,119,.14);color:var(--green)}
 <!-- 09 KAMPANIA -->
 <section class="block" id="kampania"><div class="wrap">
   <div class="eyebrow">08 · Platformy kreatywne</div>
-  <h2>Cztery kierunki, jedna rekomendacja</h2>
-  <p class="lede">Po selekcji zostały cztery kierunki: <b>„Między ludźmi” jako główny</b> (masowy, do pracodawców i pracowników), „Niewidzialny budżet” jako sprzedażowy (finanse i wybrane duże firmy) oraz dwa wspierające z własnymi mechanikami, „Ostatni raz” (test i licznik prowadzące ruch na stronę) i „Daj im powód” (powód zamiast przymusu, nie tylko biuro). Jedna strategia w kilku rejestrach; słabsze kierunki odrzuciliśmy.</p>
+  <h2>Dwa kierunki: gł&oacute;wny i r&oacute;wnoległy</h2>
+  <p class="lede"><b>„Między ludźmi” prowadzi</b> jako platforma gł&oacute;wna (masowa: pracodawcy i pracownicy), a <b>„Niewidzialny budżet” działa r&oacute;wnolegle</b> jako platforma sprzedażowa (finanse, wybrane duże firmy). Dwa języki tej samej tezy: emocja otwiera rynek, liczby domykają deal.</p>
   <div class="plats" id="platBtns"></div>
   <div class="plat-panel" id="platPanel"></div>
   <div class="manifest">
@@ -1203,23 +1196,7 @@ const PLATFORMS = [
  kv:"Rejestr dokumentów: sto faktur z restauracji ułożonych w znak zapytania · arkusz Excela rozpadający się na paragony.",
  risk:"Za wąskie emocjonalnie na outdoor masowy; pracownikom nic nie mówi → żyje w dotarciu celowanym i mediach biznesowych, nie na citylightach.",
  scores:[9,9,4,9,9,7,9,4,8],
- heads:["Ile wydaliście w zeszłym roku na integracje? Nikt nie wie. To jest problem.","Faktury z 40 restauracji to nie jest strategia zespołowa.","Excel, zwroty, karta służbowa. Tak Polska buduje zespoły.","Niewykorzystany budżet benefitowy + niekontrolowany budżet integracyjny = TeamBudget."]},
-{n:"Ostatni raz",rec:null,verdict:["var(--green)","Wspierająca, pytanie, które robi ruch na stronę"],
- slogan:"Kiedy ostatnio twój zespół był naprawdę razem?",
- insight:"Nikt nie pamięta, kiedy zespół ostatni raz zrobił coś razem, bo to było dawniej, niż wszyscy myślą. Wspólność wygasa niezauważalnie.",
- bigidea:"Kampania-pytanie z wbudowaną odpowiedzią: każde „Kiedy ostatnio…?” kończy się „Policzmy to razem”. Mechanika: 30-sekundowy test „ostatniego razu” na stronie (licznik dni), plakat-licznik w kuchniach biurowych, a w produkcie lustrzane odbicie: seria spotkań rytuału, która rośnie z dumą, zamiast licznika, który rośnie ze wstydem.",
- kv:"Test „ostatniego razu” na stronie · plakat-licznik dni do biur · kalendarz z jednym zamalowanym dniem w roku.",
- risk:"Pilnujemy sprawczości: każda kreacja ma w sobie odpowiedź produktową („budżet dla zespołu, załóżcie rytuał”). Pytanie bez odpowiedzi zostawia sam smutek, i tego nie robimy.",
- scores:[8,8,9,8,8,8,8,8,8],
- heads:["Kiedy ostatnio cały twój zespół siedział przy jednym stole?","Ostatnia integracja: 14 miesięcy temu. Ostatni sprint: wczoraj.","Pamiętasz imię psa kogoś z zespołu? Kiedyś tak.","Wigilia firmowa to za mało na 12 miesięcy zespołu.","Kiedy ostatnio widzieliście się poza spotkaniem online?","Wasz zespół ma licznik dni. Wyzerujcie go."]},
-{n:"Daj im powód",rec:null,verdict:["var(--green)","Wspierająca, powód zamiast przymusu, nie tylko biuro"],
- slogan:"Nie każ. Daj powód.",
- insight:"Ludzi nie da się zmusić do „razem”, ani regulaminem biura, ani obowiązkową integracją. Przymus tworzy obecność ciał; powód tworzy obecność ludzi.",
- bigidea:"Stajemy po stronie ludzi przeciw przymusowi w każdej formie: obowiązkowe dni w biurze, sztywne eventy, integracje „bo trzeba”. TeamBudget jest maszyną do dawania powodów, rytuał to powód, który wraca sam, co dwa tygodnie o 9:00. Uniwersalne: działa w firmie hybrydowej, biurowej i rozproszonej.",
- kv:"Dyptyk „przymus vs powód”: ta sama scena w dwóch wersjach, regulamin na drzwiach vs stół ze śniadaniem zespołu.",
- risk:"Atakujemy przymus jako metodę, nigdy decyzje konkretnej firmy, inaczej kampania zabrzmi jak krytyka polityk naszych własnych klientów.",
- scores:[8,8,8,8,8,8,8,7,8],
- heads:["Nie każ im wracać. Daj im powód.","Do biura nie wraca się dla biurka.","Ludzie nie tęsknią za open space'em. Tęsknią za ludźmi.","Obecność można wymusić. Chęć trzeba zbudować.","Obowiązkowa integracja to oksymoron.","Powód przychodzi sam, co dwa tygodnie, o 9:00."]}
+ heads:["Ile wydaliście w zeszłym roku na integracje? Nikt nie wie. To jest problem.","Faktury z 40 restauracji to nie jest strategia zespołowa.","Excel, zwroty, karta służbowa. Tak Polska buduje zespoły.","Niewykorzystany budżet benefitowy + niekontrolowany budżet integracyjny = TeamBudget."]}
 ];
 const SCORE_LABELS = ["Insight","Wyróżnialność","Emocja","Wiarygodność","Sprzedaż","Rozwijalność","Związek z produktem","Outdoor","PR"];
 

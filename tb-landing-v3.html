@@ -70,7 +70,7 @@ header.nav.scrolled::after{opacity:1;}
 .dash-mock{position:relative;perspective:1200px;}
 .dash-frame{background:#fff;border:none;border-radius:20px;padding:20px;box-shadow:0 24px 80px rgba(71,58,57,.12),0 4px 12px rgba(71,58,57,.04);transform:rotateY(-6deg) rotateX(2deg);transition:transform .6s ease;}
 .dash-frame:hover{transform:rotateY(0) rotateX(0);}
-.dash-head{display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid var(--line-soft);margin-bottom:12px;font-family:'DM Mono',monospace;font-size:10px;color:var(--dim);letter-spacing:.04em;}
+.dash-head{text-transform:uppercase;display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid var(--line-soft);margin-bottom:12px;font-family:'DM Mono',monospace;font-size:10px;color:var(--dim);letter-spacing:.04em;}
 .dash-head .brand-sm{font-weight:600;color:var(--pale-black);text-transform:uppercase;letter-spacing:.08em;}
 .dash-table{border:1px solid var(--line-soft);border-radius:10px;overflow:hidden;margin-bottom:10px;}
 .dt-row{display:grid;grid-template-columns:1.15fr .8fr 1.2fr 1.1fr;gap:10px;align-items:center;padding:8px 12px;font-size:11px;border-bottom:1px solid var(--line-soft);}
@@ -248,6 +248,10 @@ section.block{padding:92px 0;position:relative;}
 .ritm-ph{aspect-ratio:4/3;border-radius:12px;margin-bottom:16px;}
 .ritm-ph .ph-tag{font-size:9px;padding:6px 12px;}
 .story-band{padding:74px 0 66px;background:var(--pale-white);}
+.kv-sticker{position:absolute;z-index:3;width:110px;height:auto;filter:drop-shadow(0 6px 14px rgba(71,58,57,.18));pointer-events:none;}
+.kvs-1{top:-16px;left:-14px;transform:rotate(-7deg);}
+.kvs-2{bottom:-14px;right:-12px;transform:rotate(5deg);width:92px;}
+@media(max-width:700px){.kv-sticker{width:76px;}.kvs-2{width:64px;}}
 .story-cap{display:flex;align-items:baseline;gap:16px;margin-top:18px;flex-wrap:wrap;}
 .story-cap .st-time{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);font-weight:500;flex:none;}
 .story-cap p{font-family:'Pangram Sans','DM Sans',sans-serif;font-size:clamp(17px,2.2vw,22px);font-weight:600;letter-spacing:-.015em;color:var(--pale-black);max-width:56ch;}
@@ -283,7 +287,7 @@ section.block{padding:92px 0;position:relative;}
 .cal-ev img{width:34px;height:34px;border-radius:9px;object-fit:cover;flex:none;clip-path:url(#tbPetal);}
 .cal-ev span{display:flex;flex-direction:column;line-height:1.25;}
 .cal-ev b{font-size:12.5px;font-weight:700;color:var(--pale-black);}
-.cal-ev em{font-style:normal;font-family:'DM Mono',monospace;font-size:9px;color:var(--dim);margin-top:2px;}
+.cal-ev em{text-transform:uppercase;font-style:normal;font-family:'DM Mono',monospace;font-size:9px;color:var(--dim);margin-top:2px;}
 .cal-ev.ev-green{border-left-color:var(--green);}
 .cal-ev.ev-orange{border-left-color:var(--orange);}
 .cal-foot{padding-top:14px;border-top:1px solid var(--line-soft);font-size:13.5px;color:var(--muted);display:flex;align-items:center;flex-wrap:wrap;gap:4px;}
@@ -314,7 +318,7 @@ section.block{padding:92px 0;position:relative;}
 .tl-axis::before{content:'';position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line);}
 .tl-axis i{position:relative;justify-self:center;width:18px;height:18px;background:var(--blue);clip-path:url(#tbPetal);}
 .tl-axis i:nth-child(2){background:var(--orange);}
-.tl-axis i:nth-child(3){background:var(--green);}
+.tl-axis i:nth-child(3){background:var(--blue);}
 .tl-axis i:nth-child(4){background:var(--pale-black);}
 @media(max-width:820px){
 .tline{display:flex;flex-direction:column;gap:22px;position:relative;padding-left:30px;}
@@ -489,6 +493,20 @@ h1,h2,h3,.manifest p,.res-verdict,.story-cap p,.vs-punch{text-wrap:balance;}
 .mp-opts button.on{background:var(--blue);border-color:var(--blue);color:#fff;}
 .mp-read{margin-top:20px;font-family:'Pangram Sans','DM Sans',sans-serif;font-size:15px;color:rgba(255,251,244,.75);min-height:44px;}
 #mpCta{margin-top:6px;}
+
+/* brand book: niebieska typografia wiodaca */
+.hero h1, .hero h1 .accent{color:var(--blue);}
+.hero .lead{color:var(--blue);}
+.hero .lead b{color:var(--blue);}
+.sec-head h2, .sys-left h2, .dow-left h2, .faq-left h2{color:var(--blue);}
+.sec-head p{color:rgba(67,117,255,.78);}
+.sys-left p, .dow-left p{color:rgba(67,117,255,.78)!important;}
+header.nav nav a{color:var(--blue);}
+.nav-inner{border-bottom:1px solid rgba(67,117,255,.45);}
+.hero-checks{border-top:1px solid rgba(67,117,255,.4);}
+.hero-proof .hp .lbl{color:rgba(67,117,255,.6);}
+.story-cap .st-time{color:var(--orange);}
+.vs-punch{color:var(--blue);}
 </style>
 </head>
 <body>
@@ -682,7 +700,7 @@ h1,h2,h3,.manifest p,.res-verdict,.story-cap p,.vs-punch{text-wrap:balance;}
 <!-- STORY BAND -->
 <section class="story-band" aria-label="Kadr z życia zespołu">
   <div class="wrap">
-    <div class="ph-slot ph-wide filled"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Dn6zGLHfRzB9SQiaNJTkqEWOHh/hf_20260725_064347_9b052a16-6bf3-42e4-819c-648136330657.png" alt="Zesp&oacute;ł przy wsp&oacute;lnym śniadaniu w biurze, kadr z g&oacute;ry" loading="lazy"></div>
+    <div class="ph-slot ph-wide filled"><img src="badge4.svg" alt="" class="kv-sticker kvs-1"><img src="badge3.svg" alt="" class="kv-sticker kvs-2"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Dn6zGLHfRzB9SQiaNJTkqEWOHh/hf_20260725_064347_9b052a16-6bf3-42e4-819c-648136330657.png" alt="Zesp&oacute;ł przy wsp&oacute;lnym śniadaniu w biurze, kadr z g&oacute;ry" loading="lazy"></div>
     <div class="story-cap">
       <span class="st-time">Wtorek &middot; 9:12</span>
       <p>Zesp&oacute;ł księgowości, trzeci tydzień z rzędu przy jednym stole. <span class="dim2">Nikt tego nie organizował. Wr&oacute;ciło samo.</span></p>
@@ -702,7 +720,7 @@ h1,h2,h3,.manifest p,.res-verdict,.story-cap p,.vs-punch{text-wrap:balance;}
     <div class="sys-right sol-grid" style="margin-bottom:0">
       <div class="sol-card"><div class="sol-icon" style="background:rgba(67,117,255,.08);color:var(--blue);">01</div><h3>Pomiar, nie przeczucie</h3><p>Regularność rytuałów, frekwencja i wykorzystanie budżetu per zespół. Dane z realnego życia zespołów, nie z ankiety raz w roku.</p></div>
       <div class="sol-card"><div class="sol-icon" style="background:rgba(254,105,43,.10);color:var(--orange);">02</div><h3>Metoda Rytm 2+</h3><p>Minimum dwa wspólne doświadczenia zespołu miesięcznie, dopasowane do jego realiów. Wszystko wewnątrz firmy, z dostawą pod drzwi zespołu. Produkcja zmianowa żyje inaczej niż księgowość, metoda to respektuje.</p></div>
-      <div class="sol-card"><div class="sol-icon" style="background:rgba(21,164,119,.10);color:var(--green);">03</div><h3>Ekosystem BetterWorkplace</h3><p>15 lat na rynku, 2500+ firm, własny event branżowy i sieć dostawców doświadczeń. Zaplecze, którego nie kupi się w kwartał.</p></div>
+      <div class="sol-card"><div class="sol-icon" style="background:rgba(71,58,57,.07);color:var(--pale-black);">03</div><h3>Ekosystem BetterWorkplace</h3><p>15 lat na rynku, 2500+ firm, własny event branżowy i sieć dostawców doświadczeń. Zaplecze, którego nie kupi się w kwartał.</p></div>
     </div>
     </div>
     <div class="sec-head" style="margin-top:64px;margin-bottom:8px">
@@ -801,7 +819,8 @@ h1,h2,h3,.manifest p,.res-verdict,.story-cap p,.vs-punch{text-wrap:balance;}
   </section>
 
 <!-- MANIFEST -->
-<section class="block manifest-sec" id="manifest">
+<section class="block manifest-sec" id="manifest" style="position:relative;overflow:hidden;">
+  <img src="sygnet.svg" alt="" aria-hidden="true" style="position:absolute;right:-8%;top:50%;transform:translateY(-50%) rotate(12deg);width:min(520px,55vw);opacity:.05;filter:invert(1);pointer-events:none;">
   <div class="wrap">
     <div class="manifest">
       <span class="eyebrow">Manifest &middot; Między ludźmi</span>
@@ -817,7 +836,7 @@ h1,h2,h3,.manifest p,.res-verdict,.story-cap p,.vs-punch{text-wrap:balance;}
   <div class="wrap">
     <div class="cta-card">
       <div class="cta-copy">
-        <span class="eyebrow" style="color:#FDA33C;">Zapisy na pilotaż</span>
+        <span class="eyebrow" style="color:var(--orange);">Zapisy na pilotaż</span>
         <h2 style="margin-top:14px;color:#fff;">Zapisz swoje zespoły na pilotaż.</h2>
         <p>Zostaw kontakt, a pokażemy, jak TeamBudget zadziała u was. Bez zobowiązań, decyzję podejmujesz po danych z własnych zespoł&oacute;w.</p>
         <div class="cta-bullets">
@@ -895,11 +914,11 @@ function countTo(el){
 const REG={
   hr:{lead:'Head of People: kultura z danymi i gotowa amunicja do rozmowy z finansami.',cards:[
     {ic:'1',cl:'rgba(67,117,255,.08)',cc:'var(--blue)',h:'Kultura z danymi',p:'Regularność rytuałów, frekwencja i wykorzystanie per zespół. Wpływ HR na biznes, który widać w liczbach, nie w haśle na plakacie.'},
-    {ic:'2',cl:'rgba(253,163,60,.14)',cc:'#bd6f10',h:'100% inkluzywności',p:'Korzysta cały zespół, nie 30–40% aktywnych karty. Nikt nie jest wykluczony.'},
+    {ic:'2',cl:'rgba(254,105,43,.10)',cc:'var(--orange)',h:'100% inkluzywności',p:'Korzysta cały zespół, nie 30–40% aktywnych karty. Nikt nie jest wykluczony.'},
     {ic:'3',cl:'rgba(254,105,43,.10)',cc:'var(--orange)',h:'Argument dla finansów',p:'To nie nowy koszt, to porządek w istniejącej linii: jedna faktura, limity per zespół, zero zwrotów. CFO dostaje kontrolę, nie wniosek o budżet.'}
   ]},
   cfo:{lead:'Team Leader: zespół dostaje rytm i sprawczość, ty nie zostajesz animatorem.',cards:[
-    {ic:'1',cl:'rgba(21,164,119,.10)',cc:'var(--green)',h:'Zero organizowania',p:'Budżet, katalog i dostawa do firmy są gotowe. Nie zbierasz zamówień i nie rozliczasz zwrotów z własnej karty.'},
+    {ic:'1',cl:'rgba(67,117,255,.08)',cc:'var(--blue)',h:'Zero organizowania',p:'Budżet, katalog i dostawa do firmy są gotowe. Nie zbierasz zamówień i nie rozliczasz zwrotów z własnej karty.'},
     {ic:'2',cl:'rgba(67,117,255,.08)',cc:'var(--blue)',h:'Zespół decyduje sam',p:'Głosowanie z katalogu zamiast integracji narzuconej z góry. Sprawczość buduje frekwencję.'},
     {ic:'3',cl:'rgba(254,105,43,.10)',cc:'var(--orange)',h:'Rytm wraca sam',p:'Kalendarz przypomina i domyka. Ty prowadzisz zespół, nie logistykę śniadań.'}
   ]}
@@ -978,9 +997,9 @@ if(HAS_GSAP){
   function makeShp(c){const w=document.createElement('span');w.className='shp';w.dataset.op=c.op;w._par=c.par||0;w._rot=c.rot||0;w.style.width=c.w+'px';['top','left','right','bottom'].forEach(k=>{if(c[k]!=null)w.style[k]=c[k];});const s=TB_SHAPES[c.shape];w.innerHTML='<svg viewBox="'+s.vb+'" xmlns="http://www.w3.org/2000/svg"><path d="'+s.d+'" fill="'+c.color+'"/></svg>';return w;}
   const DECOR={
    '#problem':[{shape:'cloud',color:'#4375FF',op:.05,w:180,top:'12%',right:'-3%',rot:-6,par:-30}],
-   '#rozwiazanie':[{shape:'cloudWide',color:'#15A477',op:.06,w:130,top:'-4%',left:'4%',rot:8,par:-26},{shape:'spike',color:'#FE692B',op:.05,w:160,bottom:'-6%',right:'5%',rot:10,par:34}],
-   '#jak':[{shape:'cloud',color:'#15A477',op:.05,w:170,bottom:'4%',right:'-3%',rot:6,par:26}],
-   '#kto':[{shape:'cloudWide',color:'#FDA33C',op:.06,w:170,top:'-6%',right:'3%',rot:7,par:-28}],
+   '#rozwiazanie':[{shape:'cloudWide',color:'#4375FF',op:.06,w:130,top:'-4%',left:'4%',rot:8,par:-26},{shape:'spike',color:'#FE692B',op:.05,w:160,bottom:'-6%',right:'5%',rot:10,par:34}],
+   '#jak':[{shape:'cloud',color:'#FE692B',op:.05,w:170,bottom:'4%',right:'-3%',rot:6,par:26}],
+   '#kto':[{shape:'cloudWide',color:'#4375FF',op:.06,w:170,top:'-6%',right:'3%',rot:7,par:-28}],
    '#porownanie':[{shape:'spike',color:'#FE692B',op:.05,w:160,top:'8%',left:'-3%',rot:-10,par:-24}]
   };
   const allShapes=[];
