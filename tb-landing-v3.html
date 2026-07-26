@@ -507,6 +507,40 @@ header.nav nav a{color:var(--blue);}
 .hero-proof .hp .lbl{color:rgba(67,117,255,.6);}
 .story-cap .st-time{color:var(--orange);}
 .vs-punch{color:var(--blue);}
+
+/* TONIK PASS */
+.hero-grid{display:block!important;}
+.hero-sygnet-bg{display:none;}
+.hero-copy{display:grid;grid-template-columns:7fr 5fr;column-gap:56px;row-gap:0;}
+.hero-copy .hero-h1{grid-column:1/-1;font-size:clamp(56px,10.5vw,170px)!important;line-height:.94!important;letter-spacing:-.045em!important;margin:0 0 40px!important;}
+.hero-h1 .line:last-child .line-in,.hero-h1 .line:last-child .accent{color:transparent!important;-webkit-text-stroke:2.5px var(--blue);}
+.hero-copy .lead{grid-column:1;grid-row:2;}
+.hero-copy .hero-cta{grid-column:1;grid-row:3;}
+.hero-copy .hero-proof{grid-column:2;grid-row:2;align-self:start;margin-top:6px;}
+.hero-copy .hero-checks{grid-column:2;grid-row:3;align-self:end;flex-wrap:wrap;white-space:normal;}
+.dash-mock{max-width:840px;margin:70px auto 0;transform:rotate(-1.2deg);}
+.dash-frame{transform:none!important;}
+@media(max-width:880px){.hero-copy{display:block;}.dash-mock{transform:none;margin-top:40px;}}
+.mq{overflow:hidden;background:var(--pale-white);border-top:1px solid rgba(67,117,255,.25);border-bottom:1px solid rgba(67,117,255,.25);padding:18px 0;}
+.mq-in{display:flex;align-items:center;gap:44px;white-space:nowrap;width:max-content;animation:mqmove 26s linear infinite;}
+.mq-in span{font-family:'Pangram Sans','DM Sans',sans-serif;font-size:clamp(22px,2.8vw,34px);font-weight:700;letter-spacing:-.02em;color:var(--blue);}
+.mq-in span.ol{color:transparent;-webkit-text-stroke:1.8px var(--blue);}
+.mq-in i{width:20px;height:20px;flex:none;background:var(--orange);clip-path:url(#tbPetal);}
+@keyframes mqmove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.mq-in{animation:none;}}
+.giant-num{position:absolute;z-index:0;font-family:'Pangram Sans',sans-serif;font-weight:800;line-height:1;color:var(--blue);opacity:.06;font-size:clamp(180px,26vw,430px);pointer-events:none;user-select:none;}
+.ritm-sec{position:relative;overflow:hidden;}
+.ritm-sec .giant-num{top:-40px;right:-30px;}
+.vs-sec{position:relative;overflow:hidden;}
+.vs-sec .giant-num{bottom:-60px;left:-20px;}
+.ph-wide{transform:rotate(-1.1deg);}
+.ph-slot img:not(.kv-sticker){transition:transform .6s cubic-bezier(.22,1,.36,1);}
+.ph-slot:hover img:not(.kv-sticker){transform:scale(1.035);}
+.foot-xxl{font-family:'Pangram Sans',sans-serif;font-size:clamp(44px,8.6vw,140px);font-weight:800;letter-spacing:-.045em;line-height:.95;color:var(--blue);padding:26px 0 44px;border-bottom:1px solid rgba(67,117,255,.3);margin-bottom:40px;text-wrap:balance;}
+.foot-xxl .ol{color:transparent;-webkit-text-stroke:2px var(--blue);}
+.cur-dot{position:fixed;left:0;top:0;width:12px;height:12px;border-radius:50%;background:var(--blue);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .18s,height .18s,opacity .25s;mix-blend-mode:multiply;opacity:0;}
+.cur-dot.on{opacity:.85;}
+.cur-dot.big{width:38px;height:38px;opacity:.35;}
 </style>
 </head>
 <body>
@@ -603,6 +637,15 @@ header.nav nav a{color:var(--blue);}
 </section>
 
 <!-- PROBLEM -->
+
+<!-- MARQUEE -->
+<div class="mq" aria-hidden="true"><div class="mq-in" id="mqIn">
+  <span>Śniadanie</span><i></i><span class="ol">Rytuał</span><i></i><span>Zesp&oacute;ł</span><i></i><span class="ol">Kultura</span><i></i>
+  <span>Śniadanie</span><i></i><span class="ol">Rytuał</span><i></i><span>Zesp&oacute;ł</span><i></i><span class="ol">Kultura</span><i></i>
+  <span>Śniadanie</span><i></i><span class="ol">Rytuał</span><i></i><span>Zesp&oacute;ł</span><i></i><span class="ol">Kultura</span><i></i>
+  <span>Śniadanie</span><i></i><span class="ol">Rytuał</span><i></i><span>Zesp&oacute;ł</span><i></i><span class="ol">Kultura</span><i></i>
+</div></div>
+
 <section class="block" id="problem">
   <div class="wrap">
     <div class="sec-head">
@@ -664,6 +707,7 @@ header.nav nav a{color:var(--blue);}
 
 <!-- TO NIE BENEFIT -->
 <section class="block vs-sec" id="niebenefit">
+  <span class="giant-num" aria-hidden="true">100%</span>
   <div class="wrap">
     <div class="sec-head">
       <span class="num-tag">02 &mdash; Kategoria</span>
@@ -740,6 +784,7 @@ header.nav nav a{color:var(--blue);}
 
 <!-- RYTM / RYTUAŁY -->
 <section class="block ritm-sec" id="rytm">
+  <span class="giant-num" aria-hidden="true">2+</span>
   <div class="wrap">
     <div class="sec-head" style="max-width:680px;">
       <span class="num-tag" style="color:var(--orange)">Metoda &middot; Rytm 2+</span>
@@ -872,6 +917,7 @@ header.nav nav a{color:var(--blue);}
 <!-- FOOTER -->
 <footer>
   <div class="wrap">
+    <div class="foot-xxl">Kulturę budują <span class="ol">zespoły.</span></div>
     <div class="foot">
       <div>
         <div class="brand"><img src="Logo.svg" alt="TeamBudget"></div>
@@ -1147,6 +1193,20 @@ document.getElementById('leadForm').addEventListener('submit',function(ev){
     p.innerHTML=words.map(function(w){return '<span class="iw">'+w+'</span>';}).join(' ');
     gsap.fromTo('.insight-in p .iw',{opacity:.14},{opacity:1,stagger:.03,ease:'none',scrollTrigger:{trigger:'.insight-sec',start:'top 70%',end:'center 40%',scrub:true}});
   }
+})();
+</script>
+<script>
+(function(){
+  if(!matchMedia('(pointer:fine)').matches)return;
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var d=document.createElement('div');d.className='cur-dot';document.body.appendChild(d);
+  var shown=false;
+  document.addEventListener('mousemove',function(e){
+    if(!shown){d.classList.add('on');shown=true;}
+    d.style.left=e.clientX+'px';d.style.top=e.clientY+'px';
+    var t=e.target.closest('a,button,.cal-ev,.dash-tab');
+    d.classList.toggle('big',!!t);
+  },{passive:true});
 })();
 </script>
 </body>
