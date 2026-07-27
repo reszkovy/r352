@@ -118,21 +118,21 @@ footer{padding:0 0 46px;font-family:'DM Mono',monospace;font-size:11px;letter-sp
 <script>
 var DATA = {
   H: { name: 'Nagłówek / hasło', note: 'główna obietnica',
-  why: '<b>Master jest jeden.</b> Tylko pierwsze hasło stawia tezę kategorii, z której wynika cała reszta komunikacji. Pozostałe cztery to narzędzia kampanijne pod różne temperatury ruchu, nie kandydaci na markę.',
-  tags: ['marka · rekomendacja','wizerunek','performance','problem','konwersja'],
+  why: '<b>Każde hasło ma etat.</b> Pierwsze to teza marki, z której wynika reszta komunikacji. Drugie to hook platformy kampanijnej „Między ludźmi”. Pozostałe trzy pracują w kampaniach, w różnych temperaturach ruchu. Nie wybieramy ulubionego, obsadzamy role.',
+  tags: ['marka · rekomendacja','platforma kampanijna','performance','problem','konwersja'],
   opts: [
     'Kulturę firmy budują zespoły.',
     'Ludzie lubią ludzi, z którymi jedzą.',
     'Pierwszy budżet, który dostaje cały zespół.',
     'Kiedy wasz zespół ostatnio śmiał się razem?',
-    'Razem co dwa tygodnie. Silniejsi cały rok.'
+    'Razem co dwa tygodnie. Resztę widać w danych.'
   ]},
   S: { name: 'Subline (bold)', note: 'doprecyzowanie w 1 zdaniu', opts: [
     'Budżet dla zespołu. Kultura dla firmy.',
     'Śniadanie zrobi więcej niż niejedno spotkanie.',
     'Zespół wybiera, my dowozimy, firma widzi.',
     'Silne zespoły nie zdarzają się same.',
-    'Małe rytuały. Wielka różnica.'
+    'Nie event raz w roku. Rytm co dwa tygodnie.'
   ]},
   B: { name: 'Linia „Bo…”', note: 'konkret z życia zespołu', opts: [
     'Bo najważniejsze rozmowy i tak dzieją się przy kawie.',
@@ -173,8 +173,8 @@ var DATA = {
 var KEYS = ['H','S','B','P','C','N','K'];
 var PRESETS = [
   { name:'Master', idx:[0,0,0,0,0,0,0] },
-  { name:'Ludzka', idx:[1,1,1,1,1,1,1] },
-  { name:'Produktowa', idx:[2,2,2,2,2,2,2] },
+  { name:'Platforma', idx:[1,1,1,1,1,1,1] },
+  { name:'Performance', idx:[2,2,2,2,2,2,2] },
   { name:'Problem', idx:[3,3,3,3,3,3,3] },
   { name:'Konwersja', idx:[4,4,4,4,4,4,4] }
 ];
