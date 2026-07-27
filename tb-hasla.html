@@ -26,7 +26,7 @@ button{font:inherit;cursor:pointer;background:none;border:none;color:inherit;tex
 .pre:hover{background:rgba(67,117,255,.08);}
 .pre.on{background:var(--blue,#4375FF);color:#fff;border-color:var(--blue,#4375FF);}
 
-.mix{display:grid;grid-template-columns:minmax(0,1fr) 460px;gap:34px;align-items:start;padding:26px 0 70px;}
+.mix{display:grid;grid-template-columns:minmax(0,1fr) 460px;gap:34px;align-items:start;padding-top:26px;padding-bottom:70px;}
 @media(max-width:980px){.mix{grid-template-columns:1fr;}}
 
 /* preview */
@@ -42,7 +42,8 @@ button{font:inherit;cursor:pointer;background:none;border:none;color:inherit;tex
 .btn{display:inline-flex;align-items:center;font-weight:600;font-size:13.5px;border-radius:100px;padding:11px 19px;}
 .btn.pri{background:var(--blue,#4375FF);color:#fff;box-shadow:0 4px 14px rgba(67,117,255,.28);}
 .btn.gho{background:rgba(71,58,57,.07);color:var(--pale-black,#473A39);}
-.proof{display:flex;gap:24px;margin-top:22px;flex-wrap:wrap;}
+.proof{display:flex;gap:16px;margin-top:22px;}
+.hp{flex:1 1 0;min-width:0;}
 .hp .num{font-family:'Pangram Sans',sans-serif;font-size:21px;font-weight:700;letter-spacing:-.02em;color:var(--blue,#4375FF);}
 .hp .lbl{font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;color:rgba(67,117,255,.6);margin-top:3px;line-height:1.5;}
 .checks{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px;padding-top:12px;border-top:1px solid rgba(67,117,255,.35);}
