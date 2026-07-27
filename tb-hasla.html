@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TeamBudget — Bank haseł ATF</title>
+<meta name="description" content="Master hasło i cztery hasła wspierające TeamBudget, rozwinięte do pełnych zestawów ATF.">
+<link rel="icon" href="sygnet.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--pale-white,#FFFBF4);color:var(--pale-black,#473A39);line-height:1.55;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 28px;}
+a{color:inherit;text-decoration:none;}
+
+.top{padding:54px 0 30px;border-bottom:1px solid rgba(67,117,255,.4);}
+.top .mono{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange,#FE692B);font-weight:500;}
+.top h1{font-family:'Pangram Sans','DM Sans',sans-serif;font-size:clamp(30px,4.4vw,52px);font-weight:700;letter-spacing:-.035em;color:var(--blue,#4375FF);margin-top:12px;line-height:1.05;}
+.top p{color:rgba(67,117,255,.78);margin-top:14px;max-width:64ch;}
+
+.variant{padding:64px 0 58px;border-bottom:1px solid rgba(67,117,255,.25);}
+.variant.master{background:var(--sunny,#FEF3DE);}
+.v-tag{display:inline-flex;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--orange,#FE692B);margin-bottom:20px;}
+.v-tag::before{content:'';width:26px;height:1px;background:var(--orange,#FE692B);}
+.v-tag b{color:var(--pale-black,#473A39);font-weight:600;}
+.v-use{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(71,58,57,.45);margin-left:10px;}
+
+.atf h2{font-family:'Pangram Sans','DM Sans',sans-serif;font-size:clamp(34px,5vw,58px);font-weight:700;letter-spacing:-.04em;line-height:1.02;color:var(--blue,#4375FF);max-width:14ch;text-wrap:balance;}
+.atf .sub{margin-top:20px;font-size:17px;line-height:1.55;color:var(--blue,#4375FF);max-width:52ch;}
+.atf .sub b{font-weight:700;}
+.atf .sub .rot{font-weight:600;}
+.atf .para{margin-top:10px;font-size:16px;color:var(--blue,#4375FF);opacity:.85;max-width:54ch;}
+.cta{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:14.5px;border-radius:100px;padding:12px 22px;}
+.btn.pri{background:var(--blue,#4375FF);color:#fff;box-shadow:0 4px 16px rgba(67,117,255,.28);}
+.btn.gho{background:rgba(71,58,57,.06);color:var(--pale-black,#473A39);}
+.proof{display:flex;gap:34px;margin-top:28px;padding-top:18px;flex-wrap:wrap;}
+.hp .num{font-family:'Pangram Sans',sans-serif;font-size:24px;font-weight:700;letter-spacing:-.02em;color:var(--blue,#4375FF);}
+.hp .lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:rgba(67,117,255,.6);margin-top:4px;line-height:1.5;}
+.checks{display:flex;gap:18px;flex-wrap:wrap;margin-top:16px;padding-top:14px;border-top:1px solid rgba(67,117,255,.4);}
+.checks span{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:var(--pale-black,#473A39);}
+.checks i{font-style:normal;color:var(--orange,#FE692B);font-weight:700;}
+
+footer{padding:36px 0 50px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.05em;color:rgba(71,58,57,.45);}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="mono">TeamBudget &middot; bank haseł &middot; ATF</span>
+    <h1>Jedno hasło marki. Cztery hasła do roboty.</h1>
+    <p>Master ustawia świat i mieszka na stronie. Cztery wspierające obsługują r&oacute;żne temperatury ruchu: wizerunek, performance, social i konwersję. Każde rozwinięte do pełnego zestawu ATF.</p>
+  </div>
+</header>
+
+<!-- MASTER -->
+<section class="variant master">
+  <div class="wrap atf">
+    <span class="v-tag"><b>Master</b> hasło marki<span class="v-use">hero &middot; message house &middot; footer &middot; deck</span></span>
+    <h2>Kulturę firmy budują zespoły.</h2>
+    <p class="sub"><b>Budżet dla zespołu. Kultura dla firmy.</b><br>Bo <span class="rot">księgowość oddycha po zamknięciu miesiąca</span>.</p>
+    <p class="para">TeamBudget daje każdemu zespołowi własny budżet i doświadczenia dopasowane do jego reali&oacute;w, a firmie jeden system i pełne dane.</p>
+    <div class="cta"><span class="btn pri">Zapisz zespoły na pilotaż &rarr;</span><span class="btn gho">Zobacz, jak to działa &rarr;</span></div>
+    <div class="proof">
+      <div class="hp"><div class="num">2+</div><div class="lbl">wsp&oacute;lne doświadczenia<br>zespołu w każdym miesiącu</div></div>
+      <div class="hp"><div class="num">100%</div><div class="lbl">demokratycznych decyzji,<br>zesp&oacute;ł wybiera sam</div></div>
+      <div class="hp"><div class="num">1</div><div class="lbl">faktura i pełen<br>obraz dla firmy</div></div>
+    </div>
+    <div class="checks"><span><i>&#10003;</i> Budżet w rękach zespołu</span><span><i>&#10003;</i> Doświadczenia dopasowane do zespołu</span><span><i>&#10003;</i> Jedna faktura, pełne dane</span></div>
+  </div>
+</section>
+
+<!-- WIZERUNEK -->
+<section class="variant">
+  <div class="wrap atf">
+    <span class="v-tag"><b>01 Wizerunek</b> platforma „Między ludźmi”<span class="v-use">kampania brandowa &middot; OOH &middot; event</span></span>
+    <h2>Kultura dzieje się między ludźmi.</h2>
+    <p class="sub"><b>Nie w regulaminach. Nie w benefitach. Między ludźmi.</b><br>Bo <span class="rot">najlepsze pomysły padają przy śniadaniu, nie na statusie</span>.</p>
+    <p class="para">TeamBudget zamienia przestrzeń między ludźmi w rytm wsp&oacute;lnych chwil: budżet, kalendarz i doświadczenia, kt&oacute;re wracają co miesiąc, dopasowane do każdego zespołu.</p>
+    <div class="cta"><span class="btn pri">Poznaj TeamBudget &rarr;</span><span class="btn gho">Zobacz, jak działa rytm &rarr;</span></div>
+    <div class="proof">
+      <div class="hp"><div class="num">2+</div><div class="lbl">wsp&oacute;lne chwile zespołu<br>w każdym miesiącu</div></div>
+      <div class="hp"><div class="num">100%</div><div class="lbl">zespołu razem,<br>nikt nie zostaje z boku</div></div>
+      <div class="hp"><div class="num">12</div><div class="lbl">miesięcy rytmu,<br>nie jeden event</div></div>
+    </div>
+    <div class="checks"><span><i>&#10003;</i> Rytuały, kt&oacute;re wracają same</span><span><i>&#10003;</i> Wsp&oacute;lne chwile zamiast punkt&oacute;w w kafeterii</span><span><i>&#10003;</i> Kultura widoczna w danych</span></div>
+  </div>
+</section>
+
+<!-- PERFORMANCE -->
+<section class="variant">
+  <div class="wrap atf">
+    <span class="v-tag"><b>02 Performance</b> zrozumienie w sekundę<span class="v-use">ads &middot; cold outreach &middot; katalogi</span></span>
+    <h2>Pierwszy budżet, kt&oacute;ry dostaje zesp&oacute;ł.</h2>
+    <p class="sub"><b>Sport, zdrowie, rozw&oacute;j: wszystko per pracownik. To jest budżet per zesp&oacute;ł.</b><br>Bo <span class="rot">zesp&oacute;ł to więcej niż suma kart benefitowych</span>.</p>
+    <p class="para">Budżet i katalog doświadczeń w rękach zespołu. Jedna faktura, limity i pełne dane po stronie firmy. Start bez wdrożenia IT i bez nowego budżetu.</p>
+    <div class="cta"><span class="btn pri">Zapisz zespoły na pilotaż &rarr;</span><span class="btn gho">Zobacz produkt &rarr;</span></div>
+    <div class="proof">
+      <div class="hp"><div class="num">1.</div><div class="lbl">pierwszy budżet<br>zespołowy w Polsce</div></div>
+      <div class="hp"><div class="num">100%</div><div class="lbl">zespołu korzysta,<br>z definicji</div></div>
+      <div class="hp"><div class="num">0</div><div class="lbl">nowych budżet&oacute;w,<br>porządkujemy istniejące</div></div>
+    </div>
+    <div class="checks"><span><i>&#10003;</i> Zesp&oacute;ł wybiera sam</span><span><i>&#10003;</i> Jedna faktura zamiast kilkudziesięciu</span><span><i>&#10003;</i> Start w tygodnie, nie kwartały</span></div>
+  </div>
+</section>
+
+<!-- SOCIAL / PROBLEM -->
+<section class="variant">
+  <div class="wrap atf">
+    <span class="v-tag"><b>03 Problem</b> otwarcie napięcia<span class="v-use">social &middot; hooki wideo &middot; pierwszy slajd decka</span></span>
+    <h2>Silne zespoły nie zdarzają się same.</h2>
+    <p class="sub"><b>Buduje się je. Regularnie.</b><br>Bo <span class="rot">po roku bez wsp&oacute;lnych chwil z zespołu zostają awatary na Teamsie</span>.</p>
+    <p class="para">Nikt nie decyduje, że więź wygasa. Po prostu nikt nie decyduje, że ma trwać. TeamBudget daje zespołom budżet i rytm wsp&oacute;lnych doświadczeń, zanim kulturę trzeba będzie ratować.</p>
+    <div class="cta"><span class="btn pri">Zbuduj rytm swoich zespoł&oacute;w &rarr;</span><span class="btn gho">Poznaj metodę Rytm 2+ &rarr;</span></div>
+    <div class="proof">
+      <div class="hp"><div class="num">30&ndash;40%</div><div class="lbl">tyle os&oacute;b realnie używa<br>benefit&oacute;w indywidualnych</div></div>
+      <div class="hp"><div class="num">1</div><div class="lbl">event rocznie<br>to za mało na więź</div></div>
+      <div class="hp"><div class="num">2+</div><div class="lbl">doświadczenia miesięcznie<br>budują ją naprawdę</div></div>
+    </div>
+    <div class="checks"><span><i>&#10003;</i> Rytm zamiast zrywu</span><span><i>&#10003;</i> Więź mierzona, nie zakładana</span><span><i>&#10003;</i> Zesp&oacute;ł w centrum decyzji</span></div>
+  </div>
+</section>
+
+<!-- KONWERSJA -->
+<section class="variant">
+  <div class="wrap atf">
+    <span class="v-tag"><b>04 Konwersja</b> mechanika + obietnica<span class="v-use">kampanie konwersyjne &middot; remarketing &middot; jak działa</span></span>
+    <h2>Razem co dwa tygodnie. Silniejsi cały rok.</h2>
+    <p class="sub"><b>Rytm robi więcej niż event.</b><br>Bo <span class="rot">jeden offsite rocznie nie zbuduje zaufania na co dzień</span>.</p>
+    <p class="para">Minimum dwa wsp&oacute;lne doświadczenia zespołu w miesiącu: śniadania, przekąski, celebracje z dostawą do firmy, dopasowane do realiów zespołu. Firma widzi efekt w danych, nie w deklaracjach.</p>
+    <div class="cta"><span class="btn pri">Zapisz zespoły na pilotaż &rarr;</span><span class="btn gho">Zobacz kalendarz rytuał&oacute;w &rarr;</span></div>
+    <div class="proof">
+      <div class="hp"><div class="num">2+</div><div class="lbl">doświadczenia zespołu<br>w każdym miesiącu</div></div>
+      <div class="hp"><div class="num">72h</div><div class="lbl">od zgłoszenia<br>do terminu startu</div></div>
+      <div class="hp"><div class="num">0 zł</div><div class="lbl">za platformę<br>w pilotażu</div></div>
+    </div>
+    <div class="checks"><span><i>&#10003;</i> Kalendarz wraca sam</span><span><i>&#10003;</i> Dostawa pod drzwi zespołu</span><span><i>&#10003;</i> Raport przed / po dla zarządu</span></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">TeamBudget &middot; bank haseł ATF &middot; master + 4 role &middot; 2026</div>
+</footer>
+
+</body>
+</html>
