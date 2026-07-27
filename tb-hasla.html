@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TeamBudget — Bank haseł ATF</title>
-<meta name="description" content="Master hasło i cztery hasła wspierające TeamBudget, rozwinięte do pełnych zestawów ATF.">
+<title>TeamBudget — Mikser haseł ATF</title>
+<meta name="description" content="Interaktywny mikser: wybierz wersję każdego elementu ATF i złóż hasło master, które pasuje odbiorcy.">
 <link rel="icon" href="sygnet.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,138 +13,266 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'DM Sans',system-ui,sans-serif;background:var(--pale-white,#FFFBF4);color:var(--pale-black,#473A39);line-height:1.55;-webkit-font-smoothing:antialiased;}
-.wrap{max-width:1060px;margin:0 auto;padding:0 28px;}
-a{color:inherit;text-decoration:none;}
+.wrap{max-width:1240px;margin:0 auto;padding:0 26px;}
+button{font:inherit;cursor:pointer;background:none;border:none;color:inherit;text-align:left;}
 
-.top{padding:54px 0 30px;border-bottom:1px solid rgba(67,117,255,.4);}
+.top{padding:44px 0 26px;}
 .top .mono{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange,#FE692B);font-weight:500;}
-.top h1{font-family:'Pangram Sans','DM Sans',sans-serif;font-size:clamp(30px,4.4vw,52px);font-weight:700;letter-spacing:-.035em;color:var(--blue,#4375FF);margin-top:12px;line-height:1.05;}
-.top p{color:rgba(67,117,255,.78);margin-top:14px;max-width:64ch;}
+.top h1{font-family:'Pangram Sans','DM Sans',sans-serif;font-size:clamp(28px,3.6vw,44px);font-weight:700;letter-spacing:-.035em;color:var(--blue,#4375FF);margin-top:10px;line-height:1.05;}
+.top p{color:rgba(67,117,255,.78);margin-top:10px;max-width:66ch;font-size:15px;}
 
-.variant{padding:64px 0 58px;border-bottom:1px solid rgba(67,117,255,.25);}
-.variant.master{background:var(--sunny,#FEF3DE);}
-.v-tag{display:inline-flex;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--orange,#FE692B);margin-bottom:20px;}
-.v-tag::before{content:'';width:26px;height:1px;background:var(--orange,#FE692B);}
-.v-tag b{color:var(--pale-black,#473A39);font-weight:600;}
-.v-use{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(71,58,57,.45);margin-left:10px;}
+.presets{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;}
+.pre{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;padding:8px 14px;border-radius:100px;border:1px solid rgba(67,117,255,.4);color:var(--blue,#4375FF);transition:.15s;}
+.pre:hover{background:rgba(67,117,255,.08);}
+.pre.on{background:var(--blue,#4375FF);color:#fff;border-color:var(--blue,#4375FF);}
 
-.atf h2{font-family:'Pangram Sans','DM Sans',sans-serif;font-size:clamp(34px,5vw,58px);font-weight:700;letter-spacing:-.04em;line-height:1.02;color:var(--blue,#4375FF);max-width:14ch;text-wrap:balance;}
-.atf .sub{margin-top:20px;font-size:17px;line-height:1.55;color:var(--blue,#4375FF);max-width:52ch;}
+.mix{display:grid;grid-template-columns:minmax(0,1fr) 460px;gap:34px;align-items:start;padding:26px 0 70px;}
+@media(max-width:980px){.mix{grid-template-columns:1fr;}}
+
+/* preview */
+.stage{position:sticky;top:20px;order:2;}
+@media(max-width:980px){.stage{position:static;order:0;}}
+.atf{background:var(--sunny,#FEF3DE);border-radius:18px;padding:34px 32px 30px;box-shadow:0 10px 34px rgba(71,58,57,.08);}
+.atf .tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange,#FE692B);font-weight:500;}
+.atf h2{font-family:'Pangram Sans','DM Sans',sans-serif;font-size:clamp(28px,3.2vw,40px);font-weight:700;letter-spacing:-.04em;line-height:1.03;color:var(--blue,#4375FF);margin-top:12px;text-wrap:balance;}
+.atf .sub{margin-top:16px;font-size:15.5px;color:var(--blue,#4375FF);}
 .atf .sub b{font-weight:700;}
-.atf .sub .rot{font-weight:600;}
-.atf .para{margin-top:10px;font-size:16px;color:var(--blue,#4375FF);opacity:.85;max-width:54ch;}
-.cta{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap;}
-.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:14.5px;border-radius:100px;padding:12px 22px;}
-.btn.pri{background:var(--blue,#4375FF);color:#fff;box-shadow:0 4px 16px rgba(67,117,255,.28);}
-.btn.gho{background:rgba(71,58,57,.06);color:var(--pale-black,#473A39);}
-.proof{display:flex;gap:34px;margin-top:28px;padding-top:18px;flex-wrap:wrap;}
-.hp .num{font-family:'Pangram Sans',sans-serif;font-size:24px;font-weight:700;letter-spacing:-.02em;color:var(--blue,#4375FF);}
-.hp .lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:rgba(67,117,255,.6);margin-top:4px;line-height:1.5;}
-.checks{display:flex;gap:18px;flex-wrap:wrap;margin-top:16px;padding-top:14px;border-top:1px solid rgba(67,117,255,.4);}
-.checks span{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:var(--pale-black,#473A39);}
+.atf .para{margin-top:8px;font-size:14.5px;color:var(--blue,#4375FF);opacity:.85;}
+.atf .cta{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;font-weight:600;font-size:13.5px;border-radius:100px;padding:11px 19px;}
+.btn.pri{background:var(--blue,#4375FF);color:#fff;box-shadow:0 4px 14px rgba(67,117,255,.28);}
+.btn.gho{background:rgba(71,58,57,.07);color:var(--pale-black,#473A39);}
+.proof{display:flex;gap:24px;margin-top:22px;flex-wrap:wrap;}
+.hp .num{font-family:'Pangram Sans',sans-serif;font-size:21px;font-weight:700;letter-spacing:-.02em;color:var(--blue,#4375FF);}
+.hp .lbl{font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;color:rgba(67,117,255,.6);margin-top:3px;line-height:1.5;}
+.checks{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px;padding-top:12px;border-top:1px solid rgba(67,117,255,.35);}
+.checks span{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:var(--pale-black,#473A39);}
 .checks i{font-style:normal;color:var(--orange,#FE692B);font-weight:700;}
+.stage-foot{display:flex;gap:10px;margin-top:14px;}
+.act{flex:1;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;padding:11px 0;border-radius:100px;text-align:center;transition:.15s;}
+.act.copy{background:var(--pale-black,#473A39);color:#fff;}
+.act.copy:hover{opacity:.88;}
+.act.rand{border:1px solid rgba(71,58,57,.3);color:var(--pale-black,#473A39);}
+.act.rand:hover{background:rgba(71,58,57,.06);}
 
-footer{padding:36px 0 50px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.05em;color:rgba(71,58,57,.45);}
+/* controls */
+.ctrls{order:1;min-width:0;}
+.grp{padding:16px 0 18px;border-bottom:1px solid rgba(67,117,255,.22);}
+.grp:first-child{padding-top:0;}
+.grp .g-name{display:flex;align-items:baseline;gap:10px;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange,#FE692B);font-weight:500;margin-bottom:10px;}
+.grp .g-name em{font-style:normal;color:rgba(71,58,57,.4);letter-spacing:.06em;font-size:9.5px;text-transform:none;}
+.opts{display:flex;flex-direction:column;gap:6px;}
+.opt{border:1px solid rgba(67,117,255,.28);border-radius:12px;padding:9px 13px;font-size:13.5px;line-height:1.45;color:var(--pale-black,#473A39);background:#fff;transition:.13s;display:flex;gap:10px;align-items:baseline;}
+.opt:hover{border-color:var(--blue,#4375FF);}
+.opt.on{border-color:var(--blue,#4375FF);background:rgba(67,117,255,.07);box-shadow:inset 0 0 0 1px var(--blue,#4375FF);}
+.opt .k{font-family:'DM Mono',monospace;font-size:9px;color:rgba(67,117,255,.55);font-weight:500;flex:0 0 auto;}
+.opt.on .k{color:var(--blue,#4375FF);}
+
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(80px);background:var(--pale-black,#473A39);color:#fff;font-size:13px;font-weight:600;padding:12px 22px;border-radius:100px;transition:.3s;opacity:0;pointer-events:none;z-index:50;}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+footer{padding:0 0 46px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.05em;color:rgba(71,58,57,.45);}
 </style>
 </head>
 <body>
 
 <header class="top">
   <div class="wrap">
-    <span class="mono">TeamBudget &middot; bank haseł &middot; ATF</span>
-    <h1>Jedno hasło marki. Cztery hasła do roboty.</h1>
-    <p>Master ustawia świat i mieszka na stronie. Cztery wspierające obsługują r&oacute;żne temperatury ruchu: wizerunek, performance, social i konwersję. Każde rozwinięte do pełnego zestawu ATF.</p>
+    <span class="mono">TeamBudget &middot; mikser haseł &middot; ATF</span>
+    <h1>Złóż ATF, kt&oacute;ry pasuje odbiorcy.</h1>
+    <p>Każdy element ma 5 wersji wypracowanych na warsztacie. Wybieraj po jednej z każdego rzędu albo zacznij od presetu roli. Podgląd składa się na żywo, gotowy zestaw kopiujesz jednym klikiem.</p>
+    <div class="presets" id="presets"></div>
   </div>
 </header>
 
-<!-- MASTER -->
-<section class="variant master">
-  <div class="wrap atf">
-    <span class="v-tag"><b>Master</b> hasło marki<span class="v-use">hero &middot; message house &middot; footer &middot; deck</span></span>
-    <h2>Kulturę firmy budują zespoły.</h2>
-    <p class="sub"><b>Budżet dla zespołu. Kultura dla firmy.</b><br>Bo <span class="rot">księgowość oddycha po zamknięciu miesiąca</span>.</p>
-    <p class="para">TeamBudget daje każdemu zespołowi własny budżet i doświadczenia dopasowane do jego reali&oacute;w, a firmie jeden system i pełne dane.</p>
-    <div class="cta"><span class="btn pri">Zapisz zespoły na pilotaż &rarr;</span><span class="btn gho">Zobacz, jak to działa &rarr;</span></div>
-    <div class="proof">
-      <div class="hp"><div class="num">2+</div><div class="lbl">wsp&oacute;lne doświadczenia<br>zespołu w każdym miesiącu</div></div>
-      <div class="hp"><div class="num">100%</div><div class="lbl">demokratycznych decyzji,<br>zesp&oacute;ł wybiera sam</div></div>
-      <div class="hp"><div class="num">1</div><div class="lbl">faktura i pełen<br>obraz dla firmy</div></div>
-    </div>
-    <div class="checks"><span><i>&#10003;</i> Budżet w rękach zespołu</span><span><i>&#10003;</i> Doświadczenia dopasowane do zespołu</span><span><i>&#10003;</i> Jedna faktura, pełne dane</span></div>
-  </div>
-</section>
+<main class="wrap mix">
 
-<!-- WIZERUNEK -->
-<section class="variant">
-  <div class="wrap atf">
-    <span class="v-tag"><b>01 Wizerunek</b> platforma „Między ludźmi”<span class="v-use">kampania brandowa &middot; OOH &middot; event</span></span>
-    <h2>Kultura dzieje się między ludźmi.</h2>
-    <p class="sub"><b>Nie w regulaminach. Nie w benefitach. Między ludźmi.</b><br>Bo <span class="rot">najlepsze pomysły padają przy śniadaniu, nie na statusie</span>.</p>
-    <p class="para">TeamBudget zamienia przestrzeń między ludźmi w rytm wsp&oacute;lnych chwil: budżet, kalendarz i doświadczenia, kt&oacute;re wracają co miesiąc, dopasowane do każdego zespołu.</p>
-    <div class="cta"><span class="btn pri">Poznaj TeamBudget &rarr;</span><span class="btn gho">Zobacz, jak działa rytm &rarr;</span></div>
-    <div class="proof">
-      <div class="hp"><div class="num">2+</div><div class="lbl">wsp&oacute;lne chwile zespołu<br>w każdym miesiącu</div></div>
-      <div class="hp"><div class="num">100%</div><div class="lbl">zespołu razem,<br>nikt nie zostaje z boku</div></div>
-      <div class="hp"><div class="num">12</div><div class="lbl">miesięcy rytmu,<br>nie jeden event</div></div>
-    </div>
-    <div class="checks"><span><i>&#10003;</i> Rytuały, kt&oacute;re wracają same</span><span><i>&#10003;</i> Wsp&oacute;lne chwile zamiast punkt&oacute;w w kafeterii</span><span><i>&#10003;</i> Kultura widoczna w danych</span></div>
-  </div>
-</section>
+  <div class="ctrls" id="ctrls"></div>
 
-<!-- PERFORMANCE -->
-<section class="variant">
-  <div class="wrap atf">
-    <span class="v-tag"><b>02 Performance</b> zrozumienie w sekundę<span class="v-use">ads &middot; cold outreach &middot; katalogi</span></span>
-    <h2>Pierwszy budżet, kt&oacute;ry dostaje zesp&oacute;ł.</h2>
-    <p class="sub"><b>Sport, zdrowie, rozw&oacute;j: wszystko per pracownik. To jest budżet per zesp&oacute;ł.</b><br>Bo <span class="rot">zesp&oacute;ł to więcej niż suma kart benefitowych</span>.</p>
-    <p class="para">Budżet i katalog doświadczeń w rękach zespołu. Jedna faktura, limity i pełne dane po stronie firmy. Start bez wdrożenia IT i bez nowego budżetu.</p>
-    <div class="cta"><span class="btn pri">Zapisz zespoły na pilotaż &rarr;</span><span class="btn gho">Zobacz produkt &rarr;</span></div>
-    <div class="proof">
-      <div class="hp"><div class="num">1.</div><div class="lbl">pierwszy budżet<br>zespołowy w Polsce</div></div>
-      <div class="hp"><div class="num">100%</div><div class="lbl">zespołu korzysta,<br>z definicji</div></div>
-      <div class="hp"><div class="num">0</div><div class="lbl">nowych budżet&oacute;w,<br>porządkujemy istniejące</div></div>
+  <div class="stage">
+    <div class="atf">
+      <span class="tag" id="pvTag">Wariant własny</span>
+      <h2 id="pvH"></h2>
+      <p class="sub"><b id="pvS"></b><br><span id="pvB"></span></p>
+      <p class="para" id="pvP"></p>
+      <div class="cta"><span class="btn pri" id="pvC"></span><span class="btn gho" id="pvC2"></span></div>
+      <div class="proof" id="pvN"></div>
+      <div class="checks" id="pvK"></div>
     </div>
-    <div class="checks"><span><i>&#10003;</i> Zesp&oacute;ł wybiera sam</span><span><i>&#10003;</i> Jedna faktura zamiast kilkudziesięciu</span><span><i>&#10003;</i> Start w tygodnie, nie kwartały</span></div>
-  </div>
-</section>
-
-<!-- SOCIAL / PROBLEM -->
-<section class="variant">
-  <div class="wrap atf">
-    <span class="v-tag"><b>03 Problem</b> otwarcie napięcia<span class="v-use">social &middot; hooki wideo &middot; pierwszy slajd decka</span></span>
-    <h2>Silne zespoły nie zdarzają się same.</h2>
-    <p class="sub"><b>Buduje się je. Regularnie.</b><br>Bo <span class="rot">po roku bez wsp&oacute;lnych chwil z zespołu zostają awatary na Teamsie</span>.</p>
-    <p class="para">Nikt nie decyduje, że więź wygasa. Po prostu nikt nie decyduje, że ma trwać. TeamBudget daje zespołom budżet i rytm wsp&oacute;lnych doświadczeń, zanim kulturę trzeba będzie ratować.</p>
-    <div class="cta"><span class="btn pri">Zbuduj rytm swoich zespoł&oacute;w &rarr;</span><span class="btn gho">Poznaj metodę Rytm 2+ &rarr;</span></div>
-    <div class="proof">
-      <div class="hp"><div class="num">30&ndash;40%</div><div class="lbl">tyle os&oacute;b realnie używa<br>benefit&oacute;w indywidualnych</div></div>
-      <div class="hp"><div class="num">1</div><div class="lbl">event rocznie<br>to za mało na więź</div></div>
-      <div class="hp"><div class="num">2+</div><div class="lbl">doświadczenia miesięcznie<br>budują ją naprawdę</div></div>
+    <div class="stage-foot">
+      <button class="act copy" id="btnCopy">Kopiuj zestaw</button>
+      <button class="act rand" id="btnRand">Losuj</button>
     </div>
-    <div class="checks"><span><i>&#10003;</i> Rytm zamiast zrywu</span><span><i>&#10003;</i> Więź mierzona, nie zakładana</span><span><i>&#10003;</i> Zesp&oacute;ł w centrum decyzji</span></div>
   </div>
-</section>
 
-<!-- KONWERSJA -->
-<section class="variant">
-  <div class="wrap atf">
-    <span class="v-tag"><b>04 Konwersja</b> mechanika + obietnica<span class="v-use">kampanie konwersyjne &middot; remarketing &middot; jak działa</span></span>
-    <h2>Razem co dwa tygodnie. Silniejsi cały rok.</h2>
-    <p class="sub"><b>Rytm robi więcej niż event.</b><br>Bo <span class="rot">jeden offsite rocznie nie zbuduje zaufania na co dzień</span>.</p>
-    <p class="para">Minimum dwa wsp&oacute;lne doświadczenia zespołu w miesiącu: śniadania, przekąski, celebracje z dostawą do firmy, dopasowane do realiów zespołu. Firma widzi efekt w danych, nie w deklaracjach.</p>
-    <div class="cta"><span class="btn pri">Zapisz zespoły na pilotaż &rarr;</span><span class="btn gho">Zobacz kalendarz rytuał&oacute;w &rarr;</span></div>
-    <div class="proof">
-      <div class="hp"><div class="num">2+</div><div class="lbl">doświadczenia zespołu<br>w każdym miesiącu</div></div>
-      <div class="hp"><div class="num">72h</div><div class="lbl">od zgłoszenia<br>do terminu startu</div></div>
-      <div class="hp"><div class="num">0 zł</div><div class="lbl">za platformę<br>w pilotażu</div></div>
-    </div>
-    <div class="checks"><span><i>&#10003;</i> Kalendarz wraca sam</span><span><i>&#10003;</i> Dostawa pod drzwi zespołu</span><span><i>&#10003;</i> Raport przed / po dla zarządu</span></div>
-  </div>
-</section>
+</main>
 
-<footer>
-  <div class="wrap">TeamBudget &middot; bank haseł ATF &middot; master + 4 role &middot; 2026</div>
-</footer>
+<footer><div class="wrap">TeamBudget &middot; mikser haseł ATF &middot; 5 wersji &times; 7 element&oacute;w &middot; 2026</div></footer>
+<div class="toast" id="toast">Skopiowano do schowka</div>
+
+<script>
+var DATA = {
+  H: { name: 'Nagłówek / hasło', note: 'główna obietnica', opts: [
+    'Kulturę firmy budują zespoły.',
+    'Kultura dzieje się między ludźmi.',
+    'Pierwszy budżet, który dostaje zespół.',
+    'Silne zespoły nie zdarzają się same.',
+    'Razem co dwa tygodnie. Silniejsi cały rok.'
+  ]},
+  S: { name: 'Subline (bold)', note: 'doprecyzowanie w 1 zdaniu', opts: [
+    'Budżet dla zespołu. Kultura dla firmy.',
+    'Nie w regulaminach. Nie w benefitach. Między ludźmi.',
+    'Sport, zdrowie, rozwój: wszystko per pracownik. To jest budżet per zespół.',
+    'Buduje się je. Regularnie.',
+    'Rytm robi więcej niż event.'
+  ]},
+  B: { name: 'Linia „Bo…”', note: 'konkret z życia zespołu', opts: [
+    'Bo księgowość oddycha po zamknięciu miesiąca.',
+    'Bo najlepsze pomysły padają przy śniadaniu, nie na statusie.',
+    'Bo zespół to więcej niż suma kart benefitowych.',
+    'Bo po roku bez wspólnych chwil z zespołu zostają awatary na Teamsie.',
+    'Bo jeden offsite rocznie nie zbuduje zaufania na co dzień.'
+  ]},
+  P: { name: 'Akapit produktowy', note: 'co dostajesz', opts: [
+    'TeamBudget daje każdemu zespołowi własny budżet i doświadczenia dopasowane do jego realiów, a firmie jeden system i pełne dane.',
+    'TeamBudget zamienia przestrzeń między ludźmi w rytm wspólnych chwil: budżet, kalendarz i doświadczenia, które wracają co miesiąc.',
+    'Budżet i katalog doświadczeń w rękach zespołu. Jedna faktura, limity i pełne dane po stronie firmy. Start bez wdrożenia IT.',
+    'Nikt nie decyduje, że więź wygasa. Po prostu nikt nie decyduje, że ma trwać. TeamBudget daje zespołom budżet i rytm, zanim kulturę trzeba będzie ratować.',
+    'Minimum dwa wspólne doświadczenia zespołu w miesiącu, z dostawą do firmy, dopasowane do realiów zespołu. Firma widzi efekt w danych.'
+  ]},
+  C: { name: 'CTA główne', note: 'pierwszy przycisk', opts: [
+    'Zapisz zespoły na pilotaż →',
+    'Poznaj TeamBudget →',
+    'Zobacz produkt →',
+    'Zbuduj rytm swoich zespołów →',
+    'Zobacz kalendarz rytuałów →'
+  ]},
+  N: { name: 'Liczby (3)', note: 'dowód w cyfrach', opts: [
+    '2+ wspólne doświadczenia zespołu w miesiącu · 100% demokratycznych decyzji, zespół wybiera sam · 1 faktura i pełen obraz dla firmy',
+    '2+ wspólne chwile zespołu w miesiącu · 100% zespołu razem, nikt nie zostaje z boku · 12 miesięcy rytmu, nie jeden event',
+    '1. pierwszy budżet zespołowy w Polsce · 100% zespołu korzysta, z definicji · 0 nowych budżetów, porządkujemy istniejące',
+    '30–40% tyle osób realnie używa benefitów indywidualnych · 1 event rocznie to za mało na więź · 2+ doświadczenia miesięcznie budują ją naprawdę',
+    '2+ doświadczenia zespołu w każdym miesiącu · 72h od zgłoszenia do terminu startu · 0 zł za platformę w pilotażu'
+  ]},
+  K: { name: 'Checki (3)', note: 'domknięcie zaufania', opts: [
+    'Budżet w rękach zespołu · Doświadczenia dopasowane do zespołu · Jedna faktura, pełne dane',
+    'Rytuały, które wracają same · Wspólne chwile zamiast punktów w kafeterii · Kultura widoczna w danych',
+    'Zespół wybiera sam · Jedna faktura zamiast kilkudziesięciu · Start w tygodnie, nie kwartały',
+    'Rytm zamiast zrywu · Więź mierzona, nie zakładana · Zespół w centrum decyzji',
+    'Kalendarz wraca sam · Dostawa pod drzwi zespołu · Raport przed / po dla zarządu'
+  ]}
+};
+var KEYS = ['H','S','B','P','C','N','K'];
+var PRESETS = [
+  { name:'Master', idx:[0,0,0,0,0,0,0] },
+  { name:'Wizerunek', idx:[1,1,1,1,1,1,1] },
+  { name:'Performance', idx:[2,2,2,2,2,2,2] },
+  { name:'Problem / social', idx:[3,3,3,3,3,3,3] },
+  { name:'Konwersja', idx:[4,4,4,4,4,4,4] }
+];
+var sel = {H:0,S:0,B:0,P:0,C:0,N:0,K:0};
+
+function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+
+function render(){
+  document.getElementById('pvH').textContent = DATA.H.opts[sel.H];
+  document.getElementById('pvS').textContent = DATA.S.opts[sel.S];
+  document.getElementById('pvB').textContent = DATA.B.opts[sel.B];
+  document.getElementById('pvP').textContent = DATA.P.opts[sel.P];
+  document.getElementById('pvC').textContent = DATA.C.opts[sel.C];
+  document.getElementById('pvC2').textContent = 'Zobacz, jak to działa →';
+  var n = DATA.N.opts[sel.N].split('·').map(function(s){return s.trim();});
+  document.getElementById('pvN').innerHTML = n.map(function(item){
+    var m = item.match(/^(\S+)\s+([\s\S]+)$/);
+    var num = m ? m[1] : item, lbl = m ? m[2] : '';
+    return '<div class="hp"><div class="num">'+esc(num)+'</div><div class="lbl">'+esc(lbl)+'</div></div>';
+  }).join('');
+  var k = DATA.K.opts[sel.K].split('·').map(function(s){return s.trim();});
+  document.getElementById('pvK').innerHTML = k.map(function(item){
+    return '<span><i>&#10003;</i> '+esc(item)+'</span>';
+  }).join('');
+  var tag = 'Wariant własny';
+  for (var i=0;i<PRESETS.length;i++){
+    var p = PRESETS[i], hit = true;
+    for (var j=0;j<KEYS.length;j++){ if (sel[KEYS[j]] !== p.idx[j]) { hit = false; break; } }
+    if (hit){ tag = 'Preset: ' + p.name; break; }
+  }
+  document.getElementById('pvTag').textContent = tag;
+  var pres = document.querySelectorAll('.pre');
+  for (var a=0;a<pres.length;a++){
+    pres[a].classList.toggle('on', tag === 'Preset: ' + PRESETS[a].name);
+  }
+  var opts = document.querySelectorAll('.opt');
+  for (var b=0;b<opts.length;b++){
+    opts[b].classList.toggle('on', sel[opts[b].dataset.g] === +opts[b].dataset.i);
+  }
+}
+
+function buildCtrls(){
+  var host = document.getElementById('ctrls');
+  var html = '';
+  KEYS.forEach(function(key){
+    var g = DATA[key];
+    html += '<div class="grp"><div class="g-name">'+esc(g.name)+' <em>'+esc(g.note)+'</em></div><div class="opts">';
+    g.opts.forEach(function(o,i){
+      html += '<button class="opt" data-g="'+key+'" data-i="'+i+'"><span class="k">0'+(i+1)+'</span><span>'+esc(o)+'</span></button>';
+    });
+    html += '</div></div>';
+  });
+  host.innerHTML = html;
+  host.addEventListener('click', function(e){
+    var b = e.target.closest('.opt');
+    if (!b) return;
+    sel[b.dataset.g] = +b.dataset.i;
+    render();
+  });
+  var ph = document.getElementById('presets');
+  ph.innerHTML = PRESETS.map(function(p,i){
+    return '<button class="pre" data-p="'+i+'">'+esc(p.name)+'</button>';
+  }).join('');
+  ph.addEventListener('click', function(e){
+    var b = e.target.closest('.pre');
+    if (!b) return;
+    var p = PRESETS[+b.dataset.p];
+    KEYS.forEach(function(key,j){ sel[key] = p.idx[j]; });
+    render();
+  });
+}
+
+document.getElementById('btnRand').addEventListener('click', function(){
+  KEYS.forEach(function(key){ sel[key] = Math.floor(Math.random()*5); });
+  render();
+});
+
+document.getElementById('btnCopy').addEventListener('click', function(){
+  var t = [
+    'ATF — ' + document.getElementById('pvTag').textContent,
+    '',
+    'H1: ' + DATA.H.opts[sel.H],
+    'Subline: ' + DATA.S.opts[sel.S],
+    DATA.B.opts[sel.B],
+    'Akapit: ' + DATA.P.opts[sel.P],
+    'CTA: ' + DATA.C.opts[sel.C] + '  |  Zobacz, jak to działa →',
+    'Liczby: ' + DATA.N.opts[sel.N],
+    'Checki: ' + DATA.K.opts[sel.K]
+  ].join('\n');
+  function done(){
+    var el = document.getElementById('toast');
+    el.classList.add('show');
+    setTimeout(function(){ el.classList.remove('show'); }, 1800);
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(t).then(done, done);
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = t; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); } catch(e){}
+    document.body.removeChild(ta); done();
+  }
+});
+
+buildCtrls();
+render();
+</script>
 
 </body>
 </html>
