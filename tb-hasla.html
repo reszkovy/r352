@@ -68,6 +68,11 @@ button{font:inherit;cursor:pointer;background:none;border:none;color:inherit;tex
 .opt.on{border-color:var(--blue,#4375FF);background:rgba(67,117,255,.07);box-shadow:inset 0 0 0 1px var(--blue,#4375FF);}
 .opt .k{font-family:'DM Mono',monospace;font-size:9px;color:rgba(67,117,255,.55);font-weight:500;flex:0 0 auto;}
 .opt.on .k{color:var(--blue,#4375FF);}
+.opt .txt{flex:1 1 auto;min-width:0;}
+.otag{font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:rgba(67,117,255,.65);background:rgba(67,117,255,.08);border-radius:100px;padding:3px 9px;flex:0 0 auto;white-space:nowrap;align-self:center;}
+.otag.rec{background:var(--orange,#FE692B);color:#fff;}
+.g-why{font-size:12px;line-height:1.5;color:rgba(71,58,57,.62);margin:-4px 0 10px;max-width:60ch;}
+.g-why b{color:var(--pale-black,#473A39);}
 
 .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(80px);background:var(--pale-black,#473A39);color:#fff;font-size:13px;font-weight:600;padding:12px 22px;border-radius:100px;transition:.3s;opacity:0;pointer-events:none;z-index:50;}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
@@ -112,7 +117,10 @@ footer{padding:0 0 46px;font-family:'DM Mono',monospace;font-size:11px;letter-sp
 
 <script>
 var DATA = {
-  H: { name: 'Nagłówek / hasło', note: 'główna obietnica', opts: [
+  H: { name: 'Nagłówek / hasło', note: 'główna obietnica',
+  why: '<b>Master jest jeden.</b> Tylko pierwsze hasło stawia tezę kategorii, z której wynika cała reszta komunikacji. Pozostałe cztery to narzędzia kampanijne pod różne temperatury ruchu, nie kandydaci na markę.',
+  tags: ['marka · rekomendacja','wizerunek','performance','problem','konwersja'],
+  opts: [
     'Kulturę firmy budują zespoły.',
     'Ludzie lubią ludzi, z którymi jedzą.',
     'Pierwszy budżet, który dostaje cały zespół.',
@@ -213,9 +221,12 @@ function buildCtrls(){
   var html = '';
   KEYS.forEach(function(key){
     var g = DATA[key];
-    html += '<div class="grp"><div class="g-name">'+esc(g.name)+' <em>'+esc(g.note)+'</em></div><div class="opts">';
+    html += '<div class="grp"><div class="g-name">'+esc(g.name)+' <em>'+esc(g.note)+'</em></div>';
+    if (g.why) html += '<p class="g-why">'+g.why+'</p>';
+    html += '<div class="opts">';
     g.opts.forEach(function(o,i){
-      html += '<button class="opt" data-g="'+key+'" data-i="'+i+'"><span class="k">0'+(i+1)+'</span><span>'+esc(o)+'</span></button>';
+      var tag = g.tags ? '<span class="otag'+(i===0?' rec':'')+'">'+esc(g.tags[i])+'</span>' : '';
+      html += '<button class="opt" data-g="'+key+'" data-i="'+i+'"><span class="k">0'+(i+1)+'</span><span class="txt">'+esc(o)+'</span>'+tag+'</button>';
     });
     html += '</div></div>';
   });
