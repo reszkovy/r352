@@ -45,7 +45,8 @@ button{font:inherit;cursor:pointer;background:none;border:none;color:inherit;tex
 .atf .tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange,#FE692B);font-weight:500;}
 .atf h2{font-family:'Pangram Sans','DM Sans',sans-serif;font-size:clamp(30px,3.6vw,46px);font-weight:700;letter-spacing:-.04em;line-height:1.03;color:var(--blue,#4375FF);margin-top:14px;max-width:16ch;text-wrap:balance;}
 .pv-claim{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange,#FE692B);font-weight:500;margin-top:12px;display:none;}
-.atf.claims-mode .sub,.atf.claims-mode .para,.atf.claims-mode .cta,.atf.claims-mode .proof,.atf.claims-mode .checks{display:none;}
+.atf.claims-mode h2,.atf.claims-mode .sub,.atf.claims-mode .para,.atf.claims-mode .cta,.atf.claims-mode .proof,.atf.claims-mode .checks{display:none;}
+.atf.claims-mode .cl-list{margin-top:18px;}
 .cl-list{display:none;flex-direction:column;gap:12px;margin-top:26px;}
 .atf.claims-mode .cl-list{display:flex;}
 .cl-item{display:flex;gap:14px;align-items:baseline;padding:14px 18px;background:#fff;border-radius:14px;border:1px solid rgba(67,117,255,.25);}
@@ -292,7 +293,7 @@ document.getElementById('btnCopy').addEventListener('click', function(){
   var v = DIRS[cur];
   var t;
   if (v.claims) {
-    t = ['Claim narzędziowy TeamBudget — propozycje', 'Hasło: ' + v.H, ''].concat(
+    t = ['Uproszczone komunikaty narzędziowe TeamBudget', ''].concat(
       v.claims.map(function(c,i){ return (i+1)+'. '+c.t+' ('+c.d+')'; })
     ).join('\n');
     copyDone(t);
