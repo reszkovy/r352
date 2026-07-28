@@ -40,6 +40,7 @@ button{font:inherit;cursor:pointer;background:none;border:none;color:inherit;tex
 .atf{background:var(--sunny,#FEF3DE);border-radius:18px;padding:40px 40px 34px;box-shadow:0 10px 34px rgba(71,58,57,.08);}
 .atf .tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange,#FE692B);font-weight:500;}
 .atf h2{font-family:'Pangram Sans','DM Sans',sans-serif;font-size:clamp(30px,3.6vw,46px);font-weight:700;letter-spacing:-.04em;line-height:1.03;color:var(--blue,#4375FF);margin-top:14px;max-width:16ch;text-wrap:balance;}
+.pv-claim{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange,#FE692B);font-weight:500;margin-top:12px;display:none;}
 .atf .sub{margin-top:18px;font-size:16.5px;color:var(--blue,#4375FF);max-width:52ch;}
 .atf .sub b{font-weight:700;}
 .atf .para{margin-top:10px;font-size:15px;color:var(--blue,#4375FF);opacity:.85;max-width:56ch;}
@@ -79,6 +80,7 @@ footer{padding:0 0 46px;font-family:'DM Mono',monospace;font-size:11px;letter-sp
     <div class="atf">
       <span class="tag" id="pvTag"></span>
       <h2 id="pvH"></h2>
+      <p class="pv-claim" id="pvClaim"></p>
       <p class="sub"><b id="pvS"></b><br><span id="pvB"></span></p>
       <p class="para" id="pvP"></p>
       <div class="cta"><span class="btn pri" id="pvC"></span><span class="btn gho">Zobacz, jak to działa &rarr;</span></div>
@@ -98,7 +100,19 @@ footer{padding:0 0 46px;font-family:'DM Mono',monospace;font-size:11px;letter-sp
 <script>
 var DIRS = [
   {
-    tag: 'Marka', rec: true, name: 'Master',
+    tag: 'Marka · 28.07.2026', rec: true, name: 'Master 28.07',
+    use: 'Po feedbacku: lockup logo + hasło + claim narzędziowy, który wyjaśnia produkt od razu. Na nośniki bez miejsca na opisy.',
+    H: 'Kulturę firmy budują zespoły.',
+    claim: 'Pierwszy budżet w rękach zespołu',
+    S: 'Budżet dla zespołu. Kultura dla firmy.',
+    B: 'Bo najważniejsze rozmowy i tak dzieją się przy kawie.',
+    P: 'TeamBudget to prosty pomysł: zespół dostaje własny budżet na wspólne śniadania, przekąski i świętowanie. Sam wybiera, co i kiedy. Firma widzi całość na jednej fakturze.',
+    C: 'Zapisz zespoły na pilotaż →',
+    N: '2+ wspólne chwile zespołu w każdym miesiącu · 100% decyzji podejmuje zespół, nie centrala · 1 faktura zamiast sterty paragonów',
+    K: 'Zespół wybiera sam · Dostawa pod drzwi · Jedna faktura, pełne dane'
+  },
+  {
+    tag: 'Marka · wersja bazowa', rec: false, name: 'Master',
     use: 'Strona, deck, stopka, wszystko co nosi logo. Teza marki na lata.',
     H: 'Kulturę firmy budują zespoły.',
     S: 'Budżet dla zespołu. Kultura dla firmy.',
@@ -161,6 +175,9 @@ function render(){
   var v = DIRS[cur];
   document.getElementById('pvTag').textContent = v.tag;
   document.getElementById('pvH').textContent = v.H;
+  var cl = document.getElementById('pvClaim');
+  cl.textContent = v.claim || '';
+  cl.style.display = v.claim ? 'block' : 'none';
   document.getElementById('pvS').textContent = v.S;
   document.getElementById('pvB').textContent = v.B;
   document.getElementById('pvP').textContent = v.P;
@@ -200,13 +217,14 @@ document.getElementById('btnCopy').addEventListener('click', function(){
     'ATF — ' + v.name + ' (' + v.tag + ')',
     '',
     'H1: ' + v.H,
+    (v.claim ? 'Claim: ' + v.claim : null),
     'Subline: ' + v.S,
     v.B,
     'Akapit: ' + v.P,
     'CTA: ' + v.C + '  |  Zobacz, jak to działa →',
     'Liczby: ' + v.N,
     'Checki: ' + v.K
-  ].join('\n');
+  ].filter(function(x){return x!==null;}).join('\n');
   function done(){
     var el = document.getElementById('toast');
     el.classList.add('show');
