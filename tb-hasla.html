@@ -41,6 +41,13 @@ button{font:inherit;cursor:pointer;background:none;border:none;color:inherit;tex
 .atf .tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange,#FE692B);font-weight:500;}
 .atf h2{font-family:'Pangram Sans','DM Sans',sans-serif;font-size:clamp(30px,3.6vw,46px);font-weight:700;letter-spacing:-.04em;line-height:1.03;color:var(--blue,#4375FF);margin-top:14px;max-width:16ch;text-wrap:balance;}
 .pv-claim{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange,#FE692B);font-weight:500;margin-top:12px;display:none;}
+.atf.claims-mode .sub,.atf.claims-mode .para,.atf.claims-mode .cta,.atf.claims-mode .proof,.atf.claims-mode .checks{display:none;}
+.cl-list{display:none;flex-direction:column;gap:12px;margin-top:26px;}
+.atf.claims-mode .cl-list{display:flex;}
+.cl-item{display:flex;gap:14px;align-items:baseline;padding:14px 18px;background:#fff;border-radius:14px;border:1px solid rgba(67,117,255,.25);}
+.cl-item .n{font-family:'DM Mono',monospace;font-size:10px;color:var(--orange,#FE692B);font-weight:500;flex:0 0 auto;}
+.cl-item .t b{font-family:'Pangram Sans','DM Sans',sans-serif;font-size:19px;color:var(--blue,#4375FF);letter-spacing:-.02em;font-weight:700;display:block;line-height:1.25;}
+.cl-item .t p{font-size:12.5px;color:rgba(71,58,57,.6);margin-top:3px;line-height:1.5;}
 .atf .sub{margin-top:18px;font-size:16.5px;color:var(--blue,#4375FF);max-width:52ch;}
 .atf .sub b{font-weight:700;}
 .atf .para{margin-top:10px;font-size:15px;color:var(--blue,#4375FF);opacity:.85;max-width:56ch;}
@@ -81,6 +88,7 @@ footer{padding:0 0 46px;font-family:'DM Mono',monospace;font-size:11px;letter-sp
       <span class="tag" id="pvTag"></span>
       <h2 id="pvH"></h2>
       <p class="pv-claim" id="pvClaim"></p>
+      <div class="cl-list" id="pvClaims"></div>
       <p class="sub"><b id="pvS"></b><br><span id="pvB"></span></p>
       <p class="para" id="pvP"></p>
       <div class="cta"><span class="btn pri" id="pvC"></span><span class="btn gho">Zobacz, jak to działa &rarr;</span></div>
@@ -99,6 +107,19 @@ footer{padding:0 0 46px;font-family:'DM Mono',monospace;font-size:11px;letter-sp
 
 <script>
 var DIRS = [
+  {
+    tag: 'Claim · propozycje 28.07', rec: true, name: 'Propozycje claimu',
+    title: '5 propozycji claimu narzędziowego',
+    use: 'Trzeci element lockupu: logo + hasło + claim. Pięć opcji od brandowej do dosłownej, wybieramy jedną.',
+    H: 'Kulturę firmy budują zespoły.',
+    claims: [
+      { t: 'Pierwszy budżet w rękach zespołu', d: 'Kategoria i sprawczość w jednej linii. Wersja brandowa.' },
+      { t: 'Wspólny budżet zespołu na wspólne chwile', d: 'Najprościej mówi, na co jest ten budżet.' },
+      { t: 'Zespół dostaje budżet. Wybiera i zamawia.', d: 'Czysta mechanika produktu w dwóch zdaniach.' },
+      { t: 'Budżet zespołu na śniadania i celebracje w firmie', d: 'Najbardziej dosłowna. Zero domysłów, na zimne nośniki.' },
+      { t: 'Jeden budżet na cały zespół, nie na osobę', d: 'Tłumaczy kategorię przez kontrast z benefitami per pracownik.' }
+    ]
+  },
   {
     tag: 'Marka · 28.07.2026', rec: true, name: 'Master 28.07',
     use: 'Po feedbacku: lockup logo + hasło + claim narzędziowy, który wyjaśnia produkt od razu. Na nośniki bez miejsca na opisy.',
@@ -178,6 +199,11 @@ function render(){
   var cl = document.getElementById('pvClaim');
   cl.textContent = v.claim || '';
   cl.style.display = v.claim ? 'block' : 'none';
+  var atfEl = document.querySelector('.atf');
+  atfEl.classList.toggle('claims-mode', !!v.claims);
+  document.getElementById('pvClaims').innerHTML = (v.claims || []).map(function(c,i){
+    return '<div class="cl-item"><span class="n">0'+(i+1)+'</span><span class="t"><b>'+esc(c.t)+'</b><p>'+esc(c.d)+'</p></span></div>';
+  }).join('');
   document.getElementById('pvS').textContent = v.S;
   document.getElementById('pvB').textContent = v.B;
   document.getElementById('pvP').textContent = v.P;
@@ -199,7 +225,7 @@ function build(){
   host.innerHTML = DIRS.map(function(v,i){
     return '<button class="dir" data-i="'+i+'">'+
       '<span class="d-tag'+(v.rec?' rec':'')+'">'+esc(v.tag)+'</span>'+
-      '<h3>'+esc(v.H)+'</h3>'+
+      '<h3>'+esc(v.title || v.H)+'</h3>'+
       '<p>'+esc(v.use)+'</p>'+
     '</button>';
   }).join('');
@@ -211,20 +237,7 @@ function build(){
   });
 }
 
-document.getElementById('btnCopy').addEventListener('click', function(){
-  var v = DIRS[cur];
-  var t = [
-    'ATF — ' + v.name + ' (' + v.tag + ')',
-    '',
-    'H1: ' + v.H,
-    (v.claim ? 'Claim: ' + v.claim : null),
-    'Subline: ' + v.S,
-    v.B,
-    'Akapit: ' + v.P,
-    'CTA: ' + v.C + '  |  Zobacz, jak to działa →',
-    'Liczby: ' + v.N,
-    'Checki: ' + v.K
-  ].filter(function(x){return x!==null;}).join('\n');
+function copyDone(t){
   function done(){
     var el = document.getElementById('toast');
     el.classList.add('show');
@@ -238,6 +251,31 @@ document.getElementById('btnCopy').addEventListener('click', function(){
     try { document.execCommand('copy'); } catch(e){}
     document.body.removeChild(ta); done();
   }
+}
+
+document.getElementById('btnCopy').addEventListener('click', function(){
+  var v = DIRS[cur];
+  var t;
+  if (v.claims) {
+    t = ['Claim narzędziowy TeamBudget — propozycje', 'Hasło: ' + v.H, ''].concat(
+      v.claims.map(function(c,i){ return (i+1)+'. '+c.t+' ('+c.d+')'; })
+    ).join('\n');
+    copyDone(t);
+    return;
+  }
+  t = [
+    'ATF — ' + v.name + ' (' + v.tag + ')',
+    '',
+    'H1: ' + v.H,
+    (v.claim ? 'Claim: ' + v.claim : null),
+    'Subline: ' + v.S,
+    v.B,
+    'Akapit: ' + v.P,
+    'CTA: ' + v.C + '  |  Zobacz, jak to działa →',
+    'Liczby: ' + v.N,
+    'Checki: ' + v.K
+  ].filter(function(x){return x!==null;}).join('\n');
+  copyDone(t);
 });
 
 build();
