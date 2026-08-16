@@ -44,9 +44,21 @@ section{padding:72px 0;}
 .poster .brand{display:flex;align-items:center;gap:8px;font-family:'Pangram Sans','DM Sans',sans-serif;font-weight:600;font-size:14px;color:var(--pale-black,#473A39);}
 .poster .brand img{width:20px;height:20px;aspect-ratio:1;object-fit:contain;}
 .poster .cta{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:#fff;background:var(--blue,#4375FF);border-radius:100px;padding:8px 14px;white-space:nowrap;}
+/* kolory tła = kolor zdjęcia */
+.p-blue{background:#4375FF;} .p-orange{background:#FE692B;} .p-green{background:#15A477;} .p-yellow{background:#FDA33C;} .p-sunny{background:#FEF3DE;}
+.p-blue img{background:#4375FF;} .p-orange img{background:#FE692B;} .p-green img{background:#15A477;} .p-yellow img{background:#FDA33C;}
+.p-blue .line,.p-orange .line,.p-green .line{color:#FFFBF4;}
+.p-yellow .line{color:#473A39;}
+.p-blue .who,.p-orange .who,.p-green .who,.p-blue .brand,.p-orange .brand,.p-green .brand{color:#FFFBF4;opacity:.9;}
+.p-blue .lock,.p-orange .lock,.p-green .lock{border-top-color:rgba(255,251,244,.28);}
+.p-yellow .lock{border-top-color:rgba(71,58,57,.2);}
+.p-blue .cta,.p-orange .cta,.p-green .cta{background:#FFFBF4;color:#4375FF;}
+.p-orange .cta,.p-green .cta{color:#473A39;}
+.p-yellow .cta{background:#473A39;color:#FFFBF4;}
+.p-blue .brand img,.p-orange .brand img,.p-green .brand img{filter:brightness(0) invert(1);}
 .poster.after .line{color:var(--pale-black,#473A39);}
-.poster.after .line b{color:var(--blue,#4375FF);font-weight:700;}
-.poster.after .cta{background:var(--orange,#FE692B);}
+.poster.after .line b{color:var(--blue,#4375FF);font-weight:700;} .poster.after.p-orange .line{color:#FFFBF4;} .poster.after.p-orange .line b{color:#FFFBF4;text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:6px;} .poster.after.p-orange .cta{background:#FFFBF4;color:#473A39;}
+.poster.after.p-sunny .cta{background:var(--orange,#FE692B);color:#fff;}
 
 /* rows */
 .rows{margin-top:28px;}
@@ -82,12 +94,12 @@ section{padding:72px 0;}
     <div class="mono">Seria · różne zespoły, ta sama linijka</div>
     <h2>Budżet zespołu: 0 zł</h2>
     <div class="grid">
-      <div class="poster"><img src="img/tb-zespoly/sprzedaz.webp" alt="Zespół sprzedaży"><div class="cap"><div class="who">Zespół sprzedaży · 10 osób</div><div class="line">Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
-      <div class="poster"><img src="img/tb-zespoly/it.webp" alt="Zespół IT"><div class="cap"><div class="who">Zespół IT · 7 osób</div><div class="line">Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
-      <div class="poster"><img src="img/tb-zespoly/ksiegowosc.webp" alt="Zespół księgowości"><div class="cap"><div class="who">Zespół księgowości · 6 osób</div><div class="line">Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
-      <div class="poster"><img src="img/tb-zespoly/obsluga.webp" alt="Zespół obsługi klienta"><div class="cap"><div class="who">Zespół obsługi klienta · 12 osób</div><div class="line">Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
-      <div class="poster"><img src="img/tb-zespoly/magazyn.webp" alt="Zespół magazynu"><div class="cap"><div class="who">Zespół magazynu · 9 osób</div><div class="line">Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
-      <div class="poster"><img src="img/tb-zespoly/marketing.webp" alt="Zespół marketingu"><div class="cap"><div class="who">Zespół marketingu · 8 osób</div><div class="line">Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
+      <div class="poster p-blue"><img src="img/tb-zespoly/sprzedaz.webp" alt="Zespół sprzedaży"><div class="cap"><div class="who">Zespół sprzedaży · 10 osób</div><div class="line">Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
+      <div class="poster p-orange"><img src="img/tb-zespoly/it.webp" alt="Zespół IT"><div class="cap"><div class="who">Zespół IT · 7 osób</div><div class="line">Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
+      <div class="poster p-sunny"><img src="img/tb-zespoly/ksiegowosc.webp" alt="Zespół księgowości"><div class="cap"><div class="who">Zespół księgowości · 6 osób</div><div class="line">Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
+      <div class="poster p-yellow"><img src="img/tb-zespoly/obsluga.webp" alt="Zespół obsługi klienta"><div class="cap"><div class="who">Zespół obsługi klienta · 12 osób</div><div class="line">Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
+      <div class="poster p-green"><img src="img/tb-zespoly/magazyn.webp" alt="Zespół magazynu"><div class="cap"><div class="who">Zespół magazynu · 9 osób</div><div class="line">Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
+      <div class="poster p-blue"><img src="img/tb-zespoly/marketing.webp" alt="Zespół marketingu"><div class="cap"><div class="who">Zespół marketingu · 8 osób</div><div class="line">Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
     </div>
   </div>
 </section>
@@ -100,8 +112,8 @@ section{padding:72px 0;}
     <h2>Te same zdjęcia. Prawdziwe zespoły. Zmieniona linijka.</h2>
     <p class="lead">Kampania sama pokazuje przejście: zero, potem kwota, potem na co poszło. Dowód zamiast obietnicy.</p>
     <div class="grid">
-      <div class="poster after"><img src="img/tb-zespoly/ksiegowosc.webp" alt="Zespół księgowości"><div class="cap"><div class="who">Zespół księgowości · 6 osób</div><div class="line">Budżet zespołu: <b>1 500 zł</b><br>Śniadania w&nbsp;piątki.</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Zgłoś firmę do pilotażu</span></div></div></div>
-      <div class="poster after"><img src="img/tb-zespoly/it.webp" alt="Zespół IT"><div class="cap"><div class="who">Zespół IT · 7 osób</div><div class="line">Budżet zespołu: <b>2 000 zł</b><br>Kawa, o&nbsp;którą nikt nie musi prosić.</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Zgłoś firmę do pilotażu</span></div></div></div>
+      <div class="poster after p-sunny"><img src="img/tb-zespoly/ksiegowosc.webp" alt="Zespół księgowości"><div class="cap"><div class="who">Zespół księgowości · 6 osób</div><div class="line">Budżet zespołu: <b>1 500 zł</b><br>Śniadania w&nbsp;piątki.</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Zgłoś firmę do pilotażu</span></div></div></div>
+      <div class="poster after p-orange"><img src="img/tb-zespoly/it.webp" alt="Zespół IT"><div class="cap"><div class="who">Zespół IT · 7 osób</div><div class="line">Budżet zespołu: <b>2 000 zł</b><br>Kawa, o&nbsp;którą nikt nie musi prosić.</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Zgłoś firmę do pilotażu</span></div></div></div>
     </div>
   </div>
 </section>
@@ -116,7 +128,7 @@ section{padding:72px 0;}
       <div class="row"><div class="n">01</div><div><h3>Aktywacja: „Wyślij zdjęcie zespołu, dopiszemy mu budżet."</h3><p>Firma wysyła zdjęcie swojego zespołu. TeamBudget daje temu zespołowi pierwszy miesiąc w&nbsp;pilotażu, zdjęcie wraca z&nbsp;nową linijką. Ludzie robią content, wy dostajecie lead z&nbsp;nazwą firmy, liderem i&nbsp;liczbą osób.</p></div></div>
       <div class="row"><div class="n">02</div><div><h3>Nośniki: najpierw te, które macie za darmo</h3><p>LinkedIn (jedno zdjęcie dziennie, inny zespół), windy i&nbsp;lobby biurowców (6 s: zdjęcie, wjeżdża linijka, zero miga), kuchnie klientów BW (plakat „tu jada zespół. Budżet zespołu: 0 zł. Jeszcze."), scena BMHR (zdjęcia zespołów uczestników robione na miejscu, drukowane z&nbsp;linijką od razu). Citylighty punktowo w&nbsp;zagłębiach biurowych, jeśli budżet zostanie.</p></div></div>
       <div class="row"><div class="n">03</div><div><h3>User flow (dla Łukasza P.)</h3><p>Zdjęcie → QR/klik → strona „Dopisz budżet swojemu zespołowi" (zdjęcie, firma, lider, liczba osób) → LP → pilotaż. Krok pośredni jest emocjonalny, nie formularzowy: zespół widzi siebie jako jednostkę, która może coś dostać.</p></div></div>
-      <div class="row"><div class="n">04</div><div><h3>Produkcja</h3><p>Zdjęcia studyjne na jednolitym tle Sunny White, każdy zespół z&nbsp;rekwizytami swojej pracy, twarze środkowoeuropejskie. Na start seria z&nbsp;generacji (powyżej), docelowo prawdziwe zespoły klientów BW i&nbsp;pilotaży. Linijka zawsze w&nbsp;Pangram Bold na Blue Sky, opis zespołu w&nbsp;DM Mono, tło Sunny White.</p></div></div>
+      <div class="row"><div class="n">04</div><div><h3>Produkcja</h3><p>Zdjęcia studyjne, każdy zespół na jednolitym tle w&nbsp;jednym kolorze z&nbsp;palety TB (Blue Sky, Orange, Deep Yellow, Pale Green, Sunny White), z&nbsp;rekwizytami swojej pracy, twarze środkowoeuropejskie. Karta plakatu przejmuje kolor zdjęcia. Na start seria z&nbsp;generacji (powyżej), docelowo prawdziwe zespoły klientów BW i&nbsp;pilotaży. Linijka zawsze w&nbsp;Pangram Bold na Blue Sky, opis zespołu w&nbsp;DM Mono, tło Sunny White.</p></div></div>
     </div>
   </div>
 </section>
