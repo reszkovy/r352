@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TeamBudget — Kampania „Budżet zespołu: 0 zł"</title>
+<meta name="description" content="Propozycja linii kampanii TeamBudget: zdjęcia zespołów z jedną linijką z tabelki budżetowej.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="sygnet.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+@font-face{font-family:'Pangram Sans';src:url('PPPangramSans-Bold.otf') format('opentype');font-weight:700;font-display:swap;}
+@font-face{font-family:'Pangram Sans';src:url('PPPangramSans-Semibold.otf') format('opentype');font-weight:600;font-display:swap;}
+@font-face{font-family:'Pangram Sans';src:url('PPPangramSans-Medium.otf') format('opentype');font-weight:500;font-display:swap;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--pale-white,#FFFBF4);color:var(--pale-black,#473A39);line-height:1.55;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px;}
+.mono{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--orange,#FE692B);}
+h1,h2,h3{font-family:'Pangram Sans','DM Sans',sans-serif;letter-spacing:-.03em;line-height:1.05;color:var(--blue,#4375FF);text-wrap:balance;}
+h1{font-size:clamp(34px,5vw,64px);font-weight:700;margin-top:12px;}
+h2{font-size:clamp(26px,3.4vw,40px);font-weight:700;margin-top:10px;}
+h3{font-size:20px;font-weight:600;}
+p{text-wrap:pretty;}
+.lead{font-family:'Pangram Sans','DM Sans',sans-serif;font-weight:500;font-size:clamp(16px,2vw,20px);color:rgba(67,117,255,.85);margin-top:16px;max-width:60ch;}
+section{padding:72px 0;}
+.hr{height:1px;background:var(--line,#e7ddd6);}
+
+/* hero */
+.hero{padding:64px 0 48px;}
+.hero .sub{margin-top:22px;max-width:62ch;font-size:16px;color:rgba(71,58,57,.8);}
+
+/* posters */
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px;margin-top:40px;}
+@media(max-width:820px){.grid{grid-template-columns:1fr;}}
+.poster{background:var(--sunny,#FEF3DE);border-radius:22px;overflow:hidden;box-shadow:0 18px 44px rgba(71,58,57,.10);}
+.poster img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;}
+.poster .cap{padding:22px 24px 26px;}
+.poster .who{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--pale-black,#473A39);opacity:.75;}
+.poster .line{font-family:'Pangram Sans','DM Sans',sans-serif;font-weight:700;font-size:clamp(26px,3vw,38px);letter-spacing:-.03em;line-height:1.05;color:var(--blue,#4375FF);margin-top:8px;}
+.poster .lock{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:18px;padding-top:14px;border-top:1px solid rgba(71,58,57,.12);}
+.poster .brand{display:flex;align-items:center;gap:8px;font-family:'Pangram Sans','DM Sans',sans-serif;font-weight:600;font-size:14px;color:var(--pale-black,#473A39);}
+.poster .brand img{width:20px;height:20px;aspect-ratio:1;object-fit:contain;}
+.poster .cta{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:#fff;background:var(--blue,#4375FF);border-radius:100px;padding:8px 14px;white-space:nowrap;}
+.poster.after .line{color:var(--pale-black,#473A39);}
+.poster.after .line b{color:var(--blue,#4375FF);font-weight:700;}
+.poster.after .cta{background:var(--orange,#FE692B);}
+
+/* rows */
+.rows{margin-top:28px;}
+.row{display:grid;grid-template-columns:64px minmax(0,1fr);gap:20px;padding:26px 0;border-top:1px solid var(--line,#e7ddd6);align-items:start;}
+.row:last-child{border-bottom:1px solid var(--line,#e7ddd6);}
+.row .n{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.14em;color:var(--orange,#FE692B);font-weight:500;padding-top:6px;}
+.row h3{margin-bottom:6px;}
+.row p{font-size:15.5px;color:rgba(71,58,57,.82);max-width:70ch;}
+
+/* two col */
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;margin-top:28px;}
+@media(max-width:820px){.two{grid-template-columns:1fr;}}
+.two p{font-size:15.5px;color:rgba(71,58,57,.82);margin-top:8px;}
+.q{font-family:'Pangram Sans','DM Sans',sans-serif;font-weight:600;font-size:22px;letter-spacing:-.02em;line-height:1.2;color:var(--blue,#4375FF);}
+.foot{padding:40px 0 64px;font-size:13px;color:rgba(71,58,57,.6);}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="mono">TeamBudget · propozycja linii kampanii · 16.08.2026</div>
+    <h1>Każdy zespół ma zdjęcie.<br>Żaden nie ma budżetu.</h1>
+    <p class="lead">Firma pokazuje zespoły na każdym kroku: na intranecie, w&nbsp;prezentacji dla zarządu, w&nbsp;ogłoszeniu o&nbsp;pracę. W&nbsp;budżecie zespół jako całość nie istnieje. Każdy z&nbsp;osobna ma benefity. Zespół razem nie ma nic.</p>
+    <p class="sub">Kampania to zwykłe zdjęcie zespołu i&nbsp;jedna linijka pod spodem, jak z&nbsp;tabelki budżetowej. Bez tłumaczenia. Widać w&nbsp;sekundę na windzie, LinkedIn i&nbsp;scenie BMHR. Im więcej zespołów, tym mocniej działa: widz szuka swojego działu.</p>
+  </div>
+</section>
+
+<div class="wrap"><div class="hr"></div></div>
+
+<section>
+  <div class="wrap">
+    <div class="mono">Seria · różne zespoły, ta sama linijka</div>
+    <h2>Budżet zespołu: 0 zł</h2>
+    <div class="grid">
+      <div class="poster"><img src="img/tb-zespoly/sprzedaz.webp" alt="Zespół sprzedaży"><div class="cap"><div class="who">Zespół sprzedaży · 12 osób</div><div class="line">Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
+      <div class="poster"><img src="img/tb-zespoly/it.webp" alt="Zespół IT"><div class="cap"><div class="who">Zespół IT · 8 osób</div><div class="line">Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
+      <div class="poster"><img src="img/tb-zespoly/ksiegowosc.webp" alt="Zespół księgowości"><div class="cap"><div class="who">Zespół księgowości · 6 osób</div><div class="line">Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
+      <div class="poster"><img src="img/tb-zespoly/obsluga.webp" alt="Zespół obsługi klienta"><div class="cap"><div class="who">Zespół obsługi klienta · 15 osób</div><div class="line">Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
+      <div class="poster"><img src="img/tb-zespoly/magazyn.webp" alt="Zespół magazynu"><div class="cap"><div class="who">Zespół magazynu · 10 osób</div><div class="line">Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
+      <div class="poster"><img src="img/tb-zespoly/marketing.webp" alt="Zespół marketingu, hybrydowy"><div class="cap"><div class="who">Zespół marketingu · 9 osób, w tym 4 zdalnie</div><div class="line">Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="hr"></div></div>
+
+<section>
+  <div class="wrap">
+    <div class="mono">Faza 2 · po pilotażach, na BMHR</div>
+    <h2>Te same zdjęcia. Prawdziwe zespoły. Zmieniona linijka.</h2>
+    <p class="lead">Kampania sama pokazuje przejście: zero, potem kwota, potem na co poszło. Dowód zamiast obietnicy.</p>
+    <div class="grid">
+      <div class="poster after"><img src="img/tb-zespoly/ksiegowosc.webp" alt="Zespół księgowości"><div class="cap"><div class="who">Zespół księgowości · 6 osób</div><div class="line">Budżet zespołu: <b>1 500 zł</b><br>Śniadania w&nbsp;piątki.</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Zgłoś firmę do pilotażu</span></div></div></div>
+      <div class="poster after"><img src="img/tb-zespoly/it.webp" alt="Zespół IT"><div class="cap"><div class="who">Zespół IT · 8 osób</div><div class="line">Budżet zespołu: <b>2 000 zł</b><br>Kawa, o&nbsp;którą nikt nie musi prosić.</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Zgłoś firmę do pilotażu</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="hr"></div></div>
+
+<section>
+  <div class="wrap">
+    <div class="mono">Mechanika</div>
+    <h2>Jak to działa poza plakatem</h2>
+    <div class="rows">
+      <div class="row"><div class="n">01</div><div><h3>Aktywacja: „Wyślij zdjęcie zespołu, dopiszemy mu budżet."</h3><p>Firma wysyła zdjęcie swojego zespołu. TeamBudget daje temu zespołowi pierwszy miesiąc w&nbsp;pilotażu, zdjęcie wraca z&nbsp;nową linijką. Ludzie robią content, wy dostajecie lead z&nbsp;nazwą firmy, liderem i&nbsp;liczbą osób.</p></div></div>
+      <div class="row"><div class="n">02</div><div><h3>Nośniki: najpierw te, które macie za darmo</h3><p>LinkedIn (jedno zdjęcie dziennie, inny zespół), windy i&nbsp;lobby biurowców (6 s: zdjęcie, wjeżdża linijka, zero miga), kuchnie klientów BW (plakat „tu jada zespół. Budżet zespołu: 0 zł. Jeszcze."), scena BMHR (zdjęcia zespołów uczestników robione na miejscu, drukowane z&nbsp;linijką od razu). Citylighty punktowo w&nbsp;zagłębiach biurowych, jeśli budżet zostanie.</p></div></div>
+      <div class="row"><div class="n">03</div><div><h3>User flow (dla Łukasza P.)</h3><p>Zdjęcie → QR/klik → strona „Dopisz budżet swojemu zespołowi" (zdjęcie, firma, lider, liczba osób) → LP → pilotaż. Krok pośredni jest emocjonalny, nie formularzowy: zespół widzi siebie jako jednostkę, która może coś dostać.</p></div></div>
+      <div class="row"><div class="n">04</div><div><h3>Produkcja</h3><p>Zdjęcia w&nbsp;stylu KV z&nbsp;landingu: naturalne światło, biuro, editorial. Na start seria z&nbsp;generacji (powyżej), docelowo prawdziwe zespoły klientów BW i&nbsp;pilotaży. Linijka zawsze w&nbsp;Pangram Bold na Blue Sky, opis zespołu w&nbsp;DM Mono, tło Sunny White.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="hr"></div></div>
+
+<section>
+  <div class="wrap">
+    <div class="mono">Jak to gra z hasłem kampanii</div>
+    <div class="two">
+      <div>
+        <div class="q">„A gdyby zespół miał swój budżet i&nbsp;sam decydował, na co go wydać?"</div>
+        <p>Hasło zostaje jako otwarcie: wideo, event, keynote. Zdjęcie z&nbsp;zerem pokazuje, dlaczego to pytanie w&nbsp;ogóle pada. Pytanie i&nbsp;odpowiedź, na dwóch nośnikach, tak jak w&nbsp;założeniu.</p>
+      </div>
+      <div>
+        <div class="q">Kampania = filar „po co w&nbsp;ogóle". LP = filar „dlaczego da się to kupić".</div>
+        <p>Kampania nie tłumaczy katalogu, faktury ani panelu HR. To robi LP. Jedna uwaga: „0 zł za platformę" na LP może się zderzyć z&nbsp;„Budżet zespołu: 0 zł". Proponuję na LP „bez opłaty za platformę".</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="foot">Materiał roboczy do dyskusji w&nbsp;#teambudget-kampania. Zdjęcia zespołów: generacje w&nbsp;stylu KV, do zastąpienia sesją.</div></div>
+
+</body>
+</html>
