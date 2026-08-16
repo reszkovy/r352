@@ -40,6 +40,7 @@ section{padding:72px 0;}
 .poster .cap{padding:6px 24px 26px;}
 .poster .who{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--pale-black,#473A39);opacity:.75;}
 .poster .line{font-family:'Pangram Sans','DM Sans',sans-serif;font-weight:700;font-size:clamp(26px,3vw,38px);letter-spacing:-.03em;line-height:1.05;color:var(--blue,#4375FF);margin-top:8px;}
+.poster .stat{display:inline-block;font-weight:600;opacity:.82;font-size:.7em;margin-bottom:6px;}
 .poster .lock{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:18px;padding-top:14px;border-top:1px solid rgba(71,58,57,.12);}
 .poster .brand{display:flex;align-items:center;gap:8px;font-family:'Pangram Sans','DM Sans',sans-serif;font-weight:600;font-size:14px;color:var(--pale-black,#473A39);}
 .poster .brand img{width:20px;height:20px;aspect-ratio:1;object-fit:contain;}
@@ -83,7 +84,7 @@ section{padding:72px 0;}
     <div class="mono">TeamBudget · propozycja linii kampanii · 16.08.2026</div>
     <h1>Każdy zespół ma zdjęcie.<br>Żaden nie ma budżetu.</h1>
     <p class="lead">Firma pokazuje zespoły na każdym kroku: na intranecie, w&nbsp;prezentacji dla zarządu, w&nbsp;ogłoszeniu o&nbsp;pracę. W&nbsp;budżecie zespół jako całość nie istnieje. Każdy z&nbsp;osobna ma benefity. Zespół razem nie ma nic.</p>
-    <p class="sub">Kampania to zwykłe zdjęcie zespołu i&nbsp;jedna linijka pod spodem, jak z&nbsp;tabelki budżetowej. Bez tłumaczenia. Widać w&nbsp;sekundę na windzie, LinkedIn i&nbsp;scenie BMHR. Im więcej zespołów, tym mocniej działa: widz szuka swojego działu.</p>
+    <p class="sub">Kampania to zwykłe zdjęcie zespołu i&nbsp;dwie linijki pod spodem, jak z&nbsp;raportu: wynik zespołu i&nbsp;jego budżet. Bez tłumaczenia. Widać w&nbsp;sekundę na windzie, LinkedIn i&nbsp;scenie BMHR. Im więcej zespołów, tym mocniej działa: widz szuka swojego działu.</p>
   </div>
 </section>
 
@@ -92,14 +93,14 @@ section{padding:72px 0;}
 <section>
   <div class="wrap">
     <div class="mono">Seria · różne zespoły, ta sama linijka</div>
-    <h2>Budżet zespołu: 0 zł</h2>
+    <h2>Wynik: jest. Budżet zespołu: 0 zł</h2>
     <div class="grid">
-      <div class="poster p-blue"><img src="img/tb-zespoly/sprzedaz.webp" alt="Zespół sprzedaży"><div class="cap"><div class="who">Zespół sprzedaży · 10 osób</div><div class="line">Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
-      <div class="poster p-orange"><img src="img/tb-zespoly/it.webp" alt="Zespół IT"><div class="cap"><div class="who">Zespół IT · 7 osób</div><div class="line">Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
-      <div class="poster p-sunny"><img src="img/tb-zespoly/ksiegowosc.webp" alt="Zespół księgowości"><div class="cap"><div class="who">Zespół księgowości · 6 osób</div><div class="line">Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
-      <div class="poster p-yellow"><img src="img/tb-zespoly/obsluga.webp" alt="Zespół obsługi klienta"><div class="cap"><div class="who">Zespół obsługi klienta · 12 osób</div><div class="line">Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
-      <div class="poster p-green"><img src="img/tb-zespoly/magazyn.webp" alt="Zespół magazynu"><div class="cap"><div class="who">Zespół magazynu · 9 osób</div><div class="line">Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
-      <div class="poster p-blue"><img src="img/tb-zespoly/marketing.webp" alt="Zespół marketingu"><div class="cap"><div class="who">Zespół marketingu · 8 osób</div><div class="line">Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
+      <div class="poster p-blue"><img src="img/tb-zespoly/sprzedaz.webp" alt="Zespół sprzedaży"><div class="cap"><div class="who">Zespół sprzedaży · 10 osób</div><div class="line"><span class="stat">Wynik: 256% planu.</span><br>Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
+      <div class="poster p-orange"><img src="img/tb-zespoly/it.webp" alt="Zespół IT"><div class="cap"><div class="who">Zespół IT · 7 osób</div><div class="line"><span class="stat">Wdrożeń w tym roku: 412.</span><br>Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
+      <div class="poster p-sunny"><img src="img/tb-zespoly/ksiegowosc.webp" alt="Zespół księgowości"><div class="cap"><div class="who">Zespół księgowości · 6 osób</div><div class="line"><span class="stat">Zamknięć miesiąca na czas: 12 z 12.</span><br>Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
+      <div class="poster p-yellow"><img src="img/tb-zespoly/obsluga.webp" alt="Zespół obsługi klienta"><div class="cap"><div class="who">Zespół obsługi klienta · 12 osób</div><div class="line"><span class="stat">Rozmów obsłużonych: 38 000.</span><br>Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
+      <div class="poster p-green"><img src="img/tb-zespoly/magazyn.webp" alt="Zespół magazynu"><div class="cap"><div class="who">Zespół magazynu · 9 osób</div><div class="line"><span class="stat">Paczek wysłanych: 1,2 mln.</span><br>Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
+      <div class="poster p-blue"><img src="img/tb-zespoly/marketing.webp" alt="Zespół marketingu"><div class="cap"><div class="who">Zespół marketingu · 8 osób</div><div class="line"><span class="stat">Kampanii w tym roku: 34.</span><br>Budżet zespołu: 0 zł</div><div class="lock"><span class="brand"><img src="sygnet.svg" alt="">TeamBudget</span><span class="cta">Sprawdź TeamBudget</span></div></div></div>
     </div>
   </div>
 </section>
